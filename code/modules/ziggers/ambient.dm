@@ -54,7 +54,6 @@
 /area/vtm/interior/strip
 	name = "Strip Club"
 	icon_state = "strip"
-	music = /datum/vampiremusic/strip
 	upper = FALSE
 	fire_controled = TRUE
 
@@ -347,11 +346,6 @@
 /datum/vampiremusic/theatre
 	length = 93 SECONDS
 	sound = 'code/modules/ziggers/sounds/theatre.ogg'
-	forced = TRUE
-
-/datum/vampiremusic/strip
-	length = 187 SECONDS
-	sound = 'code/modules/ziggers/sounds/strip.ogg'
 	forced = TRUE
 
 /datum/vampiremusic/nosferatu

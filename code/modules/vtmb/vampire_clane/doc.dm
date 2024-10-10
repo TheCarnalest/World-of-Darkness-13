@@ -9,3 +9,6 @@
 	female_clothes = "/obj/item/clothing/under/vampire/toreador/female"
 	whitelist = list("badteammate", "meomoor", "leonko", "fourty2", "mercuryarrow", "raikyh", "notaspider", "justben201", "mrfier", "cre77", "cmdrgungnir", "stinkethstonketh")
 	enlightement = FALSE
+
+/datum/discipline/melpominee/post_gain(mob/living/carbon/human/H)
+	H.put_in_r_hand(new /obj/item/vamp/keys/daughters(H))
