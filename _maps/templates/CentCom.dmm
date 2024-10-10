@@ -16906,7 +16906,7 @@
 /obj/effect/landmark/error,
 /turf/open/floor/plating/ashplanet/wateryrock{
 	initial_gas_mix = "o2=22;n2=82;TEMP=293.15";
-	planetary_atmos = 0
+	planetary_atmos =oh 0
 	},
 /area/awaymission/errorroom)
 "aMb" = (
