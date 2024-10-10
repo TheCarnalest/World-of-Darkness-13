@@ -1,0 +1,5 @@
+<!-- Most valid html will work in here, excluding images. -->
+
+<div class="motd"><h1>Welcome to Vampire: the Masquerade 13!</h1></div>
+
+<i>Remember, wherever we go, it is the blood of Cain which makes our fate...</i>

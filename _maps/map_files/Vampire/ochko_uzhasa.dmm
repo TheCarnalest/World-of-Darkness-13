@@ -1,0 +1,362 @@
+"aq" = (/obj/effect/decal/litter,/turf/open/floor/plating/sidewalkalt{umbra = 1},/area/space)
+"aw" = (/obj/structure/arc/add{dir = 8; icon_state = "ark2"},/obj/minespot,/turf/open/floor/plating/umbra,/area/space)
+"az" = (/obj/item/clothing/mask/gas/clown_hat{anchored = 1},/obj/item/clothing/head/crown{anchored = 1; pixel_y = 6},/turf/open/floor/plating/umbra,/area/space)
+"ba" = (/obj/structure/chair/stool,/obj/effect/decal/trash,/turf/open/floor/plating/concrete{umbra = 1},/area/space)
+"bA" = (/obj/effect/decal/wallpaper/stone,/turf/closed/wall/vampwall/rich,/area/space)
+"cj" = (/turf/open/floor/plasteel/stairs/left,/area/space)
+"cn" = (/obj/minespot/playable,/obj/minespot/playable,/turf/open/floor/plating/umbra,/area/space)
+"cr" = (/obj/structure/chinesesign{dir = 1; pixel_x = -12},/turf/closed/wall/vampwall/market,/area/space)
+"cw" = (/obj/effect/decal/bordur{dir = 8; icon_state = "border"},/obj/effect/decal/bordur,/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"cG" = (/obj/effect/decal/trash,/turf/open/floor/plating/parquetry/old{umbra = 1},/area/space)
+"cQ" = (/turf/closed/wall/vampwall/market/low/window/reinforced,/area/space)
+"dk" = (/turf/closed/wall/vampwall/rich/low/window/reinforced,/area/space)
+"dB" = (/obj/effect/decal/bordur{dir = 8; icon_state = "border"},/obj/effect/decal/litter,/obj/effect/decal/trash,/obj/effect/decal/cardboard,/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"dI" = (/obj/structure/railing{dir = 1; layer = 4; pixel_y = 6},/obj/effect/decal/trash,/turf/open/floor/plating/concrete{umbra = 1},/area/space)
+"dY" = (/obj/effect/decal/cardboard,/turf/open/floor/plating/concrete{umbra = 1},/area/space)
+"dZ" = (/obj/effect/decal/bordur{dir = 8; icon_state = "border"},/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"es" = (/obj/structure/clothinghanger,/turf/open/floor/plating/parquetry/old{umbra = 1},/area/space)
+"ex" = (/obj/effect/decal/trash,/obj/effect/decal/cardboard,/turf/open/floor/plating/sidewalk/poor,/area/space)
+"eJ" = (/obj/effect/decal/bordur{dir = 4; icon_state = "border"},/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"fn" = (/obj/structure/table,/obj/structure/trashbag,/turf/open/floor/plating/vampplating/mono{umbra = 1},/area/space)
+"fp" = (/obj/structure/trad{pixel_y = 32},/obj/effect/decal/trash,/turf/open/floor/plating/sidewalkalt{umbra = 1},/area/space)
+"fG" = (/obj/structure/arc{dir = 8; icon_state = "ark1"},/turf/open/floor/plating/umbra,/area/space)
+"fS" = (/obj/structure/vampdoor/prison{hack_difficulty = 8},/turf/open/floor/plating/concrete{umbra = 1},/area/space)
+"fY" = (/obj/structure/chair,/turf/open/floor/plating/umbra,/area/space)
+"ga" = (/obj/structure/arc{dir = 6; icon_state = "ark1"},/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"gh" = (/obj/item/cigbutt{anchored = 1; pixel_x = -9; pixel_y = -11},/obj/item/cigbutt{anchored = 1},/turf/open/floor/carpet{umbra = 1},/area/space)
+"gl" = (/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"go" = (/obj/structure/trashbag,/turf/open/floor/plating/sidewalk/poor,/area/space)
+"gq" = (/obj/minespot,/obj/minespot,/turf/open/floor/plating/umbra,/area/space)
+"gN" = (/turf/open/floor/plasteel/stairs/right{dir = 1; icon_state = "stairs-r"},/area/space)
+"ha" = (/obj/item/food/grown/watermelon,/obj/effect/decal/trash,/turf/open/floor/plating/concrete{umbra = 1},/area/space)
+"hn" = (/turf/open/floor/plasteel/stairs/right{dir = 8},/area/space)
+"hu" = (/turf/open/floor/plasteel/stairs/left{dir = 8},/area/space)
+"hJ" = (/obj/effect/decal/cleanable/blood{icon_state = "drip3-old"},/turf/open/floor/plating/concrete{umbra = 1},/area/space)
+"jf" = (/obj/effect/decal/bordur{dir = 1; icon_state = "border"},/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"jh" = (/obj/effect/decal/trash,/turf/open/floor/plasteel/stairs/left,/area/space)
+"ji" = (/obj/effect/decal/litter,/obj/effect/decal/trash,/turf/open/floor/plating/vampplating/mono{umbra = 1},/area/space)
+"jq" = (/obj/effect/decal/trash,/obj/effect/decal/litter,/turf/open/floor/plating/sidewalk/poor,/area/space)
+"jt" = (/obj/police_department{dir = 1; icon_state = "police"},/obj/structure/trashcan,/turf/open/floor/plating/umbra,/area/space)
+"kC" = (/obj/structure/chair/wood{dir = 1},/turf/open/floor/plating/concrete{umbra = 1},/area/space)
+"kM" = (/obj/structure/trashcan,/obj/item/clothing/glasses/regular/circle{anchored = 1; layer = 6},/turf/open/floor/plating/vampwood,/area/space)
+"lf" = (/turf/open/floor/plasteel/stairs/right,/area/space)
+"lv" = (/obj/structure/trashbag,/turf/open/floor/plating/vampplating/mono{umbra = 1},/area/space)
+"lG" = (/turf/open/floor/plating/vampplating/mono{umbra = 1},/area/space)
+"lN" = (/turf/open/floor/plasteel/stairs/medium{dir = 8},/area/space)
+"mc" = (/obj/effect/turf_decal/siding/white{dir = 5; icon_state = "siding_line"},/obj/structure/railing{dir = 5; icon_state = "railing"; pixel_y = 8},/obj/effect/decal/shadow,/turf/open/floor/plating/granite{umbra = 1},/area/space)
+"mh" = (/obj/structure/chair/stool,/turf/open/floor/plating/parquetry/old{umbra = 1},/area/space)
+"mj" = (/obj/structure/arc{dir = 4; icon_state = "ark1"},/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"ml" = (/obj/effect/decal/bordur{dir = 5; icon_state = "border"},/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"mq" = (/obj/item/chair/wood,/turf/open/floor/plating/parquetry/old{umbra = 1},/area/space)
+"mB" = (/obj/effect/turf_decal/siding/white,/obj/structure/vampdoor/wood,/turf/open/floor/plating/vampplating/mono{umbra = 1},/area/space)
+"mV" = (/obj/effect/decal/litter,/obj/effect/decal/trash,/turf/open/floor/plating/sidewalkalt{umbra = 1},/area/space)
+"mW" = (/obj/structure/bed,/obj/effect/decal/remains/human,/turf/open/floor/plating/vampdirt{umbra = 1},/area/space)
+"oa" = (/obj/structure/lamppost/sidewalk/chinese{dir = 4; icon_state = "chinese"},/turf/open/floor/plating/sidewalkalt{umbra = 1},/area/space)
+"ok" = (/obj/structure/hydrant,/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"ov" = (/obj/effect/decal/bordur{dir = 1; icon_state = "border"},/obj/item/chair/wood,/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"oG" = (/obj/structure/chair/wood/wings{dir = 1},/turf/open/floor/carpet{umbra = 1},/area/space)
+"pg" = (/obj/effect/turf_decal/siding/wood{dir = 4; icon_state = "siding_wood_line"},/obj/structure/curtain/cloth/fancy,/turf/open/floor/plating/vampwood,/area/space)
+"pj" = (/obj/effect/decal/litter,/turf/open/floor/plating/vampplating/mono{umbra = 1},/area/space)
+"pm" = (/turf/closed/wall/vampwall/rich/old,/area/space)
+"px" = (/turf/open/floor/carpet{umbra = 1},/area/space)
+"pJ" = (/turf/open/floor/plasteel/stairs,/area/space)
+"pQ" = (/obj/effect/decal/bordur,/obj/item/chair/wood,/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"pT" = (/obj/structure/vampdoor/police{lock_id = "none"; locked = 0},/obj/effect/turf_decal/siding/white{dir = 1; icon_state = "siding_line"},/turf/open/floor/plating/sidewalk/poor,/area/space)
+"qr" = (/obj/effect/decal/wallpaper/paper,/turf/closed/wall/vampwall/city,/area/space)
+"qt" = (/obj/structure/lamppost/sidewalk,/turf/open/floor/plating/umbra,/area/space)
+"qB" = (/turf/open/floor/plating/parquetry/old{umbra = 1},/area/space)
+"qP" = (/turf/closed/wall/vampwall/painted,/area/space)
+"qQ" = (/obj/structure/table,/obj/effect/decal/litter,/turf/open/floor/plating/concrete{umbra = 1},/area/space)
+"qW" = (/obj/weapon_showcase,/turf/open/floor/plating/umbra,/area/space)
+"se" = (/obj/effect/decal/litter,/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"ss" = (/obj/effect/decal/litter,/turf/open/floor/plating/parquetry/old{umbra = 1},/area/space)
+"tm" = (/obj/effect/turf_decal/siding/white{dir = 4; icon_state = "siding_line"},/turf/open/floor/plating/umbra,/area/space)
+"tD" = (/obj/item/ammo_casing/caseless{dir = 4},/turf/open/floor/plating/parquetry/old{umbra = 1},/area/space)
+"tU" = (/obj/effect/decal/trash,/turf/open/floor/plating/vampwood,/area/space)
+"uf" = (/obj/effect/decal/bordur{dir = 4; icon_state = "border"},/obj/effect/decal/trash,/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"ug" = (/turf/open/floor/plating/sidewalk/poor,/area/space)
+"up" = (/obj/structure/vampdoor/simple,/obj/effect/decal/bordur{dir = 1; icon_state = "border"},/obj/effect/decal/cardboard,/turf/open/floor/plating/sidewalkalt{umbra = 1},/area/space)
+"uP" = (/obj/structure/table,/obj/machinery/photocopier,/turf/open/floor/plating/umbra,/area/space)
+"uW" = (/obj/structure/trad{layer = 6; pixel_y = 32},/obj/effect/decal/litter,/turf/open/floor/plating/sidewalkalt{umbra = 1},/area/space)
+"vo" = (/obj/structure/trad{pixel_y = 32},/turf/open/floor/plating/sidewalkalt{umbra = 1},/area/space)
+"vJ" = (/turf/open/floor/plasteel/stairs/medium{dir = 4; icon_state = "stairs-m"},/area/space)
+"vN" = (/obj/effect/decal/bordur{dir = 6; icon_state = "border"},/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"vR" = (/obj/structure/coclock,/turf/open/floor/plating/parquetry/old{umbra = 1},/area/space)
+"vZ" = (/turf/open/floor/plating/sidewalkalt{umbra = 1},/area/space)
+"ws" = (/obj/structure/arc{dir = 10; icon_state = "ark1"},/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"wB" = (/obj/effect/decal/litter,/turf/open/floor/plating/concrete{umbra = 1},/area/space)
+"wU" = (/obj/police_department{dir = 8; icon_state = "police"},/obj/structure/trashcan,/turf/open/floor/plating/umbra,/area/space)
+"xe" = (/obj/effect/decal/bordur{dir = 1; icon_state = "border"},/obj/structure/chair/pew/left,/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"xh" = (/obj/police_department{dir = 4; icon_state = "police"},/obj/structure/trashcan,/obj/structure/trashbag,/turf/open/floor/plating/umbra,/area/space)
+"xj" = (/obj/effect/turf_decal/siding/white{dir = 4; icon_state = "siding_line"},/obj/structure/railing{dir = 4; icon_state = "railing"},/turf/open/floor/plating/umbra,/area/space)
+"xn" = (/obj/structure/lamppost/sidewalk/chinese{dir = 8; icon_state = "chinese"},/turf/open/floor/plating/umbra,/area/space)
+"xL" = (/obj/structure/table,/turf/open/floor/plating/umbra,/area/space)
+"xX" = (/obj/effect/decal/bordur,/obj/structure/trashbag,/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"yk" = (/obj/structure/arc/add{dir = 4; icon_state = "ark2"},/obj/minespot,/turf/open/floor/plating/umbra,/area/space)
+"ym" = (/obj/effect/decal/bordur,/obj/structure/vampmap,/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"yw" = (/obj/effect/decal/trash,/obj/effect/decal/litter,/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"yI" = (/obj/effect/decal/cleanable/blood{icon_state = "floor2-old"},/turf/open/floor/plating/concrete{umbra = 1},/area/space)
+"zd" = (/obj/structure/table/wood,/turf/open/floor/plating/umbra,/area/space)
+"zf" = (/obj/structure/vampdoor/camarilla,/turf/open/floor/plating/vampplating/mono{umbra = 1},/area/space)
+"zg" = (/obj/structure/vampdoor/police,/turf/open/floor/plating/concrete{umbra = 1},/area/space)
+"zy" = (/obj/item/gun/ballistic/automatic/pistol/deagle,/turf/open/floor/plating/concrete{umbra = 1},/area/space)
+"zT" = (/turf/open/floor/plating/vampdirt{umbra = 1},/area/space)
+"Ai" = (/obj/minespot,/turf/open/floor/plating/umbra,/area/space)
+"As" = (/obj/structure/chair/comfy/black{dir = 1},/obj/effect/decal/litter,/obj/effect/decal/trash,/turf/open/floor/plating/concrete{umbra = 1},/area/space)
+"AJ" = (/obj/effect/turf_decal/siding/wood{dir = 8; icon_state = "siding_wood_line"},/obj/structure/curtain/cloth/fancy,/turf/open/floor/plating/vampwood,/area/space)
+"AS" = (/obj/structure/table,/obj/structure/window/reinforced/indestructable{dir = 1; icon_state = "rwindow"},/turf/open/floor/plating/concrete{umbra = 1},/area/space)
+"Ba" = (/obj/effect/decal/graffiti/large,/turf/open/floor/plating/umbra,/area/space)
+"Bd" = (/obj/effect/decal/litter,/obj/structure/trashbag,/turf/open/floor/plating/vampplating/mono{umbra = 1},/area/space)
+"Br" = (/obj/effect/decal/litter,/turf/open/floor/plating/sidewalk/poor,/area/space)
+"BE" = (/obj/structure/trashbag{pixel_x = 6; pixel_y = -12},/obj/structure/trashbag{pixel_x = -8; pixel_y = -10},/obj/structure/trashbag{pixel_x = 10; pixel_y = 3},/obj/structure/trashbag{pixel_y = -13},/obj/structure/trashbag{pixel_x = -9; pixel_y = 8},/turf/open/floor/plating/vampdirt{umbra = 1},/area/space)
+"BG" = (/turf/open/floor/plasteel/stairs/left{dir = 4; icon_state = "stairs-l"},/area/space)
+"BJ" = (/obj/weapon_showcase,/obj/item/shard{layer = 5},/turf/open/floor/plating/umbra,/area/space)
+"Ch" = (/turf/open/floor/plasteel/stairs/right{dir = 4; icon_state = "stairs-r"},/area/space)
+"Cu" = (/obj/structure/vampdoor/camarilla{lock_id = "milleniumCommon"},/turf/open/floor/plating/vampplating/mono{umbra = 1},/area/space)
+"Cz" = (/obj/structure/railing{dir = 1; layer = 4; pixel_y = 6},/turf/open/floor/plating/concrete{umbra = 1},/area/space)
+"CU" = (/obj/effect/turf_decal/siding/white{dir = 8; icon_state = "siding_line"},/turf/open/floor/plating/umbra,/area/space)
+"Dc" = (/obj/effect/decal/litter,/obj/effect/decal/cardboard,/turf/open/floor/plating/sidewalkalt{umbra = 1},/area/space)
+"Dl" = (/obj/structure/vampdoor/npc{dir = 8; icon_state = "wood-1"},/obj/effect/decal/cardboard,/turf/open/floor/plating/sidewalk/poor,/area/space)
+"DF" = (/obj/effect/turf_decal/siding/white{dir = 1; icon_state = "siding_line"},/turf/open/floor/plating/umbra,/area/space)
+"DW" = (/obj/machinery/light{dir = 1},/turf/open/floor/plating/concrete{umbra = 1},/area/space)
+"Eb" = (/obj/structure/arc,/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"Ec" = (/obj/effect/turf_decal/siding/white{dir = 5; icon_state = "siding_line"},/turf/open/floor/plating/umbra,/area/space)
+"Ee" = (/obj/effect/turf_decal/siding/white{dir = 4; icon_state = "siding_line"},/obj/structure/railing{dir = 4; icon_state = "railing"},/turf/open/floor/plating/granite{umbra = 1},/area/space)
+"Ei" = (/obj/structure/trashbag,/turf/open/floor/plating/concrete{umbra = 1},/area/space)
+"El" = (/turf/open/floor/plating/vampwood,/area/space)
+"Em" = (/obj/effect/decal/cardboard,/turf/open/floor/plating/sidewalkalt{umbra = 1},/area/space)
+"Fl" = (/turf/open/floor/plasteel/stairs/medium,/area/space)
+"FH" = (/obj/effect/decal/bordur{dir = 4; icon_state = "border"},/obj/effect/decal/bordur,/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"Gb" = (/obj/effect/decal/trash,/obj/effect/decal/litter,/turf/open/floor/plating/concrete{umbra = 1},/area/space)
+"Gl" = (/obj/effect/turf_decal/siding/wood{dir = 10; icon_state = "siding_wood_line"},/obj/structure/railing,/turf/open/floor/plating/vampwood,/area/space)
+"Gs" = (/obj/effect/turf_decal/siding/white{dir = 1; icon_state = "siding_line"},/obj/structure/railing{dir = 1; icon_state = "railing"; pixel_y = 12},/obj/effect/decal/shadow,/turf/open/floor/plating/granite{umbra = 1},/area/space)
+"GK" = (/obj/machinery/light/small{dir = 8; pixel_x = 16},/turf/open/floor/plating/parquetry/old{umbra = 1},/area/space)
+"GN" = (/obj/structure/guillotine,/mob/living/simple_animal/hostile/asteroid/wolf{aggro_vision_range = 0; anchored = 1},/turf/open/floor/plating/vampwood,/area/space)
+"GT" = (/obj/structure/chinesesign{dir = 1; icon_state = "chinese1"},/turf/open/floor/plating/sidewalkalt{umbra = 1},/area/space)
+"HC" = (/obj/item/toy/beach_ball/holoball,/turf/open/floor/plating/umbra,/area/space)
+"Jg" = (/obj/structure/trad{pixel_y = 32},/turf/open/floor/plating/umbra,/area/space)
+"Jv" = (/obj/effect/decal/bordur{dir = 10; icon_state = "border"},/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"Jx" = (/obj/police_department,/obj/structure/trashcan,/turf/open/floor/plating/umbra,/area/space)
+"JF" = (/obj/structure/table,/turf/open/floor/plating/vampplating/mono{umbra = 1},/area/space)
+"JK" = (/obj/effect/decal/trash,/turf/open/floor/plating/sidewalkalt{umbra = 1},/area/space)
+"JR" = (/obj/structure/arc{dir = 5; icon_state = "ark1"},/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"JU" = (/obj/structure/arc{dir = 1; icon_state = "ark1"},/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"JV" = (/obj/structure/chinesesign/alt{dir = 4; icon_state = "chinese2"},/turf/open/floor/plating/sidewalkalt{umbra = 1},/area/space)
+"Kc" = (/turf/closed/wall/vampwall/city,/area/space)
+"Km" = (/obj/structure/vampfence/rich{dir = 4; icon_state = "fence"; pixel_y = 8},/turf/open/floor/plating/concrete{umbra = 1},/area/space)
+"KF" = (/obj/food_cart,/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"KN" = (/obj/effect/decal/cleanable/blood{icon_state = "drip4-old"},/obj/item/shard{pixel_y = 12},/turf/open/floor/plating/concrete{umbra = 1},/area/space)
+"KT" = (/obj/structure/curtain/cloth/fancy,/turf/open/floor/plating/vampwood,/area/space)
+"KW" = (/turf/open/floor/plating/vampplating{umbra = 1},/area/space)
+"Lj" = (/obj/item/ammo_casing/caseless{pixel_x = 8; pixel_y = 9},/obj/item/ammo_casing/caseless{dir = 4},/obj/item/ammo_casing/caseless{dir = 5; pixel_x = -11; pixel_y = 8},/obj/item/melee/vampirearms/katana,/turf/open/floor/plating/concrete{umbra = 1},/area/space)
+"Ly" = (/obj/structure/arc/add{dir = 4; icon_state = "ark2"},/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"LI" = (/obj/item/reagent_containers/food/drinks/beer/vampire{list_reagents = list(/datum/reagent/consumable/ethanol/beer = 0); pixel_x = -6},/obj/item/reagent_containers/food/drinks/beer/vampire{list_reagents = list(/datum/reagent/consumable/ethanol/beer = 0)},/obj/item/reagent_containers/food/drinks/beer/vampire{list_reagents = list(/datum/reagent/consumable/ethanol/beer = 0); pixel_x = 6},/obj/item/reagent_containers/food/drinks/beer/vampire{list_reagents = list(/datum/reagent/consumable/ethanol/beer = 0); pixel_x = -3; pixel_y = 4},/obj/item/reagent_containers/food/drinks/beer/vampire{list_reagents = list(/datum/reagent/consumable/ethanol/beer = 0); pixel_x = 3; pixel_y = 4},/obj/item/reagent_containers/food/drinks/beer/vampire{list_reagents = list(/datum/reagent/consumable/ethanol/beer = 0); pixel_y = 6},/turf/open/floor/plating/concrete{umbra = 1},/area/space)
+"Me" = (/obj/effect/decal/bordur{dir = 9; icon_state = "border"},/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"Mp" = (/turf/open/space/basic,/area/space)
+"Nr" = (/obj/structure/vampmap,/turf/open/floor/plating/sidewalk/poor,/area/space)
+"Nz" = (/obj/structure/arc{dir = 9; icon_state = "ark1"},/turf/open/floor/plating/umbra,/area/space)
+"NF" = (/obj/effect/turf_decal/siding/wood{dir = 6; icon_state = "siding_wood_line"},/obj/structure/railing,/turf/open/floor/plating/vampwood,/area/space)
+"NL" = (/obj/structure/trashcan,/turf/open/floor/plating/vampplating/mono{umbra = 1},/area/space)
+"Oc" = (/turf/open/floor/plating/concrete{umbra = 1},/area/space)
+"Oh" = (/obj/effect/turf_decal/siding/white{dir = 8; icon_state = "siding_line"},/obj/structure/railing{dir = 8; icon_state = "railing"},/turf/open/floor/plating/granite{umbra = 1},/area/space)
+"Om" = (/obj/effect/decal/cleanable/ash,/turf/open/floor/plating/parquetry/old{umbra = 1},/area/space)
+"Ov" = (/obj/effect/decal/cardboard,/turf/open/floor/plating/sidewalk/poor,/area/space)
+"OW" = (/obj/effect/decal/bordur,/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"OZ" = (/turf/open/floor/plasteel/stairs/left{dir = 1; icon_state = "stairs-l"},/area/space)
+"Pi" = (/turf/closed/wall/vampwall/market,/area/space)
+"Ps" = (/obj/structure/vampmap,/obj/structure/lamppost/sidewalk,/obj/effect/decal/bordur{dir = 1; icon_state = "border"},/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"PE" = (/obj/effect/decal/bordur{dir = 4; icon_state = "border"},/obj/effect/decal/bordur{dir = 1; icon_state = "border"},/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"PX" = (/obj/effect/turf_decal/siding/white{dir = 9; icon_state = "siding_line"},/turf/open/floor/plating/umbra,/area/space)
+"Qa" = (/obj/structure/table,/obj/item/newspaper,/turf/open/floor/plating/concrete{umbra = 1},/area/space)
+"Qj" = (/obj/effect/decal/remains/human,/obj/effect/decal/remains/human{pixel_x = -10; pixel_y = -13},/obj/effect/decal/remains/human{pixel_x = 5; pixel_y = 8},/obj/effect/decal/remains/human{pixel_x = -8; pixel_y = -4},/obj/effect/decal/remains/human{pixel_x = 7; pixel_y = -14},/turf/open/floor/plating/concrete{umbra = 1},/area/space)
+"QN" = (/obj/effect/decal/litter,/turf/open/floor/carpet{umbra = 1},/area/space)
+"QS" = (/turf/open/floor/plating/umbra,/area/space)
+"QX" = (/turf/open/floor/plating/granite{umbra = 1},/area/space)
+"Rs" = (/obj/structure/table,/obj/effect/decal/litter,/turf/open/floor/plating/vampplating/mono{umbra = 1},/area/space)
+"St" = (/obj/minespot/playable,/turf/open/floor/plating/umbra,/area/space)
+"SQ" = (/obj/structure/roadsign/busstop,/turf/open/floor/plating/sidewalk/poor,/area/space)
+"Td" = (/obj/effect/decal/trash,/turf/open/floor/plating/concrete{umbra = 1},/area/space)
+"TK" = (/obj/weapon_showcase,/turf/open/floor/plating/concrete{umbra = 1},/area/space)
+"Uk" = (/obj/structure/extinguisher_cabinet{pixel_y = 32},/turf/open/floor/plating/umbra,/area/space)
+"Us" = (/obj/effect/turf_decal/siding/white{dir = 9; icon_state = "siding_line"},/obj/structure/railing{dir = 9; icon_state = "railing"; pixel_y = 8},/obj/effect/decal/shadow,/turf/open/floor/plating/granite{umbra = 1},/area/space)
+"Vf" = (/obj/item/arcane_tome,/turf/open/floor/plating/vampwood,/area/space)
+"Vk" = (/obj/structure/table,/obj/item/paper_bin{pixel_y = 6},/obj/item/pen,/turf/open/floor/plating/umbra,/area/space)
+"Vm" = (/obj/structure/milleniumsign{dir = 1; icon_state = "millenium"; pixel_y = 32},/turf/open/floor/plating/umbra,/area/space)
+"VN" = (/obj/effect/decal/carpet{pixel_x = -14},/obj/structure/chair/greyscale{dir = 1},/turf/open/floor/plating/concrete{umbra = 1},/area/space)
+"VS" = (/obj/effect/turf_decal/siding/white{dir = 4; icon_state = "siding_line"},/obj/structure/vampdoor/npc{dir = 8; icon_state = "wood-1"},/obj/effect/decal/cardboard,/turf/open/floor/plating/sidewalkalt{umbra = 1},/area/space)
+"VW" = (/obj/structure/table/wood,/turf/open/floor/carpet{umbra = 1},/area/space)
+"VZ" = (/obj/structure/arc/add,/turf/open/floor/plating/umbra,/area/space)
+"Wa" = (/obj/effect/decal/graffiti,/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"WO" = (/obj/effect/decal/trash,/turf/open/floor/plating/sidewalk/poor,/area/space)
+"WR" = (/obj/effect/decal/bordur{dir = 1; icon_state = "border"},/obj/structure/chair/pew/right,/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"Xe" = (/obj/effect/decal/cardboard,/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"Xn" = (/obj/structure/trashbag,/turf/open/floor/plating/vampdirt{umbra = 1},/area/space)
+"Xx" = (/obj/structure/chair/stool/bar,/turf/open/floor/plating/concrete{umbra = 1},/area/space)
+"XE" = (/obj/effect/decal/trash,/turf/open/floor/plating/vampplating/mono{umbra = 1},/area/space)
+"XF" = (/obj/structure/chinesesign/alt{pixel_x = 12},/turf/closed/wall/vampwall/market,/area/space)
+"XV" = (/obj/effect/decal/trash,/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"Yb" = (/obj/structure/trashcan,/turf/open/floor/plating/vampwood,/area/space)
+"Yd" = (/obj/structure/vampdoor/archive{locked = 0},/turf/open/floor/plating/vampwood,/area/space)
+"Yh" = (/obj/structure/milleniumsign{pixel_y = 32},/turf/open/floor/plating/umbra,/area/space)
+"Ym" = (/obj/structure/vampdoor/archive,/turf/open/floor/plating/vampwood,/area/space)
+"Yp" = (/obj/effect/decal/remains/human{pixel_x = -8; pixel_y = -4},/obj/effect/decal/litter,/turf/open/floor/plating/concrete{umbra = 1},/area/space)
+"Ys" = (/obj/effect/decal/trash,/turf/open/floor/carpet{umbra = 1},/area/space)
+"Yx" = (/obj/structure/railing{dir = 1; layer = 4; pixel_y = 6},/turf/open/floor/plating/umbra,/area/space)
+"YI" = (/turf/closed/wall/vampwall/rich,/area/space)
+"YP" = (/obj/item/clothing/mask/gas/clown_hat{anchored = 1},/obj/item/clothing/head/crown{anchored = 1; pixel_y = 6},/turf/open/floor/plating/vampwood,/area/space)
+"Zd" = (/obj/machinery/light{pixel_y = 32},/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
+"Zo" = (/obj/effect/turf_decal/siding/wood,/obj/structure/railing,/turf/open/floor/plating/vampwood,/area/space)
+"ZH" = (/obj/structure/trashcan,/obj/item/clothing/glasses/regular/hipster{anchored = 1; layer = 5},/turf/open/floor/plating/vampwood,/area/space)
+
+(1,1,1) = {"
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSpmQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSZHpmQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSpmQSpmQSYbVfkMQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSpmElElYbQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSpmElpmQSpmQSQSpmQSpmQSQSpmQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSpmQSpmpmpmYdpmpmpmpmpmpmYmpmpmQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSqBhuAJElElYPGNElYbElElpgChQSpmQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSpmQSqBlNAJKTElElElEltUElKTpgvJqBQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSqBhnGlZoZoZoZoZoZoZoZoNFBGqBQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSpmqBqBqBqBqBqBqBqBqBqBqBqBqBqBpmQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSpmQSqBqBQSpxQNpxpxghpxpxpxqBqBqBQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSYIQSQSQSQSQSQSQSQSQSQSQSQSpmpmqBYsoGoGoGoGoGoGQSpxpxQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSYIQSQSQSQSQSQSlGQSQSQSQSQSQSQSQSQSQSpmqBpxpxQSQSpxpxpxpxpxpxpmQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSlGazQSQSQSQSlGQSQSQSQSQSQSQSQSQSQSQSQSQSpmpmpxoGoGoGoGoGQSQSpxpxQSQSpmQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSYIQSQSQSQSQSlGQSQSQSQSQSYIQSQSQSQSQSQSQSQSQSQSpmpxpxpxQSQSpxpxpxpxpxQSpmQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSNLlGQSQSQSQSQSlvNLQSQSQSQSQSQSQSQSQSQSQSQSpmOZgNCzCzYxCzdICzOZgNpmQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSYIdkzfYIQSQSQSYICudkYIQSQSQSQSQSQSQSQSQSQSQSpmEiOcOcOcOcOcOcOcOcOcpmQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQScjlfbAbAbAbAbAjhlfYIQSQSQSQSQSQSQSQSQSQSQSpmpmpmpmpmpmpmpmqBpmpmpmQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSYIQSlGXEBdYhVmBaxLlGpjQSQSQSQSQSQSQSQSQSQSQSQSpmQSQSzdpxpxVWqBqBqBpmQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSpjlGJFRsJFJFfnlGlGYIQSQSQSQSQSQSQSQSQSQSQSpmQSQSzdQSQSzdqBqBssqBvZQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSYIQSQSlGlGlGpjlGjilGlGlGYIQSQSQSQSQSQSQSQSQSQSQSpmQSQSzdzdzdzdqBcGqBqBvZvZQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSYIpJGsmccjFllfUsGspJYIQSQSQSQSQSQSQSQSQSQSQSpmQSQSQSQSQSQSQSqBqBpmvZvZQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSYIQXQXxjKWlGKWOhQXQXYIQSQSQSQSQSQSQSQSQSQSQSpmpmpmpmpmQSpmQSpmpmpmvZvZvZvZQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSYIDFEcEeKWQSKWOhPXDFYIQSQSQSQSQSQSQSQSQSQSQSQSQSvZmVvZvZvZvZvZvZvZvZvZvZQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSglQSQSYIQStmYImBYImBglCUQSYIQSQSglQSQSQSQSQSQSQSQSQSAivZvZvZvZvZvZvZaqvZQSvZQSQSQSAiQSQSQSQSqPqPqPqPqPqPqPQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSseYIdkdkYIglZdglgldkdkYIXVQSQSQSQSQSQSQSQSQSStAiAivZvZvZvZvZJKvZvZQSQSQSQSQSAiAiAiQSQSQSqPQSQSQjhaQSqPQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSglWaglglywglglglglglWaglglQSQSQSQSQSQSQSQSStStAiAiAiAivZvZvZvZvZAiQSQSQSQSQSQSAiAiQSQSQSqPQSQSzyYpQSqPQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSglglglglglXVXVglglAiAiQSQSQSQSQSQSQSStStStStAiAiAiQSQSvZvZAiAiAiQSQSQSQSQSAiAiQSQSQSqPKmKmKmfSqPqPQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSAiglglglglglglAiAiAiStQSQSQSQSQSAiStStStStStQSQSQSQSQSAiAiStStStQSQSQSAiAiQSQSQSQSqPQSGbdYGbQSqPQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSStStAiAiseglglglAiAiAiStStStStStStStStAiAiStQSQSQSQSQSQSQSQSAiStStStStStAiAiQSQSQSQSQSqPqPqPzgqPqPqPqPqPqPqPQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSStStStAiAiQSQSglglAiAiStStStStStStStStStAiQSQSQSQSQSQSQSQSQSQSStStStStStStStQSQSQSQSQSQSqPQSOcOcQSQSQSQSQSqPQSugQSQSQSHCQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSStStAiStStAiQSQSQSQSQSQSStAiAiStAiStStStStQSQSQSQSQSQSQSQSQSQSQSQSStStStStStStStStQSQSQSugqPOcOcOcwBQSfYUkuPqPQSugugOvQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSStAiStStQSQSQSQSQSQSQSQSQSQSQSAiAiAiQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSStStStStStAiAiugugqPOcOcOcQaqQVkxLxLqPugexugugugugQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSStStStQSQSQSQSQSQSQSQSQSQSQSAiAiAiQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSStStStStStAiAiugugqPOcOcOcdYOcwBOcOcqPuggougQSuggougugQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSStStStStQSQSQSQSQSQSQSQSQSQSAiAigqQSQSAiAiQSQSQSQSQSQSQSQSQSQSQSQSQSQSAiAiStQSQSQSAiugugugqPQSOcOcOcOcDWOcOcqPugKcKcKcKcKcKcKcQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSStStStStQSQSQSQSQSQSQSQSQSQSQSAiAiAiAiAiAiAiQSQSQSQSQSQSQSQSQSQSQSQSQSQSAiAiAiAiQSQSQSQSugBrqPqPqPqPqPqPqPpTqPqPugKcmWmWmWmWmWKcQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSStStStStQSQSQSQSQSQSQSQSQSQSQSQSgqAiAiAiAiQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSAiAiAiQSQSQSQSugugugugWOJxjtxhwUugBrugugKczTzTzTzTXnKcQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSStStAiQSQSQSQSQSQSQSQSQSQSQSQSQSAiAiQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSAiAiStQSQSQSQSQSQSugugugugugugugugSQNrugDlzTzTzTXnXnKcQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSStAiAiStQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSStcnStAiAiQSQSQSQSAiugugugugjqQSugugugKczTzTzTzTzTKcQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSAiAiAiAiQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSAiAiQSQSStStStAiQSQSQSQSAiStStAiQSQSuguggoQSQSKcmWmWmWmWmWKcQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSAiAiStStQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSAiAiAiQSQSQSStStAiQSQSQSAiStStStAiQSQSQSQSQSQSQSKcKcKcKcKcKcKcQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSStStStQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSAiAiQSQSAiAiAiAiStAiQSAiStStStAiQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSStStStQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSAiAiQSAiAiAiQSStAiAiAiAiStStAiQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSKFQSQSStStStQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSAiAiAiAiQSQSQSStAiStcnStAiQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSjfjfjfjfPsPEQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSAiAiQSQSQSQSAiStStStAiAiQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSglQSQSdZQSXeglsegleJQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSAiStStStStStQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSdZglXVglglgleJQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSAiStStStStAiAiQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSdZglglglXeglufQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSAiStStAiStQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSdZvNpQpQpQJveJQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSAiAiAiAiQSAiAiQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSdBeJQSQSQSdZeJQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSVZykLyawAiQSStQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSdZeJQSBEQSdZeJQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSBJQSQSQSQSQSQSQSQSQSmjfGNzJRQSAiAiQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSdZeJQSQSQSdZeJQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSPiLjKNQSQSPiPiQSPiQSQSEbJUwsgaQSAiQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSdZmlxeovWRMeeJQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSPiQShJyIOcOcTKTKPiQSvZglglglglvZvZKcqrqrqrqrKcQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSdZglglglglgleJQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSPiqWOcQSQSQSOcQSPivZvZglglglglJKGTKcmqqBvRqBKcQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSdZglglglsegleJQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSPiXFcQcQAScQcQcrPivZvZglglglglvZvZKcqBmqmhtDKcQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSdZglXVglglXeeJQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSPiLIXxAsVNbakCOcPiJVvZglglglglvZvZVSqBmqOmGKKcQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSqtcwymOWOWOWxXFHQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSPiTdOcOcOcOcOcOcPivZJKglglglglvZvZKcesqBqBqBKcQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSPicQcQPiupPicQcQPivZvZvZvZvZvZvZvZKcKcKcKcKcKcQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSokQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSJgJgvouWfpvovovZvZQSvZvZvZDcvZvZvZvZQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSvZvZvZvZoavZQSQSvZvZvZxnvZvZvZvZQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSvZQSvZEmvZvZvZvZvZvZQSvZvZvZQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSvZvZvZvZvZvZvZvZJKvZQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSvZvZQSvZvZQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSvZQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSQSMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+MpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMpMp
+"}
