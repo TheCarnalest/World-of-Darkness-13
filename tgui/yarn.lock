@@ -2034,9 +2034,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"common@workspace:*, common@workspace:packages/common":
+"common@file:, common@workspace:*, common@workspace:packages/common":
   version: 0.0.0-use.local
   resolution: "common@workspace:packages/common"
+  dependencies:
+    common: "file:"
   languageName: unknown
   linkType: soft
 
@@ -5568,12 +5570,13 @@ fsevents@~2.3.1:
   languageName: unknown
   linkType: soft
 
-"tgui-polyfill@workspace:*, tgui-polyfill@workspace:packages/tgui-polyfill":
+"tgui-polyfill@file:, tgui-polyfill@workspace:*, tgui-polyfill@workspace:packages/tgui-polyfill":
   version: 0.0.0-use.local
   resolution: "tgui-polyfill@workspace:packages/tgui-polyfill"
   dependencies:
     core-js: ^3.8.2
     regenerator-runtime: ^0.13.7
+    tgui-polyfill: "file:"
     whatwg-fetch: ^3.5.0
   languageName: unknown
   linkType: soft

@@ -1,6 +1,6 @@
 /obj/item/kitchen/knife/combat/blinkdagger
 	name = "Blink Dagger"
-	desc = "Мгновенно перемещает к указанной точке на расстоянии до 7 шагов"
+	desc = "Instantly moves to a specified point up to 7 steps away"
 	var/cooldown = 15 SECONDS
 	var/last_used
 	var/phasein = /obj/effect/temp_visual/dir_setting/ninja/phase

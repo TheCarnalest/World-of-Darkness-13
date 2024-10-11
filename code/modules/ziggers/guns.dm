@@ -24,7 +24,7 @@
 
 /obj/item/gun/ballistic/vampire/revolver
 	name = "\improper revolver"
-	desc = "Old, but might."
+	desc = "Old, but reliable."
 	icon_state = "revolver"
 	inhand_icon_state = "revolver"
 	worn_icon_state = "revolver"

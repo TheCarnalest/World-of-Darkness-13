@@ -205,34 +205,34 @@
 	var/obj/item/gun/range_weapon
 
 	//For reaction
-	var/list/male_phrases = list("Меня жена дома ждёт...",
-																"Прости, дружище, не сегодня.",
-																"Сходи найди себе кого-нибудь в баре, я занят.")
-	var/list/female_phrases = list("Купи себе часы.",
-																	"Я сейчас закричу!",
-																	"Не трогай меня.")
-	var/list/neutral_phrases = list("Отвали.",
-																	"Иди своей дорогой.",
-																	"Сейчас не лучшее время для разговоров.",
-																	"Мгм...",
-																	"Разве я тебя знаю?",
-																	"У меня мало времени.")
-	var/list/random_phrases = list("Опять приезжие...",
-																	"Кажется я уже третий круг тут мотаю.",
-																	"Чёртовы либералы!",
-																	"Хах, опять выборы?",
-																	"Крысы с канализации сбежали. Во дела...",
-																	"Слухи быстро расходятся.")
-	var/list/answer_phrases = list("Соглашусь.",
-																	"Да-да...",
-																	"Именно.",
-																	"Наверное.",
-																	"Точно.",
-																	"Ага...")
-	var/list/help_phrases = list("На помощь!",
-																"Помогите!!",
-																"Что же это такое творится?!",
-																"Чёрт!!")
+	var/list/male_phrases = list("My wife is waiting for me at home...",
+																"Sorry, pal, not today.",
+																"Go find yourself someone at the bar, I'm busy.")
+	var/list/female_phrases = list("Buy yourself a watch.",
+																	"I'm going to scream if you keep it up!",
+																	"Don't touch me.")
+	var/list/neutral_phrases = list("Fuck Off.",
+																	"Go on your own way.",
+																	"Not the best time to talk right now, pal.",
+																	"Мgmmph...",
+																	"Do I know you?",
+																	"I don't have much time.")
+	var/list/random_phrases = list("The visitors again...",
+																	"It seems I've been going around here in circles for the third time, already.",
+																	"Watch where you're walkin'!",
+																	"Sewer Rat. Go back in the drains where you came from.",
+																	"Tourists... Pheh.",
+																	"Rumors travel fast.")
+	var/list/answer_phrases = list("I agree.",
+																	"Yes-yes...",
+																	"Exactly.",
+																	"Maybe.",
+																	"Exactly.",
+																	"Affirmative..")
+	var/list/help_phrases = list("Help!",
+																"Help Me!!",
+																"What the hell's going on here?!",
+																"Shoot!!")
 
 /mob/living/carbon/human/npc/proc/AssignSocialRole(var/datum/socialrole/S, var/dont_random = FALSE)
 	if(!S)

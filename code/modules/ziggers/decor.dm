@@ -325,7 +325,7 @@
 
 /obj/structure/chinesesign
 	name = "sign"
-	desc = "吸阴茎同性恋."
+	desc = "雨天和血的机会."
 	icon = 'code/modules/ziggers/props.dmi'
 	icon_state = "chinese1"
 	plane = GAME_PLANE
