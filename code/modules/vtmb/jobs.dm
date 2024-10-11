@@ -41,7 +41,7 @@
 	minimal_generation = 10	//Uncomment when players get exp enough
 	minimal_masquerade = 5
 	kindred_only = TRUE
-	allowed_bloodlines = list("Tremere", "Ventrue", "Nosferatu", "Toreador", "Malkavian")
+	allowed_bloodlines = list("Tremere", "Ventrue", "Nosferatu", "Toreador", "Malkavian", "Brujah", "Lasombra", "Gangrel")
 
 	my_contact_is_important = TRUE
 	known_contacts = list("Sheriff",
@@ -53,7 +53,7 @@
 
 /datum/job/vamp/prince/announce(mob/living/carbon/human/H)
 	..()
-	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/minor_announce, "Prince [H.real_name] in the city!"))
+	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/minor_announce, "Prince [H.real_name] is in the city!"))
 
 /datum/outfit/job/prince
 	name = "Prince"
@@ -572,7 +572,7 @@
 	duty = "You lead the Anarchs in the City. A Camarilla faction that values freedom and individuality."
 	minimal_masquerade = 3
 	kindred_only = TRUE
-	allowed_bloodlines = list("Brujah", "Nosferatu", "Gangrel", "Toreador", "Malkavian")
+	allowed_bloodlines = list("Brujah", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Ventrue", "Lasombra")
 	experience_addition = 20
 
 /datum/outfit/job/barkeeper
@@ -710,7 +710,7 @@
 	faction = "Vampire"
 	total_positions = 4
 	spawn_positions = 4
-	supervisors = "the Freight Master"
+	supervisors = "the Dealer"
 	selection_color = "#434343"
 
 	outfit = /datum/outfit/job/supply
@@ -725,7 +725,7 @@
 	known_contacts = list("Baron", "Prince", "Sheriff")
 	allowed_bloodlines = list("Daughters of Cacaphony", "Brujah", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Tzimisce", "Caitiff", "Lasombra")
 
-	duty = "You work for the Freight Master, earning your keep by moving supplies and protecting the warehouse."
+	duty = "You work for the Dealer, earning your keep by moving supplies and protecting his warehouse."
 	minimal_masquerade = 2
 	experience_addition = 15
 	minimal_age = 12
