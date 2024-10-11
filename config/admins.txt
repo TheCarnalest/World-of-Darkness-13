@@ -17,3 +17,6 @@ AmZee = Game Master
 Snek_the_great = Game Master
 Catandwet = Game Master
 DangitMaster = Game Master
+HomuHomu = Game Master
+Xilvah Phyre = Game Master
+Mr_fier = Game Master

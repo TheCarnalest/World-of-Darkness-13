@@ -60,7 +60,7 @@ GLOBAL_LIST_EMPTY(totems)
 GLOBAL_LIST_EMPTY(umbra_portals)
 
 //Dear God
-GLOBAL_LIST_INIT(donaters, list("snekthegreat", "akrolon", "agateophobia", "raikyh", "pluviifera"))
+GLOBAL_LIST_INIT(donaters, list("snekthegreat", "akrolon", "agateophobia", "raikyh", "pluviifera", "fourty2"))
 
 //666.6 - owners
 //6.9 - developers, noddists, other
