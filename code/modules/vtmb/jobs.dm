@@ -44,7 +44,7 @@
 	allowed_bloodlines = list("Tremere", "Ventrue", "Nosferatu", "Toreador", "Malkavian", "Brujah", "Lasombra", "Gangrel")
 
 	my_contact_is_important = TRUE
-	known_contacts = list(						"Sheriff",
+	known_contacts = list("Sheriff",
 												"Seneschal",
 												"Baron")
 
@@ -566,7 +566,7 @@
 //	minimal_generation = 11	//Uncomment when players get exp enough
 
 	my_contact_is_important = TRUE
-	known_contacts = list(						"Prince",
+	known_contacts = list("Prince",
 												"Dealer")
 
 	duty = "Lead the Anarchs in the City."
