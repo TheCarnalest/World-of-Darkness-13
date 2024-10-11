@@ -48,7 +48,7 @@
 												"Seneschal",
 												"Baron")
 
-	duty = "Represent interests of Camarilla and maintain Masquerade."
+	duty = "You are the top dog of this city. You hold Praxis over San Francisco, and your word is law. Make sure the Masquerade is upheld, and your status is respected."
 	experience_addition = 25
 
 /datum/job/vamp/prince/announce(mob/living/carbon/human/H)
@@ -130,7 +130,7 @@
 	my_contact_is_important = TRUE
 	known_contacts = list("Prince")
 
-	duty = "Protect the Prince and his interests at any cost."
+	duty = "Protect the Prince and the Masquerade. You are his sword."
 	experience_addition = 20
 
 /datum/outfit/job/sheriff
@@ -211,7 +211,7 @@
 	my_contact_is_important = TRUE
 	known_contacts = list("Prince")
 
-	duty = "Represent interest of the Prince to other kindred."
+	duty = "You are the right hand man of the most powerful vampire in the city. The Camarilla trusts you to run the city, even in his stead."
 	experience_addition = 15
 	minimal_age = 12
 	allowed_bloodlines = list("Daughters of Cacaphony", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Lasombra")
@@ -266,7 +266,7 @@
 	bounty_types = CIV_JOB_SEC
 	known_contacts = list("Prince")
 
-	duty = "Work for the Prince, protect the Masquerade."
+	duty = "You are the Prince's enforcer. You report to the sheriff and uphold the Traditions."
 	minimal_masquerade = 4
 	experience_addition = 10
 	allowed_bloodlines = list("Daughters of Cacaphony", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Lasombra")
@@ -319,7 +319,7 @@
 	display_order = JOB_DISPLAY_ORDER_GRAVEYARD
 	bounty_types = CIV_JOB_MINE
 
-	duty = "Protect the Graveyard Gates from the undead."
+	duty = "A vile curse has gripped the dead of this city. You must keep the graveyard clean and the Masquerade intact."
 	minimal_masquerade = 0
 	experience_addition = 25
 	minimal_age = 12
@@ -460,7 +460,7 @@
 
 	display_order = JOB_DISPLAY_ORDER_REGENT
 
-	duty = "Keep a census of events and provide information to archivists. Lead the Chantry."
+	duty = "Keep a census of events and provide information to archivists. Lead the Chantry. You report to the Tremere Lord of this region first, Prince second."
 	minimal_masquerade = 4
 	kindred_only = TRUE
 	allowed_bloodlines = list("Tremere")
@@ -511,7 +511,7 @@
 
 	display_order = JOB_DISPLAY_ORDER_ARCHIVIST
 
-	duty = "Keep a census of events and provide information to neonates. Listen to the Regent Carefully."
+	duty = "Keep a census of events and provide information to neonates. Listen to the Regent Carefully. Study blood magic and protect the chantry."
 	minimal_masquerade = 3
 	kindred_only = TRUE
 	allowed_bloodlines = list("Tremere")
@@ -569,7 +569,7 @@
 	known_contacts = list("Prince",
 												"Dealer")
 
-	duty = "Lead the Anarchs in the City."
+	duty = "You lead the Anarchs in the City. A Camarilla faction that values freedom and individuality."
 	minimal_masquerade = 3
 	kindred_only = TRUE
 	allowed_bloodlines = list("Brujah", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Ventrue", "Lasombra")
@@ -623,7 +623,7 @@
 	known_contacts = list("Baron")
 	allowed_bloodlines = list("Daughters of Cacaphony", "Brujah", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Tzimisce", "Caitiff", "Lasombra")
 
-	duty = "Work for the Baron."
+	duty = "You are the Baron's muscle. Keep the peace in the Anarch territory."
 	minimal_masquerade = 2
 	experience_addition = 15
 
@@ -650,11 +650,11 @@
 
 /datum/job/vamp/dealer
 	title = "Dealer"
-	department_head = list("Justicar")
+	department_head = list("Yourself")
 	faction = "Vampire"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Anarchs and the Traditions"
+	supervisors = "None. You are beholden only to yourself."
 	selection_color = "#434343"
 	exp_type_department = EXP_TYPE_SUPPLY // This is so the jobs menu can work properly
 
@@ -673,10 +673,10 @@
 //	minimal_generation = 12	//Uncomment when players get exp enough
 
 	my_contact_is_important = TRUE
-	known_contacts = list("Baron")
-	allowed_bloodlines = list("Brujah", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Tzimisce", "Caitiff")
+	known_contacts = list("Baron", "Prince", "Sheriff")
+	allowed_bloodlines = list("Brujah", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Tzimisce", "Caitiff", "Ventrue", "Ministry")
 
-	duty = "Provide weapons to other kindred in the city."
+	duty = "You provide supplies to other kindred. The warehouse is yours, and it's your business who you'll deal with."
 	minimal_masquerade = 3
 	kindred_only = TRUE
 	experience_addition = 20
@@ -695,7 +695,7 @@
 
 /datum/outfit/job/dealer/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.frakcja = "Anarch"
+	//H.frakcja = "Anarch"
 	if(H.gender == FEMALE)
 		uniform = /obj/item/clothing/under/vampire/suit/female
 		shoes = /obj/item/clothing/shoes/vampire/heels/red
@@ -710,7 +710,7 @@
 	faction = "Vampire"
 	total_positions = 4
 	spawn_positions = 4
-	supervisors = "the dealer"
+	supervisors = "the Dealer"
 	selection_color = "#434343"
 
 	outfit = /datum/outfit/job/supply
@@ -722,10 +722,10 @@
 	display_order = JOB_DISPLAY_ORDER_SUPPLY
 	bounty_types = CIV_JOB_RANDOM
 	humans_accessible = TRUE
-	known_contacts = list("Baron")
+	known_contacts = list("Baron", "Prince", "Sheriff")
 	allowed_bloodlines = list("Daughters of Cacaphony", "Brujah", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Tzimisce", "Caitiff", "Lasombra")
 
-	duty = "Manage deliveries and supplies for kindred in the City."
+	duty = "You work for the Dealer, earning your keep by moving supplies and protecting his warehouse."
 	minimal_masquerade = 2
 	experience_addition = 15
 	minimal_age = 12
@@ -744,7 +744,7 @@
 
 /datum/outfit/job/supply/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.frakcja = "Anarch"
+	//H.frakcja = "Anarch"
 
 /obj/effect/landmark/start/supplytechnician
 	name = "Supply Technician"
@@ -774,7 +774,7 @@
 	humans_accessible = TRUE
 	garou_allowed = TRUE
 
-	duty = "Follow the Traditions, or other laws provided by the current authority among your kind."
+	duty = "As kindred, follow the traditions of the Camarilla. Obey the Prince and his authority, as you are in a Camarilla city. Aligning yourself with your clan members would be of benefit.. If you are a human, you are beholden to law, and likely ignorant of the horrors lurking in this city."
 	minimal_masquerade = 0
 	minimal_age = 12
 	allowed_bloodlines = list("Daughters of Cacaphony", "Salubri", "Baali", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Tzimisce", "Lasombra", "Caitiff")
@@ -784,7 +784,6 @@
 	jobtype = /datum/job/vamp/citizen
 	l_pocket = /obj/item/vamp/phone
 	id = /obj/item/cockclock
-	backpack_contents = list(/obj/item/passport=1, /obj/item/flashlight=1, /obj/item/stack/dollar/rand=1)
 
 /datum/outfit/job/citizen/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -803,6 +802,11 @@
 			shoes = /obj/item/clothing/shoes/vampire
 		else
 			shoes = /obj/item/clothing/shoes/vampire/heels
+	if(H.clane)
+		if(H.clane.name == "Lasombra")
+			backpack_contents = list(/obj/item/passport =1, /obj/item/stack/dollar/rand=1)
+		else
+			backpack_contents = list(/obj/item/passport=1, /obj/item/flashlight=1, /obj/item/stack/dollar/rand=1)
 
 /obj/effect/landmark/start/citizen
 	name = "Citizen"
