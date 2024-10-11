@@ -23,8 +23,6 @@ GLOBAL_LIST_INIT(medical_positions, list(
 GLOBAL_LIST_INIT(anarch_positions, list(
 	"Baron",
 	"Bouncer",
-	"Dealer",
-	"Supply Technician"
 	))
 
 
@@ -51,7 +49,9 @@ GLOBAL_LIST_INIT(independent_positions, list(
 	"Primogen Nosferatu",
 	"Primogen Toreador",
 	"Primogen Ventrue",
-	"Primogen Brujah"))
+	"Primogen Brujah",
+	"Dealer",
+	"Supply Technician"))
 
 GLOBAL_LIST_INIT(security_positions, list(
 	))
