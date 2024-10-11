@@ -567,7 +567,7 @@
 
 	my_contact_is_important = TRUE
 	known_contacts = list("Prince",
-												"Freightmaster")
+												"Dealer")
 
 	duty = "You lead the Anarchs in the City. A Camarilla faction that values freedom and individuality."
 	minimal_masquerade = 3
@@ -649,7 +649,7 @@
 	icon_state = "Bouncer"
 
 /datum/job/vamp/dealer
-	title = "Freightmaster"
+	title = "Dealer"
 	department_head = list("Yourself")
 	faction = "Vampire"
 	total_positions = 1
@@ -682,7 +682,7 @@
 	experience_addition = 20
 
 /datum/outfit/job/dealer
-	name = "Freightmaster"
+	name = "Dealer"
 	jobtype = /datum/job/vamp/dealer
 
 	id = /obj/item/card/id/dealer
@@ -701,12 +701,12 @@
 		shoes = /obj/item/clothing/shoes/vampire/heels/red
 
 /obj/effect/landmark/start/dealer
-	name = "Freightmaster"
-	icon_state = "Freightmaster"
+	name = "Dealer"
+	icon_state = "Dealer"
 
 /datum/job/vamp/supply
 	title = "Supply Technician"
-	department_head = list("Freightmaster")
+	department_head = list("Dealer")
 	faction = "Vampire"
 	total_positions = 4
 	spawn_positions = 4
