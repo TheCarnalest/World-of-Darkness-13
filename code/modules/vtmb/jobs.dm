@@ -41,10 +41,10 @@
 	minimal_generation = 10	//Uncomment when players get exp enough
 	minimal_masquerade = 5
 	kindred_only = TRUE
-	allowed_bloodlines = list("Tremere", "Ventrue", "Nosferatu", "Toreador", "Malkavian")
+	allowed_bloodlines = list("Tremere", "Ventrue", "Nosferatu", "Toreador", "Malkavian", "Brujah", "Lasombra", "Gangrel")
 
 	my_contact_is_important = TRUE
-	known_contacts = list("Sheriff",
+	known_contacts = list(						"Sheriff",
 												"Seneschal",
 												"Baron")
 
@@ -53,7 +53,7 @@
 
 /datum/job/vamp/prince/announce(mob/living/carbon/human/H)
 	..()
-	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/minor_announce, "Prince [H.real_name] in the city!"))
+	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/minor_announce, "Prince [H.real_name] is in the city!"))
 
 /datum/outfit/job/prince
 	name = "Prince"
@@ -130,7 +130,7 @@
 	my_contact_is_important = TRUE
 	known_contacts = list("Prince")
 
-	duty = "Protect the Prince at any cost."
+	duty = "Protect the Prince and his interests at any cost."
 	experience_addition = 20
 
 /datum/outfit/job/sheriff
@@ -266,7 +266,7 @@
 	bounty_types = CIV_JOB_SEC
 	known_contacts = list("Prince")
 
-	duty = "Work for the Prince and follow orders."
+	duty = "Work for the Prince, protect the Masquerade."
 	minimal_masquerade = 4
 	experience_addition = 10
 	allowed_bloodlines = list("Daughters of Cacaphony", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Lasombra")
@@ -566,13 +566,13 @@
 //	minimal_generation = 11	//Uncomment when players get exp enough
 
 	my_contact_is_important = TRUE
-	known_contacts = list("Prince",
+	known_contacts = list(						"Prince",
 												"Dealer")
 
 	duty = "Lead the Anarchs in the City."
 	minimal_masquerade = 3
 	kindred_only = TRUE
-	allowed_bloodlines = list("Brujah", "Nosferatu", "Gangrel", "Toreador", "Malkavian")
+	allowed_bloodlines = list("Brujah", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Ventrue", "Lasombra")
 	experience_addition = 20
 
 /datum/outfit/job/barkeeper
