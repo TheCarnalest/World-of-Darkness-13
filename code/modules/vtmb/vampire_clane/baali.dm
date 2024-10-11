@@ -7,7 +7,7 @@
 														/datum/discipline/daimonion = 3)
 	male_clothes = "/obj/item/clothing/under/vampire/baali"
 	female_clothes = "/obj/item/clothing/under/vampire/baali/female"
-	whitelist = list()
+	whitelist = list("justben201")
 	enlightement = TRUE
 
 /datum/vampireclane/baali/on_gain(mob/living/carbon/human/H)

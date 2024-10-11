@@ -12,7 +12,7 @@
 	male_clothes = "/obj/item/clothing/under/vampire/sport"
 	female_clothes = "/obj/item/clothing/under/vampire/red"
 	enlightement = TRUE
-	whitelist = list("AmZee")
+	whitelist = list("amzee")
 	var/obj/item/heirl
 
 /mob/living/carbon/human

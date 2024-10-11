@@ -7,7 +7,7 @@
 														/datum/discipline/valeren = 3)
 	male_clothes = "/obj/item/clothing/under/vampire/salubri"
 	female_clothes = "/obj/item/clothing/under/vampire/salubri/female"
-	whitelist = list("Suriyel")
+	whitelist = list("suriyel", "justben201")
 	enlightement = FALSE
 
 /datum/discipline/valeren/post_gain(mob/living/carbon/human/H)
