@@ -9,7 +9,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	var/cooldown = 0
 
-/obj/item/toy/cards/deck/attack_hand(mob/user)
+/obj/item/toy/rubberpig/attack_hand(mob/user)
 	var/hryuk = pick('code/modules/ziggers/sounds/pig1.ogg', 'code/modules/ziggers/sounds/pig2.ogg', 'code/modules/ziggers/sounds/pig3.ogg')
 	playsound(src, hryuk, 70, TRUE)
 
