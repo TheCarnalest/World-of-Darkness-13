@@ -2284,7 +2284,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						discipline4level = min(5, discipline4level+1)
 
 				if("pathof")
-					if(!slotlocked)
+					if(slotlocked)
 						enlightement = !enlightement
 
 				if("torpor_restore")
