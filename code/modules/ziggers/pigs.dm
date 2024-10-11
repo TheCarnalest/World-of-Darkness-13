@@ -1,4 +1,4 @@
-/obj/item/toy/rubberpig
+/*/obj/item/toy/rubberpig
 	name = "rubberpig"
 	desc = "Klim Sanych, zdravstvuite."
 	icon = 'code/modules/ziggers/icons.dmi'
@@ -35,3 +35,4 @@
 				to_chat(usr, "<span class='notice'>You pick up the rubberpig.</span>")
 	else
 		return
+*/
