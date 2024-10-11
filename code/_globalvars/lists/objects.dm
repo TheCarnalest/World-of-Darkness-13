@@ -60,96 +60,14 @@ GLOBAL_LIST_EMPTY(totems)
 GLOBAL_LIST_EMPTY(umbra_portals)
 
 //Dear God
-GLOBAL_LIST_INIT(donaters, list("badteammate", "meomoor", "terain1", "egorium", "vanotyan", "takyon69", "lemshake", "happypala44", "kerststf", "oneplusone", "leonko", "twiner", "sishtis", "shirumic", "kommando", "nehoroshka", "raikyh", "themaskedman2", "xilvahphyre", "nikroszero", "foxfiredogs", "d6ll1r10um", "drdreidel", "stinkethstonketh", "neepbeep666", "parchment", "blackcat055", "laoziofcitium", "aniotaess", "andreykey", "mosasauruss", "animusin", "mercuryarrow", "keebo885", "homuhomu", "ivanzarax", "testuser", "cmdrgungnir", "psewdoplot", "dyzennon", "looptyloo", "heimy", "notaspider", "fourty2", "mormaethor", "odin933", "feudeytf", "awakethedemon", "noxesdeadwish", "ifrickfracki", "gruesomeborg68915", "asskek", "suriyel", "kayzach", "darkincarnate", "weredeaddeeds", "tonybito", "darkrixd", "justben201", "redruse", "deendoor24", "ambrosiafumari", "0nemore", "dangitmaster", "kirichi", "parasoul", "athiny", "swatogor", "adverseking", "mrfier", "agatickpapugatick", "huivn", "cocko", "shiranaisan", "4ejltbi", "prostoxorek", "danchsa", "otuskursky", "akayenthefake", "blockbatr", "gggf5", "ocherkashin"))
+GLOBAL_LIST_INIT(donaters, list())
 
 //666.6 - owners
 //6.9 - developers, noddists, other
 //1.01 - not known
 
 // [ChillRaccoon] - better to make it through DataBase connection, DB data updates server data every round start
-GLOBAL_LIST_INIT(donaters_amount, list("leonko" = 666,
-								"badteammate" = 666.6,
-								"meomoor" = 666.6,
-								"terain1" = 1.01,
-								"egorium" = 20,
-								"vanotyan" = 1.01,
-								"takyon69" = 6.9,
-								"lemshake" = 6.9,
-								"happypala44" = 6.9,
-								"kerststf" = 6.9,
-								"oneplusone" = 1.01,
-								"leonko" = 6.9,
-								"twiner" = 1.01,
-								"sishtis" = 1.01,
-								"shirumic" = 10,
-								"kommando" = 1.01,
-								"nehoroshka" = 1,
-								"raikyh" = 1.01,
-								"themaskedman2" = 5,
-								"xilvahphyre" = 1.01,
-								"nikroszero" = 1.01,
-								"foxfiredogs" = 20,
-								"d6ll1r10um" = 1.01,
-								"drdreidel" = 1.01,
-								"stinkethstonketh" = 10,
-								"neepbeep666" = 1.01,
-								"parchment" = 1.01,
-								"blackcat055" = 1.01,
-								"laoziofcitium" = 1.01,
-								"aniotaess" = 1.01,
-								"andreykey" = 1.01,
-								"mosasauruss" = 1.01,
-								"animusin" = 1.01,
-								"mercuryarrow" = 1.01,
-								"keebo885" = 1.01,
-								"homuhomu" = 1.01,
-								"ivanzarax" = 15,
-								"testuser" = 266,
-								"cmdrgungnir" = 1.01,
-								"psewdoplot" = 1.01,
-								"dyzennon" = 1.01,
-								"looptyloo" = 1.01,
-								"heimy" = 1.01,
-								"notaspider" = 10,
-								"fourty2" = 1.01,
-								"mormaethor" = 1.01,
-								"odin933" = 1.01,
-								"feudeytf" = 6.9,
-								"awakethedemon" = 1.01,
-								"noxesdeadwish" = 1.01,
-								"ifrickfracki" = 1.01,
-								"gruesomeborg68915" = 30,
-								"asskek" = 1.01,
-								"suriyel" = 45,
-								"kayzach" = 1.01,
-								"darkincarnate" = 1.01,
-								"weredeaddeeds" = 1.01,
-								"tonybito" = 1.01,
-								"darkrixd" = 1.01,
-								"justben201" = 10,
-								"redruse" = 1.01,
-								"deendoor24" = 1.01,
-								"ambrosiafumari" = 1.01,
-								"0nemore" = 1.01,
-								"dangitmaster" = 30,
-								"kirichi" = 1.01,
-								"parasoul" = 20,
-								"athiny" = 31,
-								"swatogor" = 1.01,
-								"adverseking" = 1.01,
-								"mrfier" = 1.01,
-								"agatickpapugatick" = 6.9,
-								"huivn" = 6.9,
-								"cocko" = 1.01,
-								"shiranaisan" = 6.9,
-								"4ejltbi" = 1.01,
-								"prostoxorek" = 5,
-								"danchsa" = 20,
-								"otuskursky" = 1,
-								"akayenthefake" = 5,
-								"blockbatr" = 1.01,
-								"gggf5" = 1,
-								"ocherkashin" = 3))
+GLOBAL_LIST_INIT(donaters_amount, list())
 
 GLOBAL_LIST_EMPTY(fucking_joined)
 
@@ -168,4 +86,4 @@ GLOBAL_LIST_EMPTY(beast_list)
 GLOBAL_LIST_EMPTY(weed_list)
 GLOBAL_LIST_EMPTY(zombie_list)
 
-GLOBAL_LIST_INIT(psychokids, list("badteammate", "meomoor", "twiner", "andreykey", "d6ll1r10um", "zxcnegr228822", "leonko", "chillraccoon"))
+GLOBAL_LIST_INIT(psychokids, list())

@@ -12,7 +12,7 @@
 	male_clothes = "/obj/item/clothing/under/vampire/sport"
 	female_clothes = "/obj/item/clothing/under/vampire/red"
 	enlightement = TRUE
-	whitelist = list("badteammate", "meomoor", "terain1", "egorium", "vanotyan", "takyon69", "lemshake", "happypala44", "kerststf", "oneplusone", "triplewammy", "frydoza", "leonko", "twiner", "otuskursky", "sishtis", "shirumic", "kommando", "nehoroshka", "raikyh", "themaskedman2", "xilvahphyre", "nikroszero", "foxfiredogs", "omegazip2", "d6ll1r10um", "drdreidel", "stinkethstonketh", "neepbeep666", "parchment", "blackcat055", "laoziofcitium", "aniotaess", "andreykey", "mosasauruss", "animusin", "mercuryarrow", "keebo885", "homuhomu", "ivanzarax", "testuser", "ntno", "athiny", "jacobmadson", "ceoofbutter", "psewdoplot", "cmdrgungnir", "fallen1220", "dyzennon", "templeosdavis", "fourty2", "theshroudedlord", "pakoooisthere", "feudeytf", "gruesomeborg68915", "deendoor24", "darkincarnate", "tonybito", "arwendarethis", "enigmur", "swatogor", "zickzack", "noxesdeadwish", "yecrowbarman", "heimy", "sockfan", "dyzennon", "rebelfarming", "serotoninsyndrome", "pluviifera", "dangitmaster", "justben201", "topbirb", "owlsthegod", "ltmrdoge")
+	whitelist = list("AmZee")
 	var/obj/item/heirl
 
 /mob/living/carbon/human

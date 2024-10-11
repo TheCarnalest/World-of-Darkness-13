@@ -7,7 +7,7 @@
 														/datum/discipline/presence = 3)
 	male_clothes = "/obj/item/clothing/under/vampire/sexy"
 	female_clothes = "/obj/item/clothing/under/vampire/toreador/female"
-	whitelist = list("badteammate", "meomoor", "leonko", "fourty2", "mercuryarrow", "raikyh", "notaspider", "justben201", "mrfier", "cre77", "cmdrgungnir", "stinkethstonketh")
+	whitelist = list("fourty2", "mercuryarrow", "raikyh", "notaspider", "justben201", "mrfier", "cre77", "cmdrgungnir", "stinkethstonketh")
 	enlightement = FALSE
 
 /datum/discipline/melpominee/post_gain(mob/living/carbon/human/H)

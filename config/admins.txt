@@ -12,3 +12,5 @@ agateophobia = Game Master
 Fourty2 = Game Master
 Heimy = Game Master
 CMDR Gungnir = Game Master
+NeepBeep666 = Game Master
+AmZee = Game Master

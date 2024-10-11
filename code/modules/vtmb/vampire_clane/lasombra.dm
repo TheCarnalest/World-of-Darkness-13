@@ -8,7 +8,7 @@
 	male_clothes = "/obj/item/clothing/under/vampire/emo"
 	female_clothes = "/obj/item/clothing/under/vampire/business"
 	enlightement = TRUE
-	whitelist = list("badteammate", "meomoor", "terain1", "egorium", "vanotyan", "takyon69", "lemshake", "happypala44", "kerststf", "oneplusone", "triplewammy", "leonko", "twiner", "otuskursky", "sishtis", "shirumic", "kommando", "nehoroshka", "raikyh", "themaskedman2", "xilvahphyre", "nikroszero", "foxfiredogs", "d6ll1r10um", "drdreidel", "stinkethstonketh", "neepbeep666", "parchment", "blackcat055", "laoziofcitium", "aniotaess", "andreykey", "mosasauruss", "animusin", "mercuryarrow", "keebo885", "homuhomu", "ivanzarax", "testuser", "panbarin", "cmdrgungnir", "rochehendson", "feudeytf", "suriyel", "misteronion", "kayzach", "justben201", "deendoor24", "gruntbelt", "darkincarnate", "merdek1234", "pakoooisthere", "snekthegreat", "jacobmadson", "redruse", "adverseking", "5o5")
+	whitelist = list()
 
 /datum/vampireclane/lasombra/post_gain(mob/living/carbon/human/H)
 	..()
