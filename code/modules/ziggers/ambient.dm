@@ -54,7 +54,6 @@
 /area/vtm/interior/strip
 	name = "Strip Club"
 	icon_state = "strip"
-	music = /datum/vampiremusic/strip
 	upper = FALSE
 	fire_controled = TRUE
 
@@ -147,6 +146,13 @@
 	upper = FALSE
 	zone_type = "elysium"
 	zone_owner = "Camarilla"
+	fire_controled = TRUE
+
+/area/vtm/cabaret
+	name = "Siren's Cabaret"
+	icon_state = "melpominee"
+	ambience_index = AMBIENCE_INTERIOR
+	upper = FALSE
 	fire_controled = TRUE
 
 /area/vtm/cabinet
@@ -347,11 +353,6 @@
 /datum/vampiremusic/theatre
 	length = 93 SECONDS
 	sound = 'code/modules/ziggers/sounds/theatre.ogg'
-	forced = TRUE
-
-/datum/vampiremusic/strip
-	length = 187 SECONDS
-	sound = 'code/modules/ziggers/sounds/strip.ogg'
 	forced = TRUE
 
 /datum/vampiremusic/nosferatu

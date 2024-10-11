@@ -112,6 +112,10 @@
 	name = "Satanic keys"
 	accesslocks = list("baali")
 
+/obj/item/vamp/keys/daughters
+	name = "Eclectic keys"
+	accesslocks = list("daughters")
+
 /obj/item/vamp/keys/salubri
 	name = "Conspiracy keys"
 	accesslocks = list("salubri")
@@ -379,6 +383,15 @@
 	glass = TRUE
 	locked = TRUE
 	lock_id = "prince"
+	hackable = FALSE
+	burnable = TRUE
+	hack_difficulty = 6
+
+/obj/structure/vampdoor/daughters
+	icon_state = "wood-1"
+	baseicon = "wood"
+	locked = TRUE
+	lock_id = "daughters"
 	hackable = FALSE
 	burnable = TRUE
 	hack_difficulty = 6
