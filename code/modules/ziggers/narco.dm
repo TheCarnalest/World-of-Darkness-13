@@ -374,7 +374,7 @@ SUBSYSTEM_DEF(smokeweedeveryday)
 //	layer = ABOVE_ALL_MOB_LAYER
 	anchored = TRUE
 	density = TRUE
-	var/troll_explode = FALSE	//HE FAILD THE ORDER (rest in piss)
+	var/troll_explode = FALSE	//HE FAILED THE ORDER (
 	var/added_ephed = 0		//we need to add 3 pills each
 	var/added_iod = 0		//gonna be 2 iod pills or coffee+vodka
 	var/added_gas = FALSE	//fill it up boi
