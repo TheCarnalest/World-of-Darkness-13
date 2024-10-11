@@ -5,6 +5,7 @@
   "dependencies": {
     "core-js": "^3.8.2",
     "regenerator-runtime": "^0.13.7",
+    "tgui-polyfill": "file:",
     "whatwg-fetch": "^3.5.0"
   }
 }

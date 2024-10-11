@@ -8,7 +8,7 @@
 	male_clothes = "/obj/item/clothing/under/vampire/emo"
 	female_clothes = "/obj/item/clothing/under/vampire/business"
 	enlightement = TRUE
-	whitelist = list("")
+	whitelist = list("akrolon", "agateophobia", "raikyh", "pluviifera")
 
 /datum/vampireclane/lasombra/post_gain(mob/living/carbon/human/H)
 	..()
