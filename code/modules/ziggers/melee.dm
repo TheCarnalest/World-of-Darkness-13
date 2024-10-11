@@ -128,7 +128,7 @@
 
 /obj/item/melee/vampirearms/knife
 	name = "knife"
-	desc = "Don't cut yourself accidentely."
+	desc = "Don't cut yourself accidentally."
 	icon = 'code/modules/ziggers/weapons.dmi'
 	icon_state = "knife"
 	force = 30

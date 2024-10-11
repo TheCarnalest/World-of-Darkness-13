@@ -89,7 +89,7 @@
 
 //FOR NPC
 
-//NGERS n BANDITS
+//GANGSTERS AND BANDITS
 
 /obj/item/clothing/under/vampire/larry
 	desc = "Some gangster clothes."
@@ -133,7 +133,7 @@
 	desc = "Some usual clothes."
 	icon_state = "emo"
 
-//WOM*N
+//WOMEN
 
 /obj/item/clothing/under/vampire/black
 	desc = "Some usual clothes."
@@ -147,7 +147,7 @@
 	desc = "Some usual clothes."
 	icon_state = "gothic"
 
-//PATRICK BATEMAN
+//PATRICK BATEMAN (High Society)
 
 /obj/item/clothing/under/vampire/rich
 	desc = "Some rich clothes."
@@ -157,7 +157,7 @@
 	desc = "Some rich clothes."
 	icon_state = "business"
 
-//BOMZHI
+//Homeless
 
 /obj/item/clothing/under/vampire/homeless
 	desc = "Some hobo clothes."
@@ -166,7 +166,7 @@
 /obj/item/clothing/under/vampire/homeless/female
 	icon_state = "homeless_f"
 
-//MENTI
+//Police and Guards
 
 /obj/item/clothing/under/vampire/police
 	name = "uniform"

@@ -1,6 +1,6 @@
 /obj/item/dagon
 	name = "Dagon"
-	desc = "Волшебная палочка. Имеет разные градации силы"
+	desc = "Wand. Has different gradations of strength"
 	icon_state = "wiredrod"
 	var/dagon_power = 400
 /obj/item/dagon/two
