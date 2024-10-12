@@ -12,7 +12,6 @@
 	male_clothes = "/obj/item/clothing/under/vampire/sport"
 	female_clothes = "/obj/item/clothing/under/vampire/red"
 	enlightement = TRUE
-	whitelist = list("akrolon", "agateophobia", "raikyh", "pluviifera", "amzee", "fourty2")
 	var/obj/item/heirl
 
 /mob/living/carbon/human
