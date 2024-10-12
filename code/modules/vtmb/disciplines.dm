@@ -1283,7 +1283,7 @@
 						qdel(target)
 		else
 			target.emote("scream")
-			target.apply_damage(10*level_casting, BRUTE, BODY_ZONE_CHEST)
+			target.apply_damage(20*level_casting, BRUTE, BODY_ZONE_CHEST)
 			if(prob(5*level_casting))
 				var/obj/item/bodypart/B = H.get_bodypart(pick(BODY_ZONE_R_ARM, BODY_ZONE_L_ARM, BODY_ZONE_R_LEG, BODY_ZONE_L_LEG))
 				if(B)
