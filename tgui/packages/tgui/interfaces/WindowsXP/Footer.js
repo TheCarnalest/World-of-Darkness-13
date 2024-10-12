@@ -1,10 +1,10 @@
-import startButton from '../../assets/WindowsXP/start.png'
+import startButton from '../../assets/WindowsXP/start.png';
 import sound from '../../assets/WindowsXP/690(16x16).png';
 import usb from '../../assets/WindowsXP/394(16x16).png';
 import risk from '../../assets/WindowsXP/229(16x16).png';
 import { GetIconByName } from './functions';
 
-export const Footer = (props) => {
+export const Footer = props => {
   const { apps, current_app, act } = props;
   const getTime = () => {
     const date = new Date();
@@ -33,7 +33,13 @@ export const Footer = (props) => {
           className="footer__start"
         />
         {apps.map(app => {
-          return (app.launched === 1 && <FooterApp reference={app.reference} icon={GetIconByName(app.type)} title={app.title} isFocus={app.reference === current_app} act={act} />)
+          return (
+            app.launched === 1 && <FooterApp reference={app.reference}
+              icon={GetIconByName(app.type)}
+              title={app.title}
+              isFocus={app.reference === current_app}
+              act={act} />
+          );
         })}
       </div>
       <div className="footer__items right">
@@ -44,10 +50,10 @@ export const Footer = (props) => {
       </div>
 
     </div>
-  )
-}
+  );
+};
 
-const FooterApp = (props) => {
+const FooterApp = props => {
   const { reference, icon, title, isFocus, act } = props;
   return (
     <div
@@ -58,4 +64,4 @@ const FooterApp = (props) => {
       <div className="footer__text">{title}</div>
     </div>
   );
-}
+};

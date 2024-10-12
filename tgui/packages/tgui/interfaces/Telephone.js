@@ -8,15 +8,15 @@ const CallingWindow = (props, context) => {
   return (
     <Dimmer>
       <Section transparent>
-          <Box inline ml={1}>{"Calling..."}</Box>
-          <br/>
-          <Box inline ml={1}>
-            <Button icon="phone-slash" color="red"onClick={()=>{act("hang")}}/>
-          </Box>
+        <Box inline ml={1}>{"Calling..."}</Box>
+        <br />
+        <Box inline ml={1}>
+          <Button icon="phone-slash" color="red" onClick={() => { act("hang"); }} />
+        </Box>
       </Section>
-  </Dimmer>
-  )
-}
+    </Dimmer>
+  );
+};
 const NumpadWindow = (props, context) => {
   const { act, data } = useBackend(context);
   const {
@@ -24,36 +24,36 @@ const NumpadWindow = (props, context) => {
     choosed_number,
   } = data;
   return (
-        <Box m="6px">
-          <Flex mb={1.5}>
-            <Flex.Item width="140px">
-              <Box height="60px" className="Telephone__displayBox">
-                  {my_number}
-              </Box>
-            </Flex.Item>
-            <Flex.Item>
-              <Button
-                icon="book"
-                fontSize="24px"
-                lineHeight={1}
-                textAlign="center"
-                width="60px"
-                height="60px"
-                ml="6px"
-                mr="3px"
-                mt="3px"
-                className="Telephone__Button Telephone__Button--keypad"
-                onClick={() => act('contacts')} />
-            </Flex.Item>
-          </Flex>
-          <Flex ml="3px">
-            <Flex.Item>
-              <PhoneKeypad phoneNumber={choosed_number}/>
-            </Flex.Item>
-          </Flex>
-        </Box>
-  )
-}
+    <Box m="6px">
+      <Flex mb={1.5}>
+        <Flex.Item width="140px">
+          <Box height="60px" className="Telephone__displayBox">
+            {my_number}
+          </Box>
+        </Flex.Item>
+        <Flex.Item>
+          <Button
+            icon="book"
+            fontSize="24px"
+            lineHeight={1}
+            textAlign="center"
+            width="60px"
+            height="60px"
+            ml="6px"
+            mr="3px"
+            mt="3px"
+            className="Telephone__Button Telephone__Button--keypad"
+            onClick={() => act('contacts')} />
+        </Flex.Item>
+      </Flex>
+      <Flex ml="3px">
+        <Flex.Item>
+          <PhoneKeypad phoneNumber={choosed_number} />
+        </Flex.Item>
+      </Flex>
+    </Box>
+  );
+};
 
 const TalkingWindow = (props, context) => {
   const { act, data } = useBackend(context);
@@ -66,28 +66,28 @@ const TalkingWindow = (props, context) => {
       <Section transparent>
         {talking ? (
           <>
-          <Box inline ml={1}>{"Current call: " + calling_user }</Box>
-          <br/>
-          <Box inline ml={1}>
-            <Button icon="phone-slash" color="red"onClick={()=>{act("hang")}}/>
-          </Box>
+            <Box inline ml={1}>{"Current call: " + calling_user }</Box>
+            <br />
+            <Box inline ml={1}>
+              <Button icon="phone-slash" color="red" onClick={() => { act("hang"); }} />
+            </Box>
           </>
         ) : (
 
           <>
-          <Box inline ml={1}>{"Calling to " + calling_user + "..."}</Box>
-          <br/>
-          <Box inline ml={1}>
-            <Button icon="phone" color="green" onClick={()=>{act("accept")}}/>
-            <Button icon="phone-slash" color="red"onClick={()=>{act("decline")}}/>
-          </Box>
+            <Box inline ml={1}>{"Calling to " + calling_user + "..."}</Box>
+            <br />
+            <Box inline ml={1}>
+              <Button icon="phone" color="green" onClick={() => { act("accept"); }} />
+              <Button icon="phone-slash" color="red" onClick={() => { act("decline"); }} />
+            </Box>
           </>
         )}
 
       </Section>
-  </Dimmer>
-  )
-}
+    </Dimmer>
+  );
+};
 
 
 const PhoneKeypad = (props, context) => {
@@ -95,7 +95,7 @@ const PhoneKeypad = (props, context) => {
   const keypadKeys = [
     ['1', '4', '7', '_', 'C'],
     ['2', '5', '8', '0', '+'],
-    ['3', '6', '9', '#', ],
+    ['3', '6', '9', '#'],
   ];
   return (
     <Box width="185px">
@@ -118,24 +118,24 @@ const PhoneKeypad = (props, context) => {
                   'Telephone__Button--keypad',
                   'Telephone__Button--' + key,
                 ])}
-                onClick={() => act("keypad",{ value: key })} />
+                onClick={() => act("keypad", { value: key })} />
             ))}
             {i=== 2 && (
-            <Button
-              fluid
-              bold
-              mb="6px"
-              icon="phone"
-              textAlign="center"
-              fontSize="40px"
-              lineHeight={1.25}
-              width="55px"
-              className={classes([
-                'Telephone__Button',
-                'Telephone__Button--keypad',
-                'Telephone__Button--Call',
-              ])}
-              onClick={() => act("call")}/>)}
+              <Button
+                fluid
+                bold
+                mb="6px"
+                icon="phone"
+                textAlign="center"
+                fontSize="40px"
+                lineHeight={1.25}
+                width="55px"
+                className={classes([
+                  'Telephone__Button',
+                  'Telephone__Button--keypad',
+                  'Telephone__Button--Call',
+                ])}
+                onClick={() => act("call")} />)}
           </Grid.Column>
         ))}
       </Grid>
@@ -156,7 +156,7 @@ export const Telephone = (props, context) => {
       theme="retro">
       <Window.Content>
         {calling ? (
-          <CallingWindow/>
+          <CallingWindow />
         ) : (
           online ? (<TalkingWindow />) : (<NumpadWindow />)
         )}

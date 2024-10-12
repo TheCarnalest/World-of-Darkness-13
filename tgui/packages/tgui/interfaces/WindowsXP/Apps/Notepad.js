@@ -1,8 +1,8 @@
-import { useLocalState } from "../../../backend"
+import { useLocalState } from "../../../backend";
 
 export const Notepad = (props, context) => {
-  const { app, act } = props
-  const [text, setText] = useLocalState(context, "notepad_text", app.text)
+  const { app, act } = props;
+  const [text, setText] = useLocalState(context, "notepad_text", app.text);
   return (
     <div className="notepad">
       <section className="np__toolbar">
@@ -19,5 +19,5 @@ export const Notepad = (props, context) => {
         spellCheck={false}
       />
     </div>
-  )
-}
+  );
+};
