@@ -120,6 +120,10 @@
 	name = "Conspiracy keys"
 	accesslocks = list("salubri")
 
+/obj/item/vamp/keys/old_clan_tzimisce
+	name = "Regal keys"
+	accesslocks = list("old_clan_tzimisce")
+
 /obj/item/vamp/keys/malkav
 	name = "Insane keys"
 	accesslocks = list("malkav")
@@ -519,6 +523,15 @@
 	baseicon = "oldwood"
 	locked = TRUE
 	lock_id = "salubri"
+	burnable = FALSE
+	hackable = FALSE
+	hack_difficulty = 5
+
+/obj/structure/vampdoor/old_clan_tzimisce
+	icon_state = "oldwood-1"
+	baseicon = "oldwood"
+	locked = TRUE
+	lock_id = "old_clan_tzimisce"
 	burnable = FALSE
 	hackable = FALSE
 	hack_difficulty = 5

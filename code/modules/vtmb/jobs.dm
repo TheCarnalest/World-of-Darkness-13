@@ -1136,6 +1136,32 @@
 	worn_icon = 'code/modules/ziggers/worn.dmi'
 	worn_icon_state = "id13"
 
+/obj/item/card/id/voivode
+	name = "ancient badge"
+	id_type_name ="ancient badge"
+	desc = "You have to wear this filthy thing to be recognized."
+	icon = 'code/modules/ziggers/items.dmi'
+	icon_state = "id12"
+	inhand_icon_state = "card-id"
+	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
+	onflooricon = 'code/modules/ziggers/onfloor.dmi'
+	worn_icon = 'code/modules/ziggers/worn.dmi'
+	worn_icon_state = "id12"
+
+/obj/item/card/id/bogatyr
+	name = "dusty badge"
+	id_type_name ="dusty badge"
+	desc = "You have to wear this because the Voivode wants you to."
+	icon = 'code/modules/ziggers/items.dmi'
+	icon_state = "id12"
+	inhand_icon_state = "card-id"
+	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
+	onflooricon = 'code/modules/ziggers/onfloor.dmi'
+	worn_icon = 'code/modules/ziggers/worn.dmi'
+	worn_icon_state = "id12"
+
 /datum/outfit/job/caitiff
 	name = "Caitiff"
 	l_pocket = /obj/item/vamp/phone
@@ -1896,3 +1922,138 @@
 	l_hand = /obj/item/vamp/keys/police
 	r_hand = /obj/item/police_radio
 	backpack_contents = list(/obj/item/passport=1, /obj/item/implant/radio=1, /obj/item/gun/ballistic/automatic/vampire/m1911=1, /obj/item/camera/detective=1, /obj/item/camera_film=1, /obj/item/taperecorder=1, /obj/item/tape=1, /obj/item/stack/dollar=1)
+
+/datum/job/vamp/voivode
+	title = "Voivode"
+	department_head = list("Eldest")
+	faction = "Vampire"
+	total_positions = 1
+	spawn_positions = 1
+	supervisors = " the Laws of Hospitality"
+	selection_color = "#953d2d"
+
+	outfit = /datum/outfit/job/voivode
+
+	access = list(ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_MORGUE, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE)
+	minimal_access = list(ACCESS_BAR, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE)
+	paycheck = PAYCHECK_EASY
+	paycheck_department = ACCOUNT_SRV
+	display_order = JOB_DISPLAY_ORDER_BRUJAH
+	exp_type_department = EXP_TYPE_INDEPENDENT
+
+	kindred_only = TRUE
+	allowed_bloodlines = list("Old Clan Tzimisce")
+	minimal_generation = 9	//Uncomment when players get exp enough
+
+	duty = "You rule the house on the hills. Yours is the land, a domain you were allowed to have by the Camarilla. They are amicable allies, but you don't trust them. And neither should they trust you."
+	minimal_masquerade = 2
+	my_contact_is_important = TRUE
+	known_contacts = list("Prince", "Baron", "Sheriff")
+	minimal_age = 10
+
+
+
+/datum/outfit/job/voivode
+	name = "Voivode"
+	jobtype = /datum/job/vamp/voivode
+	id = /obj/item/card/id/voivode
+	//glasses = /obj/item/clothing/glasses/vampire/yellow
+	uniform = /obj/item/clothing/under/vampire/punk
+	suit = /obj/item/clothing/suit/vampire/trench/tzi
+	shoes = /obj/item/clothing/shoes/vampire/jackboots
+	l_pocket = /obj/item/vamp/phone
+	//r_pocket =
+	backpack_contents = list(/obj/item/vamp/keys/old_clan_tzimisce=1, /obj/item/melee/vampirearms/eguitar=1, /obj/item/passport=1, /obj/item/flashlight=1, /obj/item/stack/dollar=1)
+
+/datum/job/vamp/bogatyr
+	title = "Bogatyr"
+	department_head = list("Voivode")
+	faction = "Vampire"
+	total_positions = 3
+	spawn_positions = 3
+	supervisors = " the Laws of Hospitality"
+	selection_color = "#953d2d"
+
+	outfit = /datum/outfit/job/bogatyr
+
+	access = list(ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_MORGUE, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE)
+	minimal_access = list(ACCESS_BAR, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE)
+	paycheck = PAYCHECK_EASY
+	paycheck_department = ACCOUNT_SRV
+	display_order = JOB_DISPLAY_ORDER_BRUJAH
+	exp_type_department = EXP_TYPE_INDEPENDENT
+
+	kindred_only = TRUE
+	allowed_bloodlines = list("Old Clan Tzimisce", "Tzimisce")
+	minimal_generation = 13	//Uncomment when players get exp enough
+
+	duty = "For one reason or another, you serve the voivode. You have tasted his blood and felt strong feelings toward him. You are his servant, protector, and your task is to serve him and maintain the estates, as meager as they are compared to the old world's."
+	minimal_masquerade = 2
+	my_contact_is_important = TRUE
+	known_contacts = list("Prince", "Baron", "Sheriff")
+	minimal_age = 10
+
+
+
+/datum/outfit/job/bogatyr
+	name = "bogatyr"
+	jobtype = /datum/job/vamp/bogatyr
+	id = /obj/item/card/id/bogatyr
+	//glasses = /obj/item/clothing/glasses/vampire/yellow
+	uniform = /obj/item/clothing/under/vampire/punk
+	//suit = /obj/item/clothing/suit/vampire/jacket/punk
+	shoes = /obj/item/clothing/shoes/vampire/jackboots
+	l_pocket = /obj/item/vamp/phone
+	//r_pocket = /obj/item/cockclock
+	backpack_contents = list(/obj/item/vamp/keys/old_clan_tzimisce=1, /obj/item/melee/vampirearms/fireaxe=1, /obj/item/passport=1, /obj/item/flashlight=1, /obj/item/stack/dollar=1)
+
+/datum/job/vamp/zadruga
+	title = "Zadruga"
+	department_head = list("Voivode")
+	faction = "Ghoul"
+	total_positions = 2
+	spawn_positions = 2
+	supervisors = " the Laws of Hospitality"
+	selection_color = "#953d2d"
+
+	outfit = /datum/outfit/job/zadruga
+
+	access = list(ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_MORGUE, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE)
+	minimal_access = list(ACCESS_BAR, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE)
+	paycheck = PAYCHECK_EASY
+	paycheck_department = ACCOUNT_SRV
+	display_order = JOB_DISPLAY_ORDER_BRUJAH
+	exp_type_department = EXP_TYPE_INDEPENDENT
+
+	ghoul_only = TRUE
+	//allowed_bloodlines = list("Old Clan Tzimisce", "Tzimisce")
+	//minimal_generation = 7	//Uncomment when players get exp enough
+
+	duty = "You are a revenant. What family you belong to is up to you. But you serve the voivode most loyally - you are without a doubt a polished tool, and memories of your humanity are growing more and more distant."
+	minimal_masquerade = 2
+	my_contact_is_important = FALSE
+	known_contacts = list("Prince", "Baron", "Sheriff")
+	minimal_age = 13
+
+
+
+/datum/outfit/job/zadruga
+	name = "zadruga"
+	jobtype = /datum/job/vamp/zadruga
+	id = /obj/item/card/id/bogatyr
+	//glasses = /obj/item/clothing/glasses/vampire/yellow
+	uniform = /obj/item/clothing/under/vampire/punk
+	//suit = /obj/item/clothing/suit/vampire/jacket/punk
+	shoes = /obj/item/clothing/shoes/vampire/jackboots
+	l_pocket = /obj/item/vamp/phone
+	//r_pocket = /obj/item/cockclock
+	backpack_contents = list(/obj/item/vamp/keys/old_clan_tzimisce=1, /obj/item/passport=1, /obj/item/flashlight=1, /obj/item/stack/dollar=1)
+
+/obj/effect/landmark/start/voivode
+	name = "Voivode"
+
+/obj/effect/landmark/start/bogatyr
+	name = "Bogatyr"
+
+/obj/effect/landmark/start/zadruga
+	name = "Zadruga"

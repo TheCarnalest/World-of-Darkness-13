@@ -2018,6 +2018,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							var/datum/discipline/D = new i
 							if(!D.clane_restricted)
 								disc4 += i
+							if(clane.name == "Old Clan Tzimisce" && D.name == "Vicissitude")
+								disc4 += i
 							qdel(D)
 					var/discipline4 = input(user, "Select fourth discipline", "Discipline Selection") as null|anything in disc4
 					if(discipline4)
