@@ -23,7 +23,7 @@ SUBSYSTEM_DEF(die_in_a_fire)
 			log_world("Found a null in fires list!")
 			continue
 
-//!NPC.route_optimisation()
+		//!NPC.route_optimisation()
 		if(MC_TICK_CHECK)
 			return
 		F.handle_automated_spread()

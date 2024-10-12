@@ -31,7 +31,7 @@ SUBSYSTEM_DEF(humannpcpool)
 			log_world("Found a null in npc list!")
 			continue
 
-//!NPC.route_optimisation()
+		//!NPC.route_optimisation()
 		if(MC_TICK_CHECK)
 			return
 		NPC.handle_automated_movement()
