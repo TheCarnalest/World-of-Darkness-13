@@ -238,9 +238,35 @@
 					to_chat(usr, "<span class='notice'>Invalid number.</span>")
 			.= TRUE
 		if("contacts")
-			var/list/options = list("Add", "Choose", "My Number")
+			var/list/options = list("Add", "Choose", "My Number", "Publish Number", "Published Numbers")
 			var/option =  input(usr, "Select an option", "Option Selection") as null|anything in options
+			var/result
 			switch(option)
+				if("Publish Number")
+					if (!islist(GLOB.published_numbers))
+						GLOB.published_numbers = list()
+					if (!islist(GLOB.published_number_names))
+						GLOB.published_number_names = list()
+
+					var/name = input(usr, "Input name", "Publish Number") as text|null
+					if(name && src.number)
+						if(src.number in GLOB.published_numbers)
+							to_chat(usr, "<span class ='notice'>This number is already published.</span>")
+						else
+							GLOB.published_numbers += src.number
+							GLOB.published_number_names += name
+							to_chat(usr, "<span class='notice'>Your number is now published.</span>")
+       					//to_chat(usr, "<span class='notice'>Published numbers: [GLOB.published_numbers]</span>")
+       					//to_chat(usr, "<span class='notice'>Published names: [GLOB.published_number_names]</span>")
+					else
+						to_chat(usr, "<span class='notice'>You must input a name to publish your number.</span>")
+
+				if ("Published Numbers")
+					var/list_length = min(length(GLOB.published_numbers), length(GLOB.published_number_names))
+					for(var/i = 1 to list_length)
+						var/number = GLOB.published_numbers[i]
+						var/name = GLOB.published_number_names[i]
+						to_chat(usr, "- [name]: [number]")
 				if("Add")
 					var/new_contact = input(usr, "Input phone number", "Add Contact")  as text|null
 					if(new_contact)
@@ -259,7 +285,7 @@
 						if(CNTCT)
 							shit += CNTCT.name
 					if(length(shit) >= 1)
-						var/result = input(usr, "Select a contact", "Contact Selection") as null|anything in shit
+						result = input(usr, "Select a contact", "Contact Selection") as null|anything in shit
 						if(result)
 							for(var/datum/phonecontact/CNTCT in contacts)
 								if(CNTCT.name == result)
@@ -298,6 +324,16 @@
 			if(PHNCNTCT.check_global_contacts())
 				if(L)
 					to_chat(L, "<span class='notice'>Some important contacts in your phone work again.</span>")
+
+/*obj/item/vamp/phone/proc/publish_number(var/name)
+	var/list/entry = list("number" = src.number, "name" = name)
+	published_numbers |= entry
+
+/obj/item/vamp/phone/proc/view_published_numbers()
+	var/list/display = list()
+	for(var/list/entry in published_numbers)
+		display |= "[entry["name"]]: [entry["number"]]
+	return display"*/
 
 /obj/item/vamp/phone/proc/Recall(var/obj/item/vamp/phone/abonent, var/mob/usar)
 	if(last_call+100 <= world.time && !talking)
