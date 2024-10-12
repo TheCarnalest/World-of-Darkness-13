@@ -234,16 +234,16 @@ CHECK_RANDOMIZER
 # SERVER ss13.example.com:2506
 
 ## forum address
-FORUMURL https://discord.gg/FeptTFZfsh
+FORUMURL https://discord.gg/WU92NG2Me8
 
 ## Wiki address
-WIKIURL https://discord.gg/FeptTFZfsh
+WIKIURL https://discord.gg/WU92NG2Me8
 
 ## Rules address
-RULESURL https://discord.gg/FeptTFZfsh
+RULESURL https://discord.gg/WU92NG2Me8
 
 ## Github address
-# GITHUBURL https://www.github.com/tgstation/tgstation
+# GITHUBURL https://github.com/TheCarnalest/World-of-Darkness-13
 
 ## Discord bot command prefix, if the discord bot is used
 # DISCORDBOTCOMMANDPREFIX ?
