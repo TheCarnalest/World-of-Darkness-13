@@ -20,3 +20,4 @@ DangitMaster = Game Master
 HomuHomu = Game Master
 Xilvah Phyre = Game Master
 Mr_fier = Game Master
+Suriyel = Game Master
