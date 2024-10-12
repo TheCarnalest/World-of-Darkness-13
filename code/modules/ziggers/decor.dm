@@ -1047,6 +1047,32 @@
 	. = ..()
 	set_light(3, 2, "#8e509e")
 
+/obj/structure/cabaret_sign
+	name = "cabaret"
+	desc = "An enticing pair of legs... I wonder what's inside?"
+	icon = 'icons/cabaret.dmi'
+	icon_state = "cabar"
+	plane = GAME_PLANE
+	layer = ABOVE_ALL_MOB_LAYER
+	anchored = TRUE
+
+/obj/structure/cabaret_sign/Initialize()
+	. = ..()
+	set_light(3, 2, "#d98aec")
+
+/obj/structure/cabaret_sign2
+	name = "cabaret"
+	desc = "An enticing pair of legs... I wonder what's inside?"
+	icon = 'icons/cabaret.dmi'
+	icon_state = "et"
+	plane = GAME_PLANE
+	layer = ABOVE_ALL_MOB_LAYER
+	anchored = TRUE
+
+/obj/structure/cabaret_sign2/Initialize()
+	. = ..()
+	set_light(3, 2, "#d98aec")
+
 /obj/structure/fire_barrel
 	name = "barrel"
 	desc = "Some kind of light and warm source..."
