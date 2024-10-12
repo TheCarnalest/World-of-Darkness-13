@@ -14,6 +14,7 @@
 
 	var/level_casting = 1	//which level we want to cast
 	var/clane_restricted = FALSE	//Only for specified clans
+	var/clane_exclusion = FALSE
 	var/dead_restricted = TRUE
 
 /datum/discipline/proc/post_gain(var/mob/living/carbon/human/H)
@@ -1193,6 +1194,7 @@
 	violates_masquerade = TRUE
 	clane_restricted = TRUE
 	dead_restricted = FALSE
+	var/exclusive_clan = "Old Clan Tzimisce"
 
 /datum/discipline/vicissitude/activate(mob/living/target, mob/living/carbon/human/caster)
 	. = ..()

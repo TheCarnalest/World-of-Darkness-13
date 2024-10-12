@@ -3372,6 +3372,7 @@
 #include "code\modules\vtmb\vampire_clane\tremere.dm"
 #include "code\modules\vtmb\vampire_clane\tzimisce.dm"
 #include "code\modules\vtmb\vampire_clane\ventrue.dm"
+#include "code\modules\vtmb\vampire_clane\old_clan_tzimisce.dm"
 #include "code\modules\vtmb\werewolf\auspice.dm"
 #include "code\modules\vtmb\werewolf\gifts.dm"
 #include "code\modules\vtmb\werewolf\spiral_antag.dm"
