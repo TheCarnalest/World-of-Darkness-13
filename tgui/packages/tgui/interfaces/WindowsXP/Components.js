@@ -1,7 +1,7 @@
 import { classes } from '../../../common/react';
 
 
-export const XPButton = (props) => {
+export const XPButton = props => {
   const { onClick, disabled, content } = props;
   return (
     <div
@@ -12,7 +12,7 @@ export const XPButton = (props) => {
   );
 };
 
-export const XPInput = (props) => {
+export const XPInput = props => {
   const { onInput = (e, value) => {}, placeholder = '', value = '' } = props;
 
   return (

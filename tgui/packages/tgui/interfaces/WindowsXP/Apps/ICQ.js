@@ -17,6 +17,7 @@ export const ICQ = (props, context) => {
           onChange={(e, value) => setUsername(value)}
         />
         <button
+          type="button"
           onClick={() => {
             act('icq_login_user', { username: username, ref: app.reference });
             setUsername('');
@@ -45,7 +46,7 @@ export const ICQ = (props, context) => {
       <div className="chat">
         <div className="chat-footer">
           <div class="messages">
-            {app.messages.map((message) => {
+            {app.messages.map(message => {
               return (
                 <>
                   <b>{message.author}</b>
@@ -67,7 +68,7 @@ export const ICQ = (props, context) => {
               setMessage('');
             }}
             className="send-button">
-            <b style="color: black;">Send</b>
+            <b style={{ color: 'black' }}>Send</b>
           </div>
         </div>
       </div>

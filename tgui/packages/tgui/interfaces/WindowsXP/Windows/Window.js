@@ -20,7 +20,7 @@ export class Window extends Component {
 
   handleStartDrag(e) {
     const { app, act, is_Focus } = this.props;
-    !is_Focus && act("set_current_app", { ref: app.reference })
+    !is_Focus && act("set_current_app", { ref: app.reference });
     e.stopPropagation();
     this.setState({
       lastMousePos: null,
@@ -56,8 +56,8 @@ export class Window extends Component {
       let xPos = screenZoomX || screenX;
       let yPos = screenZoomY || screenY;
       if (lastMousePos) {
-        let rel_x = dragPos.x - (lastMousePos.x - xPos)
-        let rel_y = dragPos.y - (lastMousePos.y - yPos)
+        let rel_x = dragPos.x - (lastMousePos.x - xPos);
+        let rel_y = dragPos.y - (lastMousePos.y - yPos);
         this.setState({
           dragPos: {
             x: rel_x,
@@ -94,7 +94,7 @@ export class Window extends Component {
           left: `${x_pos}px`,
           top: `${y_pos}px`,
           display: app.minimized ? "none" : "flex",
-          background: is_Focus ? '#0831d9' : '#6582f5'
+          background: is_Focus ? '#0831d9' : '#6582f5',
         }}
       >
         <div
@@ -102,11 +102,9 @@ export class Window extends Component {
           style={{
             background: is_Focus
               ? 'linear-gradient(to bottom,#0058ee 0%,#3593ff 4%,#288eff 6%,#127dff 8%,#036ffc 10%,#0262ee 14%,#0057e5 20%,#0054e3 24%,#0055eb 56%,#005bf5 66%,#026afe 76%,#0062ef 86%,#0052d6 92%,#0040ab 94%,#003092 100%)'
-              : 'linear-gradient(to bottom, #7697e7 0%,#7e9ee3 3%,#94afe8 6%,#97b4e9 8%,#82a5e4 14%,#7c9fe2 17%,#7996de 25%,#7b99e1 56%,#82a9e9 81%,#80a5e7 89%,#7b96e1 94%,#7a93df 97%,#abbae3 100%)'
-            ,
-            opacity: is_Focus ? 1 : 0.3
-          }
-          } />
+              : 'linear-gradient(to bottom, #7697e7 0%,#7e9ee3 3%,#94afe8 6%,#97b4e9 8%,#82a5e4 14%,#7c9fe2 17%,#7996de 25%,#7b99e1 56%,#82a9e9 81%,#80a5e7 89%,#7b96e1 94%,#7a93df 97%,#abbae3 100%)',            
+            opacity: is_Focus ? 1 : 0.3,
+          }} />
         <header
           className="app__header"
           onMouseDown={this.handleStartDrag}
@@ -125,9 +123,9 @@ export class Window extends Component {
             close
             minimize
             maximize
-            on_minimize={() => { act('minimize', { ref: app.reference }) }}
-            on_maximize={() => { act('maximize', { ref: app.reference }) }}
-            on_close={() => { act('close', { ref: app.reference }) }}
+            on_minimize={() => { act('minimize', { ref: app.reference }); }}
+            on_maximize={() => { act('maximize', { ref: app.reference }); }}
+            on_close={() => { act('close', { ref: app.reference }); }}
           />
         </header>
         <div className="app__content">
@@ -135,5 +133,5 @@ export class Window extends Component {
         </div>
       </div>
     );
-  };
-};
+  }
+}

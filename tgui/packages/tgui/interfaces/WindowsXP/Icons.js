@@ -1,18 +1,22 @@
-import { GetIconByName } from "./functions"
+import { GetIconByName } from "./functions";
 
-export const Icons = (props) => {
-  const { apps, focus_ref, act } = props
+export const Icons = props => {
+  const { apps, focus_ref, act } = props;
   return (
     apps.map((app, index) => {
       return (
-        app.desktop_app === 1  && <Icon app={app} index={index} icon={GetIconByName(app.type)} is_Focus={focus_ref === app.reference} act={act} />
-      )
+        app.desktop_app === 1 && <Icon app={app}
+          index={index}
+          icon={GetIconByName(app.type)}
+          is_Focus={focus_ref === app.reference}
+          act={act} />
+      );
     })
-  )
-}
+  );
+};
 
 
-const Icon = (props) => {
+const Icon = props => {
   const {
     index,
     app,
@@ -42,10 +46,11 @@ const Icon = (props) => {
             { background: is_Focus ? '#0b61ff' : 'transparent' }
           }
           className={"icon__text"}
-        >{app.title}</div>
+        >{app.title}
+        </div>
       </div>
     </div>
   );
-}
+};
 
 

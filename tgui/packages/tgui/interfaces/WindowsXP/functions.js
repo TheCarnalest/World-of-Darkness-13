@@ -1,41 +1,45 @@
-import icq from '../../assets/WindowsXP/icq.png';
-import notepad from '../../assets/WindowsXP/327(32x32).png';
-import error from '../../assets/WindowsXP/897(32x32).png';
-import gmail from '../../assets/WindowsXP/gmail_icon.png';
-import news from '../../assets/WindowsXP/news.png';
+import icqIcon from '../../assets/WindowsXP/icq.png';
+import notepadIcon from '../../assets/WindowsXP/327(32x32).png';
+import errorIcon from '../../assets/WindowsXP/897(32x32).png';
+import gmailicon from '../../assets/WindowsXP/gmail_icon.png';
+import newsIcon from '../../assets/WindowsXP/news.png';
 import { Notepad } from './Apps/Notepad';
-import { ICQ } from './Apps/ICQ';
+import { ICQ as Icq } from './Apps/ICQ';
 import { Error } from './Apps/Error';
 import { Gmail } from './Apps/Gmail';
 import { News } from './Apps/News';
 
 
-export function GetIconByName(name) {
+export const GetIconByName = name => {
   switch (name) {
     case "icq":
-      return icq
+      return icqIcon;
     case "notepad":
-      return notepad
+      return notepadIcon;
     case "error":
-      return error
+      return errorIcon;
     case "gmail":
-      return gmail
+      return gmailicon;
     case "news":
-      return news
+      return newsIcon;
+    default:
+      return null;
   }
-}
+};
 
-export function GetAppByName(app, act) {
+export const GetAppByName = (app, act) => {
   switch (app.type) {
     case "icq":
-      return <ICQ app={app} act={act} />
+      return <Icq app={app} act={act} />;
     case "notepad":
-      return <Notepad app={app} act={act} />
+      return <Notepad app={app} act={act} />;
     case "error":
-      return <Error app={app} act={act} />
+      return <Error app={app} act={act} />;
     case "gmail":
-      return <Gmail app={app} act={act} />
+      return <Gmail app={app} act={act} />;
     case "news":
-      return <News app={app} act={act} />
+      return <News app={app} act={act} />;
+    default:
+      return null;
   }
-}
+};
