@@ -1,6 +1,6 @@
 /datum/archetype
-	var/name = "Pussy Destroyer"
-	var/specialization = "Kills niggers"
+	var/name = "Archetype Example"
+	var/specialization = "Nothing Special."
 	var/start_physique = 1
 	var/start_social = 1
 	var/start_mentality = 1
@@ -41,7 +41,7 @@
 
 /datum/archetype/diplomatic
 	name = "Diplomatic"
-	specialization = "More allies available."
+	specialization = "More allies available. (Use Animalism)"
 	start_physique = 2
 	start_social = 2
 	start_mentality = 2
