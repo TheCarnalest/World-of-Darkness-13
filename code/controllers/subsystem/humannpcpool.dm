@@ -37,11 +37,7 @@ SUBSYSTEM_DEF(humannpcpool)
 		NPC.handle_automated_movement()
 
 /datum/controller/subsystem/humannpcpool/proc/npclost()
-	if(length(GLOB.npc_list) < 50)
-		var/atom/kal = pick(GLOB.npc_spawn_points)
-		var/NEPIS = pick(/mob/living/carbon/human/npc/police, /mob/living/carbon/human/npc/bandit, /mob/living/carbon/human/npc/hobo, /mob/living/carbon/human/npc/walkby, /mob/living/carbon/human/npc/business)
-		new NEPIS(get_turf(kal))
-		log_world("new npc spawned")
-		to_chat(usr, "<An npc has spawned.</span>")
-	else
-		return
+	var/atom/kal = pick(GLOB.npc_spawn_points)
+	var/NEPIS = pick(/mob/living/carbon/human/npc/police, /mob/living/carbon/human/npc/bandit, /mob/living/carbon/human/npc/hobo, /mob/living/carbon/human/npc/walkby, /mob/living/carbon/human/npc/business)
+	new NEPIS(get_turf(kal))
+	log_world("new npc spawned")
