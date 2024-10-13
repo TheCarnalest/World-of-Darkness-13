@@ -270,6 +270,21 @@
 	desc = "Some weirdo rich clothes."
 	icon_state = "malkav_pants"
 
+/obj/item/clothing/under/vampire/voivode
+	name = "suit"
+	desc = "Some fancy clothes."
+	icon_state = "voivode"
+
+/obj/item/clothing/under/vampire/bogatyr
+	name = "suit"
+	desc = "Some nice clothes."
+	icon_state = "bogatyr"
+
+/obj/item/clothing/under/vampire/bogatyr/female
+	name = "suit"
+	desc = "Some nice clothes."
+	icon_state = "bogatyr_f"
+
 /obj/item/clothing/under/vampire/primogen_malkavian/female
 	name = "suit"
 	icon_state = "malkav_suit"
@@ -453,6 +468,12 @@
 	icon_state = "trench_tzi"
 	armor = list(MELEE = 50, BULLET = 50, LASER = 10, ENERGY = 10, BOMB = 25, BIO = 0, RAD = 0, FIRE = 0, ACID = 10, WOUND = 50)
 	clothing_traits = list(TRAIT_UNMASQUERADE)
+
+obj/item/clothing/suit/vampire/trench/voivode
+	name = "regal coat"
+	desc = "A beautiful jacket. The blue colors belong to clan Tzimisce. Whoever owns this must be important."
+	icon_state = "voicoat"
+	armor = list(MELEE = 60, BULLET = 60, LASER = 10, ENERGY = 10, BOMB = 55, BIO = 0, RAD = 0, FIRE = 45, ACID = 10, WOUND = 25)
 
 /obj/item/clothing/suit/vampire/vest
 	name = "bulletproof vest"

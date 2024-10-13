@@ -1938,7 +1938,7 @@
 	minimal_access = list(ACCESS_BAR, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE)
 	paycheck = PAYCHECK_EASY
 	paycheck_department = ACCOUNT_SRV
-	display_order = JOB_DISPLAY_ORDER_BRUJAH
+	display_order = JOB_DISPLAY_ORDER_VOIVODE
 	exp_type_department = EXP_TYPE_INDEPENDENT
 
 	kindred_only = TRUE
@@ -1958,8 +1958,8 @@
 	jobtype = /datum/job/vamp/voivode
 	id = /obj/item/card/id/voivode
 	//glasses = /obj/item/clothing/glasses/vampire/yellow
-	uniform = /obj/item/clothing/under/vampire/punk
-	suit = /obj/item/clothing/suit/vampire/trench/tzi
+	uniform = /obj/item/clothing/under/vampire/voivode
+	suit = /obj/item/clothing/suit/vampire/trench/voivode
 	shoes = /obj/item/clothing/shoes/vampire/jackboots
 	l_pocket = /obj/item/vamp/phone
 	//r_pocket =
@@ -1980,7 +1980,7 @@
 	minimal_access = list(ACCESS_BAR, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE)
 	paycheck = PAYCHECK_EASY
 	paycheck_department = ACCOUNT_SRV
-	display_order = JOB_DISPLAY_ORDER_BRUJAH
+	display_order = JOB_DISPLAY_ORDER_BOGATYR
 	exp_type_department = EXP_TYPE_INDEPENDENT
 
 	kindred_only = TRUE
@@ -1993,14 +1993,19 @@
 	known_contacts = list("Prince", "Baron", "Sheriff")
 	minimal_age = 10
 
+/datum/outfit/job/bogatyr/pre_equip(mob/living/carbon/human/H)
+	..()
+	if(H.gender == FEMALE)
+		uniform = /obj/item/clothing/under/vampire/bogatyr/female
+		shoes = /obj/item/clothing/shoes/vampire/heels
 
 
 /datum/outfit/job/bogatyr
-	name = "bogatyr"
+	name = "Bogatyr"
 	jobtype = /datum/job/vamp/bogatyr
 	id = /obj/item/card/id/bogatyr
 	//glasses = /obj/item/clothing/glasses/vampire/yellow
-	uniform = /obj/item/clothing/under/vampire/punk
+	uniform = /obj/item/clothing/under/vampire/bogatyr
 	//suit = /obj/item/clothing/suit/vampire/jacket/punk
 	shoes = /obj/item/clothing/shoes/vampire/jackboots
 	l_pocket = /obj/item/vamp/phone
@@ -2022,7 +2027,7 @@
 	minimal_access = list(ACCESS_BAR, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE)
 	paycheck = PAYCHECK_EASY
 	paycheck_department = ACCOUNT_SRV
-	display_order = JOB_DISPLAY_ORDER_BRUJAH
+	display_order = JOB_DISPLAY_ORDER_ZADRUGA
 	exp_type_department = EXP_TYPE_INDEPENDENT
 
 	ghoul_only = TRUE
