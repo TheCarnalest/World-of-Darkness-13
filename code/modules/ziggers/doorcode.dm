@@ -76,8 +76,7 @@
 
 /obj/item/vamp/keys/supply
 	name = "Supply keys"
-	accesslocks = list("supply",
-											"anarch")
+	accesslocks = list("supply")
 	color = "#434343"
 
 /obj/item/vamp/keys/npc
