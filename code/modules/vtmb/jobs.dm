@@ -750,7 +750,7 @@
 	name = "Supply Technician"
 	icon_state = "Supply Technician"
 
-//ASS ISTANTS
+//ASSISTANTS
 
 /datum/job/vamp/citizen
 	title = "Citizen"

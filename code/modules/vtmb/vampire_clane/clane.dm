@@ -1,14 +1,14 @@
 /mob/living/carbon/human
 	var/datum/vampireclane/clane
-//Дополнительная игровая логика должна храниться в компоненте
+//Additional game logic should be stored in the component
 GLOBAL_LIST_INIT(basic_disciplines, list(/datum/discipline/animalism)) //сюда написать основные дисциплины когда я их сделаю
 /*
-В этом датуме хранится декларативное описание кланов, для того чтобы из этой реализации делать в рантайме инстанс компонента клана
-А также это помогает для панельки чарсетапа*/
+This datum stores a declarative description of clans, in order to make an instance of the clan component from this implementation in runtime
+And it also helps for the character set panel*/
 /datum/vampireclane
 	var/name = "каитиф лол))))))" //в нейм только дефайны
 	var/desc = "Ну описание клана"
-	var/list/clane_disciplines = list() //датумы дисциплин
+	var/list/clane_disciplines = list() //discipline datums
 	var/datum/outfit/clane_outfit
 	var/curse = "МОРЛОК ТЫ ГАНДОН ПИДОРАС УБИВАЕШЬ НАС БЕЗ ПРИЧИНЫ ЛИШЬ ПОТОМУ ЧТО МЫ КАИТИФФЫ"
 	var/list/allowed_jobs = list()
