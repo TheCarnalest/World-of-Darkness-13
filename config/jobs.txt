@@ -20,3 +20,6 @@ Doctor=2,2
 Graveyard Keeper=3,3
 Voivode =1,1
 Bogatyr =3,3
+
+
+
