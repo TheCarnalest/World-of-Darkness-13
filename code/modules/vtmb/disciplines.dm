@@ -1,6 +1,6 @@
 /datum/discipline
-	var/name = "Shit Aggresively"
-	var/desc = "Shit with blood, cope and seethe"
+	var/name = "Vampiric Discipline"
+	var/desc = "Discipline with powers such as..."
 	var/icon_state
 	var/cost = 2
 	var/ranged = FALSE
@@ -1198,7 +1198,7 @@
 	. = ..()
 	if(iswerewolf(target))
 		playsound(caster.loc, 'code/modules/ziggers/sounds/vicissitude.ogg', 50, TRUE)
-		caster.adjustFireLoss(50)		//абузеры страдайте
+		caster.adjustFireLoss(50)		//abusers suffer
 		caster.emote("scream")
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
