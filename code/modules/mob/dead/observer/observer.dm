@@ -25,7 +25,7 @@ var/list/CMNoir = list(0.3,0.3,0.3,0,\
 	lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
 	invisibility = INVISIBILITY_OBSERVER
 	hud_type = /datum/hud/ghost
-	movement_type = GROUND | FLYING
+	movement_type = GROUND | FLYING | PHASING //[Lucifernix] - phasing is what lets ghosts walk through walls, so I readded it
 	light_system = MOVABLE_LIGHT
 	light_range = 1
 	light_power = 2
@@ -37,7 +37,7 @@ var/list/CMNoir = list(0.3,0.3,0.3,0,\
 	var/started_as_observer //This variable is set to 1 when you enter the game as an observer.
 							//If you died in the game and are a ghost - this will remain as null.
 							//Note that this is not a reliable way to determine if admins started as observers, since they change mobs a lot.
-	var/movement_delay = 1.5 // [ChillRaccoon] - movement delay
+	var/movement_delay = 0 // [ChillRaccoon] - movement delay
 	var/atom/movable/following = null
 	var/fun_verbs = 0
 	var/image/ghostimage_default = null //this mobs ghost image without accessories and dirs

@@ -805,8 +805,10 @@
 	if(H.clane)
 		if(H.clane.name == "Lasombra")
 			backpack_contents = list(/obj/item/passport =1, /obj/item/stack/dollar/rand=1)
-		else
-			backpack_contents = list(/obj/item/passport=1, /obj/item/flashlight=1, /obj/item/stack/dollar/rand=1)
+	if(!H.clane)
+		backpack_contents = list(/obj/item/passport=1, /obj/item/flashlight=1, /obj/item/stack/dollar/rand=1)
+	if(H.clane && H.clane.name != "Lasombra")
+		backpack_contents = list(/obj/item/passport=1, /obj/item/flashlight=1, /obj/item/stack/dollar/rand=1)
 
 /obj/effect/landmark/start/citizen
 	name = "Citizen"
