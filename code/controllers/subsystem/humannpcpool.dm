@@ -42,6 +42,6 @@ SUBSYSTEM_DEF(humannpcpool)
 		var/NEPIS = pick(/mob/living/carbon/human/npc/police, /mob/living/carbon/human/npc/bandit, /mob/living/carbon/human/npc/hobo, /mob/living/carbon/human/npc/walkby, /mob/living/carbon/human/npc/business)
 		new NEPIS(get_turf(kal))
 		log_world("new npc spawned")
-		//to_chat(usr, "<An npc has spawned.</span>")
+		to_chat(usr, "<An npc has spawned.</span>")
 	else
 		return
