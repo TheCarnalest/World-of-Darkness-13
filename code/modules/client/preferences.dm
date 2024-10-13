@@ -5,7 +5,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	//doohickeys for savefiles
 	var/path
 	var/default_slot = 1				//Holder so it doesn't default to slot 1, rather the last one used
-	var/max_save_slots = 3
+	var/max_save_slots = 10
 
 	//non-preference stuff
 	var/muted = 0
@@ -346,7 +346,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		return coolfont
 
 /datum/preferences/proc/ShowChoices(mob/user)
-	if(!user || !user.client)
+	/*if(!user || !user.client)
 		return
 	link_bug_fix = FALSE
 	var/donor = FALSE
@@ -358,7 +358,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		donor = TRUE
 	if(!donor)
 		discipline4type = null
-		discipline4level = 1
+		discipline4level = 1*/
 	if(slot_randomized)
 		load_character(default_slot) // Reloads the character slot. Prevents random features from overwriting the slot if saved.
 		slot_randomized = FALSE
