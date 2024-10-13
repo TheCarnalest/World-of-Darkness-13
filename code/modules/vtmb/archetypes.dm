@@ -17,6 +17,12 @@
 	start_mentality = 2
 	start_blood = 1
 
+/datum/archetype/average/special_skill(var/mob/living/carbon/human/H)
+	H.additional_physique += 1
+	H.additional_social += 1
+	H.additional_mentality += 1
+	H.additional_blood += 1
+
 /datum/archetype/warrior
 	name = "Warrior"
 	specialization = "Better melee combat skills."
@@ -80,6 +86,9 @@
 	start_mentality = 1
 	start_blood = 2
 
+/datum/archetype/beauty/special_skill(var/mob/living/carbon/human/H)
+	H.additional_social += 3
+
 /datum/archetype/dude
 	name = "Dude"
 	specialization = "Sadistic consequences."
@@ -87,6 +96,9 @@
 	start_social = 1
 	start_mentality = 1
 	start_blood = 3
+
+/datum/archetype/dude/special_skill(var/mob/living/carbon/human/H)
+	H.additional_blood += 3
 
 /datum/archetype/homebrew
 	name = "Homebrew"
