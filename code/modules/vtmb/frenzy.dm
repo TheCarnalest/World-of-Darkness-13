@@ -217,10 +217,9 @@
 		if(fearstack)
 			if(prob(fearstack*5))
 				H.do_jitter_animation(10)
-				if(fearstack > 20)
-					if(prob(fearstack))
-						if(!H.in_frenzy)
-							H.rollfrenzy()
+				if(fearstack > 5)
+					if(!H.in_frenzy)
+						H.rollfrenzy()
 			if(!H.has_status_effect(STATUS_EFFECT_FEAR))
 				H.apply_status_effect(STATUS_EFFECT_FEAR)
 		else

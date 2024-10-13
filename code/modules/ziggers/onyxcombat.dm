@@ -404,7 +404,7 @@
 			if(length(BD.all_wounds))
 				var/datum/wound/W = pick(BD.all_wounds)
 				W.remove_wound()
-			BD.adjustFireLoss(-10*min(4, 15-BD.generation), TRUE)
+			BD.adjustFireLoss(-5*min(4, 15-BD.generation), TRUE)
 			BD.adjustCloneLoss(-5, TRUE)
 			var/obj/item/organ/eyes/eyes = BD.getorganslot(ORGAN_SLOT_EYES)
 			if(eyes)
