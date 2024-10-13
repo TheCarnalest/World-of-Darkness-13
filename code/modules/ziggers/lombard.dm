@@ -1,5 +1,5 @@
 /obj/item
-	var/lombard_cost = 0
+	var/cost = 0
 	var/illegal = FALSE
 
 /obj/lombard
@@ -19,9 +19,9 @@
 		if(O.damage > round(O.maxHealth/2))
 			to_chat(user, "<span class='warning'>[W] is too damaged to sell!</span>")
 			return
-	if(W.lombard_cost > 0)
+	if(W.cost > 0)
 		if(W.illegal == illegal)
-			for(var/i in 1 to (W.lombard_cost/3)*user.social)
+			for(var/i in 1 to (W.cost/3)*user.social)
 				new /obj/item/stack/dollar(loc)
 			playsound(loc, 'code/modules/ziggers/sounds/sell.ogg', 50, TRUE)
 			if(illegal)
@@ -43,66 +43,66 @@
 
 /obj/item/organ/heart
 	illegal = TRUE
-	lombard_cost = 1000
+	cost = 1000
 
 /obj/item/organ/lungs
 	illegal = TRUE
-	lombard_cost = 500
+	cost = 500
 
 /obj/item/organ/liver
 	illegal = TRUE
-	lombard_cost = 500
+	cost = 500
 
 /obj/item/organ/stomach
 	illegal = TRUE
-	lombard_cost = 100
+	cost = 100
 
 /obj/item/organ/eyes
 	illegal = TRUE
-	lombard_cost = 100
+	cost = 100
 
 /obj/item/organ/ears
 	illegal = TRUE
-	lombard_cost = 100
+	cost = 100
 
 /obj/item/organ/tongue
 	illegal = TRUE
-	lombard_cost = 50
+	cost = 50
 
 /obj/item/weedseed
 	illegal = TRUE
-	lombard_cost = 50
+	cost = 50
 /obj/item/weedpack
 	illegal = TRUE
-	lombard_cost = 50
+	cost = 50
 
 /obj/item/reagent_containers/food/drinks/meth
 	illegal = TRUE
-	lombard_cost = 300
+	cost = 300
 
 /obj/item/clothing/under/vampire
-	lombard_cost = 10
+	cost = 10
 /obj/item/clothing/shoes/vampire
-	lombard_cost = 5
+	cost = 5
 /obj/item/clothing/suit/vampire
-	lombard_cost = 15
+	cost = 15
 /obj/item/clothing/head/vampire
-	lombard_cost = 10
+	cost = 10
 /obj/item/gun/ballistic/vampire/revolver
-	lombard_cost = 25
+	cost = 25
 /obj/item/gun/ballistic/automatic/vampire/deagle
-	lombard_cost = 75
+	cost = 75
 /obj/item/gun/ballistic/automatic/vampire/uzi
-	lombard_cost = 175
+	cost = 175
 /obj/item/gun/ballistic/automatic/vampire/ar15
-	lombard_cost = 250
+	cost = 250
 /obj/item/melee/vampirearms
-	lombard_cost = 25
+	cost = 25
 /obj/item/melee/vampirearms/baseball
-	lombard_cost = 50
+	cost = 50
 /obj/item/melee/vampirearms/katana
-	lombard_cost = 250
+	cost = 250
 /obj/item/food/fish
-	lombard_cost = 20
+	cost = 20
 /obj/item/cockclock
-	lombard_cost = 50
+	cost = 50

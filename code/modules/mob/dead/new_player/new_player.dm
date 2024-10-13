@@ -330,6 +330,9 @@
 	if(job.human_only)
 		if(client.prefs.pref_species.name != "Human")
 			return JOB_UNAVAILABLE_SPECIES
+	if(job.ghoul_only)
+		if(client.prefs.pref_species.name != "Ghoul")
+			return JOB_UNAVAILABLE_SPECIES
 	if(!job.humans_accessible)
 		if(client.prefs.pref_species.name == "Human")
 			return JOB_UNAVAILABLE_SPECIES

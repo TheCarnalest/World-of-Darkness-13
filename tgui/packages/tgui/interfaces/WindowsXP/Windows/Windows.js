@@ -1,5 +1,5 @@
 import { Window } from "./Window";
-import { Component } from 'inferno'
+import { Component } from 'inferno';
 
 export class Windows extends Component {
   render() {
@@ -8,25 +8,25 @@ export class Windows extends Component {
       <>
         {apps.map(app => {
           return (
-            app.launched === 1 && (app.reference != current_app &&
-              <Window
+            app.launched === 1 && (app.reference !== current_app
+              && <Window
                 app={app}
                 act={act}
               />
             )
-          )
+          );
         })}
         {apps.map(app => {
           return (
-            app.launched === 1 && (app.reference === current_app &&
-              <Window
+            app.launched === 1 && (app.reference === current_app
+              && <Window
                 app={app}
                 act={act}
                 is_Focus />
             )
-          )
+          );
         })}
       </>
     );
-  };
-};
+  }
+}

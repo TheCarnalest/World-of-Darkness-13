@@ -79,8 +79,9 @@
 	var/kindred_only = FALSE
 	var/humans_accessible = FALSE
 	var/human_only = FALSE
+	var/ghoul_only = FALSE
 	var/garou_allowed = FALSE
-	var/list/allowed_bloodlines = list("Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry")
+	var/list/allowed_bloodlines = list("Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry",)
 
 	// List for phone shit
 	var/my_contact_is_important = FALSE

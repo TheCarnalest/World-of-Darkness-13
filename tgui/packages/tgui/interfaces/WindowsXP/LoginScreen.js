@@ -5,8 +5,8 @@ import { useLocalState } from '../../backend';
 
 export const LoginScreen = (props, context) => {
   const { data, act } = props;
-  const [name, setName] = useLocalState(context, "login_username", "")
-  const [password, setPassword] = useLocalState(context, "login_pass", "")
+  const [name, setName] = useLocalState(context, "login_username", "");
+  const [password, setPassword] = useLocalState(context, "login_pass", "");
 
   return (
     <div className="login-screen">

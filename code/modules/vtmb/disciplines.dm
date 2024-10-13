@@ -14,6 +14,7 @@
 
 	var/level_casting = 1	//which level we want to cast
 	var/clane_restricted = FALSE	//Only for specified clans
+	var/clane_exclusion = FALSE
 	var/dead_restricted = TRUE
 
 /datum/discipline/proc/post_gain(var/mob/living/carbon/human/H)
@@ -1193,6 +1194,7 @@
 	violates_masquerade = TRUE
 	clane_restricted = TRUE
 	dead_restricted = FALSE
+	var/exclusive_clan = "Old Clan Tzimisce"
 
 /datum/discipline/vicissitude/activate(mob/living/target, mob/living/carbon/human/caster)
 	. = ..()
@@ -1283,7 +1285,7 @@
 						qdel(target)
 		else
 			target.emote("scream")
-			target.apply_damage(10*level_casting, BRUTE, BODY_ZONE_CHEST)
+			target.apply_damage(20*level_casting, BRUTE, BODY_ZONE_CHEST)
 			if(prob(5*level_casting))
 				var/obj/item/bodypart/B = H.get_bodypart(pick(BODY_ZONE_R_ARM, BODY_ZONE_L_ARM, BODY_ZONE_R_LEG, BODY_ZONE_L_LEG))
 				if(B)
