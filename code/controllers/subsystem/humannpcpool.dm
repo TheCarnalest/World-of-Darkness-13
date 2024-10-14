@@ -27,8 +27,11 @@ SUBSYSTEM_DEF(humannpcpool)
 		--currentrun.len
 
 		if (QDELETED(NPC)) // Some issue causes nulls to get into this list some times. This keeps it running, but the bug is still there.
-			GLOB.npc_list -= NPC
-			log_world("Found a null in npc list!")
+			GLOB.npc_list -= src
+			if(QDELETED(NPC))
+				log_world("Found a null in npc list!")
+			else
+				log_world("Found a dead NPC in npc list!")
 			continue
 
 		//!NPC.route_optimisation()
@@ -37,7 +40,10 @@ SUBSYSTEM_DEF(humannpcpool)
 		NPC.handle_automated_movement()
 
 /datum/controller/subsystem/humannpcpool/proc/npclost()
-	var/atom/kal = pick(GLOB.npc_spawn_points)
-	var/NEPIS = pick(/mob/living/carbon/human/npc/police, /mob/living/carbon/human/npc/bandit, /mob/living/carbon/human/npc/hobo, /mob/living/carbon/human/npc/walkby, /mob/living/carbon/human/npc/business)
-	new NEPIS(get_turf(kal))
-	log_world("new npc spawned")
+	if(length(GLOB.npc_list) < 50)
+		var/atom/kal = pick(GLOB.npc_spawn_points)
+		var/NEPIS = pick(/mob/living/carbon/human/npc/police, /mob/living/carbon/human/npc/bandit, /mob/living/carbon/human/npc/hobo, /mob/living/carbon/human/npc/walkby, /mob/living/carbon/human/npc/business)
+		new NEPIS(get_turf(kal))
+		log_world("new npc spawned")
+	else
+		return
