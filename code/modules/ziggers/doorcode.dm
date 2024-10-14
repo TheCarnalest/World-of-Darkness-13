@@ -195,6 +195,7 @@
 	var/hackable = TRUE
 	var/hacking = FALSE
 	var/lockpicktimer = 7
+	var/hack_difficulty = 0 //[Lucifernix] - This must be removed when all the doors are fixed on the map.
 
 	var/open_sound = 'code/modules/ziggers/sounds/door_open.ogg'
 	var/close_sound = 'code/modules/ziggers/sounds/door_close.ogg'
@@ -320,7 +321,8 @@
 	icon_state = "hack"
 	item_flags = NOBLUDGEON
 
-/*/obj/structure/vampdoor/old
+/*
+/obj/structure/vampdoor/old
 	icon_state = "old-1"
 	baseicon = "old"
 
@@ -471,7 +473,9 @@
 	locked = TRUE
 	lock_id = "npc"
 	burnable = TRUE
-	hack_difficulty = 3*/ //[Lucifernix] - Commented out because I'm remaking these into something more standardized.
+	hack_difficulty = 3
+*/
+// [Lucifernix] - The new types of doors begin here. All the doros above are unneeded but kept just in case.
 
 /obj/structure/vampdoor/level1wood
 	icon_state = "wood-1"
@@ -533,7 +537,7 @@
 	lockpick_difficulty = 4
 	lockpicktimer = 20
 
-/obj/structure/vampdoor/level2old
+/obj/structure/vampdoor/level2oldwood
 	icon_state = "oldwood-1"
 	baseicon ="oldwood"
 	desc = "This door is mildly complicated. It wouldn't be hard to lockpick."
@@ -616,8 +620,8 @@
 	lockpicktimer = 26
 
 /obj/structure/vampdoor/level5glass
-	icon_state = "cam-1"
-	baseicon = "cam"
+	icon_state = "glass-1"
+	baseicon = "glass"
 	desc = "This door looks very complicated. It would be very difficult to lockpick."
 	glass = TRUE
 	opacity = FALSE
