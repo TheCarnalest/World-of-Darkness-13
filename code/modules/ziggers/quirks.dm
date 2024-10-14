@@ -533,7 +533,7 @@ Dancer
 
 /datum/quirk/Japanese/add()
 	var/mob/living/carbon/H = quirk_holder
-	H.grant_language(/datum/language/nekomimetic)
+	H.grant_language(/datum/language/Japanese)
 
 /datum/quirk/italian
 	name = "Italian"

@@ -1156,7 +1156,7 @@
 
 /obj/item/storage/box/gum
 	name = "bubblegum packet"
-	desc = "The packaging is entirely in japanese, apparently. You can't make out a single word of it."
+	desc = "The packaging is entirely in Japanese, apparently. You can't make out a single word of it."
 	icon_state = "bubblegum_generic"
 	w_class = WEIGHT_CLASS_TINY
 	illustration = null

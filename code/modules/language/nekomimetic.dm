@@ -10,5 +10,5 @@
 		"sou", "baka", "chan", "san", "konbini", "mahou", "shoujo", "aokagarete", "usagi", "domo", "ori",
 		"oishii", "nani", "shika", "noko", "nara", "koshi", "tan"
 	)
-	icon_state = "japanese"
+	icon_state = "Japanese"
 	default_priority = 90
