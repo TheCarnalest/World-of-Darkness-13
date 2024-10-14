@@ -30,7 +30,7 @@ SUBSYSTEM_DEF(bad_guys_party)
 /datum/controller/subsystem/bad_guys_party/proc/GetAntagJob(var/rank)
 	return jobs[rank]
 
-/datum/controller/subsystem/bad_guys_party/proc/get_niggers(var/level)
+/datum/controller/subsystem/bad_guys_party/proc/get_badguys(var/level)
 	switch(level)
 		if(1)
 			if(prob(20))
@@ -133,18 +133,18 @@ SUBSYSTEM_DEF(bad_guys_party)
 			return
 		else
 			if(SSmasquerade.total_level <= 500)
-				get_niggers(2)
+				get_badguys(2)
 			else
 				switch(threat)
 					if(0 to 10)
 						//ANYONE
 						if(prob(100-threat))
-							get_niggers(rand(1, 3))
+							get_badguys(rand(1, 3))
 					if(11 to 40)
 						//HUNT OR CAITIFF
 						if(prob(100-threat))
-							get_niggers(rand(1, 2))
+							get_badguys(rand(1, 2))
 					if(41 to 70)
 						//CAITIFF ONLY
 						if(prob(100-threat))
-							get_niggers(1)
+							get_badguys(1)

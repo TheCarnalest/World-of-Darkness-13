@@ -92,7 +92,7 @@ GLOBAL_LIST_INIT(caesar_cipher,
 	layer = CAR_LAYER
 	density = TRUE
 	pixel_w = -8
-	var/password = "NIGGERS"
+	var/password = "Brongus"
 	var/passkey = 5
 
 /obj/sarcophagus/attackby(obj/item/I, mob/living/user, params)

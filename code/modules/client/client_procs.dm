@@ -258,9 +258,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	var/full_version = "[byond_version].[byond_build ? byond_build : "xxx"]"
 	log_access("Login: [key_name(src)] from [address ? address : "localhost"]-[computer_id] || BYOND v[full_version]")
-	for(var/i in GLOB.niggers)
-		if(i == "[ckey]")
-			qdel(src)
 
 	var/alert_mob_dupe_login = FALSE
 	if(CONFIG_GET(flag/log_access))
