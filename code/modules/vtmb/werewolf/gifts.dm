@@ -282,7 +282,7 @@
 
 /datum/action/gift/blur_of_the_milky_eye
 	name = "Blur Of The Milky Eye"
-	desc = "The Garou’s form becomes a shimmering blur, allowing him to pass unnoticed among others."
+	desc = "The Garouï¿½s form becomes a shimmering blur, allowing him to pass unnoticed among others."
 	button_icon_state = "blur_of_the_milky_eye"
 	gnosis_req = 1
 
@@ -309,7 +309,7 @@
 		for(var/obj/structure/vampdoor/V in range(5, owner))
 			if(V)
 				if(V.closed)
-					if(V.hack_difficulty < 6)
+					if(V.lockpick_difficulty < 6)
 						V.locked = FALSE
 						playsound(V, V.open_sound, 75, TRUE)
 						V.icon_state = "[V.baseicon]-0"

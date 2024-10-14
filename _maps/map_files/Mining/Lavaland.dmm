@@ -119,7 +119,7 @@
 "pl" = (/obj/effect/turf_decal/siding/wood{dir = 8; icon_state = "siding_wood_line"},/obj/structure/curtain/cloth/fancy,/turf/open/floor/plating/vampwood{umbra = 1},/area/vtm/interior/penumbra)
 "pA" = (/obj/structure/chair/greyscale,/turf/open/floor/plating/rough{umbra = 1},/area/vtm/interior/penumbra)
 "pT" = (/obj/item/clothing/mask/gas/clown_hat{anchored = 1},/obj/item/clothing/head/crown{anchored = 1; pixel_y = 6},/turf/open/floor/plating/vampwood{umbra = 1},/area/vtm/interior/penumbra)
-"pW" = (/obj/structure/guillotine,/mob/living/simple_animal/hostile/asteroid/wolf{aggro_vision_range = 0; anchored = 1; stop_automated_movement = 1; stop_automated_movement_when_pulled = 1; health = 0},/turf/open/floor/plating/vampwood{umbra = 1},/area/vtm/interior/penumbra)
+"pW" = (/obj/structure/guillotine,/turf/open/floor/plating/vampwood{umbra = 1},/area/vtm/interior/penumbra)
 "pX" = (/obj/effect/turf_decal/siding/wood{dir = 4; icon_state = "siding_wood_line"},/obj/structure/curtain/cloth/fancy,/turf/open/floor/plating/vampwood{umbra = 1},/area/vtm/interior/penumbra)
 "qb" = (/turf/open/floor/plating/sidewalk{umbra = 1},/area/vtm/interior/penumbra)
 "qf" = (/turf/open/floor/plasteel/stairs/medium{dir = 8; umbra = 1},/area/vtm/interior/penumbra)

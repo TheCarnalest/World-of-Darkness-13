@@ -817,9 +817,9 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	var/radio_messages = list("[pick_list_replacements(HAL_LINES_FILE, "people")] - [pick_list_replacements(HAL_LINES_FILE, "accusations")]!",\
 		"Помогите!",\
 		"[pick_list_replacements(HAL_LINES_FILE, "threat")] [pick_list_replacements(HAL_LINES_FILE, "location")][prob(50)?"!":"!!"]",\
-		"[pick("Куда малкавианин подевался?", "Поставьте на малкавианина аррест!")]",\
+		"[pick("Where did the Malkavian go?", "Put the Malkavian under arrest!")]",\
 		"Убегаем отсюда!",\
-		"Князь [pick("предатель", "мёртв")]!!")
+		"Prince [pick("traitor", "dead")]!!")
 
 	var/mob/living/carbon/person = null
 	var/datum/language/understood_language = target.get_random_understood_language()
