@@ -1,14 +1,14 @@
-/datum/language/nekomimetic
-	name = "Nekomimetic"
-	desc = "To the casual observer, this langauge is an incomprehensible mess of broken Japanese. To the felinids, it's somehow comprehensible."
-	key = "f"
+/datum/language/Japanese
+	name = "Japanese"
+	desc = "The language of the nipponese people, from the empire of the rising sun."
+	key = "j"
 	space_chance = 70
 	syllables = list(
-		"neko", "nyan", "mimi", "moe", "mofu", "fuwa", "kyaa", "kawaii", "poka", "munya",
-		"puni", "munyu", "ufufu", "uhuhu", "icha", "doki", "kyun", "kusu", "nya", "nyaa",
-		"desu", "kis", "ama", "chuu", "baka", "hewo", "boop", "gato", "kit", "sune", "yori",
-		"sou", "baka", "chan", "san", "kun", "mahou", "yatta", "suki", "usagi", "domo", "ori",
-		"uwa", "zaazaa", "shiku", "puru", "ira", "heto", "etto"
+		"omae", "wa", "shin", "moe", "kore", "mizu", "doko", "waka", "poka", "buchoo",
+		"puni", "kareshi", "kanojo", "niku", "icha", "doki", "kyun", "tamago", "ocha", "ni",
+		"desu", "kis", "yonju", "chuu", "baka", "des", "genki", "sugoi", "kudasai", "sune", "yori",
+		"sou", "baka", "chan", "san", "konbini", "mahou", "shoujo", "aokagarete", "usagi", "domo", "ori",
+		"oishii", "nani", "shika", "noko", "nara", "koshi", "tan"
 	)
-	icon_state = "neko"
+	icon_state = "japanese"
 	default_priority = 90

@@ -501,7 +501,7 @@ Dancer
 
 /datum/quirk/espanol
 	name = "Espanol"
-	desc = "You know Spanish language."
+	desc = "You know the Spanish language."
 	value = 1
 
 /datum/quirk/espanol/add()
@@ -510,7 +510,7 @@ Dancer
 
 /datum/quirk/chinese
 	name = "Chinese"
-	desc = "You know Chinese language."
+	desc = "You know the Chinese language."
 	value = 1
 
 /datum/quirk/chinese/add()
@@ -519,16 +519,25 @@ Dancer
 
 /datum/quirk/russian
 	name = "Russian"
-	desc = "You know Russian language."
+	desc = "You know the Russian language."
 	value = 1
 
 /datum/quirk/russian/add()
 	var/mob/living/carbon/H = quirk_holder
 	H.grant_language(/datum/language/moffic)
 
+/datum/quirk/Japanese
+	name = "Japanese"
+	desc = "You know the Japanese language."
+	value = 1
+
+/datum/quirk/Japanese/add()
+	var/mob/living/carbon/H = quirk_holder
+	H.grant_language(/datum/language/nekomimetic)
+
 /datum/quirk/italian
 	name = "Italian"
-	desc = "You know Italian language."
+	desc = "You know the Italian language."
 	value = 1
 
 /datum/quirk/italian/add()
