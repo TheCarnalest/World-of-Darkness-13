@@ -194,13 +194,16 @@
 	var/glass = FALSE
 	var/hackable = TRUE
 	var/hacking = FALSE
+	var/lockpicktimer = 7
+	var/hack_difficulty = 0 //[Lucifernix] - This must be removed when all the doors are fixed on the map.
 
 	var/open_sound = 'code/modules/ziggers/sounds/door_open.ogg'
 	var/close_sound = 'code/modules/ziggers/sounds/door_close.ogg'
 	var/lock_sound = 'code/modules/ziggers/sounds/door_locked.ogg'
 	var/burnable = FALSE
 
-	var/hack_difficulty = 1
+	var/potence_punchable = FALSE
+	var/lockpick_difficulty = 1
 
 /obj/structure/vampdoor/attack_hand(mob/user)
 	. = ..()
@@ -213,7 +216,7 @@
 			if(ishuman(user))
 				var/mob/living/carbon/human/H = user
 				if(H.potential >= 3)
-					if(hackable)
+					if(potence_punchable == TRUE)
 						playsound(get_turf(src), 'code/modules/ziggers/sounds/get_bent.ogg', 100, FALSE)
 						var/obj/item/shield/door/D = new(get_turf(src))
 						D.icon_state = baseicon
@@ -263,36 +266,35 @@
 
 /obj/structure/vampdoor/attackby(obj/item/W, mob/living/user, params)
 	if(istype(W, /obj/item/vamp/keys/hack))
-		if(locked && !hacking)
-			var/additional_level = 0
-			if(HAS_TRAIT(user, TRAIT_BONE_KEY))
-				additional_level = 1
-			if(user.mentality+additional_level >= hack_difficulty)
-				hacking = TRUE
-				playsound(src, 'code/modules/ziggers/sounds/hack.ogg', 100, TRUE)
-				for(var/mob/living/carbon/human/npc/police/P in oviewers(7, src))
-					if(P)
-						P.Aggro(user)
-				if(do_mob(user, src, 7 SECONDS))
-					if(prob(25) || HAS_TRAIT(user, TRAIT_BONE_KEY))
-						to_chat(user, "<span class='notice'>You pick the lock.</span>")
-						locked = FALSE
-						hacking = FALSE
-//						if(initial(lock_id) == "npc")
-//							if(ishuman(user))
-//								var/mob/living/carbon/human/H = user
-//								H.AdjustHumanity(-1, 6)
-						return
-					else
-						to_chat(user, "<span class='warning'>You failed to pick the lock.</span>")
-						hacking = FALSE
-						return
+		if(locked)
+			hacking = TRUE
+			playsound(src, 'code/modules/ziggers/sounds/hack.ogg', 100, TRUE)
+			for(var/mob/living/carbon/human/npc/police/P in oviewers(7, src))
+				if(P)
+					P.Aggro(user)
+			if(do_mob(user, src, (lockpicktimer-user.lockpicking*2) SECONDS))
+				var/roll = rand(1, 20) + (user.lockpicking*2) - lockpick_difficulty
+				if(roll <=1)
+					to_chat(user, "<span class='warning'>Your lockpick broke!</span>")
+					qdel(W)
+					hacking = FALSE
+				if(roll >=10)
+					to_chat(user, "<span class='notice'>You pick the lock.</span>")
+					locked = FALSE
+					hacking = FALSE
+//					if(initial(lock_id) == "npc")
+//						if(ishuman(user))
+//							var/mob/living/carbon/human/H = user
+//							H.AdjustHumanity(-1, 6)
+					return
+
 				else
 					to_chat(user, "<span class='warning'>You failed to pick the lock.</span>")
 					hacking = FALSE
 					return
 			else
-				to_chat(user, "<span class='warning'>This lock is too complicated to pick.</span>")
+				to_chat(user, "<span class='warning'>You failed to pick the lock.</span>")
+				hacking = FALSE
 				return
 		else
 			return
@@ -315,10 +317,11 @@
 
 /obj/item/vamp/keys/hack
 	name = "\improper lockpick"
-	desc = "Those can open some doors. Illegaly..."
+	desc = "Those can open some doors. Illegally..."
 	icon_state = "hack"
 	item_flags = NOBLUDGEON
 
+/*
 /obj/structure/vampdoor/old
 	icon_state = "old-1"
 	baseicon = "old"
@@ -471,11 +474,201 @@
 	lock_id = "npc"
 	burnable = TRUE
 	hack_difficulty = 3
+*/
+// [Lucifernix] - The new types of doors begin here. All the doros above are unneeded but kept just in case.
 
+/obj/structure/vampdoor/level1wood
+	icon_state = "wood-1"
+	baseicon = "wood"
+	desc = "This door is really simple. Anyone could try to lockpick it."
+	burnable = TRUE
+	potence_punchable = TRUE
+	lockpick_difficulty = 2
+	lockpicktimer = 17 // [Lucifernix] - Never have the lockpick timer lower than 7. At 7 it will unlock instantly!!
+
+/obj/structure/vampdoor/level1cam
+	icon_state = "cam-1"
+	baseicon = "cam"
+	desc = "This door is really simple. Anyone could try to lockpick it."
+	burnable = TRUE
+	potence_punchable = TRUE
+	lockpick_difficulty = 2
+	lockpicktimer = 17
+
+/obj/structure/vampdoor/level1old
+	icon_state = "old-1"
+	baseicon = "old"
+	desc = "This door is really simple. Anyone could try to lockpick it."
+	burnable = TRUE
+	potence_punchable = TRUE
+	lockpick_difficulty = 2
+	lockpicktimer = 17
+
+/obj/structure/vampdoor/level1oldwood
+	icon_state = "oldwood-1"
+	baseicon = "oldwood"
+	desc = "This door is really simple. Anyone could try to lockpick it."
+	burnable = TRUE
+	potence_punchable = TRUE
+	lockpick_difficulty = 2
+	lockpicktimer = 17
+
+/obj/structure/vampdoor/level2wood
+	icon_state = "wood-1"
+	baseicon ="wood"
+	desc = "This door is mildly complicated. It wouldn't be hard to lockpick."
+	potence_punchable = TRUE
+	lockpick_difficulty = 4
+	lockpicktimer = 20
+
+/obj/structure/vampdoor/level2cam
+	icon_state = "cam-1"
+	baseicon = "cam"
+	desc = "This door looks complicated. It would be slightly difficult to lockpick."
+	potence_punchable = TRUE
+	lockpick_difficulty = 4
+	lockpicktimer = 20
+
+/obj/structure/vampdoor/level2old
+	icon_state = "old-1"
+	baseicon ="old"
+	desc = "This door is mildly complicated. It wouldn't be hard to lockpick."
+	potence_punchable = TRUE
+	lockpick_difficulty = 4
+	lockpicktimer = 20
+
+/obj/structure/vampdoor/level2oldwood
+	icon_state = "oldwood-1"
+	baseicon ="oldwood"
+	desc = "This door is mildly complicated. It wouldn't be hard to lockpick."
+	potence_punchable = TRUE
+	lockpick_difficulty = 4
+	lockpicktimer = 20
+
+/obj/structure/vampdoor/level3wood
+	icon_state = "wood-1"
+	baseicon = "wood"
+	desc = "This door looks complicated. It would be slightly difficult to lockpick."
+	potence_punchable = TRUE
+	lockpick_difficulty = 6
+	lockpicktimer = 22
+
+/obj/structure/vampdoor/level3glass
+	icon_state = "glass-1"
+	baseicon = "glass"
+	desc = "This door looks complicated. It would be slightly difficult to lockpick."
+	glass = TRUE
+	opacity = FALSE
+	potence_punchable = TRUE
+	lockpick_difficulty = 6
+	lockpicktimer = 22
+
+/obj/structure/vampdoor/level3cam
+	icon_state = "cam-1"
+	baseicon = "cam"
+	desc = "This door looks complicated. It would be slightly difficult to lockpick."
+	potence_punchable = TRUE
+	lockpick_difficulty = 6
+	lockpicktimer = 22
+
+/obj/structure/vampdoor/level4wood
+	icon_state = "wood-1"
+	baseicon = "wood"
+	desc = "This door looks rather complicated. It would be difficult to lockpick."
+	potence_punchable = TRUE
+	lockpick_difficulty = 8
+	lockpicktimer = 24
+
+/obj/structure/vampdoor/level4cam
+	icon_state = "cam-1"
+	baseicon = "cam"
+	desc = "This door looks rather complicated. It would be difficult to lockpick."
+	potence_punchable = TRUE
+	lockpick_difficulty = 8
+	lockpicktimer = 24
+
+/obj/structure/vampdoor/level4glass
+	icon_state = "glass-1"
+	baseicon = "glass"
+	desc = "This door looks rather complicated. It would be difficult to lockpick."
+	glass = TRUE
+	opacity = FALSE
+	lockpick_difficulty = 8
+	lockpicktimer = 24
+
+/obj/structure/vampdoor/level5wood
+	icon_state = "wood-1"
+	baseicon = "wood"
+	desc = "This door looks very complicated. It would be very difficult to lockpick."
+	lockpick_difficulty = 10
+	lockpicktimer = 26
+
+/obj/structure/vampdoor/level5cam
+	icon_state = "cam-1"
+	baseicon = "cam"
+	desc = "This door looks very complicated. It would be very difficult to lockpick."
+	lockpick_difficulty = 10
+	lockpicktimer = 26
+
+/obj/structure/vampdoor/level5shop
+	icon_state = "shop-1"
+	baseicon = "shop"
+	desc = "This door looks very complicated. It would be very difficult to lockpick."
+	glass = TRUE
+	opacity = FALSE
+	lockpick_difficulty = 10
+	lockpicktimer = 26
+
+/obj/structure/vampdoor/level5glass
+	icon_state = "glass-1"
+	baseicon = "glass"
+	desc = "This door looks very complicated. It would be very difficult to lockpick."
+	glass = TRUE
+	opacity = FALSE
+	lockpick_difficulty = 10
+	lockpicktimer = 26
+
+/obj/structure/vampdoor/level6cam
+	icon_state = "cam-1"
+	baseicon = "cam"
+	desc = "This door looks extremely complicated. It would require a master to lockpick."
+	lockpick_difficulty = 10
+	lockpicktimer = 28
+
+/obj/structure/vampdoor/level6reinf
+	icon_state = "reinf-1"
+	baseicon = "reinf"
+	desc = "This door looks extremely complicated. It would require a master to lockpick."
+	lockpick_difficulty = 10
+	lockpicktimer = 28
+
+/obj/structure/vampdoor/level6glass
+	icon_state = "glass-1"
+	baseicon = "glass"
+	desc = "This door looks extremely complicated. It would require a master to lockpick."
+	lockpick_difficulty = 10
+	lockpicktimer = 28
+
+/obj/structure/vampdoor/level6shop
+	icon_state = "shop-1"
+	baseicon = "shop"
+	desc = "This door looks extremely complicated. It would require a master to lockpick."
+	glass = TRUE
+	opacity = FALSE
+	lockpick_difficulty = 10
+	lockpicktimer = 28
+
+/obj/structure/vampdoor/level7reinf
+	icon_state = "reinf-1"
+	baseicon = "reinf"
+	desc = "This door looks legendarily complex. Is it even possible to lockpick it?"
+	lockpick_difficulty = 12
+	lockpicktimer = 30
 /obj/structure/vampdoor/npc/Initialize()
 	. = ..()
 	lock_id = "npc[rand(1, 20)]"
 
+/*
 /obj/structure/vampdoor/police
 	icon_state = "cam-1"
 	baseicon = "cam"
@@ -533,4 +726,4 @@
 	lock_id = "old_clan_tzimisce"
 	burnable = FALSE
 	hackable = FALSE
-	hack_difficulty = 5
+	hack_difficulty = 5*/
