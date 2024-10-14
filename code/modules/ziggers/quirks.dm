@@ -45,13 +45,14 @@ Dancer
 	gain_text = "<span class='notice'>You feel more experienced about cars.</span>"
 	lose_text = "<span class='warning'>You feel more clueless about cars.</span>"
 
-/datum/quirk/bone_key
+/*/datum/quirk/bone_key
 	name = "Bone Key"
 	desc = "You know much more about door locks, and always have a tool for them."
 	mob_trait = TRAIT_BONE_KEY
 	value = 3
 	gain_text = "<span class='notice'>You feel more experienced in lockery.</span>"
 	lose_text = "<span class='warning'>You feel more clueless in lockery.</span>"
+*/
 
 /datum/quirk/annonymus
 	name = "Anonymous"
