@@ -1,4 +1,4 @@
-/mob/dead/observer/DblClickOn(atom/A, params)
+/*/mob/dead/observer/DblClickOn(atom/A, params)
 	//if(check_click_intercept(params, A))
 		//return
 
@@ -16,12 +16,12 @@
 	if(!aghosted)
 		return FALSE
 
-	if(ismovable(A))
+	if(ismovable(A))					[Lucifernix] - All this code has a bug where jumping into dark spaces makes your screen dark. Needs fixing before allowing this.
 		ManualFollow(A)
 
 	// Otherwise jump
 	//else if(A.loc)
-
+*/
 
 /mob/dead/observer/ClickOn(atom/A, params)
 	if(check_click_intercept(params,A))
