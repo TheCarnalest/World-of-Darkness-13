@@ -123,7 +123,6 @@
 		dat += "<b>Physique</b>: [host.physique]<BR>"
 		dat += "<b>Social</b>: [host.social]<BR>"
 		dat += "<b>Mentality</b>: [host.mentality]<BR>"
-		dat += "<b>Lockpicking</b>: [host.lockpicking]<BR>"
 		dat += "<b>Cruelty</b>: [host.blood]<BR>"
 		if(host.hud_used)
 			dat += "<b>Known disciplines:</b><BR>"
