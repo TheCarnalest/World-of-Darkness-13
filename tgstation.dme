@@ -14,7 +14,6 @@
 
 // BEGIN_INCLUDE
 #include "_maps\_basemap.dm"
-#include "_maps\map_files\Vampire\KindredCity2.dmm"
 #include "code\__byond_version_compat.dm"
 #include "code\_compile_options.dm"
 #include "code\world.dm"
@@ -3369,12 +3368,12 @@
 #include "code\modules\vtmb\vampire_clane\malkavian.dm"
 #include "code\modules\vtmb\vampire_clane\ministry.dm"
 #include "code\modules\vtmb\vampire_clane\nosferatu.dm"
-#include "code\modules\vtmb\vampire_clane\old_clan_tzimisce.dm"
 #include "code\modules\vtmb\vampire_clane\salubri.dm"
 #include "code\modules\vtmb\vampire_clane\toreador.dm"
 #include "code\modules\vtmb\vampire_clane\tremere.dm"
 #include "code\modules\vtmb\vampire_clane\tzimisce.dm"
 #include "code\modules\vtmb\vampire_clane\ventrue.dm"
+#include "code\modules\vtmb\vampire_clane\old_clan_tzimisce.dm"
 #include "code\modules\vtmb\werewolf\auspice.dm"
 #include "code\modules\vtmb\werewolf\gifts.dm"
 #include "code\modules\vtmb\werewolf\spiral_antag.dm"
