@@ -179,7 +179,7 @@
 			if(!repairing)
 				repairing = TRUE
 				if(do_mob(user, src, 20 SECONDS))
-					if(prob(25) || HAS_TRAIT(user, TRAIT_BONE_KEY))
+					if(prob(25)) // TODO: implement new lockpicking mechanics
 						locked = FALSE
 						repairing = FALSE
 						to_chat(user, "<span class='notice'>You've managed to open [src]'s lock.</span>")
@@ -201,7 +201,6 @@
 					to_chat(user, "<span class='warning'>You've failed to open [src]'s lock.</span>")
 					repairing = FALSE
 					return
-				return
 			return
 		if(K.accesslocks)
 			for(var/i in K.accesslocks)
@@ -224,7 +223,6 @@
 				to_chat(user, "<span class='warning'>You failed to repair [src].</span>")
 				repairing = FALSE
 				return
-			return
 		return
 
 	else
@@ -436,7 +434,6 @@
 			else
 				to_chat(owner, "<span class='warning'>You failed to start [V]'s engine.</span>")
 				return
-			return
 		else
 			V.on = FALSE
 			playsound(V, 'code/modules/ziggers/sounds/stop.ogg', 50, TRUE)

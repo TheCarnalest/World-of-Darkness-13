@@ -1,3 +1,18 @@
+#define LOCKDIFFICULTY_1 2
+#define LOCKTIMER_1 17
+#define LOCKDIFFICULTY_2 4
+#define LOCKTIMER_2 20
+#define LOCKDIFFICULTY_3 6
+#define LOCKTIMER_3 22
+#define LOCKDIFFICULTY_4 8
+#define LOCKTIMER_4 24
+#define LOCKDIFFICULTY_5 10
+#define LOCKTIMER_5 26
+#define LOCKDIFFICULTY_6 11 //originally should have been 10, but that wouldn't work unless locktimer is explicitly declared beforehand, which it won't be
+#define LOCKTIMER_6 28
+#define LOCKDIFFICULTY_7 12
+#define LOCKTIMER_7 30
+
 /obj/item/vamp/keys
 	name = "\improper keys"
 	desc = "Those can open some doors."
@@ -9,7 +24,9 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	onflooricon = 'code/modules/ziggers/onfloor.dmi'
 
-	var/list/accesslocks = list("nothing")
+	var/list/accesslocks = list(
+		"nothing"
+	)
 	var/roundstart_fix = FALSE
 
 /obj/item/vamp/keys/camarilla
@@ -19,159 +36,233 @@
 
 /obj/item/vamp/keys/prince
 	name = "Prince's keys"
-	accesslocks = list("camarilla",
-											"prince",
-											"clerk",
-											"archive",
-											"milleniumCommon")
+	accesslocks = list(
+		"camarilla",
+		"prince",
+		"clerk",
+		"archive",
+		"milleniumCommon"
+	)
 	color = "#bd3327"
 
 /obj/item/vamp/keys/sheriff
 	name = "Sheriff's keys"
-	accesslocks = list("camarilla",
-											"prince",
-											"archive",
-											"milleniumCommon")
+	accesslocks = list(
+		"camarilla",
+		"prince",
+		"archive",
+		"milleniumCommon"
+	)
 	color = "#bd3327"
 
 /obj/item/vamp/keys/clerk
 	name = "Clerk's keys"
-	accesslocks = list("camarilla",
-											"clerk",
-											"archive",
-											"milleniumCommon")
+	accesslocks = list(
+		"camarilla",
+		"clerk",
+		"archive",
+		"milleniumCommon"
+	)
 	color = "#bd3327"
 
 /obj/item/vamp/keys/graveyard
 	name = "Graveyard keys"
-	accesslocks = list("graveyard")
+	accesslocks = list(
+		"graveyard"
+	)
 
 /obj/item/vamp/keys/clinic
 	name = "Clinic keys"
-	accesslocks = list("clinic")
+	accesslocks = list(
+		"clinic"
+	)
 
 /obj/item/vamp/keys/cleaning
 	name = "Cleaning keys"
-	accesslocks = list("cleaning")
+	accesslocks = list(
+		"cleaning"
+	)
 
 /obj/item/vamp/keys/church
 	name = "Church keys"
-	accesslocks = list("church")
+	accesslocks = list(
+		"church"
+	)
 
 /obj/item/vamp/keys/archive
 	name = "Archive keys"
-	accesslocks = list("archive")
+	accesslocks = list(
+		"archive"
+	)
 
 /obj/item/vamp/keys/anarch
 	name = "Anarch keys"
-	accesslocks = list("anarch")
+	accesslocks = list(
+		"anarch"
+	)
 	color = "#434343"
 
 /obj/item/vamp/keys/bar
 	name = "Barkeeper keys"
-	accesslocks = list("bar",
-											"anarch",
-											"supply")
+	accesslocks = list(
+		"bar",
+		"anarch",
+		"supply"
+	)
 	color = "#434343"
 
 /obj/item/vamp/keys/supply
 	name = "Supply keys"
-	accesslocks = list("supply")
+	accesslocks = list(
+		"supply"
+	)
 	color = "#434343"
 
 /obj/item/vamp/keys/npc
 	name = "Some keys"
-	accesslocks = list("npc")
+	accesslocks = list(
+		"npc"
+	)
 
 /obj/item/vamp/keys/npc/Initialize()
 	. = ..()
-	accesslocks = list("npc[rand(1, 20)]")
+	accesslocks = list(
+		"npc[rand(1, 20)]"
+	)
 
 /obj/item/vamp/keys/npc/fix
 	roundstart_fix = TRUE
 
 /obj/item/vamp/keys/police
 	name = "Police keys"
-	accesslocks = list("police")
+	accesslocks = list(
+		"police"
+	)
 
 /obj/item/vamp/keys/strip
 	name = "Strip keys"
-	accesslocks = list("strip")
+	accesslocks = list(
+		"strip"
+	)
 
 /obj/item/vamp/keys/giovanni
 	name = "Mafia keys"
-	accesslocks = list("giovanni")
+	accesslocks = list(
+		"giovanni"
+	)
 
 /obj/item/vamp/keys/taxi
 	name = "Taxi keys"
-	accesslocks = list("taxi")
+	accesslocks = list(
+		"taxi"
+	)
 	color = "#fffb8b"
 
 /obj/item/vamp/keys/baali
 	name = "Satanic keys"
-	accesslocks = list("baali")
+	accesslocks = list(
+		"baali"
+	)
 
 /obj/item/vamp/keys/daughters
 	name = "Eclectic keys"
-	accesslocks = list("daughters")
+	accesslocks = list(
+		"daughters"
+	)
 
 /obj/item/vamp/keys/salubri
 	name = "Conspiracy keys"
-	accesslocks = list("salubri")
+	accesslocks = list(
+		"salubri"
+	)
 
 /obj/item/vamp/keys/old_clan_tzimisce
 	name = "Regal keys"
-	accesslocks = list("old_clan_tzimisce")
+	accesslocks = list(
+		"old_clan_tzimisce"
+	)
 
 /obj/item/vamp/keys/malkav
 	name = "Insane keys"
-	accesslocks = list("malkav")
+	accesslocks = list(
+		"malkav"
+	)
 	color = "#8cc4ff"
 
 /obj/item/vamp/keys/malkav/primogen
 	name = "Really insane keys"
-	accesslocks = list("primMalkav", "malkav")
+	accesslocks = list(
+		"primMalkav",
+		"malkav"
+	)
 	color = "#2c92ff"
 
 /obj/item/vamp/keys/toreador
 	name = "Sexy keys"
-	accesslocks = list("toreador")
+	accesslocks = list(
+		"toreador"
+	)
 	color = "#ffa7e6"
 
 /obj/item/vamp/keys/toreador/primogen
 	name = "Really sexy keys"
-	accesslocks = list("primToreador", "toreador")
+	accesslocks = list(
+		"primToreador",
+		"toreador"
+	)
 	color = "#ff2fc4"
 
 /obj/item/vamp/keys/nosferatu
 	name = "Ugly keys"
-	accesslocks = list("nosferatu")
+	accesslocks = list(
+		"nosferatu"
+	)
 	color = "#93bc8e"
 
 /obj/item/vamp/keys/nosferatu/primogen
 	name = "Really ugly keys"
-	accesslocks = list("primNosferatu", "nosferatu")
+	accesslocks = list(
+		"primNosferatu",
+		"nosferatu"
+	)
 	color = "#367c31"
 
 /obj/item/vamp/keys/brujah
 	name = "Punk keys"
-	accesslocks = list("brujah")
+	accesslocks = list(
+		"brujah"
+	)
 	color = "#ecb586"
 
 /obj/item/vamp/keys/brujah/primogen
 	name = "Really punk keys"
-	accesslocks = list("primBrujah", "brujah")
+	accesslocks = list(
+		"primBrujah",
+		"brujah"
+	)
 	color = "#ec8f3e"
 
 /obj/item/vamp/keys/ventrue
 	name = "Businessy keys"
-	accesslocks = list("ventrue", "milleniumCommon")
+	accesslocks = list(
+		"ventrue",
+		"milleniumCommon"
+	)
 	color = "#f6ffa7"
 
 /obj/item/vamp/keys/ventrue/primogen
 	name = "Really businessy keys"
-	accesslocks = list("primVentrue", "ventrue", "milleniumCommon")
+	accesslocks = list(
+		"primVentrue",
+		"ventrue",
+		"milleniumCommon"
+	)
 	color = "#e8ff29"
+
+/obj/item/vamp/keys/hack
+	name = "\improper lockpick"
+	desc = "These can open some doors. Illegally..."
+	icon_state = "hack"
 
 /obj/structure/vampdoor
 	name = "\improper door"
@@ -192,10 +283,9 @@
 	var/locked = FALSE
 	var/lock_id = "nothing"
 	var/glass = FALSE
-	var/hackable = TRUE
 	var/hacking = FALSE
-	var/lockpicktimer = 7
-	var/hack_difficulty = 0 //[Lucifernix] - This must be removed when all the doors are fixed on the map.
+	var/lockpick_timer = 17 //[Lucifernix] - Never have the lockpick timer lower than 7. At 7 it will unlock instantly!!
+	var/lockpick_difficulty = 2
 
 	var/open_sound = 'code/modules/ziggers/sounds/door_open.ogg'
 	var/close_sound = 'code/modules/ziggers/sounds/door_close.ogg'
@@ -203,7 +293,42 @@
 	var/burnable = FALSE
 
 	var/potence_punchable = FALSE
-	var/lockpick_difficulty = 1
+
+/obj/structure/vampdoor/New()
+	..()
+
+	switch(lockpick_difficulty)
+		if(LOCKDIFFICULTY_1)
+			desc = "This door is really simple. Anyone could try to lockpick it."
+			lockpick_timer = LOCKTIMER_1
+			potence_punchable = TRUE
+
+		if(LOCKDIFFICULTY_2)
+			desc = "This door is mildly complicated. It wouldn't be hard to lockpick."
+			lockpick_timer = LOCKTIMER_2
+			potence_punchable = TRUE
+
+		if(LOCKDIFFICULTY_3)
+			desc = "This door looks complicated. It would be slightly difficult to lockpick."
+			lockpick_timer = LOCKTIMER_3
+			potence_punchable = TRUE
+
+		if(LOCKDIFFICULTY_4)
+			desc = "This door looks rather complicated. It would be difficult to lockpick."
+			lockpick_timer = LOCKTIMER_4
+
+		if(LOCKDIFFICULTY_5)
+			desc = "This door looks very complicated. It would be very difficult to lockpick."
+			lockpick_timer = LOCKTIMER_5
+
+		if(LOCKDIFFICULTY_6)
+			desc = "This door looks extremely complicated. It would require a master to lockpick."
+			lockpick_timer = LOCKTIMER_6
+
+		if(LOCKDIFFICULTY_7)
+			desc = "This door looks legendarily complex. Is it even possible to lockpick it?"
+			lockpick_timer = LOCKTIMER_7
+
 
 /obj/structure/vampdoor/attack_hand(mob/user)
 	. = ..()
@@ -272,7 +397,7 @@
 			for(var/mob/living/carbon/human/npc/police/P in oviewers(7, src))
 				if(P)
 					P.Aggro(user)
-			if(do_mob(user, src, (lockpicktimer-user.lockpicking*2) SECONDS))
+			if(do_mob(user, src, (lockpick_timer-user.lockpicking*2) SECONDS))
 				var/roll = rand(1, 20) + (user.lockpicking*2) - lockpick_difficulty
 				if(roll <=1)
 					to_chat(user, "<span class='warning'>Your lockpick broke!</span>")
@@ -315,13 +440,7 @@
 						to_chat(user, "[src] is now unlocked.")
 						locked = FALSE
 
-/obj/item/vamp/keys/hack
-	name = "\improper lockpick"
-	desc = "Those can open some doors. Illegally..."
-	icon_state = "hack"
-	item_flags = NOBLUDGEON
 
-/*
 /obj/structure/vampdoor/old
 	icon_state = "old-1"
 	baseicon = "old"
@@ -339,6 +458,7 @@
 	opacity = FALSE
 	baseicon = "prison"
 	glass = TRUE
+	lockpick_difficulty = 12
 
 /obj/structure/vampdoor/wood
 	icon_state = "wood-1"
@@ -348,7 +468,6 @@
 /obj/structure/vampdoor/wood/old
 	icon_state = "oldwood-1"
 	baseicon = "oldwood"
-	burnable = TRUE
 
 /obj/structure/vampdoor/glass
 	icon_state = "glass-1"
@@ -362,15 +481,14 @@
 	opacity = FALSE
 	baseicon = "shop"
 	glass = TRUE
-	hack_difficulty = 6
+	lockpick_difficulty = 10
 
 /obj/structure/vampdoor/camarilla
 	icon_state = "cam-1"
 	baseicon = "cam"
 	locked = TRUE
 	lock_id = "camarilla"
-	hackable = FALSE
-	hack_difficulty = 5
+	lockpick_difficulty = 8
 
 /obj/structure/vampdoor/clerk
 	icon_state = "shop-1"
@@ -378,9 +496,8 @@
 	baseicon = "shop"
 	glass = TRUE
 	locked = TRUE
-	hackable = FALSE
 	lock_id = "clerk"
-	hack_difficulty = 6
+	lockpick_difficulty = 10
 
 /obj/structure/vampdoor/prince
 	icon_state = "glass-1"
@@ -389,18 +506,16 @@
 	glass = TRUE
 	locked = TRUE
 	lock_id = "prince"
-	hackable = FALSE
 	burnable = TRUE
-	hack_difficulty = 6
+	lockpick_difficulty = 10
 
 /obj/structure/vampdoor/daughters
 	icon_state = "wood-1"
 	baseicon = "wood"
 	locked = TRUE
 	lock_id = "daughters"
-	hackable = FALSE
 	burnable = TRUE
-	hack_difficulty = 6
+	lockpick_difficulty = 10
 
 /obj/structure/vampdoor/graveyard
 	icon_state = "oldwood-1"
@@ -408,7 +523,7 @@
 	locked = TRUE
 	lock_id = "graveyard"
 	burnable = TRUE
-	hack_difficulty = 2
+	lockpick_difficulty = 2
 
 /obj/structure/vampdoor/church
 	icon_state = "oldwood-1"
@@ -416,8 +531,7 @@
 	locked = TRUE
 	lock_id = "church"
 	burnable = TRUE
-	hackable = FALSE
-	hack_difficulty = 6
+	lockpick_difficulty = 10
 
 /obj/structure/vampdoor/clinic
 	icon_state = "shop-1"
@@ -425,47 +539,43 @@
 	baseicon = "shop"
 	glass = TRUE
 	locked = TRUE
-	hackable = FALSE
 	lock_id = "clinic"
-	hack_difficulty = 3
+	lockpick_difficulty = 4
 
 /obj/structure/vampdoor/cleaning
 	icon_state = "reinf-1"
 	baseicon = "reinf"
 	locked = TRUE
-	hackable = FALSE
 	lock_id = "cleaning"
-	hack_difficulty = 3
+	lockpick_difficulty = 4
 
 /obj/structure/vampdoor/archive
 	icon_state = "old-1"
 	baseicon = "old"
 	locked = TRUE
 	lock_id = "archive"
-	hackable = FALSE
-	hack_difficulty = 6
+	lockpick_difficulty = 10
 
 /obj/structure/vampdoor/anarch
 	icon_state = "cam-1"
 	baseicon = "cam"
 	locked = TRUE
 	lock_id = "anarch"
-	hack_difficulty = 6
+	lockpick_difficulty = 10
 
 /obj/structure/vampdoor/bar
 	icon_state = "cam-1"
 	baseicon = "cam"
 	locked = TRUE
 	lock_id = "bar"
-	hackable = FALSE
-	hack_difficulty = 6
+	lockpick_difficulty = 10
 
 /obj/structure/vampdoor/supply
 	icon_state = "cam-1"
 	baseicon = "cam"
 	locked = TRUE
 	lock_id = "supply"
-	hack_difficulty = 5
+	lockpick_difficulty = 8
 
 /obj/structure/vampdoor/npc
 	icon_state = "wood-1"
@@ -473,224 +583,29 @@
 	locked = TRUE
 	lock_id = "npc"
 	burnable = TRUE
-	hack_difficulty = 3
-*/
-// [Lucifernix] - The new types of doors begin here. All the doros above are unneeded but kept just in case.
-
-/obj/structure/vampdoor/level1wood
-	icon_state = "wood-1"
-	baseicon = "wood"
-	desc = "This door is really simple. Anyone could try to lockpick it."
-	burnable = TRUE
-	potence_punchable = TRUE
-	lockpick_difficulty = 2
-	lockpicktimer = 17 // [Lucifernix] - Never have the lockpick timer lower than 7. At 7 it will unlock instantly!!
-
-/obj/structure/vampdoor/level1cam
-	icon_state = "cam-1"
-	baseicon = "cam"
-	desc = "This door is really simple. Anyone could try to lockpick it."
-	burnable = TRUE
-	potence_punchable = TRUE
-	lockpick_difficulty = 2
-	lockpicktimer = 17
-
-/obj/structure/vampdoor/level1old
-	icon_state = "old-1"
-	baseicon = "old"
-	desc = "This door is really simple. Anyone could try to lockpick it."
-	burnable = TRUE
-	potence_punchable = TRUE
-	lockpick_difficulty = 2
-	lockpicktimer = 17
-
-/obj/structure/vampdoor/level1oldwood
-	icon_state = "oldwood-1"
-	baseicon = "oldwood"
-	desc = "This door is really simple. Anyone could try to lockpick it."
-	burnable = TRUE
-	potence_punchable = TRUE
-	lockpick_difficulty = 2
-	lockpicktimer = 17
-
-/obj/structure/vampdoor/level2wood
-	icon_state = "wood-1"
-	baseicon ="wood"
-	desc = "This door is mildly complicated. It wouldn't be hard to lockpick."
-	potence_punchable = TRUE
 	lockpick_difficulty = 4
-	lockpicktimer = 20
 
-/obj/structure/vampdoor/level2cam
-	icon_state = "cam-1"
-	baseicon = "cam"
-	desc = "This door looks complicated. It would be slightly difficult to lockpick."
-	potence_punchable = TRUE
-	lockpick_difficulty = 4
-	lockpicktimer = 20
-
-/obj/structure/vampdoor/level2old
-	icon_state = "old-1"
-	baseicon ="old"
-	desc = "This door is mildly complicated. It wouldn't be hard to lockpick."
-	potence_punchable = TRUE
-	lockpick_difficulty = 4
-	lockpicktimer = 20
-
-/obj/structure/vampdoor/level2oldwood
-	icon_state = "oldwood-1"
-	baseicon ="oldwood"
-	desc = "This door is mildly complicated. It wouldn't be hard to lockpick."
-	potence_punchable = TRUE
-	lockpick_difficulty = 4
-	lockpicktimer = 20
-
-/obj/structure/vampdoor/level3wood
-	icon_state = "wood-1"
-	baseicon = "wood"
-	desc = "This door looks complicated. It would be slightly difficult to lockpick."
-	potence_punchable = TRUE
-	lockpick_difficulty = 6
-	lockpicktimer = 22
-
-/obj/structure/vampdoor/level3glass
-	icon_state = "glass-1"
-	baseicon = "glass"
-	desc = "This door looks complicated. It would be slightly difficult to lockpick."
-	glass = TRUE
-	opacity = FALSE
-	potence_punchable = TRUE
-	lockpick_difficulty = 6
-	lockpicktimer = 22
-
-/obj/structure/vampdoor/level3cam
-	icon_state = "cam-1"
-	baseicon = "cam"
-	desc = "This door looks complicated. It would be slightly difficult to lockpick."
-	potence_punchable = TRUE
-	lockpick_difficulty = 6
-	lockpicktimer = 22
-
-/obj/structure/vampdoor/level4wood
-	icon_state = "wood-1"
-	baseicon = "wood"
-	desc = "This door looks rather complicated. It would be difficult to lockpick."
-	potence_punchable = TRUE
-	lockpick_difficulty = 8
-	lockpicktimer = 24
-
-/obj/structure/vampdoor/level4cam
-	icon_state = "cam-1"
-	baseicon = "cam"
-	desc = "This door looks rather complicated. It would be difficult to lockpick."
-	potence_punchable = TRUE
-	lockpick_difficulty = 8
-	lockpicktimer = 24
-
-/obj/structure/vampdoor/level4glass
-	icon_state = "glass-1"
-	baseicon = "glass"
-	desc = "This door looks rather complicated. It would be difficult to lockpick."
-	glass = TRUE
-	opacity = FALSE
-	lockpick_difficulty = 8
-	lockpicktimer = 24
-
-/obj/structure/vampdoor/level5wood
-	icon_state = "wood-1"
-	baseicon = "wood"
-	desc = "This door looks very complicated. It would be very difficult to lockpick."
-	lockpick_difficulty = 10
-	lockpicktimer = 26
-
-/obj/structure/vampdoor/level5cam
-	icon_state = "cam-1"
-	baseicon = "cam"
-	desc = "This door looks very complicated. It would be very difficult to lockpick."
-	lockpick_difficulty = 10
-	lockpicktimer = 26
-
-/obj/structure/vampdoor/level5shop
-	icon_state = "shop-1"
-	baseicon = "shop"
-	desc = "This door looks very complicated. It would be very difficult to lockpick."
-	glass = TRUE
-	opacity = FALSE
-	lockpick_difficulty = 10
-	lockpicktimer = 26
-
-/obj/structure/vampdoor/level5glass
-	icon_state = "glass-1"
-	baseicon = "glass"
-	desc = "This door looks very complicated. It would be very difficult to lockpick."
-	glass = TRUE
-	opacity = FALSE
-	lockpick_difficulty = 10
-	lockpicktimer = 26
-
-/obj/structure/vampdoor/level6cam
-	icon_state = "cam-1"
-	baseicon = "cam"
-	desc = "This door looks extremely complicated. It would require a master to lockpick."
-	lockpick_difficulty = 10
-	lockpicktimer = 28
-
-/obj/structure/vampdoor/level6reinf
-	icon_state = "reinf-1"
-	baseicon = "reinf"
-	desc = "This door looks extremely complicated. It would require a master to lockpick."
-	lockpick_difficulty = 10
-	lockpicktimer = 28
-
-/obj/structure/vampdoor/level6glass
-	icon_state = "glass-1"
-	baseicon = "glass"
-	desc = "This door looks extremely complicated. It would require a master to lockpick."
-	lockpick_difficulty = 10
-	lockpicktimer = 28
-
-/obj/structure/vampdoor/level6shop
-	icon_state = "shop-1"
-	baseicon = "shop"
-	desc = "This door looks extremely complicated. It would require a master to lockpick."
-	glass = TRUE
-	opacity = FALSE
-	lockpick_difficulty = 10
-	lockpicktimer = 28
-
-/obj/structure/vampdoor/level7reinf
-	icon_state = "reinf-1"
-	baseicon = "reinf"
-	desc = "This door looks legendarily complex. Is it even possible to lockpick it?"
-	lockpick_difficulty = 12
-	lockpicktimer = 30
-/obj/structure/vampdoor/npc/Initialize()
-	. = ..()
-	lock_id = "npc[rand(1, 20)]"
-
-/*
 /obj/structure/vampdoor/police
 	icon_state = "cam-1"
 	baseicon = "cam"
 	locked = TRUE
 	lock_id = "police"
-	hack_difficulty = 4
+	lockpick_difficulty = 6
 
 /obj/structure/vampdoor/prison
 	icon_state = "prison-1"
 	baseicon = "prison"
 	locked = TRUE
 	glass = TRUE
-	hackable = FALSE
 	lock_id = "police"
-	hack_difficulty = 4
+	lockpick_difficulty = 6
 
 /obj/structure/vampdoor/strip
 	icon_state = "cam-1"
 	baseicon = "cam"
 	locked = TRUE
 	lock_id = "strip"
-	hack_difficulty = 3
+	lockpick_difficulty = 4
 
 /obj/structure/vampdoor/giovanni
 	icon_state = "wood-1"
@@ -698,8 +613,7 @@
 	locked = TRUE
 	lock_id = "giovanni"
 	burnable = TRUE
-	hackable = FALSE
-	hack_difficulty = 5
+	lockpick_difficulty = 8
 
 /obj/structure/vampdoor/baali
 	icon_state = "oldwood-1"
@@ -707,8 +621,7 @@
 	locked = TRUE
 	lock_id = "baali"
 	burnable = FALSE
-	hackable = FALSE
-	hack_difficulty = 5
+	lockpick_difficulty = 8
 
 /obj/structure/vampdoor/salubri
 	icon_state = "oldwood-1"
@@ -716,8 +629,7 @@
 	locked = TRUE
 	lock_id = "salubri"
 	burnable = FALSE
-	hackable = FALSE
-	hack_difficulty = 5
+	lockpick_difficulty = 8
 
 /obj/structure/vampdoor/old_clan_tzimisce
 	icon_state = "oldwood-1"
@@ -725,5 +637,8 @@
 	locked = TRUE
 	lock_id = "old_clan_tzimisce"
 	burnable = FALSE
-	hackable = FALSE
-	hack_difficulty = 5*/
+	lockpick_difficulty = 8
+
+/obj/structure/vampdoor/npc/Initialize()
+	. = ..()
+	lock_id = "npc[rand(1, 20)]"

@@ -412,7 +412,7 @@
 "YI" = (/obj/effect/decal/litter,/turf/open/floor/plating/vampcanal{umbra = 1},/area/vtm/interior/penumbra)
 "YN" = (/obj/effect/decal/bordur{dir = 1; icon_state = "border"},/turf/open/floor/plating/sidewalk/old{umbra = 1},/area/vtm/interior/penumbra)
 "YQ" = (/obj/structure/vampfence/rich{dir = 4; icon_state = "fence"; pixel_y = 8},/turf/open/floor/plating/concrete{umbra = 1},/area/vtm/interior/penumbra)
-"Zp" = (/obj/structure/vampdoor/prison{hack_difficulty = 8},/turf/open/floor/plating/concrete{umbra = 1},/area/vtm/interior/penumbra)
+"Zp" = (/obj/structure/vampdoor/prison{lockpick_difficulty = 12},/turf/open/floor/plating/concrete{umbra = 1},/area/vtm/interior/penumbra)
 "Zt" = (/obj/effect/decal/cardboard,/turf/open/floor/plating/rough{umbra = 1},/area/vtm/interior/penumbra)
 "Zu" = (/obj/structure/cable/layer1,/turf/open/floor/plating/rough{umbra = 1},/area/vtm/interior/penumbra)
 "Zw" = (/obj/effect/decal/bordur{dir = 1; icon_state = "border"},/obj/structure/chair/pew/right,/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/vtm/interior/penumbra)
