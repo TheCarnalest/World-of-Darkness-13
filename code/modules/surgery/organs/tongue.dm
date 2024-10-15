@@ -28,7 +28,7 @@
 		/datum/language/sylvan,
 		/datum/language/shadowtongue,
 		/datum/language/terrum,
-		/datum/language/nekomimetic
+		/datum/language/Japanese
 	))
 
 /obj/item/organ/tongue/Initialize(mapload)
@@ -112,7 +112,7 @@
 		/datum/language/sylvan,
 		/datum/language/shadowtongue,
 		/datum/language/terrum,
-		/datum/language/nekomimetic,
+		/datum/language/Japanese,
 		/datum/language/buzzwords
 	))
 
@@ -254,7 +254,7 @@
 		/datum/language/sylvan,
 		/datum/language/shadowtongue,
 		/datum/language/terrum,
-		/datum/language/nekomimetic,
+		/datum/language/Japanese,
 		/datum/language/calcic
 	))
 
@@ -333,7 +333,7 @@
 		/datum/language/sylvan,
 		/datum/language/shadowtongue,
 		/datum/language/terrum,
-		/datum/language/nekomimetic,
+		/datum/language/Japanese,
 		/datum/language/voltaic
 	))
 
