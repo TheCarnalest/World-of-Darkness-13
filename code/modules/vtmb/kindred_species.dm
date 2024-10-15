@@ -11,8 +11,8 @@
 	mutant_bodyparts = list("tail_human" = "None", "ears" = "None", "wings" = "None")
 	mutantbrain = /obj/item/organ/brain/vampire
 	brutemod = 0.5	// or change to 0.8
-	heatmod = 1.2		//Sucking due to overheating	///THEY DON'T SUCK FROM FIRE ANYMORE
-	burnmod = 2.5
+	heatmod = 1		//Sucking due to overheating	///THEY DON'T SUCK FROM FIRE ANYMORE
+	burnmod = 2
 	punchdamagelow = 10
 	punchdamagehigh = 20
 	dust_anim = "dust-h"
