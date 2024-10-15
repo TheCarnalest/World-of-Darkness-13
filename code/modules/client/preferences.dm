@@ -173,8 +173,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/mentality = 1
 	var/blood = 1
 
-	var/lockpicking = 0
-
 	var/friend = FALSE
 	var/enemy = FALSE
 	var/lover = FALSE
@@ -207,7 +205,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/physique = 1
 	var/social = 1
 	var/mentality = 1
-	var/lockpicking = 0
 	var/blood = 1
 
 /datum/preferences/proc/add_experience(var/amount)
@@ -235,7 +232,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			P.social = 1
 			P.mentality = 1
 			P.blood = 1
-			P.lockpicking = 0
 			P.archetype = pick(subtypesof(/datum/archetype))
 			var/datum/archetype/A = new P.archetype()
 			P.physique = A.start_physique
@@ -299,7 +295,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	physique = 1
 	social = 1
 	mentality = 1
-	lockpicking = 0
 	blood = 1
 	discipline1level = 1
 	discipline2level = 1
@@ -553,19 +548,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "<a href='?_src_=prefs;preference=social;task=input'>Increase ([3*social])</a>"
 			dat += "<BR>"
 			dat += "<b>Mentality:</b> •[mentality > 1 ? "•" : "o"][mentality > 2 ? "•" : "o"][mentality > 3 ? "•" : "o"][mentality > 4 ? "•" : "o"]([mentality])"
-
 			if(true_experience >= 3*mentality && mentality != 5)
 				dat += "<a href='?_src_=prefs;preference=mentality;task=input'>Increase ([3*mentality])</a>"
 			dat += "<BR>"
 			dat += "<b>Cruelty:</b> •[blood > 1 ? "•" : "o"][blood > 2 ? "•" : "o"][blood > 3 ? "•" : "o"][blood > 4 ? "•" : "o"]([blood])"
 			if(true_experience >= 6*blood && blood != 5)
 				dat += "<a href='?_src_=prefs;preference=blood;task=input'>Increase ([3*blood])</a>"
-			dat += "<BR>"
-			dat += "<b>Lockpicking:</b> [lockpicking > 0 ? "•" : "o"][lockpicking > 1 ? "•" : "o"][lockpicking > 2 ? "•" : "o"][lockpicking > 3 ? "•" : "o"][lockpicking > 4 ? "•" : "o"]([lockpicking])"
-			if(true_experience >=2 && lockpicking == 0)
-				dat+= "<a href='?_src_=prefs;preference=lockpicking;task=input'>Increase([2])</a>"
-			else if(true_experience>=2*lockpicking && lockpicking != 5 || lockpicking == 0 && true_experience >=2)
-				dat += "<a href='?_src_=prefs;preference=lockpicking;task=input'>Increase([2*lockpicking])</a>"
 			dat += "<BR>"
 			dat += "Experience rewarded: [true_experience]<BR>"
 			if(pref_species.name == "Werewolf")
@@ -2228,13 +2216,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(true_experience >= mentality*3 && mentality < 6)
 						true_experience = true_experience-mentality*3
 						mentality = min(5, mentality+1)
-				if("lockpicking")
-					if (lockpicking == 0)
-						true_experience = true_experience-2
-						lockpicking = min(5, lockpicking +1)
-					else if(true_experience >= lockpicking*2 && lockpicking < 6)
-						true_experience = true_experience - lockpicking*2
-						lockpicking = min(5, lockpicking+1)
+
 				if("blood")
 					if(true_experience >= blood*6 && blood < 6)
 						true_experience = true_experience-blood*6
@@ -2965,7 +2947,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					physique = 1
 					mentality = 1
 					social = 1
-					lockpicking = 0
 					blood = 1
 					masquerade = initial(masquerade)
 					generation = initial(generation)
@@ -3065,7 +3046,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	character.physique = physique
 	character.social = social
 	character.mentality = mentality
-	character.lockpicking = lockpicking
 	character.blood = blood
 
 	var/datum/archetype/A = new archetype()

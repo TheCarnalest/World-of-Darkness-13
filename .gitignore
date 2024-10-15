@@ -188,3 +188,5 @@ Temporary Items
 /tools/LinuxOneShot/TGS_Instances
 /tools/LinuxOneShot/TGS_Logs
 imgui.ini
+config/config.txt
+config/dbconfig.txt
