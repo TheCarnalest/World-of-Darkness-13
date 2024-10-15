@@ -5,20 +5,3 @@
 #If SQL-based admin loading is enabled, admins listed here will always be loaded first and will override any duplicate entries in the database.
 
 Akrolon = Host
-Athiny = Game Master
-Raikyh = Game Master
-pluviifera = Game Master
-agateophobia = Game Master
-Fourty2 = Game Master
-Heimy = Game Master
-CMDR Gungnir = Game Master
-NeepBeep666 = Game Master
-AmZee = Game Master
-Snek_the_great = Game Master
-Catandwet = Game Master
-DangitMaster = Game Master
-HomuHomu = Game Master
-Xilvah Phyre = Game Master
-Mr_fier = Game Master
-Suriyel = Game Master
-TheGel = Game Master
