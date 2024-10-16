@@ -7,6 +7,7 @@ SUBSYSTEM_DEF(humannpcpool)
 	wait = 30
 
 	var/list/currentrun = list()
+	var/npc_max = 130
 
 /datum/controller/subsystem/humannpcpool/stat_entry(msg)
 	var/list/activelist = GLOB.npc_list
@@ -40,7 +41,7 @@ SUBSYSTEM_DEF(humannpcpool)
 		NPC.handle_automated_movement()
 
 /datum/controller/subsystem/humannpcpool/proc/npclost()
-	if(length(GLOB.npc_list) < 50)
+	if(length(GLOB.npc_list) < npc_max)
 		var/atom/kal = pick(GLOB.npc_spawn_points)
 		var/NEPIS = pick(/mob/living/carbon/human/npc/police, /mob/living/carbon/human/npc/bandit, /mob/living/carbon/human/npc/hobo, /mob/living/carbon/human/npc/walkby, /mob/living/carbon/human/npc/business)
 		new NEPIS(get_turf(kal))
