@@ -45,6 +45,8 @@ Dancer
 	gain_text = "<span class='notice'>You feel more experienced about cars.</span>"
 	lose_text = "<span class='warning'>You feel more clueless about cars.</span>"
 
+//[Lucia] - commented out due to being made defunct by the lockpicking update
+/*
 /datum/quirk/bone_key
 	name = "Bone Key"
 	desc = "You know much more about door locks, and always have a tool for them."
@@ -52,6 +54,7 @@ Dancer
 	value = 3
 	gain_text = "<span class='notice'>You feel more experienced in lockery.</span>"
 	lose_text = "<span class='warning'>You feel more clueless in lockery.</span>"
+*/
 
 /datum/quirk/annonymus
 	name = "Anonymous"
