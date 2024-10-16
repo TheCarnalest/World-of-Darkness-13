@@ -7603,7 +7603,7 @@
 "uwr" = (/obj/effect/decal/cleanable/blood/old{icon_state = "ltrails_2-old"},/turf/open/floor/plating/rough/cave,/area/vtm/interior/mansion)
 "uwE" = (/obj/structure/vampdoor/simple{dir = 4; hack_difficulty = 4; hackable = 0; lock_id = "weedfarm"; locked = 1},/turf/open/floor/plating/concrete,/area/vtm/interior)
 "uwP" = (/obj/structure/closet/cardboard,/turf/open/floor/plating/vampbeach,/area/vtm/northbeach)
-"uwU" = (/obj/item/arcane_tome{desc = "The great fagot Nikola Tesla, sucked a lot, sank into a chair, he studied faggoting for many years"; name = "arcane tome of Tesla"},/turf/open/floor/plating/rough/cave,/area/vtm/interior)
+"uwU" = (/obj/item/arcane_tome{desc = "The great Electrodyne Engineer Nikola Tesla. He struck out against the Order of Reason with his genius, but was silenced by the powers that be."; name = "arcane tome of Tesla"},/turf/open/floor/plating/rough/cave,/area/vtm/interior)
 "uxM" = (/obj/item/paper{info = "Last warning. Go away!! Now..."},/turf/open/floor/plating/sidewalk/old,/area/vtm/pacificheights)
 "uyL" = (/obj/effect/decal/trash,/obj/effect/decal/litter,/turf/open/floor/plating/rough,/area/vtm/sewer)
 "uzj" = (/obj/item/paper{info = "My brothers and sisters, this part of the domain is ours. Go away."},/turf/open/floor/plating/vampdirt,/area/vtm/pacificheights)

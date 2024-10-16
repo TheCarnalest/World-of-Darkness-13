@@ -480,7 +480,7 @@
 			if(!target.spell_immunity)
 				to_chat(target, "<span class='userdanger'><b>YOU SHOULD HARM YOURSELF NOW</b></span>")
 				caster.say("YOU SHOULD HARM YOURSELF NOW!!")
-				var/datum/cb = CALLBACK(TRGT,/mob/living/carbon/human/proc/attack_myself_shit)
+				var/datum/cb = CALLBACK(TRGT,/mob/living/carbon/human/proc/attack_myself_command)
 				for(var/i in 1 to 20)
 					addtimer(cb, (i - 1)*15)
 	spawn(20)
@@ -636,7 +636,7 @@
 //			H.Immobilize(20)
 			new /datum/hallucination/death(H, TRUE)
 		if(5)
-			var/datum/cb = CALLBACK(H,/mob/living/carbon/human/proc/attack_myself_shit)
+			var/datum/cb = CALLBACK(H,/mob/living/carbon/human/proc/attack_myself_command)
 			for(var/i in 1 to 20)
 				addtimer(cb, (i - 1)*15)
 	spawn(delay+caster.discipline_time_plus)
@@ -745,23 +745,23 @@
 	fearless = TRUE
 
 /mob/living/carbon/human
-	var/mob/living/my_nigga
+	var/mob/living/caster
 
-/mob/living/carbon/human/proc/walk_to_my_nigga()
+/mob/living/carbon/human/proc/walk_to_caster()
 	walk(src, 0)
 	if(!CheckFrenzyMove())
 		set_glide_size(DELAY_TO_GLIDE_SIZE(total_multiplicative_slowdown()))
-		step_to(src,my_nigga,0)
-		face_atom(my_nigga)
+		step_to(src,caster,0)
+		face_atom(caster)
 
-/mob/living/carbon/human/proc/step_away_my_nigga()
+/mob/living/carbon/human/proc/step_away_caster()
 	walk(src, 0)
 	if(!CheckFrenzyMove())
 		set_glide_size(DELAY_TO_GLIDE_SIZE(total_multiplicative_slowdown()))
-		step_away(src,my_nigga,99)
-		face_atom(my_nigga)
+		step_away(src,caster,99)
+		face_atom(caster)
 
-/mob/living/carbon/human/proc/attack_myself_shit()
+/mob/living/carbon/human/proc/attack_myself_command()
 	if(!CheckFrenzyMove())
 		a_intent = INTENT_HARM
 		var/obj/item/I = get_active_held_item()
@@ -788,10 +788,10 @@
 		presence_overlay.pixel_z = 1
 		H.overlays_standing[MUTATIONS_LAYER] = presence_overlay
 		H.apply_overlay(MUTATIONS_LAYER)
-		H.my_nigga = caster
+		H.caster = caster
 		switch(level_casting)
 			if(1)
-				var/datum/cb = CALLBACK(H,/mob/living/carbon/human/proc/walk_to_my_nigga)
+				var/datum/cb = CALLBACK(H,/mob/living/carbon/human/proc/walk_to_caster)
 				for(var/i in 1 to 30)
 					addtimer(cb, (i - 1)*H.total_multiplicative_slowdown())
 				to_chat(target, "<span class='userlove'><b>COME HERE</b></span>")
@@ -818,7 +818,7 @@
 			if(4)
 				to_chat(target, "<span class='userlove'><b>FEAR ME</b></span>")
 				caster.say("FEAR ME!!")
-				var/datum/cb = CALLBACK(H,/mob/living/carbon/human/proc/step_away_my_nigga)
+				var/datum/cb = CALLBACK(H,/mob/living/carbon/human/proc/step_away_caster)
 				for(var/i in 1 to 30)
 					addtimer(cb, (i - 1)*H.total_multiplicative_slowdown())
 				target.emote("scream")
@@ -1639,7 +1639,7 @@
 	dead_restricted = FALSE
 
 /mob/living/carbon/human/proc/create_walk_to(var/max)
-	var/datum/cb = CALLBACK(src,/mob/living/carbon/human/proc/walk_to_my_nigga)
+	var/datum/cb = CALLBACK(src,/mob/living/carbon/human/proc/walk_to_caster)
 	for(var/i in 1 to max)
 		addtimer(cb, (i - 1)*total_multiplicative_slowdown())
 
@@ -1658,7 +1658,7 @@
 		if(3)
 			for(var/mob/living/carbon/human/HU in oviewers(7, caster))
 				if(HU)
-					HU.my_nigga = caster
+					HU.caster = caster
 					HU.create_walk_to(20)
 					HU.remove_overlay(MUTATIONS_LAYER)
 					var/mutable_appearance/song_overlay = mutable_appearance('code/modules/ziggers/icons.dmi', "song", -MUTATIONS_LAYER)

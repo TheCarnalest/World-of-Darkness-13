@@ -29,7 +29,7 @@
 	if(istype(get_area(src), /area/vtm))
 		V = get_area(src)
 		var/mob/living/carbon/human/H = src
-		if(V.zone_owner == H.frakcja)
+		if(V.zone_owner == H.vampire_faction)
 			return
 		for(var/mob/living/carbon/human/HU in SSbloodhunt.hunted)
 			if(HU)

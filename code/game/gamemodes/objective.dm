@@ -1054,6 +1054,6 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 		if(!ishuman(M.current))
 			continue
 		var/mob/living/carbon/human/L = M.current
-		if(L.last_repainted_mark == faction && L.frakcja == faction)
+		if(L.last_repainted_mark == faction && L.vampire_faction == faction)
 			return TRUE
 	return FALSE
