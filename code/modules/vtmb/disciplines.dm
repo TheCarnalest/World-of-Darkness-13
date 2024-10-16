@@ -1652,7 +1652,7 @@
 				new /datum/hallucination/chat(target, TRUE, FALSE, new_say)
 				to_chat(caster, "You throw \"[new_say]\" at [target]'s ears.")
 		if(2)
-			var/new_say = input(caster, "What will your target saey?") as text|null
+			var/new_say = input(caster, "What will your target say?") as text|null
 			if(new_say)
 				target.say("[new_say]")
 		if(3)
