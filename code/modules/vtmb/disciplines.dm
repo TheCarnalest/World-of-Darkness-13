@@ -1696,11 +1696,11 @@
 /datum/discipline/temporis
 	name = "Temporis"
 	desc = "Temporis is a Discipline unique to the True Brujah. Supposedly a refinement of Celerity, Temporis grants the Cainite the ability to manipulate the flow of time itself."
-	icon_state = "melpominee"
+	icon_state = "temporis"
 	cost = 1
 	ranged = TRUE
-	delay = 75
+	delay = 50
 	violates_masquerade = FALSE
-	activate_sound = 'code/modules/ziggers/sounds/melpominee.ogg'
+	activate_sound = 'code/modules/ziggers/sounds/temporis.ogg'
 	clane_restricted = TRUE
 	dead_restricted = FALSE
