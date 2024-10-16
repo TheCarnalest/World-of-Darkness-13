@@ -10,14 +10,14 @@ SUBSYSTEM_DEF(cityweather)
 	var/fogging = FALSE
 	var/snowing = FALSE
 
-/datum/controller/subsystem/cityweather/fire()
+/*/datum/controller/subsystem/cityweather/fire()
 	if(SScity_time.hour > 5 && SScity_time.hour < 21)
 		return
 
 	if(raining && length(GLOB.cleanable_list))
 		var/obj/effect/decal/cleanable/C = pick(GLOB.cleanable_list)
 		if(C)
-			qdel(C)
+			qdel(C)*/
 
 //	if(raining)
 //		var/turf/T = pick(affected_turfs)
@@ -140,11 +140,11 @@ SUBSYSTEM_DEF(cityweather)
 					animate(V, pixel_x = rand(-96, 96), pixel_y = rand(-96, 96), alpha = rand(5, 21), transform = matrix()*rand(1, 3), transform = turn(matrix(), rand(0, 360)), time = rand(100, 200), loop = -1)
 					animate(transform = null, pixel_x = 0, pixel_y = 0, alpha = rand(5, 21), time = rand(100, 200))
 
-/datum/controller/subsystem/cityweather/Initialize()
+/*/datum/controller/subsystem/cityweather/Initialize()
 	. = ..()
-	create_forecast()
+	create_forecast()*/
 
-/datum/controller/subsystem/cityweather/proc/create_forecast()
+/*/datum/controller/subsystem/cityweather/proc/create_forecast()
 	for(var/i in 1 to 9)
 		forecast += i
 		var/weather = "Clear"
@@ -180,7 +180,7 @@ SUBSYSTEM_DEF(cityweather)
 			if(9)
 				time = "05:00"
 		to_chat(user, "[time], [weath]")
-
+*/
 /obj/effect/realistic_fog
 	icon = 'code/modules/ziggers/fog.dmi'
 	icon_state = "fog"
@@ -256,3 +256,5 @@ SUBSYSTEM_DEF(cityweather)
 		var/area/vtm/V = get_area(src)
 		if(V.upper)
 			new /obj/effect/vamp_weather(src)
+
+
