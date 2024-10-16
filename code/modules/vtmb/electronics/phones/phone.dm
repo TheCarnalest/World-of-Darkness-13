@@ -3,7 +3,7 @@
 		create_subscribers_numbers()
 	var/subscriber_code = pick(GLOB.subscribers_numbers_list)
 	GLOB.subscribers_numbers_list -= subscriber_code
-	return "[exchange] [subscriber_code]"
+	return "[exchange][subscriber_code]"
 
 /proc/create_subscribers_numbers()
 	for(var/i in 1 to 9999)
