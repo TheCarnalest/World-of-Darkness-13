@@ -318,7 +318,7 @@ Works together with spawning an observer, noted above.
 		if(aghosted)
 			// to_chat(ghost.client, "Check rights - [check_rights_for(ghost.client, R_ADMIN)]")
 			ghost.sight = SEE_TURFS | SEE_MOBS | SEE_OBJS
-			ghost.movement_type = PHASING // [ChillRaccoon] - makes us available to go through dens objects [Lucifernix] - It was += that made aghosts unable to phase here.
+			ghost.movement_type = FLYING | PHASING | GROUND // [ChillRaccoon] - makes us available to go through dens objects [Lucifernix] - It was += that made aghosts unable to phase here.
 		else
 			ghost.client.color = CMNoir // [ChillRaccoon] - noir screen effect
 			if(ghost.client.prefs.toggles & CHANNEL_AMBIENCE)
