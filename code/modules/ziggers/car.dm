@@ -179,15 +179,20 @@
 			if(!repairing)
 				repairing = TRUE
 				if(do_mob(user, src, 20 SECONDS))
-					if(prob(25) || HAS_TRAIT(user, TRAIT_BONE_KEY))
+					var/roll = rand(1, 20) + (user.lockpicking+user.physique) - 8
+					if (roll <= 1)
+						to_chat(user, "<span class='warning'>Your lockpick broke!</span>")
+						qdel(K)
+						repairing = FALSE
+					if (roll >= 10)
 						locked = FALSE
 						repairing = FALSE
 						to_chat(user, "<span class='notice'>You've managed to open [src]'s lock.</span>")
 						playsound(src, 'code/modules/ziggers/sounds/open.ogg', 50, TRUE)
-						if(initial(access) == "none")
-							if(ishuman(user))
-								var/mob/living/carbon/human/H = user
-								H.AdjustHumanity(-1, 6)
+					if(initial(access) == "none")
+						if(ishuman(user))
+							var/mob/living/carbon/human/H = user
+							H.AdjustHumanity(-1, 6)
 						return
 					else
 						to_chat(user, "<span class='warning'>You've failed to open [src]'s lock.</span>")
@@ -201,7 +206,6 @@
 					to_chat(user, "<span class='warning'>You've failed to open [src]'s lock.</span>")
 					repairing = FALSE
 					return
-				return
 			return
 		if(K.accesslocks)
 			for(var/i in K.accesslocks)
@@ -436,7 +440,6 @@
 			else
 				to_chat(owner, "<span class='warning'>You failed to start [V]'s engine.</span>")
 				return
-			return
 		else
 			V.on = FALSE
 			playsound(V, 'code/modules/ziggers/sounds/stop.ogg', 50, TRUE)

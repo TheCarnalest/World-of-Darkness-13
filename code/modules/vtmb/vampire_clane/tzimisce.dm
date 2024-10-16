@@ -394,7 +394,7 @@
 	. = ..()
 	var/obj/structure/vampdoor/V = locate() in NewLoc
 	if(V)
-		if(V.hackable)
+		if(V.lockpick_difficulty <= 10)
 			forceMove(get_turf(V))
 	for(var/obj/effect/decal/cleanable/blood/B in range(1, NewLoc))
 		if(B)
