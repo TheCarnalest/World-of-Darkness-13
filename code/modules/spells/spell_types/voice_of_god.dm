@@ -13,6 +13,8 @@
 	var/power_mod = 1
 	var/list/spans = list("colossus","yell")
 	var/speech_sound = 'sound/magic/clockwork/invoke_general.ogg'
+	var/speech_volume = 300
+	var/speech_vary = TRUE
 
 /obj/effect/proc_holder/spell/voice_of_god/can_cast(mob/user = usr)
 	if(!user.can_speak())
@@ -32,7 +34,15 @@
 	..()
 
 /obj/effect/proc_holder/spell/voice_of_god/cast(list/targets, mob/user = usr)
-	playsound(get_turf(user), speech_sound, 300, TRUE, 5)
+	if (findtext(command, "fall"))
+		speech_sound = 'sound/magic/fall.ogg'
+		speech_volume = 1500
+		speech_vary = FALSE
+	else
+		speech_sound = 'sound/magic/clockwork/invoke_general.ogg'
+		speech_volume = 200
+		speech_vary = TRUE
+	playsound(get_turf(user), speech_sound, speech_volume, speech_vary, 5)
 	var/cooldown = voice_of_god(uppertext(command), user, spans, base_multiplier = power_mod)
 	charge_max = (cooldown * cooldown_mod)
 
