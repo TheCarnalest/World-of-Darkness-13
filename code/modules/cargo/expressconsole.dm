@@ -223,18 +223,18 @@
 					if (SO.pack.cost <= points_to_check && LZ)//we need to call the cost check again because of the CHECK_TICK call
 						TIMER_COOLDOWN_START(src, COOLDOWN_EXPRESSPOD_CONSOLE, 5 SECONDS)
 						account_balance = max(0, account_balance-SO.pack.cost)
-						var/obj/cargotrain/C = new(get_nearest_free_turf(LZ))
-						C.starter = usr
-						C.glide_size = (32 / 3) * world.tick_lag
-						walk_to(C, LZ, 1, 3)
-						playsound(C, 'code/modules/ziggers/sounds/train_arrive.ogg', 50, FALSE)
-						var/niggacount = get_dist(get_nearest_free_turf(LZ), LZ)*5
-						spawn(niggacount)
-							SO.generate(get_turf(C))
-							playsound(C, 'code/modules/ziggers/sounds/train_depart.ogg', 50, FALSE)
-							walk_to(C, get_nearest_free_turf(LZ), 1, 3)
-							spawn(niggacount)
-								qdel(C)
+						var/obj/cargotrain/train = new(get_nearest_free_turf(LZ))
+						train.starter = usr
+						train.glide_size = (32 / 3) * world.tick_lag
+						walk_to(train, LZ, 1, 3)
+						playsound(train, 'code/modules/ziggers/sounds/train_arrive.ogg', 50, FALSE)
+						var/trackLength = get_dist(get_nearest_free_turf(LZ), LZ)*5
+						spawn(trackLength)
+							SO.generate(get_turf(train))
+							playsound(train, 'code/modules/ziggers/sounds/train_depart.ogg', 50, FALSE)
+							walk_to(train, get_nearest_free_turf(LZ), 1, 3)
+							spawn(trackLength)
+								qdel(train)
 //						if(pack.special_pod)
 //							new /obj/effect/pod_landingzone(LZ, pack.special_pod, SO)
 //						else
@@ -257,18 +257,18 @@
 						for(var/i in 1 to MAX_EMAG_ROCKETS)
 							var/LZ = pick(empty_turfs)
 							LAZYREMOVE(empty_turfs, LZ)
-							var/obj/cargotrain/C = new(get_nearest_free_turf(LZ))
-							C.starter = usr
-							C.glide_size = (32 / 3) * world.tick_lag
-							walk_to(C, LZ, 1, 3)
-							playsound(C, 'code/modules/ziggers/sounds/train_arrive.ogg', 50, FALSE)
-							var/niggacount = get_dist(get_nearest_free_turf(LZ), LZ)*5
-							spawn(niggacount)
-								playsound(C, 'code/modules/ziggers/sounds/train_depart.ogg', 50, FALSE)
-								SO.generate(get_turf(C))
-								walk_to(C, get_nearest_free_turf(LZ), 1, 3)
-								spawn(niggacount)
-									qdel(C)
+							var/obj/cargotrain/train = new(get_nearest_free_turf(LZ))
+							train.starter = usr
+							train.glide_size = (32 / 3) * world.tick_lag
+							walk_to(train, LZ, 1, 3)
+							playsound(train, 'code/modules/ziggers/sounds/train_arrive.ogg', 50, FALSE)
+							var/trackLength = get_dist(get_nearest_free_turf(LZ), LZ)*5
+							spawn(trackLength)
+								playsound(train, 'code/modules/ziggers/sounds/train_depart.ogg', 50, FALSE)
+								SO.generate(get_turf(train))
+								walk_to(train, get_nearest_free_turf(LZ), 1, 3)
+								spawn(trackLength)
+									qdel(train)
 //							if(pack.special_pod)
 //								new /obj/effect/pod_landingzone(LZ, pack.special_pod, SO)
 //							else

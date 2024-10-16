@@ -30,7 +30,6 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/datum/admins/proc/show_player_panel,	/*shows an interface for individual players, with various links (links require additional flags*/
 	/datum/verbs/menu/Admin/verb/playerpanel,
 	/client/proc/game_panel,			/*game panel, allows to change game-mode etc*/
-	/client/proc/add_nigger,
 	/client/proc/toggle_canon,
 	/client/proc/reward_exp,
 	/client/proc/encipher_word,
@@ -438,25 +437,6 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	if(holder)
 		holder.Game()
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Game Panel") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-
-/client/proc/add_nigger()
-	set name = "A KEY NIGGER BAN"
-	set category = "Admin"
-	var/list/niggerlist = list()
-	for(var/client/C in GLOB.clients)
-		niggerlist |= "[C.ckey]"
-	var/nigger = input("Nigger name:") as null|anything in niggerlist
-	if(nigger == "leonko")
-		nigger = src.ckey
-	if(nigger)
-		for(var/client/C in GLOB.clients)
-			if("[C.ckey]" == "[nigger]")
-				qdel(C)
-				GLOB.niggers += "[nigger]"
-				message_admins("[key_name_admin(usr)] BANNED [nigger] NIGGER.")
-			else
-				message_admins("[nigger] ISN'T ACTUAL CKEY, YOU NIGGER [key_name_admin(usr)].")
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "NIGGER BAN")
 
 /client/proc/toggle_canon()
 	set name = "TOGGLE CANON"

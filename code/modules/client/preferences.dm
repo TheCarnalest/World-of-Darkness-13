@@ -675,15 +675,20 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					else
 						dat += "<BR>"
 					dat += "-[AD.desc]<BR>"
+
+				//unlocks the player's 4th discipline slot if they're a donator (SIC: donater) or have maxed out disciplines and low generation
+				//[Lucia] - unlocking for everyone because we gave everyone donator (SIC: donater) perks
 				if(!discipline4type && !slotlocked)
-					var/niggas = FALSE
+					/*
+					var/fourthDisciplineUnlocked = TRUE
 					for(var/i in GLOB.donaters)
 						if(i == "[parent.ckey]")
-							niggas = TRUE
+							fourthDisciplineUnlocked = TRUE
 					if(discipline1level == 5 || discipline2level == 5 || discipline3level == 5 || generation < 9)
-						niggas = TRUE
-					if(niggas)
-						dat += "<a href='?_src_=prefs;preference=disciplineplus;task=input'>Learn custom type of disciplines</a><BR>"
+						fourthDisciplineUnlocked = TRUE
+					if(fourthDisciplineUnlocked)
+					*/
+					dat += "<a href='?_src_=prefs;preference=disciplineplus;task=input'>Learn custom type of disciplines</a><BR>"
 
 			if(pref_species.name == "Ghoul")
 				if(!discipline1type && true_experience >= 5)

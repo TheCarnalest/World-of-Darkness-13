@@ -258,9 +258,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	var/full_version = "[byond_version].[byond_build ? byond_build : "xxx"]"
 	log_access("Login: [key_name(src)] from [address ? address : "localhost"]-[computer_id] || BYOND v[full_version]")
-	for(var/i in GLOB.niggers)
-		if(i == "[ckey]")
-			qdel(src)
 
 	var/alert_mob_dupe_login = FALSE
 	if(CONFIG_GET(flag/log_access))
@@ -901,7 +898,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		//load info on what assets the client has
 		src << browse('code/modules/asset_cache/validate_assets.html', "window=asset_cache_browser")
 
-		//Cool fonts for cool vampire niggas
+		//Cool fonts for cool vampires
 		src << browse_rsc('percolator.ttf', "percolator.ttf")
 
 		//Precache the client with all other assets slowly, so as to not block other browse() calls

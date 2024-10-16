@@ -5,7 +5,7 @@
 		return
 	if(ishuman(M))
 		var/mob/living/carbon/human/H = M
-		if(H.frakcja == frakcja && !H.client)
+		if(H.vampire_faction == vampire_faction && !H.client)
 			return
 	if(stat != DEAD)
 		danger_source = M

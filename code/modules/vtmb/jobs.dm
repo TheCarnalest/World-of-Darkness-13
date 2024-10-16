@@ -79,7 +79,7 @@
 
 /datum/outfit/job/prince/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.frakcja = "Camarilla"
+	H.vampire_faction = "Camarilla"
 	if(H.gender == FEMALE)
 		uniform = /obj/item/clothing/under/vampire/prince/female
 		shoes = /obj/item/clothing/shoes/vampire/heels
@@ -157,7 +157,7 @@
 
 /datum/outfit/job/sheriff/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.frakcja = "Camarilla"
+	H.vampire_faction = "Camarilla"
 	if(H.gender == FEMALE)
 		uniform = /obj/item/clothing/under/vampire/sheriff/female
 
@@ -230,7 +230,7 @@
 
 /datum/outfit/job/clerk/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.frakcja = "Camarilla"
+	H.vampire_faction = "Camarilla"
 	if(H.gender == FEMALE)
 		uniform = /obj/item/clothing/under/vampire/clerk/female
 		shoes = /obj/item/clothing/shoes/vampire/heels
@@ -292,7 +292,7 @@
 
 /datum/outfit/job/agent/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.frakcja = "Camarilla"
+	H.vampire_faction = "Camarilla"
 
 /obj/effect/landmark/start/camarillaagent
 	name = "Scourge"
@@ -483,7 +483,7 @@
 
 /datum/outfit/job/regent/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.frakcja = "Chantry"
+	H.vampire_faction = "Chantry"
 	if(H.gender == FEMALE)
 		uniform = /obj/item/clothing/under/vampire/archivist/female
 		shoes = /obj/item/clothing/shoes/vampire/heels
@@ -534,7 +534,7 @@
 
 /datum/outfit/job/archivist/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.frakcja = "Chantry"
+	H.vampire_faction = "Chantry"
 	if(H.gender == FEMALE)
 		uniform = /obj/item/clothing/under/vampire/archivist/female
 		shoes = /obj/item/clothing/shoes/vampire/heels
@@ -591,7 +591,7 @@
 
 /datum/outfit/job/barkeeper/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.frakcja = "Anarch"
+	H.vampire_faction = "Anarch"
 	if(H.gender == FEMALE)
 		uniform = /obj/item/clothing/under/vampire/bar/female
 		shoes = /obj/item/clothing/shoes/vampire/heels
@@ -642,7 +642,7 @@
 
 /datum/outfit/job/bouncer/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.frakcja = "Anarch"
+	H.vampire_faction = "Anarch"
 
 /obj/effect/landmark/start/bouncer
 	name = "Bouncer"
@@ -695,7 +695,7 @@
 
 /datum/outfit/job/dealer/pre_equip(mob/living/carbon/human/H)
 	..()
-	//H.frakcja = "Anarch"
+	//H.vampire_faction = "Anarch"
 	if(H.gender == FEMALE)
 		uniform = /obj/item/clothing/under/vampire/suit/female
 		shoes = /obj/item/clothing/shoes/vampire/heels/red
@@ -744,7 +744,7 @@
 
 /datum/outfit/job/supply/pre_equip(mob/living/carbon/human/H)
 	..()
-	//H.frakcja = "Anarch"
+	//H.vampire_faction = "Anarch"
 
 /obj/effect/landmark/start/supplytechnician
 	name = "Supply Technician"
@@ -1347,7 +1347,7 @@
 
 /datum/outfit/job/sabbatist/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.frakcja = "Sabbat"
+	H.vampire_faction = "Sabbat"
 	if(H.gender == MALE)
 		shoes = /obj/item/clothing/shoes/vampire
 		if(H.clane)
@@ -1449,7 +1449,7 @@
 
 /datum/outfit/job/giovanni/pre_equip(mob/living/carbon/human/H)
 	..()
-	H.frakcja = "Giovanni"
+	H.vampire_faction = "Giovanni"
 	if(H.gender == FEMALE)
 		uniform = /obj/item/clothing/under/vampire/suit/female
 		shoes = /obj/item/clothing/shoes/vampire/heels
@@ -1537,7 +1537,7 @@
 		if(1)
 			var/list/niggas = list()
 			for(var/mob/living/carbon/human/H in GLOB.player_list)
-				if(H.stat != DEAD && H.true_real_name != owner.current.true_real_name && H.frakcja != "Sabbat")
+				if(H.stat != DEAD && H.true_real_name != owner.current.true_real_name && H.vampire_faction != "Sabbat")
 					niggas += H
 			if(length(niggas))
 				var/datum/objective/blood/blood_objective = new
@@ -1562,7 +1562,7 @@
 		if(3)
 			var/list/niggas = list()
 			for(var/mob/living/carbon/human/H in GLOB.player_list)
-				if(H.stat != DEAD && H.true_real_name != owner.current.true_real_name && H.frakcja != "Sabbat")
+				if(H.stat != DEAD && H.true_real_name != owner.current.true_real_name && H.vampire_faction != "Sabbat")
 					niggas += H
 			if(length(niggas))
 				var/datum/objective/protect_niga/protect_objective = new
@@ -1581,8 +1581,8 @@
 			var/list/available_factions = list("Camarilla", "Anarch", "Sabbat")
 			if(ishuman(owner))
 				var/mob/living/carbon/human/H = owner
-				if(H.frakcja == "Camarilla" || H.frakcja == "Anarch" || H.frakcja == "Sabbat")
-					available_factions -= H.frakcja
+				if(H.vampire_faction == "Camarilla" || H.vampire_faction == "Anarch" || H.vampire_faction == "Sabbat")
+					available_factions -= H.vampire_faction
 			var/datum/objective/become_member/member_objective = new
 			member_objective.owner = owner
 			member_objective.faction = pick(available_factions)

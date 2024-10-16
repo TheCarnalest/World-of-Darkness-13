@@ -34,5 +34,5 @@
 
 /datum/vampireclane/nosferatu/post_gain(mob/living/carbon/human/H)
 	..()
-	if(H.frakcja != "Camarilla" && H.frakcja != "Anarch" && H.frakcja != "Sabbat")
-		H.frakcja = "Nosferatu"
+	if(H.vampire_faction != "Camarilla" && H.vampire_faction != "Anarch" && H.vampire_faction != "Sabbat")
+		H.vampire_faction = "Nosferatu"

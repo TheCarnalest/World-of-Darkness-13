@@ -1,19 +1,20 @@
 /mob/living/carbon/human
 	var/datum/vampireclane/clane
 //Additional game logic should be stored in the component
-GLOBAL_LIST_INIT(basic_disciplines, list(/datum/discipline/animalism)) //сюда написать основные дисциплины когда я их сделаю
+GLOBAL_LIST_INIT(basic_disciplines, list(/datum/discipline/animalism)) //write here the main disciplines when I do them [Lucia] - god fucking damn it flavrius
 /*
 This datum stores a declarative description of clans, in order to make an instance of the clan component from this implementation in runtime
-And it also helps for the character set panel*/
+And it also helps for the character set panel
+*/
 /datum/vampireclane
-	var/name = "каитиф лол))))))" //в нейм только дефайны
-	var/desc = "Ну описание клана"
+	var/name = "Caitiff"
+	var/desc = "The clanless. The rabble. Of no importance."
 	var/list/clane_disciplines = list() //discipline datums
 	var/datum/outfit/clane_outfit
-	var/curse = "МОРЛОК ТЫ ГАНДОН ПИДОРАС УБИВАЕШЬ НАС БЕЗ ПРИЧИНЫ ЛИШЬ ПОТОМУ ЧТО МЫ КАИТИФФЫ"
+	var/curse = "None."
 	var/list/allowed_jobs = list()
 	var/list/denied_jobs = list()
-	var/clane_curse //Здесь должен быть сигнал
+	var/clane_curse //There should be a reference here.
 	var/alt_sprite
 	var/no_hair
 	var/no_facial
@@ -25,9 +26,9 @@ And it also helps for the character set panel*/
 	var/male_clothes
 	var/female_clothes
 	var/enlightement = FALSE
-	var/list/whitelist = list()	//For whitelisting
-//	var/datum/action/innate/drink_blood/sosalka = new
-//Дополнительная игровая логика должна храниться в компоненте
+	var/list/whitelist = list()	//For whitelisting [Lucia] - remove this shit, make it a database
+
+//var/datum/action/innate/drink_blood/sosalka = new
 
 /datum/vampireclane/proc/on_gain(var/mob/living/carbon/human/H)
 	if(alt_sprite)

@@ -14,5 +14,5 @@
 /obj/item/dagon/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
 	. = ..()
 	if(ishuman(target))
-		var/mob/living/carbon/human/nigga = target
-		nigga.apply_damage(dagon_power, BURN,)
+		var/mob/living/carbon/human/victim = target
+		victim.apply_damage(dagon_power, BURN,)

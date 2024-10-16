@@ -62,8 +62,8 @@
 			dat += "<BR>"
 			if(host.mind.enslaved_to)
 				dat += "My Regnant is [host.mind.enslaved_to], I should obey their wants.<BR>"
-		if(host.frakcja == "Camarilla" || host.frakcja == "Anarch" || host.frakcja == "Sabbat")
-			dat += "I belong to [host.frakcja] faction, I shouldn't disobey their rules.<BR>"
+		if(host.vampire_faction == "Camarilla" || host.vampire_faction == "Anarch" || host.vampire_faction == "Sabbat")
+			dat += "I belong to [host.vampire_faction] faction, I shouldn't disobey their rules.<BR>"
 		if(host.generation)
 			dat += "I'm from [host.generation] generation.<BR>"
 		if(host.mind.special_role)
@@ -201,15 +201,15 @@
 				giving = FALSE
 				BLOODBONDED.faction |= H.faction
 				if(!istype(BLOODBONDED, /mob/living/carbon/human/npc))
-					if(H.frakcja == "Camarilla" || H.frakcja == "Anarch" || H.frakcja == "Sabbat")
-						if(BLOODBONDED.frakcja != H.frakcja)
-							BLOODBONDED.frakcja = H.frakcja
-							if(H.frakcja == "Sabbat")
+					if(H.vampire_faction == "Camarilla" || H.vampire_faction == "Anarch" || H.vampire_faction == "Sabbat")
+						if(BLOODBONDED.vampire_faction != H.vampire_faction)
+							BLOODBONDED.vampire_faction = H.vampire_faction
+							if(H.vampire_faction == "Sabbat")
 								if(BLOODBONDED.mind)
 									BLOODBONDED.mind.add_antag_datum(/datum/antagonist/sabbatist)
 									GLOB.sabbatites += BLOODBONDED
 							SSfactionwar.adjust_members()
-							to_chat(BLOODBONDED, "<span class='notice'>You are now member of <b>[H.frakcja]</b></span>")
+							to_chat(BLOODBONDED, "<span class='notice'>You are now member of <b>[H.vampire_faction]</b></span>")
 				BLOODBONDED.drunked_of |= "[H.dna.real_name]"
 				if(BLOODBONDED.stat == DEAD && !iskindred(BLOODBONDED))
 					if(BLOODBONDED.respawntimeofdeath+6000 > world.time)

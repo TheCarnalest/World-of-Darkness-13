@@ -53,66 +53,88 @@
 											"Sideburns",
 											"Shaved")
 
-	shoes = list(/obj/item/clothing/shoes/vampire/sneakers,
-								/obj/item/clothing/shoes/vampire/sneakers/red,
-								/obj/item/clothing/shoes/vampire/jackboots)
-	uniforms = list(/obj/item/clothing/under/vampire/larry,
-									/obj/item/clothing/under/vampire/bandit,
-									/obj/item/clothing/under/vampire/biker)
-	hats = list(/obj/item/clothing/head/vampire/bandana,
-							/obj/item/clothing/head/vampire/bandana/red,
-							/obj/item/clothing/head/vampire/bandana/black,
-							/obj/item/clothing/head/vampire/beanie,
-							/obj/item/clothing/head/vampire/beanie/black)
-	pockets = list(/obj/item/stack/dollar/rand,
-					/obj/item/vamp/keys/hack)
+	shoes = list(
+		/obj/item/clothing/shoes/vampire/sneakers,
+		/obj/item/clothing/shoes/vampire/sneakers/red,
+		/obj/item/clothing/shoes/vampire/jackboots
+	)
+	uniforms = list(
+		/obj/item/clothing/under/vampire/larry,
+		/obj/item/clothing/under/vampire/bandit,
+		/obj/item/clothing/under/vampire/biker
+	)
+	hats = list(
+		/obj/item/clothing/head/vampire/bandana,
+		/obj/item/clothing/head/vampire/bandana/red,
+		/obj/item/clothing/head/vampire/bandana/black,
+		/obj/item/clothing/head/vampire/beanie,
+		/obj/item/clothing/head/vampire/beanie/black
+	)
+	pockets = list(
+		/obj/item/stack/dollar/rand,
+		/obj/item/vamp/keys/hack
+	)
 
-	male_phrases = list("What are you staring at, bitch?",
-											"Are you threating me?",
-											"What do you need, motherfucker?",
-											"I see you lost your fear, bitch ass.",
-											"Fuck off, before I smash you!",
-											"Get lost, liberal...",
-											"Do I need to explain it to you?",
-											"Go away.",
-											"Piss off.",
-											"Fuck you.")
-	neutral_phrases = list("What are you staring at, bitch?",
-											"Are you threating me?",
-											"What do you need, motherfucker?",
-											"I see you lost your fear, bitch ass.",
-											"Fuck off, before I smash you!",
-											"Get lost, liberal...",
-											"Do I need to explain it to you?",
-											"Go away.",
-											"Piss off.",
-											"Fuck you.")
-	random_phrases = list("Nigga!",
-												"I miss my lady...",
-												"What's wrong bro?",
-												"Good, fucking, evening.",
-												"Saw you selling weed!",
-												"We will die...",
-												"Guh...")
-	answer_phrases = list("I have it...",
-												"Fucking apocalypse.",
-												"Shit, nigga.",
-												"Choom, do I know you?",
-												"Right.",
-												"Uhmm...",
-												"I shitted well.")
-	help_phrases = list("God damn!",
-											"FUCKING FUCK OFF!!",
-											"What the hell?!",
-											"Fucking hell!",
-											"Get gunned, bros!",
-											"Lay down and get yo ass ready!!")
+	//[Lucia] - this has been edited to have better English because it included slurs, but none of the others have yet
+	male_phrases = list(
+		"What are you staring at, bitch?",
+		"Are you threatening me?",
+		"You need something, motherfucker?",
+		"You've got some balls, bitchass.",
+		"Back off before I fuck you up!",
+		"Get lost, liberal.",
+		"What don't you understand?",
+		"Go away.",
+		"Piss off.",
+		"Fuck you."
+	)
+	neutral_phrases = list(
+		"What are you staring at, bitch?",
+		"Are you threatening me?",
+		"You need something, motherfucker?",
+		"You've got some balls, bitchass.",
+		"Back off before I fuck you up!",
+		"Get lost, liberal.",
+		"What don't you understand?",
+		"Go away.",
+		"Piss off.",
+		"Fuck you."
+	)
+	random_phrases = list(
+		"Dumbass!",
+		"I miss my lady...",
+		"What's wrong bro?",
+		"GOOD. FUCKING. EVENING.",
+		"I saw you selling weed!",
+		"We're gonna die...",
+		"It's over...",
+		"Guh..."
+	)
+	answer_phrases = list(
+		"I've got it...",
+		"Fucking apocalypse.",
+		"Shit, man.",
+		"Bitch, do I know you?",
+		"Right.",
+		"Uhmm...",
+		"Had some good food."
+	)
+	help_phrases = list(
+		"God damn!",
+		"FUCK OFF!!",
+		"What the hell!?",
+		"Fucking hell!",
+		"Get gunned, bros!",
+		"Lie down and die!"
+	)
 
 /datum/socialrole/usualmale
-	s_tones = list("albino",
-								"caucasian1",
-								"caucasian2",
-								"caucasian3")
+	s_tones = list(
+		"albino",
+		"caucasian1",
+		"caucasian2",
+		"caucasian3"
+	)
 
 	min_age = 18
 	max_age = 85
@@ -120,105 +142,127 @@
 	male_names = null
 	surnames = null
 
-	hair_colors = list("040404",	//Black
-										"120b05",	//Dark Brown
-										"342414",	//Brown
-										"554433",	//Light Brown
-										"695c3b",	//Dark Blond
-										"ad924e",	//Blond
-										"dac07f",	//Light Blond
-										"802400",	//Ginger
-										"a5380e",	//Ginger alt
-										"ffeace",	//Albino
-										"650b0b",	//Punk Red
-										"14350e",	//Punk Green
-										"080918")	//Punk Blue
-	male_hair = list("Balding Hair",
-										"Bedhead",
-										"Bedhead 2",
-										"Bedhead 3",
-										"Boddicker",
-										"Business Hair",
-										"Business Hair 2",
-										"Business Hair 3",
-										"Business Hair 4",
-										"Coffee House",
-										"Combover",
-										"Crewcut",
-										"Father",
-										"Flat Top",
-										"Gelled Back",
-										"Joestar",
-										"Keanu Hair",
-										"Oxton",
-										"Volaju")
-	male_facial = list("Beard (Abraham Lincoln)",
-											"Beard (Chinstrap)",
-											"Beard (Full)",
-											"Beard (Cropped Fullbeard)",
-											"Beard (Hipster)",
-											"Beard (Neckbeard)",
-											"Beard (Three o Clock Shadow)",
-											"Beard (Five o Clock Shadow)",
-											"Beard (Seven o Clock Shadow)",
-											"Moustache (Hulk Hogan)",
-											"Moustache (Watson)",
-											"Sideburns (Elvis)",
-											"Sideburns",
-											"Shaved")
+	hair_colors = list(
+		"040404",	//Black
+		"120b05",	//Dark Brown
+		"342414",	//Brown
+		"554433",	//Light Brown
+		"695c3b",	//Dark Blond
+		"ad924e",	//Blond
+		"dac07f",	//Light Blond
+		"802400",	//Ginger
+		"a5380e",	//Ginger alt
+		"ffeace",	//Albino
+		"650b0b",	//Punk Red
+		"14350e",	//Punk Green
+		"080918"    //Punk Blue
+	)
+	male_hair = list(
+		"Balding Hair",
+		"Bedhead",
+		"Bedhead 2",
+		"Bedhead 3",
+		"Boddicker",
+		"Business Hair",
+		"Business Hair 2",
+		"Business Hair 3",
+		"Business Hair 4",
+		"Coffee House",
+		"Combover",
+		"Crewcut",
+		"Father",
+		"Flat Top",
+		"Gelled Back",
+		"Joestar",
+		"Keanu Hair",
+		"Oxton",
+		"Volaju"
+	)
+	male_facial = list(
+		"Beard (Abraham Lincoln)",
+		"Beard (Chinstrap)",
+		"Beard (Full)",
+		"Beard (Cropped Fullbeard)",
+		"Beard (Hipster)",
+		"Beard (Neckbeard)",
+		"Beard (Three o Clock Shadow)",
+		"Beard (Five o Clock Shadow)",
+		"Beard (Seven o Clock Shadow)",
+		"Moustache (Hulk Hogan)",
+		"Moustache (Watson)",
+		"Sideburns (Elvis)",
+		"Sideburns",
+		"Shaved"
+	)
 
-	shoes = list(/obj/item/clothing/shoes/vampire/sneakers,
-								/obj/item/clothing/shoes/vampire,
-								/obj/item/clothing/shoes/vampire/brown)
-	uniforms = list(/obj/item/clothing/under/vampire/mechanic,
-									/obj/item/clothing/under/vampire/sport,
-									/obj/item/clothing/under/vampire/office,
-									/obj/item/clothing/under/vampire/sexy,
-									/obj/item/clothing/under/vampire/pimp,
-									/obj/item/clothing/under/vampire/emo)
-	pockets = list(/obj/item/vamp/keys/npc,
-					/obj/item/stack/dollar/rand)
+	shoes = list(
+		/obj/item/clothing/shoes/vampire/sneakers,
+		/obj/item/clothing/shoes/vampire,
+		/obj/item/clothing/shoes/vampire/brown
+	)
+	uniforms = list(
+		/obj/item/clothing/under/vampire/mechanic,
+		/obj/item/clothing/under/vampire/sport,
+		/obj/item/clothing/under/vampire/office,
+		/obj/item/clothing/under/vampire/sexy,
+		/obj/item/clothing/under/vampire/pimp,
+		/obj/item/clothing/under/vampire/emo
+	)
+	pockets = list(
+		/obj/item/vamp/keys/npc,
+		/obj/item/stack/dollar/rand
+	)
 
-	male_phrases = list("What do you need, mate?",
-											"Do you need something?",
-											"Can you repeat what you were saying?",
-											"I'm late, don't interrupt me.",
-											"Check bar for new company...",
-											"Can't speak right now.",
-											"Good night I guess?",
-											"Guh...",
-											"I dunno what to say.",
-											"That's all, folks.")
-	neutral_phrases = list("What do you need, mate?",
-											"Do you need something?",
-											"Can you repeat what you were saying?",
-											"I'm late, don't interrupt me.",
-											"Check bar for new company...",
-											"Can't speak right now.",
-											"Good night I guess?",
-											"Guh...",
-											"I dunno what to say.",
-											"That's all, folks.")
-	random_phrases = list("Hey, mate!",
-												"I miss my beer...",
-												"Everything okay?",
-												"Hello.",
-												"Didn't I meet you?",
-												"Something wrong here.",
-												"Oooh, dude...")
-	answer_phrases = list("Trying...",
-												"Awesome.",
-												"Bad, mate.",
-												"You picked wrong person.",
-												"Yeah, right.",
-												"O'kaay...",
-												"Nice.")
-	help_phrases = list("Oh God!",
-											"Go away!!",
-											"What the heck is happening?!",
-											"Stop!",
-											"Someone, help!",
-											"Mommy!")
+	male_phrases = list(
+		"What do you need, mate?",
+		"Do you need something?",
+		"Can you repeat what you were saying?",
+		"I'm late, don't interrupt me.",
+		"Check bar for new company...",
+		"Can't speak right now.",
+		"Good night I guess?",
+		"Guh...",
+		"I dunno what to say.",
+		"That's all, folks."
+	)
+	neutral_phrases = list(
+		"What do you need, mate?",
+		"Do you need something?",
+		"Can you repeat what you were saying?",
+		"I'm late, don't interrupt me.",
+		"Check bar for new company...",
+		"Can't speak right now.",
+		"Good night I guess?",
+		"Guh...",
+		"I dunno what to say.",
+		"That's all, folks."
+	)
+	random_phrases = list(
+		"Hey, mate!",
+		"I miss my beer...",
+		"Everything okay?",
+		"Hello.",
+		"Didn't I meet you?",
+		"Something wrong here.",
+		"Oooh, dude..."
+	)
+	answer_phrases = list(
+		"Trying...",
+		"Awesome.",
+		"Bad, mate.",
+		"You picked wrong person.",
+		"Yeah, right.",
+		"O'kaay...",
+		"Nice."
+	)
+	help_phrases = list(
+		"Oh God!",
+		"Go away!!",
+		"What the heck is happening?!",
+		"Stop!",
+		"Someone, help!",
+		"Mommy!"
+	)
 
 /datum/socialrole/usualfemale
 	s_tones = list("albino",
@@ -300,50 +344,62 @@
 	pockets = list(/obj/item/vamp/keys/npc,
 					/obj/item/stack/dollar/rand)
 
-	female_phrases = list("What do you need?",
-											"Do you need something?",
-											"Do I really need to answer?",
-											"I'm late.",
-											"Pervert...",
-											"Can't speak right now.",
-											"Buy yourself a watch",
-											"Hey.",
-											"Go away.")
-	neutral_phrases = list("What do you need?",
-											"Do you need something?",
-											"Do I really need to answer?",
-											"I'm late.",
-											"Pervert...",
-											"Can't speak right now.",
-											"Buy yourself a watch",
-											"Hey.",
-											"Go away.")
-	random_phrases = list("Хэй, пышка!",
-												"Эхх, сейчас бы вина...",
-												"В чём дело?",
-												"Приветики.",
-												"Ого, а мы встречались раньше?",
-												"Слышали? Что-то неладное творится в городе.",
-												"Оо-о, ничего себе...")
-	answer_phrases = list("Стараюсь...",
-												"Неописуемо.",
-												"Плохо, пупсик.",
-												"Вы кажется перепутали меня с кем-то.",
-												"Да, точно.",
-												"О'ке-ей...",
-												"Хорошо.")
-	help_phrases = list("Oh God!",
-											"Go away!!",
-											"What the heck is happening?!",
-											"Stop!",
-											"Someone, help!",
-											"Mommy!")
+	female_phrases = list(
+		"What do you need?",
+		"Do you need something?",
+		"Do I really need to answer?",
+		"I'm late.",
+		"Pervert...",
+		"Can't speak right now.",
+		"Buy yourself a watch",
+		"Hey.",
+		"Go away."
+	)
+	neutral_phrases = list(
+		"What do you need?",
+		"Do you need something?",
+		"Do I really need to answer?",
+		"I'm late.",
+		"Pervert...",
+		"Can't speak right now.",
+		"Buy yourself a watch",
+		"Hey.",
+		"Go away."
+	)
+	random_phrases = list(
+		"Hey, fatso!",
+		"I miss my beer...",
+		"What's up?",
+		"Heyyyyy.",
+		"Do I know you?",
+		"There's something wrong with this city, you know?",
+		"Oh, wow."
+	)
+	answer_phrases = list(
+		"I'm trying...",
+		"Crazy.",
+		"Things aren't good, baby.",
+		"You mixed me up with someone else.",
+		"Yeah, exactly.",
+		"Okay...",
+		"Fine."
+	)
+	help_phrases = list(
+		"Oh God!",
+		"Go away!!",
+		"What the heck is happening?!",
+		"Stop!",
+		"Someone, help!",
+		"Mommy!"
+	)
 
 /datum/socialrole/poormale
-	s_tones = list("albino",
-								"caucasian1",
-								"caucasian2",
-								"caucasian3")
+	s_tones = list(
+		"albino",
+		"caucasian1",
+		"caucasian2",
+		"caucasian3"
+	)
 
 	min_age = 45
 	max_age = 85
@@ -709,7 +765,7 @@
 											"Someone, call the ambulance!")
 
 /mob/living/carbon/human/npc/bandit
-	frakcja = "City"
+	vampire_faction = "City"
 	max_stat = 3
 
 /mob/living/carbon/human/npc/bandit/Initialize()
@@ -726,7 +782,7 @@
 	AssignSocialRole(/datum/socialrole/bandit)
 
 /mob/living/carbon/human/npc/walkby
-	frakcja = "City"
+	vampire_faction = "City"
 
 /mob/living/carbon/human/npc/walkby/Initialize()
 	..()
@@ -735,7 +791,7 @@
 	AssignSocialRole(pick(/datum/socialrole/usualmale, /datum/socialrole/usualfemale))
 
 /mob/living/carbon/human/npc/hobo
-	frakcja = "City"
+	vampire_faction = "City"
 	bloodquality = BLOOD_QUALITY_LOW
 	old_movement = TRUE
 
@@ -746,7 +802,7 @@
 	AssignSocialRole(pick(/datum/socialrole/poormale, /datum/socialrole/poorfemale))
 
 /mob/living/carbon/human/npc/business
-	frakcja = "City"
+	vampire_faction = "City"
 	bloodquality = BLOOD_QUALITY_HIGH
 
 /mob/living/carbon/human/npc/business/Initialize()
@@ -943,7 +999,7 @@
 											"Someone, call the ambulance!")
 
 /mob/living/carbon/human/npc/shop
-	frakcja = "City"
+	vampire_faction = "City"
 	staying = TRUE
 	is_talking = TRUE
 
@@ -957,7 +1013,7 @@
 	uniforms = list(/obj/item/clothing/under/vampire/bacotell)
 
 /mob/living/carbon/human/npc/bacotell
-	frakcja = "City"
+	vampire_faction = "City"
 	staying = TRUE
 
 /mob/living/carbon/human/npc/bacotell/Initialize()
@@ -970,7 +1026,7 @@
 	uniforms = list(/obj/item/clothing/under/vampire/bubway)
 
 /mob/living/carbon/human/npc/bubway
-	frakcja = "City"
+	vampire_faction = "City"
 	staying = TRUE
 
 /mob/living/carbon/human/npc/bubway/Initialize()
@@ -983,7 +1039,7 @@
 	uniforms = list(/obj/item/clothing/under/vampire/gummaguts)
 
 /mob/living/carbon/human/npc/gummaguts
-	frakcja = "City"
+	vampire_faction = "City"
 	staying = TRUE
 
 /mob/living/carbon/human/npc/gummaguts/Initialize()
@@ -1081,7 +1137,7 @@
 											"This is SFPD, stay down!")
 
 /mob/living/carbon/human/npc/police
-	frakcja = "City"
+	vampire_faction = "City"
 	fights_anyway = TRUE
 	max_stat = 4
 
@@ -1191,7 +1247,7 @@
 											"This is SFPD, stay down!")
 
 /mob/living/carbon/human/npc/guard
-	frakcja = "City"
+	vampire_faction = "City"
 	staying = TRUE
 	fights_anyway = TRUE
 	max_stat = 4
@@ -1220,7 +1276,7 @@
 				staying = FALSE
 
 /mob/living/carbon/human/npc/walkby/club
-	frakcja = "City"
+	vampire_faction = "City"
 	staying = TRUE
 
 /datum/socialrole/stripfemale
@@ -1334,7 +1390,7 @@
 											"Help!")
 
 /mob/living/carbon/human/npc/stripper
-	frakcja = "City"
+	vampire_faction = "City"
 	staying = TRUE
 
 /mob/living/carbon/human/npc/stripper/Initialize()
@@ -1356,7 +1412,7 @@
 					ClickOn(P)
 
 /mob/living/carbon/human/npc/incel
-	frakcja = "City"
+	vampire_faction = "City"
 	staying = TRUE
 
 /mob/living/carbon/human/npc/incel/Initialize()
@@ -1386,7 +1442,7 @@
 											"COPS?!!")
 
 /mob/living/carbon/human/npc/illegal
-	frakcja = "City"
+	vampire_faction = "City"
 	staying = TRUE
 	is_talking = TRUE
 
