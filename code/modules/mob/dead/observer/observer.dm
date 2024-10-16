@@ -300,33 +300,33 @@ Works together with spawning an observer, noted above.
 		if(client)
 			client.show_popup_menus = TRUE // [ChillRaccoon] - i a little bit rewrote that system, so we do not need it here anymore, else it can broke the things
 	*/
-		if(key[1] != "@") // Skip aghosts.
-			stop_sound_channel(CHANNEL_HEARTBEAT) //Stop heartbeat sounds because You Are A Ghost Now
-			var/mob/dead/observer/ghost = new(src)	// Transfer safety to observer spawning proc.
-			SStgui.on_transfer(src, ghost) // Transfer NanoUIs.
-			ghost.respawntimeofdeath = respawntimeofdeath
-			ghost.can_reenter_corpse = can_reenter_corpse
-			// [ChillRaccoon] - setting mob icons
-			ghost.icon = src.icon // [ChillRaccoon] - We should transfer mob visuals to the ghost
-			ghost.overlays = src.overlays // [ChillRaccoon] - Overlays too, else we will not see wounds, hair, skin, and etc.
-			ghost.color = CMNoir // [ChillRaccoon] - it makes our ghost looks like noir
-			// -------
-			ghost.key = key
-			ghost.client.init_verbs()
-			ghost.client = src.client
-			ghost.aghosted = aghosted
-			if(aghosted)
-				// to_chat(ghost.client, "Check rights - [check_rights_for(ghost.client, R_ADMIN)]")
-				ghost.sight = SEE_TURFS | SEE_MOBS | SEE_OBJS
-				ghost.movement_type += PHASING // [ChillRaccoon] - makes us available to go through dens objects
-			else
-				ghost.client.color = CMNoir // [ChillRaccoon] - noir screen effect
-				if(ghost.client.prefs.toggles & CHANNEL_AMBIENCE)
-					ghost.client << sound('sound/effects/ghost_ambient.ogg', 1, 5, CHANNEL_AMBIENCE, 10)
+		//if(key[1] != "@") // Skip aghosts.
+		stop_sound_channel(CHANNEL_HEARTBEAT) //Stop heartbeat sounds because You Are A Ghost Now
+		var/mob/dead/observer/ghost = new(src)	// Transfer safety to observer spawning proc.
+		SStgui.on_transfer(src, ghost) // Transfer NanoUIs.
+		ghost.respawntimeofdeath = respawntimeofdeath
+		ghost.can_reenter_corpse = can_reenter_corpse
+		// [ChillRaccoon] - setting mob icons
+		ghost.icon = src.icon // [ChillRaccoon] - We should transfer mob visuals to the ghost
+		ghost.overlays = src.overlays // [ChillRaccoon] - Overlays too, else we will not see wounds, hair, skin, and etc.
+		ghost.color = CMNoir // [ChillRaccoon] - it makes our ghost looks like noir
+		// -------
+		ghost.key = key
+		ghost.client.init_verbs()
+		ghost.client = src.client
+		ghost.aghosted = aghosted
+		if(aghosted)
+			// to_chat(ghost.client, "Check rights - [check_rights_for(ghost.client, R_ADMIN)]")
+			ghost.sight = SEE_TURFS | SEE_MOBS | SEE_OBJS
+			ghost.movement_type = PHASING // [ChillRaccoon] - makes us available to go through dens objects [Lucifernix] - It was += that made aghosts unable to phase here.
+		else
+			ghost.client.color = CMNoir // [ChillRaccoon] - noir screen effect
+			if(ghost.client.prefs.toggles & CHANNEL_AMBIENCE)
+				ghost.client << sound('sound/effects/ghost_ambient.ogg', 1, 5, CHANNEL_AMBIENCE, 10)
 
-			if(!can_reenter_corpse)	// Disassociates observer mind from the body mind
-				ghost.mind = null
-			return ghost
+		if(!can_reenter_corpse)	// Disassociates observer mind from the body mind
+			ghost.mind = null
+		return ghost
 
 /mob/living/ghostize(can_reenter_corpse = TRUE)
 	. = ..()
