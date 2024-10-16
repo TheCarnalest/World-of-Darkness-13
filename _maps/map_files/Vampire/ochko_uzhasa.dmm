@@ -20,7 +20,7 @@
 "fn" = (/obj/structure/table,/obj/structure/trashbag,/turf/open/floor/plating/vampplating/mono{umbra = 1},/area/space)
 "fp" = (/obj/structure/trad{pixel_y = 32},/obj/effect/decal/trash,/turf/open/floor/plating/sidewalkalt{umbra = 1},/area/space)
 "fG" = (/obj/structure/arc{dir = 8; icon_state = "ark1"},/turf/open/floor/plating/umbra,/area/space)
-"fS" = (/obj/structure/vampdoor/prison{hack_difficulty = 8},/turf/open/floor/plating/concrete{umbra = 1},/area/space)
+"fS" = (/obj/structure/vampdoor/prison{lockpick_difficulty = 12},/turf/open/floor/plating/concrete{umbra = 1},/area/space)
 "fY" = (/obj/structure/chair,/turf/open/floor/plating/umbra,/area/space)
 "ga" = (/obj/structure/arc{dir = 6; icon_state = "ark1"},/turf/open/floor/plating/sidewalk/rich{umbra = 1},/area/space)
 "gh" = (/obj/item/cigbutt{anchored = 1; pixel_x = -9; pixel_y = -11},/obj/item/cigbutt{anchored = 1},/turf/open/floor/carpet{umbra = 1},/area/space)
