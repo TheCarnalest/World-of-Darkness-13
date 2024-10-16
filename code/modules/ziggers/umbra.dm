@@ -142,8 +142,8 @@
 				M.marked = FALSE
 
 /obj/umbra_portal
-	name = "portal"
-	desc = "Trahsfer your soul."
+	name = "gateway"
+	desc = "Step to the other side."
 	icon = 'code/modules/ziggers/48x48.dmi'
 	icon_state = "portal"
 	density = TRUE
@@ -177,9 +177,10 @@
 
 /obj/umbra_portal/Bumped(atom/movable/AM)
 	. = ..()
-	var/turf/T = get_step(exit, get_dir(AM, src))
-//	to_chat(world, "Moving from [x] [y] [z] to [exit.x] [exit.y] [exit.z]")
-//	to_chat(world, "Actually [T.x] [T.y] [T.z]")
-	AM.forceMove(T)
-	playsound(loc, 'code/modules/ziggers/sounds/portal_enter.ogg', 75, FALSE)
-	playsound(T, 'code/modules/ziggers/sounds/portal_enter.ogg', 75, FALSE)
+	if (istype(AM, /mob/living/carbon))
+		var/mob/living/carbon/interacting_mob = AM
+		if (interacting_mob.client)
+			var/turf/T = get_step(exit, get_dir(interacting_mob, src))
+			interacting_mob.forceMove(T)
+			playsound(loc, 'code/modules/ziggers/sounds/portal_enter.ogg', 75, FALSE)
+			playsound(T, 'code/modules/ziggers/sounds/portal_enter.ogg', 75, FALSE)
