@@ -74,7 +74,7 @@
 							to_chat(HM, "<span class='userdanger'><b>SUSPICIOUS ACTION (murder)</b></span>")
 	remove_overlay(FIGHT_LAYER)
 	GLOB.npc_list -= src
-	SShumannpcpool.npclost() // [Lucifernix] - Uncommented for test
+	SShumannpcpool.npclost() // [Lucifernix] - This is where it makes it so when an NPC dies he is not only removed from the list, but gets respawned.
 	..()
 
 /mob/living/carbon/human/npc/Destroy()
