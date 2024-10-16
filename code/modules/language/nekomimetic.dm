@@ -1,4 +1,4 @@
-/datum/language/Japanese
+/datum/language/japanese
 	name = "Japanese"
 	desc = "The language of the nipponese people, from the empire of the rising sun."
 	key = "j"

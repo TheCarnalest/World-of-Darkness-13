@@ -526,14 +526,14 @@ Dancer
 	var/mob/living/carbon/H = quirk_holder
 	H.grant_language(/datum/language/moffic)
 
-/datum/quirk/Japanese
+/datum/quirk/japanese
 	name = "Japanese"
 	desc = "You know the Japanese language."
 	value = 1
 
-/datum/quirk/Japanese/add()
+/datum/quirk/japanese/add()
 	var/mob/living/carbon/H = quirk_holder
-	H.grant_language(/datum/language/Japanese)
+	H.grant_language(/datum/language/japanese)
 
 /datum/quirk/italian
 	name = "Italian"

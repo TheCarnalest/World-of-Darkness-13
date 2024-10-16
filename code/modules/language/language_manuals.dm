@@ -65,7 +65,7 @@
 	. = ..()
 	language = pick( \
 		/datum/language/voltaic, \
-		/datum/language/Japanese, \
+		/datum/language/japanese, \
 		/datum/language/draconic, \
 		/datum/language/moffic, \
 		/datum/language/calcic \
