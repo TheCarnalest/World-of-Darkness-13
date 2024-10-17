@@ -1531,6 +1531,13 @@
 		update_transform()
 		lying_prev = lying_angle
 
+/**
+ * Getter for lying_angle. Workaround for code trying to access a protected variable FOR SOME REASON.
+ *
+ * Returns the lying angle of the mob.
+ */
+/mob/living/proc/get_lying_angle()
+	return(lying_angle)
 
 /**
  * add_body_temperature_change Adds modifications to the body temperature

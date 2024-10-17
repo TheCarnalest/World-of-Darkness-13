@@ -153,7 +153,9 @@ SUBSYSTEM_DEF(events)
 /datum/controller/subsystem/events/proc/getHoliday()
 	return	//Uncomment when rework holidays
 
-	if(!CONFIG_GET(flag/allow_holidays))
+	//[Lucia] - This code seems to be completely defunct. Code below couldn't be reached anyways, but it was throwing an error so I commented it out.
+	/*
+	//if(!CONFIG_GET(flag/allow_holidays))
 		return		// Holiday stuff was not enabled in the config!
 
 	var/YYYY = text2num(time2text(world.timeofday, "YYYY")) // get the current year
@@ -176,6 +178,7 @@ SUBSYSTEM_DEF(events)
 		// regenerate station name because holiday prefixes.
 		set_station_name(new_station_name())
 		world.update_status()
+	*/
 
 /datum/controller/subsystem/events/proc/toggleWizardmode()
 	wizardmode = !wizardmode

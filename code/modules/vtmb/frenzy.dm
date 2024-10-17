@@ -286,7 +286,7 @@
 		if(H.clane.name == "Tzimisce" || "Old Clan Tzimisce")
 			var/datum/vampireclane/tzimisce/TZ = H.clane
 			if(TZ.heirl)
-				if(!TZ.heirl in H.GetAllContents())
+				if(!(TZ.heirl in H.GetAllContents()))
 					if(prob(5))
 						to_chat(H, "<span class='warning'>You are missing your home soil...</span>")
 						H.bloodpool = max(0, H.bloodpool-1)

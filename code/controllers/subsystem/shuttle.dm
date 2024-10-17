@@ -89,8 +89,6 @@ SUBSYSTEM_DEF(shuttle)
 		WARNING("No /obj/docking_port/mobile/supply placed on the map!")
 	return ..()
 
-	initial_load()
-
 /datum/controller/subsystem/shuttle/proc/initial_load()
 	for(var/s in stationary)
 		var/obj/docking_port/stationary/S = s

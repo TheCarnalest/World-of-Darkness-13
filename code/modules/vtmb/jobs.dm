@@ -1280,25 +1280,26 @@
 	H.forceMove(D.loc)
 
 	var/list/loadouts = list("Fire Fighter", "EOD Suit", "Holy Presence")
-	var/loadout_type = input(H, "Choose the Lord's gift for you:", "Loadout") as anything in loadouts
-	switch(loadout_type)
-		if("Fire Master")
-			H.equip_to_slot_or_del(new /obj/item/clothing/head/vampire/helmet(H), ITEM_SLOT_HEAD)
-			H.equip_to_slot_or_del(new /obj/item/clothing/suit/vampire/vest(H), ITEM_SLOT_OCLOTHING)
-			H.put_in_r_hand(new /obj/item/vampire_flamethrower(H))
-			H.put_in_l_hand(new /obj/item/melee/vampirearms/fireaxe(H))
-			H.equip_to_slot_or_del(new /obj/item/black_king_bar(H), ITEM_SLOT_RPOCKET)
-		if("EOD Suit")
-			H.equip_to_slot_or_del(new /obj/item/clothing/suit/vampire/eod(H), ITEM_SLOT_OCLOTHING)
-			H.equip_to_slot_or_del(new /obj/item/clothing/head/vampire/eod(H), ITEM_SLOT_HEAD)
-			H.equip_to_slot_or_del(new /obj/item/black_king_bar(H), ITEM_SLOT_RPOCKET)
-			H.put_in_r_hand(new /obj/item/gun/ballistic/shotgun/vampire(H))
-			H.put_in_l_hand(new /obj/item/ammo_box/vampire/c12g(H))
-		if("Holy Presence")
-			H.equip_to_slot_or_del(new /obj/item/clothing/suit/vampire/vest/army(H), ITEM_SLOT_OCLOTHING)
-			H.put_in_r_hand(new /obj/item/melee/vampirearms/chainsaw(H))
-			H.resistant_to_disciplines = TRUE
-			to_chat(H, "<b>You are no longer vulnerable to vampire blood powers...</b>")
+	spawn()
+		var/loadout_type = input(H, "Choose the Lord's gift for you:", "Loadout") as anything in loadouts
+		switch(loadout_type)
+			if("Fire Master")
+				H.equip_to_slot_or_del(new /obj/item/clothing/head/vampire/helmet(H), ITEM_SLOT_HEAD)
+				H.equip_to_slot_or_del(new /obj/item/clothing/suit/vampire/vest(H), ITEM_SLOT_OCLOTHING)
+				H.put_in_r_hand(new /obj/item/vampire_flamethrower(H))
+				H.put_in_l_hand(new /obj/item/melee/vampirearms/fireaxe(H))
+				H.equip_to_slot_or_del(new /obj/item/black_king_bar(H), ITEM_SLOT_RPOCKET)
+			if("EOD Suit")
+				H.equip_to_slot_or_del(new /obj/item/clothing/suit/vampire/eod(H), ITEM_SLOT_OCLOTHING)
+				H.equip_to_slot_or_del(new /obj/item/clothing/head/vampire/eod(H), ITEM_SLOT_HEAD)
+				H.equip_to_slot_or_del(new /obj/item/black_king_bar(H), ITEM_SLOT_RPOCKET)
+				H.put_in_r_hand(new /obj/item/gun/ballistic/shotgun/vampire(H))
+				H.put_in_l_hand(new /obj/item/ammo_box/vampire/c12g(H))
+			if("Holy Presence")
+				H.equip_to_slot_or_del(new /obj/item/clothing/suit/vampire/vest/army(H), ITEM_SLOT_OCLOTHING)
+				H.put_in_r_hand(new /obj/item/melee/vampirearms/chainsaw(H))
+				H.resistant_to_disciplines = TRUE
+				to_chat(H, "<b>You are no longer vulnerable to vampire blood powers...</b>")
 
 /obj/effect/landmark/start/hunter
 	name = "Hunter"

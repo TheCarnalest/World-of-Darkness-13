@@ -2183,13 +2183,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 								Clan.clane_disciplines[1] = discipline1
 								var/list/disc2 = list()
 								for(var/i in subtypesof(/datum/discipline))
-									if(i != discipline1 && i in disc1)
+									if( (i != discipline1) && (i in disc1) )
 										disc2 += i
 								var/discipline2 = input(user, "Select second start discipline", "Discipline Selection") as null|anything in disc2
 								if(discipline2)
 									var/list/disc3 = list()
 									for(var/i in subtypesof(/datum/discipline))
-										if(i != discipline1 && i != discipline2 && i in disc1)
+										if( (i != discipline1) && (i != discipline2) && (i in disc1) )
 											disc3 += i
 									Clan.clane_disciplines |= 2
 									Clan.clane_disciplines[2] = discipline2

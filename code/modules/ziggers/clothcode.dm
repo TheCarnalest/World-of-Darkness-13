@@ -469,7 +469,7 @@
 	armor = list(MELEE = 50, BULLET = 50, LASER = 10, ENERGY = 10, BOMB = 25, BIO = 0, RAD = 0, FIRE = 0, ACID = 10, WOUND = 50)
 	clothing_traits = list(TRAIT_UNMASQUERADE)
 
-obj/item/clothing/suit/vampire/trench/voivode
+/obj/item/clothing/suit/vampire/trench/voivode
 	name = "regal coat"
 	desc = "A beautiful jacket. The blue colors belong to clan Tzimisce. Whoever owns this must be important."
 	icon_state = "voicoat"
