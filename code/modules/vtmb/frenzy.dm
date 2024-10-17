@@ -283,7 +283,7 @@
 		to_chat(H, "<span class='warning'>Necromancy Vision reduces your blood points too sustain itself.</span>")
 
 	if(H.clane)
-		if(H.clane.name == "Tzimisce" || "Old Clan Tzimisce")
+		if(H.clane.name == "Tzimisce" || H.clane.name == "Old Clan Tzimisce")
 			var/datum/vampireclane/tzimisce/TZ = H.clane
 			if(TZ.heirl)
 				if(!(TZ.heirl in H.GetAllContents()))
