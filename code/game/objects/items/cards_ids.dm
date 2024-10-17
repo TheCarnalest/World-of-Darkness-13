@@ -222,6 +222,8 @@
 
 /obj/item/card/id/AltClick(mob/living/user)
 	return
+	//[Lucia] - defunct code below commented out for error cleaning
+	/*
 	if(!alt_click_can_use_id(user))
 		return
 
@@ -249,6 +251,7 @@
 	else
 		var/difference = amount_to_remove - registered_account.account_balance
 		registered_account.bank_card_talk("<span class='warning'>ERROR: The linked account requires [difference] more credit\s to perform that withdrawal.</span>", TRUE)
+	*/
 
 /obj/item/card/id/examine(mob/user)
 	. = ..()

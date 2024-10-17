@@ -1,5 +1,4 @@
-GLOBAL_LIST_INIT(sarcophagus_passwords,
-	list(
+GLOBAL_LIST_INIT(sarcophagus_passwords, list(
 	"AMARANTH",
 	"ANTEDILUVIAN",
 	"PROMETHEAN",
@@ -17,9 +16,9 @@ GLOBAL_LIST_INIT(sarcophagus_passwords,
 	"SHADOWLANDS",
 	"LILITH",
 	"FORGIVENESS",
-	"DARKFATHER"))
-GLOBAL_LIST_INIT(caesar_cipher,
-	list(
+	"DARKFATHER"
+))
+GLOBAL_LIST_INIT(caesar_cipher, list(
 	"A" = 1,
 	"B" = 2,
 	"C" = 3,
@@ -45,7 +44,8 @@ GLOBAL_LIST_INIT(caesar_cipher,
 	"W" = 23,
 	"X" = 24,
 	"Y" = 25,
-	"Z" = 26))
+	"Z" = 26
+))
 
 /proc/get_encipher_num(var/letter, var/password)
 	var/num = GLOB.caesar_cipher[letter]

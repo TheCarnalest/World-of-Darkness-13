@@ -79,6 +79,8 @@ SUBSYSTEM_DEF(shuttle)
 			continue
 		supply_packs[P.type] = P
 
+	//[Lucia] removed this because we literally don't use any of these
+	/*
 	if(!arrivals)
 		WARNING("No /obj/docking_port/mobile/arrivals placed on the map!")
 	if(!emergency)
@@ -87,9 +89,8 @@ SUBSYSTEM_DEF(shuttle)
 		WARNING("No /obj/docking_port/mobile/emergency/backup placed on the map!")
 	if(!supply)
 		WARNING("No /obj/docking_port/mobile/supply placed on the map!")
+	*/
 	return ..()
-
-	initial_load()
 
 /datum/controller/subsystem/shuttle/proc/initial_load()
 	for(var/s in stationary)

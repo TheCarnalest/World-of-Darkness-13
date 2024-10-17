@@ -5,9 +5,11 @@
 //	alt_sprite = "tzi"
 //	no_hair = TRUE
 //	no_facial = TRUE	//FUCK WRONG RULEBOOK
-	clane_disciplines = list(/datum/discipline/auspex = 1,
-														/datum/discipline/animalism = 2,
-														/datum/discipline/vicissitude = 3)
+	clane_disciplines = list(
+		/datum/discipline/auspex = 1,
+		/datum/discipline/animalism = 2,
+		/datum/discipline/vicissitude = 3
+	)
 	violating_appearance = FALSE
 	male_clothes = "/obj/item/clothing/under/vampire/sport"
 	female_clothes = "/obj/item/clothing/under/vampire/red"
@@ -242,7 +244,8 @@
 		LOCATION_LPOCKET = ITEM_SLOT_LPOCKET,
 		LOCATION_RPOCKET = ITEM_SLOT_RPOCKET,
 		LOCATION_BACKPACK = ITEM_SLOT_BACKPACK,
-		LOCATION_HANDS = ITEM_SLOT_HANDS)
+		LOCATION_HANDS = ITEM_SLOT_HANDS
+	)
 	H.equip_in_one_of_slots(heirloom, slots, FALSE)
 	heirl = heirloom
 //	H.add_quirk(/datum/quirk/ground_heirloom)

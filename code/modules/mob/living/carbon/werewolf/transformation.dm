@@ -75,7 +75,7 @@
 				spawn(30)
 					if(trans.stat == DEAD || !trans.client) // [ChillRaccoon] - preventing non-player transform issues
 						animate(trans, transform = null, color = "#FFFFFF")
-						return FALSE
+						return
 					var/items = trans.get_contents()
 					for(var/obj/item/item_worn in items)
 						if(item_worn)
@@ -112,7 +112,7 @@
 				spawn(30)
 					if(trans.stat == DEAD || !trans.client) // [ChillRaccoon] - preventing non-player transform issues
 						animate(trans, transform = null, color = "#FFFFFF")
-						return FALSE
+						return
 					var/items = trans.get_contents()
 					for(var/obj/item/item_worn in items)
 						if(item_worn)
@@ -149,7 +149,7 @@
 				spawn(30)
 					if(trans.stat == DEAD || !trans.client) // [ChillRaccoon] - preventing non-player transform issues
 						animate(trans, transform = null, color = "#FFFFFF")
-						return FALSE
+						return
 					var/items = trans.get_contents()
 					for(var/obj/item/item_worn in items)
 						if(item_worn)

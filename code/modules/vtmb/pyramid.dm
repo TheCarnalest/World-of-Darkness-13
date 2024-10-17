@@ -151,6 +151,7 @@
 		alpha = 28
 
 /obj/ritualrune/blood_trap/Crossed(atom/movable/AM)
+	..()
 	if(isliving(AM) && activated)
 		var/mob/living/L = AM
 		L.adjustFireLoss(50+activator_bonus)
