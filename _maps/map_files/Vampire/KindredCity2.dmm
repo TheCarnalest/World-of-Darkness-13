@@ -6022,7 +6022,7 @@
 "kJb" = (/obj/structure/coclock,/obj/structure/chair/sofa/left,/turf/open/floor/plating/rough,/area/vtm/sewer/nosferatu_town)
 "kJX" = (/obj/structure/chair/wood/wings{dir = 8},/turf/open/floor/carpet/red,/area/vtm/interior)
 "kJZ" = (/obj/structure/chair/office{dir = 1},/obj/effect/decal/pallet,/mob/living/carbon/human/npc/bandit,/turf/open/floor/plating/concrete,/area/vtm/interior)
-"kKv" = (/obj/structure/table,/obj/item/reagent_containers/food/condiment/vampiremilk,/turf/open/floor/plating/parquetry/old,/area/vtm/interior)
+"kKv" = (/obj/structure/table,/turf/open/floor/plating/parquetry/old,/area/vtm/interior)
 "kKA" = (/obj/structure/railing{layer = 4; pixel_y = -1},/obj/effect/decal/graffiti,/turf/open/floor/plating/rough,/area/vtm/interior)
 "kLM" = (/obj/structure/flora/ausbushes/sparsegrass,/obj/structure/flora/ausbushes/reedbush{pixel_x = 15; pixel_y = 11},/turf/open/floor/plating/vampgrass,/area/vtm/park)
 "kLZ" = (/obj/effect/decal/bordur,/obj/effect/landmark/npcactivity,/turf/open/floor/plating/sidewalkalt,/area/vtm/pacificheights)
