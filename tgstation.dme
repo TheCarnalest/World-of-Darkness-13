@@ -3419,7 +3419,7 @@
 #include "code\modules\ziggers\stonks.dm"
 #include "code\modules\ziggers\umbra.dm"
 #include "code\modules\ziggers\wallcode.dm"
-#include "code\modules\ziggers\weather.dm"
+//#include "code\modules\ziggers\weather.dm"
 #include "code\modules\ziggers\witness.dm"
 #include "code\modules\ziggers\za_rozziu.dm"
 #include "code\modules\zombie\items.dm"
