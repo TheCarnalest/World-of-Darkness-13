@@ -360,7 +360,7 @@
 	wound_bonus = 5
 	bare_wound_bonus = 10
 	resistance_flags = FIRE_PROOF
-	masquerade_violating = FALSE
+	masquerade_violating = TRUE
 
 /obj/item/melee/vampirearms/katana/kosa/egorium
 	name = "demonic scythe"
