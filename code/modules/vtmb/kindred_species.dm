@@ -139,6 +139,9 @@
 			dat += "<b>Enemy: [host.enemy_name]</b><BR>"
 		if(host.lover_name)
 			dat += "<b>Lover: [host.lover_name]</b><BR>"
+		var/obj/keypad/armory/K = find_keypad(/obj/keypad/armory)
+		if(K && (host.mind.assigned_role == "Prince" || host.mind.assigned_role == "Sheriff"))
+			dat += "<b>The pincode for the armory keypad is: [K.pincode]</b><BR>"
 		if(length(host.knowscontacts) > 0)
 			dat += "<b>I know some other of my kind in this city. Need to check my phone, there definetely should be:</b><BR>"
 			for(var/i in host.knowscontacts)
