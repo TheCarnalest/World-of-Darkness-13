@@ -559,9 +559,9 @@
 	if(istype(src, /mob/dead/observer))
 		O = src
 
-	var/add_delay = 2
+	var/add_delay = 0.1
 
-	if(O != null)
+	if(O.movement_delay != 0)
 		add_delay = O.movement_delay
 
 	if(old_move_delay + (add_delay*MOVEMENT_DELAY_BUFFER_DELTA) + MOVEMENT_DELAY_BUFFER > world.time)
@@ -572,5 +572,3 @@
 	..()
 
 	glide_size = (world.icon_size / ceil(add_delay / world.tick_lag))
-
-	// to_chat(src, "Observer Movement called, add_delay = [add_delay], move_delay = [move_delay]")

@@ -16,7 +16,7 @@ SUBSYSTEM_DEF(masquerade)
 			return "MODERATE VIOLATION"
 		if(501 to 750)
 			return "SUSPICIOUS"
-		if(751 to 1000)
+		else
 			return "STABLE"
 
 /datum/controller/subsystem/masquerade/fire()
@@ -37,7 +37,7 @@ SUBSYSTEM_DEF(masquerade)
 			shit_happens = "moderate"
 		if(501 to 750)
 			shit_happens = "slightly"
-		if(751 to 1000)
+		else
 			shit_happens = "stable"
 
 	if(last_level != shit_happens)
@@ -47,13 +47,13 @@ SUBSYSTEM_DEF(masquerade)
 				if(iskindred(H) || isghoul(H))
 					switch(last_level)
 						if("stable")
-							to_chat(H, "Night becomes clear, nothing can threat the Masquerade...")
+							to_chat(H, "The night becomes clear. Nothing can threaten the Masquerade.")
 						if("slightly")
 							to_chat(H, "Something is going wrong here...")
 						if("moderate")
 							to_chat(H, "People start noticing...")
 						if("breach")
-							to_chat(H, "Masquerade is about to fall...")
+							to_chat(H, "The Masquerade is about to fall...")
 
 	if(total_level <= 250)
 		for(var/mob/living/carbon/human/H in GLOB.player_list)
