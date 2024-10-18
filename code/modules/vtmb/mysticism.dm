@@ -75,69 +75,6 @@
 /obj/abyssrune/selfgib/complete()
 	last_activator.death()
 
-/obj/abyssrune/silent_heart
-	name = "Silently-Beating Heart"
-	desc = "Creates a shadowy abomination to protect the Lasombra and his domain."
-	icon_state = "rune1"
-	word = "ANI UMRA"
-	mystlevel = 3
-
-/obj/abyssrune/silent_heart/complete()
-	var/mob/living/carbon/human/H = last_activator
-	if(!length(H.beastmaster))
-		var/datum/action/beastmaster_stay/E1 = new()
-		E1.Grant(last_activator)
-		var/datum/action/beastmaster_deaggro/E2 = new()
-		E2.Grant(last_activator)
-	var/mob/living/simple_animal/hostile/beastmaster/shadow_guard/BG = new(loc)
-	BG.beastmaster = last_activator
-	H.beastmaster |= BG
-	BG.my_creator = last_activator
-	BG.melee_damage_lower = BG.melee_damage_lower+activator_bonus
-	BG.melee_damage_upper = BG.melee_damage_upper+activator_bonus
-	playsound(loc, 'sound/magic/voidblink.ogg', 50, FALSE)
-	if(length(H.beastmaster) > 3+H.mentality)
-		var/mob/living/simple_animal/hostile/beastmaster/B = pick(H.beastmaster)
-		B.death()
-	qdel(src)
-
-/mob/living/simple_animal/hostile/beastmaster/shadow_guard
-	name = "shadow abomination"
-	desc = "A shadow given life, creature of fathomless..."
-	icon = 'code/modules/ziggers/mobs.dmi'
-	icon_state = "shadow2"
-	icon_living = "shadow2"
-	del_on_death = 1
-	healable = 0
-	mob_biotypes = MOB_SPIRIT
-	speak_chance = 0
-	turns_per_move = 5
-	response_help_continuous = "pets"
-	response_help_simple = "pet"
-	response_disarm_continuous = "gently pushes aside"
-	response_disarm_simple = "gently push aside"
-	emote_taunt = list("gnashes")
-	speed = 0
-	maxHealth = 200
-	health = 200
-
-	harm_intent_damage = 8
-	obj_damage = 50
-	melee_damage_lower = 20
-	melee_damage_upper = 20
-	attack_verb_continuous = "gouges"
-	attack_verb_simple = "gouge"
-	attack_sound = 'sound/creatures/venus_trap_hit.ogg'
-	speak_emote = list("gnashes")
-
-	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
-	minbodytemp = 0
-	maxbodytemp = 1500
-	faction = list("Lasombra")
-	pressure_resistance = 200
-	bloodpool = 1
-	maxbloodpool = 1
-
 /obj/abyssrune/identification
 	name = "Occult Items Identification"
 	desc = "Identificates single occult item"
