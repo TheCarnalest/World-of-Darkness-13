@@ -140,6 +140,10 @@ SUBSYSTEM_DEF(job)
 			if(player.client.prefs.pref_species.name != "Vampire")
 				JobDebug("FOC player species not allowed, Player: [player]")
 				continue
+		if(job.ghoul_only)
+			if(player.client.prefs.pref_species.name != "Vampire")
+				JobDebug("FOC player species not allowed, Player: [player]")
+				continue
 		if(!job.garou_allowed)
 			if(player.client.prefs.pref_species.name == "Werewolf")
 				JobDebug("FOC player species not allowed, Player: [player]")
@@ -214,6 +218,10 @@ SUBSYSTEM_DEF(job)
 
 		if(job.kindred_only)
 			if(player.client.prefs.pref_species.name != "Vampire")
+				JobDebug("GRJ player species not allowed, Player: [player]")
+				continue
+		if(job.ghoul_only)
+			if(player.client.prefs.pref_species.name != "Ghoul")
 				JobDebug("GRJ player species not allowed, Player: [player]")
 				continue
 		if(!job.garou_allowed)
@@ -432,6 +440,10 @@ SUBSYSTEM_DEF(job)
 
 				if(job.kindred_only)
 					if(player.client.prefs.pref_species.name != "Vampire")
+						JobDebug("DO player species not allowed, Player: [player]")
+						continue
+				if(job.ghoul_only)
+					if(player.client.prefs.pref_species.name != "Ghoul")
 						JobDebug("DO player species not allowed, Player: [player]")
 						continue
 				if(!job.garou_allowed)

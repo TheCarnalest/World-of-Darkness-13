@@ -1945,10 +1945,10 @@
 	exp_type_department = EXP_TYPE_INDEPENDENT
 
 	kindred_only = TRUE
-	allowed_bloodlines = list("Old Clan Tzimisce")
-	minimal_generation = 9	//Uncomment when players get exp enough
+	allowed_bloodlines = list("Old Clan Tzimisce", "Tzimisce")
+	minimal_generation = 7
 
-	duty = "You rule the house on the hills. Yours is the land, a domain you were allowed to have by the Camarilla. They are amicable allies, but you don't trust them. And neither should they trust you."
+	duty = "You are a Childe of the Voivode-in-Waiting, the ancient Tzimisce Elder who has rested beneath the Earth for an age longer than the city that now rests on their bones. Honor them in all your actions, and remember that you walk with their favor."
 	minimal_masquerade = 2
 	my_contact_is_important = TRUE
 	known_contacts = list("Prince", "Baron", "Sheriff")
@@ -1990,7 +1990,7 @@
 	allowed_bloodlines = list("Old Clan Tzimisce", "Tzimisce")
 	minimal_generation = 13	//Uncomment when players get exp enough
 
-	duty = "For one reason or another, you serve the voivode. You have tasted his blood and felt strong feelings toward him. You are his servant, protector, and your task is to serve him and maintain the estates, as meager as they are compared to the old world's."
+	duty = "Whether you are of Voivode-in-Waiting's blood or if you've been honored, you are one of the Kin of the Voivode. Protect your Family, as your Family would protect you."
 	minimal_masquerade = 2
 	my_contact_is_important = TRUE
 	known_contacts = list("Prince", "Baron", "Sheriff")
@@ -2018,7 +2018,7 @@
 /datum/job/vamp/zadruga
 	title = "Zadruga"
 	department_head = list("Voivode")
-	faction = "Ghoul"
+	faction = "Ghoul" //[Lucifernix] - Change this to vampire when I actually fix this.
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = " the Laws of Hospitality"
@@ -2033,11 +2033,11 @@
 	display_order = JOB_DISPLAY_ORDER_ZADRUGA
 	exp_type_department = EXP_TYPE_INDEPENDENT
 
-	ghoul_only = TRUE
+	//ghoul_only = TRUE
 	//allowed_bloodlines = list("Old Clan Tzimisce", "Tzimisce")
 	//minimal_generation = 7	//Uncomment when players get exp enough
 
-	duty = "You are a revenant. What family you belong to is up to you. But you serve the voivode most loyally - you are without a doubt a polished tool, and memories of your humanity are growing more and more distant."
+	duty = "You were born in servitude to the Master of the Manor: your father served the Voivode, as did his father. Now, you carry their blood, and with it their responsibilities."
 	minimal_masquerade = 2
 	my_contact_is_important = FALSE
 	known_contacts = list("Prince", "Baron", "Sheriff")
@@ -2050,7 +2050,7 @@
 	jobtype = /datum/job/vamp/zadruga
 	id = /obj/item/card/id/bogatyr
 	//glasses = /obj/item/clothing/glasses/vampire/yellow
-	uniform = /obj/item/clothing/under/vampire/punk
+	uniform = /obj/item/clothing/under/vampire/bogatyr
 	//suit = /obj/item/clothing/suit/vampire/jacket/punk
 	shoes = /obj/item/clothing/shoes/vampire/jackboots
 	l_pocket = /obj/item/vamp/phone
