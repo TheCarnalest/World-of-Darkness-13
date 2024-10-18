@@ -17,6 +17,7 @@
 
 /datum/discipline/obtenebration/post_gain(mob/living/carbon/human/H)
 	H.faction |= "Lasombra"
+	H.mysticism_knowledge = 1
 	var/datum/action/shadowcontrol/control = new()
 	control.Grant(H)
 	if(level >= 3)
@@ -26,8 +27,12 @@
 		var/datum/action/lasarmor/armor = new()
 		armor.Grant(H)
 	if(level >= 5)
+		var/datum/action/mysticism/mystic = new()
+		mystic.Grant(H)
+		mystic.level = level
 		var/obj/effect/proc_holder/spell/targeted/shadowwalk/S = new(H)
 		H.mind.AddSpell(S)
+		H.mind.teach_crafting_recipe(/datum/crafting_recipe/mystome)
 
 /datum/action/lastentacles
 	name = "Summon Tentacles"
@@ -56,7 +61,7 @@
 //	animate(H, color = "#000000", time = 10, loop = 1)
 	if(H.CheckEyewitness(H, H, 7, FALSE))
 		H.AdjustMasquerade(-1)
-	spawn(300)
+	spawn(100)
 		if(H)
 			playsound(H.loc, 'sound/magic/voidblink.ogg', 50, FALSE)
 			for(var/obj/item/melee/vampirearms/knife/gangrel/lasombra/G in H.contents)
@@ -89,7 +94,7 @@
 	animate(H, color = "#000000", time = 10, loop = 1)
 	if(H.CheckEyewitness(H, H, 7, FALSE))
 		H.AdjustMasquerade(-1)
-	spawn(400)
+	spawn(100)
 		if(H)
 			playsound(H.loc, 'sound/magic/voidblink.ogg', 50, FALSE)
 			H.physiology.damage_resistance -= 75
@@ -123,3 +128,68 @@
 			qdel(AM)
 			if(H)
 				playsound(H.loc, 'sound/magic/voidblink.ogg', 50, FALSE)
+
+/datum/crafting_recipe/mystome
+	name = "Abyss Mysticism Tome"
+	time = 100
+	reqs = list(/obj/item/paper = 3, /obj/item/drinkable_bloodpack = 1)
+	result = /obj/item/mystic_tome
+	always_available = FALSE
+	category = CAT_MISC
+
+/datum/action/mysticism
+	name = "Mysticism"
+	desc = "Abyss Mysticism rune drawing."
+	button_icon_state = "thaumaturgy"
+	check_flags = AB_CHECK_HANDS_BLOCKED|AB_CHECK_IMMOBILE|AB_CHECK_LYING|AB_CHECK_CONSCIOUS
+	vampiric = TRUE
+	var/drawing = FALSE
+	var/level = 1
+
+/datum/action/mysticism/Trigger()
+	. = ..()
+	var/mob/living/carbon/human/H = owner
+	if(H.bloodpool < 2)
+		to_chat(H, "<span class='warning'>You need more <b>BLOOD</b> to do that!</span>")
+		return
+	if(drawing)
+		return
+
+	if(istype(H.get_active_held_item(), /obj/item/mystic_tome))
+		var/list/shit = list()
+		for(var/i in subtypesof(/obj/abyssrune))
+			var/obj/abyssrune/R = new i(owner)
+			if(R.mystlevel <= level)
+				shit += i
+			qdel(R)
+		var/ritual = input(owner, "Choose rune to draw:", "Mysticism") as null|anything in shit
+		if(ritual)
+			drawing = TRUE
+			if(do_after(H, 30*max(1, 5-H.mentality), H))
+				drawing = FALSE
+				new ritual(H.loc)
+				H.bloodpool = max(0, H.bloodpool-2)
+				if(H.CheckEyewitness(H, H, 7, FALSE))
+					H.AdjustMasquerade(-1)
+			else
+				drawing = FALSE
+	else
+		var/list/shit = list()
+		for(var/i in subtypesof(/obj/abyssrune))
+			var/obj/abyssrune/R = new i(owner)
+			if(R.mystlevel <= level)
+				shit += i
+			qdel(R)
+		var/ritual = input(owner, "Choose rune to draw (You need a Mystic Tome to reduce random):", "Mysticism") as null|anything in list("???")
+		if(ritual)
+			drawing = TRUE
+			if(do_after(H, 30*max(1, 5-H.mentality), H))
+				drawing = FALSE
+//				var/list/runes = subtypesof(/obj/abyssrune)
+				var/rune = pick(shit)
+				new rune(H.loc)
+				H.bloodpool = max(0, H.bloodpool-2)
+				if(H.CheckEyewitness(H, H, 7, FALSE))
+					H.AdjustMasquerade(-1)
+			else
+				drawing = FALSE
