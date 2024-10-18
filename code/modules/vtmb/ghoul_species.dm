@@ -297,7 +297,7 @@
 				H.bloodpool = max(1, H.bloodpool-1)
 			else
 				if(prob(20))
-					to_chat(H, "<span class='userdanger'><b>I NEED VITAE...</b></span>")
+					to_chat(H, "<span class='userdanger'><b>I THIRST FOR BLOOD!</b></span>")
 					H.Stun(10)
 
 /mob/living
