@@ -199,7 +199,7 @@
 			return
 		last_heal = world.time
 		H.bloodpool = max(0, H.bloodpool-1)
-		playsound(H, 'code/modules/ziggers/sounds/bloodhealing.ogg', 50, FALSE)
+		H.playsound_local(H, 'code/modules/ziggers/sounds/bloodhealing.ogg', 50, FALSE)
 		H.adjustBruteLoss(-10*level, TRUE)
 		H.adjustFireLoss(-10*level, TRUE)
 		if(length(H.all_wounds))
