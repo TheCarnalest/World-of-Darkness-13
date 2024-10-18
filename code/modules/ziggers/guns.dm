@@ -389,6 +389,7 @@
 	show_bolt_icon = FALSE
 	mag_display = TRUE
 	fire_sound = 'code/modules/ziggers/sounds/thompson.ogg'
+	masquerade_violating = TRUE
 
 /obj/item/ammo_box/magazine/internal/vampire/sniper
 	name = "sniper rifle internal magazine"
@@ -434,7 +435,7 @@
 	caliber = CALIBER_12G
 	multiload = FALSE
 	max_ammo = 6
-	masquerade_violating = TRUE
+	masquerade_violating = FALSE
 
 /obj/item/gun/ballistic/shotgun/vampire
 	name = "shotgun"
@@ -470,6 +471,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	inhand_x_dimension = 32
 	inhand_y_dimension = 32
+	masquerade_violating = TRUE
 
 /obj/item/ammo_box/magazine/internal/vampcrossbow
 	ammo_type = /obj/item/ammo_casing/caseless/bolt
@@ -494,6 +496,7 @@
 	onflooricon = 'code/modules/ziggers/onfloor.dmi'
 	w_class = WEIGHT_CLASS_SMALL
 	var/active = FALSE
+	masquerade_violating = TRUE
 
 /obj/item/molotov/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	for(var/turf/open/floor/F in range(2, hit_atom))
