@@ -387,7 +387,8 @@
 		new /datum/data/mining_equipment("silver .45 ACP ammo",	/obj/item/ammo_box/vampire/c45acp/silver,	1000),
 		new /datum/data/mining_equipment("silver .44 ammo",	/obj/item/ammo_box/vampire/c44/silver,	1000),
 		new /datum/data/mining_equipment("silver 5.56 ammo",	/obj/item/ammo_box/vampire/c556/silver,	1000),
-		new /datum/data/mining_equipment("stake",	/obj/item/vampire_stake,	100)
+		new /datum/data/mining_equipment("stake",	/obj/item/vampire_stake,	100),
+		new /datum/data/mining_equipment("lockpick",	/obj/item/vamp/keys/hack, 50)
 		)
 
 /obj/machinery/mineral/equipment_vendor/fastfood/smoking
