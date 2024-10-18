@@ -116,7 +116,7 @@ GLOBAL_LIST_INIT(caesar_cipher, list(
 		passkey = rand(5, 15)
 	else
 		passkey = rand(-15, -5)
-	to_chat(world, "<span class='userdanger'><b>UNKNOWN SARCOPHAGUS POSITION HAS BEEN LEAKED</b></span>")
+	//to_chat(world, "<span class='userdanger'><b>UNKNOWN SARCOPHAGUS POSITION HAS BEEN LEAKED</b></span>")
 	SEND_SOUND(world, sound('code/modules/ziggers/sounds/announce.ogg'))
 
 /obj/item/sarcophagus_key
@@ -125,3 +125,12 @@ GLOBAL_LIST_INIT(caesar_cipher, list(
 	icon_state = "sarcophagus_key"
 	icon = 'code/modules/ziggers/icons.dmi'
 	w_class = WEIGHT_CLASS_SMALL
+
+/obj/item/fake_sarcophagus
+	name = "Voivode-in-Waiting's Sarcophagus"
+	desc = "The Voivode-in-Waiting lies here."
+	icon = 'code/modules/ziggers/48x32weapons.dmi'
+	icon_state = "b_sarcophagus"
+	density = TRUE
+	anchored = TRUE
+	pixel_w = -8

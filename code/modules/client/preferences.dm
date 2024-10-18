@@ -1421,6 +1421,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			if(job.human_only)
 				if(pref_species.name != "Human")
 					HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[[pref_species.name] RESTRICTED\]</font></td></tr>"
+			if(job.ghoul_only)
+				if(pref_species.name != "Ghoul")
+					HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[[pref_species.name] RESTRICTED\]</font></td></tr>"
 			if(pref_species.name == "Vampire")
 				if(clane)
 					var/alloww = FALSE
