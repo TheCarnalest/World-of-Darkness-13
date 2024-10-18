@@ -145,7 +145,7 @@
 			var/mob/living/carbon/human/npc/NPC = target
 			NPC.Aggro(caster, TRUE)
 	if(activate_sound)
-		playsound(caster, activate_sound, 50, FALSE)
+		caster.playsound_local(caster, activate_sound, 50, FALSE)
 //	if(caster.key)
 //		var/datum/preferences/P = GLOB.preferences_datums[ckey(caster.key)]
 //		if(P)
@@ -307,7 +307,7 @@
 			var/datum/atom_hud/health_hud = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
 			health_hud.remove_hud_from(caster)
 			caster.stop_sound_channel(CHANNEL_DISCIPLINES)
-			playsound(caster.loc, 'code/modules/ziggers/sounds/auspex_deactivate.ogg', 50, FALSE)
+			caster.playsound_local(caster.loc, 'code/modules/ziggers/sounds/auspex_deactivate.ogg', 50, FALSE)
 			REMOVE_TRAIT(caster, TRAIT_THERMAL_VISION, TRAIT_GENERIC)
 			if(loh)
 				REMOVE_TRAIT(caster, TRAIT_NIGHT_VISION, TRAIT_GENERIC)
@@ -379,7 +379,7 @@
 			caster.celerity_visual = TRUE
 			spawn((delay*level_casting)+caster.discipline_time_plus)
 				if(caster)
-					playsound(caster.loc, 'code/modules/ziggers/sounds/celerity_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/ziggers/sounds/celerity_deactivate.ogg', 50, FALSE)
 					caster.remove_movespeed_modifier(/datum/movespeed_modifier/celerity)
 					caster.celerity_visual = FALSE
 		if(2)
@@ -387,7 +387,7 @@
 			caster.celerity_visual = TRUE
 			spawn((delay*level_casting)+caster.discipline_time_plus)
 				if(caster)
-					playsound(caster.loc, 'code/modules/ziggers/sounds/celerity_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/ziggers/sounds/celerity_deactivate.ogg', 50, FALSE)
 					caster.remove_movespeed_modifier(/datum/movespeed_modifier/celerity2)
 					caster.celerity_visual = FALSE
 		if(3)
@@ -395,7 +395,7 @@
 			caster.celerity_visual = TRUE
 			spawn((delay*level_casting)+caster.discipline_time_plus)
 				if(caster)
-					playsound(caster.loc, 'code/modules/ziggers/sounds/celerity_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/ziggers/sounds/celerity_deactivate.ogg', 50, FALSE)
 					caster.remove_movespeed_modifier(/datum/movespeed_modifier/celerity3)
 					caster.celerity_visual = FALSE
 		if(4)
@@ -403,7 +403,7 @@
 			caster.celerity_visual = TRUE
 			spawn((delay*level_casting)+caster.discipline_time_plus)
 				if(caster)
-					playsound(caster.loc, 'code/modules/ziggers/sounds/celerity_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/ziggers/sounds/celerity_deactivate.ogg', 50, FALSE)
 					caster.remove_movespeed_modifier(/datum/movespeed_modifier/celerity4)
 					caster.celerity_visual = FALSE
 		if(5)
@@ -411,7 +411,7 @@
 			caster.celerity_visual = TRUE
 			spawn((delay*level_casting)+caster.discipline_time_plus)
 				if(caster)
-					playsound(caster.loc, 'code/modules/ziggers/sounds/celerity_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/ziggers/sounds/celerity_deactivate.ogg', 50, FALSE)
 					caster.remove_movespeed_modifier(/datum/movespeed_modifier/celerity5)
 					caster.celerity_visual = FALSE
 
@@ -618,7 +618,7 @@
 			H.Stun(5)
 			H.emote("laugh")
 			to_chat(target, "<span class='userdanger'><b>HAHAHAHAHAHAHAHAHAHAHAHA!!</b></span>")
-			playsound(get_turf(H), pick('sound/items/SitcomLaugh1.ogg', 'sound/items/SitcomLaugh2.ogg', 'sound/items/SitcomLaugh3.ogg'), 100, FALSE)
+			caster.playsound_local(get_turf(H), pick('sound/items/SitcomLaugh1.ogg', 'sound/items/SitcomLaugh2.ogg', 'sound/items/SitcomLaugh3.ogg'), 100, FALSE)
 			if(target.body_position == STANDING_UP)
 				target.toggle_resting()
 		if(2)
@@ -671,7 +671,7 @@
 		if(caster)
 			if(caster.dna)
 				if(caster.dna.species)
-					playsound(caster.loc, 'code/modules/ziggers/sounds/potence_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/ziggers/sounds/potence_deactivate.ogg', 50, FALSE)
 					caster.dna.species.punchdamagelow -= mod
 					caster.dna.species.punchdamagehigh -= mod
 					caster.dna.species.meleemod -= armah
@@ -693,18 +693,18 @@
 	. = ..()
 	var/mod = min(3, level_casting)
 	var/armah = 15*mod
-	caster.remove_overlay(FORTITUDE_LAYER)
-	var/mutable_appearance/fortitude_overlay = mutable_appearance('code/modules/ziggers/icons.dmi', "fortitude", -FORTITUDE_LAYER)
-	caster.overlays_standing[FORTITUDE_LAYER] = fortitude_overlay
-	caster.apply_overlay(FORTITUDE_LAYER)
+//	caster.remove_overlay(FORTITUDE_LAYER)
+//	var/mutable_appearance/fortitude_overlay = mutable_appearance('code/modules/ziggers/icons.dmi', "fortitude", -FORTITUDE_LAYER)
+//	caster.overlays_standing[FORTITUDE_LAYER] = fortitude_overlay
+//	caster.apply_overlay(FORTITUDE_LAYER)
 	caster.physiology.armor.melee += armah
 	caster.physiology.armor.bullet += armah
 	spawn(delay+caster.discipline_time_plus)
 		if(caster)
-			playsound(caster.loc, 'code/modules/ziggers/sounds/fortitude_deactivate.ogg', 50, FALSE)
+			caster.playsound_local(caster.loc, 'code/modules/ziggers/sounds/fortitude_deactivate.ogg', 50, FALSE)
 			caster.physiology.armor.melee -= armah
 			caster.physiology.armor.bullet -= armah
-			caster.remove_overlay(FORTITUDE_LAYER)
+//			caster.remove_overlay(FORTITUDE_LAYER)
 
 /datum/discipline/obfuscate
 	name = "Obfuscate"
@@ -730,7 +730,7 @@
 	spawn((delay*level_casting)+caster.discipline_time_plus)
 		if(caster)
 			if(caster.alpha != 255)
-				playsound(caster.loc, 'code/modules/ziggers/sounds/obfuscate_deactivate.ogg', 50, FALSE)
+				caster.playsound_local(caster.loc, 'code/modules/ziggers/sounds/obfuscate_deactivate.ogg', 50, FALSE)
 				caster.alpha = 255
 
 /datum/discipline/presence
@@ -834,7 +834,7 @@
 			if(H)
 				H.remove_overlay(MUTATIONS_LAYER)
 				if(caster)
-					playsound(caster.loc, 'code/modules/ziggers/sounds/presence_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/ziggers/sounds/presence_deactivate.ogg', 50, FALSE)
 
 /datum/discipline/protean
 	name = "Protean"
@@ -886,7 +886,7 @@
 							qdel(G)
 					caster.remove_client_colour(/datum/client_colour/glass_colour/red)
 //					if(caster.dna)
-					playsound(caster.loc, 'code/modules/ziggers/sounds/protean_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/ziggers/sounds/protean_deactivate.ogg', 50, FALSE)
 //						caster.dna.species.attack_verb = initial(caster.dna.species.attack_verb)
 //						caster.dna.species.attack_sound = initial(caster.dna.species.attack_sound)
 //						caster.dna.species.punchdamagelow = caster.dna.species.punchdamagelow-10
@@ -912,7 +912,7 @@
 							qdel(G)
 					caster.remove_client_colour(/datum/client_colour/glass_colour/red)
 //					if(caster.dna)
-					playsound(caster.loc, 'code/modules/ziggers/sounds/protean_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/ziggers/sounds/protean_deactivate.ogg', 50, FALSE)
 //						caster.dna.species.attack_verb = initial(caster.dna.species.attack_verb)
 //						caster.dna.species.attack_sound = initial(caster.dna.species.attack_sound)
 //						caster.dna.species.punchdamagelow = caster.dna.species.punchdamagelow-15
@@ -936,7 +936,7 @@
 					caster.Stun(15)
 					caster.do_jitter_animation(30)
 //					if(caster.dna)
-					playsound(caster, 'code/modules/ziggers/sounds/protean_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster, 'code/modules/ziggers/sounds/protean_deactivate.ogg', 50, FALSE)
 //						caster.dna.species.attack_verb = initial(caster.dna.species.attack_verb)
 //						caster.dna.species.attack_sound = initial(caster.dna.species.attack_sound)
 //						caster.dna.species.punchdamagelow = caster.dna.species.punchdamagelow-20
@@ -967,7 +967,7 @@
 					caster.Stun(15)
 					caster.do_jitter_animation(30)
 //					if(caster.dna)
-					playsound(caster, 'code/modules/ziggers/sounds/protean_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster, 'code/modules/ziggers/sounds/protean_deactivate.ogg', 50, FALSE)
 //						caster.dna.species.attack_verb = initial(caster.dna.species.attack_verb)
 //						caster.dna.species.attack_sound = initial(caster.dna.species.attack_sound)
 //						caster.dna.species.punchdamagelow = caster.dna.species.punchdamagelow-25
@@ -1160,7 +1160,7 @@
 		if(target.dir == antidir)
 			target.Immobilize(10)
 			target.visible_message("<span class='warning'><b>[caster] hypnotizes [target] with his eyes!</b></span>", "<span class='warning'><b>[caster] hypnotizes you like a cobra!</b></span>")
-			playsound(target.loc, 'code/modules/ziggers/sounds/serpentis.ogg', 50, TRUE)
+			caster.playsound_local(target.loc, 'code/modules/ziggers/sounds/serpentis.ogg', 50, TRUE)
 			if(ishuman(target))
 				var/mob/living/carbon/human/H = target
 				H.remove_overlay(MUTATIONS_LAYER)
@@ -1180,7 +1180,7 @@
 		var/obj/item/ammo_casing/magic/tentacle/casing = new (caster.loc)
 		playsound(caster.loc, 'code/modules/ziggers/sounds/tongue.ogg', 100, TRUE)
 		casing.fire_casing(target, caster, null, null, null, ran_zone(), 0,  caster)
-		playsound(target.loc, 'code/modules/ziggers/sounds/serpentis.ogg', 50, TRUE)
+		caster.playsound_local(target.loc, 'code/modules/ziggers/sounds/serpentis.ogg', 50, TRUE)
 		qdel(casing)
 
 /datum/discipline/vicissitude
@@ -1199,12 +1199,12 @@
 /datum/discipline/vicissitude/activate(mob/living/target, mob/living/carbon/human/caster)
 	. = ..()
 	if(iswerewolf(target))
-		playsound(caster.loc, 'code/modules/ziggers/sounds/vicissitude.ogg', 50, TRUE)
+		caster.playsound_local(caster.loc, 'code/modules/ziggers/sounds/vicissitude.ogg', 50, TRUE)
 		caster.adjustFireLoss(50)		//abusers suffer
 		caster.emote("scream")
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
-		playsound(target.loc, 'code/modules/ziggers/sounds/vicissitude.ogg', 50, TRUE)
+		caster.playsound_local(target.loc, 'code/modules/ziggers/sounds/vicissitude.ogg', 50, TRUE)
 		if(target.stat >= 2)
 			if(istype(target, /mob/living/carbon/human/npc))
 				var/mob/living/carbon/human/npc/NPC = target
@@ -1320,7 +1320,7 @@
 
 /datum/discipline/quietus/activate(mob/living/target, mob/living/carbon/human/caster)
 	. = ..()
-	playsound(target.loc, 'code/modules/ziggers/sounds/quietus.ogg', 50, TRUE)
+	caster.playsound_local(target.loc, 'code/modules/ziggers/sounds/quietus.ogg', 50, TRUE)
 	switch(level_casting)
 		if(1)
 			for(var/mob/living/carbon/human/H in oviewers(7, caster))
@@ -1421,7 +1421,7 @@
 
 /datum/discipline/necromancy/activate(mob/living/target, mob/living/carbon/human/caster)
 	. = ..()
-	playsound(target.loc, 'code/modules/ziggers/sounds/necromancy.ogg', 50, TRUE)
+	caster.playsound_local(target.loc, 'code/modules/ziggers/sounds/necromancy.ogg', 50, TRUE)
 	var/limit = min(3, level)+caster.social-1+caster.more_companions
 	if(length(caster.beastmaster) >= limit)
 		var/mob/living/simple_animal/hostile/beastmaster/B = pick(caster.beastmaster)
@@ -1540,13 +1540,13 @@
 				if(caster)
 					caster.color = initial(caster.color)
 					caster.physiology.burn_mod *= 100
-					playsound(caster.loc, 'code/modules/ziggers/sounds/protean_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/ziggers/sounds/protean_deactivate.ogg', 50, FALSE)
 		if(2)
 			caster.dna.species.GiveSpeciesFlight(caster)
 			spawn(delay+caster.discipline_time_plus)
 				if(caster)
 					caster.dna.species.RemoveSpeciesFlight(caster)
-					playsound(caster.loc, 'code/modules/ziggers/sounds/protean_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/ziggers/sounds/protean_deactivate.ogg', 50, FALSE)
 		if(3)
 			caster.drop_all_held_items()
 			caster.put_in_r_hand(new /obj/item/melee/vampirearms/knife/gangrel(caster))
@@ -1556,7 +1556,7 @@
 					for(var/obj/item/melee/vampirearms/knife/gangrel/G in caster)
 						if(G)
 							qdel(G)
-					playsound(caster.loc, 'code/modules/ziggers/sounds/protean_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/ziggers/sounds/protean_deactivate.ogg', 50, FALSE)
 		if(4 to 5)
 			caster.drop_all_held_items()
 			BAT.Shapeshift(caster)
@@ -1565,7 +1565,7 @@
 					BAT.Restore(BAT.myshape)
 					caster.Stun(15)
 					caster.do_jitter_animation(30)
-					playsound(caster.loc, 'code/modules/ziggers/sounds/protean_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/ziggers/sounds/protean_deactivate.ogg', 50, FALSE)
 
 /datum/discipline/valeren
 	name = "Valeren"
