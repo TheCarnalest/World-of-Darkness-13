@@ -32,7 +32,7 @@
 		var/prev_trans = matrix(transform)
 		animate(pixel_z = 0, transform = turn(transform, pick(-6, 0, 6)), time=2)
 		animate(pixel_z = 0, transform = prev_trans, time = 0)
-		playsound(loc, 'code/modules/ziggers/sounds/snake_move.ogg', 25, FALSE)
+		playsound(loc, 'code/modules/wod13/sounds/snake_move.ogg', 25, FALSE)
 		addtimer(CALLBACK(src, .proc/ResetMoveDelay), CONFIG_GET(number/movedelay/walk_delay) * move_speed_multiplier)
 	else
 		move_delay = FALSE
@@ -59,7 +59,7 @@
 				if(!L.incapacitated(ignore_restraints = 1))
 					L.face_atom(src)
 				L.do_alert_animation()
-		playsound(loc, 'code/modules/ziggers/sounds/snake.ogg', 50, FALSE, -5)
+		playsound(loc, 'code/modules/wod13/sounds/snake.ogg', 50, FALSE, -5)
 
 /// Does the MGS ! animation
 /atom/proc/do_alert_animation()

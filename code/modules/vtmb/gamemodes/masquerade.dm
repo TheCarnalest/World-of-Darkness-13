@@ -62,7 +62,7 @@ SUBSYSTEM_DEF(masquerade)
 					if(!H.warrant)
 						H.last_nonraid = world.time
 						H.warrant = TRUE
-						SEND_SOUND(H, sound('code/modules/ziggers/sounds/humanity_loss.ogg', 0, 0, 75))
+						SEND_SOUND(H, sound('code/modules/wod13/sounds/humanity_loss.ogg', 0, 0, 75))
 						to_chat(H, "<span class='userdanger'><b>POLICE ASSAULT IN PROGRESS</b></span>")
 //Spotted body -25
 //Blood -5 for each

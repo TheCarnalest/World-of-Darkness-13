@@ -75,7 +75,7 @@
 		if(ishuman(user))
 			var/mob/living/carbon/human/H = user
 			H.remove_overlay(FIRING_EFFECT_LAYER)
-			var/mutable_appearance/firing_overlay = mutable_appearance('code/modules/ziggers/icons.dmi', "firing", -PROTEAN_LAYER)
+			var/mutable_appearance/firing_overlay = mutable_appearance('code/modules/wod13/icons.dmi', "firing", -PROTEAN_LAYER)
 			H.overlays_standing[FIRING_EFFECT_LAYER] = firing_overlay
 			H.apply_overlay(FIRING_EFFECT_LAYER)
 			shit.set_light(3, 2, "#ffedbb")

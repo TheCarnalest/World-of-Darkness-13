@@ -285,7 +285,7 @@
 		L.reagents.add_reagent(/datum/reagent/consumable/nutriment/vitamin, 0.4)
 
 /mob/living/simple_animal/pet/cat/vampire
-	icon = 'code/modules/ziggers/mobs.dmi'
+	icon = 'code/modules/wod13/mobs.dmi'
 	bloodpool = 1
 	maxbloodpool = 1
 
@@ -299,7 +299,7 @@
 /mob/living/simple_animal/hostile/beastmaster/cat
 	name = "cat"
 	desc = "Kitty!!"
-	icon = 'code/modules/ziggers/mobs.dmi'
+	icon = 'code/modules/wod13/mobs.dmi'
 	icon_state = "cat2"
 	icon_living = "cat2"
 	icon_dead = "cat2_dead"
@@ -309,7 +309,7 @@
 	emote_see = list("shakes its head.", "shivers.")
 	attack_verb_continuous = "bites"
 	attack_verb_simple = "bite"
-	attack_sound = 'code/modules/ziggers/sounds/cat.ogg'
+	attack_sound = 'code/modules/wod13/sounds/cat.ogg'
 	speak_chance = 0
 	turns_per_move = 5
 	see_in_dark = 6

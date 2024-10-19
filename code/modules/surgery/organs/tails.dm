@@ -108,7 +108,7 @@
 /obj/item/organ/penicorn/Insert(mob/living/carbon/human/H, special = 0, drop_if_replaced = TRUE)
 	..()
 	H.remove_overlay(UNICORN_LAYER)
-	var/mutable_appearance/unicorn_overlay = mutable_appearance('code/modules/ziggers/icons.dmi', "unicorn", -UNICORN_LAYER)
+	var/mutable_appearance/unicorn_overlay = mutable_appearance('code/modules/wod13/icons.dmi', "unicorn", -UNICORN_LAYER)
 	unicorn_overlay.color = "#[skintone2hex(H.skin_tone)]"
 	H.overlays_standing[UNICORN_LAYER] = unicorn_overlay
 	H.apply_overlay(UNICORN_LAYER)

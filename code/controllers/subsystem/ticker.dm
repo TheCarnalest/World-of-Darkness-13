@@ -297,7 +297,7 @@ SUBSYSTEM_DEF(ticker)
 	SSdbcore.SetRoundStart()
 
 	to_chat(world, "<span class='notice'><B>[station_name()] is calling you. Farewell, vampire!</B></span>")
-	SEND_SOUND(world, sound('code/modules/ziggers/sounds/announce.ogg'))
+	SEND_SOUND(world, sound('code/modules/wod13/sounds/announce.ogg'))
 
 	current_state = GAME_STATE_PLAYING
 	Master.SetRunLevel(RUNLEVEL_GAME)

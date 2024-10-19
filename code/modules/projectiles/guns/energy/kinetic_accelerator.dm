@@ -243,7 +243,7 @@
 	model_flags = BORG_MODEL_MINER
 	var/denied_type = null
 	var/maximum_of_type = 1
-	//[Lucia] this is defined for all /obj/item/ instances in code\modules\ziggers\lombard.dm
+	//[Lucia] this is defined for all /obj/item/ instances in code\modules\wod13\lombard.dm
 	cost = 30
 	var/modifier = 1 //For use in any mod kit that has numerical modifiers
 	var/minebot_upgrade = TRUE

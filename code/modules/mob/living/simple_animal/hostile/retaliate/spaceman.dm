@@ -77,7 +77,7 @@
 /mob/living/simple_animal/hostile/retaliate/nanotrasenpeace/vampire
 	name = "SWAT Soldier"
 	desc = "An officer part of SFPD's private security force."
-	icon = 'code/modules/ziggers/mobs.dmi'
+	icon = 'code/modules/wod13/mobs.dmi'
 	icon_state = "swat"
 	icon_living = "swat"
 	icon_dead = "swat_dead"
@@ -91,7 +91,7 @@
 	retreat_distance = 3
 	minimum_distance = 5
 	casingtype = /obj/item/ammo_casing/vampire/c556mm
-	projectilesound = 'code/modules/ziggers/sounds/rifle.ogg'
+	projectilesound = 'code/modules/wod13/sounds/rifle.ogg'
 	loot = list()
 	faction = list("Police")
 	var/time_created = 0
@@ -104,7 +104,7 @@
 	if(stat != DEAD)
 		if(time_created+600 < world.time)
 			new /obj/effect/temp_visual/desant_back(loc)
-			playsound(loc, 'code/modules/ziggers/sounds/helicopter.ogg', 50, TRUE)
+			playsound(loc, 'code/modules/wod13/sounds/helicopter.ogg', 50, TRUE)
 			qdel(src)
 			return
 	..()
@@ -115,7 +115,7 @@
 
 /obj/effect/temp_visual/desant
 	name = "helicopter rope"
-	icon = 'code/modules/ziggers/64x64.dmi'
+	icon = 'code/modules/wod13/64x64.dmi'
 	icon_state = "swat"
 	duration = 7
 
@@ -141,7 +141,7 @@
 
 /obj/effect/temp_visual/desant_back
 	name = "helicopter rope"
-	icon = 'code/modules/ziggers/64x64.dmi'
+	icon = 'code/modules/wod13/64x64.dmi'
 	icon_state = "swat_back"
 	duration = 7
 

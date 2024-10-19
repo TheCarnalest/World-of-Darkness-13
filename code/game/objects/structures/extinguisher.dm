@@ -1,7 +1,7 @@
 /obj/structure/extinguisher_cabinet
 	name = "extinguisher cabinet"
 	desc = "A small wall mounted cabinet designed to hold a fire extinguisher."
-	icon = 'code/modules/ziggers/32x48.dmi'
+	icon = 'code/modules/wod13/32x48.dmi'
 	icon_state = "firehouse"
 	anchored = TRUE
 	density = FALSE

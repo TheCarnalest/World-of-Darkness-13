@@ -132,7 +132,7 @@ SUBSYSTEM_DEF(factionwar)
 /obj/graffiti
 	name = "faction mark"
 	desc = "Reminds anyone who sees it which faction it belongs to..."
-	icon = 'code/modules/ziggers/48x48.dmi'
+	icon = 'code/modules/wod13/48x48.dmi'
 	plane = GAME_PLANE
 	layer = ABOVE_NORMAL_TURF_LAYER
 	anchored = TRUE
@@ -205,7 +205,7 @@ SUBSYSTEM_DEF(factionwar)
 /obj/structure/faction_map
 	name = "faction marks map"
 	desc = "Exact map of all marks. <b>Insert dollars to gain influence and bloodbond kindred to gain faction members</b>."
-	icon = 'code/modules/ziggers/props.dmi'
+	icon = 'code/modules/wod13/props.dmi'
 	icon_state = "faction_map"
 	plane = GAME_PLANE
 	layer = CAR_LAYER

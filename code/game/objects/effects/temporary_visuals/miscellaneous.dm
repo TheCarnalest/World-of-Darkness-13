@@ -51,7 +51,7 @@
 	randomdir = 0
 
 /obj/effect/temp_visual/dir_setting/firing_effect
-	icon = 'code/modules/ziggers/64x64.dmi'
+	icon = 'code/modules/wod13/64x64.dmi'
 	icon_state = "firing_effect"
 	pixel_w = -16
 	pixel_z = -16
@@ -339,7 +339,7 @@
 	duration = 16
 
 /obj/effect/temp_visual/tremere
-	icon = 'code/modules/ziggers/48x48.dmi'
+	icon = 'code/modules/wod13/48x48.dmi'
 	icon_state = "gib"
 	pixel_w = -8
 	duration = 50

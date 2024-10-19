@@ -87,23 +87,23 @@ GLOBAL_LIST_INIT(footstep, list(
 		'sound/effects/footstep/lava2.ogg',
 		'sound/effects/footstep/lava3.ogg'), 100, 0),
 	FOOTSTEP_PARKET = list(list(
-		'code/modules/ziggers/sounds/parket1.ogg',
-		'code/modules/ziggers/sounds/parket2.ogg',
-		'code/modules/ziggers/sounds/parket3.ogg'), 75, 1),
+		'code/modules/wod13/sounds/parket1.ogg',
+		'code/modules/wod13/sounds/parket2.ogg',
+		'code/modules/wod13/sounds/parket3.ogg'), 75, 1),
 	FOOTSTEP_ASPHALT = list(list(
-		'code/modules/ziggers/sounds/asphalt1.ogg',
-		'code/modules/ziggers/sounds/asphalt2.ogg'), 75, 1),
+		'code/modules/wod13/sounds/asphalt1.ogg',
+		'code/modules/wod13/sounds/asphalt2.ogg'), 75, 1),
 	FOOTSTEP_SNOW = list(list(
-		'code/modules/ziggers/sounds/snow1.ogg',
-		'code/modules/ziggers/sounds/snow2.ogg'), 75, 1),
+		'code/modules/wod13/sounds/snow1.ogg',
+		'code/modules/wod13/sounds/snow2.ogg'), 75, 1),
 	FOOTSTEP_TRAVA = list(list(
-		'code/modules/ziggers/sounds/trava1.ogg',
-		'code/modules/ziggers/sounds/trava2.ogg',
-		'code/modules/ziggers/sounds/trava3.ogg'), 75, 1),
+		'code/modules/wod13/sounds/trava1.ogg',
+		'code/modules/wod13/sounds/trava2.ogg',
+		'code/modules/wod13/sounds/trava3.ogg'), 75, 1),
 	FOOTSTEP_TROTUAR = list(list(
-		'code/modules/ziggers/sounds/trotuar1.ogg',
-		'code/modules/ziggers/sounds/trotuar2.ogg',
-		'code/modules/ziggers/sounds/trotuar3.ogg'), 75, 1),
+		'code/modules/wod13/sounds/trotuar1.ogg',
+		'code/modules/wod13/sounds/trotuar2.ogg',
+		'code/modules/wod13/sounds/trotuar3.ogg'), 75, 1),
 	FOOTSTEP_MEAT = list(list(
 		'sound/effects/meatslap.ogg'), 100, 0)
 ))
@@ -160,12 +160,12 @@ GLOBAL_LIST_INIT(barefootstep, list(
 		'sound/effects/footstep/hardbarefoot4.ogg',
 		'sound/effects/footstep/hardbarefoot5.ogg'), 75, 1),
 	FOOTSTEP_SNOW = list(list(
-		'code/modules/ziggers/sounds/snow1.ogg',
-		'code/modules/ziggers/sounds/snow2.ogg'), 75, 1),
+		'code/modules/wod13/sounds/snow1.ogg',
+		'code/modules/wod13/sounds/snow2.ogg'), 75, 1),
 	FOOTSTEP_TRAVA = list(list(
-		'code/modules/ziggers/sounds/trava1.ogg',
-		'code/modules/ziggers/sounds/trava2.ogg',
-		'code/modules/ziggers/sounds/trava3.ogg'), 75, 1),
+		'code/modules/wod13/sounds/trava1.ogg',
+		'code/modules/wod13/sounds/trava2.ogg',
+		'code/modules/wod13/sounds/trava3.ogg'), 75, 1),
 	FOOTSTEP_TROTUAR = list(list(
 		'sound/effects/footstep/hardbarefoot1.ogg',
 		'sound/effects/footstep/hardbarefoot2.ogg',

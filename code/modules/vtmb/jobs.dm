@@ -912,7 +912,7 @@
 		return
 	last_detonated = world.time
 	do_sparks(rand(5, 9), FALSE, user)
-	playsound(user.loc, 'code/modules/ziggers/sounds/cross.ogg', 100, FALSE, 8, 0.9)
+	playsound(user.loc, 'code/modules/wod13/sounds/cross.ogg', 100, FALSE, 8, 0.9)
 	for(var/mob/living/M in get_hearers_in_view(4, user.loc))
 		bang(get_turf(M), M, user)
 
@@ -960,208 +960,208 @@
 	name = "leader badge"
 	id_type_name = "leader badge"
 	desc = "King in the castle!"
-	icon = 'code/modules/ziggers/items.dmi'
+	icon = 'code/modules/wod13/items.dmi'
 	icon_state = "id6"
 	inhand_icon_state = "card-id"
 	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
-	onflooricon = 'code/modules/ziggers/onfloor.dmi'
-	worn_icon = 'code/modules/ziggers/worn.dmi'
+	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	worn_icon = 'code/modules/wod13/worn.dmi'
 	worn_icon_state = "id6"
 
 /obj/item/card/id/sheriff
 	name = "head security badge"
 	id_type_name = "head security badge"
 	desc = "A badge which shows honour and dedication."
-	icon = 'code/modules/ziggers/items.dmi'
+	icon = 'code/modules/wod13/items.dmi'
 	icon_state = "id4"
 	inhand_icon_state = "card-id"
 	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
-	onflooricon = 'code/modules/ziggers/onfloor.dmi'
-	worn_icon = 'code/modules/ziggers/worn.dmi'
+	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	worn_icon = 'code/modules/wod13/worn.dmi'
 	worn_icon_state = "id4"
 
 /obj/item/card/id/camarilla
 	name = "security badge"
 	id_type_name = "security badge"
 	desc = "A badge which shows honour and dedication."
-	icon = 'code/modules/ziggers/items.dmi'
+	icon = 'code/modules/wod13/items.dmi'
 	icon_state = "id3"
 	inhand_icon_state = "card-id"
 	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
-	onflooricon = 'code/modules/ziggers/onfloor.dmi'
-	worn_icon = 'code/modules/ziggers/worn.dmi'
+	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	worn_icon = 'code/modules/wod13/worn.dmi'
 	worn_icon_state = "id3"
 
 /obj/item/card/id/clerk
 	name = "clerk badge"
 	id_type_name = "clerk badge"
 	desc = "A badge which shows buerocracy qualification."
-	icon = 'code/modules/ziggers/items.dmi'
+	icon = 'code/modules/wod13/items.dmi'
 	icon_state = "id1"
 	inhand_icon_state = "card-id"
 	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
-	onflooricon = 'code/modules/ziggers/onfloor.dmi'
-	worn_icon = 'code/modules/ziggers/worn.dmi'
+	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	worn_icon = 'code/modules/wod13/worn.dmi'
 	worn_icon_state = "id1"
 
 /obj/item/card/id/anarch
 	name = "biker badge"
 	id_type_name = "biker badge"
 	desc = "A badge which shows protest and anarchy."
-	icon = 'code/modules/ziggers/items.dmi'
+	icon = 'code/modules/wod13/items.dmi'
 	icon_state = "id5"
 	inhand_icon_state = "card-id"
 	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
-	onflooricon = 'code/modules/ziggers/onfloor.dmi'
-	worn_icon = 'code/modules/ziggers/worn.dmi'
+	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	worn_icon = 'code/modules/wod13/worn.dmi'
 	worn_icon_state = "id5"
 
 /obj/item/card/id/clinic
 	name = "medical badge"
 	id_type_name = "medical badge"
 	desc = "A badge which shows medical qualification."
-	icon = 'code/modules/ziggers/items.dmi'
+	icon = 'code/modules/wod13/items.dmi'
 	icon_state = "id2"
 	inhand_icon_state = "card-id"
 	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
-	onflooricon = 'code/modules/ziggers/onfloor.dmi'
-	worn_icon = 'code/modules/ziggers/worn.dmi'
+	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	worn_icon = 'code/modules/wod13/worn.dmi'
 	worn_icon_state = "id2"
 
 /obj/item/card/id/archive
 	name = "librarian badge"
 	id_type_name = "librarian badge"
 	desc = "A badge which shows the love to books."
-	icon = 'code/modules/ziggers/items.dmi'
+	icon = 'code/modules/wod13/items.dmi'
 	icon_state = "id7"
 	inhand_icon_state = "card-id"
 	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
-	onflooricon = 'code/modules/ziggers/onfloor.dmi'
-	worn_icon = 'code/modules/ziggers/worn.dmi'
+	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	worn_icon = 'code/modules/wod13/worn.dmi'
 	worn_icon_state = "id7"
 
 /obj/item/card/id/cleaning
 	name = "janitor badge"
 	id_type_name = "janitor badge"
 	desc = "A badge which shows cleaning employment."
-	icon = 'code/modules/ziggers/items.dmi'
+	icon = 'code/modules/wod13/items.dmi'
 	icon_state = "id8"
 	inhand_icon_state = "card-id"
 	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
-	onflooricon = 'code/modules/ziggers/onfloor.dmi'
-	worn_icon = 'code/modules/ziggers/worn.dmi'
+	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	worn_icon = 'code/modules/wod13/worn.dmi'
 	worn_icon_state = "id8"
 
 /obj/item/card/id/graveyard
 	name = "keeper badge"
 	id_type_name = "keeper badge"
 	desc = "A badge which shows graveyard employment."
-	icon = 'code/modules/ziggers/items.dmi'
+	icon = 'code/modules/wod13/items.dmi'
 	icon_state = "id8"
 	inhand_icon_state = "card-id"
 	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
-	onflooricon = 'code/modules/ziggers/onfloor.dmi'
-	worn_icon = 'code/modules/ziggers/worn.dmi'
+	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	worn_icon = 'code/modules/wod13/worn.dmi'
 	worn_icon_state = "id8"
 
 /obj/item/card/id/dealer
 	name = "business badge"
 	id_type_name = "business badge"
 	desc = "A badge which shows business."
-	icon = 'code/modules/ziggers/items.dmi'
+	icon = 'code/modules/wod13/items.dmi'
 	icon_state = "id9"
 	inhand_icon_state = "card-id"
 	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
-	onflooricon = 'code/modules/ziggers/onfloor.dmi'
-	worn_icon = 'code/modules/ziggers/worn.dmi'
+	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	worn_icon = 'code/modules/wod13/worn.dmi'
 	worn_icon_state = "id9"
 
 /obj/item/card/id/supplytech
 	name = "technician badge"
 	id_type_name = "technician badge"
 	desc = "A badge which shows supply employment."
-	icon = 'code/modules/ziggers/items.dmi'
+	icon = 'code/modules/wod13/items.dmi'
 	icon_state = "id10"
 	inhand_icon_state = "card-id"
 	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
-	onflooricon = 'code/modules/ziggers/onfloor.dmi'
-	worn_icon = 'code/modules/ziggers/worn.dmi'
+	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	worn_icon = 'code/modules/wod13/worn.dmi'
 	worn_icon_state = "id10"
 
 /obj/item/card/id/hunter
 	name = "cross"
 	id_type_name = "cross"
 	desc = "When you come into the land that the Lord your God is giving you, you must not learn to imitate the abhorrent practices of those nations. No one shall be found among you who makes a son or daughter pass through fire, or who practices divination, or is a soothsayer, or an augur, or a sorcerer, or one who casts spells, or who consults ghosts or spirits, or who seeks oracles from the dead. For whoever does these things is abhorrent to the Lord; it is because of such abhorrent practices that the Lord your God is driving them out before you (Deuteronomy 18:9-12)."
-	icon = 'code/modules/ziggers/items.dmi'
+	icon = 'code/modules/wod13/items.dmi'
 	icon_state = "id11"
 	inhand_icon_state = "card-id"
 	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
-	onflooricon = 'code/modules/ziggers/onfloor.dmi'
-	worn_icon = 'code/modules/ziggers/worn.dmi'
+	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	worn_icon = 'code/modules/wod13/worn.dmi'
 	worn_icon_state = "id11"
 
 /obj/item/card/id/primogen
 	name = "mysterious primogen badge"
 	id_type_name = "mysterious primogen badge"
 	desc = "Sponsored by the Shadow Government."
-	icon = 'code/modules/ziggers/items.dmi'
+	icon = 'code/modules/wod13/items.dmi'
 	icon_state = "id12"
 	inhand_icon_state = "card-id"
 	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
-	onflooricon = 'code/modules/ziggers/onfloor.dmi'
-	worn_icon = 'code/modules/ziggers/worn.dmi'
+	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	worn_icon = 'code/modules/wod13/worn.dmi'
 	worn_icon_state = "id12"
 
 /obj/item/card/id/police
 	name = "law department badge"
 	id_type_name = "law department badge"
 	desc = "Sponsored by the Government."
-	icon = 'code/modules/ziggers/items.dmi'
+	icon = 'code/modules/wod13/items.dmi'
 	icon_state = "id13"
 	inhand_icon_state = "card-id"
 	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
-	onflooricon = 'code/modules/ziggers/onfloor.dmi'
-	worn_icon = 'code/modules/ziggers/worn.dmi'
+	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	worn_icon = 'code/modules/wod13/worn.dmi'
 	worn_icon_state = "id13"
 
 /obj/item/card/id/voivode
 	name = "ancient badge"
 	id_type_name ="ancient badge"
 	desc = "You have to wear this filthy thing to be recognized."
-	icon = 'code/modules/ziggers/items.dmi'
+	icon = 'code/modules/wod13/items.dmi'
 	icon_state = "id12"
 	inhand_icon_state = "card-id"
 	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
-	onflooricon = 'code/modules/ziggers/onfloor.dmi'
-	worn_icon = 'code/modules/ziggers/worn.dmi'
+	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	worn_icon = 'code/modules/wod13/worn.dmi'
 	worn_icon_state = "id12"
 
 /obj/item/card/id/bogatyr
 	name = "dusty badge"
 	id_type_name ="dusty badge"
 	desc = "You have to wear this because the Voivode wants you to."
-	icon = 'code/modules/ziggers/items.dmi'
+	icon = 'code/modules/wod13/items.dmi'
 	icon_state = "id12"
 	inhand_icon_state = "card-id"
 	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
-	onflooricon = 'code/modules/ziggers/onfloor.dmi'
-	worn_icon = 'code/modules/ziggers/worn.dmi'
+	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	worn_icon = 'code/modules/wod13/worn.dmi'
 	worn_icon_state = "id12"
 
 /datum/outfit/job/caitiff
@@ -1215,7 +1215,7 @@
 	kill_objective.owner = owner
 	kill_objective.find_target()
 	objectives += kill_objective
-	owner.current.playsound_local(get_turf(owner.current), 'code/modules/ziggers/sounds/sad_start.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
+	owner.current.playsound_local(get_turf(owner.current), 'code/modules/wod13/sounds/sad_start.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
 	return ..()
 
 /datum/antagonist/caitiff/on_removal()
@@ -1253,7 +1253,7 @@
 	for(var/atom/movable/screen/blood/B in H.hud_used.infodisplay)
 		B.icon_state = null
 	for(var/atom/movable/screen/healths/HE in H.hud_used.infodisplay)
-		HE.icon = 'code/modules/ziggers/ghoul_health.dmi'
+		HE.icon = 'code/modules/wod13/ghoul_health.dmi'
 	for(var/atom/movable/screen/drinkblood/DB in H.hud_used.static_inventory)
 		DB.icon_state = null
 	for(var/atom/movable/screen/bloodheal/BH in H.hud_used.static_inventory)
@@ -1326,7 +1326,7 @@
 	var/datum/objective/martyr/die_objective = new
 	die_objective.owner = owner
 	objectives += die_objective
-	owner.current.playsound_local(get_turf(owner.current), 'code/modules/ziggers/sounds/orthodox_start.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
+	owner.current.playsound_local(get_turf(owner.current), 'code/modules/wod13/sounds/orthodox_start.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
 	return ..()
 
 /datum/antagonist/hunter/on_removal()
@@ -1396,7 +1396,7 @@
 	var/datum/objective/survive/survive_objective = new
 	survive_objective.owner = owner
 	objectives += survive_objective
-	owner.current.playsound_local(get_turf(owner.current), 'code/modules/ziggers/sounds/evil_start.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
+	owner.current.playsound_local(get_turf(owner.current), 'code/modules/wod13/sounds/evil_start.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
 	return ..()
 
 /datum/antagonist/sabbatist/on_removal()
@@ -1536,14 +1536,14 @@
 	var/objectve = rand(1, 4)
 	switch(objectve)
 		if(1)
-			var/list/niggas = list()
+			var/list/ambitious = list()
 			for(var/mob/living/carbon/human/H in GLOB.player_list)
 				if(H.stat != DEAD && H.true_real_name != owner.current.true_real_name && H.vampire_faction != "Sabbat")
-					niggas += H
-			if(length(niggas))
+					ambitious += H
+			if(length(ambitious))
 				var/datum/objective/blood/blood_objective = new
 				blood_objective.owner = owner
-				var/mob/living/carbon/human/HU = pick(niggas)
+				var/mob/living/carbon/human/HU = pick(ambitious)
 				blood_objective.owner = owner
 				blood_objective.target_name = HU.true_real_name
 				objectives += blood_objective
@@ -1561,14 +1561,14 @@
 			objectives += money_objective
 			money_objective.update_explanation_text()
 		if(3)
-			var/list/niggas = list()
+			var/list/ambitious = list()
 			for(var/mob/living/carbon/human/H in GLOB.player_list)
 				if(H.stat != DEAD && H.true_real_name != owner.current.true_real_name && H.vampire_faction != "Sabbat")
-					niggas += H
-			if(length(niggas))
+					ambitious += H
+			if(length(ambitious))
 				var/datum/objective/protect_niga/protect_objective = new
 				protect_objective.owner = owner
-				var/mob/living/carbon/human/HU = pick(niggas)
+				var/mob/living/carbon/human/HU = pick(ambitious)
 				protect_objective.mine_target = HU
 				objectives += protect_objective
 				protect_objective.update_explanation_text()

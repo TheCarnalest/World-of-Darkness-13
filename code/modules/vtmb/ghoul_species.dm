@@ -193,13 +193,13 @@
 				return
 		if(H.bloodpool < 1)
 			to_chat(owner, "<span class='warning'>You don't have enough <b>BLOOD</b> to do that!</span>")
-			SEND_SOUND(H, sound('code/modules/ziggers/sounds/need_blood.ogg', 0, 0, 75))
+			SEND_SOUND(H, sound('code/modules/wod13/sounds/need_blood.ogg', 0, 0, 75))
 			return
 		if(last_heal+30 >= world.time)
 			return
 		last_heal = world.time
 		H.bloodpool = max(0, H.bloodpool-1)
-		H.playsound_local(H, 'code/modules/ziggers/sounds/bloodhealing.ogg', 50, FALSE)
+		H.playsound_local(H, 'code/modules/wod13/sounds/bloodhealing.ogg', 50, FALSE)
 		H.adjustBruteLoss(-10*level, TRUE)
 		H.adjustFireLoss(-10*level, TRUE)
 		if(length(H.all_wounds))
@@ -235,10 +235,10 @@
 									if(!H.warrant)
 										if(H.killed_count >= 5)
 											H.warrant = TRUE
-											SEND_SOUND(H, sound('code/modules/ziggers/sounds/suspect.ogg', 0, 0, 75))
+											SEND_SOUND(H, sound('code/modules/wod13/sounds/suspect.ogg', 0, 0, 75))
 											to_chat(H, "<span class='userdanger'><b>POLICE ASSAULT IN PROGRESS</b></span>")
 										else
-											SEND_SOUND(H, sound('code/modules/ziggers/sounds/sus.ogg', 0, 0, 75))
+											SEND_SOUND(H, sound('code/modules/wod13/sounds/sus.ogg', 0, 0, 75))
 											to_chat(H, "<span class='userdanger'><b>SUSPICIOUS ACTION (corpse)</b></span>")
 			for(var/obj/item/I in H.contents)
 				if(I)
@@ -254,10 +254,10 @@
 										if(!H.warrant)
 											if(H.killed_count >= 5)
 												H.warrant = TRUE
-												SEND_SOUND(H, sound('code/modules/ziggers/sounds/suspect.ogg', 0, 0, 75))
+												SEND_SOUND(H, sound('code/modules/wod13/sounds/suspect.ogg', 0, 0, 75))
 												to_chat(H, "<span class='userdanger'><b>POLICE ASSAULT IN PROGRESS</b></span>")
 											else
-												SEND_SOUND(H, sound('code/modules/ziggers/sounds/sus.ogg', 0, 0, 75))
+												SEND_SOUND(H, sound('code/modules/wod13/sounds/sus.ogg', 0, 0, 75))
 												to_chat(H, "<span class='userdanger'><b>SUSPICIOUS ACTION (equipment)</b></span>")
 	if(H.key && H.stat != DEAD)
 		var/datum/preferences/P = GLOB.preferences_datums[ckey(H.key)]
@@ -325,10 +325,10 @@
 									if(!H.warrant)
 										if(H.killed_count >= 5)
 											H.warrant = TRUE
-											SEND_SOUND(H, sound('code/modules/ziggers/sounds/suspect.ogg', 0, 0, 75))
+											SEND_SOUND(H, sound('code/modules/wod13/sounds/suspect.ogg', 0, 0, 75))
 											to_chat(H, "<span class='userdanger'><b>POLICE ASSAULT IN PROGRESS</b></span>")
 										else
-											SEND_SOUND(H, sound('code/modules/ziggers/sounds/sus.ogg', 0, 0, 75))
+											SEND_SOUND(H, sound('code/modules/wod13/sounds/sus.ogg', 0, 0, 75))
 											to_chat(H, "<span class='userdanger'><b>SUSPICIOUS ACTION (corpse)</b></span>")
 			for(var/obj/item/I in H.contents)
 				if(I)
@@ -344,10 +344,10 @@
 										if(!H.warrant)
 											if(H.killed_count >= 5)
 												H.warrant = TRUE
-												SEND_SOUND(H, sound('code/modules/ziggers/sounds/suspect.ogg', 0, 0, 75))
+												SEND_SOUND(H, sound('code/modules/wod13/sounds/suspect.ogg', 0, 0, 75))
 												to_chat(H, "<span class='userdanger'><b>POLICE ASSAULT IN PROGRESS</b></span>")
 											else
-												SEND_SOUND(H, sound('code/modules/ziggers/sounds/sus.ogg', 0, 0, 75))
+												SEND_SOUND(H, sound('code/modules/wod13/sounds/sus.ogg', 0, 0, 75))
 												to_chat(H, "<span class='userdanger'><b>SUSPICIOUS ACTION (equipment)</b></span>")
 	if(H.last_bloodpool_restore+600 <= world.time)
 		H.last_bloodpool_restore = world.time
@@ -399,10 +399,10 @@
 									if(!H.warrant)
 										if(H.killed_count >= 5)
 											H.warrant = TRUE
-											SEND_SOUND(H, sound('code/modules/ziggers/sounds/suspect.ogg', 0, 0, 75))
+											SEND_SOUND(H, sound('code/modules/wod13/sounds/suspect.ogg', 0, 0, 75))
 											to_chat(H, "<span class='userdanger'><b>POLICE ASSAULT IN PROGRESS</b></span>")
 										else
-											SEND_SOUND(H, sound('code/modules/ziggers/sounds/sus.ogg', 0, 0, 75))
+											SEND_SOUND(H, sound('code/modules/wod13/sounds/sus.ogg', 0, 0, 75))
 											to_chat(H, "<span class='userdanger'><b>SUSPICIOUS ACTION (corpse)</b></span>")
 			for(var/obj/item/I in H.contents)
 				if(I)
@@ -418,10 +418,10 @@
 										if(!H.warrant)
 											if(H.killed_count >= 5)
 												H.warrant = TRUE
-												SEND_SOUND(H, sound('code/modules/ziggers/sounds/suspect.ogg', 0, 0, 75))
+												SEND_SOUND(H, sound('code/modules/wod13/sounds/suspect.ogg', 0, 0, 75))
 												to_chat(H, "<span class='userdanger'><b>POLICE ASSAULT IN PROGRESS</b></span>")
 											else
-												SEND_SOUND(H, sound('code/modules/ziggers/sounds/sus.ogg', 0, 0, 75))
+												SEND_SOUND(H, sound('code/modules/wod13/sounds/sus.ogg', 0, 0, 75))
 												to_chat(H, "<span class='userdanger'><b>SUSPICIOUS ACTION (equipment)</b></span>")
 	if(H.last_bloodpool_restore+600 <= world.time)
 		H.last_bloodpool_restore = world.time

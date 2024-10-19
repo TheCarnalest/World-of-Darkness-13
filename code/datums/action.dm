@@ -228,7 +228,7 @@
 		if(!E.wielded)
 			return
 	if(last_shit+70 < world.time)
-		playsound(get_turf(owner), 'code/modules/ziggers/sounds/punk.ogg', 100, FALSE)
+		playsound(get_turf(owner), 'code/modules/wod13/sounds/punk.ogg', 100, FALSE)
 		owner.emote("me",1,"riffs brutally.",TRUE)
 		last_shit = world.time
 		for(var/mob/living/carbon/human/H in oviewers(7, owner))
