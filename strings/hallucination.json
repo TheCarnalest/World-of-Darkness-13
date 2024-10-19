@@ -47,7 +47,7 @@
 		"Huh...huh...huh...",
 		"I'm turning inside out..",
 		"Let me help you.",
-		"I'm going to reach inside you and pull out all the pretty little organs."
+		"I'm going to reach inside you and pull out all those pretty little organs."
 	],
 
 	"didyouhearthat": [
@@ -109,27 +109,27 @@
 	],
 
 	"people": [
-		"Prince",
-		"Sheriff",
-		"Doctor",
-		"Justicar",
-		"Gangster",
-		"Accountant",
-		"Cleaner",
-		"Archon",
-		"Warehouse manager"
+		"The Prince",
+		"The Sheriff",
+		"The Doctor",
+		"The Gravekeeper",
+		"The barkeep",
+		"The scourge",
+		"The janitor",
+		"the dealer",
+		"supply manager"
 	],
 
 	"accusations": [
-		"You're a blank body.",
-		"bandit.",
-		"witch.",
-		"I know you're a vampire!",
-		"Snitch.",
-		"Betrayer!",
-		"traitor..",
-		"liar",
-		"Caitiff."
+		"is Sabbat",
+		"Is Bahari",
+		"is a witch",
+		"is a vampire",
+		"is a werewolf",
+		"is a traitor",
+		"is an alien",
+		"is a Diablerist",
+		"is Caitiff"
 	],
 
 	"threat": [
