@@ -61,26 +61,11 @@ GLOBAL_LIST_EMPTY(las_mirrors)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 
+		//Sorry, you can't see yourself in front of the mirror!
 		if(H.clane)
-			if(H.clane.name == "Lasombra")
-				if(H.bloodpool > 2)
-					var/new_mirror = input(user, "Choose the mirror to travel:","Enter Mirror",null) as null|anything in GLOB.las_mirrors
-					if(new_mirror)
-						if(istype(new_mirror, /obj/structure/mirror))
-							var/obj/structure/mirror/M = new_mirror
-							H.bloodpool = max(0, H.bloodpool-2)
-							H.Stun(10)
-							animate(H, color = "#000000", time = 10)
-							playsound(user.loc, 'code/modules/ziggers/sounds/necromancy.ogg', 50, FALSE)
-							spawn(10)
-								H.forceMove(M.loc)
-								H.Stun(10)
-								animate(H, color = initial(H.color), time = 10)
-								playsound(user.loc, 'code/modules/ziggers/sounds/necromancy.ogg', 50, FALSE)
-					return
-				else
-					to_chat(H, "<span class='warning'>You need more <b>BLOOD</b> to activate that.</span>")
+			if(H.clane == "Lasombra")
 				return
+
 		//see code/modules/mob/dead/new_player/preferences.dm at approx line 545 for comments!
 		//this is largely copypasted from there.
 
