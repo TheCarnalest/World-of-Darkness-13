@@ -31,12 +31,12 @@
 					H.bloodpool = max(0, H.bloodpool-2)
 					H.Stun(10)
 					animate(H, color = "#000000", time = 10)
-					playsound(user.loc, 'code/modules/ziggers/sounds/necromancy.ogg', 50, FALSE)
+					playsound(user.loc, 'code/modules/wod13/sounds/necromancy.ogg', 50, FALSE)
 					spawn(10)
 						H.forceMove(M.loc)
 						H.Stun(10)
 						animate(H, color = initial(H.color), time = 10)
-						playsound(L, 'code/modules/ziggers/sounds/necromancy.ogg', 50, FALSE)
+						playsound(L, 'code/modules/wod13/sounds/necromancy.ogg', 50, FALSE)
 					return
 			//Proceed to normal activation if they didn't select a mirror
 

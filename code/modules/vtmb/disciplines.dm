@@ -310,7 +310,7 @@
 <<<<<<< HEAD
 			playsound(caster.loc, 'code/modules/wod13/sounds/auspex_deactivate.ogg', 50, FALSE)
 =======
-			caster.playsound_local(caster.loc, 'code/modules/ziggers/sounds/auspex_deactivate.ogg', 50, FALSE)
+			caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/auspex_deactivate.ogg', 50, FALSE)
 >>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 			REMOVE_TRAIT(caster, TRAIT_THERMAL_VISION, TRAIT_GENERIC)
 			if(loh)
@@ -386,7 +386,7 @@
 <<<<<<< HEAD
 					playsound(caster.loc, 'code/modules/wod13/sounds/celerity_deactivate.ogg', 50, FALSE)
 =======
-					caster.playsound_local(caster.loc, 'code/modules/ziggers/sounds/celerity_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/celerity_deactivate.ogg', 50, FALSE)
 >>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 					caster.remove_movespeed_modifier(/datum/movespeed_modifier/celerity)
 					caster.celerity_visual = FALSE
@@ -398,7 +398,7 @@
 <<<<<<< HEAD
 					playsound(caster.loc, 'code/modules/wod13/sounds/celerity_deactivate.ogg', 50, FALSE)
 =======
-					caster.playsound_local(caster.loc, 'code/modules/ziggers/sounds/celerity_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/celerity_deactivate.ogg', 50, FALSE)
 >>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 					caster.remove_movespeed_modifier(/datum/movespeed_modifier/celerity2)
 					caster.celerity_visual = FALSE
@@ -410,7 +410,7 @@
 <<<<<<< HEAD
 					playsound(caster.loc, 'code/modules/wod13/sounds/celerity_deactivate.ogg', 50, FALSE)
 =======
-					caster.playsound_local(caster.loc, 'code/modules/ziggers/sounds/celerity_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/celerity_deactivate.ogg', 50, FALSE)
 >>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 					caster.remove_movespeed_modifier(/datum/movespeed_modifier/celerity3)
 					caster.celerity_visual = FALSE
@@ -422,7 +422,7 @@
 <<<<<<< HEAD
 					playsound(caster.loc, 'code/modules/wod13/sounds/celerity_deactivate.ogg', 50, FALSE)
 =======
-					caster.playsound_local(caster.loc, 'code/modules/ziggers/sounds/celerity_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/celerity_deactivate.ogg', 50, FALSE)
 >>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 					caster.remove_movespeed_modifier(/datum/movespeed_modifier/celerity4)
 					caster.celerity_visual = FALSE
@@ -434,7 +434,7 @@
 <<<<<<< HEAD
 					playsound(caster.loc, 'code/modules/wod13/sounds/celerity_deactivate.ogg', 50, FALSE)
 =======
-					caster.playsound_local(caster.loc, 'code/modules/ziggers/sounds/celerity_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/celerity_deactivate.ogg', 50, FALSE)
 >>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 					caster.remove_movespeed_modifier(/datum/movespeed_modifier/celerity5)
 					caster.celerity_visual = FALSE
@@ -698,7 +698,7 @@
 <<<<<<< HEAD
 					playsound(caster.loc, 'code/modules/wod13/sounds/potence_deactivate.ogg', 50, FALSE)
 =======
-					caster.playsound_local(caster.loc, 'code/modules/ziggers/sounds/potence_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/potence_deactivate.ogg', 50, FALSE)
 >>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 					caster.dna.species.punchdamagelow -= mod
 					caster.dna.species.punchdamagehigh -= mod
@@ -728,7 +728,7 @@
 	caster.apply_overlay(FORTITUDE_LAYER)
 =======
 //	caster.remove_overlay(FORTITUDE_LAYER)
-//	var/mutable_appearance/fortitude_overlay = mutable_appearance('code/modules/ziggers/icons.dmi', "fortitude", -FORTITUDE_LAYER)
+//	var/mutable_appearance/fortitude_overlay = mutable_appearance('code/modules/wod13/icons.dmi', "fortitude", -FORTITUDE_LAYER)
 //	caster.overlays_standing[FORTITUDE_LAYER] = fortitude_overlay
 //	caster.apply_overlay(FORTITUDE_LAYER)
 >>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
@@ -739,7 +739,7 @@
 <<<<<<< HEAD
 			playsound(caster.loc, 'code/modules/wod13/sounds/fortitude_deactivate.ogg', 50, FALSE)
 =======
-			caster.playsound_local(caster.loc, 'code/modules/ziggers/sounds/fortitude_deactivate.ogg', 50, FALSE)
+			caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/fortitude_deactivate.ogg', 50, FALSE)
 >>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 			caster.physiology.armor.melee -= armah
 			caster.physiology.armor.bullet -= armah
@@ -772,7 +772,7 @@
 <<<<<<< HEAD
 				playsound(caster.loc, 'code/modules/wod13/sounds/obfuscate_deactivate.ogg', 50, FALSE)
 =======
-				caster.playsound_local(caster.loc, 'code/modules/ziggers/sounds/obfuscate_deactivate.ogg', 50, FALSE)
+				caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/obfuscate_deactivate.ogg', 50, FALSE)
 >>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 				caster.alpha = 255
 
@@ -880,7 +880,7 @@
 <<<<<<< HEAD
 					playsound(caster.loc, 'code/modules/wod13/sounds/presence_deactivate.ogg', 50, FALSE)
 =======
-					caster.playsound_local(caster.loc, 'code/modules/ziggers/sounds/presence_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/presence_deactivate.ogg', 50, FALSE)
 >>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 
 /datum/discipline/protean
@@ -936,7 +936,7 @@
 <<<<<<< HEAD
 					playsound(caster.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
 =======
-					caster.playsound_local(caster.loc, 'code/modules/ziggers/sounds/protean_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
 >>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 //						caster.dna.species.attack_verb = initial(caster.dna.species.attack_verb)
 //						caster.dna.species.attack_sound = initial(caster.dna.species.attack_sound)
@@ -966,7 +966,7 @@
 <<<<<<< HEAD
 					playsound(caster.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
 =======
-					caster.playsound_local(caster.loc, 'code/modules/ziggers/sounds/protean_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
 >>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 //						caster.dna.species.attack_verb = initial(caster.dna.species.attack_verb)
 //						caster.dna.species.attack_sound = initial(caster.dna.species.attack_sound)
@@ -994,7 +994,7 @@
 <<<<<<< HEAD
 					playsound(caster, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
 =======
-					caster.playsound_local(caster, 'code/modules/ziggers/sounds/protean_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
 >>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 //						caster.dna.species.attack_verb = initial(caster.dna.species.attack_verb)
 //						caster.dna.species.attack_sound = initial(caster.dna.species.attack_sound)
@@ -1029,7 +1029,7 @@
 <<<<<<< HEAD
 					playsound(caster, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
 =======
-					caster.playsound_local(caster, 'code/modules/ziggers/sounds/protean_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
 >>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 //						caster.dna.species.attack_verb = initial(caster.dna.species.attack_verb)
 //						caster.dna.species.attack_sound = initial(caster.dna.species.attack_sound)
@@ -1226,7 +1226,7 @@
 <<<<<<< HEAD
 			playsound(target.loc, 'code/modules/wod13/sounds/serpentis.ogg', 50, TRUE)
 =======
-			caster.playsound_local(target.loc, 'code/modules/ziggers/sounds/serpentis.ogg', 50, TRUE)
+			caster.playsound_local(target.loc, 'code/modules/wod13/sounds/serpentis.ogg', 50, TRUE)
 >>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 			if(ishuman(target))
 				var/mob/living/carbon/human/H = target
@@ -1250,7 +1250,7 @@
 <<<<<<< HEAD
 		playsound(target.loc, 'code/modules/wod13/sounds/serpentis.ogg', 50, TRUE)
 =======
-		caster.playsound_local(target.loc, 'code/modules/ziggers/sounds/serpentis.ogg', 50, TRUE)
+		caster.playsound_local(target.loc, 'code/modules/wod13/sounds/serpentis.ogg', 50, TRUE)
 >>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 		qdel(casing)
 
@@ -1273,7 +1273,7 @@
 <<<<<<< HEAD
 		playsound(caster.loc, 'code/modules/wod13/sounds/vicissitude.ogg', 50, TRUE)
 =======
-		caster.playsound_local(caster.loc, 'code/modules/ziggers/sounds/vicissitude.ogg', 50, TRUE)
+		caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/vicissitude.ogg', 50, TRUE)
 >>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 		caster.adjustFireLoss(50)		//abusers suffer
 		caster.emote("scream")
@@ -1282,7 +1282,7 @@
 <<<<<<< HEAD
 		playsound(target.loc, 'code/modules/wod13/sounds/vicissitude.ogg', 50, TRUE)
 =======
-		caster.playsound_local(target.loc, 'code/modules/ziggers/sounds/vicissitude.ogg', 50, TRUE)
+		caster.playsound_local(target.loc, 'code/modules/wod13/sounds/vicissitude.ogg', 50, TRUE)
 >>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 		if(target.stat >= 2)
 			if(istype(target, /mob/living/carbon/human/npc))
@@ -1402,7 +1402,7 @@
 <<<<<<< HEAD
 	playsound(target.loc, 'code/modules/wod13/sounds/quietus.ogg', 50, TRUE)
 =======
-	caster.playsound_local(target.loc, 'code/modules/ziggers/sounds/quietus.ogg', 50, TRUE)
+	caster.playsound_local(target.loc, 'code/modules/wod13/sounds/quietus.ogg', 50, TRUE)
 >>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 	switch(level_casting)
 		if(1)
@@ -1507,7 +1507,7 @@
 <<<<<<< HEAD
 	playsound(target.loc, 'code/modules/wod13/sounds/necromancy.ogg', 50, TRUE)
 =======
-	caster.playsound_local(target.loc, 'code/modules/ziggers/sounds/necromancy.ogg', 50, TRUE)
+	caster.playsound_local(target.loc, 'code/modules/wod13/sounds/necromancy.ogg', 50, TRUE)
 >>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 	var/limit = min(3, level)+caster.social-1+caster.more_companions
 	if(length(caster.beastmaster) >= limit)
@@ -1630,7 +1630,7 @@
 <<<<<<< HEAD
 					playsound(caster.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
 =======
-					caster.playsound_local(caster.loc, 'code/modules/ziggers/sounds/protean_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
 >>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 		if(2)
 			caster.dna.species.GiveSpeciesFlight(caster)
@@ -1640,7 +1640,7 @@
 <<<<<<< HEAD
 					playsound(caster.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
 =======
-					caster.playsound_local(caster.loc, 'code/modules/ziggers/sounds/protean_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
 >>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 		if(3)
 			caster.drop_all_held_items()
@@ -1654,7 +1654,7 @@
 <<<<<<< HEAD
 					playsound(caster.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
 =======
-					caster.playsound_local(caster.loc, 'code/modules/ziggers/sounds/protean_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
 >>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 		if(4 to 5)
 			caster.drop_all_held_items()
@@ -1667,7 +1667,7 @@
 <<<<<<< HEAD
 					playsound(caster.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
 =======
-					caster.playsound_local(caster.loc, 'code/modules/ziggers/sounds/protean_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
 >>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 
 /datum/discipline/valeren

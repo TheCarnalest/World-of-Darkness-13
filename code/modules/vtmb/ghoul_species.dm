@@ -202,7 +202,7 @@
 <<<<<<< HEAD
 		playsound(H, 'code/modules/wod13/sounds/bloodhealing.ogg', 50, FALSE)
 =======
-		H.playsound_local(H, 'code/modules/ziggers/sounds/bloodhealing.ogg', 50, FALSE)
+		H.playsound_local(H, 'code/modules/wod13/sounds/bloodhealing.ogg', 50, FALSE)
 >>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 		H.adjustBruteLoss(-10*level, TRUE)
 		H.adjustFireLoss(-10*level, TRUE)
