@@ -332,7 +332,7 @@ Behavior that's still missing from this component that original food items had t
 	if(F)
 		playsound(eater.loc,F.eatsound, rand(10,50), TRUE)
 	else
-		playsound(eater.loc,'code/modules/ziggers/sounds/eat.ogg', rand(10,50), TRUE)
+		playsound(eater.loc,'code/modules/wod13/sounds/eat.ogg', rand(10,50), TRUE)
 
 	if(owner.reagents.total_volume)
 		SEND_SIGNAL(parent, COMSIG_FOOD_EATEN, eater, feeder, bitecount, bite_consumption)

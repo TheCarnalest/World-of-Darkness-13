@@ -113,7 +113,7 @@
 /obj/item/melee/touch_attack/mothers_touch
 	name = "\improper mother's touch"
 	desc = "That's the bottom line, because flesh to stone said so!"
-	on_use_sound = 'code/modules/ziggers/sounds/restore_cast.ogg'
+	on_use_sound = 'code/modules/wod13/sounds/restore_cast.ogg'
 	icon_state = "fleshtostone"
 	inhand_icon_state = "fleshtostone"
 

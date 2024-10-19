@@ -92,7 +92,7 @@
 		to_chat(owner, "<span class='warning'>You don't have enough <b>BLOOD</b> to do that!</span>")
 		return
 	H.bloodpool = max(0, H.bloodpool-2)
-	playsound(H.loc, 'code/modules/ziggers/sounds/thaum.ogg', 50, FALSE)
+	playsound(H.loc, 'code/modules/wod13/sounds/thaum.ogg', 50, FALSE)
 	abuse_fix = world.time
 	H.physiology.damage_resistance += 75
 	animate(H, color = "#ff0000", time = 10, loop = 1)
@@ -100,6 +100,6 @@
 		H.AdjustMasquerade(-1)
 	spawn(100)
 		if(H)
-			playsound(H.loc, 'code/modules/ziggers/sounds/thaum.ogg', 50, FALSE)
+			playsound(H.loc, 'code/modules/wod13/sounds/thaum.ogg', 50, FALSE)
 			H.physiology.damage_resistance -= 75
 			H.color = initial(H.color)

@@ -23,7 +23,7 @@
 		for(var/atom/movable/screen/blood/B in H.hud_used.infodisplay)
 			B.icon_state = null
 		for(var/atom/movable/screen/healths/HE in H.hud_used.infodisplay)
-			HE.icon = 'code/modules/ziggers/ghoul_health.dmi'
+			HE.icon = 'code/modules/wod13/ghoul_health.dmi'
 		for(var/atom/movable/screen/drinkblood/DB in H.hud_used.static_inventory)
 			DB.icon_state = null
 		for(var/atom/movable/screen/bloodheal/BH in H.hud_used.static_inventory)
@@ -143,7 +143,7 @@
 	var/datum/objective/spiral/die_objective = new
 	die_objective.owner = owner
 	objectives += die_objective
-	owner.current.playsound_local(get_turf(owner.current), 'code/modules/ziggers/sounds/spiral_start.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
+	owner.current.playsound_local(get_turf(owner.current), 'code/modules/wod13/sounds/spiral_start.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
 	return ..()
 
 /datum/antagonist/spiral/on_removal()

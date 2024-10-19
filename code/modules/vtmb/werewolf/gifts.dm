@@ -1,5 +1,5 @@
 /datum/action/gift
-	icon_icon = 'code/modules/ziggers/werewolf_abilities.dmi'
+	icon_icon = 'code/modules/wod13/werewolf_abilities.dmi'
 	check_flags = AB_CHECK_IMMOBILE|AB_CHECK_CONSCIOUS
 	var/rage_req = 0
 	var/gnosis_req = 0
@@ -17,12 +17,12 @@
 		if(rage_req)
 			if(H.auspice.rage < rage_req)
 				to_chat(owner, "<span class='warning'>You don't have enough <b>RAGE</b> to do that!</span>")
-				SEND_SOUND(owner, sound('code/modules/ziggers/sounds/werewolf_cast_failed.ogg', 0, 0, 75))
+				SEND_SOUND(owner, sound('code/modules/wod13/sounds/werewolf_cast_failed.ogg', 0, 0, 75))
 				allowed_to_proceed = FALSE
 				return
 			if(H.auspice.gnosis < gnosis_req)
 				to_chat(owner, "<span class='warning'>You don't have enough <b>GNOSIS</b> to do that!</span>")
-				SEND_SOUND(owner, sound('code/modules/ziggers/sounds/werewolf_cast_failed.ogg', 0, 0, 75))
+				SEND_SOUND(owner, sound('code/modules/wod13/sounds/werewolf_cast_failed.ogg', 0, 0, 75))
 				allowed_to_proceed = FALSE
 				return
 		if(cool_down+200 >= world.time)
@@ -46,7 +46,7 @@
 	. = ..()
 	if(allowed_to_proceed)
 		var/mob/living/carbon/H = owner
-		playsound(get_turf(owner), 'code/modules/ziggers/sounds/falling_touch.ogg', 75, FALSE)
+		playsound(get_turf(owner), 'code/modules/wod13/sounds/falling_touch.ogg', 75, FALSE)
 		H.put_in_active_hand(new /obj/item/melee/touch_attack/werewolf(H))
 
 /datum/action/gift/inspiration
@@ -81,7 +81,7 @@
 	. = ..()
 	if(allowed_to_proceed)
 		var/mob/living/carbon/H = owner
-		playsound(get_turf(owner), 'code/modules/ziggers/sounds/inspiration.ogg', 75, FALSE)
+		playsound(get_turf(owner), 'code/modules/wod13/sounds/inspiration.ogg', 75, FALSE)
 		H.emote("scream")
 		for(var/mob/living/carbon/C in range(5, owner))
 			if(C)
@@ -99,7 +99,7 @@
 	. = ..()
 	if(allowed_to_proceed)
 		if(ishuman(owner))
-			playsound(get_turf(owner), 'code/modules/ziggers/sounds/razor_claws.ogg', 75, FALSE)
+			playsound(get_turf(owner), 'code/modules/wod13/sounds/razor_claws.ogg', 75, FALSE)
 			var/mob/living/carbon/human/H = owner
 			H.dna.species.attack_verb = "slash"
 			H.dna.species.attack_sound = 'sound/weapons/slash.ogg'
@@ -115,7 +115,7 @@
 				H.dna.species.punchdamagehigh = initial(H.dna.species.punchdamagehigh)
 				to_chat(owner, "<span class='warning'>Your claws are not sharp anymore...</span>")
 		else
-			playsound(get_turf(owner), 'code/modules/ziggers/sounds/razor_claws.ogg', 75, FALSE)
+			playsound(get_turf(owner), 'code/modules/wod13/sounds/razor_claws.ogg', 75, FALSE)
 			var/mob/living/carbon/H = owner
 			H.melee_damage_lower = H.melee_damage_lower+20
 			H.melee_damage_upper = H.melee_damage_upper+20
@@ -138,7 +138,7 @@
 		if(length(C.beastmaster) > 3)
 			var/mob/living/simple_animal/hostile/beastmaster/B = pick(C.beastmaster)
 			qdel(B)
-		playsound(get_turf(owner), 'code/modules/ziggers/sounds/wolves.ogg', 75, FALSE)
+		playsound(get_turf(owner), 'code/modules/wod13/sounds/wolves.ogg', 75, FALSE)
 		if(!length(C.beastmaster))
 			var/datum/action/beastmaster_stay/E1 = new()
 			E1.Grant(C)
@@ -160,12 +160,12 @@
 	if(allowed_to_proceed)
 		var/mob/living/carbon/C = owner
 		C.emote("howl")
-		playsound(get_turf(C), pick('code/modules/ziggers/sounds/awo1.ogg', 'code/modules/ziggers/sounds/awo2.ogg'), 100, FALSE)
+		playsound(get_turf(C), pick('code/modules/wod13/sounds/awo1.ogg', 'code/modules/wod13/sounds/awo2.ogg'), 100, FALSE)
 		for(var/mob/living/carbon/A in orange(6, owner))
 			if(A)
 				if(isgarou(A) || iswerewolf(A))
 					A.emote("howl")
-					playsound(get_turf(A), pick('code/modules/ziggers/sounds/awo1.ogg', 'code/modules/ziggers/sounds/awo2.ogg'), 100, FALSE)
+					playsound(get_turf(A), pick('code/modules/wod13/sounds/awo1.ogg', 'code/modules/wod13/sounds/awo2.ogg'), 100, FALSE)
 					spawn(10)
 						adjust_gnosis(1, A, TRUE)
 //	awo1
@@ -199,7 +199,7 @@
 	. = ..()
 	if(allowed_to_proceed)
 		if(ishuman(owner))
-			playsound(get_turf(owner), 'code/modules/ziggers/sounds/resist_pain.ogg', 75, FALSE)
+			playsound(get_turf(owner), 'code/modules/wod13/sounds/resist_pain.ogg', 75, FALSE)
 			var/mob/living/carbon/human/H = owner
 			H.physiology.armor.melee = 50
 			H.physiology.armor.bullet = 50
@@ -209,7 +209,7 @@
 				H.physiology.armor.bullet = initial(H.physiology.armor.bullet)
 				to_chat(owner, "<span class='warning'>Your skin is thin again...</span>")
 		else
-			playsound(get_turf(owner), 'code/modules/ziggers/sounds/resist_pain.ogg', 75, FALSE)
+			playsound(get_turf(owner), 'code/modules/wod13/sounds/resist_pain.ogg', 75, FALSE)
 			var/mob/living/carbon/werewolf/H = owner
 			H.werewolf_armor = 50
 			to_chat(owner, "<span class='notice'>You feel your skin thickering...</span>")
@@ -260,7 +260,7 @@
 	if(allowed_to_proceed)
 		var/mob/living/carbon/C = owner
 		C.sight = SEE_MOBS|SEE_OBJS
-		playsound(get_turf(owner), 'code/modules/ziggers/sounds/sense_wyrm.ogg', 75, FALSE)
+		playsound(get_turf(owner), 'code/modules/wod13/sounds/sense_wyrm.ogg', 75, FALSE)
 		to_chat(owner, "<span class='notice'>You feel your sense sharpening...</span>")
 		spawn(200)
 			C.sight = initial(C.sight)
@@ -292,7 +292,7 @@
 		var/mob/living/carbon/C = owner
 		C.obfuscate_level = 3
 		C.alpha = 36
-		playsound(get_turf(owner), 'code/modules/ziggers/sounds/milky_blur.ogg', 75, FALSE)
+		playsound(get_turf(owner), 'code/modules/wod13/sounds/milky_blur.ogg', 75, FALSE)
 		spawn(200)
 			C.obfuscate_level = 0
 			C.alpha = 255
@@ -331,7 +331,7 @@
 		var/mob/living/carbon/C = owner
 		C.emote("laugh")
 		C.Stun(10)
-		playsound(get_turf(owner), 'code/modules/ziggers/sounds/infectious_laughter.ogg', 100, FALSE)
+		playsound(get_turf(owner), 'code/modules/wod13/sounds/infectious_laughter.ogg', 100, FALSE)
 		for(var/mob/living/L in oviewers(4, src))
 			if(L)
 				L.emote("laugh")
@@ -349,7 +349,7 @@
 	if(allowed_to_proceed)
 		var/mob/living/carbon/C = owner
 		if(C.stat != DEAD)
-			SEND_SOUND(owner, sound('code/modules/ziggers/sounds/rage_heal.ogg', 0, 0, 75))
+			SEND_SOUND(owner, sound('code/modules/wod13/sounds/rage_heal.ogg', 0, 0, 75))
 			C.adjustBruteLoss(-50*C.auspice.level, TRUE)
 			C.adjustFireLoss(-50*C.auspice.level, TRUE)
 			C.adjustCloneLoss(-50*C.auspice.level, TRUE)
@@ -375,7 +375,7 @@
 	name = "Change Apparel"
 	desc = "Choose the clothes of your Crinos form."
 	button_icon_state = "choose_apparel"
-	icon_icon = 'code/modules/ziggers/werewolf_abilities.dmi'
+	icon_icon = 'code/modules/wod13/werewolf_abilities.dmi'
 	check_flags = AB_CHECK_IMMOBILE|AB_CHECK_CONSCIOUS
 
 /datum/action/change_apparel/Trigger()

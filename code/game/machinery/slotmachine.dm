@@ -86,7 +86,7 @@
 			return
 		to_chat(user, "<span class='notice'>You insert [H.amount] dollars into [src]'s slot!</span>")
 		balance += H.amount
-		playsound(loc, 'code/modules/ziggers/sounds/insert.ogg', 50, TRUE)
+		playsound(loc, 'code/modules/wod13/sounds/insert.ogg', 50, TRUE)
 		qdel(H)
 	else
 		return ..()
@@ -179,7 +179,7 @@
 	update_icon()
 	updateDialog()
 
-	playsound(loc, 'code/modules/ziggers/sounds/slot.ogg', 50, TRUE)
+	playsound(loc, 'code/modules/wod13/sounds/slot.ogg', 50, TRUE)
 
 	var/spin_loop = addtimer(CALLBACK(src, .proc/do_spin), 2, TIMER_LOOP|TIMER_STOPPABLE)
 
@@ -235,24 +235,24 @@
 		jackpots += 1
 		balance += money - give_payout(JACKPOT)
 		money = 0
-		playsound(loc, 'code/modules/ziggers/sounds/jackpot.ogg', 50, TRUE)
+		playsound(loc, 'code/modules/wod13/sounds/jackpot.ogg', 50, TRUE)
 		new /obj/item/stack/dollar(loc,JACKPOT)
 
 	else if(linelength == 5)
 		visible_message("<b>[src]</b> says, 'Big Winner! You win a thousand credits!'")
 		give_money(BIG_PRIZE)
-		playsound(loc, 'code/modules/ziggers/sounds/jackpot.ogg', 50, TRUE)
+		playsound(loc, 'code/modules/wod13/sounds/jackpot.ogg', 50, TRUE)
 
 	else if(linelength == 4)
 		visible_message("<b>[src]</b> says, 'Winner! You win four hundred credits!'")
 		give_money(SMALL_PRIZE)
-		playsound(loc, 'code/modules/ziggers/sounds/jackpot.ogg', 50, TRUE)
+		playsound(loc, 'code/modules/wod13/sounds/jackpot.ogg', 50, TRUE)
 
 	else if(linelength == 3)
 		to_chat(user, "<span class='notice'>You win three free games!</span>")
 		balance += SPIN_PRICE * 4
 		money = max(money - SPIN_PRICE * 4, money)
-		playsound(loc, 'code/modules/ziggers/sounds/jackpot.ogg', 50, TRUE)
+		playsound(loc, 'code/modules/wod13/sounds/jackpot.ogg', 50, TRUE)
 
 	else
 		to_chat(user, "<span class='warning'>No luck!</span>")
@@ -292,7 +292,7 @@
 		var/mob/living/target = locate() in range(2, src)
 		amount = dispense(amount, cointype, target, 1)
 
-	playsound(loc, 'code/modules/ziggers/sounds/payout.ogg', 50, TRUE)
+	playsound(loc, 'code/modules/wod13/sounds/payout.ogg', 50, TRUE)
 	return amount
 
 /obj/machinery/computer/slot_machine/proc/dispense(amount = 0, cointype = /obj/item/stack/dollar, mob/living/target, throwit = 0)

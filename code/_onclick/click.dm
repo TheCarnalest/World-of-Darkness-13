@@ -68,7 +68,7 @@
 /mob/proc/claw_swing()
 	next_click = world.time+5
 	new /obj/effect/temp_visual/dir_setting/claw_effect(get_turf(src), dir)
-	playsound(loc, 'code/modules/ziggers/sounds/swing.ogg', 50, TRUE)
+	playsound(loc, 'code/modules/wod13/sounds/swing.ogg', 50, TRUE)
 	var/atom/M
 	var/turf/T = get_step(src, dir)
 	var/turf/T1 = get_step(T, turn(dir, -90))
@@ -94,7 +94,7 @@
 /mob/proc/melee_swing()
 	next_click = world.time+5
 	new /obj/effect/temp_visual/dir_setting/swing_effect(get_turf(src), dir)
-	playsound(loc, 'code/modules/ziggers/sounds/swing.ogg', 50, TRUE)
+	playsound(loc, 'code/modules/wod13/sounds/swing.ogg', 50, TRUE)
 	var/atom/M
 	var/turf/T = get_step(src, dir)
 	var/turf/T1 = get_step(T, turn(dir, -90))

@@ -332,7 +332,7 @@
 		cut_overlay(crack_overlay)
 		if(ratio > 75)
 			return
-		crack_overlay = mutable_appearance('code/modules/ziggers/32x48.dmi', "damage[ratio]", -(layer+0.1))
+		crack_overlay = mutable_appearance('code/modules/wod13/32x48.dmi', "damage[ratio]", -(layer+0.1))
 		. += crack_overlay
 
 /obj/structure/window/should_atmos_process(datum/gas_mixture/air, exposed_temperature)

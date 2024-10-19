@@ -243,7 +243,7 @@
 						BLOODBONDED.hud_used.drinkblood_icon.icon_state = "drink"
 						BLOODBONDED.hud_used.bloodheal_icon.icon_state = "bloodheal"
 						BLOODBONDED.hud_used.bloodpower_icon.icon_state = "bloodpower"
-						BLOODBONDED.hud_used.healths.icon = 'code/modules/ziggers/32x48.dmi'
+						BLOODBONDED.hud_used.healths.icon = 'code/modules/wod13/32x48.dmi'
 //						qdel(BLOODBONDED.hud_used)
 //						BLOODBONDED.hud_used = new BLOODBONDED.hud_type(BLOODBONDED)
 //						BLOODBONDED.update_sight()

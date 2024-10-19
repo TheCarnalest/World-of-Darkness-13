@@ -22,17 +22,17 @@
 /obj/item/vamp/phone
 	name = "\improper phone"
 	desc = "A portable device to call anyone you want."
-	icon = 'code/modules/ziggers/items.dmi'
+	icon = 'code/modules/wod13/items.dmi'
 	icon_state = "phone0"
 	inhand_icon_state = "phone0"
-	lefthand_file = 'code/modules/ziggers/lefthand.dmi'
-	righthand_file = 'code/modules/ziggers/righthand.dmi'
+	lefthand_file = 'code/modules/wod13/lefthand.dmi'
+	righthand_file = 'code/modules/wod13/righthand.dmi'
 	item_flags = NOBLUDGEON
 	flags_1 = HEAR_1
 	w_class = WEIGHT_CLASS_SMALL
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 100, ACID = 100)
 	resistance_flags = FIRE_PROOF | ACID_PROOF
-	onflooricon = 'code/modules/ziggers/onfloor.dmi'
+	onflooricon = 'code/modules/wod13/onfloor.dmi'
 
 	var/exchange_num = 513
 	var/list/contacts = list()
@@ -42,7 +42,7 @@
 	var/talking = FALSE
 	var/choosed_number = ""
 	var/last_call = 0
-	var/call_sound = 'code/modules/ziggers/sounds/call.ogg'
+	var/call_sound = 'code/modules/wod13/sounds/call.ogg'
 	var/can_fold = 1
 	var/interface = "Telephone"
 
@@ -191,7 +191,7 @@
 				if(online)
 					online.talking = FALSE
 			if(online)
-				playsound(online, 'code/modules/ziggers/sounds/phonestop.ogg', 25, FALSE)
+				playsound(online, 'code/modules/wod13/sounds/phonestop.ogg', 25, FALSE)
 				online.online = null
 				online = null
 			.= TRUE
@@ -204,7 +204,7 @@
 		if("decline")
 			talking = FALSE
 			if(online)
-				playsound(online, 'code/modules/ziggers/sounds/phonestop.ogg', 25, FALSE)
+				playsound(online, 'code/modules/wod13/sounds/phonestop.ogg', 25, FALSE)
 				online.online = null
 				online.talking = FALSE
 				online = null
@@ -221,10 +221,10 @@
 						to_chat(usr, "<span class='notice'>Abonent is busy.</span>")
 			if(!online)
 				if(choosed_number == "#111")
-					call_sound = 'code/modules/ziggers/sounds/call.ogg'
+					call_sound = 'code/modules/wod13/sounds/call.ogg'
 					to_chat(usr, "<span class='notice'>Settings are now reset to default.</span>")
 				else if(choosed_number == "#228")
-					call_sound = 'code/modules/ziggers/sounds/nokia.ogg'
+					call_sound = 'code/modules/wod13/sounds/nokia.ogg'
 					to_chat(usr, "<span class='notice'>Code activated.</span>")
 				else if(choosed_number == "#666")
 					call_sound = 'sound/voice/human/malescream_6.ogg'
@@ -339,11 +339,11 @@
 	if(last_call+100 <= world.time && !talking)
 		last_call = 0
 		if(online)
-			playsound(src, 'code/modules/ziggers/sounds/phonestop.ogg', 25, FALSE)
+			playsound(src, 'code/modules/wod13/sounds/phonestop.ogg', 25, FALSE)
 			online.online = null
 			online = null
 	if(!talking && online)
-		playsound(src, 'code/modules/ziggers/sounds/phone.ogg', 10, FALSE)
+		playsound(src, 'code/modules/wod13/sounds/phone.ogg', 10, FALSE)
 		playsound(online, online.call_sound, 25, FALSE)
 		addtimer(CALLBACK(src, .proc/Recall, online, usar), 20)
 //	usar << browse(null, "window=phone")
@@ -361,7 +361,7 @@
 					if(online)
 						online.talking = FALSE
 				if(online)
-					playsound(online, 'code/modules/ziggers/sounds/phonestop.ogg', 25, FALSE)
+					playsound(online, 'code/modules/wod13/sounds/phonestop.ogg', 25, FALSE)
 					online.online = null
 					online = null
 			if("accept")
@@ -375,7 +375,7 @@
 			if("decline")
 				talking = FALSE
 				if(online)
-					playsound(online, 'code/modules/ziggers/sounds/phonestop.ogg', 25, FALSE)
+					playsound(online, 'code/modules/wod13/sounds/phonestop.ogg', 25, FALSE)
 					online.online = null
 					online.talking = FALSE
 					online = null
@@ -395,10 +395,10 @@
 						online.OpenMenu(L)
 				else
 					if(choosed_number == "#111")
-						call_sound = 'code/modules/ziggers/sounds/call.ogg'
+						call_sound = 'code/modules/wod13/sounds/call.ogg'
 						to_chat(usr, "<span class='notice'>Settings are now reset to default.</span>")
 					else if(choosed_number == "#228")
-						call_sound = 'code/modules/ziggers/sounds/nokia.ogg'
+						call_sound = 'code/modules/wod13/sounds/nokia.ogg'
 						to_chat(usr, "<span class='notice'>Code activated.</span>")
 					else if(choosed_number == "#666")
 						call_sound = 'sound/voice/human/malescream_6.ogg'
@@ -491,12 +491,12 @@
 				VOIC.name = voice_saying
 				VOIC.speech_span = spchspn
 				VOIC.say("[message]")
-				playsound(online, 'code/modules/ziggers/sounds/phonetalk.ogg', 50, FALSE)
+				playsound(online, 'code/modules/wod13/sounds/phonetalk.ogg', 50, FALSE)
 				qdel(VOIC)
 
 /obj/item/vamp/phone/street
 	desc = "An ordinary street payphone"
-	icon = 'code/modules/ziggers/onfloor.dmi'
+	icon = 'code/modules/wod13/onfloor.dmi'
 	icon_state = "streetphone"
 	anchored = TRUE
 	number = "1447"
@@ -509,7 +509,7 @@
 
 /obj/item/vamp/phone/clean
 	desc = "The usual phone of a cleaning company used to communicate with employees"
-	icon = 'code/modules/ziggers/onfloor.dmi'
+	icon = 'code/modules/wod13/onfloor.dmi'
 	icon_state = "redphone"
 	anchored = TRUE
 	number = "700 4424"

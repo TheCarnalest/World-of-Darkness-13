@@ -450,7 +450,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 		to_chat(src, "Alright, I decided I let that too far away. Admins gonna be restricted to harmful and lore-breaking shitspawn for canon rounds and who will disobey - will get banned same as player. Я решил что это зашло слишком далеко. Админам отныне запрещён любой вредный или лороразрушительный щитспавн в канонических раундах и кто будет нарушать это правило - будет забанен также как и игрок.")
 		return
 	GLOB.canon_event = !GLOB.canon_event
-	SEND_SOUND(world, sound('code/modules/ziggers/sounds/canon.ogg'))
+	SEND_SOUND(world, sound('code/modules/wod13/sounds/canon.ogg'))
 	if(GLOB.canon_event)
 		to_chat(world, "<b>THE ROUND IS NOW CANON, PLEASE ROLEPLAY CORRECTLY</b>")
 	else

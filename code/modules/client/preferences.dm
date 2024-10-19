@@ -611,27 +611,27 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				DAWOF2.sprite_color = werewolf_color
 
 				var/obj/overlay/eyes_crinos = new(DAWOF)
-				eyes_crinos.icon = 'code/modules/ziggers/werewolf.dmi'
+				eyes_crinos.icon = 'code/modules/wod13/werewolf.dmi'
 				eyes_crinos.icon_state = "eyes"
 				eyes_crinos.layer = ABOVE_HUD_LAYER
 				eyes_crinos.color = werewolf_eye_color
 				DAWOF.overlays |= eyes_crinos
 
 				var/obj/overlay/scar_crinos = new(DAWOF)
-				scar_crinos.icon = 'code/modules/ziggers/werewolf.dmi'
+				scar_crinos.icon = 'code/modules/wod13/werewolf.dmi'
 				scar_crinos.icon_state = "scar[werewolf_scar]"
 				scar_crinos.layer = ABOVE_HUD_LAYER
 				DAWOF.overlays |= scar_crinos
 
 				var/obj/overlay/hair_crinos = new(DAWOF)
-				hair_crinos.icon = 'code/modules/ziggers/werewolf.dmi'
+				hair_crinos.icon = 'code/modules/wod13/werewolf.dmi'
 				hair_crinos.icon_state = "hair[werewolf_hair]"
 				hair_crinos.layer = ABOVE_HUD_LAYER
 				hair_crinos.color = werewolf_hair_color
 				DAWOF.overlays |= hair_crinos
 
 				var/obj/overlay/eyes_lupus = new(DAWOF2)
-				eyes_lupus.icon = 'code/modules/ziggers/werewolf_lupus.dmi'
+				eyes_lupus.icon = 'code/modules/wod13/werewolf_lupus.dmi'
 				eyes_lupus.icon_state = "eyes"
 				eyes_lupus.layer = ABOVE_HUD_LAYER
 				eyes_lupus.color = werewolf_eye_color
@@ -3283,7 +3283,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			D3 = client.prefs.discipline3type
 
 		if(D1)
-			hud_used.discipline1_icon.icon = 'code/modules/ziggers/disciplines.dmi'
+			hud_used.discipline1_icon.icon = 'code/modules/wod13/disciplines.dmi'
 			hud_used.discipline1_icon.dscpln = new D1()
 			if(discipline_pref && dna.species.id != "ghoul")
 				hud_used.discipline1_icon.dscpln.level = client.prefs.discipline1level
@@ -3294,7 +3294,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			hud_used.discipline1_icon.icon_state = hud_used.discipline1_icon.dscpln.icon_state
 			hud_used.discipline1_icon.main_state = hud_used.discipline1_icon.dscpln.icon_state
 		if(D2)
-			hud_used.discipline2_icon.icon = 'code/modules/ziggers/disciplines.dmi'
+			hud_used.discipline2_icon.icon = 'code/modules/wod13/disciplines.dmi'
 			hud_used.discipline2_icon.dscpln = new D2()
 			if(discipline_pref && dna.species.id != "ghoul")
 				hud_used.discipline2_icon.dscpln.level = client.prefs.discipline2level
@@ -3305,7 +3305,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			hud_used.discipline2_icon.icon_state = hud_used.discipline2_icon.dscpln.icon_state
 			hud_used.discipline2_icon.main_state = hud_used.discipline2_icon.dscpln.icon_state
 		if(D3)
-			hud_used.discipline3_icon.icon = 'code/modules/ziggers/disciplines.dmi'
+			hud_used.discipline3_icon.icon = 'code/modules/wod13/disciplines.dmi'
 			hud_used.discipline3_icon.dscpln = new D3()
 			if(discipline_pref && dna.species.id != "ghoul")
 				hud_used.discipline3_icon.dscpln.level = client.prefs.discipline3level
@@ -3325,7 +3325,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			client.prefs.discipline4type = null
 		if(client.prefs.discipline4type && discipline_pref)
 			var/datum/discipline/D = client.prefs.discipline4type
-			hud_used.discipline4_icon.icon = 'code/modules/ziggers/disciplines.dmi'
+			hud_used.discipline4_icon.icon = 'code/modules/wod13/disciplines.dmi'
 			hud_used.discipline4_icon.dscpln = new D()
 			if(dna.species.id != "ghoul")
 				hud_used.discipline4_icon.dscpln.level = client.prefs.discipline4level

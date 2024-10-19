@@ -1,7 +1,7 @@
 /obj/item/gun/ballistic/revolver
 	name = "\improper revolver"
 	desc = "Old, but might."
-	icon = 'code/modules/ziggers/weapons.dmi'
+	icon = 'code/modules/wod13/weapons.dmi'
 	icon_state = "revolver"
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder
 	fire_sound = 'sound/weapons/gun/revolver/shot_alt.ogg'

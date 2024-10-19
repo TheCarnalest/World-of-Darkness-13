@@ -5,9 +5,9 @@
 /obj/item/detective_scanner
 	name = "forensic magnifier"
 	desc = "Used to remotely scan objects and biomass for DNA and fingerprints. Can show a report of the findings."
-	icon = 'code/modules/ziggers/items.dmi'
+	icon = 'code/modules/wod13/items.dmi'
 	icon_state = "magnifier"
-	onflooricon = 'code/modules/ziggers/onfloor.dmi'
+	onflooricon = 'code/modules/wod13/onfloor.dmi'
 	w_class = WEIGHT_CLASS_SMALL
 	flags_1 = CONDUCT_1
 	item_flags = NOBLUDGEON
