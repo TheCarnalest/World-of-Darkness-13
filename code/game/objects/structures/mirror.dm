@@ -61,8 +61,10 @@ GLOBAL_LIST_EMPTY(las_mirrors)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
 
+		//Sorry, you can't see yourself in front of the mirror!
 		if(H.clane)
 			if(H.clane.name == "Lasombra")
+<<<<<<< HEAD
 				if(H.bloodpool > 2)
 					var/new_mirror = input(user, "Choose the mirror to travel:","Enter Mirror",null) as null|anything in GLOB.las_mirrors
 					if(new_mirror)
@@ -80,7 +82,10 @@ GLOBAL_LIST_EMPTY(las_mirrors)
 					return
 				else
 					to_chat(H, "<span class='warning'>You need more <b>BLOOD</b> to activate that.</span>")
+=======
+>>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 				return
+
 		//see code/modules/mob/dead/new_player/preferences.dm at approx line 545 for comments!
 		//this is largely copypasted from there.
 
