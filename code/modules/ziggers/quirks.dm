@@ -180,14 +180,14 @@ Dancer
 	lose_text = "<span class='warning'>You don't feel like you can burn without consequences anymore.</span>"
 	allowed_species = list("Vampire")
 
-/datum/quirk/acrobatic
+/*/datum/quirk/acrobatic
 	name = "Acrobatic"
 	desc = "You know a couple of acrobatic moves."
 	value = 3
 	mob_trait = TRAIT_ACROBATIC
 	gain_text = "<span class='notice'>You feel like you can jump higher.</span>"
 	lose_text = "<span class='warning'>Now you aren't as agile as you were.</span>"
-
+*/
 /datum/quirk/acrobatic/on_spawn()
 	var/mob/living/carbon/H = quirk_holder
 	var/datum/action/acrobate/DA = new()
