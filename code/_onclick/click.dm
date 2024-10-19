@@ -424,7 +424,7 @@
 	. = SEND_SIGNAL(src, COMSIG_MOB_MIDDLECLICKON, A, params)
 	if(. & COMSIG_MOB_CANCEL_CLICKON)
 		return
-	swap_hand()
+	jump(A)
 
 /**
  * Shift click
@@ -578,7 +578,7 @@
 	var/list/modifiers = params2list(params)
 	if(modifiers["middle"] && iscarbon(usr))
 		var/mob/living/carbon/C = usr
-		C.swap_hand()
+		C.jump(C.loc) //Calls (jump) instead of swap_hand()
 	else
 		var/turf/T = params2turf(modifiers["screen-loc"], get_turf(usr.client ? usr.client.eye : usr), usr.client)
 		params += "&catcher=1"
