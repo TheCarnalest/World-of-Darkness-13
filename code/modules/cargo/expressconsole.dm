@@ -30,7 +30,7 @@
 /obj/machinery/computer/cargo/express/Initialize()
 	. = ..()
 	packin_up()
-	for(var/obj/item/supplypod_beacon/sb in range(9, src))
+	for(var/obj/item/supplypod_beacon/sb in range(20, src))
 		if(sb)
 			if(sb.express_console != src)
 				sb.altlink_console(src)
