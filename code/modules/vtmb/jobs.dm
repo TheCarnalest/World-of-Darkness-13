@@ -1540,7 +1540,7 @@
 			for(var/mob/living/carbon/human/H in GLOB.player_list)
 				if(H.stat != DEAD && H.true_real_name != owner.current.true_real_name && H.vampire_faction != "Sabbat")
 					ambitious += H
-			if(length(ambitious))1
+			if(length(ambitious))
 				var/datum/objective/blood/blood_objective = new
 				blood_objective.owner = owner
 				var/mob/living/carbon/human/HU = pick(ambitious)

@@ -307,11 +307,7 @@
 			var/datum/atom_hud/health_hud = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
 			health_hud.remove_hud_from(caster)
 			caster.stop_sound_channel(CHANNEL_DISCIPLINES)
-<<<<<<< HEAD
-			playsound(caster.loc, 'code/modules/wod13/sounds/auspex_deactivate.ogg', 50, FALSE)
-=======
 			caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/auspex_deactivate.ogg', 50, FALSE)
->>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 			REMOVE_TRAIT(caster, TRAIT_THERMAL_VISION, TRAIT_GENERIC)
 			if(loh)
 				REMOVE_TRAIT(caster, TRAIT_NIGHT_VISION, TRAIT_GENERIC)
@@ -383,11 +379,7 @@
 			caster.celerity_visual = TRUE
 			spawn((delay*level_casting)+caster.discipline_time_plus)
 				if(caster)
-<<<<<<< HEAD
-					playsound(caster.loc, 'code/modules/wod13/sounds/celerity_deactivate.ogg', 50, FALSE)
-=======
 					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/celerity_deactivate.ogg', 50, FALSE)
->>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 					caster.remove_movespeed_modifier(/datum/movespeed_modifier/celerity)
 					caster.celerity_visual = FALSE
 		if(2)
@@ -395,11 +387,7 @@
 			caster.celerity_visual = TRUE
 			spawn((delay*level_casting)+caster.discipline_time_plus)
 				if(caster)
-<<<<<<< HEAD
-					playsound(caster.loc, 'code/modules/wod13/sounds/celerity_deactivate.ogg', 50, FALSE)
-=======
 					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/celerity_deactivate.ogg', 50, FALSE)
->>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 					caster.remove_movespeed_modifier(/datum/movespeed_modifier/celerity2)
 					caster.celerity_visual = FALSE
 		if(3)
@@ -407,11 +395,7 @@
 			caster.celerity_visual = TRUE
 			spawn((delay*level_casting)+caster.discipline_time_plus)
 				if(caster)
-<<<<<<< HEAD
-					playsound(caster.loc, 'code/modules/wod13/sounds/celerity_deactivate.ogg', 50, FALSE)
-=======
 					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/celerity_deactivate.ogg', 50, FALSE)
->>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 					caster.remove_movespeed_modifier(/datum/movespeed_modifier/celerity3)
 					caster.celerity_visual = FALSE
 		if(4)
@@ -419,11 +403,7 @@
 			caster.celerity_visual = TRUE
 			spawn((delay*level_casting)+caster.discipline_time_plus)
 				if(caster)
-<<<<<<< HEAD
-					playsound(caster.loc, 'code/modules/wod13/sounds/celerity_deactivate.ogg', 50, FALSE)
-=======
 					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/celerity_deactivate.ogg', 50, FALSE)
->>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 					caster.remove_movespeed_modifier(/datum/movespeed_modifier/celerity4)
 					caster.celerity_visual = FALSE
 		if(5)
@@ -431,11 +411,7 @@
 			caster.celerity_visual = TRUE
 			spawn((delay*level_casting)+caster.discipline_time_plus)
 				if(caster)
-<<<<<<< HEAD
-					playsound(caster.loc, 'code/modules/wod13/sounds/celerity_deactivate.ogg', 50, FALSE)
-=======
 					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/celerity_deactivate.ogg', 50, FALSE)
->>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 					caster.remove_movespeed_modifier(/datum/movespeed_modifier/celerity5)
 					caster.celerity_visual = FALSE
 
@@ -695,11 +671,7 @@
 		if(caster)
 			if(caster.dna)
 				if(caster.dna.species)
-<<<<<<< HEAD
-					playsound(caster.loc, 'code/modules/wod13/sounds/potence_deactivate.ogg', 50, FALSE)
-=======
 					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/potence_deactivate.ogg', 50, FALSE)
->>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 					caster.dna.species.punchdamagelow -= mod
 					caster.dna.species.punchdamagehigh -= mod
 					caster.dna.species.meleemod -= armah
@@ -721,26 +693,15 @@
 	. = ..()
 	var/mod = min(3, level_casting)
 	var/armah = 15*mod
-<<<<<<< HEAD
-	caster.remove_overlay(FORTITUDE_LAYER)
-	var/mutable_appearance/fortitude_overlay = mutable_appearance('code/modules/wod13/icons.dmi', "fortitude", -FORTITUDE_LAYER)
-	caster.overlays_standing[FORTITUDE_LAYER] = fortitude_overlay
-	caster.apply_overlay(FORTITUDE_LAYER)
-=======
 //	caster.remove_overlay(FORTITUDE_LAYER)
 //	var/mutable_appearance/fortitude_overlay = mutable_appearance('code/modules/wod13/icons.dmi', "fortitude", -FORTITUDE_LAYER)
 //	caster.overlays_standing[FORTITUDE_LAYER] = fortitude_overlay
 //	caster.apply_overlay(FORTITUDE_LAYER)
->>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 	caster.physiology.armor.melee += armah
 	caster.physiology.armor.bullet += armah
 	spawn(delay+caster.discipline_time_plus)
 		if(caster)
-<<<<<<< HEAD
-			playsound(caster.loc, 'code/modules/wod13/sounds/fortitude_deactivate.ogg', 50, FALSE)
-=======
 			caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/fortitude_deactivate.ogg', 50, FALSE)
->>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 			caster.physiology.armor.melee -= armah
 			caster.physiology.armor.bullet -= armah
 //			caster.remove_overlay(FORTITUDE_LAYER)
@@ -769,11 +730,7 @@
 	spawn((delay*level_casting)+caster.discipline_time_plus)
 		if(caster)
 			if(caster.alpha != 255)
-<<<<<<< HEAD
-				playsound(caster.loc, 'code/modules/wod13/sounds/obfuscate_deactivate.ogg', 50, FALSE)
-=======
 				caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/obfuscate_deactivate.ogg', 50, FALSE)
->>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 				caster.alpha = 255
 
 /datum/discipline/presence
@@ -877,11 +834,7 @@
 			if(H)
 				H.remove_overlay(MUTATIONS_LAYER)
 				if(caster)
-<<<<<<< HEAD
-					playsound(caster.loc, 'code/modules/wod13/sounds/presence_deactivate.ogg', 50, FALSE)
-=======
 					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/presence_deactivate.ogg', 50, FALSE)
->>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 
 /datum/discipline/protean
 	name = "Protean"
@@ -933,11 +886,7 @@
 							qdel(G)
 					caster.remove_client_colour(/datum/client_colour/glass_colour/red)
 //					if(caster.dna)
-<<<<<<< HEAD
-					playsound(caster.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
-=======
 					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
->>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 //						caster.dna.species.attack_verb = initial(caster.dna.species.attack_verb)
 //						caster.dna.species.attack_sound = initial(caster.dna.species.attack_sound)
 //						caster.dna.species.punchdamagelow = caster.dna.species.punchdamagelow-10
@@ -963,11 +912,7 @@
 							qdel(G)
 					caster.remove_client_colour(/datum/client_colour/glass_colour/red)
 //					if(caster.dna)
-<<<<<<< HEAD
-					playsound(caster.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
-=======
 					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
->>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 //						caster.dna.species.attack_verb = initial(caster.dna.species.attack_verb)
 //						caster.dna.species.attack_sound = initial(caster.dna.species.attack_sound)
 //						caster.dna.species.punchdamagelow = caster.dna.species.punchdamagelow-15
@@ -991,11 +936,7 @@
 					caster.Stun(15)
 					caster.do_jitter_animation(30)
 //					if(caster.dna)
-<<<<<<< HEAD
-					playsound(caster, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
-=======
 					caster.playsound_local(caster, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
->>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 //						caster.dna.species.attack_verb = initial(caster.dna.species.attack_verb)
 //						caster.dna.species.attack_sound = initial(caster.dna.species.attack_sound)
 //						caster.dna.species.punchdamagelow = caster.dna.species.punchdamagelow-20
@@ -1026,11 +967,7 @@
 					caster.Stun(15)
 					caster.do_jitter_animation(30)
 //					if(caster.dna)
-<<<<<<< HEAD
-					playsound(caster, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
-=======
 					caster.playsound_local(caster, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
->>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 //						caster.dna.species.attack_verb = initial(caster.dna.species.attack_verb)
 //						caster.dna.species.attack_sound = initial(caster.dna.species.attack_sound)
 //						caster.dna.species.punchdamagelow = caster.dna.species.punchdamagelow-25
@@ -1223,11 +1160,7 @@
 		if(target.dir == antidir)
 			target.Immobilize(10)
 			target.visible_message("<span class='warning'><b>[caster] hypnotizes [target] with his eyes!</b></span>", "<span class='warning'><b>[caster] hypnotizes you like a cobra!</b></span>")
-<<<<<<< HEAD
-			playsound(target.loc, 'code/modules/wod13/sounds/serpentis.ogg', 50, TRUE)
-=======
 			caster.playsound_local(target.loc, 'code/modules/wod13/sounds/serpentis.ogg', 50, TRUE)
->>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 			if(ishuman(target))
 				var/mob/living/carbon/human/H = target
 				H.remove_overlay(MUTATIONS_LAYER)
@@ -1247,11 +1180,7 @@
 		var/obj/item/ammo_casing/magic/tentacle/casing = new (caster.loc)
 		playsound(caster.loc, 'code/modules/wod13/sounds/tongue.ogg', 100, TRUE)
 		casing.fire_casing(target, caster, null, null, null, ran_zone(), 0,  caster)
-<<<<<<< HEAD
-		playsound(target.loc, 'code/modules/wod13/sounds/serpentis.ogg', 50, TRUE)
-=======
 		caster.playsound_local(target.loc, 'code/modules/wod13/sounds/serpentis.ogg', 50, TRUE)
->>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 		qdel(casing)
 
 /datum/discipline/vicissitude
@@ -1270,20 +1199,12 @@
 /datum/discipline/vicissitude/activate(mob/living/target, mob/living/carbon/human/caster)
 	. = ..()
 	if(iswerewolf(target))
-<<<<<<< HEAD
-		playsound(caster.loc, 'code/modules/wod13/sounds/vicissitude.ogg', 50, TRUE)
-=======
 		caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/vicissitude.ogg', 50, TRUE)
->>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 		caster.adjustFireLoss(50)		//abusers suffer
 		caster.emote("scream")
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
-<<<<<<< HEAD
-		playsound(target.loc, 'code/modules/wod13/sounds/vicissitude.ogg', 50, TRUE)
-=======
 		caster.playsound_local(target.loc, 'code/modules/wod13/sounds/vicissitude.ogg', 50, TRUE)
->>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 		if(target.stat >= 2)
 			if(istype(target, /mob/living/carbon/human/npc))
 				var/mob/living/carbon/human/npc/NPC = target
@@ -1399,11 +1320,7 @@
 
 /datum/discipline/quietus/activate(mob/living/target, mob/living/carbon/human/caster)
 	. = ..()
-<<<<<<< HEAD
-	playsound(target.loc, 'code/modules/wod13/sounds/quietus.ogg', 50, TRUE)
-=======
 	caster.playsound_local(target.loc, 'code/modules/wod13/sounds/quietus.ogg', 50, TRUE)
->>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 	switch(level_casting)
 		if(1)
 			for(var/mob/living/carbon/human/H in oviewers(7, caster))
@@ -1504,11 +1421,7 @@
 
 /datum/discipline/necromancy/activate(mob/living/target, mob/living/carbon/human/caster)
 	. = ..()
-<<<<<<< HEAD
-	playsound(target.loc, 'code/modules/wod13/sounds/necromancy.ogg', 50, TRUE)
-=======
 	caster.playsound_local(target.loc, 'code/modules/wod13/sounds/necromancy.ogg', 50, TRUE)
->>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 	var/limit = min(3, level)+caster.social-1+caster.more_companions
 	if(length(caster.beastmaster) >= limit)
 		var/mob/living/simple_animal/hostile/beastmaster/B = pick(caster.beastmaster)
@@ -1627,21 +1540,13 @@
 				if(caster)
 					caster.color = initial(caster.color)
 					caster.physiology.burn_mod *= 100
-<<<<<<< HEAD
-					playsound(caster.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
-=======
 					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
->>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 		if(2)
 			caster.dna.species.GiveSpeciesFlight(caster)
 			spawn(delay+caster.discipline_time_plus)
 				if(caster)
 					caster.dna.species.RemoveSpeciesFlight(caster)
-<<<<<<< HEAD
-					playsound(caster.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
-=======
 					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
->>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 		if(3)
 			caster.drop_all_held_items()
 			caster.put_in_r_hand(new /obj/item/melee/vampirearms/knife/gangrel(caster))
@@ -1651,11 +1556,7 @@
 					for(var/obj/item/melee/vampirearms/knife/gangrel/G in caster)
 						if(G)
 							qdel(G)
-<<<<<<< HEAD
-					playsound(caster.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
-=======
 					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
->>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 		if(4 to 5)
 			caster.drop_all_held_items()
 			BAT.Shapeshift(caster)
@@ -1664,11 +1565,7 @@
 					BAT.Restore(BAT.myshape)
 					caster.Stun(15)
 					caster.do_jitter_animation(30)
-<<<<<<< HEAD
-					playsound(caster.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
-=======
 					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
->>>>>>> 86109dbd4d85e2e7a568b142a1174263d08cff4a
 
 /datum/discipline/valeren
 	name = "Valeren"
