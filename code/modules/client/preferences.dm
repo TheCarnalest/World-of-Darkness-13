@@ -264,12 +264,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 //			P.random_character()
 			P.real_name = random_unique_name(P.gender)
 			P.true_experience = 10
-			var/sponsor = FALSE
-			for(var/i in GLOB.donaters)
-				if(i == "[P.parent.ckey]")
-					sponsor = TRUE
-			if(sponsor)
-				P.true_experience = 20+round(4*GLOB.donaters_amount["[P.parent.ckey]"])
 			P.save_character()
 			P.save_preferences()
 
@@ -326,12 +320,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	enlightement = clane.enlightement
 	humanity = clane.start_humanity
 	true_experience = 10
-	var/sponsor = FALSE
-	for(var/i in GLOB.donaters)
-		if(i == "[parent.ckey]")
-			sponsor = TRUE
-	if(sponsor)
-		true_experience = 20+round(4*GLOB.donaters_amount["[parent.ckey]"])
 	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	C?.set_macros()
 //	pref_species = new /datum/species/kindred()
@@ -351,19 +339,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		return coolfont
 
 /datum/preferences/proc/ShowChoices(mob/user)
-	/*if(!user || !user.client)
-		return
-	link_bug_fix = FALSE
-	var/donor = FALSE
-	for(var/i in GLOB.donaters)
-		if(i == "[parent.ckey]")
-			donor = TRUE
-			max_save_slots = 6
-	if(discipline1level == 5 || discipline2level == 5 || discipline3level == 5 || generation < 9)
-		donor = TRUE
-	if(!donor)
-		discipline4type = null
-		discipline4level = 1*/
 	if(slot_randomized)
 		load_character(default_slot) // Reloads the character slot. Prevents random features from overwriting the slot if saved.
 		slot_randomized = FALSE
@@ -516,9 +491,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<b>Species:</b><BR><a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a><BR>"
 			if(pref_species.name == "Vampire")
 				dat += "<b>Path of [enlightement == FALSE ? "Humanity" : "Enlightement"]:</b> [humanity]/10<BR>"
-				for(var/i in GLOB.donaters)
-					if(i == "[parent.ckey]" && !slotlocked)
-						dat += "<a href='?_src_=prefs;preference=pathof;task=input'>Switch Path</a><BR>"
+				if(!slotlocked)
+					dat += "<a href='?_src_=prefs;preference=pathof;task=input'>Switch Path</a><BR>"
 			if(pref_species.name == "Werewolf")
 				dat += "<b>Veil:</b> [masquerade]/5<BR>"
 			if(pref_species.name == "Vampire" || pref_species.name == "Ghoul")
@@ -692,18 +666,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						dat += "<BR>"
 					dat += "-[AD.desc]<BR>"
 
-				//unlocks the player's 4th discipline slot if they're a donator (SIC: donater) or have maxed out disciplines and low generation
-				//[Lucia] - unlocking for everyone because we gave everyone donator (SIC: donater) perks
 				if(!discipline4type && !slotlocked)
-					/*
-					var/fourthDisciplineUnlocked = TRUE
-					for(var/i in GLOB.donaters)
-						if(i == "[parent.ckey]")
-							fourthDisciplineUnlocked = TRUE
-					if(discipline1level == 5 || discipline2level == 5 || discipline3level == 5 || generation < 9)
-						fourthDisciplineUnlocked = TRUE
-					if(fourthDisciplineUnlocked)
-					*/
 					dat += "<a href='?_src_=prefs;preference=disciplineplus;task=input'>Learn custom type of disciplines</a><BR>"
 
 			if(pref_species.name == "Ghoul")
@@ -725,17 +688,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/datum/discipline/AD = new discipline3type()
 					dat += "<b>[AD.name]</b>: •(1)<BR>"
 					dat += "-[AD.desc]<BR>"
-				var/sponsor = FALSE
-				for(var/i in GLOB.donaters)
-					if(i == "[parent.ckey]")
-						sponsor = TRUE
-				if(sponsor)
-					if(discipline1type && discipline2type && discipline3type && !discipline4type && true_experience >= 5)
-						dat += "<a href='?_src_=prefs;preference=discipline4ghoul;task=input'>Learn new type of discipline (5)</a><BR>"
-					if(discipline4type)
-						var/datum/discipline/AD = new discipline4type()
-						dat += "<b>[AD.name]</b>: •(1)<BR>"
-						dat += "-[AD.desc]<BR>"
+				if(discipline1type && discipline2type && discipline3type && !discipline4type && true_experience >= 5)
+					dat += "<a href='?_src_=prefs;preference=discipline4ghoul;task=input'>Learn new type of discipline (5)</a><BR>"
+				if(discipline4type)
+					var/datum/discipline/AD = new discipline4type()
+					dat += "<b>[AD.name]</b>: •(1)<BR>"
+					dat += "-[AD.desc]<BR>"
 
 //			dat += "<a href='?_src_=prefs;preference=species;task=random'>Random Species</A> "
 //			dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_SPECIES]'>Always Random Species: [(randomise[RANDOM_SPECIES]) ? "Yes" : "No"]</A><br>"
@@ -2406,12 +2364,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(slotlocked)
 						link_bug_fix = FALSE
 						return
-//				var/newtype = GLOB.species_list["kindred"]
-//				pref_species = new newtype()
-					var/donator = FALSE
-					for(var/i in GLOB.donaters)
-						if(i == "[parent.ckey]")
-							donator = TRUE
+					//[Lucia] keeping this here for when we decide to restrict it again
+					var/donator = TRUE
 					if(donator)
 						var/result = input(user, "Select a species", "Species Selection") as null|anything in GLOB.donation_races
 
@@ -3004,12 +2958,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					random_character()
 					body_model = rand(1, 3)
 					true_experience = 10
-					var/sponsor = FALSE
-					for(var/i in GLOB.donaters)
-						if(i == "[parent.ckey]")
-							sponsor = TRUE
-					if(sponsor)
-						true_experience = 20+round(4*GLOB.donaters_amount["[parent.ckey]"])
 					real_name = random_unique_name(gender)
 					save_character()
 
@@ -3315,14 +3263,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			hud_used.discipline3_icon.desc = hud_used.discipline3_icon.dscpln.desc
 			hud_used.discipline3_icon.icon_state = hud_used.discipline3_icon.dscpln.icon_state
 			hud_used.discipline3_icon.main_state = hud_used.discipline3_icon.dscpln.icon_state
-		var/donor = FALSE
-		for(var/i in GLOB.donaters)
-			if(i == "[client.ckey]")
-				donor = TRUE
-		if(client.prefs.discipline1level == 5 || client.prefs.discipline2level == 5 || client.prefs.discipline3level == 5 || client.prefs.generation < 9)
-			donor = TRUE
-		if(!donor)
-			client.prefs.discipline4type = null
 		if(client.prefs.discipline4type && discipline_pref)
 			var/datum/discipline/D = client.prefs.discipline4type
 			hud_used.discipline4_icon.icon = 'code/modules/ziggers/disciplines.dmi'
