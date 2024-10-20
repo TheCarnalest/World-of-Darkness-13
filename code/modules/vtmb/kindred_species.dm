@@ -314,3 +314,74 @@
 
 /datum/species/kindred/check_roundstart_eligible()
 	return TRUE
+
+/datum/species/kindred/apply_damage(damage, damagetype = BRUTE, def_zone = null, blocked, mob/living/carbon/human/H, forced = FALSE, spread_damage = FALSE, wound_bonus = 0, bare_wound_bonus = 0, sharpness = SHARP_NONE)
+	SEND_SIGNAL(H, COMSIG_MOB_APPLY_DAMGE, damage, damagetype, def_zone, wound_bonus, bare_wound_bonus, sharpness) // make sure putting wound_bonus here doesn't screw up other signals or uses for this signal
+	var/hit_percent = (100-(blocked+armor))/100
+	hit_percent = (hit_percent * (100-H.physiology.damage_resistance))/100
+	if(!damage || (!forced && hit_percent <= 0))
+		return 0
+
+	var/obj/item/bodypart/BP = null
+	if(!spread_damage)
+		if(isbodypart(def_zone))
+			BP = def_zone
+		else
+			if(!def_zone)
+				def_zone = ran_zone(def_zone)
+			BP = H.get_bodypart(check_zone(def_zone))
+			if(!BP)
+				BP = H.bodyparts[1]
+
+	switch(damagetype)
+		if(BRUTE)
+			H.damageoverlaytemp = 20
+			var/damage_amount = forced ? damage : damage * hit_percent * brutemod * H.physiology.brute_mod
+			to_chat(H, "You're being dealt [damage_amount] raw damage!")
+			//Factors in soaked brute damage
+			damage_amount -= vampirerollnum(dice = H.physique, countones = FALSE) * BRUTE_SOAK
+			if (damage_amount <= 0)
+				to_chat(H, "Fully blocked the damage!")
+				return 0
+			to_chat(H, "You're actually suffering [damage_amount] damage!")
+			if(BP)
+				if(BP.receive_damage(damage_amount, 0, wound_bonus = wound_bonus, bare_wound_bonus = bare_wound_bonus, sharpness = sharpness))
+					H.update_damage_overlays()
+			else//no bodypart, we deal damage with a more general method.
+				H.adjustBruteLoss(damage_amount)
+		if(BURN)
+			H.damageoverlaytemp = 20
+			var/damage_amount = forced ? damage : damage * hit_percent * burnmod * H.physiology.burn_mod
+			if(BP)
+				if(BP.receive_damage(0, damage_amount, wound_bonus = wound_bonus, bare_wound_bonus = bare_wound_bonus, sharpness = sharpness))
+					H.update_damage_overlays()
+			else
+				H.adjustFireLoss(damage_amount)
+		if(TOX)
+			var/damage_amount = forced ? damage : damage * hit_percent * H.physiology.tox_mod
+			//Factors in soaked tox damage
+			damage_amount -= vampirerollnum(dice = H.physique, countones = FALSE) * TOX_SOAK
+			if (damage_amount <= 0)
+				return 0
+			H.adjustToxLoss(damage_amount)
+		if(OXY)
+			//Vampires don't take oxygen damage
+			return 0
+		if(CLONE)
+			var/damage_amount = forced ? damage : damage * hit_percent * H.physiology.clone_mod
+			H.adjustCloneLoss(damage_amount)
+		if(STAMINA)
+			var/damage_amount = forced ? damage : damage * hit_percent * H.physiology.stamina_mod
+			//Factors in soaked stamina damage
+			damage_amount -= vampirerollnum(dice = H.physique, countones = FALSE) * STAMINA_SOAK
+			if (damage_amount <= 0)
+				return 0
+			if(BP)
+				if(BP.receive_damage(0, 0, damage_amount))
+					H.update_stamina()
+			else
+				H.adjustStaminaLoss(damage_amount)
+		if(BRAIN)
+			//Vampires don't take brain damage
+			return 0
+	return 1

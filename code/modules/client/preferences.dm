@@ -3041,6 +3041,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		character.clane = CLN
 
 		//Maximum blood points per generation follows no formula, so here all cases are defined
+		//Creative liberties have been taken for 3rd generation and below
 		switch(generation)
 			if(1)
 				character.maxbloodpool = 1000
@@ -3097,21 +3098,26 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		character.bloodpool = rand(2, character.maxbloodpool)
 		character.generation = generation
 		character.clane.enlightement = enlightement
-
 	else
 		character.clane = null
 		character.generation = 13
 		character.bloodpool = character.maxbloodpool
 
+	//[Lucia] Health has been standardised to 100 for all humans. This means 100 damage until you crit, and 200 until you die.
+	/*
 	if(pref_species.name == "Werewolf")
-		character.maxHealth = round((initial(character.maxHealth)+(initial(character.maxHealth)/4)*character.physique))
-		character.health = round((initial(character.maxHealth)+(initial(character.maxHealth)/4)*character.physique))
+		character.maxHealth = round( (initial(character.maxHealth) + (initial(character.maxHealth) / 4) * character.physique) )
+		character.health = round( (initial(character.maxHealth) + (initial(character.maxHealth) / 4) * character.physique) )
 	else
-		character.maxHealth = round((initial(character.maxHealth)-initial(character.maxHealth)/4)+(initial(character.maxHealth)/4)*(character.physique+13-generation))
-		character.health = round((initial(character.health)-initial(character.health)/4)+(initial(character.health)/4)*(character.physique+13-generation))
+		character.maxHealth = round( (initial(character.maxHealth) - initial(character.maxHealth) / 4) + (initial(character.maxHealth) / 4) * (character.physique + 13 - generation) )
+		character.health = round( (initial(character.health) - initial(character.health) / 4) + (initial(character.health) / 4) * (character.physique + 13 - generation) )
+	*/
+
 	if(pref_species.name == "Vampire")
 		character.humanity = humanity
+
 	character.masquerade = masquerade
+
 	if(!character_setup)
 		if(character in GLOB.masquerade_breakers_list)
 			if(character.masquerade > 2)
@@ -3122,6 +3128,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	character.flavor_text = sanitize_text(flavor_text)
 	character.gender = gender
 	character.age = age
+
 	if(gender == MALE || gender == FEMALE)
 		character.body_type = gender
 	else

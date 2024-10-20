@@ -766,7 +766,61 @@
 /mob/living/proc/update_blood_hud()
 	if(!client || !hud_used)
 		return
-	maxbloodpool = 10+((13-generation)*3)
+
+	//Maximum blood points per generation follows no formula, so here all cases are defined
+	switch(generation)
+		if(1)
+			maxbloodpool = 1000
+			bloodperturn = 1000
+		if(2)
+			maxbloodpool = 150
+			bloodperturn = 30
+		if(3)
+			maxbloodpool = 100
+			bloodperturn = 20
+		if(4)
+			maxbloodpool = 50
+			bloodperturn = 10
+		if(5)
+			maxbloodpool = 40
+			bloodperturn = 8
+		if(6)
+			maxbloodpool = 30
+			bloodperturn = 6
+		if(7)
+			maxbloodpool = 20
+			bloodperturn = 4
+		if(8)
+			maxbloodpool = 15
+			bloodperturn = 3
+		if(9)
+			maxbloodpool = 14
+			bloodperturn = 2
+		if(10)
+			maxbloodpool = 13
+			bloodperturn = 1
+		if(11)
+			maxbloodpool = 12
+			bloodperturn = 1
+		if(12)
+			maxbloodpool = 11
+			bloodperturn = 1
+		if(13)
+			maxbloodpool = 10
+			bloodperturn = 1
+		if(14)
+			maxbloodpool = 8
+			bloodperturn = 1
+		if(15)
+			maxbloodpool = 6
+			bloodperturn = 1
+		if(16)
+			maxbloodpool = 4
+			bloodperturn = 1
+		else //Default to 13th generation stats
+			maxbloodpool = 10
+			bloodperturn = 1
+
 	if(hud_used.blood_icon)
 		var/emm = round((bloodpool/maxbloodpool)*10)
 		if(emm > 10)
