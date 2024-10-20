@@ -171,6 +171,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/discipline3type
 	var/discipline4type
 
+	var/list/datum/discipline/disciplines = list()
+
 	var/physique = 1
 	var/social = 1
 	var/mentality = 1
