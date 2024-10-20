@@ -681,9 +681,11 @@
 	icon_state = main_state
 
 /mob/living
-	var/bloodpool = 5
 	var/maxbloodpool = 5
+	var/bloodpool = 5
+	//[Lucia] TODO: at some point in the future, move this stuff to a vampire-specific type
 	var/generation = 13
+	var/bloodperturn = 1
 	var/humanity = 7
 	var/masquerade = 5
 	var/last_masquerade_violation = 0

@@ -141,20 +141,23 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/persistent_scars = TRUE
 	///If we want to broadcast deadchat connect/disconnect messages
 	var/broadcast_login_logout = TRUE
-//Поколение
+
+	//Generation
 	var/generation = 13
 	var/generation_bonus = 0
-//maskarad
+
+	//Masquerade
 	var/masquerade = 5
 
+	//Morality
 	var/enlightement = FALSE
 	var/humanity = 7
 
-//TOO OLD
+	//TOO OLD
 	var/exper = 1440	//Urovni
 	var/exper_plus = 0
-//TOO OLD
 
+	//TOO OLD
 	var/true_experience = 10
 	var/torpor_count = 0
 
@@ -3036,13 +3039,65 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if(pref_species.name == "Vampire")
 		var/datum/vampireclane/CLN = new clane.type()
 		character.clane = CLN
-		character.maxbloodpool = 10+((13-generation)*3)
+
+		//Maximum blood points per generation follows no formula, so here all cases are defined
+		switch(generation)
+			if(1)
+				character.maxbloodpool = 1000
+				character.bloodperturn = 1000
+			if(2)
+				character.maxbloodpool = 150
+				character.bloodperturn = 30
+			if(3)
+				character.maxbloodpool = 100
+				character.bloodperturn = 20
+			if(4)
+				character.maxbloodpool = 50
+				character.bloodperturn = 10
+			if(5)
+				character.maxbloodpool = 40
+				character.bloodperturn = 8
+			if(6)
+				character.maxbloodpool = 30
+				character.bloodperturn = 6
+			if(7)
+				character.maxbloodpool = 20
+				character.bloodperturn = 4
+			if(8)
+				character.maxbloodpool = 15
+				character.bloodperturn = 3
+			if(9)
+				character.maxbloodpool = 14
+				character.bloodperturn = 2
+			if(10)
+				character.maxbloodpool = 13
+				character.bloodperturn = 1
+			if(11)
+				character.maxbloodpool = 12
+				character.bloodperturn = 1
+			if(12)
+				character.maxbloodpool = 11
+				character.bloodperturn = 1
+			if(13)
+				character.maxbloodpool = 10
+				character.bloodperturn = 1
+			if(14)
+				character.maxbloodpool = 8
+				character.bloodperturn = 1
+			if(15)
+				character.maxbloodpool = 6
+				character.bloodperturn = 1
+			if(16)
+				character.maxbloodpool = 4
+				character.bloodperturn = 1
+			else //Default to 13th generation stats
+				character.maxbloodpool = 10
+				character.bloodperturn = 1
+
 		character.bloodpool = rand(2, character.maxbloodpool)
 		character.generation = generation
 		character.clane.enlightement = enlightement
-//		if(generation < 13)
-//			character.maxHealth = initial(character.maxHealth)+50*(13-generation)
-//			character.health = initial(character.health)+50*(13-generation)
+
 	else
 		character.clane = null
 		character.generation = 13
