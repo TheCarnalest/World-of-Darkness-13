@@ -448,7 +448,7 @@ SUBSYSTEM_DEF(smokeweedeveryday)
 	list_reagents = list(/datum/reagent/drug/methamphetamine/cocaine = 30)
 
 /obj/item/reagent_containers/drug/methpack
-	name = "\improper drinkable blood pack (full)"
+	name = "\improper elite blood pack (full)"
 	desc = "Fast way to feed your inner beast."
 	icon = 'code/modules/wod13/items.dmi'
 	icon_state = "blood4"
@@ -465,7 +465,7 @@ SUBSYSTEM_DEF(smokeweedeveryday)
 
 	var/empty = FALSE
 	var/feeding = FALSE
-	var/amount_of_bloodpoints = 2
+	var/amount_of_bloodpoints = 4
 	var/vitae = FALSE
 
 /obj/item/reagent_containers/drug/methpack/attack(mob/living/M, mob/living/user)
@@ -498,7 +498,7 @@ SUBSYSTEM_DEF(smokeweedeveryday)
 		return
 
 /obj/item/reagent_containers/drug/morphpack
-	name = "\improper drinkable blood pack (full)"
+	name = "\improper elite blood pack (full)"
 	desc = "Fast way to feed your inner beast."
 	icon = 'code/modules/wod13/items.dmi'
 	icon_state = "blood4"
@@ -515,7 +515,7 @@ SUBSYSTEM_DEF(smokeweedeveryday)
 
 	var/empty = FALSE
 	var/feeding = FALSE
-	var/amount_of_bloodpoints = 2
+	var/amount_of_bloodpoints = 4
 	var/vitae = FALSE
 
 /obj/item/reagent_containers/drug/morphpack/attack(mob/living/M, mob/living/user)
@@ -548,7 +548,7 @@ SUBSYSTEM_DEF(smokeweedeveryday)
 		return
 
 /obj/item/reagent_containers/drug/cokepack
-	name = "\improper drinkable blood pack (full)"
+	name = "\improper elite blood pack (full)"
 	desc = "Fast way to feed your inner beast."
 	icon = 'code/modules/wod13/items.dmi'
 	icon_state = "blood4"
@@ -565,7 +565,7 @@ SUBSYSTEM_DEF(smokeweedeveryday)
 
 	var/empty = FALSE
 	var/feeding = FALSE
-	var/amount_of_bloodpoints = 2
+	var/amount_of_bloodpoints = 4
 	var/vitae = FALSE
 
 /obj/item/reagent_containers/drug/cokepack/attack(mob/living/M, mob/living/user)
