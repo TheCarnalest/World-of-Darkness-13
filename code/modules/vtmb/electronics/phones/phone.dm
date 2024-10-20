@@ -210,6 +210,7 @@
 				online = null
 			.= TRUE
 		if("call")
+			choosed_number = replacetext(choosed_number, " ", "")
 			for(var/obj/item/vamp/phone/PHN in GLOB.phones_list)
 				if(PHN.number == choosed_number)
 					if(!PHN.online && !PHN.talking)
