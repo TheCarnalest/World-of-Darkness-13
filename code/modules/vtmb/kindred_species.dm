@@ -98,16 +98,16 @@
 				if(5 to 6)
 					humanity = "I'm feeling distant from my humanity."
 				if(4)
-					humanity = "I don't feel any compassion for the kine anymore."
+					humanity = "I don't feel any compassion for the Kine anymore."
 				if(2 to 3)
 					humanity = "I feel hunger for <b>BLOOD</b>. My humanity is slipping away."
 				if(1)
-					humanity = "Blood. Thirst. Hunger. It gnaws. Must <b>FEED!</b>"
+					humanity = "Blood. Feed. Hunger. It gnaws. Must <b>FEED!</b>"
 
 		else
 			switch(host.humanity)
 				if(8 to 10)
-					humanity = "I'm <b>ENLIGHTENED</b>, I and my <b>BEAST</b> are in complete harmony."
+					humanity = "I'm <b>ENLIGHTENED</b>, My <b>BEAST</b> and I are in complete harmony."
 				if(7)
 					humanity = "I've made great strides in co-existing with my beast."
 				if(5 to 6)
