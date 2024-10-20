@@ -70,5 +70,5 @@
 	health = 100
 	maxHealth = 100
 	speed = -1
-	icon = 'code/modules/ziggers/icons.dmi'
+	icon = 'code/modules/wod13/icons.dmi'
 	icon_state = "bat"

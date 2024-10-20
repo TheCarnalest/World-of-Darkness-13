@@ -34,7 +34,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list("bible", "koran", "scrapbook", "burning",
 	name = "bible"
 	desc = "Apply to head repeatedly."
 	icon = 'icons/obj/storage.dmi'
-	onflooricon = 'code/modules/ziggers/onfloor.dmi'
+	onflooricon = 'code/modules/wod13/onfloor.dmi'
 	icon_state = "bible"
 	inhand_icon_state = "bible"
 	worn_icon_state = "bible"

@@ -52,6 +52,7 @@ GLOBAL_LIST_INIT(independent_positions, list(
 	"Primogen Brujah",
 	"Voivode",
 	"Bogatyr",
+	"Zadruga",
 	"Dealer",
 	"Supply Technician"))
 

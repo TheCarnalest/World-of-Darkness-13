@@ -182,7 +182,7 @@
 
 	inv_add = new /atom/movable/screen/addinv()
 	inv_add.name = "inventory"
-	inv_add.icon = 'code/modules/ziggers/32x48.dmi'
+	inv_add.icon = 'code/modules/wod13/32x48.dmi'
 	inv_add.icon_state = "gorg"
 	inv_add.screen_loc = ui_gorg
 	inv_add.hud = src
@@ -190,7 +190,7 @@
 
 	inv_add = new /atom/movable/screen/addinv()
 	inv_add.name = "inventory"
-	inv_add.icon = 'code/modules/ziggers/icons.dmi'
+	inv_add.icon = 'code/modules/wod13/icons.dmi'
 	inv_add.icon_state = "cross1"
 	inv_add.screen_loc = ui_cross1
 	inv_add.hud = src
@@ -198,7 +198,7 @@
 
 	inv_add = new /atom/movable/screen/addinv()
 	inv_add.name = "inventory"
-	inv_add.icon = 'code/modules/ziggers/icons.dmi'
+	inv_add.icon = 'code/modules/wod13/icons.dmi'
 	inv_add.icon_state = "cross2"
 	inv_add.screen_loc = ui_cross2
 	inv_add.hud = src
@@ -341,9 +341,9 @@
 
 	healths = new /atom/movable/screen/healths()
 	if(iskindred(owner))
-		healths.icon = 'code/modules/ziggers/32x48.dmi'
+		healths.icon = 'code/modules/wod13/32x48.dmi'
 	else
-		healths.icon = 'code/modules/ziggers/ghoul_health.dmi'
+		healths.icon = 'code/modules/wod13/ghoul_health.dmi'
 	healths.hud = src
 	infodisplay += healths
 	blood_icon = new /atom/movable/screen/blood()

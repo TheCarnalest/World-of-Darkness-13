@@ -179,7 +179,7 @@ Difficulty: Hard
 /mob/living/simple_animal/hostile/megafauna/wendigo/proc/disorienting_scream()
 	can_move = FALSE
 	last_scream = world.time
-	playsound(src, pick('code/modules/ziggers/sounds/mp_judgement.ogg', 'code/modules/ziggers/sounds/mp_die.ogg', 'code/modules/ziggers/sounds/mp_end.ogg'), 600, FALSE, 10)
+	playsound(src, pick('code/modules/wod13/sounds/mp_judgement.ogg', 'code/modules/wod13/sounds/mp_die.ogg', 'code/modules/wod13/sounds/mp_end.ogg'), 600, FALSE, 10)
 	animate(src, pixel_z = rand(5, 15), time = 1, loop = 6)
 	animate(pixel_z = 0, time = 1)
 	for(var/mob/living/L in get_hearers_in_view(7, src) - src)

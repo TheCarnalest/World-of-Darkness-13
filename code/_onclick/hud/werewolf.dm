@@ -6,14 +6,14 @@
 
 /atom/movable/screen/rage
 	name = "Rage"
-	icon = 'code/modules/ziggers/48x48.dmi'
+	icon = 'code/modules/wod13/48x48.dmi'
 	icon_state = "rage0"
 	layer = HUD_LAYER
 	plane = HUD_PLANE
 
 /atom/movable/screen/transform_homid
 	name = "Homid"
-	icon = 'code/modules/ziggers/32x48.dmi'
+	icon = 'code/modules/wod13/32x48.dmi'
 	icon_state = "homid"
 	layer = HUD_LAYER
 	plane = HUD_PLANE
@@ -27,7 +27,7 @@
 
 /atom/movable/screen/transform_crinos
 	name = "Crinos"
-	icon = 'code/modules/ziggers/32x48.dmi'
+	icon = 'code/modules/wod13/32x48.dmi'
 	icon_state = "crinos"
 	layer = HUD_LAYER
 	plane = HUD_PLANE
@@ -41,7 +41,7 @@
 
 /atom/movable/screen/transform_lupus
 	name = "Lupus"
-	icon = 'code/modules/ziggers/32x48.dmi'
+	icon = 'code/modules/wod13/32x48.dmi'
 	icon_state = "lupus"
 	layer = HUD_LAYER
 	plane = HUD_PLANE
@@ -55,7 +55,7 @@
 
 /atom/movable/screen/auspice
 	name = "Auspice"
-	icon = 'code/modules/ziggers/werewolf_ui.dmi'
+	icon = 'code/modules/wod13/werewolf_ui.dmi'
 	icon_state = "auspice_bar"
 	layer = HUD_LAYER
 	plane = HUD_PLANE
@@ -81,7 +81,7 @@
 		to_chat(C, "<span class='notice'>The Moon is [GLOB.moon_state].</span>")
 //		icon_state = "[GLOB.moon_state]"
 		C.emote("howl")
-		playsound(get_turf(C), pick('code/modules/ziggers/sounds/awo1.ogg', 'code/modules/ziggers/sounds/awo2.ogg'), 100, FALSE)
+		playsound(get_turf(C), pick('code/modules/wod13/sounds/awo1.ogg', 'code/modules/wod13/sounds/awo2.ogg'), 100, FALSE)
 		icon_state = "[GLOB.moon_state]"
 		spawn(10)
 			adjust_rage(1, C, TRUE)
@@ -182,7 +182,7 @@
 //begin indicators
 
 	healths = new /atom/movable/screen/healths()
-	healths.icon = 'code/modules/ziggers/ghoul_health.dmi'
+	healths.icon = 'code/modules/wod13/ghoul_health.dmi'
 	healths.hud = src
 	infodisplay += healths
 	blood_icon = new /atom/movable/screen/blood()

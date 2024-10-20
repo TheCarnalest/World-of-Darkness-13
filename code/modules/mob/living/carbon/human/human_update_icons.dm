@@ -75,11 +75,11 @@ There are several things that need to be remembered:
 
 	if(base_body_mod == "s")
 		if(gender == FEMALE)
-			body_sprite = 'code/modules/ziggers/worn_slim_f.dmi'
+			body_sprite = 'code/modules/wod13/worn_slim_f.dmi'
 		else
-			body_sprite = 'code/modules/ziggers/worn_slim_m.dmi'
+			body_sprite = 'code/modules/wod13/worn_slim_m.dmi'
 	if(base_body_mod == "f")
-		body_sprite = 'code/modules/ziggers/worn_fat.dmi'
+		body_sprite = 'code/modules/wod13/worn_fat.dmi'
 	if(base_body_mod == "")
 		body_sprite = null
 	for(var/obj/item/I in GetAllContents())

@@ -30,7 +30,7 @@
 /obj/machinery/computer/cargo/express/Initialize()
 	. = ..()
 	packin_up()
-	for(var/obj/item/supplypod_beacon/sb in range(9, src))
+	for(var/obj/item/supplypod_beacon/sb in range(20, src))
 		if(sb)
 			if(sb.express_console != src)
 				sb.altlink_console(src)
@@ -227,11 +227,11 @@
 						train.starter = usr
 						train.glide_size = (32 / 3) * world.tick_lag
 						walk_to(train, LZ, 1, 3)
-						playsound(train, 'code/modules/ziggers/sounds/train_arrive.ogg', 50, FALSE)
+						playsound(train, 'code/modules/wod13/sounds/train_arrive.ogg', 50, FALSE)
 						var/trackLength = get_dist(get_nearest_free_turf(LZ), LZ)*5
 						spawn(trackLength)
 							SO.generate(get_turf(train))
-							playsound(train, 'code/modules/ziggers/sounds/train_depart.ogg', 50, FALSE)
+							playsound(train, 'code/modules/wod13/sounds/train_depart.ogg', 50, FALSE)
 							walk_to(train, get_nearest_free_turf(LZ), 1, 3)
 							spawn(trackLength)
 								qdel(train)
@@ -261,10 +261,10 @@
 							train.starter = usr
 							train.glide_size = (32 / 3) * world.tick_lag
 							walk_to(train, LZ, 1, 3)
-							playsound(train, 'code/modules/ziggers/sounds/train_arrive.ogg', 50, FALSE)
+							playsound(train, 'code/modules/wod13/sounds/train_arrive.ogg', 50, FALSE)
 							var/trackLength = get_dist(get_nearest_free_turf(LZ), LZ)*5
 							spawn(trackLength)
-								playsound(train, 'code/modules/ziggers/sounds/train_depart.ogg', 50, FALSE)
+								playsound(train, 'code/modules/wod13/sounds/train_depart.ogg', 50, FALSE)
 								SO.generate(get_turf(train))
 								walk_to(train, get_nearest_free_turf(LZ), 1, 3)
 								spawn(trackLength)

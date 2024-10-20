@@ -8,7 +8,7 @@
 	var/delay = 5
 	var/violates_masquerade = FALSE
 	var/level = 1
-	var/activate_sound = 'code/modules/ziggers/sounds/bloodhealing.ogg'
+	var/activate_sound = 'code/modules/wod13/sounds/bloodhealing.ogg'
 	var/leveldelay = FALSE
 	var/fearless = FALSE
 
@@ -145,7 +145,7 @@
 			var/mob/living/carbon/human/npc/NPC = target
 			NPC.Aggro(caster, TRUE)
 	if(activate_sound)
-		playsound(caster, activate_sound, 50, FALSE)
+		caster.playsound_local(caster, activate_sound, 50, FALSE)
 //	if(caster.key)
 //		var/datum/preferences/P = GLOB.preferences_datums[ckey(caster.key)]
 //		if(P)
@@ -178,14 +178,14 @@
 	delay = 20
 	ranged = FALSE
 	violates_masquerade = TRUE
-	activate_sound = 'code/modules/ziggers/sounds/wolves.ogg'
+	activate_sound = 'code/modules/wod13/sounds/wolves.ogg'
 	dead_restricted = FALSE
 	var/obj/effect/proc_holder/spell/targeted/shapeshift/animalism/AN
 
 /obj/effect/spectral_wolf
 	name = "Spectral Wolf"
 	desc = "Bites enemies in other dimensions."
-	icon = 'code/modules/ziggers/icons.dmi'
+	icon = 'code/modules/wod13/icons.dmi'
 	icon_state = "wolf"
 	plane = GAME_PLANE
 	layer = ABOVE_ALL_MOB_LAYER
@@ -274,7 +274,7 @@
 
 /datum/discipline/auspex/activate(mob/living/target, mob/living/carbon/human/caster)
 	. = ..()
-	var/sound/auspexbeat = sound('code/modules/ziggers/sounds/auspex.ogg', repeat = TRUE)
+	var/sound/auspexbeat = sound('code/modules/wod13/sounds/auspex.ogg', repeat = TRUE)
 	caster.playsound_local(caster, auspexbeat, 75, 0, channel = CHANNEL_DISCIPLINES, use_reverb = FALSE)
 	ADD_TRAIT(caster, TRAIT_THERMAL_VISION, TRAIT_GENERIC)
 	var/loh = FALSE
@@ -307,7 +307,7 @@
 			var/datum/atom_hud/health_hud = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
 			health_hud.remove_hud_from(caster)
 			caster.stop_sound_channel(CHANNEL_DISCIPLINES)
-			playsound(caster.loc, 'code/modules/ziggers/sounds/auspex_deactivate.ogg', 50, FALSE)
+			caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/auspex_deactivate.ogg', 50, FALSE)
 			REMOVE_TRAIT(caster, TRAIT_THERMAL_VISION, TRAIT_GENERIC)
 			if(loh)
 				REMOVE_TRAIT(caster, TRAIT_NIGHT_VISION, TRAIT_GENERIC)
@@ -322,7 +322,7 @@
 	ranged = FALSE
 	delay = 50
 	violates_masquerade = FALSE
-	activate_sound = 'code/modules/ziggers/sounds/celerity_activate.ogg'
+	activate_sound = 'code/modules/wod13/sounds/celerity_activate.ogg'
 	leveldelay = TRUE
 
 /obj/effect/celerity
@@ -379,7 +379,7 @@
 			caster.celerity_visual = TRUE
 			spawn((delay*level_casting)+caster.discipline_time_plus)
 				if(caster)
-					playsound(caster.loc, 'code/modules/ziggers/sounds/celerity_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/celerity_deactivate.ogg', 50, FALSE)
 					caster.remove_movespeed_modifier(/datum/movespeed_modifier/celerity)
 					caster.celerity_visual = FALSE
 		if(2)
@@ -387,7 +387,7 @@
 			caster.celerity_visual = TRUE
 			spawn((delay*level_casting)+caster.discipline_time_plus)
 				if(caster)
-					playsound(caster.loc, 'code/modules/ziggers/sounds/celerity_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/celerity_deactivate.ogg', 50, FALSE)
 					caster.remove_movespeed_modifier(/datum/movespeed_modifier/celerity2)
 					caster.celerity_visual = FALSE
 		if(3)
@@ -395,7 +395,7 @@
 			caster.celerity_visual = TRUE
 			spawn((delay*level_casting)+caster.discipline_time_plus)
 				if(caster)
-					playsound(caster.loc, 'code/modules/ziggers/sounds/celerity_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/celerity_deactivate.ogg', 50, FALSE)
 					caster.remove_movespeed_modifier(/datum/movespeed_modifier/celerity3)
 					caster.celerity_visual = FALSE
 		if(4)
@@ -403,7 +403,7 @@
 			caster.celerity_visual = TRUE
 			spawn((delay*level_casting)+caster.discipline_time_plus)
 				if(caster)
-					playsound(caster.loc, 'code/modules/ziggers/sounds/celerity_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/celerity_deactivate.ogg', 50, FALSE)
 					caster.remove_movespeed_modifier(/datum/movespeed_modifier/celerity4)
 					caster.celerity_visual = FALSE
 		if(5)
@@ -411,7 +411,7 @@
 			caster.celerity_visual = TRUE
 			spawn((delay*level_casting)+caster.discipline_time_plus)
 				if(caster)
-					playsound(caster.loc, 'code/modules/ziggers/sounds/celerity_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/celerity_deactivate.ogg', 50, FALSE)
 					caster.remove_movespeed_modifier(/datum/movespeed_modifier/celerity5)
 					caster.celerity_visual = FALSE
 
@@ -422,7 +422,7 @@
 	cost = 1
 	ranged = TRUE
 	delay = 150
-	activate_sound = 'code/modules/ziggers/sounds/dominate.ogg'
+	activate_sound = 'code/modules/wod13/sounds/dominate.ogg'
 	fearless = TRUE
 
 /datum/discipline/dominate/activate(mob/living/target, mob/living/carbon/human/caster)
@@ -441,7 +441,7 @@
 	if(ishuman(target))
 		TRGT = target
 		TRGT.remove_overlay(MUTATIONS_LAYER)
-		var/mutable_appearance/dominate_overlay = mutable_appearance('code/modules/ziggers/icons.dmi', "dominate", -MUTATIONS_LAYER)
+		var/mutable_appearance/dominate_overlay = mutable_appearance('code/modules/wod13/icons.dmi', "dominate", -MUTATIONS_LAYER)
 		dominate_overlay.pixel_z = 2
 		TRGT.overlays_standing[MUTATIONS_LAYER] = dominate_overlay
 		TRGT.apply_overlay(MUTATIONS_LAYER)
@@ -494,7 +494,7 @@
 	cost = 2
 	ranged = TRUE
 	delay = 100
-	activate_sound = 'code/modules/ziggers/sounds/insanity.ogg'
+	activate_sound = 'code/modules/wod13/sounds/insanity.ogg'
 	clane_restricted = TRUE
 
 /mob/living
@@ -609,7 +609,7 @@
 		return
 	var/mob/living/carbon/human/H = target
 	H.remove_overlay(MUTATIONS_LAYER)
-	var/mutable_appearance/dementation_overlay = mutable_appearance('code/modules/ziggers/icons.dmi', "dementation", -MUTATIONS_LAYER)
+	var/mutable_appearance/dementation_overlay = mutable_appearance('code/modules/wod13/icons.dmi', "dementation", -MUTATIONS_LAYER)
 	dementation_overlay.pixel_z = 1
 	H.overlays_standing[MUTATIONS_LAYER] = dementation_overlay
 	H.apply_overlay(MUTATIONS_LAYER)
@@ -618,7 +618,7 @@
 			H.Stun(5)
 			H.emote("laugh")
 			to_chat(target, "<span class='userdanger'><b>HAHAHAHAHAHAHAHAHAHAHAHA!!</b></span>")
-			playsound(get_turf(H), pick('sound/items/SitcomLaugh1.ogg', 'sound/items/SitcomLaugh2.ogg', 'sound/items/SitcomLaugh3.ogg'), 100, FALSE)
+			caster.playsound_local(get_turf(H), pick('sound/items/SitcomLaugh1.ogg', 'sound/items/SitcomLaugh2.ogg', 'sound/items/SitcomLaugh3.ogg'), 100, FALSE)
 			if(target.body_position == STANDING_UP)
 				target.toggle_resting()
 		if(2)
@@ -650,7 +650,7 @@
 	cost = 1
 	ranged = FALSE
 	delay = 100
-	activate_sound = 'code/modules/ziggers/sounds/potence_activate.ogg'
+	activate_sound = 'code/modules/wod13/sounds/potence_activate.ogg'
 	var/datum/component/tackler
 
 /datum/discipline/potence/activate(mob/living/target, mob/living/carbon/human/caster)
@@ -658,20 +658,20 @@
 	var/mod = 8*level_casting
 	var/armah = 0.4*level_casting
 	caster.remove_overlay(POTENCE_LAYER)
-	var/mutable_appearance/potence_overlay = mutable_appearance('code/modules/ziggers/icons.dmi', "potence", -POTENCE_LAYER)
+	var/mutable_appearance/potence_overlay = mutable_appearance('code/modules/wod13/icons.dmi', "potence", -POTENCE_LAYER)
 	caster.overlays_standing[POTENCE_LAYER] = potence_overlay
 	caster.apply_overlay(POTENCE_LAYER)
 	caster.dna.species.punchdamagelow += mod
 	caster.dna.species.punchdamagehigh += mod
 	caster.dna.species.meleemod += armah
-	caster.dna.species.attack_sound = 'code/modules/ziggers/sounds/heavypunch.ogg'
+	caster.dna.species.attack_sound = 'code/modules/wod13/sounds/heavypunch.ogg'
 	tackler = caster.AddComponent(/datum/component/tackler, stamina_cost=0, base_knockdown = 1 SECONDS, range = 2+level_casting, speed = 1, skill_mod = 0, min_distance = 0)
 	caster.potential = level_casting
 	spawn(delay+caster.discipline_time_plus)
 		if(caster)
 			if(caster.dna)
 				if(caster.dna.species)
-					playsound(caster.loc, 'code/modules/ziggers/sounds/potence_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/potence_deactivate.ogg', 50, FALSE)
 					caster.dna.species.punchdamagelow -= mod
 					caster.dna.species.punchdamagehigh -= mod
 					caster.dna.species.meleemod -= armah
@@ -687,24 +687,24 @@
 	cost = 1
 	ranged = FALSE
 	delay = 100
-	activate_sound = 'code/modules/ziggers/sounds/fortitude_activate.ogg'
+	activate_sound = 'code/modules/wod13/sounds/fortitude_activate.ogg'
 
 /datum/discipline/fortitude/activate(mob/living/target, mob/living/carbon/human/caster)
 	. = ..()
 	var/mod = min(3, level_casting)
 	var/armah = 15*mod
-	caster.remove_overlay(FORTITUDE_LAYER)
-	var/mutable_appearance/fortitude_overlay = mutable_appearance('code/modules/ziggers/icons.dmi', "fortitude", -FORTITUDE_LAYER)
-	caster.overlays_standing[FORTITUDE_LAYER] = fortitude_overlay
-	caster.apply_overlay(FORTITUDE_LAYER)
+//	caster.remove_overlay(FORTITUDE_LAYER)
+//	var/mutable_appearance/fortitude_overlay = mutable_appearance('code/modules/wod13/icons.dmi', "fortitude", -FORTITUDE_LAYER)
+//	caster.overlays_standing[FORTITUDE_LAYER] = fortitude_overlay
+//	caster.apply_overlay(FORTITUDE_LAYER)
 	caster.physiology.armor.melee += armah
 	caster.physiology.armor.bullet += armah
 	spawn(delay+caster.discipline_time_plus)
 		if(caster)
-			playsound(caster.loc, 'code/modules/ziggers/sounds/fortitude_deactivate.ogg', 50, FALSE)
+			caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/fortitude_deactivate.ogg', 50, FALSE)
 			caster.physiology.armor.melee -= armah
 			caster.physiology.armor.bullet -= armah
-			caster.remove_overlay(FORTITUDE_LAYER)
+//			caster.remove_overlay(FORTITUDE_LAYER)
 
 /datum/discipline/obfuscate
 	name = "Obfuscate"
@@ -713,7 +713,7 @@
 	cost = 1
 	ranged = FALSE
 	delay = 100
-	activate_sound = 'code/modules/ziggers/sounds/obfuscate_activate.ogg'
+	activate_sound = 'code/modules/wod13/sounds/obfuscate_activate.ogg'
 	leveldelay = TRUE
 
 /mob/living/carbon
@@ -730,7 +730,7 @@
 	spawn((delay*level_casting)+caster.discipline_time_plus)
 		if(caster)
 			if(caster.alpha != 255)
-				playsound(caster.loc, 'code/modules/ziggers/sounds/obfuscate_deactivate.ogg', 50, FALSE)
+				caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/obfuscate_deactivate.ogg', 50, FALSE)
 				caster.alpha = 255
 
 /datum/discipline/presence
@@ -740,7 +740,7 @@
 	cost = 1
 	ranged = TRUE
 	delay = 50
-	activate_sound = 'code/modules/ziggers/sounds/presence_activate.ogg'
+	activate_sound = 'code/modules/wod13/sounds/presence_activate.ogg'
 	leveldelay = FALSE
 	fearless = TRUE
 
@@ -784,7 +784,7 @@
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
 		H.remove_overlay(MUTATIONS_LAYER)
-		var/mutable_appearance/presence_overlay = mutable_appearance('code/modules/ziggers/icons.dmi', "presence", -MUTATIONS_LAYER)
+		var/mutable_appearance/presence_overlay = mutable_appearance('code/modules/wod13/icons.dmi', "presence", -MUTATIONS_LAYER)
 		presence_overlay.pixel_z = 1
 		H.overlays_standing[MUTATIONS_LAYER] = presence_overlay
 		H.apply_overlay(MUTATIONS_LAYER)
@@ -834,7 +834,7 @@
 			if(H)
 				H.remove_overlay(MUTATIONS_LAYER)
 				if(caster)
-					playsound(caster.loc, 'code/modules/ziggers/sounds/presence_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/presence_deactivate.ogg', 50, FALSE)
 
 /datum/discipline/protean
 	name = "Protean"
@@ -844,7 +844,7 @@
 	ranged = FALSE
 	delay = 200
 	violates_masquerade = TRUE
-	activate_sound = 'code/modules/ziggers/sounds/protean_activate.ogg'
+	activate_sound = 'code/modules/wod13/sounds/protean_activate.ogg'
 	clane_restricted = TRUE
 	var/obj/effect/proc_holder/spell/targeted/shapeshift/gangrel/GA
 
@@ -863,7 +863,7 @@
 /datum/discipline/protean/activate(mob/living/target, mob/living/carbon/human/caster)
 	. = ..()
 	var/mod = min(4, level_casting)
-//	var/mutable_appearance/protean_overlay = mutable_appearance('code/modules/ziggers/icons.dmi', "protean[mod]", -PROTEAN_LAYER)
+//	var/mutable_appearance/protean_overlay = mutable_appearance('code/modules/wod13/icons.dmi', "protean[mod]", -PROTEAN_LAYER)
 	if(!GA)
 		GA = new(caster)
 	switch(mod)
@@ -886,7 +886,7 @@
 							qdel(G)
 					caster.remove_client_colour(/datum/client_colour/glass_colour/red)
 //					if(caster.dna)
-					playsound(caster.loc, 'code/modules/ziggers/sounds/protean_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
 //						caster.dna.species.attack_verb = initial(caster.dna.species.attack_verb)
 //						caster.dna.species.attack_sound = initial(caster.dna.species.attack_sound)
 //						caster.dna.species.punchdamagelow = caster.dna.species.punchdamagelow-10
@@ -912,7 +912,7 @@
 							qdel(G)
 					caster.remove_client_colour(/datum/client_colour/glass_colour/red)
 //					if(caster.dna)
-					playsound(caster.loc, 'code/modules/ziggers/sounds/protean_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
 //						caster.dna.species.attack_verb = initial(caster.dna.species.attack_verb)
 //						caster.dna.species.attack_sound = initial(caster.dna.species.attack_sound)
 //						caster.dna.species.punchdamagelow = caster.dna.species.punchdamagelow-15
@@ -936,7 +936,7 @@
 					caster.Stun(15)
 					caster.do_jitter_animation(30)
 //					if(caster.dna)
-					playsound(caster, 'code/modules/ziggers/sounds/protean_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
 //						caster.dna.species.attack_verb = initial(caster.dna.species.attack_verb)
 //						caster.dna.species.attack_sound = initial(caster.dna.species.attack_sound)
 //						caster.dna.species.punchdamagelow = caster.dna.species.punchdamagelow-20
@@ -967,7 +967,7 @@
 					caster.Stun(15)
 					caster.do_jitter_animation(30)
 //					if(caster.dna)
-					playsound(caster, 'code/modules/ziggers/sounds/protean_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
 //						caster.dna.species.attack_verb = initial(caster.dna.species.attack_verb)
 //						caster.dna.species.attack_sound = initial(caster.dna.species.attack_sound)
 //						caster.dna.species.punchdamagelow = caster.dna.species.punchdamagelow-25
@@ -1014,7 +1014,7 @@
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
 	damage = 5
 	damage_type = BURN
-	hitsound = 'code/modules/ziggers/sounds/drinkblood1.ogg'
+	hitsound = 'code/modules/wod13/sounds/drinkblood1.ogg'
 	hitsound_wall = 'sound/weapons/effects/searwall.ogg'
 	flag = LASER
 	light_system = MOVABLE_LIGHT
@@ -1065,7 +1065,7 @@
 	ranged = TRUE
 	delay = 10
 	violates_masquerade = TRUE
-	activate_sound = 'code/modules/ziggers/sounds/thaum.ogg'
+	activate_sound = 'code/modules/wod13/sounds/thaum.ogg'
 	clane_restricted = TRUE
 	dead_restricted = FALSE
 
@@ -1098,7 +1098,7 @@
 			if(iscarbon(target))
 				target.Stun(30)
 				target.visible_message("<span class='danger'>[target] throws up!</span>", "<span class='userdanger'>You throw up!</span>")
-				playsound(get_turf(target), 'code/modules/ziggers/sounds/vomit.ogg', 75, TRUE)
+				playsound(get_turf(target), 'code/modules/wod13/sounds/vomit.ogg', 75, TRUE)
 				target.add_splatter_floor(get_turf(target))
 				target.add_splatter_floor(get_turf(get_step(target, target.dir)))
 			else
@@ -1115,7 +1115,7 @@
 	cost = 2
 	ranged = FALSE
 	delay = 150
-	activate_sound = 'code/modules/ziggers/sounds/thaum.ogg'
+	activate_sound = 'code/modules/wod13/sounds/thaum.ogg'
 
 /datum/discipline/bloodshield/activate(mob/living/target, mob/living/carbon/human/caster)
 	..()
@@ -1126,7 +1126,7 @@
 //	caster.color = "#ff0000"
 	spawn(delay+caster.discipline_time_plus)
 		if(caster)
-			playsound(caster.loc, 'code/modules/ziggers/sounds/thaum.ogg', 50, FALSE)
+			playsound(caster.loc, 'code/modules/wod13/sounds/thaum.ogg', 50, FALSE)
 			caster.physiology.armor.melee = caster.physiology.armor.melee-(15*mod)
 			caster.physiology.armor.bullet = caster.physiology.armor.bullet-(15*mod)
 			caster.color = initial(caster.color)
@@ -1160,11 +1160,11 @@
 		if(target.dir == antidir)
 			target.Immobilize(10)
 			target.visible_message("<span class='warning'><b>[caster] hypnotizes [target] with his eyes!</b></span>", "<span class='warning'><b>[caster] hypnotizes you like a cobra!</b></span>")
-			playsound(target.loc, 'code/modules/ziggers/sounds/serpentis.ogg', 50, TRUE)
+			caster.playsound_local(target.loc, 'code/modules/wod13/sounds/serpentis.ogg', 50, TRUE)
 			if(ishuman(target))
 				var/mob/living/carbon/human/H = target
 				H.remove_overlay(MUTATIONS_LAYER)
-				var/mutable_appearance/serpentis_overlay = mutable_appearance('code/modules/ziggers/icons.dmi', "serpentis", -MUTATIONS_LAYER)
+				var/mutable_appearance/serpentis_overlay = mutable_appearance('code/modules/wod13/icons.dmi', "serpentis", -MUTATIONS_LAYER)
 				H.overlays_standing[MUTATIONS_LAYER] = serpentis_overlay
 				H.apply_overlay(MUTATIONS_LAYER)
 				spawn(5)
@@ -1172,15 +1172,15 @@
 	if(level_casting >= 2)
 //		var/turf/start = get_turf(caster)
 //		var/obj/projectile/tentacle/H = new(start)
-//		H.hitsound = 'code/modules/ziggers/sounds/tongue.ogg'
+//		H.hitsound = 'code/modules/wod13/sounds/tongue.ogg'
 		var/bloodpoints_to_suck = max(0, min(target.bloodpool, level_casting-1))
 		if(bloodpoints_to_suck)
 			caster.bloodpool = min(caster.maxbloodpool, caster.bloodpool+bloodpoints_to_suck)
 			target.bloodpool = max(0, target.bloodpool-bloodpoints_to_suck)
 		var/obj/item/ammo_casing/magic/tentacle/casing = new (caster.loc)
-		playsound(caster.loc, 'code/modules/ziggers/sounds/tongue.ogg', 100, TRUE)
+		playsound(caster.loc, 'code/modules/wod13/sounds/tongue.ogg', 100, TRUE)
 		casing.fire_casing(target, caster, null, null, null, ran_zone(), 0,  caster)
-		playsound(target.loc, 'code/modules/ziggers/sounds/serpentis.ogg', 50, TRUE)
+		caster.playsound_local(target.loc, 'code/modules/wod13/sounds/serpentis.ogg', 50, TRUE)
 		qdel(casing)
 
 /datum/discipline/vicissitude
@@ -1199,12 +1199,12 @@
 /datum/discipline/vicissitude/activate(mob/living/target, mob/living/carbon/human/caster)
 	. = ..()
 	if(iswerewolf(target))
-		playsound(caster.loc, 'code/modules/ziggers/sounds/vicissitude.ogg', 50, TRUE)
+		caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/vicissitude.ogg', 50, TRUE)
 		caster.adjustFireLoss(50)		//abusers suffer
 		caster.emote("scream")
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
-		playsound(target.loc, 'code/modules/ziggers/sounds/vicissitude.ogg', 50, TRUE)
+		caster.playsound_local(target.loc, 'code/modules/wod13/sounds/vicissitude.ogg', 50, TRUE)
 		if(target.stat >= 2)
 			if(istype(target, /mob/living/carbon/human/npc))
 				var/mob/living/carbon/human/npc/NPC = target
@@ -1320,13 +1320,13 @@
 
 /datum/discipline/quietus/activate(mob/living/target, mob/living/carbon/human/caster)
 	. = ..()
-	playsound(target.loc, 'code/modules/ziggers/sounds/quietus.ogg', 50, TRUE)
+	caster.playsound_local(target.loc, 'code/modules/wod13/sounds/quietus.ogg', 50, TRUE)
 	switch(level_casting)
 		if(1)
 			for(var/mob/living/carbon/human/H in oviewers(7, caster))
 				ADD_TRAIT(H, TRAIT_MUTE, "quietus")
 				H.remove_overlay(MUTATIONS_LAYER)
-				var/mutable_appearance/quietus_overlay = mutable_appearance('code/modules/ziggers/icons.dmi', "quietus", -MUTATIONS_LAYER)
+				var/mutable_appearance/quietus_overlay = mutable_appearance('code/modules/wod13/icons.dmi', "quietus", -MUTATIONS_LAYER)
 				H.overlays_standing[MUTATIONS_LAYER] = quietus_overlay
 				H.apply_overlay(MUTATIONS_LAYER)
 				if(H.get_confusion() < 15)
@@ -1362,7 +1362,7 @@
 /obj/item/gun/magic/quietus
 	name = "acid spit"
 	desc = "Spit poison on your targets."
-	icon = 'code/modules/ziggers/items.dmi'
+	icon = 'code/modules/wod13/items.dmi'
 	icon_state = "har4ok"
 	item_flags = NEEDS_PERMIT | ABSTRACT | DROPDEL | NOBLUDGEON
 	flags_1 = NONE
@@ -1391,7 +1391,7 @@
 	if(charges == 0)
 		qdel(src)
 /*
-	playsound(target.loc, 'code/modules/ziggers/sounds/quietus.ogg', 50, TRUE)
+	playsound(target.loc, 'code/modules/wod13/sounds/quietus.ogg', 50, TRUE)
 	target.Stun(5*level_casting)
 	if(level_casting >= 3)
 		if(target.bloodpool > 1)
@@ -1401,7 +1401,7 @@
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
 		H.remove_overlay(MUTATIONS_LAYER)
-		var/mutable_appearance/quietus_overlay = mutable_appearance('code/modules/ziggers/icons.dmi', "quietus", -MUTATIONS_LAYER)
+		var/mutable_appearance/quietus_overlay = mutable_appearance('code/modules/wod13/icons.dmi', "quietus", -MUTATIONS_LAYER)
 		H.overlays_standing[MUTATIONS_LAYER] = quietus_overlay
 		H.apply_overlay(MUTATIONS_LAYER)
 		spawn(5*level_casting)
@@ -1421,7 +1421,7 @@
 
 /datum/discipline/necromancy/activate(mob/living/target, mob/living/carbon/human/caster)
 	. = ..()
-	playsound(target.loc, 'code/modules/ziggers/sounds/necromancy.ogg', 50, TRUE)
+	caster.playsound_local(target.loc, 'code/modules/wod13/sounds/necromancy.ogg', 50, TRUE)
 	var/limit = min(3, level)+caster.social-1+caster.more_companions
 	if(length(caster.beastmaster) >= limit)
 		var/mob/living/simple_animal/hostile/beastmaster/B = pick(caster.beastmaster)
@@ -1522,14 +1522,14 @@
 	ranged = FALSE
 	delay = 150
 	violates_masquerade = TRUE
-	activate_sound = 'code/modules/ziggers/sounds/protean_activate.ogg'
+	activate_sound = 'code/modules/wod13/sounds/protean_activate.ogg'
 	clane_restricted = TRUE
 	var/obj/effect/proc_holder/spell/targeted/shapeshift/bat/BAT
 
 /datum/discipline/daimonion/activate(mob/living/target, mob/living/carbon/human/caster)
 	. = ..()
 	var/mod = min(4, level_casting)
-//	var/mutable_appearance/protean_overlay = mutable_appearance('code/modules/ziggers/icons.dmi', "protean[mod]", -PROTEAN_LAYER)
+//	var/mutable_appearance/protean_overlay = mutable_appearance('code/modules/wod13/icons.dmi', "protean[mod]", -PROTEAN_LAYER)
 	if(!BAT)
 		BAT = new(caster)
 	switch(mod)
@@ -1540,13 +1540,13 @@
 				if(caster)
 					caster.color = initial(caster.color)
 					caster.physiology.burn_mod *= 100
-					playsound(caster.loc, 'code/modules/ziggers/sounds/protean_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
 		if(2)
 			caster.dna.species.GiveSpeciesFlight(caster)
 			spawn(delay+caster.discipline_time_plus)
 				if(caster)
 					caster.dna.species.RemoveSpeciesFlight(caster)
-					playsound(caster.loc, 'code/modules/ziggers/sounds/protean_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
 		if(3)
 			caster.drop_all_held_items()
 			caster.put_in_r_hand(new /obj/item/melee/vampirearms/knife/gangrel(caster))
@@ -1556,7 +1556,7 @@
 					for(var/obj/item/melee/vampirearms/knife/gangrel/G in caster)
 						if(G)
 							qdel(G)
-					playsound(caster.loc, 'code/modules/ziggers/sounds/protean_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
 		if(4 to 5)
 			caster.drop_all_held_items()
 			BAT.Shapeshift(caster)
@@ -1565,7 +1565,7 @@
 					BAT.Restore(BAT.myshape)
 					caster.Stun(15)
 					caster.do_jitter_animation(30)
-					playsound(caster.loc, 'code/modules/ziggers/sounds/protean_deactivate.ogg', 50, FALSE)
+					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
 
 /datum/discipline/valeren
 	name = "Valeren"
@@ -1575,7 +1575,7 @@
 	ranged = TRUE
 	delay = 50
 	violates_masquerade = FALSE
-	activate_sound = 'code/modules/ziggers/sounds/valeren.ogg'
+	activate_sound = 'code/modules/wod13/sounds/valeren.ogg'
 	clane_restricted = TRUE
 	dead_restricted = FALSE
 	var/datum/beam/current_beam
@@ -1634,7 +1634,7 @@
 	ranged = TRUE
 	delay = 75
 	violates_masquerade = FALSE
-	activate_sound = 'code/modules/ziggers/sounds/melpominee.ogg'
+	activate_sound = 'code/modules/wod13/sounds/melpominee.ogg'
 	clane_restricted = TRUE
 	dead_restricted = FALSE
 
@@ -1661,32 +1661,32 @@
 					HU.caster = caster
 					HU.create_walk_to(20)
 					HU.remove_overlay(MUTATIONS_LAYER)
-					var/mutable_appearance/song_overlay = mutable_appearance('code/modules/ziggers/icons.dmi', "song", -MUTATIONS_LAYER)
+					var/mutable_appearance/song_overlay = mutable_appearance('code/modules/wod13/icons.dmi', "song", -MUTATIONS_LAYER)
 					HU.overlays_standing[MUTATIONS_LAYER] = song_overlay
 					HU.apply_overlay(MUTATIONS_LAYER)
 					spawn(20)
 						if(HU)
 							HU.remove_overlay(MUTATIONS_LAYER)
 		if(4)
-			playsound(caster.loc, 'code/modules/ziggers/sounds/killscream.ogg', 100, FALSE)
+			playsound(caster.loc, 'code/modules/wod13/sounds/killscream.ogg', 100, FALSE)
 			for(var/mob/living/carbon/human/HU in oviewers(7, caster))
 				if(HU)
 					HU.Stun(20)
 					HU.remove_overlay(MUTATIONS_LAYER)
-					var/mutable_appearance/song_overlay = mutable_appearance('code/modules/ziggers/icons.dmi', "song", -MUTATIONS_LAYER)
+					var/mutable_appearance/song_overlay = mutable_appearance('code/modules/wod13/icons.dmi', "song", -MUTATIONS_LAYER)
 					HU.overlays_standing[MUTATIONS_LAYER] = song_overlay
 					HU.apply_overlay(MUTATIONS_LAYER)
 					spawn(20)
 						if(HU)
 							HU.remove_overlay(MUTATIONS_LAYER)
 		if(5)
-			playsound(caster.loc, 'code/modules/ziggers/sounds/killscream.ogg', 100, FALSE)
+			playsound(caster.loc, 'code/modules/wod13/sounds/killscream.ogg', 100, FALSE)
 			for(var/mob/living/carbon/human/HU in oviewers(7, caster))
 				if(HU)
 					HU.Stun(20)
 					HU.apply_damage(50, BRUTE, BODY_ZONE_HEAD)
 					HU.remove_overlay(MUTATIONS_LAYER)
-					var/mutable_appearance/song_overlay = mutable_appearance('code/modules/ziggers/icons.dmi', "song", -MUTATIONS_LAYER)
+					var/mutable_appearance/song_overlay = mutable_appearance('code/modules/wod13/icons.dmi', "song", -MUTATIONS_LAYER)
 					HU.overlays_standing[MUTATIONS_LAYER] = song_overlay
 					HU.apply_overlay(MUTATIONS_LAYER)
 					spawn(20)
