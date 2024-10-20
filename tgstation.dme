@@ -3413,6 +3413,7 @@
 #include "code\modules\wod13\npcroles.dm"
 #include "code\modules\wod13\onfloor.dm"
 #include "code\modules\wod13\onyxcombat.dm"
+#include "code\modules\wod13\packadulteration.dm"
 #include "code\modules\wod13\pigs.dm"
 #include "code\modules\wod13\postal.dm"
 #include "code\modules\wod13\procs.dm"
