@@ -812,14 +812,14 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 		"[pick_list_replacements(HAL_LINES_FILE, "aggressive")]",\
 		"[pick_list_replacements(HAL_LINES_FILE, "help")]!!",\
 		"[pick_list_replacements(HAL_LINES_FILE, "escape")]",\
-		"Я заразн[C.gender == MALE ? "ый" : "ая"], [pick_list_replacements(HAL_LINES_FILE, "infection_advice")]!")
+		"[pick_list_replacements(HAL_LINES_FILE, "infection_advice")]!")
 
 	var/radio_messages = list("[pick_list_replacements(HAL_LINES_FILE, "people")] - [pick_list_replacements(HAL_LINES_FILE, "accusations")]!",\
-		"Помогите!",\
+		"Help!",\
 		"[pick_list_replacements(HAL_LINES_FILE, "threat")] [pick_list_replacements(HAL_LINES_FILE, "location")][prob(50)?"!":"!!"]",\
 		"[pick("Where did the Malkavian go?", "Put the Malkavian under arrest!")]",\
-		"Убегаем отсюда!",\
-		"Prince [pick("traitor", "dead")]!!")
+		"Let's get out of here!",\
+		"The Prince is [pick("a traitor", "dead")]!!")
 
 	var/mob/living/carbon/person = null
 	var/datum/language/understood_language = target.get_random_understood_language()
