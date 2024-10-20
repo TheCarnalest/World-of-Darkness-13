@@ -23,7 +23,7 @@
 
 /datum/action/vampireinfo
 	name = "About Me"
-	desc = "Check assigned role, clane, generation, humanity, masquerade, known disciplines, known contacts etc."
+	desc = "Check assigned role, clan, generation, humanity, masquerade, known disciplines, known contacts etc."
 	button_icon_state = "masquerade"
 	check_flags = NONE
 	var/mob/living/carbon/human/host
@@ -92,32 +92,32 @@
 		if(!enlight)
 			switch(host.humanity)
 				if(8 to 10)
-					humanity = "I'm the best example of mercy and kindness."
+					humanity = "I'm saintly."
 				if(7)
-					humanity = "I have nothing to complain about my humanity."
+					humanity = "I feel as human as when I lived."
 				if(5 to 6)
-					humanity = "I'm slightly above the humane."
+					humanity = "I'm feeling distant from my humanity."
 				if(4)
-					humanity = "I don't care about kine."
+					humanity = "I don't feel any compassion for the kine anymore."
 				if(2 to 3)
-					humanity = "There's nothing bad in murdering for <b>BLOOD</b>."
+					humanity = "I feel hunger for <b>BLOOD</b>. My humanity is slipping away."
 				if(1)
-					humanity = "I'm slowly falling into madness..."
+					humanity = "Blood. Thirst. Hunger. It gnaws. Must <b>FEED!</b>"
 
 		else
 			switch(host.humanity)
 				if(8 to 10)
-					humanity = "I'm <b>ENLIGHTED</b> and in the true harmony with my <b>BEAST</b>."
+					humanity = "I'm <b>ENLIGHTENED</b>, I and my <b>BEAST</b> are in complete harmony."
 				if(7)
-					humanity = "I'm slightly <b>ENLIGHTED</b>."
+					humanity = "I've made great strides in co-existing with my beast."
 				if(5 to 6)
-					humanity = "I'm about to be <b>ENLIGHTED</b>."
+					humanity = "I'm starting to learn how to share this unlife with my beast."
 				if(4)
-					humanity = "I'm purely trying to be <b>ENLIGHTED</b>."
+					humanity = "I'm still new to my path, but I'm learning."
 				if(2 to 3)
-					humanity = "My <b>BEAST</b> is calling me to be <b>ENLIGHTED</b>."
+					humanity = "I'm a complete novice to my path."
 				if(1)
-					humanity = "Am I <b>ENLIGHTED</b> or <b>HUMANE</b>?"
+					humanity = "I'm losing control over my beast!"
 
 		dat += "[humanity]<BR>"
 		dat += "<b>Physique</b>: [host.physique]<BR>"
