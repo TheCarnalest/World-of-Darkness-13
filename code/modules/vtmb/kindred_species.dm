@@ -107,7 +107,7 @@
 		else
 			switch(host.humanity)
 				if(8 to 10)
-					humanity = "I'm <b>ENLIGHTENED</b>, My <b>BEAST</b> and I are in complete harmony."
+					humanity = "I'm <b>ENLIGHTENED</b>, my <b>BEAST</b> and I are in complete harmony."
 				if(7)
 					humanity = "I've made great strides in co-existing with my beast."
 				if(5 to 6)
