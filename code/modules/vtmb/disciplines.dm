@@ -129,7 +129,7 @@
 			return
 
 /datum/discipline/proc/check_activated(var/mob/living/target, var/mob/living/carbon/human/caster)
-	if(caster.stat >= 2 || caster.IsSleeping() || caster.IsUnconscious() || caster.IsParalyzed() || caster.IsKnockdown() || caster.IsStun() || HAS_TRAIT(caster, TRAIT_RESTRAINED) || !isturf(caster.loc))
+	if(caster.stat >= 2 || caster.IsSleeping() || caster.IsUnconscious() || caster.IsParalyzed() || caster.IsStun() || HAS_TRAIT(caster, TRAIT_RESTRAINED) || !isturf(caster.loc))
 		return FALSE
 	var/plus = 0
 	if(HAS_TRAIT(caster, TRAIT_HUNGRY))
