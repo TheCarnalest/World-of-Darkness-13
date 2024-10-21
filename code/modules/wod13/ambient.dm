@@ -37,6 +37,12 @@
 	upper = FALSE
 	fire_controled = TRUE
 
+/area/vtm/interior/laundromat
+	name = "Laundromat"
+	icon_state = "shop"
+	upper = FALSE
+	fire_controled = TRUE
+
 /area/vtm/interior/giovanni
 	name = "Giovanni Mansion"
 	icon_state = "giovanni"
@@ -141,6 +147,15 @@
 
 /area/vtm/camarilla
 	name = "Millenium Appartements"
+	icon_state = "camarilla"
+	ambience_index = AMBIENCE_INTERIOR
+	upper = FALSE
+	zone_type = "elysium"
+	zone_owner = "Camarilla"
+	fire_controled = TRUE
+
+/area/vtm/jazzclub
+	name = "Jazz Club"
 	icon_state = "camarilla"
 	ambience_index = AMBIENCE_INTERIOR
 	upper = FALSE
@@ -441,5 +456,5 @@
 			else
 				if(last_vampire_ambience+wait_for_music+10 < world.time)
 					wait_for_music = 1740
-					client << sound('code/modules/wod13/sounds/daughters.ogg', 0, 0, CHANNEL_LOBBYMUSIC, 25)
+					client << sound('code/modules/wod13/sounds/daughters.ogg', 0, 0, CHANNEL_LOBBYMUSIC, 5)
 					last_vampire_ambience = world.time
