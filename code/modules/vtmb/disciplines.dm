@@ -1,20 +1,34 @@
 /datum/discipline
+	///Name of this Discipline.
 	var/name = "Vampiric Discipline"
+	///Text description of this Discipline.
 	var/desc = "Discipline with powers such as..."
+	///Icon for this Discipline as in disciplines.dmi
 	var/icon_state
+	///Cost in blood points of activating this Discipline.
 	var/cost = 2
+	///Whether this Discipline is ranged.
 	var/ranged = FALSE
+	///The range from which this Discipline can be used on a target.
 	var/range_sh = 8
+	///Duration of the Discipline.
 	var/delay = 5
+	///Whether this Discipline causes a Masquerade breach when used in front of mortals.
 	var/violates_masquerade = FALSE
+	///What rank, or how many dots the caster has in this Discipline.
 	var/level = 1
+	///The sound that plays when any power of this Discipline is activated.
 	var/activate_sound = 'code/modules/wod13/sounds/bloodhealing.ogg'
+	///Whether this Discipline's cooldowns are multipled by the level it's being casted at.
 	var/leveldelay = FALSE
+	///Whether this Discipline aggroes NPC targets.
 	var/fearless = FALSE
 
-	var/level_casting = 1	//which level we want to cast
-	var/clane_restricted = FALSE	//Only for specified clans
-	var/clane_exclusion = FALSE
+	///What rank of this Discipline is currently being casted.
+	var/level_casting = 1
+	///Whether this Discipline is exclusive to one Clan.
+	var/clane_restricted = FALSE
+	///Whether this Discipline is restricted from affecting dead people.
 	var/dead_restricted = TRUE
 
 /datum/discipline/proc/post_gain(var/mob/living/carbon/human/H)
