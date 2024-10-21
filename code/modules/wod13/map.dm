@@ -122,7 +122,7 @@
 
 
 /obj/effect/mob_spawn/human/citizen
-	name = "just a civillian"
+	name = "just a civilian"
 	desc = "A humming sleeper with a silhouetted occupant inside. Its stasis function is broken and it's likely being used as a bed."
 	mob_name = "a civillian"
 	icon = 'icons/obj/lavaland/spawners.dmi'
@@ -230,7 +230,45 @@
 	back = /obj/item/tank/jetpack/oxygen
 	r_pocket = /obj/item/tank/internals/emergency_oxygen
 	id = /obj/item/card/id/syndicate
+// TRIAD
 
+/obj/effect/mob_spawn/human/triad_soldier
+	name = "a triad soldier"
+	desc = "A humming sleeper with a silhouetted occupant inside. Its stasis function is broken and it's likely being used as a bed."
+	mob_name = "a triad soldier"
+	icon = 'icons/obj/lavaland/spawners.dmi'
+	icon_state = "cryostasis_sleeper"
+	outfit = /datum/outfit/triadsoldier
+	roundstart = FALSE
+	death = FALSE
+	random = FALSE
+	mob_species = /datum/species/human
+	short_desc = "You were sleeping. But you can't anymore."
+	flavour_text = "You woke up because of the stupid washing machines. Probably better that you go and check what the gang's up to..."
+	assignedrole = "Triad Soldier"
+
+/obj/effect/mob_spawn/human/triad_soldier/special(mob/living/new_spawn)
+	var/my_name = "Tyler"
+	if(new_spawn.gender == MALE)
+		my_name = pick(GLOB.first_names_male_triad)
+	else
+		my_name = pick(GLOB.first_names_female_triad)
+	var/my_surname = pick(GLOB.last_names_triad)
+	new_spawn.fully_replace_character_name(null,"[my_name] [my_surname]")
+
+/datum/outfit/triadsoldier
+	name = "triad soldier"
+	uniform = /obj/item/clothing/under/vampire/suit
+	shoes = /obj/item/clothing/shoes/vampire/jackboots
+//	suit = /obj/item/clothing/suit/vampire/vest
+//	belt = /obj/item/melee/classic_baton
+	id = /obj/item/cockclock
+	l_pocket = /obj/item/vamp/phone
+	r_pocket = /obj/item/flashlight
+	l_hand = /obj/item/vamp/keys/triads
+	r_hand = /obj/item/gun/ballistic/automatic/vampire/glock19
+	back = /obj/item/storage/backpack/satchel
+//
 /obj/effect/mob_spawn/human/police
 	name = "a police officer"
 	desc = "A humming sleeper with a silhouetted occupant inside. Its stasis function is broken and it's likely being used as a bed."
