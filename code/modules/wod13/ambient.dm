@@ -441,5 +441,5 @@
 			else
 				if(last_vampire_ambience+wait_for_music+10 < world.time)
 					wait_for_music = 1740
-					client << sound('code/modules/wod13/sounds/daughters.ogg', 0, 0, CHANNEL_LOBBYMUSIC, 25)
+					client << sound('code/modules/wod13/sounds/daughters.ogg', 0, 0, CHANNEL_LOBBYMUSIC, 5)
 					last_vampire_ambience = world.time
