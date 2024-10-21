@@ -772,7 +772,7 @@
 	display_order = JOB_DISPLAY_ORDER_CITIZEN
 
 	humans_accessible = TRUE
-	garou_allowed = TRUE
+	garou_allowed = FALSE
 
 	duty = "As kindred, follow the traditions of the Camarilla. Obey the Prince and his authority, as you are in a Camarilla city. Aligning yourself with your clan members would be of benefit.. If you are a human, you are beholden to law, and likely ignorant of the horrors lurking in this city."
 	minimal_masquerade = 0
@@ -1478,7 +1478,7 @@
 
 //	minimal_generation = 11	//Uncomment when players get exp enough
 	humans_accessible = TRUE
-	garou_allowed = TRUE
+	garou_allowed = FALSE
 
 	duty = "Transfer people in the city."
 	minimal_masquerade = 0
