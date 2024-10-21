@@ -15,7 +15,7 @@
 //	punchdamagelow = 5
 //	punchdamagehigh = 7
 	dust_anim = "dust-h"
-	donation = TRUE
+	donation = FALSE
 
 /mob/living/carbon
 	var/datum/auspice/auspice

@@ -3,7 +3,7 @@
 		create_subscribers_numbers()
 	var/subscriber_code = pick(GLOB.subscribers_numbers_list)
 	GLOB.subscribers_numbers_list -= subscriber_code
-	return "[exchange] [subscriber_code]"
+	return "[exchange][subscriber_code]"
 
 /proc/create_subscribers_numbers()
 	for(var/i in 1 to 9999)
@@ -210,6 +210,7 @@
 				online = null
 			.= TRUE
 		if("call")
+			choosed_number = replacetext(choosed_number, " ", "")
 			for(var/obj/item/vamp/phone/PHN in GLOB.phones_list)
 				if(PHN.number == choosed_number)
 					if(!PHN.online && !PHN.talking)
@@ -265,12 +266,16 @@
 					var/list_length = min(length(GLOB.published_numbers), length(GLOB.published_number_names))
 					for(var/i = 1 to list_length)
 						var/number = GLOB.published_numbers[i]
+						var/display_number_first = copytext(number, 1, 4)
+						var/display_number_second = copytext(number, 4, 8)
+						var/split_number = display_number_first + " " + display_number_second
 						var/name = GLOB.published_number_names[i]
-						to_chat(usr, "- [name]: [number]")
+						to_chat(usr, "- [name]: [split_number]")
 				if("Add")
 					var/new_contact = input(usr, "Input phone number", "Add Contact")  as text|null
 					if(new_contact)
 						var/datum/phonecontact/NEWC = new()
+						new_contact = replacetext(new_contact, " ", "") //Removes spaces
 						NEWC.number = "[new_contact]"
 						contacts += NEWC
 						var/new_contact_name = input(usr, "Input name", "Add Contact")  as text|null
@@ -292,10 +297,12 @@
 									if(CNTCT.number == "")
 										CNTCT.check_global_contacts()
 										if(CNTCT.number == "")
-											to_chat(usr, "<span class='notice'>Sorry, [CNTCT.name] still got no actual number.</span>")
+											to_chat(usr, "<span class='notice'>Sorry, [CNTCT.name] does not have a number.</span>")
 									choosed_number = CNTCT.number
 				if("My Number")
-					to_chat(usr, "[number]")
+					var/number_first_part = copytext(number, 1, 4)
+					var/number_second_part = copytext(number, 4, 8)
+					to_chat(usr, number_first_part + " " + number_second_part)
 			.= TRUE
 		if("keypad")
 			playsound(loc, 'sound/machines/terminal_select.ogg', 15, TRUE)
