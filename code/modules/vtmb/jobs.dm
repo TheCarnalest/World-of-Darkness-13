@@ -48,7 +48,7 @@
 												"Seneschal",
 												"Baron")
 
-	duty = "You are the top dog of this city. You hold Praxis over San Francisco, and your word is law. Make sure the Masquerade is upheld, and your status is respected."
+	v_duty = "You are the top dog of this city. You hold Praxis over San Francisco, and your word is law. Make sure the Masquerade is upheld, and your status is respected."
 	experience_addition = 25
 
 /datum/job/vamp/prince/announce(mob/living/carbon/human/H)
@@ -130,7 +130,7 @@
 	my_contact_is_important = TRUE
 	known_contacts = list("Prince")
 
-	duty = "Protect the Prince and the Masquerade. You are his sword."
+	v_duty = "Protect the Prince and the Masquerade. You are his sword."
 	experience_addition = 20
 
 /datum/outfit/job/sheriff
@@ -211,6 +211,7 @@
 	my_contact_is_important = TRUE
 	known_contacts = list("Prince")
 
+	v_duty = "You are the right hand man of the most powerful vampire in the city. The Camarilla trusts you to run the city, even in his stead."
 	duty = "You are the right hand man of the most powerful vampire in the city. The Camarilla trusts you to run the city, even in his stead."
 	experience_addition = 15
 	minimal_age = 12
@@ -266,7 +267,7 @@
 	bounty_types = CIV_JOB_SEC
 	known_contacts = list("Prince")
 
-	duty = "You are the Prince's enforcer. You report to the sheriff and uphold the Traditions."
+	v_duty = "You are the Prince's enforcer. You report to the sheriff and uphold the Traditions."
 	minimal_masquerade = 4
 	experience_addition = 10
 	allowed_bloodlines = list("Daughters of Cacaphony", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Lasombra")
@@ -319,7 +320,7 @@
 	display_order = JOB_DISPLAY_ORDER_GRAVEYARD
 	bounty_types = CIV_JOB_MINE
 
-	duty = "A vile curse has gripped the dead of this city. You must keep the graveyard clean and the Masquerade intact."
+	v_duty = "A vile curse has gripped the dead of this city. You must keep the graveyard clean and the Masquerade intact."
 	minimal_masquerade = 0
 	experience_addition = 25
 	minimal_age = 12
@@ -371,6 +372,7 @@
 	display_order = JOB_DISPLAY_ORDER_DOCTOR
 	bounty_types = CIV_JOB_MED
 
+	v_duty = "Help your fellow kindred in all matters medicine related. Sell blood. Keep your human colleagues ignorant."
 	duty = "Collect blood by helping mortals at the Clinic."
 	experience_addition = 15
 	allowed_bloodlines = list("Daughters of Cacaphony", "Salubri", "Baali", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Tzimisce", "Lasombra", "Caitiff")
@@ -420,7 +422,8 @@
 	display_order = JOB_DISPLAY_ORDER_STREETJAN
 	allowed_bloodlines = list("Daughters of Cacaphony", "Salubri", "Baali", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Tzimisce", "Lasombra", "Caitiff")
 
-	duty = "Clean up all traces of Masquerade violations."
+	v_duty = "Clean up all traces of Masquerade violations as the Camarilla has instructed you to."
+	duty = "Keep the streets clean. The government does pay you much to keep your mouth shut about the things you see."
 	minimal_masquerade = 0
 	experience_addition = 25
 	minimal_age = 12
@@ -448,7 +451,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "the Traditions"
-	selection_color = "#cb4aad"
+	selection_color = "#ab2508"
 
 	outfit = /datum/outfit/job/regent
 
@@ -460,7 +463,7 @@
 
 	display_order = JOB_DISPLAY_ORDER_REGENT
 
-	duty = "Keep a census of events and provide information to archivists. Lead the Chantry. You report to the Tremere Lord of this region first, Prince second."
+	v_duty = "Keep a census of events and provide information to archivists. Lead the Chantry. You report to the Tremere Lord of this region first, Prince second."
 	minimal_masquerade = 4
 	kindred_only = TRUE
 	allowed_bloodlines = list("Tremere")
@@ -499,7 +502,7 @@
 	total_positions = 4
 	spawn_positions = 4
 	supervisors = "the Traditions and the Regent"
-	selection_color = "#cb4aad"
+	selection_color = "#ab2508"
 
 	outfit = /datum/outfit/job/archivist
 
@@ -511,7 +514,7 @@
 
 	display_order = JOB_DISPLAY_ORDER_ARCHIVIST
 
-	duty = "Keep a census of events and provide information to neonates. Listen to the Regent Carefully. Study blood magic and protect the chantry."
+	v_duty = "Keep a census of events and provide information to neonates. Listen to the Regent Carefully. Study blood magic and protect the chantry."
 	minimal_masquerade = 3
 	kindred_only = TRUE
 	allowed_bloodlines = list("Tremere")
@@ -569,7 +572,7 @@
 	known_contacts = list("Prince",
 												"Dealer")
 
-	duty = "You lead the Anarchs in the City. A Camarilla faction that values freedom and individuality."
+	v_duty = "You lead the Anarchs in the City. A Camarilla faction that values freedom and individuality. While not a fan of the traditions, you still respect the Masquerade."
 	minimal_masquerade = 3
 	kindred_only = TRUE
 	allowed_bloodlines = list("Brujah", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Ventrue", "Lasombra")
@@ -623,7 +626,7 @@
 	known_contacts = list("Baron")
 	allowed_bloodlines = list("Daughters of Cacaphony", "Brujah", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Tzimisce", "Caitiff", "Lasombra")
 
-	duty = "You are the Baron's muscle. Keep the peace in the Anarch territory."
+	v_duty = "You work with the baron - whether because of your own ideals or friendship, or other reasons. That doesn't mean you will let someone disregard the one tradition you do agree with - the Masquerade."
 	minimal_masquerade = 2
 	experience_addition = 15
 
@@ -676,7 +679,7 @@
 	known_contacts = list("Baron", "Prince", "Sheriff")
 	allowed_bloodlines = list("Brujah", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Tzimisce", "Caitiff", "Ventrue", "Ministry")
 
-	duty = "You provide supplies to other kindred. The warehouse is yours, and it's your business who you'll deal with."
+	v_duty = "You provide supplies to other kindred. The warehouse is yours, and it's your business who you'll deal with."
 	minimal_masquerade = 3
 	kindred_only = TRUE
 	experience_addition = 20
@@ -725,7 +728,8 @@
 	known_contacts = list("Baron", "Prince", "Sheriff")
 	allowed_bloodlines = list("Daughters of Cacaphony", "Brujah", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Tzimisce", "Caitiff", "Lasombra")
 
-	duty = "You work for the Dealer, earning your keep by moving supplies and protecting his warehouse."
+	v_duty = "You work for the Dealer, or are a part of his coterie. They pay well and the job is easy. Don't disappoint him."
+	duty = "Though your boss is odd and only works late night hours, they pays you well enough that you avoid questioning it."
 	minimal_masquerade = 2
 	experience_addition = 15
 	minimal_age = 12
@@ -758,7 +762,7 @@
 	total_positions = -1
 	spawn_positions = -1
 	supervisors = "the Traditions"
-	selection_color = "#7e7e7e"
+	selection_color = "#df7058"
 	access = list()			//See /datum/job/assistant/get_access()
 	minimal_access = list()	//See /datum/job/assistant/get_access()
 	outfit = /datum/outfit/job/citizen
@@ -774,10 +778,11 @@
 	humans_accessible = TRUE
 	garou_allowed = FALSE
 
-	duty = "As kindred, follow the traditions of the Camarilla. Obey the Prince and his authority, as you are in a Camarilla city. Aligning yourself with your clan members would be of benefit.. If you are a human, you are beholden to law, and likely ignorant of the horrors lurking in this city."
+	v_duty = "Follow the traditions of the Camarilla. Obey the Prince and his authority. The city belongs to him. Aligning yourself with your clan members would be of benefit."
+	duty = "Obey the authorities... Or don't. You are up late tonight for one reason or another."
 	minimal_masquerade = 0
 	minimal_age = 12
-	allowed_bloodlines = list("Daughters of Cacaphony", "Salubri", "Baali", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Tzimisce", "Lasombra", "Caitiff")
+	allowed_bloodlines = list("Daughters of Cacaphony", "Salubri", "Baali", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Tzimisce", "Lasombra", "Caitiff", "Old Clan Tzimisce")
 
 /datum/outfit/job/citizen
 	name = "Citizen"
@@ -820,7 +825,7 @@
 	total_positions = 4
 	spawn_positions = 4
 	supervisors = "the Camarilla or the Anarchs"
-	selection_color = "#e3e3e3"
+	selection_color = "#df7058"
 	access = list()
 	minimal_access = list()
 	outfit = /datum/outfit/job/strip
@@ -832,7 +837,8 @@
 	display_order = JOB_DISPLAY_ORDER_STRIP
 	humans_accessible = TRUE
 
-	duty = "Offer strip club services to humans or undead."
+	v_duty = "Offer strip club services to humans or undead."
+	duty = "Offer strip club services."
 	minimal_masquerade = 3
 	allowed_bloodlines = list("Daughters of Cacaphony", "Salubri", "Baali", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Tzimisce", "Lasombra", "Caitiff")
 	experience_addition = 10
@@ -1428,7 +1434,7 @@
 
 //	minimal_generation = 11	//Uncomment when players get exp enough
 
-	duty = "Protect the Family."
+	v_duty = "Protect the Family."
 	minimal_masquerade = 0
 	experience_addition = 10
 	kindred_only = TRUE
@@ -1480,7 +1486,8 @@
 	humans_accessible = TRUE
 	garou_allowed = FALSE
 
-	duty = "Transfer people in the city."
+	v_duty = "Drive people in the city."
+	duty = "Drive people in the city."
 	minimal_masquerade = 0
 	experience_addition = 10
 	allowed_bloodlines = list("Daughters of Cacaphony", "Salubri", "Baali", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Tzimisce", "Lasombra", "Caitiff")
@@ -1622,7 +1629,7 @@
 	allowed_bloodlines = list("Malkavian")
 	minimal_generation = 7	//Uncomment when players get exp enough
 
-	duty = "Offer your infinite knowledge to Prince of the City."
+	v_duty = "Offer your infinite knowledge to Prince of the City."
 	minimal_masquerade = 5
 	my_contact_is_important = TRUE
 	known_contacts = list("Prince")
@@ -1672,7 +1679,7 @@
 	allowed_bloodlines = list("Nosferatu")
 	minimal_generation = 7	//Uncomment when players get exp enough
 
-	duty = "Offer your infinite knowledge to Prince of the City."
+	v_duty = "Offer your infinite knowledge to Prince of the City."
 	minimal_masquerade = 5
 	my_contact_is_important = TRUE
 	known_contacts = list("Prince")
@@ -1718,7 +1725,7 @@
 	allowed_bloodlines = list("Ventrue")
 	minimal_generation = 7	//Uncomment when players get exp enough
 
-	duty = "Offer your infinite knowledge to Prince of the City."
+	v_duty = "Offer your infinite knowledge to Prince of the City."
 	minimal_masquerade = 5
 	my_contact_is_important = TRUE
 	known_contacts = list("Prince")
@@ -1764,7 +1771,7 @@
 	allowed_bloodlines = list("Toreador")
 	minimal_generation = 7	//Uncomment when players get exp enough
 
-	duty = "Offer your infinite knowledge to Prince of the City."
+	v_duty = "Offer your infinite knowledge to Prince of the City."
 	minimal_masquerade = 5
 	my_contact_is_important = TRUE
 	known_contacts = list("Prince")
@@ -1812,7 +1819,7 @@
 	allowed_bloodlines = list("Brujah")
 	minimal_generation = 7	//Uncomment when players get exp enough
 
-	duty = "Offer your infinite knowledge to Prince of the City."
+	v_duty = "Offer your infinite knowledge to Prince of the City."
 	minimal_masquerade = 5
 	my_contact_is_important = TRUE
 	known_contacts = list("Prince")
@@ -1857,7 +1864,7 @@
 //	allowed_bloodlines = list()
 	minimal_generation = 13
 
-	duty = "Enforce the Law."
+	v_duty = "Enforce the Law."
 	minimal_masquerade = 0
 	my_contact_is_important = FALSE
 //	known_contacts = list("Investigator")
@@ -1904,7 +1911,7 @@
 //	allowed_bloodlines = list()
 	minimal_generation = 13
 
-	duty = "Enforce the Law."
+	v_duty = "Enforce the Law."
 	minimal_masquerade = 0
 	my_contact_is_important = FALSE
 //	known_contacts = list("Investigator")
@@ -1948,7 +1955,7 @@
 	allowed_bloodlines = list("Old Clan Tzimisce", "Tzimisce")
 	minimal_generation = 7
 
-	duty = "You are a Childe of the Voivode-in-Waiting, the ancient Tzimisce Elder who has rested beneath the Earth for an age longer than the city that now rests on their bones. Honor them in all your actions, and remember that you walk with their favor."
+	v_duty = "You are a Childe of the Voivode-in-Waiting, the ancient Tzimisce Elder who has rested beneath the Earth for an age longer than the city that now rests on their bones. Honor them in all your actions, and remember that you walk with their favor."
 	minimal_masquerade = 2
 	my_contact_is_important = TRUE
 	known_contacts = list("Prince", "Baron", "Sheriff")
@@ -1972,8 +1979,8 @@
 	title = "Bogatyr"
 	department_head = list("Voivode")
 	faction = "Vampire"
-	total_positions = 3
-	spawn_positions = 3
+	total_positions = 4
+	spawn_positions = 4
 	supervisors = " the Laws of Hospitality"
 	selection_color = "#953d2d"
 
@@ -1990,7 +1997,7 @@
 	allowed_bloodlines = list("Old Clan Tzimisce", "Tzimisce")
 	minimal_generation = 13	//Uncomment when players get exp enough
 
-	duty = "Whether you are of Voivode-in-Waiting's blood or if you've been honored, you are one of the Kin of the Voivode. Protect your Family, as your Family would protect you."
+	v_duty = "Whether you are of Voivode-in-Waiting's blood or if you've been honored, you are one of the Kin of the Voivode. Protect your Family, as your Family would protect you."
 	minimal_masquerade = 2
 	my_contact_is_important = TRUE
 	known_contacts = list("Prince", "Baron", "Sheriff")
