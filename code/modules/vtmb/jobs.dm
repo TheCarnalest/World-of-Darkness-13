@@ -130,7 +130,7 @@
 	my_contact_is_important = TRUE
 	known_contacts = list("Prince")
 
-	v_duty = "Protect the Prince and the Masquerade. You are his sword."
+	v_duty = "Protect the Prince and the Masquerade. You are their sword."
 	experience_addition = 20
 
 /datum/outfit/job/sheriff
@@ -211,8 +211,8 @@
 	my_contact_is_important = TRUE
 	known_contacts = list("Prince")
 
-	v_duty = "You are the right hand man of the most powerful vampire in the city. The Camarilla trusts you to run the city, even in his stead."
-	duty = "You are the right hand man of the most powerful vampire in the city. The Camarilla trusts you to run the city, even in his stead."
+	v_duty = "You are the right hand man or woman of the most powerful vampire in the city. The Camarilla trusts you to run the city, even in their stead."
+	duty = "You are the right hand man or woman of the most powerful vampire in the city. The Camarilla trusts you to run the city, even in their stead."
 	experience_addition = 15
 	minimal_age = 12
 	allowed_bloodlines = list("Daughters of Cacaphony", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Lasombra")
@@ -728,8 +728,8 @@
 	known_contacts = list("Baron", "Prince", "Sheriff")
 	allowed_bloodlines = list("Daughters of Cacaphony", "Brujah", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Tzimisce", "Caitiff", "Lasombra")
 
-	v_duty = "You work for the Dealer, or are a part of his coterie. They pay well and the job is easy. Don't disappoint him."
-	duty = "Though your boss is odd and only works late night hours, they pays you well enough that you avoid questioning it."
+	v_duty = "You work for the Dealer, or are a part of their coterie. They pay well and the job is easy. Don't disappoint them."
+	duty = "Though your boss is odd and only works late night hours, they pay you well enough that you avoid questioning it."
 	minimal_masquerade = 2
 	experience_addition = 15
 	minimal_age = 12
@@ -778,7 +778,7 @@
 	humans_accessible = TRUE
 	garou_allowed = FALSE
 
-	v_duty = "Follow the traditions of the Camarilla. Obey the Prince and his authority. The city belongs to him. Aligning yourself with your clan members would be of benefit."
+	v_duty = "Follow the traditions of the Camarilla. Obey the Prince and their authority. The city belongs to him. Aligning yourself with your clan members would be of benefit."
 	duty = "Obey the authorities... Or don't. You are up late tonight for one reason or another."
 	minimal_masquerade = 0
 	minimal_age = 12
