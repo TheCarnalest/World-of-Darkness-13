@@ -31,6 +31,7 @@
 	H.apply_overlay(UPPER_EARS_LAYER)
 	var/obj/item/organ/eyes/night_vision/NV = new()
 	NV.Insert(H, TRUE, FALSE)
+	H.ventcrawler = VENTCRAWLER_ALWAYS
 
 /datum/vampireclane/nosferatu/post_gain(mob/living/carbon/human/H)
 	..()
