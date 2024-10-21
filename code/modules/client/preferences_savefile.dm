@@ -551,10 +551,19 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	discipline3level				= sanitize_integer(discipline3level, 1, 5, initial(discipline3level))
 	discipline4level				= sanitize_integer(discipline4level, 1, 5, initial(discipline4level))
 	discipline1type				= sanitize_discipline(discipline1type, subtypesof(/datum/discipline))
+	//[Lucia] TODO: refactor this jank code into just putting them into a fucking list
+	disciplines.Add(new discipline1type)
+	disciplines[1].level = discipline1level
 	discipline2type				= sanitize_discipline(discipline2type, subtypesof(/datum/discipline))
+	disciplines.Add(new discipline2type)
+	disciplines[2].level = discipline2level
 	discipline3type				= sanitize_discipline(discipline3type, subtypesof(/datum/discipline))
+	disciplines.Add(new discipline3type)
+	disciplines[3].level = discipline3level
 	if(discipline4type)
 		discipline4type				= sanitize_discipline(discipline4type, subtypesof(/datum/discipline))
+		disciplines.Add(new discipline4type)
+		disciplines[4].level = discipline4level
 	friend				= sanitize_integer(friend, 0, 1, initial(friend))
 	enemy				= sanitize_integer(enemy, 0, 1, initial(enemy))
 	lover				= sanitize_integer(lover, 0, 1, initial(lover))

@@ -131,32 +131,32 @@
 		return TRUE
 	return FALSE
 
-/proc/vampireroll(var/dices_num = 1, var/hardness = 1, var/atom/rollviewer)
-	var/wins = 0
-	var/crits = 0
-	var/brokes = 0
-	for(var/i in 1 to dices_num)
+/proc/vampireroll(var/dice = 1, var/difficulty = 1, var/atom/rollviewer)
+	var/successes = 0
+	var/tens = 0
+	var/ones = 0
+	for(var/i in 1 to dice)
 		var/roll = rand(1, 10)
 		if(roll == 10)
-			crits += 1
+			tens += 1
 		if(roll == 1)
-			brokes += 1
-		else if(roll >= hardness)
-			wins += 1
-	if(crits > brokes)
+			ones += 1
+		else if(roll >= difficulty)
+			successes += 1
+	if(tens > ones)
 		if(rollviewer)
 			to_chat(rollviewer, "<b>Critical <span class='nicegreen'>hit</span>!</b>")
 			return DICE_CRIT_WIN
-	if(crits < brokes)
+	if(tens < ones)
 		if(rollviewer)
 			to_chat(rollviewer, "<b>Critical <span class='danger'>failure</span>!</b>")
 			return DICE_CRIT_FAILURE
-	if(crits == brokes && !wins)
+	if(tens == ones && !successes)
 		if(rollviewer)
 			to_chat(rollviewer, "<span class='danger'>Failed</span>")
 			return DICE_FAILURE
-	if(wins)
-		switch(wins)
+	if(successes)
+		switch(successes)
 			if(1)
 				to_chat(rollviewer, "<span class='tinynotice'>Maybe</span>")
 				return DICE_WIN
@@ -172,6 +172,43 @@
 			else
 				to_chat(rollviewer, "<span class='boldnotice'>Phenomenal</span>")
 				return DICE_WIN
+
+///Rolls dice according to Storyteller System rules, and returns the number of successes.
+/proc/vampirerollnum(var/dice, var/difficulty = 6, var/specialty = FALSE, var/countones = TRUE)
+	var/successes = 0
+	var/tens = 0
+	var/ones = 0
+
+	//Special case where algorithm is skipped, because all dice automatically succeed.
+	if (difficulty <= 1)
+		return dice
+
+	//Special case where algorithm is skipped, because all dice automatically fail.
+	if (difficulty > 10)
+		return 0
+
+	//Main rolling logic
+	for(var/i in 1 to dice)
+		var/roll = rand(1, 10)
+
+		if((roll == 1) && (countones))
+			ones += 1
+		if(roll == 10)
+			tens += 1
+		if(roll >= difficulty)
+			successes += 1
+
+	//Process total successes
+	if(specialty)
+		successes += tens
+
+	successes -= ones
+
+	//Finish
+	if(successes < 0) //You cannot have negative successes. You fail or succeed.
+		return 0
+	else
+		return successes
 
 /proc/get_vamp_skin_color(var/value = "albino")
 	switch(value)

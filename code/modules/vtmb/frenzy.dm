@@ -201,7 +201,7 @@
 					H.adjustFireLoss(20)
 					H.adjust_fire_stacks(6)
 					H.IgniteMob()
-	//FIRE FEAR
+	//Fire Rötschrek
 	if(!H.antifrenzy)
 		var/fearstack = 0
 		for(var/obj/effect/fire/F in GLOB.fires_list)

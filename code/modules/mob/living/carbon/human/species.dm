@@ -2,6 +2,11 @@ GLOBAL_LIST_EMPTY(roundstart_races)
 
 GLOBAL_LIST_EMPTY(donation_races)
 
+#define BRUTE_SOAK 5
+#define TOX_SOAK 0.5
+#define STAMINA_SOAK 5
+#define BRAIN_SOAK 0.5
+
 /**
  * # species datum
  *
@@ -1624,6 +1629,12 @@ GLOBAL_LIST_EMPTY(donation_races)
 		if(BRUTE)
 			H.damageoverlaytemp = 20
 			var/damage_amount = forced ? damage : damage * hit_percent * brutemod * H.physiology.brute_mod
+			to_chat(H, "You're being dealt [damage_amount] raw damage!")
+			//Factors in soaked brute damage
+			damage_amount -= vampirerollnum(dice = H.physique, countones = FALSE) * BRUTE_SOAK
+			if (damage_amount <= 0)
+				return 0
+			to_chat(H, "You're actually suffering [damage_amount] damage!")
 			if(BP)
 				if(BP.receive_damage(damage_amount, 0, wound_bonus = wound_bonus, bare_wound_bonus = bare_wound_bonus, sharpness = sharpness))
 					H.update_damage_overlays()
@@ -1639,6 +1650,10 @@ GLOBAL_LIST_EMPTY(donation_races)
 				H.adjustFireLoss(damage_amount)
 		if(TOX)
 			var/damage_amount = forced ? damage : damage * hit_percent * H.physiology.tox_mod
+			//Factors in soaked tox damage
+			damage_amount -= vampirerollnum(dice = H.physique, countones = FALSE) * TOX_SOAK
+			if (damage_amount <= 0)
+				return 0
 			H.adjustToxLoss(damage_amount)
 		if(OXY)
 			var/damage_amount = forced ? damage : damage * hit_percent * H.physiology.oxy_mod
@@ -1648,6 +1663,10 @@ GLOBAL_LIST_EMPTY(donation_races)
 			H.adjustCloneLoss(damage_amount)
 		if(STAMINA)
 			var/damage_amount = forced ? damage : damage * hit_percent * H.physiology.stamina_mod
+			//Factors in soaked stamina damage
+			damage_amount -= vampirerollnum(dice = H.physique, countones = FALSE) * STAMINA_SOAK
+			if (damage_amount <= 0)
+				return 0
 			if(BP)
 				if(BP.receive_damage(0, 0, damage_amount))
 					H.update_stamina()
@@ -1655,6 +1674,10 @@ GLOBAL_LIST_EMPTY(donation_races)
 				H.adjustStaminaLoss(damage_amount)
 		if(BRAIN)
 			var/damage_amount = forced ? damage : damage * hit_percent * H.physiology.brain_mod
+			//Factors in soaked brain damage
+			damage_amount -= vampirerollnum(dice = H.physique, countones = FALSE) * BRAIN_SOAK
+			if (damage_amount <= 0)
+				return 0
 			H.adjustOrganLoss(ORGAN_SLOT_BRAIN, damage_amount)
 	return 1
 
