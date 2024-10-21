@@ -1864,7 +1864,7 @@
 //	allowed_bloodlines = list()
 	minimal_generation = 13
 
-	v_duty = "Enforce the Law."
+	duty = "Enforce the Law."
 	minimal_masquerade = 0
 	my_contact_is_important = FALSE
 //	known_contacts = list("Investigator")
@@ -1911,7 +1911,7 @@
 //	allowed_bloodlines = list()
 	minimal_generation = 13
 
-	v_duty = "Enforce the Law."
+	duty = "Enforce the Law."
 	minimal_masquerade = 0
 	my_contact_is_important = FALSE
 //	known_contacts = list("Investigator")
@@ -1933,6 +1933,59 @@
 	r_hand = /obj/item/police_radio
 	backpack_contents = list(/obj/item/passport=1, /obj/item/implant/radio=1, /obj/item/gun/ballistic/automatic/vampire/m1911=1, /obj/item/camera/detective=1, /obj/item/camera_film=1, /obj/item/taperecorder=1, /obj/item/tape=1, /obj/item/stack/dollar=1)
 
+/datum/job/vamp/triad_soldier
+	title = "Triad Soldier"
+	department_head = list("Triad Leadership")
+	faction = "Vampire"
+	total_positions = 8
+	spawn_positions = 8
+	supervisors = " the Triads"
+	selection_color = "#bb9d3d"
+
+	outfit = /datum/outfit/job/triad_soldier
+
+	access = list(ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_MORGUE, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE)
+	minimal_access = list(ACCESS_BAR, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE)
+	paycheck = PAYCHECK_EASY
+	paycheck_department = ACCOUNT_SRV
+	display_order = JOB_DISPLAY_ORDER_POLICE
+	exp_type_department = EXP_TYPE_INDEPENDENT
+
+	kindred_only = FALSE
+	human_only = TRUE
+	humans_accessible = TRUE
+//	allowed_bloodlines = list()
+	minimal_generation = 13
+
+	duty = "Make money, do drugs, fight law. Your hideout is the laundromat in Chinatown."
+	minimal_masquerade = 0
+	my_contact_is_important = FALSE
+//	known_contacts = list("Investigator")
+	minimal_age = 12
+
+/datum/outfit/job/triad_soldier/pre_equip(mob/living/carbon/human/H)
+	..()
+	if(H.gender == FEMALE)
+		uniform = /obj/item/clothing/under/vampire/suit/female
+		shoes = /obj/item/clothing/shoes/vampire/heels
+
+/datum/outfit/job/triad_soldier
+	name = "Triad Soldier"
+	jobtype = /datum/job/vamp/triad_soldier
+	uniform = /obj/item/clothing/under/vampire/suit
+	shoes = /obj/item/clothing/shoes/vampire/jackboots
+//	suit = /obj/item/clothing/suit/vampire/vest
+//	belt = /obj/item/melee/classic_baton
+	id = /obj/item/cockclock
+//	gloves = /obj/item/cockclock
+//	id = /obj/item/card/id/police
+	l_pocket = /obj/item/vamp/phone
+	r_pocket = /obj/item/flashlight
+	l_hand = /obj/item/vamp/keys/triads
+//	r_hand = /obj/item/police_radio
+	backpack_contents = list(/obj/item/passport=1, /obj/item/stack/dollar=1, /obj/item/clothing/mask/vampire/balaclava =1, /obj/item/gun/ballistic/automatic/vampire/glock19, /obj/item/melee/vampirearms/knife)
+
+//TZIMISCE ROLES
 /datum/job/vamp/voivode
 	title = "Voivode"
 	department_head = list("Eldest")
