@@ -89,6 +89,7 @@
 	var/list/known_contacts = list()
 
 	var/duty
+	var/v_duty
 
 /datum/job/New()
 	. = ..()
