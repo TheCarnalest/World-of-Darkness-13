@@ -259,6 +259,13 @@
 	)
 	color = "#e8ff29"
 
+/obj/item/vamp/keys/triads
+	name = "Rusty keys"
+	accesslocks = list(
+		"triad",
+		"laundromat"
+	)
+
 /obj/item/vamp/keys/hack
 	name = "\improper lockpick"
 	desc = "These can open some doors. Illegally..."
