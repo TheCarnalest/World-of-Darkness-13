@@ -174,6 +174,8 @@ GLOBAL_LIST_EMPTY(vampire_computers)
 						C.icon_state = "computermessage"
 					else
 						C.say("Announcement sent.")
+				for(var/obj/item/vamp/phone/P in GLOB.phones_list)
+					P.say("New announcement!")
 			return TRUE
 		if("delete_email")
 			var/datum/app/gmail/gmail = apps[3]
