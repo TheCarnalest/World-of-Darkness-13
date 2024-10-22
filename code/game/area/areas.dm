@@ -438,7 +438,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 
 /obj/effect/decal/firecontrol
 	name = "fire shower"
-	icon = 'code/modules/ziggers/props.dmi'
+	icon = 'code/modules/wod13/props.dmi'
 	icon_state = "rain"
 	plane = GAME_PLANE
 	layer = CAR_LAYER
@@ -458,7 +458,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 		last_fire_extinguish = world.time
 		for(var/mob/M in get_turf(src))
 			if(M)
-				SEND_SOUND(M, sound('code/modules/ziggers/sounds/rain.ogg', 0, 0, CHANNEL_RAIN, 25))
+				SEND_SOUND(M, sound('code/modules/wod13/sounds/rain.ogg', 0, 0, CHANNEL_RAIN, 25))
 		for(var/obj/effect/fire/F in get_turf(src))
 			if(F)
 				qdel(F)
@@ -478,7 +478,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 			if(F)
 				qdel(F)
 
-/area/proc/fog_setup()
+/*/area/proc/fog_setup()
 	for(var/turf/open/O in src)
 		var/obj/effect/realistic_fog/F = new(O)
 		GLOB.fog_suka += F
@@ -492,7 +492,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 	for(var/turf/open/O in src)
 		var/obj/effect/new_snow/S = new(O)
 		GLOB.snow_suka += S
-
+*/
 /area/proc/set_fire_alarm_effect()
 	fire = TRUE
 	if(!triggered_firealarms) //If there aren't any fires/breaches
@@ -640,7 +640,7 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 			if(istype(get_area(loc), /area/vtm/northbeach))
 				if(!L.client.ambience_playing)
 					L.client.ambience_playing = 1
-					SEND_SOUND(L, sound('code/modules/ziggers/sounds/beach.ogg', repeat = 1, wait = 0, volume = 35, channel = CHANNEL_BUZZ))
+					SEND_SOUND(L, sound('code/modules/wod13/sounds/beach.ogg', repeat = 1, wait = 0, volume = 35, channel = CHANNEL_BUZZ))
 			else if(L.client.ambience_playing)
 				L.client.ambience_playing = 0
 				SEND_SOUND(L, sound(null, channel = CHANNEL_BUZZ))

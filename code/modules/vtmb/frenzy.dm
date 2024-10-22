@@ -33,7 +33,7 @@
 			to_chat(src, "I need <span class='danger'><b>BLOOD</b></span>. The <span class='danger'><b>BEAST</b></span> is calling. Rolling...")
 		else
 			to_chat(src, "I'm too <span class='danger'><b>AFRAID</b></span> to continue doing this. Rolling...")
-		SEND_SOUND(src, sound('code/modules/ziggers/sounds/bloodneed.ogg', 0, 0, 50))
+		SEND_SOUND(src, sound('code/modules/wod13/sounds/bloodneed.ogg', 0, 0, 50))
 		var/check = vampireroll(max(1, round(humanity/2)), min(frenzy_chance_boost, frenzy_hardness), src)
 		switch(check)
 			if(DICE_FAILURE)
@@ -56,7 +56,7 @@
 				frenzy_hardness = min(10, frenzy_hardness+1)
 
 /mob/living/carbon/proc/enter_frenzymod()
-	SEND_SOUND(src, sound('code/modules/ziggers/sounds/frenzy.ogg', 0, 0, 50))
+	SEND_SOUND(src, sound('code/modules/wod13/sounds/frenzy.ogg', 0, 0, 50))
 	in_frenzy = TRUE
 	add_client_colour(/datum/client_colour/glass_colour/red)
 	GLOB.frenzy_list += src
@@ -130,7 +130,7 @@
 							BT.add_bite_animation()
 						if(CheckEyewitness(L, src, 7, FALSE))
 							H.AdjustMasquerade(-1)
-						playsound(src, 'code/modules/ziggers/sounds/drinkblood1.ogg', 50, TRUE)
+						playsound(src, 'code/modules/wod13/sounds/drinkblood1.ogg', 50, TRUE)
 						L.visible_message("<span class='warning'><b>[src] bites [L]'s neck!</b></span>", "<span class='warning'><b>[src] bites your neck!</b></span>")
 						face_atom(L)
 						H.drinksomeblood(L)
@@ -254,10 +254,10 @@
 									if(!H.warrant)
 										if(H.killed_count >= 5)
 											H.warrant = TRUE
-											SEND_SOUND(H, sound('code/modules/ziggers/sounds/suspect.ogg', 0, 0, 75))
+											SEND_SOUND(H, sound('code/modules/wod13/sounds/suspect.ogg', 0, 0, 75))
 											to_chat(H, "<span class='userdanger'><b>POLICE ASSAULT IN PROGRESS</b></span>")
 										else
-											SEND_SOUND(H, sound('code/modules/ziggers/sounds/sus.ogg', 0, 0, 75))
+											SEND_SOUND(H, sound('code/modules/wod13/sounds/sus.ogg', 0, 0, 75))
 											to_chat(H, "<span class='userdanger'><b>SUSPICIOUS ACTION (corpse)</b></span>")
 			for(var/obj/item/I in H.contents)
 				if(I)
@@ -273,20 +273,20 @@
 										if(!H.warrant)
 											if(H.killed_count >= 5)
 												H.warrant = TRUE
-												SEND_SOUND(H, sound('code/modules/ziggers/sounds/suspect.ogg', 0, 0, 75))
+												SEND_SOUND(H, sound('code/modules/wod13/sounds/suspect.ogg', 0, 0, 75))
 												to_chat(H, "<span class='userdanger'><b>POLICE ASSAULT IN PROGRESS</b></span>")
 											else
-												SEND_SOUND(H, sound('code/modules/ziggers/sounds/sus.ogg', 0, 0, 75))
+												SEND_SOUND(H, sound('code/modules/wod13/sounds/sus.ogg', 0, 0, 75))
 												to_chat(H, "<span class='userdanger'><b>SUSPICIOUS ACTION (equipment)</b></span>")
 	if(H.hearing_ghosts)
 		H.bloodpool = max(0, H.bloodpool-1)
 		to_chat(H, "<span class='warning'>Necromancy Vision reduces your blood points too sustain itself.</span>")
 
 	if(H.clane)
-		if(H.clane.name == "Tzimisce" || "Old Clan Tzimisce")
+		if(H.clane.name == "Tzimisce" || H.clane.name == "Old Clan Tzimisce")
 			var/datum/vampireclane/tzimisce/TZ = H.clane
 			if(TZ.heirl)
-				if(!TZ.heirl in H.GetAllContents())
+				if(!(TZ.heirl in H.GetAllContents()))
 					if(prob(5))
 						to_chat(H, "<span class='warning'>You are missing your home soil...</span>")
 						H.bloodpool = max(0, H.bloodpool-1)

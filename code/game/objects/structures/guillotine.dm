@@ -176,6 +176,7 @@
 						P.physique = max(1, P.physique-1*how_much)
 						P.social = max(1, P.social-1*how_much)
 						P.mentality = max(1, P.mentality-1*how_much)
+						P.lockpicking = max(1, P.lockpicking-1*how_much)
 					P.torpor_count = 0
 			if(H.diablerist)
 				if(P)

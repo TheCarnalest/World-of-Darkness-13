@@ -14,15 +14,15 @@
 //		message = get_message_mods(message, message_mods)
 //		if(message_mods[WHISPER_MODE] != MODE_WHISPER)
 //			if(ending == "?")
-//				playsound(get_turf(src), 'code/modules/ziggers/sounds/wolf_ask.ogg', 75, TRUE)
+//				playsound(get_turf(src), 'code/modules/wod13/sounds/wolf_ask.ogg', 75, TRUE)
 //			else if(ending == "!")
-//				playsound(get_turf(src), 'code/modules/ziggers/sounds/wolf_yell.ogg', 100, TRUE)
+//				playsound(get_turf(src), 'code/modules/wod13/sounds/wolf_yell.ogg', 100, TRUE)
 //			else
-//				playsound(get_turf(src), 'code/modules/ziggers/sounds/wolf_speak.ogg', 75, TRUE)
+//				playsound(get_turf(src), 'code/modules/wod13/sounds/wolf_speak.ogg', 75, TRUE)
 
 /mob/living/carbon/werewolf
 	name = "werewolf"
-	icon = 'code/modules/ziggers/werewolf.dmi'
+	icon = 'code/modules/wod13/werewolf.dmi'
 	gender = MALE
 	dna = null
 	faction = list("Gaia")
@@ -65,7 +65,7 @@
 	var/attack_verb_simple = "attack"
 	var/friendly_verb_continuous = "nuzzles"
 	var/friendly_verb_simple = "nuzzle"
-	var/attack_sound = 'code/modules/ziggers/sounds/werewolf_bite.ogg'
+	var/attack_sound = 'code/modules/wod13/sounds/werewolf_bite.ogg'
 
 	var/sprite_color = "black"
 	var/sprite_scar = 0
@@ -92,11 +92,11 @@
 		step_variable = step_variable+1
 		if(step_variable == 2)
 			step_variable = 0
-			playsound(get_turf(src), 'code/modules/ziggers/sounds/werewolf_step.ogg', 50, FALSE)
+			playsound(get_turf(src), 'code/modules/wod13/sounds/werewolf_step.ogg', 50, FALSE)
 	..()
 
 /mob/living/carbon/proc/epic_fall()
-	playsound(get_turf(src), 'code/modules/ziggers/sounds/werewolf_fall.ogg', 100, FALSE)
+	playsound(get_turf(src), 'code/modules/wod13/sounds/werewolf_fall.ogg', 100, FALSE)
 	new /obj/effect/temp_visual/dir_setting/crack_effect(get_turf(src))
 	new /obj/effect/temp_visual/dir_setting/fall_effect(get_turf(src))
 	for(var/mob/living/carbon/C in range(5, src))

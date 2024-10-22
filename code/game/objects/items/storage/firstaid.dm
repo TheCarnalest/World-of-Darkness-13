@@ -328,7 +328,7 @@
 	desc = "It's an airtight container for storing medication."
 	icon_state = "pill_canister"
 	icon = 'icons/obj/chemical.dmi'
-	onflooricon = 'code/modules/ziggers/onfloor.dmi'
+	onflooricon = 'code/modules/wod13/onfloor.dmi'
 	inhand_icon_state = "contsolid"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'

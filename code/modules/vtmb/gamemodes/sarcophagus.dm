@@ -1,5 +1,4 @@
-GLOBAL_LIST_INIT(sarcophagus_passwords,
-	list(
+GLOBAL_LIST_INIT(sarcophagus_passwords, list(
 	"AMARANTH",
 	"ANTEDILUVIAN",
 	"PROMETHEAN",
@@ -17,9 +16,9 @@ GLOBAL_LIST_INIT(sarcophagus_passwords,
 	"SHADOWLANDS",
 	"LILITH",
 	"FORGIVENESS",
-	"DARKFATHER"))
-GLOBAL_LIST_INIT(caesar_cipher,
-	list(
+	"DARKFATHER"
+))
+GLOBAL_LIST_INIT(caesar_cipher, list(
 	"A" = 1,
 	"B" = 2,
 	"C" = 3,
@@ -45,7 +44,8 @@ GLOBAL_LIST_INIT(caesar_cipher,
 	"W" = 23,
 	"X" = 24,
 	"Y" = 25,
-	"Z" = 26))
+	"Z" = 26
+))
 
 /proc/get_encipher_num(var/letter, var/password)
 	var/num = GLOB.caesar_cipher[letter]
@@ -86,7 +86,7 @@ GLOBAL_LIST_INIT(caesar_cipher,
 /obj/sarcophagus
 	name = "Unknown Sarcophagus"
 	desc = "Contains elder devil..."
-	icon = 'code/modules/ziggers/48x32weapons.dmi'
+	icon = 'code/modules/wod13/48x32weapons.dmi'
 	icon_state = "b_sarcophagus"
 	plane = GAME_PLANE
 	layer = CAR_LAYER
@@ -103,8 +103,8 @@ GLOBAL_LIST_INIT(caesar_cipher,
 			if(password == uppertext(pass))
 				icon_state = "b_sarcophagus-open1"
 				to_chat(world, "<span class='userdanger'><b>UNKNOWN SARCOPHAGUS HAS BEEN OPENED</b></span>")
-				SEND_SOUND(world, sound('code/modules/ziggers/sounds/announce.ogg'))
-				playsound(get_turf(src), 'code/modules/ziggers/sounds/mp_hello.ogg', 100, TRUE)
+				SEND_SOUND(world, sound('code/modules/wod13/sounds/announce.ogg'))
+				playsound(get_turf(src), 'code/modules/wod13/sounds/mp_hello.ogg', 100, TRUE)
 				spawn(200)
 					icon_state = "b_sarcophagus-open0"
 					new /mob/living/simple_animal/hostile/megafauna/wendigo(loc)
@@ -116,12 +116,21 @@ GLOBAL_LIST_INIT(caesar_cipher,
 		passkey = rand(5, 15)
 	else
 		passkey = rand(-15, -5)
-	to_chat(world, "<span class='userdanger'><b>UNKNOWN SARCOPHAGUS POSITION HAS BEEN LEAKED</b></span>")
-	SEND_SOUND(world, sound('code/modules/ziggers/sounds/announce.ogg'))
+	//to_chat(world, "<span class='userdanger'><b>UNKNOWN SARCOPHAGUS POSITION HAS BEEN LEAKED</b></span>")
+	SEND_SOUND(world, sound('code/modules/wod13/sounds/announce.ogg'))
 
 /obj/item/sarcophagus_key
 	name = "sarcophagus key"
 	desc = "The secrets of elder devil..."
 	icon_state = "sarcophagus_key"
-	icon = 'code/modules/ziggers/icons.dmi'
+	icon = 'code/modules/wod13/icons.dmi'
 	w_class = WEIGHT_CLASS_SMALL
+
+/obj/item/fake_sarcophagus
+	name = "Voivode-in-Waiting's Sarcophagus"
+	desc = "The Voivode-in-Waiting lies here."
+	icon = 'code/modules/wod13/48x32weapons.dmi'
+	icon_state = "b_sarcophagus"
+	density = TRUE
+	anchored = TRUE
+	pixel_w = -8

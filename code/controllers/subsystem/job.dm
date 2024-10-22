@@ -140,6 +140,10 @@ SUBSYSTEM_DEF(job)
 			if(player.client.prefs.pref_species.name != "Vampire")
 				JobDebug("FOC player species not allowed, Player: [player]")
 				continue
+		if(job.ghoul_only)
+			if(player.client.prefs.pref_species.name != "Vampire")
+				JobDebug("FOC player species not allowed, Player: [player]")
+				continue
 		if(!job.garou_allowed)
 			if(player.client.prefs.pref_species.name == "Werewolf")
 				JobDebug("FOC player species not allowed, Player: [player]")
@@ -214,6 +218,10 @@ SUBSYSTEM_DEF(job)
 
 		if(job.kindred_only)
 			if(player.client.prefs.pref_species.name != "Vampire")
+				JobDebug("GRJ player species not allowed, Player: [player]")
+				continue
+		if(job.ghoul_only)
+			if(player.client.prefs.pref_species.name != "Ghoul")
 				JobDebug("GRJ player species not allowed, Player: [player]")
 				continue
 		if(!job.garou_allowed)
@@ -434,6 +442,10 @@ SUBSYSTEM_DEF(job)
 					if(player.client.prefs.pref_species.name != "Vampire")
 						JobDebug("DO player species not allowed, Player: [player]")
 						continue
+				if(job.ghoul_only)
+					if(player.client.prefs.pref_species.name != "Ghoul")
+						JobDebug("DO player species not allowed, Player: [player]")
+						continue
 				if(!job.garou_allowed)
 					if(player.client.prefs.pref_species.name == "Werewolf")
 						JobDebug("DO player species not allowed, Player: [player]")
@@ -590,7 +602,13 @@ SUBSYSTEM_DEF(job)
 				handle_auto_deadmin_roles(M.client, rank)
 
 		to_chat(M, "<b>As the [rank] you answer directly to [job.supervisors]. Special circumstances may change this.</b>")
-		if(job.duty && job.duty != "")
+		var/mob/living/carbon/human/H = living_mob
+		if((iskindred(H) && H.clane))
+			if(job.v_duty && job.v_duty != "")
+				to_chat(M, "<span class='notice'><b>[job.v_duty]</b></span>")
+			if(job.title != "Prince")
+				to_chat(M, "<span class='notice' style='color:red;'><b>The Camarilla rule the city. You should obey them, their laws and the Prince, at least in public.</b></span>")
+		else if(job.duty && job.duty != "")
 			to_chat(M, "<span class='notice'><b>[job.duty]</b></span>")
 //		job.radio_help_message(M)
 		if(job.req_admin_notify)
@@ -633,7 +651,6 @@ SUBSYSTEM_DEF(job)
 	var/datum/job/J = SSjob.GetJob("Security Officer")
 	if(!J)
 		return
-		CRASH("setup_officer_positions(): Security officer job is missing")
 
 	var/ssc = CONFIG_GET(number/security_scaling_coeff)
 	if(ssc > 0)

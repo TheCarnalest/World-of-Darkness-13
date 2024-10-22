@@ -72,7 +72,7 @@
 							if(last_rage+50 < world.time)
 								last_rage = world.time
 								to_chat(C, "<span class='userdanger'><b>YOUR TOTEM IS BREAKING DOWN</b></span>")
-								SEND_SOUND(C, sound('code/modules/ziggers/sounds/bumps.ogg', 0, 0, 75))
+								SEND_SOUND(C, sound('code/modules/wod13/sounds/bumps.ogg', 0, 0, 75))
 								adjust_rage(1, C, FALSE)
 	if(amount < 0)
 		totem_health = min(initial(totem_health), totem_health-amount)
@@ -83,7 +83,7 @@
 						if(C.stat != DEAD)
 							if(C.auspice.tribe == tribe)
 								to_chat(C, "<span class='userhelp'><b>YOUR TOTEM IS RESTORED</b></span>")
-								SEND_SOUND(C, sound('code/modules/ziggers/sounds/inspire.ogg', 0, 0, 75))
+								SEND_SOUND(C, sound('code/modules/wod13/sounds/inspire.ogg', 0, 0, 75))
 								adjust_gnosis(1, C, FALSE)
 				icon_state = "[initial(icon_state)]"
 				overlays -= totem_light_overlay
@@ -107,7 +107,7 @@
 /obj/structure/werewolf_totem/spiral
 	name = "Spiral Totem"
 	desc = "Gives power to all Garou of that tribe and steals it from others."
-	icon = 'code/modules/ziggers/64x32.dmi'
+	icon = 'code/modules/wod13/64x32.dmi'
 	icon_state = "spiral"
 	tribe = "Black Spiral"
 	totem_overlay_color = "#ff5235"
@@ -135,7 +135,7 @@
 					if(!opening)
 						opening = TRUE
 						if(do_mob(user, src, 10 SECONDS))
-							playsound(loc, 'code/modules/ziggers/sounds/portal.ogg', 75, FALSE)
+							playsound(loc, 'code/modules/wod13/sounds/portal.ogg', 75, FALSE)
 							var/obj/umbra_portal/U = new (get_step(src, SOUTH))
 							U.id = "[tribe][rand(1, 999)]"
 							U.later_initialize()
@@ -149,7 +149,7 @@
 					to_chat(C, "<span class='warning'>You need a Theurge to open the Moon Gates!</span>")
 			else
 				if(C.auspice.name == "Theurge")
-					playsound(loc, 'code/modules/ziggers/sounds/portal.ogg', 75, FALSE)
+					playsound(loc, 'code/modules/wod13/sounds/portal.ogg', 75, FALSE)
 					qdel(prev.exit)
 					qdel(prev)
 		else

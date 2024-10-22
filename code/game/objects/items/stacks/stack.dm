@@ -20,7 +20,8 @@
 	var/max_amount = 50 //also see stack recipes initialisation, param "max_res_amount" must be equal to this max_amount
 	var/is_cyborg = FALSE // It's TRUE if module is used by a cyborg, and uses its storage
 	var/datum/robot_energy_storage/source
-	var/cost = 1 // How much energy from storage it costs
+	//[Lucia] - this is defined for all /obj/item/ instances in code\modules\wod13\lombard.dm
+	cost = 1 // How much energy from storage it costs
 	var/merge_type = null // This path and its children should merge with this stack, defaults to src.type
 	var/full_w_class = WEIGHT_CLASS_NORMAL //The weight class the stack should have at amount > 2/3rds max_amount
 	var/novariants = TRUE //Determines whether the item should update it's sprites based on amount.
@@ -226,7 +227,9 @@
 	return data
 
 /obj/item/stack/ui_act(action, params)
-	return	/*
+	..()
+	return
+	/*
 	. = ..()
 	if(.)
 		return
@@ -290,7 +293,7 @@
 					qdel(I)
 			//BubbleWrap END
 			return TRUE
-*/
+	*/
 
 /obj/item/stack/vv_edit_var(vname, vval)
 	if(vname == NAMEOF(src, amount))

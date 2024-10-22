@@ -19,6 +19,9 @@
 			"Down": -1,
 			"Baseturf": "/turf/open/floor/plating",
 			"Linkage": "Cross"
+		},
+		{
+			"Baseturf": "/turf/open/floor/plating"
 		}
 	]
 }

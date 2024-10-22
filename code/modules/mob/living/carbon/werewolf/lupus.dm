@@ -1,7 +1,7 @@
 /mob/living/carbon/werewolf/lupus
 	name = "wolf"
 	icon_state = "black"
-	icon = 'code/modules/ziggers/werewolf_lupus.dmi'
+	icon = 'code/modules/wod13/werewolf_lupus.dmi'
 	pass_flags = PASSTABLE
 	butcher_results = list(/obj/item/food/meat/slab = 5)
 	possible_a_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB, INTENT_HARM)

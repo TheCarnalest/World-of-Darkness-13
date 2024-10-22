@@ -3,9 +3,9 @@
 /obj/item/ammo_casing/a357
 	name = ".44 bullet casing"
 	desc = "A .44 bullet casing."
-	icon = 'code/modules/ziggers/ammo.dmi'
+	icon = 'code/modules/wod13/ammo.dmi'
 	icon_state = "44"
-	onflooricon = 'code/modules/ziggers/onfloor.dmi'
+	onflooricon = 'code/modules/wod13/onfloor.dmi'
 	onflooricon_state = "44-1"
 	caliber = CALIBER_357
 	projectile_type = /obj/projectile/bullet/a357

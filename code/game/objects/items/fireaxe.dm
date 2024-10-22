@@ -3,8 +3,8 @@
  */
 /obj/item/fireaxe  // DEM AXES MAN, marker -Agouri
 	icon_state = "fireaxe0"
-	lefthand_file = 'code/modules/ziggers/righthand.dmi'
-	righthand_file = 'code/modules/ziggers/lefthand.dmi'
+	lefthand_file = 'code/modules/wod13/righthand.dmi'
+	righthand_file = 'code/modules/wod13/lefthand.dmi'
 	name = "fire axe"
 	desc = "Truly, the weapon of a madman. Who would think to fight fire with an axe?"
 	force = 5

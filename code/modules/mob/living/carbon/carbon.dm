@@ -1,3 +1,10 @@
+#define JUMP_DELAY 40
+#define MAX_JUMP_DISTANCE 1
+
+/mob/living/carbon
+	var/last_jump_time = 0
+	var/jump_range = MAX_JUMP_DISTANCE
+
 /mob/living/carbon/Initialize(mapload)
 	. = ..()
 	create_reagents(1000)
@@ -186,6 +193,55 @@
 		newtonian_move(get_dir(target, src))
 		thrown_thing.safe_throw_at(target, thrown_thing.throw_range, thrown_thing.throw_speed + power_throw, src, null, null, null, move_force)
 
+/mob/proc/jump(atom/target) //[Lucifernix] - This is where all the code for jumping is located.
+	SEND_SIGNAL(src, COMSIG_MOB_THROW, target)
+	return
+
+/mob/living/carbon/jump(atom/target)
+	. = ..()
+	if(!target || !isturf(loc))
+		return
+	if(istype(target, /atom/movable/screen))
+		return
+	if(lying_angle != STANDING_UP)
+		return
+
+	var/mob/living/carbon/H = src
+	var/physique = H.physique
+
+	var/current_time = world.time
+	var/adjusted_jump_delay = JUMP_DELAY - (2 * physique)
+	if(current_time - last_jump_time < adjusted_jump_delay)
+		to_chat(src, "<span class='notice'>You can't jump so soon!")
+		return
+
+	var/adjusted_jump_range = MAX_JUMP_DISTANCE + (physique * 0.75)
+	var/distance = get_dist(loc, target)
+	var/turf/adjusted_target = target
+	if(distance > adjusted_jump_range)
+		var/dx = target.x - loc.x
+		var/dy = target.y - loc.y
+		var/scale = adjusted_jump_range / distance
+		adjusted_target = locate(loc.x + round(dx * scale), loc.y + round(dy * scale), loc.z)
+
+	var/atom/movable/thrown_thing = src
+
+	if(thrown_thing)
+		var/turf/start_T = get_turf(loc) //Get the start and target tile for the descriptors
+		var/turf/end_T = get_turf(target)
+		if(start_T && end_T)
+			log_combat(src, thrown_thing, "jumped", addition="from tile in [AREACOORD(start_T)] towards tile at [AREACOORD(end_T)]")
+		var/power_throw = 0
+
+		//Move the player towards the target
+		newtonian_move(get_dir(adjusted_target, src))
+		thrown_thing.safe_throw_at(adjusted_target, thrown_thing.throw_range, thrown_thing.throw_speed + power_throw, src, null, null, null, move_force)
+		visible_message("<span class='danger'>[src] jumps towards [adjusted_target].</span>")
+//		newtonian_move(get_dir(target, src))
+//		thrown_thing.safe_throw_at(target, thrown_thing.throw_range, thrown_thing.throw_speed + power_throw, src, null, null, null, move_force)
+//		visible_message("<span class='danger'>[src] jumps towards [target].</span>")
+
+		last_jump_time = current_time
 
 /mob/living/carbon/proc/canBeHandcuffed()
 	return FALSE

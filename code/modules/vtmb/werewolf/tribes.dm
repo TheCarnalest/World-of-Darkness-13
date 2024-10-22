@@ -7,7 +7,7 @@
 /datum/action/gift/stoic_pose/Trigger()
 	. = ..()
 	if(allowed_to_proceed)
-		playsound(get_turf(owner), 'code/modules/ziggers/sounds/ice_blocking.ogg', 100, FALSE)
+		playsound(get_turf(owner), 'code/modules/wod13/sounds/ice_blocking.ogg', 100, FALSE)
 		var/mob/living/carbon/C = owner
 		if(isgarou(C))
 			var/obj/were_ice/W = new (get_turf(owner))
@@ -40,7 +40,7 @@
 /datum/action/gift/freezing_wind/Trigger()
 	. = ..()
 	if(allowed_to_proceed)
-		playsound(get_turf(owner), 'code/modules/ziggers/sounds/wind_cast.ogg', 100, FALSE)
+		playsound(get_turf(owner), 'code/modules/wod13/sounds/wind_cast.ogg', 100, FALSE)
 		for(var/turf/T in range(3, get_step(get_step(owner, owner.dir), owner.dir)))
 			if(owner.loc != T)
 				var/obj/effect/wind/W = new(T)
@@ -64,7 +64,7 @@
 			if(isliving(C.pulling))
 				var/mob/living/L = C.pulling
 				if(L.stat == DEAD)
-					playsound(get_turf(owner), 'code/modules/ziggers/sounds/bloody_feast.ogg', 50, FALSE)
+					playsound(get_turf(owner), 'code/modules/wod13/sounds/bloody_feast.ogg', 50, FALSE)
 					qdel(L)
 					C.revive(full_heal = TRUE, admin_revive = TRUE)
 
@@ -76,7 +76,7 @@
 /datum/action/gift/stinky_fur/Trigger()
 	. = ..()
 	if(allowed_to_proceed)
-		playsound(get_turf(owner), 'code/modules/ziggers/sounds/necromancy.ogg', 75, FALSE)
+		playsound(get_turf(owner), 'code/modules/wod13/sounds/necromancy.ogg', 75, FALSE)
 		for(var/mob/living/carbon/C in orange(5, src))
 			if(C)
 				if(prob(25))
@@ -96,7 +96,7 @@
 	. = ..()
 	if(allowed_to_proceed)
 		if(ishuman(owner))
-			playsound(get_turf(owner), 'code/modules/ziggers/sounds/venom_claws.ogg', 75, FALSE)
+			playsound(get_turf(owner), 'code/modules/wod13/sounds/venom_claws.ogg', 75, FALSE)
 			var/mob/living/carbon/human/H = owner
 			H.tox_damage_plus = 25
 			to_chat(owner, "<span class='notice'>You feel your claws filling with pure venom...</span>")
@@ -104,7 +104,7 @@
 				H.tox_damage_plus = 0
 				to_chat(owner, "<span class='warning'>Your claws are not poison anymore...</span>")
 		else
-			playsound(get_turf(owner), 'code/modules/ziggers/sounds/venom_claws.ogg', 75, FALSE)
+			playsound(get_turf(owner), 'code/modules/wod13/sounds/venom_claws.ogg', 75, FALSE)
 			var/mob/living/carbon/H = owner
 			H.melee_damage_lower = initial(H.melee_damage_lower)+20
 			H.melee_damage_upper = initial(H.melee_damage_upper)+20
@@ -174,7 +174,7 @@
 	if(allowed_to_proceed)
 		animate(owner, color = "#6a839a", time = 10)
 		if(ishuman(owner))
-			playsound(get_turf(owner), 'code/modules/ziggers/sounds/electro_cast.ogg', 75, FALSE)
+			playsound(get_turf(owner), 'code/modules/wod13/sounds/electro_cast.ogg', 75, FALSE)
 			var/mob/living/carbon/human/H = owner
 			H.physiology.armor.melee = 99
 			H.physiology.armor.bullet = 99
@@ -185,7 +185,7 @@
 				to_chat(owner, "<span class='warning'>Your skin is natural again...</span>")
 				owner.color = "#FFFFFF"
 		else
-			playsound(get_turf(owner), 'code/modules/ziggers/sounds/electro_cast.ogg', 75, FALSE)
+			playsound(get_turf(owner), 'code/modules/wod13/sounds/electro_cast.ogg', 75, FALSE)
 			var/mob/living/carbon/werewolf/H = owner
 			H.werewolf_armor = 99
 			to_chat(owner, "<span class='notice'>You feel your skin replaced with the machine...</span>")

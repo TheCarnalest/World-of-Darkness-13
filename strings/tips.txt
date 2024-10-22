@@ -1,44 +1,44 @@
-You will need to get a lockpick if you are going to crack a door. Lockpick spawns in special roles and npcs inventories. Some doors may require special Quirk to get through.
-Car is wasting gas while driving, and to refuel one you will need a gas can. Gas and cans can be bought on the Gas Station.
-If you are lost in the city you can use maps placed on the streets.
-Sabbat clans are using Enlightment Path instead of Humanity, which is the opposite. Remember that not feeding your beast oftenly results in loosing Enlightment dots.
-Level of casting Discipline can be changed with Right-Click.
+You can find a lockpick on certain NPCs and at the black market. Lockpicking skill and physique assist in your chances to succeed, and doors have varying difficulty.
+Cars use gasoline - you can buy more at a Gas Station. This can be used in the production of molotovs, as well.
+If you ever find yourself lost, the bus stations usually have a map of the city near them.
+Less humane clans and the Sabbat have access to the Paths of Enlightenment. They are various and diverse, each a method to co-exist with your beast.
+Discipline levels can be changed with Right-Click.
 You can parry melee attacks my clicking directly on the opponent with Grab intent. Successful parry will stun your enemy and force them to drop their weapon if it matches yours by size.
 You can block melee attacks by pressing C or BLOCK interface button. While blocking attacks you are getting Stun damage instead of Brute. Bare hands are weaker in blocking than any other weapon, and big items block extremely better.
-You can restore Humanity by dancing with music turned on. You will need special Quirk to dance.
-You can jump over most objects in game with Acrobatic quirk, including roofs.
-You can send announcements as a Prince by using your computer. Other kindred can see it by using computer too.
+You can restore Humanity by dancing near an active jukebox. You will need special Quirk to dance.
+You can jump around by clicking MMB. You can even jump over railings while standing next to them.
+You can send announcements as the Prince by using your computer. Other kindred can see it on other computers too.
 Malkavian hivemind allows to send any message, including images. To send one - write <img src="image link">.
-You can find existing phones numbers in the Phone Book.
-To use Thaumaturgy properly you should get Arcane Tome. Some of them spawn in Chantry.
+You can find and publish your phone number on your phone.
+To use Thaumaturgy properly you should get an Arcane Tome. Some of them spawn in Chantry. Lasombra can also learn Abyss Mysticism by crafting a tome after reaching Obtenebration at level 5.
 Followers of Set, also known as Ministry, can avoid diablerie and staking by moving their heart to an urn.
-Diablerie forces your generation to lower one, if your victim has so. Only Sabbat clans, Antagonists, Banu Haqim and Caitiffs can diablerize other kindred. Remember, Diablerie makes your Auspex aura black permanently, meaning that any kindred could accuse you for your sins and engage in combat.
-Blood quality depends on a rank of creature. Exact leveling is: Animal < Homeless < Normal < Rich < Werewolf < Vampire < ???
-You can bloodbond people as a kindred. To do so - grab them and force them to swallow your vitae with Give Vitae ability. Bloodbonded are forced to serve you for another dose. Any new bloodbond gives victim and bonder experience points.
-You can gain experience points by talking to a lot of people with a lot of words. More words and more people - more experience.
-You can play as 14 different clans, excluding Caitiff as no-clan. Some of them are free to play, some of them are donation/questionary whitelisted (Tzimisce, Lasombra etc.), some of them are payment, questionary and voting whitelisted (Salubri, Baali etc.).
-You can make a ghoul by bloodbonding non-playable character. If there are any ghosts that want to play a ghoul - they will be moved to ghouled npc.
-Ghouls are weaker than kindred, and require vitae instead of mortal blood. But they also are immune to humanity and can learn any clan disciplines to 1 level.
-Do drugs. Vampires get your mood when they suck your blood, and if you are high, shitting your pants and throwing up - they will too.
-Tzimisce can upgrade your body with flesh and blood. Meeting a Tzimisce is a good opportunity to get best Biopunk Ripperdoc you could ever have.
+Diablerie lowers your generation by one, if your victim's is lower than yours. You should only ever attempt diablerie if you believe it has sufficient RP justification. Diablerie is one of the vilest deeds imaginable, and any kindred who learn of this will seek your permanent death.
+Blood quality depends on the power or lifestyle of a creature. Vampire blood satisfies the most, after that lupine blood, then the wealthy, then the poor, then animals, and so on.
+You can bloodbond people as a kindred. To do so - grab them and force them to swallow your vitae with Give Vitae ability. Bloodbonds strengthen the victim's emotions towards you and create an obsession.
+You can gain experience points by talking with other people. The more you talk, the more experience you gain.
+You can play as 14 different clans, excluding Caitiff as the clanless.
+You can make a ghoul by bloodbonding a non-playable character. If there are any ghosts that want to play a ghoul - they will take over the ghouled NPC.
+Ghouls are weaker than kindred, and require vitae instead of mortal blood. But they also are immune to humanity and can learn any clan's disciplines to level 1.
+If you are a mortal and do drugs, kindred can experience the same high by drinking your blood.
+Tzimisce can upgrade your body with flesh and blood. Or they can turn you into a chair. Take this risk at your own judgement.
 Tremere have powers to identificate any existing artifact.
-As a Prince, your objectives are to rule Camarilla and the City. Follow all Six Traditions of Kindred and decide how to fight global dangers. Don't forget to call Primogens if you need some help.
+As a Prince, your objectives are to rule Camarilla and the City. Follow all Six Traditions of Kindred and decide how to fight global dangers. Don't forget to call on the Primogens if you need some help.
 As a Sheriff, your objectives are to protect Masquerade in the City. Speak with Camarilla's agents and decide the best technique to liquidate Masquerade breaches and breachers.
-As a Clerk, your objectives are to help Prince make any business in the City. Find people, speak with them, test them and only then let them meet with the Prince, no matter if it was Anarch's punk statement or Embrace request.
-As a Camarilla Agent, your objectives are to liquidate Masquerade breachers. Use your Masquerade Contract to see if there are any.
-As a Janitor, your objectives are to liquidate Masquerade breaches. Clean up streets and don't let any blood to rot near the mortal's eyes.
-As a Doctor, your objectives are to heal kine for proper feeding. You can also sell blood bags to other kindred.
-As a Graveyard Keeper, your objectives are to protect City from Shadowlands Masquerade breach. There is no more room in Hell, so walking dead are rising up. Kill 'em all...
-As a Stripper, your objectives are to make a proper hunting grounds in Strip Club.
-As a Baron, your objectives are to rule Anarch Movement in the City. Break the cammy monopoly, chumb!
-As a Bouncer, your objectives are to help Baron and Anarch Movement. You are fists of the Freedom.
-As a Dealer, your objectives are to make your business on the Supply Station.
-As a Supply Technician, your objectives are to help Dealer and keep Supply Station working.
-As a Chantry Regent, your objectives are to lead the Chantry and other Archivists.
+As a Seneschal, your objectives are to help Prince make any business in the City. You are his right hand man, and he expects you to deal with matters beneath him.
+As a Camarilla Agent, your objectives are to enforce the Traditions and the Camarilla's rule of the city.
+As a Janitor, your objectives are to liquidate Masquerade breaches. Clean up streets and don't let any pale bloodless corpses be found by mortal eyes.
+As a Doctor, your objectives are to heal Kine for proper feeding. You can also sell blood bags to other kindred.
+As a Graveyard Keeper, your objectives are to protect City from a Shadowlands Masquerade breach. There is no more room in Hell, so walking dead are rising up. Kill 'em all...
+As a Stripper, you are free to do with the Strip Club as you wish. It is your domain - unless the Prince changes his mind.
+As a Baron, you lead the individualistic kindred of the city. You are still part of the Camarilla and are subject to it's laws. San Francisco is not an Anarch domain.
+As a Bouncer, you hang out with the Baron and support him in his rebellious troublemaking.
+As a Dealer, you hold a powerful domain. You can make deals with whomever you want - but boons are always worth more than money.
+As a Supply Technician, you work for the dealer - who has graciously accepted you into his coterie.
+As a Chantry Regent, your objectives are to lead the Tremere of San Francisco and keep the Chantry secure, as well as hunt down any who would steal your clan's secrets.
 As an Archivist, your objectives are to protect Tremere knowledge and the Chantry.
 As a Giovanni Member, your objectives are to manage Giovanni members and your hideout in Mansion.
-As a Taxi Driver, your objectives are to drive. Real human bean.
-As a Primogen, your objectives are to senate Prince's decisions and look badass.
-As a Sabbatist, your objectives are to acquire Power in the City.
+As a Taxi Driver, your objectives are to drive. Real human being.
+As a Primogen, your objectives are to represent your clan in the city, and make sure they are organized and loyal enough to keep you in power.
+As a Sabbat member, you must fight the enemies of the Dark Father - servants of the vile Antediluvians.
 As a Hunter, your objectives are to Hunt abnormal beings and night creatures in City.
 As a Caitiff (role), your objectives are to kill exact kindred that shoved you from your original clan.

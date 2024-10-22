@@ -4,8 +4,8 @@
 	icon = 'icons/obj/power.dmi'
 	icon_state = "ccharger"
 	use_power = IDLE_POWER_USE
-	idle_power_usage = 5
-	active_power_usage = 60
+	idle_power_usage = 0
+	active_power_usage = 00
 	power_channel = AREA_USAGE_EQUIP
 	circuit = /obj/item/circuitboard/machine/cell_charger
 	pass_flags = PASSTABLE

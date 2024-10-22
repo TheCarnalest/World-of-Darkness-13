@@ -31,7 +31,7 @@
 /obj/urn
 	name = "organ urn"
 	desc = "Stores some precious organs..."
-	icon = 'code/modules/ziggers/icons.dmi'
+	icon = 'code/modules/wod13/icons.dmi'
 	icon_state = "urn"
 	plane = GAME_PLANE
 	layer = CAR_LAYER
@@ -157,7 +157,7 @@
 /mob/living/simple_animal/hostile/cobra
 	name = "Cobra Form"
 	desc = "Hssssss..."
-	icon = 'code/modules/ziggers/48x48.dmi'
+	icon = 'code/modules/wod13/48x48.dmi'
 	icon_state = "cobra"
 	icon_living = "cobra"
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID

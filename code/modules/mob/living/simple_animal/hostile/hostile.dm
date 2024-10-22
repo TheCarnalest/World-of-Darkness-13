@@ -83,7 +83,7 @@
 		walk(src, 0) //stops walking
 	else if(my_creator)
 		if(CheckEyewitness(src, src, 5, FALSE))
-			SEND_SOUND(src, sound('code/modules/ziggers/sounds/masquerade_violation.ogg', 0, 0, 75))
+			SEND_SOUND(src, sound('code/modules/wod13/sounds/masquerade_violation.ogg', 0, 0, 75))
 			to_chat(src, "<span class='userdanger'><b>MASQUERADE VIOLATION</b></span>")
 			my_creator.AdjustMasquerade(-1)
 

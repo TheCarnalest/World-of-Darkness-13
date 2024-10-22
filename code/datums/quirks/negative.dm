@@ -161,7 +161,7 @@
 	heirloom.AddComponent(/datum/component/heirloom, quirk_holder.mind, family_name)
 
 /datum/quirk/ground_heirloom/on_process()
-	if(!heirloom in quirk_holder.GetAllContents())
+	if(!(heirloom in quirk_holder.GetAllContents()))
 		if(last_notice+300 < world.time)
 			to_chat(quirk_holder, "<span class='warning'>You are missing your domain...</span>")
 			quirk_holder.bloodpool = max(0, quirk_holder.bloodpool-1)

@@ -19,7 +19,8 @@ Street Janitor=2,2
 Doctor=2,2
 Graveyard Keeper=3,3
 Voivode =1,1
-Bogatyr =3,3
+Bogatyr =4,4
+Zadruga = 2, 2
 
 
 

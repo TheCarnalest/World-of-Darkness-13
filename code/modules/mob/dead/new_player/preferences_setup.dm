@@ -152,7 +152,7 @@
 
 	// Set up the dummy for its photoshoot
 	var/mob/living/carbon/human/dummy/mannequin = generate_or_wait_for_human_dummy(DUMMY_HUMAN_SLOT_PREFERENCES)
-	var/mutable_appearance/MAMA = mutable_appearance('code/modules/ziggers/64x32.dmi', "slot", layer = SPACE_LAYER)
+	var/mutable_appearance/MAMA = mutable_appearance('code/modules/wod13/64x32.dmi', "slot", layer = SPACE_LAYER)
 	MAMA.pixel_x = -16
 	mannequin.add_overlay(MAMA)
 	copy_to(mannequin, 1, TRUE, TRUE)
