@@ -1,34 +1,20 @@
 /datum/discipline
-	///Name of this Discipline.
 	var/name = "Vampiric Discipline"
-	///Text description of this Discipline.
 	var/desc = "Discipline with powers such as..."
-	///Icon for this Discipline as in disciplines.dmi
 	var/icon_state
-	///Cost in blood points of activating this Discipline.
 	var/cost = 2
-	///Whether this Discipline is ranged.
 	var/ranged = FALSE
-	///The range from which this Discipline can be used on a target.
 	var/range_sh = 8
-	///Duration of the Discipline.
 	var/delay = 5
-	///Whether this Discipline causes a Masquerade breach when used in front of mortals.
 	var/violates_masquerade = FALSE
-	///What rank, or how many dots the caster has in this Discipline.
 	var/level = 1
-	///The sound that plays when any power of this Discipline is activated.
 	var/activate_sound = 'code/modules/wod13/sounds/bloodhealing.ogg'
-	///Whether this Discipline's cooldowns are multipled by the level it's being casted at.
 	var/leveldelay = FALSE
-	///Whether this Discipline aggroes NPC targets.
 	var/fearless = FALSE
 
-	///What rank of this Discipline is currently being casted.
-	var/level_casting = 1
-	///Whether this Discipline is exclusive to one Clan.
-	var/clane_restricted = FALSE
-	///Whether this Discipline is restricted from affecting dead people.
+	var/level_casting = 1	//which level we want to cast
+	var/clane_restricted = FALSE	//Only for specified clans
+	var/clane_exclusion = FALSE
 	var/dead_restricted = TRUE
 
 /datum/discipline/proc/post_gain(var/mob/living/carbon/human/H)
@@ -129,7 +115,7 @@
 			return
 
 /datum/discipline/proc/check_activated(var/mob/living/target, var/mob/living/carbon/human/caster)
-	if(caster.stat >= 2 || caster.IsSleeping() || caster.IsUnconscious() || caster.IsParalyzed() || caster.IsStun() || HAS_TRAIT(caster, TRAIT_RESTRAINED) || !isturf(caster.loc))
+	if(caster.stat >= 2 || caster.IsSleeping() || caster.IsUnconscious() || caster.IsParalyzed() || caster.IsKnockdown() || caster.IsStun() || HAS_TRAIT(caster, TRAIT_RESTRAINED) || !isturf(caster.loc))
 		return FALSE
 	var/plus = 0
 	if(HAS_TRAIT(caster, TRAIT_HUNGRY))
@@ -1725,14 +1711,14 @@
 		if(1)
 			to_chat(caster, "<b>[SScity_time.timeofnight]</b>")
 		if(2)
-			if(target == /mob/living/carbon/)
-				if(target.hud_used)
-					if(current_cycle >= 20 && current_cycle%20 == 0)
-						var/list/screens = list(M.hud_used.plane_masters["[FLOOR_PLANE]"], M.hud_used.plane_masters["[GAME_PLANE]"], M.hud_used.plane_masters["[LIGHTING_PLANE]"])
-						for(var/whole_screen in screens)
-							animate(whole_screen, transform = matrix()*2, alpha = 0, time = 50, easing = JUMP_EASING|EASE_IN|EASE_OUT, loop = -1)
-							animate(src, transform = M, time = 50, loop = 5, easing = SINE_EASING)
-							animate(matrix.Scale(-1, 1) //horizontal flip)
+			if(target.hud_used)
+				if(current_cycle >= 20 && current_cycle%20 == 0)
+					var/matrix/Z = matrix(Z.Scale(-1, 1)) //horizontal flip
+					var/list/screens = list(Z.hud_used.plane_masters["[FLOOR_PLANE]"], Z.hud_used.plane_masters["[GAME_PLANE]"], Z.hud_used.plane_masters["[LIGHTING_PLANE]"])
+					for(var/whole_screen in screens)
+						animate(whole_screen, transform = matrix()*2, alpha = 0, time = 50, easing = JUMP_EASING|EASE_IN|EASE_OUT, loop = -1)
+						animate(src, transform = Z, time = 50, loop = 5, easing = SINE_EASING)
+			return ..()
 		if(3)
 			if(current_beam)
 				qdel(current_beam)
