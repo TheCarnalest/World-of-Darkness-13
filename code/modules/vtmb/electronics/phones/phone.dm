@@ -75,11 +75,11 @@
 
 /obj/item/vamp/phone/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
-	if(iskindred(user))
-		var/mob/living/carbon/human/H = user
-		if(H.clane)
-			if(H.clane.name == "Lasombra")
-				return
+//	if(iskindred(user))
+//		var/mob/living/carbon/human/H = user
+//		if(H.clane)
+//			if(H.clane.name == "Lasombra")
+//				return
 	if(closed)
 		closed = FALSE
 		icon_state = open_state
@@ -182,6 +182,8 @@
 	. = ..()
 	if(.)
 		return
+//	var/mob/living/carbon/human/V = usr
+
 
 	switch(action)
 		if("hang")
@@ -210,6 +212,9 @@
 				online = null
 			.= TRUE
 		if("call")
+//			if((iskindred(V) && V.clane.name == "Lasombra"))
+//				return
+//			else
 			choosed_number = replacetext(choosed_number, " ", "")
 			for(var/obj/item/vamp/phone/PHN in GLOB.phones_list)
 				if(PHN.number == choosed_number)
@@ -474,6 +479,8 @@
 	else
 		U << browse(null, "window=phone")
 */
+
+
 /obj/item/vamp/phone/proc/handle_hearing(datum/source, list/hearing_args)
 	var/message = hearing_args[HEARING_RAW_MESSAGE]
 	if(online && talking)
@@ -491,14 +498,20 @@
 				if(ishuman(hearing_args[HEARING_SPEAKER]))
 					var/mob/living/carbon/human/SPK = hearing_args[HEARING_SPEAKER]
 					voice_saying = "[age2agedescription(SPK.age)] [SPK.gender] voice ([SPK.phonevoicetag])"
-					if(SPK.clane)
-						if(SPK.clane.name == "Lasombra")
-							return
+
+					if(SPK.clane && SPK.clane.name == "Lasombra")
+						message = scramble_lasombra_message(message)
+						playsound(online, 'code/modules/wod13/sounds/lasombra_whisper.ogg', 50, FALSE)
+					else
+						playsound(online, 'code/modules/wod13/sounds/phonetalk.ogg', 50, FALSE)
+//					if(SPK.clane)
+//						if(SPK.clane.name == "Lasombra")
+//							return
 				var/obj/phonevoice/VOIC = new(online)
 				VOIC.name = voice_saying
 				VOIC.speech_span = spchspn
 				VOIC.say("[message]")
-				playsound(online, 'code/modules/wod13/sounds/phonetalk.ogg', 50, FALSE)
+//				playsound(online, 'code/modules/wod13/sounds/phonetalk.ogg', 50, FALSE)
 				qdel(VOIC)
 
 /obj/item/vamp/phone/street
