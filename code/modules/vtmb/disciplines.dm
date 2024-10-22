@@ -1701,6 +1701,47 @@
 	ranged = TRUE
 	delay = 50
 	violates_masquerade = FALSE
-	activate_sound = 'code/modules/ziggers/sounds/temporis.ogg'
+	activate_sound = 'code/modules/wod13/sounds/temporis.ogg'
 	clane_restricted = TRUE
 	dead_restricted = FALSE
+
+/datum/discipline/temporis/activate(mob/living/target, mob/living/carbon/human/caster)
+	. = ..()
+	switch(level_casting)
+		if(1)
+			to_chat(caster, "<b>[SScity_time.timeofnight]</b>")
+		if(2)
+			if(target == /mob/living/carbon/)
+				if(target.hud_used)
+					if(current_cycle >= 20 && current_cycle%20 == 0)
+						var/list/screens = list(M.hud_used.plane_masters["[FLOOR_PLANE]"], M.hud_used.plane_masters["[GAME_PLANE]"], M.hud_used.plane_masters["[LIGHTING_PLANE]"])
+						for(var/whole_screen in screens)
+							animate(whole_screen, transform = matrix()*2, alpha = 0, time = 50, easing = JUMP_EASING|EASE_IN|EASE_OUT, loop = -1)
+							animate(src, transform = M, time = 50, loop = 5, easing = SINE_EASING)
+							animate(matrix.Scale(-1, 1) //horizontal flip)
+		if(3)
+			if(current_beam)
+				qdel(current_beam)
+			caster.Beam(target, icon_state="sm_arc", time = 50, maxdistance = 9, beam_type = /obj/effect/ebeam/medical)
+			target.adjustBruteLoss(-50, TRUE)
+			if(ishuman(target))
+				var/mob/living/carbon/human/H = target
+				if(length(H.all_wounds))
+					var/datum/wound/W = pick(H.all_wounds)
+					W.remove_wound()
+			target.adjustFireLoss(-50, TRUE)
+			target.update_damage_overlays()
+			target.update_health_hud()
+		if(4)
+			if(iskindred(target) || isghoul(target))
+				if(current_beam)
+					qdel(current_beam)
+				caster.Beam(target, icon_state="sm_arc", time = 50, maxdistance = 9, beam_type = /obj/effect/ebeam/medical)
+				target.bloodpool = 0
+				target.update_blood_hud()
+		if(5)
+			if(current_beam)
+				qdel(current_beam)
+			caster.Beam(target, icon_state="sm_arc", time = 50, maxdistance = 9, beam_type = /obj/effect/ebeam/medical)
+			if(target.revive(full_heal = TRUE, admin_revive = TRUE))
+				target.grab_ghost(force = TRUE)
