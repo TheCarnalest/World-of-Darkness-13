@@ -45,7 +45,7 @@
 	var/choice = input(user, "Please choose an action.", "Keypad") as null|anything in list("Enter Pincode", "Close Shutter")
 	switch(choice)
 		if("Enter Pincode")
-			var/input_pincode = input(user, "Please enter the pincode.", "Keypad") as null|num
+			var/input_pincode = input(user, "Please enter the pincode.", "Keypad") as null|text
 			if(input_pincode && "[input_pincode]" == pincode)
 				to_chat(user, "<span class='notice'>Access Granted.</span>")
 				if(connected_shutter.density)
