@@ -5,20 +5,24 @@
 	alt_sprite = "nosferatu"
 //	no_hair = TRUE		//Pyotr from Hunter the Parenting had hair and it didn't go out of place in the setting. I'll do limited hairstyles
 	no_facial = TRUE
-	clane_disciplines = list(/datum/discipline/animalism = 1,
-														/datum/discipline/potence = 2,
-														/datum/discipline/obfuscate = 3)
-	haircuts = list("Bald",
-									"Pyotr",
-									"Balding Hair",
-									"Boddicker",
-									"Feather",
-									"Gelled Back",
-									"Cornrows",
-									"Cornrows 2",
-									"Cornrow Bun",
-									"Cornrow Braid",
-									"Cornrow Tail")
+	clane_disciplines = list(
+		/datum/discipline/animalism = 1,
+		/datum/discipline/potence = 2,
+		/datum/discipline/obfuscate = 3
+	)
+	haircuts = list(
+		"Bald",
+		"Pyotr",
+		"Balding Hair",
+		"Boddicker",
+		"Feather",
+		"Gelled Back",
+		"Cornrows",
+		"Cornrows 2",
+		"Cornrow Bun",
+		"Cornrow Braid",
+		"Cornrow Tail"
+	)
 	violating_appearance = TRUE
 	male_clothes = "/obj/item/clothing/under/vampire/nosferatu"
 	female_clothes = "/obj/item/clothing/under/vampire/nosferatu/female"

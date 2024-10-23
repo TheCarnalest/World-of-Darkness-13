@@ -4,14 +4,11 @@
 	r_pocket = /obj/item/flashlight
 	id = /obj/item/cockclock
 	shoes = /obj/item/clothing/shoes/vampire/jackboots
-//	l_pocket = /obj/item/vamp/keys/church
 	backpack_contents = list(
-//		/obj/item/storage/book/bible = 1,
-//		/obj/item/vampire_stake = 3,
 		/obj/item/molotov = 1,
 		/obj/item/gas_can/full = 1,
 		/obj/item/vamp/keys/hack=1
-		)
+	)
 
 /datum/outfit/job/spiral/post_equip(mob/living/carbon/human/H)
 	..()

@@ -12,17 +12,23 @@
 //	var/list/gifts2 = list()
 //	var/list/gifts3 = list()
 
-	var/list/wendigo = list(/datum/action/gift/stoic_pose = 1,
-							/datum/action/gift/freezing_wind = 2,
-							/datum/action/gift/bloody_feast = 3)
+	var/list/wendigo = list(
+		/datum/action/gift/stoic_pose = 1,
+		/datum/action/gift/freezing_wind = 2,
+		/datum/action/gift/bloody_feast = 3
+	)
 
-	var/list/glasswalker = list(/datum/action/gift/smooth_move = 1,
-								/datum/action/gift/digital_feelings = 2,
-								/datum/action/gift/elemental_improvement = 3)
+	var/list/glasswalker = list(
+		/datum/action/gift/smooth_move = 1,
+		/datum/action/gift/digital_feelings = 2,
+		/datum/action/gift/elemental_improvement = 3
+	)
 
-	var/list/spiral = list(/datum/action/gift/stinky_fur = 1,
-							/datum/action/gift/venom_claws = 2,
-							/datum/action/gift/burning_scars = 3)
+	var/list/spiral = list(
+		/datum/action/gift/stinky_fur = 1,
+		/datum/action/gift/venom_claws = 2,
+		/datum/action/gift/burning_scars = 3
+	)
 
 /datum/auspice/proc/on_gain(var/mob/living/carbon/C)
 	C.update_rage_hud()
