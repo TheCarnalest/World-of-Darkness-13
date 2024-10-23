@@ -140,7 +140,7 @@ SUBSYSTEM_DEF(beastmastering)
 			ClickOn(targa)
 	else
 		if(follow && isturf(beastmaster.loc))
-			if(z != beastmaster.z)
+			if( (z != beastmaster.z) & (get_dist(beastmaster.loc, loc) <= 10) )
 				forceMove(get_turf(beastmaster))
 			else
 				var/reqsteps = round((SSbeastmastering.next_fire-world.time)/totalshit)
