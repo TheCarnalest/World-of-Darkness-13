@@ -1164,51 +1164,34 @@
     if(above_turf && istype(above_turf, /turf/open/openspace))
         to_chat(src, "<span class='notice'>You start climbing up...</span>")
 
+        var/result = do_after(src, 10, 0)
+        if(!result)
+            to_chat(src, "<span class='warning'>You were interrupted and failed to climb up.</span>")
+            return
+
         var/initial_x = x
         var/initial_y = y
         var/initial_z = z
 
         // Adjust pixel_x and pixel_y based on the direction
-        var/direction = get_dir(src, above_turf)
-        var/pixel_shift_x = 0
-        var/pixel_shift_y = 0
+        // spawn(20)
+        if(x != initial_x || y != initial_y || z != initial_z)
+            to_chat(src, "<span class='warning'>You moved and failed to climb up.</span>")
+            // Reset pixel offsets
+            return
 
-        if (direction & NORTH)
-            pixel_shift_y = -16
-        if (direction & SOUTH)
-            pixel_shift_y = 16
-        if (direction & EAST)
-            pixel_shift_x = 16
-        if (direction & WEST)
-            pixel_shift_x = -16
-
-        pixel_x += pixel_shift_x
-        pixel_y += pixel_shift_y
-
-        spawn(20)
-            if(x != initial_x || y != initial_y || z != initial_z)
-                to_chat(src, "<span class='warning'>You moved and failed to climb up.</span>")
-                // Reset pixel offsets
-                pixel_x = 0
-                pixel_y = 0
-                return
-
-            var/roll = rand(1, 20)
-            // var/physique = physique
-            if(roll + physique * 2 >= 15)
-                loc = above_turf
-                var/turf/forward_turf = get_step(loc, dir)
-                if(forward_turf && !forward_turf.density)
-                    forceMove(forward_turf)
-                    to_chat(src, "<span class='notice'>You climb up successfully.</span>")
-                    // Reset pixel offsets after climbing up
-                    pixel_x = 0
-                    pixel_y = 0
-            else
-                to_chat(src, "<span class='warning'>You fail to climb up.</span>")
-                // Reset pixel offsets if failed
-                pixel_x = 0
-                pixel_y = 0
+        var/roll = rand(1, 20)
+        // var/physique = physique
+        if(roll + physique * 2 >= 15)
+            loc = above_turf
+            var/turf/forward_turf = get_step(loc, dir)
+            if(forward_turf && !forward_turf.density)
+                forceMove(forward_turf)
+                to_chat(src, "<span class='notice'>You climb up successfully.</span>")
+                // Reset pixel offsets after climbing up
+        else
+            to_chat(src, "<span class='warning'>You fail to climb up.</span>")
+            // Reset pixel offsets if failed
 
     return
 
