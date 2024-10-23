@@ -718,7 +718,7 @@
 	last_dir = WEST
 	beep_sound = 'code/modules/wod13/sounds/migalka.ogg'
 	access = "police"
-	baggage_limit = 50
+	baggage_limit = 45
 	baggage_max = WEIGHT_CLASS_BULKY
 	var/color_blue = FALSE
 	var/last_color_change = 0
@@ -775,6 +775,7 @@
 /obj/vampire_car/track/ambulance
 	icon_state = "ambulance"
 	access = "clinic"
+	baggage_limit = 60
 
 /obj/effect/fari
 	invisibility = INVISIBILITY_ABSTRACT
