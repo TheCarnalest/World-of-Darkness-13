@@ -1,7 +1,3 @@
-/mob/living
-	var/elysium_checks = 0
-	var/bloodhunted = FALSE
-
 /atom/movable/screen/alert/bloodhunt
 	name = "Blood Hunt Is Going On"
 	icon_state = "bloodhunt"

@@ -302,9 +302,6 @@
 	update_icon()
 	return TRUE
 
-/mob/living
-	var/no_fire_delay = FALSE
-
 /obj/item/gun/proc/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
 	if(user)
 		SEND_SIGNAL(user, COMSIG_MOB_FIRED_GUN, user, target, params, zone_override)

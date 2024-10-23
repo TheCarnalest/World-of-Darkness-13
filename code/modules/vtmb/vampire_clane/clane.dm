@@ -1,5 +1,3 @@
-/mob/living/carbon/human
-	var/datum/vampireclane/clane
 //Additional game logic should be stored in the component
 GLOBAL_LIST_INIT(basic_disciplines, list(/datum/discipline/animalism)) //write here the main disciplines when I do them [Lucia] - god fucking damn it flavrius
 /*

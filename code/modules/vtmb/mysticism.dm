@@ -39,9 +39,6 @@
 	var/mystlevel = 1
 	var/sacrifice
 
-/mob/living
-	var/mysticism_knowledge = FALSE
-
 /obj/abyssrune/proc/complete()
 	return
 

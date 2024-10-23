@@ -18,9 +18,6 @@
 				return
 	..()
 
-/mob/living
-	var/frenzy_chance_boost = 10
-
 /mob/living/carbon/proc/rollfrenzy()
 	if(client)
 		var/mob/living/carbon/human/H
@@ -185,11 +182,6 @@
 					var/turf/T = get_step(loc, pick(NORTH, SOUTH, WEST, EAST))
 					face_atom(T)
 					Move(T)
-
-/mob/living/carbon/human
-	var/datum/job/JOB
-	var/roundstart_vampire = FALSE
-	var/last_loot_check = 0
 
 /datum/species/kindred/spec_life(mob/living/carbon/human/H)
 	. = ..()

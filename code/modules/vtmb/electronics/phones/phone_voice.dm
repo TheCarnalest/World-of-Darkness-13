@@ -13,6 +13,3 @@
 		language = get_selected_language()
 	send_speech(message, 2, src, , spans, message_language=language)
 //	speech_span = initial(speech_span)
-
-/mob/living/carbon/human
-	var/phonevoicetag = 10

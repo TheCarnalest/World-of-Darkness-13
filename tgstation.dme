@@ -3383,8 +3383,6 @@
 #include "code\modules\vtmb\werewolf\tribes.dm"
 #include "code\modules\wod13\ambient.dm"
 #include "code\modules\wod13\ammostack.dm"
-#include "code\modules\wod13\archetypes.dm"
-#include "code\modules\wod13\bkb.dm"
 #include "code\modules\wod13\blackout.dm"
 #include "code\modules\wod13\blinkdagger.dm"
 #include "code\modules\wod13\bloodsucking.dm"

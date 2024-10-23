@@ -1,6 +1,3 @@
-/mob/living
-	var/isfishing = FALSE
-
 /obj/item/food/fish
 	desc = "Marine life."
 	icon = 'code/modules/wod13/48x32weapons.dmi'

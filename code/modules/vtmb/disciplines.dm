@@ -34,10 +34,6 @@
 /datum/discipline/proc/post_gain(var/mob/living/carbon/human/H)
 	return
 
-/mob/living
-	var/resistant_to_disciplines = FALSE
-	var/auspex_examine = FALSE
-
 /atom/examine(mob/user)
 	. = ..()
 	if(ishuman(user))
@@ -511,9 +507,6 @@
 	activate_sound = 'code/modules/wod13/sounds/insanity.ogg'
 	clane_restricted = TRUE
 
-/mob/living
-	var/dancing = FALSE
-
 /proc/dancefirst(mob/living/M)
 	if(M.dancing)
 		return
@@ -757,9 +750,6 @@
 	activate_sound = 'code/modules/wod13/sounds/presence_activate.ogg'
 	leveldelay = FALSE
 	fearless = TRUE
-
-/mob/living/carbon/human
-	var/mob/living/caster
 
 /mob/living/carbon/human/proc/walk_to_caster()
 	walk(src, 0)
