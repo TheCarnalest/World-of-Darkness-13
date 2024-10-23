@@ -1208,6 +1208,37 @@
 
 	return
 
+/mob/living/carbon/human/proc/climb_down(turf/open/openspace/target_turf)
+    if(body_position != STANDING_UP)
+        return
+    to_chat(src, "<span class='notice'>You start climbing down...</span>")
+
+    var/result = do_after(src, 10, 0)
+    if(!result)
+        to_chat(src, "<span class='warning'>You were interrupted and failed to climb down.</span>")
+        return
+
+    var/initial_x = x
+    var/initial_y = y
+    var/initial_z = z
+
+    // Ensure the player hasn't moved during the action
+    if(x != initial_x || y != initial_y || z != initial_z)
+        to_chat(src, "<span class='warning'>You moved and failed to climb down.</span>")
+        return
+
+    if(target_turf && istype(target_turf, /turf/open/openspace))
+        var/turf/final_turf = locate(target_turf.x, target_turf.y, z - 1) // Find the turf directly below the open space
+        if(final_turf && final_turf.density == FALSE)
+            loc = final_turf // Move the player to the new turf one z-level down
+            to_chat(src, "<span class='notice'>You climb down successfully.</span>")
+        else
+            to_chat(src, "<span class='warning'>You fail to find a safe spot to climb down.</span>")
+    else
+        to_chat(src, "<span class='warning'>You fail to find a valid open space to climb down.</span>")
+
+    return
+
 /mob/living/carbon/human/buckle_mob(mob/living/target, force = FALSE, check_loc = TRUE, buckle_mob_flags= NONE)
 	if(!is_type_in_typecache(target, can_ride_typecache))
 		target.visible_message("<span class='warning'>[target] really can't seem to mount [src]...</span>")
