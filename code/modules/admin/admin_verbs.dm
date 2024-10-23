@@ -32,8 +32,10 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/game_panel,			/*game panel, allows to change game-mode etc*/
 	/client/proc/toggle_canon,
 	/client/proc/reward_exp,
+	/*
 	/client/proc/encipher_word,
 	/client/proc/uncipher_word,
+	*/
 	/client/proc/check_ai_laws,			/*shows AI and borg laws*/
 	/client/proc/ghost_pool_protection,	/*opens a menu for toggling ghost roles*/
 	/datum/admins/proc/toggleooc,		/*toggles ooc on/off for everyone*/
@@ -442,20 +444,18 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 /client/proc/toggle_canon()
 	set name = "TOGGLE CANON"
 	set category = "Admin"
-	var/cool_guy = FALSE
-	for(var/i in GLOB.psychokids)
-		if(i == "[ckey]")
-			cool_guy = TRUE
-	if(!cool_guy)
-		to_chat(src, "Alright, I decided I let that too far away. Admins gonna be restricted to harmful and lore-breaking shitspawn for canon rounds and who will disobey - will get banned same as player. Я решил что это зашло слишком далеко. Админам отныне запрещён любой вредный или лороразрушительный щитспавн в канонических раундах и кто будет нарушать это правило - будет забанен также как и игрок.")
-		return
 	GLOB.canon_event = !GLOB.canon_event
 	SEND_SOUND(world, sound('code/modules/wod13/sounds/canon.ogg'))
 	if(GLOB.canon_event)
-		to_chat(world, "<b>THE ROUND IS NOW CANON, PLEASE ROLEPLAY CORRECTLY</b>")
+		to_chat(world, "<b>THE ROUND IS NOW CANON. ALL ROLEPLAY AND ESCALATION RULES ARE IN EFFECT.</b>")
 	else
-		to_chat(world, "<b>THE ROUND IS NO MORE CANON, ANY PROGRESSION DEGRADING MECHANICS ARE NOW OFF</b>")
+		to_chat(world, "<b>THE ROUND IS NO LONGER CANON. DATA WILL NO LONGER SAVE, AND ROLEPLAY AND ESCALATION RULES ARE NO LONGER IN EFFECT.</b>")
+	message_admins("[ADMIN_LOOKUPFLW(usr)] toggled the round's canonicity. The round is [GLOB.canon_event ? "now canon." : "no longer canon."]")
+	log_admin("[key_name_admin(usr)] toggled the round's canonicity. The round is [GLOB.canon_event ? "now canon." : "no longer canon."]")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Toggle Canon") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+//I dunno why this was here or what purpose it served
+/*
 /client/proc/encipher_word()
 	set name = "ENCRYPT WORD"
 	set category = "Admin"
@@ -473,9 +473,10 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 		var/pass = input("Letter shift:") as null|num
 		if(pass)
 			to_chat(src, "<b>[uncipher(word, pass)]</b>")
+*/
 
 /client/proc/reward_exp()
-	set name = "REWARD EXPERIENCE TO"
+	set name = "Reward Experience"
 	set category = "Admin"
 	var/list/explist = list()
 	for(var/client/C in GLOB.clients)
@@ -490,7 +491,9 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 					if("[C.ckey]" == "[exper]")
 						to_chat(C, "<b>You've been rewarded with [amount] experience points. Reason: \"[reason]\"</b>")
 						C.prefs.true_experience = max(0, C.prefs.true_experience+amount)
-						message_admins("[key_name_admin(usr)] REWARDED [exper] WITH [amount] EXPERIENCE POINTS. REASON: \"[reason]\".")
+						message_admins("[ADMIN_LOOKUPFLW(usr)] rewarded [exper] with [amount] experience points. Reason: [reason]")
+						log_admin("[key_name(usr)] rewarded [exper] with [amount] experience points. Reason: [reason]")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Reward Experience") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/poll_panel()
 	set name = "Server Poll Management"
