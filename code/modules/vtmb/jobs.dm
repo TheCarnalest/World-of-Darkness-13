@@ -322,7 +322,7 @@
 
 	v_duty = "A vile curse has gripped the dead of this city. You must keep the graveyard clean and the Masquerade intact."
 	minimal_masquerade = 0
-	experience_addition = 25
+	experience_addition = 15
 	minimal_age = 12
 	allowed_bloodlines = list("Daughters of Cacaphony", "Salubri", "Baali", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Tzimisce", "Lasombra", "Caitiff")
 
@@ -425,7 +425,7 @@
 	v_duty = "Clean up all traces of Masquerade violations as the Camarilla has instructed you to."
 	duty = "Keep the streets clean. The government does pay you much to keep your mouth shut about the things you see."
 	minimal_masquerade = 0
-	experience_addition = 25
+	experience_addition = 15
 	minimal_age = 12
 
 /datum/outfit/job/vjanitor
@@ -1630,6 +1630,7 @@
 	minimal_generation = 7	//Uncomment when players get exp enough
 
 	v_duty = "Offer your infinite knowledge to Prince of the City."
+	experience_addition = 20
 	minimal_masquerade = 5
 	my_contact_is_important = TRUE
 	known_contacts = list("Prince")
@@ -1680,6 +1681,7 @@
 	minimal_generation = 7	//Uncomment when players get exp enough
 
 	v_duty = "Offer your infinite knowledge to Prince of the City."
+	experience_addition = 20
 	minimal_masquerade = 5
 	my_contact_is_important = TRUE
 	known_contacts = list("Prince")
@@ -1726,6 +1728,7 @@
 	minimal_generation = 7	//Uncomment when players get exp enough
 
 	v_duty = "Offer your infinite knowledge to Prince of the City."
+	experience_addition = 20
 	minimal_masquerade = 5
 	my_contact_is_important = TRUE
 	known_contacts = list("Prince")
@@ -1772,6 +1775,7 @@
 	minimal_generation = 7	//Uncomment when players get exp enough
 
 	v_duty = "Offer your infinite knowledge to Prince of the City."
+	experience_addition = 20
 	minimal_masquerade = 5
 	my_contact_is_important = TRUE
 	known_contacts = list("Prince")
@@ -1820,6 +1824,7 @@
 	minimal_generation = 7	//Uncomment when players get exp enough
 
 	v_duty = "Offer your infinite knowledge to Prince of the City."
+	experience_addition = 20
 	minimal_masquerade = 5
 	my_contact_is_important = TRUE
 	known_contacts = list("Prince")
@@ -1958,6 +1963,7 @@
 	minimal_generation = 13
 
 	duty = "Make money, do drugs, fight law. Your hideout is the laundromat in Chinatown."
+	experience_addition = 10
 	minimal_masquerade = 0
 	my_contact_is_important = FALSE
 //	known_contacts = list("Investigator")
@@ -2009,6 +2015,7 @@
 	minimal_generation = 7
 
 	v_duty = "You are a Childe of the Voivode-in-Waiting, the ancient Tzimisce Elder who has rested beneath the Earth for an age longer than the city that now rests on their bones. Honor them in all your actions, and remember that you walk with their favor."
+	experience_addition = 20
 	minimal_masquerade = 2
 	my_contact_is_important = TRUE
 	known_contacts = list("Prince", "Baron", "Sheriff")
@@ -2051,6 +2058,7 @@
 	minimal_generation = 13	//Uncomment when players get exp enough
 
 	v_duty = "Whether you are of Voivode-in-Waiting's blood or if you've been honored, you are one of the Kin of the Voivode. Protect your Family, as your Family would protect you."
+	experience_addition = 15
 	minimal_masquerade = 2
 	my_contact_is_important = TRUE
 	known_contacts = list("Prince", "Baron", "Sheriff")
@@ -2098,6 +2106,7 @@
 	//minimal_generation = 7	//Uncomment when players get exp enough
 
 	duty = "You were born in servitude to the Master of the Manor: your father served the Voivode, as did his father. Now, you carry their blood, and with it their responsibilities."
+	experience_addition = 20
 	minimal_masquerade = 2
 	my_contact_is_important = FALSE
 	known_contacts = list("Prince", "Baron", "Sheriff")
