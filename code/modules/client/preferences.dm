@@ -2963,7 +2963,43 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("changeslot")
 					if(!load_character(text2num(href_list["num"])))
+						//"Reset all" code is copied here to ensure new characters do not copy stats from slot 1
+						slotlocked = 0
+						diablerist = 0
+						torpor_count = 0
+						generation_bonus = 0
+						discipline1level = 1
+						discipline2level = 1
+						discipline3level = 1
+						discipline4level = 1
+						physique = 1
+						mentality = 1
+						social = 1
+						lockpicking = 0
+						blood = 1
+						masquerade = initial(masquerade)
+						generation = initial(generation)
+						archetype = pick(subtypesof(/datum/archetype))
+						var/datum/archetype/A = new archetype()
+						physique = A.start_physique
+						mentality = A.start_mentality
+						social = A.start_social
+						blood = A.start_blood
+						qdel(clane)
+						clane = new /datum/vampireclane/brujah()
+						if(length(clane.clane_disciplines) >= 1)
+							discipline1type = clane.clane_disciplines[1]
+						if(length(clane.clane_disciplines) >= 2)
+							discipline2type = clane.clane_disciplines[2]
+						if(length(clane.clane_disciplines) >= 3)
+							discipline3type = clane.clane_disciplines[3]
+						discipline4type = null
+						humanity = clane.start_humanity
+						enlightement = clane.enlightement
+						random_species()
 						random_character()
+						body_model = rand(1, 3)
+						true_experience = 10
 						real_name = random_unique_name(gender)
 						save_character()
 
