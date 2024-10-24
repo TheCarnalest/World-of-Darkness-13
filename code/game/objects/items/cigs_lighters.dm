@@ -327,29 +327,35 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/clothing/mask/cigarette/space_cigarette
 	desc = "A Space Cigarette brand cigarette."
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	lung_harm = 0.1
 
 /obj/item/clothing/mask/cigarette/dromedary
 	desc = "A DromedaryCo brand cigarette. Contrary to popular belief, does not contain Calomel, but is reported to have a watery taste."
 	list_reagents = list(/datum/reagent/drug/nicotine = 13, /datum/reagent/water = 5) //camel has water
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	lung_harm = 0.1
 
 /obj/item/clothing/mask/cigarette/uplift
 	desc = "An Uplift Smooth brand cigarette. Smells refreshing."
 	list_reagents = list(/datum/reagent/drug/nicotine = 13, /datum/reagent/consumable/menthol = 5)
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	lung_harm = 0.1
 
 /obj/item/clothing/mask/cigarette/robust
 	desc = "A Robust brand cigarette."
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	lung_harm = 0.1
 
 /obj/item/clothing/mask/cigarette/robustgold
 	desc = "A Robust Gold brand cigarette."
 	list_reagents = list(/datum/reagent/drug/nicotine = 15, /datum/reagent/gold = 3) // Just enough to taste a hint of expensive metal.
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	lung_harm = 0.1
 
 /obj/item/clothing/mask/cigarette/carp
 	desc = "A Carp Classic brand cigarette. A small label on its side indicates that it does NOT contain carpotoxin."
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	lung_harm = 0.1
 
 /obj/item/clothing/mask/cigarette/syndicate
 	desc = "An unknown brand cigarette."
@@ -358,16 +364,19 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	smoke_all = TRUE
 	list_reagents = list(/datum/reagent/drug/nicotine = 10, /datum/reagent/medicine/omnizine = 15)
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	lung_harm = 0
 
 /obj/item/clothing/mask/cigarette/shadyjims
 	desc = "A Shady Jim's Super Slims cigarette."
 	list_reagents = list(/datum/reagent/drug/nicotine = 15, /datum/reagent/toxin/plantbgone = 1, /datum/reagent/toxin = 1.5)
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	lung_harm = 0.1
 
 /obj/item/clothing/mask/cigarette/xeno
 	desc = "A Xeno Filtered brand cigarette."
 	list_reagents = list (/datum/reagent/drug/nicotine = 20, /datum/reagent/medicine/omnizine = 15)
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	lung_harm = 0.1
 
 // Rollies.
 
@@ -384,6 +393,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	chem_volume = 50
 	list_reagents = null
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	lung_harm = 0.1
 
 /obj/item/clothing/mask/cigarette/rollie/Initialize()
 	. = ..()
@@ -454,12 +464,14 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	icon_state = "candyoff"
 	type_butt = /obj/item/food/candy_trash
 	list_reagents = list(/datum/reagent/consumable/sugar = 10, /datum/reagent/consumable/caramel = 10)
+	lung_harm = 0 //There's not even nicotine in this?
 
 /obj/item/clothing/mask/cigarette/candy/nicotine
 	desc = "For all ages*! Doesn't contain any* amount of nicotine. Health and safety risks can be read on the tip of the cigarette."
 	type_butt = /obj/item/food/candy_trash/nicotine
 	list_reagents = list(/datum/reagent/consumable/sugar = 10, /datum/reagent/consumable/caramel = 10, /datum/reagent/drug/nicotine = 20) //oh no!
 	smoke_all = TRUE //timmy's not getting out of this one
+	lung_harm = 0.1
 
 /obj/item/cigbutt/roach
 	name = "roach"
@@ -487,6 +499,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	smoketime = 11 * 60
 	chem_volume = 40
 	list_reagents = list(/datum/reagent/drug/nicotine = 25)
+	lung_harm = 0.2
 
 /obj/item/clothing/mask/cigarette/cigar/cohiba
 	name = "\improper Cohiba Robusto cigar"
@@ -535,6 +548,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	smoketime = 0
 	chem_volume = 100
 	list_reagents = null
+	lung_harm = 0.1
 	var/packeditem = FALSE
 
 /obj/item/clothing/mask/cigarette/pipe/Initialize()
