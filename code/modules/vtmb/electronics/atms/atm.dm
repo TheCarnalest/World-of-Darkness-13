@@ -13,16 +13,21 @@
 	layer = CAR_LAYER
 	anchored = TRUE
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF
+	var/logged_in = FALSE
 
 	var/atm_balance = 0
+	var/obj/item/vamp/creditcard/current_card = null
 
 /datum/bank_account
+	var/account_owner = ""
 	var/id
 	var/balance = 0
 	var/code = ""
+	var/list/credit_cards = list()
 
 /datum/bank_account/New()
 	..()
+	account_owner = newname
 	if(!code || code == "")
 		code = create_bank_code()
 		GLOB.atm_account_list += src
@@ -72,7 +77,7 @@
 
 /obj/machinery/vamp/atm/Initialize()
 	..()
-/*
+
 /obj/machinery/vamp/atm/attackby(obj/item/W, mob/user)
 	var/obj/item/vamp/creditcard/card = null
 	var/obj/item/stack/dollar/cash = null
@@ -128,11 +133,20 @@
 					to_chat(user, "<span class='notice'>Transaction cancelled.</span>")
 		else
 			to_chat(user, "<span class='notice'>Invalid code.</span>")
-*/
 
+/*
 /obj/machinery/vamp/atm/attack_hand(mob/user)
 	.=..()
 	ui_interact(user)
+
+/obj/machinery/vamp/atm/attackby(obj/item/W, mob/user)
+	if(istype(W, /obj/item/vamp/creditcard))
+		inserted_card = W
+		to_chat(user, "<span class='notice'>Card inserted into ATM.</span>")
+		user.ui_interact(src)
+		return
+	else
+		return
 
 /obj/machinery/vamp/atm/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -152,8 +166,18 @@
 	if(.)
 		return
 
+	switch(action)
+		if("login")
+			var/input_code = input(usr, "Enter your code:", "ATM access")
+			if(input_code == inserted_card.account.code)
+				to_chat(usr, "<span class='notice'>Access granted.</span>")
+				logged_in = TRUE
+			else
+				to_chat(usr, "<span class='notice'>Invalid PIN Code.</span>")
+				logged_in = FALSE
 
 
 /obj/machinery/vamp/atm/attack_hand(mob/user)
 	.=..()
 	ui_interact(user)
+*/
