@@ -213,7 +213,6 @@
 	v_duty = "You are the right hand man or woman of the most powerful vampire in the city. The Camarilla trusts you to run the city, even in their stead."
 	duty = "You are the right hand man or woman of the most powerful vampire in the city. The Camarilla trusts you to run the city, even in their stead."
 	experience_addition = 15
-	minimal_age = 12
 	allowed_bloodlines = list("Daughters of Cacaphony", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Lasombra")
 
 /datum/outfit/job/clerk
@@ -322,7 +321,6 @@
 	v_duty = "A vile curse has gripped the dead of this city. You must keep the graveyard clean and the Masquerade intact."
 	minimal_masquerade = 0
 	experience_addition = 15
-	minimal_age = 12
 	allowed_bloodlines = list("Daughters of Cacaphony", "Salubri", "Baali", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Tzimisce", "Lasombra", "Caitiff")
 
 /datum/outfit/job/graveyard
@@ -425,7 +423,6 @@
 	duty = "Keep the streets clean. The government does pay you much to keep your mouth shut about the things you see."
 	minimal_masquerade = 0
 	experience_addition = 15
-	minimal_age = 12
 
 /datum/outfit/job/vjanitor
 	name = "Street Janitor"
@@ -518,7 +515,6 @@
 	kindred_only = TRUE
 	allowed_bloodlines = list("Tremere")
 	experience_addition = 15
-	minimal_age = 12
 
 /datum/outfit/job/archivist
 	name = "Archivist"
@@ -731,7 +727,6 @@
 	duty = "Though your boss is odd and only works late night hours, they pay you well enough that you avoid questioning it."
 	minimal_masquerade = 2
 	experience_addition = 15
-	minimal_age = 12
 
 /datum/outfit/job/supply
 	name = "Supply Technician"
@@ -780,7 +775,6 @@
 	v_duty = "Follow the traditions of the Camarilla. Obey the Prince and their authority. The city belongs to him. Aligning yourself with your clan members would be of benefit."
 	duty = "Obey the authorities... Or don't. You are up late tonight for one reason or another."
 	minimal_masquerade = 0
-	minimal_age = 12
 	allowed_bloodlines = list("Daughters of Cacaphony", "Salubri", "Baali", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Tzimisce", "Lasombra", "Caitiff", "Old Clan Tzimisce")
 
 /datum/outfit/job/citizen
@@ -1438,7 +1432,6 @@
 	experience_addition = 10
 	kindred_only = TRUE
 	allowed_bloodlines = list("Giovanni")
-	minimal_age = 12
 
 /datum/outfit/job/giovanni
 	name = "Giovanni Member"
@@ -1633,7 +1626,6 @@
 	minimal_masquerade = 5
 	my_contact_is_important = TRUE
 	known_contacts = list("Prince")
-	minimal_age = 12
 
 /datum/outfit/job/malkav
 	name = "Primogen Malkavian"
@@ -1684,7 +1676,6 @@
 	minimal_masquerade = 5
 	my_contact_is_important = TRUE
 	known_contacts = list("Prince")
-	minimal_age = 12
 
 /datum/outfit/job/nosferatu
 	name = "Primogen Nosferatu"
@@ -1731,7 +1722,6 @@
 	minimal_masquerade = 5
 	my_contact_is_important = TRUE
 	known_contacts = list("Prince")
-	minimal_age = 12
 
 /datum/outfit/job/ventrue
 	name = "Primogen Ventrue"
@@ -1778,7 +1768,6 @@
 	minimal_masquerade = 5
 	my_contact_is_important = TRUE
 	known_contacts = list("Prince")
-	minimal_age = 12
 
 /datum/outfit/job/toreador
 	name = "Primogen Toreador"
@@ -1827,7 +1816,6 @@
 	minimal_masquerade = 5
 	my_contact_is_important = TRUE
 	known_contacts = list("Prince")
-	minimal_age = 12
 
 /datum/outfit/job/brujah
 	name = "Primogen Brujah"
@@ -1872,7 +1860,6 @@
 	minimal_masquerade = 0
 	my_contact_is_important = FALSE
 //	known_contacts = list("Investigator")
-	minimal_age = 12
 
 /datum/outfit/job/police_officer
 	name = "Police Officer"
@@ -1919,7 +1906,6 @@
 	minimal_masquerade = 0
 	my_contact_is_important = FALSE
 //	known_contacts = list("Investigator")
-	minimal_age = 12
 
 /datum/outfit/job/fbi
 	name = "Federal Investigator"
@@ -1966,7 +1952,6 @@
 	minimal_masquerade = 0
 	my_contact_is_important = FALSE
 //	known_contacts = list("Investigator")
-	minimal_age = 12
 
 /datum/outfit/job/triad_soldier/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -2018,7 +2003,6 @@
 	minimal_masquerade = 2
 	my_contact_is_important = TRUE
 	known_contacts = list("Prince", "Baron", "Sheriff")
-	minimal_age = 10
 
 
 
@@ -2061,7 +2045,6 @@
 	minimal_masquerade = 2
 	my_contact_is_important = TRUE
 	known_contacts = list("Prince", "Baron", "Sheriff")
-	minimal_age = 10
 
 /datum/outfit/job/bogatyr/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -2109,7 +2092,7 @@
 	minimal_masquerade = 2
 	my_contact_is_important = FALSE
 	known_contacts = list("Prince", "Baron", "Sheriff")
-	minimal_age = 13
+
 
 
 
