@@ -319,8 +319,6 @@
 		return JOB_UNAVAILABLE_GENERATION
 	if(client.prefs.masquerade < job.minimal_masquerade)
 		return JOB_UNAVAILABLE_MASQUERADE
-	if(client.prefs.age < job.minimal_age)
-		return JOB_UNAVAILABLE_AGE
 	if(job.kindred_only)
 		if(client.prefs.pref_species.name != "Vampire")
 			return JOB_UNAVAILABLE_SPECIES
