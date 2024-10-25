@@ -365,11 +365,17 @@
 /datum/movespeed_modifier/celerity5
 	multiplicative_slowdown = -1.5
 
+/datum/movespeed_modifier/temporis5
+	multiplicative_slowdown = -2.5
+
 /datum/movespeed_modifier/wing
 	multiplicative_slowdown = -0.25
 
 /datum/movespeed_modifier/dominate
 	multiplicative_slowdown = 5
+
+/datum/movespeed_modifier/temporis
+	multiplicative_slowdown = 7.5
 
 /datum/discipline/celerity/activate(mob/living/target, mob/living/carbon/human/caster)
 	. = ..()
@@ -1704,6 +1710,34 @@
 	activate_sound = 'code/modules/wod13/sounds/temporis.ogg'
 	clane_restricted = TRUE
 	dead_restricted = FALSE
+	var/current_cycle = 0
+
+#define TEMPORIS_ATTACK_SPEED_MODIFIER 0.25
+
+/mob/living/carbon
+	var/temporis_visual = FALSE
+
+/obj/effect/temporis
+	name = "Za Warudo"
+	desc = "..."
+	anchored = 1
+
+/obj/effect/temporis/Initialize()
+	. = ..()
+	spawn(5)
+		qdel(src)
+
+
+/mob/living/carbon/human/Move(atom/newloc, direct, glide_size_override)
+	..()
+	if(temporis_visual)
+		var/obj/effect/temporis/T = new(loc)
+		T.name = name
+		T.appearance = appearance
+		T.dir = dir
+		animate(T, pixel_x = rand(-32,32), pixel_y = rand(-32,32), alpha = 0, time = 10, easing = SINE_EASING|EASE_IN|EASE_OUT)
+		if(CheckEyewitness(src, src, 7, FALSE))
+			AdjustMasquerade(-1)
 
 /datum/discipline/temporis/activate(mob/living/target, mob/living/carbon/human/caster)
 	. = ..()
@@ -1711,37 +1745,42 @@
 		if(1)
 			to_chat(caster, "<b>[SScity_time.timeofnight]</b>")
 		if(2)
-			if(target.hud_used)
-				if(current_cycle >= 20 && current_cycle%20 == 0)
-					var/matrix/Z = matrix(Z.Scale(-1, 1)) //horizontal flip
-					var/list/screens = list(Z.hud_used.plane_masters["[FLOOR_PLANE]"], Z.hud_used.plane_masters["[GAME_PLANE]"], Z.hud_used.plane_masters["[LIGHTING_PLANE]"])
-					for(var/whole_screen in screens)
-						animate(whole_screen, transform = matrix()*2, alpha = 0, time = 50, easing = JUMP_EASING|EASE_IN|EASE_OUT, loop = -1)
-						animate(src, transform = Z, time = 50, loop = 5, easing = SINE_EASING)
-			return ..()
-		if(3)
-			if(current_beam)
-				qdel(current_beam)
-			caster.Beam(target, icon_state="sm_arc", time = 50, maxdistance = 9, beam_type = /obj/effect/ebeam/medical)
-			target.adjustBruteLoss(-50, TRUE)
 			if(ishuman(target))
-				var/mob/living/carbon/human/H = target
-				if(length(H.all_wounds))
-					var/datum/wound/W = pick(H.all_wounds)
-					W.remove_wound()
-			target.adjustFireLoss(-50, TRUE)
-			target.update_damage_overlays()
-			target.update_health_hud()
+				var/mob/living/carbon/human/M = target
+				if(M.hud_used)
+					if(current_cycle >= 20 && current_cycle%20 == 0)
+						var/list/screens = list(M.hud_used.plane_masters["[FLOOR_PLANE]"], M.hud_used.plane_masters["[GAME_PLANE]"], M.hud_used.plane_masters["[LIGHTING_PLANE]"])
+						var/rotation = min(round(current_cycle/20), 89) // By this point the player is probably puking and quitting anyway
+						for(var/whole_screen in screens)
+							animate(whole_screen, transform = matrix(rotation, MATRIX_ROTATE), time = 5, easing = QUAD_EASING, loop = -1)
+							animate(transform = matrix(-rotation, MATRIX_ROTATE), time = 5, easing = QUAD_EASING)
+				return ..()
+			spawn(8 SECONDS)
+				if(ishuman(target))
+					var/mob/living/carbon/human/M = target
+					if(M?.hud_used)
+						var/list/screens = list(M.hud_used.plane_masters["[FLOOR_PLANE]"], M.hud_used.plane_masters["[GAME_PLANE]"], M.hud_used.plane_masters["[LIGHTING_PLANE]"])
+						for(var/whole_screen in screens)
+							animate(whole_screen, transform = matrix(), time = 5, easing = QUAD_EASING)
+				..()
+		if(3)
+			to_chat(target, "<span class='userdanger'><b>Slow down.</b></span>")
+			target.add_movespeed_modifier(/datum/movespeed_modifier/temporis)
+			spawn(10 SECONDS)
+				if(target)
+					target.remove_movespeed_modifier(/datum/movespeed_modifier/temporis)
 		if(4)
-			if(iskindred(target) || isghoul(target))
-				if(current_beam)
-					qdel(current_beam)
-				caster.Beam(target, icon_state="sm_arc", time = 50, maxdistance = 9, beam_type = /obj/effect/ebeam/medical)
-				target.bloodpool = 0
-				target.update_blood_hud()
+			caster.temporis_visual = TRUE
+			spawn(15 SECONDS)
+				if(target)
+					caster.temporis_visual = FALSE
 		if(5)
-			if(current_beam)
-				qdel(current_beam)
-			caster.Beam(target, icon_state="sm_arc", time = 50, maxdistance = 9, beam_type = /obj/effect/ebeam/medical)
-			if(target.revive(full_heal = TRUE, admin_revive = TRUE))
-				target.grab_ghost(force = TRUE)
+			caster.add_movespeed_modifier(/datum/movespeed_modifier/temporis5)
+			caster.no_fire_delay = TRUE
+			caster.next_move_modifier *= TEMPORIS_ATTACK_SPEED_MODIFIER
+			spawn(15 SECONDS)
+				if(caster)
+					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/temporis end.ogg', 50, FALSE)
+					caster.remove_movespeed_modifier(/datum/movespeed_modifier/temporis5)
+					caster.no_fire_delay = FALSE
+					caster.next_move_modifier /= TEMPORIS_ATTACK_SPEED_MODIFIER

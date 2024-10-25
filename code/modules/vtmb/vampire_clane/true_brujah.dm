@@ -9,3 +9,20 @@
 	enlightement = TRUE
 	male_clothes = "/obj/item/clothing/under/vampire/sport"
 	female_clothes = "/obj/item/clothing/under/vampire/red"
+
+/datum/discipline/temporis/post_gain(mob/living/carbon/human/H)
+	if(level >= 1)
+		var/datum/action/clock/clocke = new()
+		clocke.Grant(H)
+
+
+/datum/action/clock
+	name = "Check Time"
+	desc = "Telling the time is easy when you're True Brujah."
+	button_icon_state = "clock2"
+	check_flags = AB_CHECK_CONSCIOUS
+	vampiric = TRUE
+
+/datum/action/clock/Trigger()
+	. = ..()
+	to_chat(usr, "<b>[SScity_time.timeofnight]</b>")

@@ -270,7 +270,7 @@
 	v_duty = "You are the Prince's enforcer. You report to the sheriff and uphold the Traditions."
 	minimal_masquerade = 4
 	experience_addition = 10
-	allowed_bloodlines = list("Daughters of Cacaphony", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Lasombra")
+	allowed_bloodlines = list("True Brujah", "Daughters of Cacaphony", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Lasombra")
 
 /datum/outfit/job/agent
 	name = "Scourge"
@@ -324,7 +324,7 @@
 	minimal_masquerade = 0
 	experience_addition = 25
 	minimal_age = 12
-	allowed_bloodlines = list("Daughters of Cacaphony", "Salubri", "Baali", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Tzimisce", "Lasombra", "Caitiff")
+	allowed_bloodlines = list("True Brujah", "Daughters of Cacaphony", "Salubri", "Baali", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Tzimisce", "Lasombra", "Caitiff")
 
 /datum/outfit/job/graveyard
 	name = "Graveyard Keeper"
@@ -375,7 +375,7 @@
 	v_duty = "Help your fellow kindred in all matters medicine related. Sell blood. Keep your human colleagues ignorant."
 	duty = "Collect blood by helping mortals at the Clinic."
 	experience_addition = 15
-	allowed_bloodlines = list("Daughters of Cacaphony", "Salubri", "Baali", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Tzimisce", "Lasombra", "Caitiff")
+	allowed_bloodlines = list("True Brujah", "Daughters of Cacaphony", "Salubri", "Baali", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Tzimisce", "Lasombra", "Caitiff")
 
 /datum/outfit/job/vdoctor
 	name = "Doctor"
@@ -420,7 +420,7 @@
 	humans_accessible = TRUE
 
 	display_order = JOB_DISPLAY_ORDER_STREETJAN
-	allowed_bloodlines = list("Daughters of Cacaphony", "Salubri", "Baali", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Tzimisce", "Lasombra", "Caitiff")
+	allowed_bloodlines = list("True Brujah", "Daughters of Cacaphony", "Salubri", "Baali", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Tzimisce", "Lasombra", "Caitiff")
 
 	v_duty = "Clean up all traces of Masquerade violations as the Camarilla has instructed you to."
 	duty = "Keep the streets clean. The government does pay you much to keep your mouth shut about the things you see."
@@ -677,7 +677,7 @@
 
 	my_contact_is_important = TRUE
 	known_contacts = list("Baron", "Prince", "Sheriff")
-	allowed_bloodlines = list("Brujah", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Tzimisce", "Caitiff", "Ventrue", "Ministry")
+	allowed_bloodlines = list("True Brujah", "Brujah", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Tzimisce", "Caitiff", "Ventrue", "Ministry")
 
 	v_duty = "You provide supplies to other kindred. The warehouse is yours, and it's your business who you'll deal with."
 	minimal_masquerade = 3
@@ -782,7 +782,7 @@
 	duty = "Obey the authorities... Or don't. You are up late tonight for one reason or another."
 	minimal_masquerade = 0
 	minimal_age = 12
-	allowed_bloodlines = list("Daughters of Cacaphony", "Salubri", "Baali", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Tzimisce", "Lasombra", "Caitiff", "Old Clan Tzimisce")
+	allowed_bloodlines = list("True Brujah", "Daughters of Cacaphony", "Salubri", "Baali", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Tzimisce", "Lasombra", "Caitiff", "Old Clan Tzimisce")
 
 /datum/outfit/job/citizen
 	name = "Citizen"
@@ -1490,7 +1490,7 @@
 	duty = "Drive people in the city."
 	minimal_masquerade = 0
 	experience_addition = 10
-	allowed_bloodlines = list("Daughters of Cacaphony", "Salubri", "Baali", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Tzimisce", "Lasombra", "Caitiff")
+	allowed_bloodlines = list("True Brujah", "Daughters of Cacaphony", "Salubri", "Baali", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Tzimisce", "Lasombra", "Caitiff")
 
 /datum/job/vamp/taxi/after_spawn(mob/living/H, mob/M, latejoin = FALSE)
 	..()
