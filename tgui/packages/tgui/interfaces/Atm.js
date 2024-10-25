@@ -2,7 +2,7 @@ import { useBackend } from "../backend";
 import { Box, Button, Section, TextInput, NoticeBox, NumberInput } from "../components";
 import { Window } from "../layouts";
 
-export const ATM = (props, context) => {
+export const Atm = (props, context) => {
   const { act, data } = useBackend(context);
   const { atmBalance, cardBalance } = data;
 
