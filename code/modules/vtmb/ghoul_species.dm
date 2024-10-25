@@ -301,14 +301,6 @@
 						to_chat(H, "<span class='warning'>You feel the rage rising as your last sins come to your head...</span>")
 						H.drop_all_held_items()
 						H.emote("scream")
-		if(last_vitae+3000 < world.time)
-			last_vitae = world.time
-			if(H.bloodpool > 1)
-				H.bloodpool = max(1, H.bloodpool-1)
-			else
-				if(prob(20))
-					to_chat(H, "<span class='userdanger'><b>I THIRST FOR BLOOD!</b></span>")
-					H.Stun(10)
 
 /mob/living
 	var/last_bloodpool_restore = 0
