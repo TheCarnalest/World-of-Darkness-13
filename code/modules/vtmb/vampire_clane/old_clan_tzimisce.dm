@@ -5,9 +5,11 @@
 //	alt_sprite = "tzi"
 //	no_hair = TRUE
 //	no_facial = TRUE	//FUCK WRONG RULEBOOK
-	clane_disciplines = list(/datum/discipline/auspex = 1,
-														/datum/discipline/animalism = 2,
-														/datum/discipline/dominate = 3)
+	clane_disciplines = list(
+		/datum/discipline/auspex = 1,
+		/datum/discipline/animalism = 2,
+		/datum/discipline/dominate = 3
+	)
 	violating_appearance = FALSE
 	male_clothes = "/obj/item/clothing/under/vampire/sport"
 	female_clothes = "/obj/item/clothing/under/vampire/red"

@@ -55,10 +55,45 @@
 		if(istype(mover) && (mover.pass_flags & PASSTABLE))
 			return TRUE
 
-/turf/closed/wall/vampwall/attack_hand(mob/user)
-	return
 /turf/closed/wall/vampwall/attackby(obj/item/W, mob/user, params)
 	return
+
+/turf/closed/wall/vampwall/attack_hand(mob/user)
+	return
+
+/*/turf/closed/wall/vampwall/attack_hand(mob/user)
+	if(ismob(user))
+		var/mob/living/carbon/human/H = user
+
+		var/new_z = H.z + 1
+		var/turf/above_turf = locate(H.x, H.y, new_z)
+		if(H.body_position != STANDING_UP)
+			return
+		if(above_turf && istype(above_turf, /turf/open/openspace))
+			to_chat(H, "<span class='notice'>You start climbing up...")
+
+			var/initial_x = H.x
+			var/initial_y = H.y
+			var/initial_z = H.z
+
+			spawn(20)
+				if(H.x != initial_x || H.y != initial_y || H.z != initial_z)
+					return
+
+				var/roll = rand(1, 20)
+				var/physique = H.physique
+				if(roll + physique*2 >= 15)
+					H.loc = above_turf
+					var/turf/forward_turf = get_step(H.loc, H.dir)
+					if(forward_turf && !forward_turf.density)
+						H.forceMove(forward_turf)
+						to_chat(H, "<span class='notice'>You climb up.</span>")
+				else
+					to_chat(user, ("<span class='warning'>You fail to climb up.</span>"))
+	else
+		return
+*/
+
 /turf/closed/wall/vampwall/ex_act(severity, target)
 	return
 
