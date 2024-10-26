@@ -47,8 +47,8 @@
 	visuals.icon = icon
 	visuals.icon_state = icon_state
 	Draw()
-	RegisterSignal(origin, COMSIG_MOVABLE_MOVED, .proc/redrawing)
-	RegisterSignal(target, COMSIG_MOVABLE_MOVED, .proc/redrawing)
+	RegisterSignal(origin, COMSIG_MOVABLE_MOVED, PROC_REF(redrawing))
+	RegisterSignal(target, COMSIG_MOVABLE_MOVED, PROC_REF(redrawing))
 
 /**
  * Triggered by signals set up when the beam is set up. If it's still sane to create a beam, it removes the old beam, creates a new one. Otherwise it kills the beam.

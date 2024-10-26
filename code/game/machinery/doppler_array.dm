@@ -19,8 +19,8 @@
 
 /obj/machinery/doppler_array/Initialize()
 	. = ..()
-	RegisterSignal(SSdcs, COMSIG_GLOB_EXPLOSION, .proc/sense_explosion)
-	RegisterSignal(src, COMSIG_MOVABLE_SET_ANCHORED, .proc/power_change)
+	RegisterSignal(SSdcs, COMSIG_GLOB_EXPLOSION, PROC_REF(sense_explosion))
+	RegisterSignal(src, COMSIG_MOVABLE_SET_ANCHORED, PROC_REF(power_change))
 	printer_ready = world.time + PRINTER_TIMEOUT
 
 /obj/machinery/doppler_array/ComponentInitialize()

@@ -39,16 +39,16 @@
 			if(DICE_FAILURE)
 				enter_frenzymod()
 				if(iskindred(src))
-					addtimer(CALLBACK(src, .proc/exit_frenzymod), 100*H.clane.frenzymod)
+					addtimer(CALLBACK(src, PROC_REF(exit_frenzymod)), 100*H.clane.frenzymod)
 				else
-					addtimer(CALLBACK(src, .proc/exit_frenzymod), 100)
+					addtimer(CALLBACK(src, PROC_REF(exit_frenzymod)), 100)
 				frenzy_hardness = 1
 			if(DICE_CRIT_FAILURE)
 				enter_frenzymod()
 				if(iskindred(src))
-					addtimer(CALLBACK(src, .proc/exit_frenzymod), 200*H.clane.frenzymod)
+					addtimer(CALLBACK(src, PROC_REF(exit_frenzymod)), 200*H.clane.frenzymod)
 				else
-					addtimer(CALLBACK(src, .proc/exit_frenzymod), 200)
+					addtimer(CALLBACK(src, PROC_REF(exit_frenzymod)), 200)
 				frenzy_hardness = 1
 			if(DICE_CRIT_WIN)
 				frenzy_hardness = max(1, frenzy_hardness-1)

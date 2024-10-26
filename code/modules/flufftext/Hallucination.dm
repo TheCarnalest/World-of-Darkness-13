@@ -50,7 +50,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	natural = !forced
 
 	// Cancel early if the target is deleted
-	RegisterSignal(target, COMSIG_PARENT_QDELETING, .proc/target_deleting)
+	RegisterSignal(target, COMSIG_PARENT_QDELETING, PROC_REF(target_deleting))
 
 /datum/hallucination/proc/target_deleting()
 	SIGNAL_HANDLER
@@ -355,7 +355,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 		target.client.images |= fakerune
 	target.playsound_local(wall,'sound/effects/meteorimpact.ogg', 150, 1)
 	bubblegum = new(wall, target)
-	addtimer(CALLBACK(src, .proc/start_processing), 10)
+	addtimer(CALLBACK(src, PROC_REF(start_processing)), 10)
 
 /datum/hallucination/oh_yeah/proc/start_processing()
 	if (isnull(target))
@@ -607,7 +607,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 				A = image(image_file,H,"arm_blade", layer=ABOVE_MOB_LAYER)
 		if(target.client)
 			target.client.images |= A
-			addtimer(CALLBACK(src, .proc/cleanup, item, A, H), rand(15 SECONDS, 25 SECONDS))
+			addtimer(CALLBACK(src, PROC_REF(cleanup), item, A, H), rand(15 SECONDS, 25 SECONDS))
 			return
 	qdel(src)
 
@@ -1142,7 +1142,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 		if("charge")
 			target.throw_alert(alert_type, /atom/movable/screen/alert/emptycell, override = TRUE)
 
-	addtimer(CALLBACK(src, .proc/cleanup), duration)
+	addtimer(CALLBACK(src, PROC_REF(cleanup)), duration)
 
 /datum/hallucination/fake_alert/proc/cleanup()
 	target.clear_alert(alert_type, clear_override = TRUE)
@@ -1285,7 +1285,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 			return
 		to_chat(target, "<span class='userdanger'>You fall into the chasm!</span>")
 		target.Paralyze(40)
-		addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, target, "<span class='notice'>It's surprisingly shallow.</span>"), 15)
+		addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat), target, "<span class='notice'>It's surprisingly shallow.</span>"), 15)
 		QDEL_IN(src, 30)
 
 /obj/effect/hallucination/danger/anomaly
@@ -1336,10 +1336,10 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 			fakemob = target //ever been so lonely you had to haunt yourself?
 		if(fakemob)
 			delay = rand(20, 50)
-			addtimer(CALLBACK(GLOBAL_PROC, .proc/to_chat, target, "<span class='deadsay'><b>DEAD: [fakemob.name]</b> says, \"[pick("rip","why did i just drop dead?","hey [target.first_name()]","git gud","you too?","is the AI rogue?",\
+			addtimer(CALLBACK(GLOBAL_PROC, PROC_REF(to_chat), target, "<span class='deadsay'><b>DEAD: [fakemob.name]</b> says, \"[pick("rip","why did i just drop dead?","hey [target.first_name()]","git gud","you too?","is the AI rogue?",\
 				"i[prob(50)?" fucking":""] hate [pick("blood cult", "clock cult", "revenants", "this round","this","myself","admins","you")]")]\"</span>"), delay)
 
-	addtimer(CALLBACK(src, .proc/cleanup), delay + rand(70, 90))
+	addtimer(CALLBACK(src, PROC_REF(cleanup)), delay + rand(70, 90))
 
 /datum/hallucination/death/proc/cleanup()
 	if (target)
@@ -1372,7 +1372,7 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	to_chat(target, "<span class='userdanger'>You're set on fire!</span>")
 	target.throw_alert("fire", /atom/movable/screen/alert/fire, override = TRUE)
 	times_to_lower_stamina = rand(5, 10)
-	addtimer(CALLBACK(src, .proc/start_expanding), 20)
+	addtimer(CALLBACK(src, PROC_REF(start_expanding)), 20)
 
 /datum/hallucination/fire/Destroy()
 	. = ..()
@@ -1455,13 +1455,13 @@ GLOBAL_LIST_INIT(hallucination_list, list(
 	if(target.client)
 		target.client.images |= shock_image
 		target.client.images |= electrocution_skeleton_anim
-	addtimer(CALLBACK(src, .proc/reset_shock_animation), 40)
+	addtimer(CALLBACK(src, PROC_REF(reset_shock_animation)), 40)
 	target.playsound_local(get_turf(src), "sparks", 100, 1)
 	target.staminaloss += 50
 	target.Stun(40)
 	target.jitteriness += 1000
 	target.do_jitter_animation(target.jitteriness)
-	addtimer(CALLBACK(src, .proc/shock_drop), 20)
+	addtimer(CALLBACK(src, PROC_REF(shock_drop)), 20)
 
 /datum/hallucination/shock/proc/reset_shock_animation()
 	if(target.client)

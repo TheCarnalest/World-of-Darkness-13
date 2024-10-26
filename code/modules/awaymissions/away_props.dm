@@ -67,7 +67,7 @@
 
 /obj/structure/pitgrate/Initialize()
 	. = ..()
-	RegisterSignal(SSdcs,COMSIG_GLOB_BUTTON_PRESSED, .proc/OnButtonPressed)
+	RegisterSignal(SSdcs,COMSIG_GLOB_BUTTON_PRESSED, PROC_REF(OnButtonPressed))
 	if(hidden)
 		update_openspace()
 

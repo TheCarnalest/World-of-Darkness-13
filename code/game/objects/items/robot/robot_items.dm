@@ -366,7 +366,7 @@
 	if(charging)
 		return
 	if(candy < candymax)
-		addtimer(CALLBACK(src, .proc/charge_lollipops), charge_delay)
+		addtimer(CALLBACK(src, PROC_REF(charge_lollipops)), charge_delay)
 		charging = TRUE
 
 /obj/item/borg/lollipop/proc/charge_lollipops()
@@ -610,7 +610,7 @@
 	icon_state = "shield0"
 	START_PROCESSING(SSfastprocess, src)
 	host = loc
-	RegisterSignal(host, COMSIG_LIVING_DEATH, .proc/on_death)
+	RegisterSignal(host, COMSIG_LIVING_DEATH, PROC_REF(on_death))
 
 /obj/item/borg/projectile_dampen/proc/on_death(datum/source, gibbed)
 	SIGNAL_HANDLER
@@ -794,7 +794,7 @@
 
 /obj/item/borg/apparatus/Initialize()
 	. = ..()
-	RegisterSignal(loc.loc, COMSIG_BORG_SAFE_DECONSTRUCT, .proc/safedecon)
+	RegisterSignal(loc.loc, COMSIG_BORG_SAFE_DECONSTRUCT, PROC_REF(safedecon))
 
 /obj/item/borg/apparatus/Destroy()
 	if(stored)
