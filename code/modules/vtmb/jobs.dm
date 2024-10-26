@@ -9,6 +9,15 @@
 			for(var/obj/item/storage/backpack/B in H)
 				if(B)
 					HUN.forceMove(B)
+
+	var/obj/item/storage/backpack/b = locate() in H
+	if(b)
+		var/obj/item/vamp/creditcard/card = locate() in b.contents
+		if(card && card.has_checked == FALSE)
+			for(var/obj/item/vamp/creditcard/card in b.contents)
+				if(card)
+					H.bank_id = card.account.bank_id
+					card.has_checked = TRUE
 //CAMARILLA
 
 /datum/job/vamp/prince

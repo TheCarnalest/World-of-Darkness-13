@@ -20,18 +20,19 @@
 
 /datum/bank_account
 	var/account_owner = ""
-	var/id
+	var/bank_id = 0
 	var/balance = 0
 	var/code = ""
 	var/list/credit_cards = list()
 
+var/mob/living/carbon/human/H
 /datum/bank_account/New()
 	..()
-	account_owner = newname
 	if(!code || code == "")
 		code = create_bank_code()
-		GLOB.atm_account_list += src
-		GLOB.atm_code_list += code
+		var/random_id = rand(100000, 999999)
+		bank_id = random_id
+		GLOB.bank_account_list += src
 
 /obj/item/vamp/creditcard
 	name = "\improper credit card"
@@ -48,9 +49,11 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
 
+	var/owner = ""
 	var/datum/bank_account/account
 	var/code
 	var/balance = 0
+	var/has_checked = FALSE
 
 /obj/item/vamp/creditcard/prince
 	icon_state = "card2"
@@ -62,18 +65,20 @@
 
 /obj/item/vamp/creditcard/rich
 
-/obj/item/vamp/creditcard/New()
+/obj/item/vamp/creditcard/New(mob/user)
 	..()
 	if(!account || code == "")
 		account = new /datum/bank_account()
+	if(user)
+		owner = user.ckey
 	if(istype(src, /obj/item/vamp/creditcard/prince))
 		account.balance = rand(5000, 10000)
 	else if(istype(src, /obj/item/vamp/creditcard/elder))
 		account.balance = rand(3000, 7000)
 	else if(istype(src, /obj/item/vamp/creditcard/rich))
-		account.balance = rand(1000, 5000)
+		account.balance = rand(1000, 4000)
 	else
-		account.balance = rand(500, 1000)
+		account.balance = rand(100, 1000)
 
 /obj/machinery/vamp/atm/Initialize()
 	..()

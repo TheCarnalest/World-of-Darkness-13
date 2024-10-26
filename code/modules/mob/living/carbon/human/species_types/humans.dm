@@ -67,16 +67,9 @@
 			dat += "<b>I know some other of my kind in this city. Need to check my phone, there definetely should be:</b><BR>"
 			for(var/i in host.knowscontacts)
 				dat += "-[i] contact<BR>"
-		var/obj/item/storage/backpack/b = locate() in host
-		if(b)
-			dat += "<b>Contents of the satchel:</b><BR>"
-			var/obj/item/vamp/creditcard/card = locate() in b.contents
-			if(card)
-				dat += "<b>Contents of the satchel:</b><BR>"
-				for(var/obj/item/vamp/creditcard/card in b.contents)
-					if(card)
-						var/memorycode = card.account.code
-						dat += "<b>My bank account code is: [memorycode]</b><BR>"
+		for(var/datum/bank_account/account in GLOB.bank_account_list)
+			if(host.bank_id == account.bank_id)
+				dat += "<b>My bank account code is: [account.code]</b><BR>"
 		host << browse(dat, "window=vampire;size=400x450;border=1;can_resize=1;can_minimize=0")
 		onclose(host, "vampire", src)
 
