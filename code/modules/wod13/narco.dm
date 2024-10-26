@@ -428,7 +428,13 @@ SUBSYSTEM_DEF(smokeweedeveryday)
 			if(troll_explode)
 				explosion(loc,0,1,3,4)
 			else
-				new /obj/item/reagent_containers/food/drinks/meth(get_turf(src))
+				var/amount = 4
+				for(var/i = 1 to amount)
+					new /obj/item/reagent_containers/food/drinks/meth(get_turf(src))
+				added_ephed = 0
+				added_iod = 0
+				added_gas = FALSE
+				troll_explode = FALSE
 
 /obj/item/reagent_containers/food/drinks/meth
 	name = "blue package"
