@@ -108,14 +108,14 @@ Actual Adjacent procs :
 		return FALSE
 	if(maxnodes)
 		//if start turf is farther than maxnodes from end turf, no need to do anything
-		if(LIBCALL(start, dist)(end) > maxnodes)
+		if(call(start, dist)(end) > maxnodes)
 			return FALSE
 		maxnodedepth = maxnodes //no need to consider path longer than maxnodes
 	var/datum/heap/open = new /datum/heap(GLOBAL_PROC_REF(HeapPathWeightCompare)) //the open list
 	var/list/openc = new() //open list for node check
 	var/list/path = null //the returned path, if any
 	//initialization
-	var/datum/pathnode/cur = new /datum/pathnode(start,null,0,LIBCALL(start,dist)(end),0,15,1)//current processed turf
+	var/datum/pathnode/cur = new /datum/pathnode(start,null,0,call(start,dist)(end),0,15,1)//current processed turf
 	open.Insert(cur)
 	openc[start] = cur
 	//then run the main loop
@@ -125,7 +125,7 @@ Actual Adjacent procs :
 		//if we only want to get near the target, check if we're close enough
 		var/closeenough
 		if(mintargetdist)
-			closeenough = LIBCALL(cur.source,dist)(end) <= mintargetdist
+			closeenough = call(cur.source,dist)(end) <= mintargetdist
 
 
 		//found the target turf (or close enough), let's create the path to it
@@ -145,18 +145,18 @@ Actual Adjacent procs :
 					if(T != exclude)
 						var/datum/pathnode/CN = openc[T]  //current checking turf
 						var/r=((f & MASK_ODD)<<1)|((f & MASK_EVEN)>>1) //getting reverse direction throught swapping even and odd bits.((f & 01010101)<<1)|((f & 10101010)>>1)
-						var/newg = cur.g + LIBCALL(cur.source,dist)(T)
+						var/newg = cur.g + call(cur.source,dist)(T)
 						if(CN)
 						//is already in open list, check if it's a better way from the current turf
 							CN.bf &= 15^r //we have no closed, so just cut off exceed dir.00001111 ^ reverse_dir.We don't need to expand to checked turf.
 							if((newg < CN.g) )
-								if(LIBCALL(cur.source,adjacent)(caller, T, id, simulated_only))
+								if(call(cur.source,adjacent)(caller, T, id, simulated_only))
 									CN.setp(cur,newg,CN.h,cur.nt+1)
 									open.ReSort(CN)//reorder the changed element in the list
 						else
 						//is not already in open list, so add it
-							if(LIBCALL(cur.source,adjacent)(caller, T, id, simulated_only))
-								CN = new(T,cur,newg,LIBCALL(T,dist)(end),cur.nt+1,15^r)
+							if(call(cur.source,adjacent)(caller, T, id, simulated_only))
+								CN = new(T,cur,newg,call(T,dist)(end),cur.nt+1,15^r)
 								open.Insert(CN)
 								openc[T] = CN
 		cur.bf = 0
