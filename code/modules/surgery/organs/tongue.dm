@@ -59,7 +59,7 @@
 	if(say_mod && M.dna && M.dna.species)
 		M.dna.species.say_mod = initial(M.dna.species.say_mod)
 	UnregisterSignal(M, COMSIG_MOB_SAY, PROC_REF(handle_speech))
-	M.RegisterSignal(M, COMSIG_MOB_SAY, /mob/living/carbon/.proc/handle_tongueless_speech)
+	M.RegisterSignal(M, COMSIG_MOB_SAY, TYPE_PROC_REF(/mob/living/carbon/, handle_tongueless_speech))
 	REMOVE_TRAIT(M, TRAIT_AGEUSIA, ORGAN_TRAIT)
 	// Carbons by default start with NO_TONGUE_TRAIT caused TRAIT_AGEUSIA
 	ADD_TRAIT(M, TRAIT_AGEUSIA, NO_TONGUE_TRAIT)

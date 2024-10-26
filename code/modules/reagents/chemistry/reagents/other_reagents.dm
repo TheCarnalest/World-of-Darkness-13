@@ -1780,7 +1780,7 @@
 	var/can_colour_mobs = TRUE
 
 /datum/reagent/colorful_reagent/New()
-	SSticker.OnRoundstart(CALLBACK(src,.proc/UpdateColor))
+	SSticker.OnRoundstart(CALLBACK(src,PROC_REF(UpdateColor)))
 	return ..()
 
 /datum/reagent/colorful_reagent/proc/UpdateColor()
@@ -1807,7 +1807,7 @@
 	penetrates_skin = NONE
 
 /datum/reagent/hair_dye/New()
-	SSticker.OnRoundstart(CALLBACK(src,.proc/UpdateColor))
+	SSticker.OnRoundstart(CALLBACK(src,PROC_REF(UpdateColor)))
 	return ..()
 
 /datum/reagent/hair_dye/proc/UpdateColor()

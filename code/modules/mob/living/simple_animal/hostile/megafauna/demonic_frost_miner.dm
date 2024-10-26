@@ -345,7 +345,7 @@ Difficulty: Extremely Hard
 		return
 	var/reset_turf = T.type
 	T.ChangeTurf(change_turf, flags = CHANGETURF_INHERIT_AIR)
-	addtimer(CALLBACK(T, /turf.proc/ChangeTurf, reset_turf, null, CHANGETURF_INHERIT_AIR), duration, TIMER_OVERRIDE|TIMER_UNIQUE)
+	addtimer(CALLBACK(T, TYPE_PROC_REF(/turf, ChangeTurf), reset_turf, null, CHANGETURF_INHERIT_AIR), duration, TIMER_OVERRIDE|TIMER_UNIQUE)
 
 /obj/item/pickaxe/drill/jackhammer/demonic
 	name = "demonic jackhammer"

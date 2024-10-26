@@ -843,7 +843,7 @@
 			var/obj/item/O = A
 			O.forceMove(src)
 			stored = O
-			RegisterSignal(stored, COMSIG_ATOM_UPDATE_ICON, /atom/.proc/update_icon)
+			RegisterSignal(stored, COMSIG_ATOM_UPDATE_ICON, TYPE_PROC_REF(/atom/, update_icon))
 			update_icon()
 			return
 	else
@@ -871,7 +871,7 @@
 /obj/item/borg/apparatus/beaker/Initialize()
 	. = ..()
 	stored = new /obj/item/reagent_containers/glass/beaker/large(src)
-	RegisterSignal(stored, COMSIG_ATOM_UPDATE_ICON, /atom/.proc/update_icon)
+	RegisterSignal(stored, COMSIG_ATOM_UPDATE_ICON, TYPE_PROC_REF(/atom/, update_icon))
 	update_icon()
 
 /obj/item/borg/apparatus/beaker/Destroy()
@@ -931,7 +931,7 @@
 /obj/item/borg/apparatus/beaker/service/Initialize()
 	. = ..()
 	stored = new /obj/item/reagent_containers/food/drinks/drinkingglass(src)
-	RegisterSignal(stored, COMSIG_ATOM_UPDATE_ICON, /atom/.proc/update_icon)
+	RegisterSignal(stored, COMSIG_ATOM_UPDATE_ICON, TYPE_PROC_REF(/atom/, update_icon))
 	update_icon()
 
 ////////////////////

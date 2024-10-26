@@ -175,7 +175,7 @@
 	if(isturf(loc))
 		frenzy_target = get_frenzy_targets()
 		if(frenzy_target)
-			var/datum/cb = CALLBACK(src,.proc/frenzystep)
+			var/datum/cb = CALLBACK(src,PROC_REF(frenzystep))
 			var/reqsteps = SSfrenzypool.wait/total_multiplicative_slowdown()
 			for(var/i in 1 to reqsteps)
 				addtimer(cb, (i - 1)*total_multiplicative_slowdown())

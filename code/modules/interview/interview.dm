@@ -80,7 +80,7 @@
 	GLOB.interviews.cooldown_ckeys |= owner_ckey
 	log_admin_private("[key_name(denied_by)] has denied interview #[id] for [owner_ckey][!owner ? "(DC)": ""].")
 	message_admins("<span class='adminnotice'>[key_name(denied_by)] has denied interview #[id] for [owner_ckey][!owner ? "(DC)": ""].</span>")
-	addtimer(CALLBACK(GLOB.interviews, /datum/interview_manager.proc/release_from_cooldown, owner_ckey), 180)
+	addtimer(CALLBACK(GLOB.interviews, TYPE_PROC_REF(/datum/interview_manager, release_from_cooldown), owner_ckey), 180)
 	if (owner)
 		SEND_SOUND(owner, sound('sound/effects/adminhelp.ogg'))
 		to_chat(owner, "<font color='red' size='4'><b>-- Interview Update --</b></font>" \

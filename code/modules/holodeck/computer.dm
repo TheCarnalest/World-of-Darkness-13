@@ -332,7 +332,7 @@ and clear when youre done! if you dont i will use :newspaper2: on you
 
 	if(toggleOn)
 		if(last_program && (last_program != offline_program))
-			addtimer(CALLBACK(src,.proc/load_program, last_program, TRUE), 25)
+			addtimer(CALLBACK(src,PROC_REF(load_program), last_program, TRUE), 25)
 		active = TRUE
 	else
 		last_program = program
