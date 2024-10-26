@@ -1361,9 +1361,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			if(masquerade < job.minimal_masquerade)
 				HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[[job.minimal_masquerade] MASQUERADE POINTS REQUIED\]</font></td></tr>"
 				continue
-			if(age < job.minimal_age)
-				HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[[job.minimal_age] AGE RESTRICTED\]</font></td></tr>"
-				continue
 			if(job.kindred_only)
 				if(pref_species.name != "Vampire")
 					HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[[pref_species.name] RESTRICTED\]</font></td></tr>"

@@ -107,7 +107,6 @@
 	accesslocks = list(
 		"bar",
 		"anarch",
-		"supply"
 	)
 	color = "#434343"
 
