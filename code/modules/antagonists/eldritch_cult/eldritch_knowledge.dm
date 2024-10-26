@@ -208,8 +208,7 @@
 	return TRUE
 
 //Ascension knowledge
-/datum/eldritch_knowledge/final
-
+/datum/eldritch_knowledge/ultimate
 	var/finished = FALSE
 
 /datum/eldritch_knowledge/ultimate/recipe_snowflake_check(list/atoms, loc,selected_atoms)

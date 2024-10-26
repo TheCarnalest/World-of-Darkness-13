@@ -184,13 +184,13 @@
 						if(4)
 							playsound(mobloc, 'sound/magic/exit_blood.ogg', 100, TRUE)
 							if(B.current != owner)
-								var/turf/final = pick(destinations)
+								var/turf/ultimate = pick(destinations)
 								if(istype(B.current.loc, /obj/item/soulstone))
 									var/obj/item/soulstone/S = B.current.loc
 									S.release_shades(owner)
 								B.current.setDir(SOUTH)
-								new /obj/effect/temp_visual/cult/blood(final)
-								addtimer(CALLBACK(B.current, TYPE_PROC_REF(/mob/, reckon), final), 10)
+								new /obj/effect/temp_visual/cult/blood(ultimate)
+								addtimer(CALLBACK(B.current, TYPE_PROC_REF(/mob/, reckon), ultimate), 10)
 		else
 			return
 	antag.cult_team.reckoning_complete = TRUE

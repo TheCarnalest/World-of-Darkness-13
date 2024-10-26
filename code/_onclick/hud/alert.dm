@@ -498,9 +498,9 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 	angle = target_angle
 	if(!difference)
 		return
-	var/matrix/final = matrix(transform)
-	final.Turn(difference)
-	animate(src, transform = final, time = 5, loop = 0)
+	var/matrix/ultimate = matrix(transform)
+	ultimate.Turn(difference)
+	animate(src, transform = ultimate, time = 5, loop = 0)
 
 
 //GUARDIANS

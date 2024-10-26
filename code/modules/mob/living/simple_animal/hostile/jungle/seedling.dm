@@ -95,9 +95,9 @@
 
 /datum/status_effect/seedling_beam_indicator/tick()
 	var/target_angle = Get_Angle(owner, target)
-	var/matrix/final = matrix()
-	final.Turn(target_angle)
-	seedling_screen_object.transform = final
+	var/matrix/ultimate = matrix()
+	ultimate.Turn(target_angle)
+	seedling_screen_object.transform = ultimate
 
 /atom/movable/screen/seedling
 	icon = 'icons/mob/jungle/arachnid.dmi'
@@ -156,10 +156,10 @@
 			starting.Translate(0,520)
 			S.transform = starting
 			var/obj/effect/temp_visual/solarbeam_killsat/K = new (get_turf(living_target))
-			var/matrix/final = matrix()
-			final.Scale(1,32)
-			final.Translate(0,512)
-			K.transform = final
+			var/matrix/ultimate = matrix()
+			ultimate.Scale(1,32)
+			ultimate.Translate(0,512)
+			K.transform = ultimate
 			living_target.adjustFireLoss(30)
 			living_target.adjust_fire_stacks(0.2)//Just here for the showmanship
 			living_target.IgniteMob()

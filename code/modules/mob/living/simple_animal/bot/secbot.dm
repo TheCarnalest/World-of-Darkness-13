@@ -180,18 +180,18 @@ Auto Patrol: []"},
 		mode = BOT_HUNT
 
 /mob/living/simple_animal/bot/secbot/proc/judgement_criteria()
-	var/final = FALSE
+	var/ultimate = FALSE
 	if(idcheck)
-		final |= JUDGE_IDCHECK
+		ultimate |= JUDGE_IDCHECK
 	if(check_records)
-		final |= JUDGE_RECORDCHECK
+		ultimate |= JUDGE_RECORDCHECK
 	if(weaponscheck)
-		final |= JUDGE_WEAPONCHECK
+		ultimate |= JUDGE_WEAPONCHECK
 	if(emagged == 2)
-		final |= JUDGE_EMAGGED
+		ultimate |= JUDGE_EMAGGED
 	if(ranged)
-		final |= JUDGE_IGNOREMONKEYS
-	return final
+		ultimate |= JUDGE_IGNOREMONKEYS
+	return ultimate
 
 /mob/living/simple_animal/bot/secbot/proc/special_retaliate_after_attack(mob/user) //allows special actions to take place after being attacked.
 	return
