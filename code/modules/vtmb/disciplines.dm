@@ -1699,6 +1699,20 @@
 						if(HU)
 							HU.remove_overlay(MUTATIONS_LAYER)
 
+
+
+/mob/living/carbon/human/proc/temporis_step()
+	walk(src,0)
+	if(!CheckFrenzyMove())
+		set_glide_size(DELAY_TO_GLIDE_SIZE(total_multiplicative_slowdown()))
+		var/C = rand(1,4)
+			if(c > 2)
+				step_away(src,caster,7)
+			else if(c < 3)
+				step_to(src,caster,3)
+		face_atom(caster)
+
+
 /datum/discipline/temporis
 	name = "Temporis"
 	desc = "Temporis is a Discipline unique to the True Brujah. Supposedly a refinement of Celerity, Temporis grants the Cainite the ability to manipulate the flow of time itself."
@@ -1745,24 +1759,9 @@
 		if(1)
 			to_chat(caster, "<b>[SScity_time.timeofnight]</b>")
 		if(2)
-			if(ishuman(target))
-				var/mob/living/carbon/human/M = target
-				if(M.hud_used)
-					if(current_cycle >= 20 && current_cycle%20 == 0)
-						var/list/screens = list(M.hud_used.plane_masters["[FLOOR_PLANE]"], M.hud_used.plane_masters["[GAME_PLANE]"], M.hud_used.plane_masters["[LIGHTING_PLANE]"])
-						var/rotation = min(round(current_cycle/20), 89) // By this point the player is probably puking and quitting anyway
-						for(var/whole_screen in screens)
-							animate(whole_screen, transform = matrix(rotation, MATRIX_ROTATE), time = 5, easing = QUAD_EASING, loop = -1)
-							animate(transform = matrix(-rotation, MATRIX_ROTATE), time = 5, easing = QUAD_EASING)
-				return ..()
-			spawn(8 SECONDS)
-				if(ishuman(target))
-					var/mob/living/carbon/human/M = target
-					if(M?.hud_used)
-						var/list/screens = list(M.hud_used.plane_masters["[FLOOR_PLANE]"], M.hud_used.plane_masters["[GAME_PLANE]"], M.hud_used.plane_masters["[LIGHTING_PLANE]"])
-						for(var/whole_screen in screens)
-							animate(whole_screen, transform = matrix(), time = 5, easing = QUAD_EASING)
-				..()
+			var/datum/cb = CALLBACK(target,/mob/living/carbon/human/proc/temporis_step)
+				for(var/i in 1 to 30)
+					addtimer(cb, (i - 1)*target.total_multiplicative_slowdown())
 		if(3)
 			to_chat(target, "<span class='userdanger'><b>Slow down.</b></span>")
 			target.add_movespeed_modifier(/datum/movespeed_modifier/temporis)
