@@ -395,6 +395,15 @@
 		new /datum/data/mining_equipment("lockpick",	/obj/item/vamp/keys/hack, 50)
 		)
 
+/obj/machinery/mineral/equipment_vendor/fastfood/pharmacy
+	prize_list = list(
+		new /datum/data/mining_equipment("ephedrine pill bottle", /obj/item/storage/pill_bottle/ephedrine, 200),
+		new /datum/data/mining_equipment("iron pill bottle", /obj/item/storage/pill_bottle/iron, 150),
+		new /datum/data/mining_equipment("potassium iodide pill bottle", /obj/item/storage/pill_bottle/potassiodide, 100),
+		new /datum/data/mining_equipment("bruise pack", /obj/item/stack/medical/bruise_pack, 100),
+		new /datum/data/mining_equipment("burn ointment", /obj/item/stack/medical/ointment, 100)
+		)
+
 /obj/machinery/mineral/equipment_vendor/fastfood/smoking
 	prize_list = list(new /datum/data/mining_equipment("malboro",	/obj/item/storage/fancy/cigarettes/cigpack_robust,	50),
 		new /datum/data/mining_equipment("newport",		/obj/item/storage/fancy/cigarettes/cigpack_xeno,	30),
