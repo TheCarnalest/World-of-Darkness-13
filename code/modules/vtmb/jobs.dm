@@ -10,6 +10,14 @@
 				if(B)
 					HUN.forceMove(B)
 
+	var/obj/item/storage/backpack/b = locate() in H
+	if(b)
+		var/obj/item/vamp/creditcard/card = locate() in b.contents
+		if(card && card.has_checked == FALSE)
+			for(var/obj/item/vamp/creditcard/card in b.contents)
+				if(card)
+					H.bank_id = card.account.bank_id
+					card.has_checked = TRUE
 //CAMARILLA
 
 /datum/job/vamp/prince
@@ -67,7 +75,7 @@
 	shoes = /obj/item/clothing/shoes/vampire
 	l_pocket = /obj/item/vamp/phone/prince
 	r_pocket = /obj/item/vamp/keys/prince
-	backpack_contents = list(/obj/item/gun/ballistic/automatic/vampire/deagle=1, /obj/item/phone_book=1, /obj/item/passport=1, /obj/item/cockclock=1, /obj/item/flashlight=1, /obj/item/masquerade_contract=1, /obj/item/stack/dollar/hundred=3)
+	backpack_contents = list(/obj/item/gun/ballistic/automatic/vampire/deagle=1, /obj/item/phone_book=1, /obj/item/passport=1, /obj/item/cockclock=1, /obj/item/flashlight=1, /obj/item/masquerade_contract=1, /obj/item/vamp/creditcard/prince=1)
 
 
 	backpack = /obj/item/storage/backpack
@@ -147,7 +155,7 @@
 	glasses = /obj/item/clothing/glasses/vampire/sun
 	r_pocket = /obj/item/vamp/keys/sheriff
 	l_pocket = /obj/item/vamp/phone/sheriff
-	backpack_contents = list(/obj/item/gun/ballistic/automatic/vampire/deagle=1, /obj/item/vampire_stake=3, /obj/item/passport=1, /obj/item/cockclock=1, /obj/item/flashlight=1, /obj/item/masquerade_contract=1, /obj/item/stack/dollar/fifty=1)
+	backpack_contents = list(/obj/item/gun/ballistic/automatic/vampire/deagle=1, /obj/item/vampire_stake=3, /obj/item/passport=1, /obj/item/cockclock=1, /obj/item/flashlight=1, /obj/item/masquerade_contract=1, /obj/item/vamp/creditcard/elder=1)
 
 	backpack = /obj/item/storage/backpack
 	satchel = /obj/item/storage/backpack/satchel
@@ -226,7 +234,7 @@
 //	head = /obj/item/clothing/head/hopcap
 	l_pocket = /obj/item/vamp/phone/clerk
 	r_pocket = /obj/item/vamp/keys/clerk
-	backpack_contents = list(/obj/item/passport=1, /obj/item/phone_book=1, /obj/item/cockclock=1, /obj/item/flashlight=1, /obj/item/stack/dollar/hundred=1)
+	backpack_contents = list(/obj/item/passport=1, /obj/item/phone_book=1, /obj/item/cockclock=1, /obj/item/flashlight=1, /obj/item/vamp/creditcard=1)
 
 /datum/outfit/job/clerk/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -282,7 +290,7 @@
 	shoes = /obj/item/clothing/shoes/vampire
 	r_pocket = /obj/item/vamp/keys/camarilla
 	l_pocket = /obj/item/vamp/phone/camarilla
-	backpack_contents = list(/obj/item/passport=1, /obj/item/cockclock=1, /obj/item/vampire_stake=3, /obj/item/flashlight=1, /obj/item/masquerade_contract=1, /obj/item/vamp/keys/hack=1, /obj/item/stack/dollar/fifty=1)
+	backpack_contents = list(/obj/item/passport=1, /obj/item/cockclock=1, /obj/item/vampire_stake=3, /obj/item/flashlight=1, /obj/item/masquerade_contract=1, /obj/item/vamp/keys/hack=1, /obj/item/vamp/creditcard=1)
 
 	backpack = /obj/item/storage/backpack
 	satchel = /obj/item/storage/backpack/satchel
@@ -338,7 +346,7 @@
 	l_pocket = /obj/item/vamp/phone
 	r_pocket = /obj/item/vamp/keys/graveyard
 	r_hand = /obj/item/melee/vampirearms/shovel
-	backpack_contents = list(/obj/item/passport=1, /obj/item/cockclock=1, /obj/item/flashlight=1, /obj/item/stack/dollar/rand=1, /obj/item/melee/vampirearms/katana/kosa=1)
+	backpack_contents = list(/obj/item/passport=1, /obj/item/cockclock=1, /obj/item/flashlight=1, /obj/item/vamp/creditcard=1, /obj/item/melee/vampirearms/katana/kosa=1)
 
 	backpack = /obj/item/storage/backpack
 	satchel = /obj/item/storage/backpack/satchel
@@ -387,7 +395,7 @@
 	l_hand = /obj/item/storage/firstaid/medical
 	l_pocket = /obj/item/vamp/phone
 	r_pocket = /obj/item/vamp/keys/clinic
-	backpack_contents = list(/obj/item/passport=1, /obj/item/cockclock=1, /obj/item/flashlight=1, /obj/item/stack/dollar/fifty=1)
+	backpack_contents = list(/obj/item/passport=1, /obj/item/cockclock=1, /obj/item/flashlight=1, /obj/item/vamp/creditcard=1)
 
 	backpack = /obj/item/storage/backpack
 	satchel = /obj/item/storage/backpack/satchel
@@ -435,7 +443,7 @@
 	r_pocket = /obj/item/vamp/keys/cleaning
 	shoes = /obj/item/clothing/shoes/vampire/jackboots/work
 	gloves = /obj/item/clothing/gloves/vampire/cleaning
-	backpack_contents = list(/obj/item/passport=1, /obj/item/cockclock=1, /obj/item/flashlight=1, /obj/item/vamp/keys/hack=1, /obj/item/stack/dollar/rand=1)
+	backpack_contents = list(/obj/item/passport=1, /obj/item/cockclock=1, /obj/item/flashlight=1, /obj/item/vamp/keys/hack=1, /obj/item/vamp/creditcard=1)
 
 /obj/effect/landmark/start/vjanitor
 	name = "Street Janitor"
@@ -479,7 +487,7 @@
 	r_pocket = /obj/item/vamp/keys/archive
 	l_pocket = /obj/item/vamp/phone
 	accessory = /obj/item/clothing/accessory/pocketprotector/full
-	backpack_contents = list(/obj/item/passport=1, /obj/item/phone_book=1, /obj/item/cockclock=1, /obj/item/flashlight=1, /obj/item/arcane_tome=1, /obj/item/stack/dollar/rand=1, /obj/item/melee/vampirearms/katana/kosa=1)
+	backpack_contents = list(/obj/item/passport=1, /obj/item/phone_book=1, /obj/item/cockclock=1, /obj/item/flashlight=1, /obj/item/arcane_tome=1, /obj/item/vamp/creditcard/elder=1, /obj/item/melee/vampirearms/katana/kosa=1)
 
 /datum/outfit/job/regent/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -529,7 +537,7 @@
 	r_pocket = /obj/item/vamp/keys/archive
 	l_pocket = /obj/item/vamp/phone
 	accessory = /obj/item/clothing/accessory/pocketprotector/full
-	backpack_contents = list(/obj/item/passport=1, /obj/item/cockclock=1, /obj/item/flashlight=1, /obj/item/arcane_tome=1, /obj/item/stack/dollar/rand=1, /obj/item/melee/vampirearms/katana/kosa=1)
+	backpack_contents = list(/obj/item/passport=1, /obj/item/cockclock=1, /obj/item/flashlight=1, /obj/item/arcane_tome=1, /obj/item/vamp/creditcard=1, /obj/item/melee/vampirearms/katana/kosa=1)
 
 /datum/outfit/job/archivist/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -586,7 +594,7 @@
 	gloves = /obj/item/clothing/gloves/vampire/work
 	l_pocket = /obj/item/vamp/phone/barkeeper
 	r_pocket = /obj/item/vamp/keys/bar
-	backpack_contents = list(/obj/item/passport=1, /obj/item/phone_book=1, /obj/item/cockclock=1, /obj/item/flashlight=1, /obj/item/stack/dollar/hundred=3)
+	backpack_contents = list(/obj/item/passport=1, /obj/item/phone_book=1, /obj/item/cockclock=1, /obj/item/flashlight=1, /obj/item/vamp/creditcard=1)
 
 /datum/outfit/job/barkeeper/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -637,7 +645,7 @@
 	r_pocket = /obj/item/vamp/keys/anarch
 	l_pocket = /obj/item/vamp/phone/anarch
 	r_hand = /obj/item/melee/vampirearms/baseball
-	backpack_contents = list(/obj/item/passport=1, /obj/item/cockclock=1, /obj/item/vampire_stake=3, /obj/item/flashlight=1, /obj/item/vamp/keys/hack=1, /obj/item/stack/dollar/rand=1)
+	backpack_contents = list(/obj/item/passport=1, /obj/item/cockclock=1, /obj/item/vampire_stake=3, /obj/item/flashlight=1, /obj/item/vamp/keys/hack=1, /obj/item/vamp/creditcard=1)
 
 /datum/outfit/job/bouncer/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -690,7 +698,7 @@
 	glasses = /obj/item/clothing/glasses/vampire/sun
 	l_pocket = /obj/item/vamp/phone/dealer
 	r_pocket = /obj/item/vamp/keys/supply
-	backpack_contents = list(/obj/item/passport=1, /obj/item/cockclock=1, /obj/item/flashlight=1, /obj/item/stack/dollar/hundred=1)
+	backpack_contents = list(/obj/item/passport=1, /obj/item/cockclock=1, /obj/item/flashlight=1, /obj/item/vamp/creditcard/rich=1)
 
 /datum/outfit/job/dealer/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -739,7 +747,7 @@
 	l_pocket = /obj/item/vamp/phone/anarch
 	r_pocket = /obj/item/vamp/keys/supply
 	shoes = /obj/item/clothing/shoes/vampire/jackboots
-	backpack_contents = list(/obj/item/passport=1, /obj/item/phone_book=1, /obj/item/cockclock=1, /obj/item/flashlight=1, /obj/item/stack/dollar/rand=1)
+	backpack_contents = list(/obj/item/passport=1, /obj/item/phone_book=1, /obj/item/cockclock=1, /obj/item/flashlight=1, /obj/item/vamp/creditcard=1)
 
 /datum/outfit/job/supply/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -803,11 +811,11 @@
 			shoes = /obj/item/clothing/shoes/vampire/heels
 	if(H.clane)
 		if(H.clane.name == "Lasombra")
-			backpack_contents = list(/obj/item/passport =1, /obj/item/stack/dollar/rand=1)
+			backpack_contents = list(/obj/item/passport =1, /obj/item/vamp/creditcard=1)
 	if(!H.clane)
-		backpack_contents = list(/obj/item/passport=1, /obj/item/flashlight=1, /obj/item/stack/dollar/rand=1)
+		backpack_contents = list(/obj/item/passport=1, /obj/item/flashlight=1, /obj/item/vamp/creditcard=1)
 	if(H.clane && H.clane.name != "Lasombra")
-		backpack_contents = list(/obj/item/passport=1, /obj/item/flashlight=1, /obj/item/stack/dollar/rand=1)
+		backpack_contents = list(/obj/item/passport=1, /obj/item/flashlight=1, /obj/item/vamp/creditcard=1)
 
 /obj/effect/landmark/start/citizen
 	name = "Citizen"
@@ -843,7 +851,7 @@
 	l_pocket = /obj/item/vamp/phone
 	r_pocket = /obj/item/vamp/keys/strip
 	id = /obj/item/cockclock
-	backpack_contents = list(/obj/item/passport=1, /obj/item/flashlight=1, /obj/item/stack/dollar/fifty=1)
+	backpack_contents = list(/obj/item/passport=1, /obj/item/flashlight=1, /obj/item/vamp/creditcard=1)
 
 /datum/outfit/job/strip/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -1445,7 +1453,7 @@
 	shoes = /obj/item/clothing/shoes/vampire
 	l_pocket = /obj/item/vamp/phone
 	r_pocket = /obj/item/vamp/keys/giovanni
-	backpack_contents = list(/obj/item/passport=1, /obj/item/flashlight=1, /obj/item/stack/dollar/fifty=1)
+	backpack_contents = list(/obj/item/passport=1, /obj/item/flashlight=1, /obj/item/vamp/creditcard/rich=1)
 
 /datum/outfit/job/giovanni/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -1499,7 +1507,7 @@
 	shoes = /obj/item/clothing/shoes/vampire
 	l_pocket = /obj/item/vamp/phone
 	r_pocket = /obj/item/vamp/keys/taxi
-	backpack_contents = list(/obj/item/passport=1, /obj/item/flashlight=1, /obj/item/stack/dollar/fifty=1)
+	backpack_contents = list(/obj/item/passport=1, /obj/item/flashlight=1, /obj/item/vamp/creditcard=1)
 
 /datum/outfit/job/taxi/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -1640,7 +1648,7 @@
 	head = /obj/item/clothing/head/vampire/malkav
 	l_pocket = /obj/item/vamp/phone/malkavian
 	r_pocket = /obj/item/cockclock
-	backpack_contents = list(/obj/item/vamp/keys/malkav/primogen=1, /obj/item/vamp/keys/clinic, /obj/item/passport=1, /obj/item/flashlight=1, /obj/item/stack/dollar/hundred=2)
+	backpack_contents = list(/obj/item/vamp/keys/malkav/primogen=1, /obj/item/vamp/keys/clinic, /obj/item/passport=1, /obj/item/flashlight=1, /obj/item/vamp/creditcard/elder=1)
 
 /datum/outfit/job/malkav/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -1689,7 +1697,7 @@
 	shoes = /obj/item/clothing/shoes/vampire
 	l_pocket = /obj/item/vamp/phone/nosferatu
 	r_pocket = /obj/item/cockclock
-	backpack_contents = list(/obj/item/vamp/keys/nosferatu/primogen=1, /obj/item/passport=1, /obj/item/flashlight=1, /obj/item/stack/dollar/hundred=2)
+	backpack_contents = list(/obj/item/vamp/keys/nosferatu/primogen=1, /obj/item/passport=1, /obj/item/flashlight=1, /obj/item/vamp/creditcard/elder=1)
 
 /datum/outfit/job/nosferatu/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -1735,7 +1743,7 @@
 	shoes = /obj/item/clothing/shoes/vampire
 	l_pocket = /obj/item/vamp/phone/ventrue
 	r_pocket = /obj/item/cockclock
-	backpack_contents = list(/obj/item/vamp/keys/ventrue/primogen=1, /obj/item/passport=1, /obj/item/flashlight=1, /obj/item/stack/dollar/hundred=2)
+	backpack_contents = list(/obj/item/vamp/keys/ventrue/primogen=1, /obj/item/passport=1, /obj/item/flashlight=1, /obj/item/vamp/creditcard/elder=1)
 
 /datum/outfit/job/ventrue/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -1781,7 +1789,7 @@
 	shoes = /obj/item/clothing/shoes/vampire
 	l_pocket = /obj/item/vamp/phone/toreador
 	r_pocket = /obj/item/cockclock
-	backpack_contents = list(/obj/item/vamp/keys/toreador/primogen=1, /obj/item/passport=1, /obj/item/flashlight=1, /obj/item/stack/dollar/hundred=2)
+	backpack_contents = list(/obj/item/vamp/keys/toreador/primogen=1, /obj/item/passport=1, /obj/item/flashlight=1, /obj/item/vamp/creditcard/elder=1)
 
 /datum/outfit/job/toreador/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -1829,7 +1837,7 @@
 	shoes = /obj/item/clothing/shoes/vampire/jackboots
 	l_pocket = /obj/item/vamp/phone/brujah
 	r_pocket = /obj/item/cockclock
-	backpack_contents = list(/obj/item/vamp/keys/brujah/primogen=1, /obj/item/melee/vampirearms/eguitar=1, /obj/item/passport=1, /obj/item/flashlight=1, /obj/item/stack/dollar=1)
+	backpack_contents = list(/obj/item/vamp/keys/brujah/primogen=1, /obj/item/melee/vampirearms/eguitar=1, /obj/item/passport=1, /obj/item/flashlight=1, /obj/item/vamp/creditcard/elder=1)
 
 //HUMANS
 
@@ -1876,7 +1884,7 @@
 	r_pocket = /obj/item/flashlight
 	l_hand = /obj/item/vamp/keys/police
 	r_hand = /obj/item/police_radio
-	backpack_contents = list(/obj/item/passport=1, /obj/item/implant/radio=1, /obj/item/stack/dollar=1)
+	backpack_contents = list(/obj/item/passport=1, /obj/item/implant/radio=1, /obj/item/vamp/creditcard=1)
 
 
 /datum/job/vamp/fbi
@@ -1922,7 +1930,7 @@
 	r_pocket = /obj/item/flashlight
 	l_hand = /obj/item/vamp/keys/police
 	r_hand = /obj/item/police_radio
-	backpack_contents = list(/obj/item/passport=1, /obj/item/implant/radio=1, /obj/item/gun/ballistic/automatic/vampire/m1911=1, /obj/item/camera/detective=1, /obj/item/camera_film=1, /obj/item/taperecorder=1, /obj/item/tape=1, /obj/item/stack/dollar=1)
+	backpack_contents = list(/obj/item/passport=1, /obj/item/implant/radio=1, /obj/item/gun/ballistic/automatic/vampire/m1911=1, /obj/item/camera/detective=1, /obj/item/camera_film=1, /obj/item/taperecorder=1, /obj/item/tape=1, /obj/item/vamp/creditcard=1)
 
 /datum/job/vamp/triad_soldier
 	title = "Triad Soldier"
@@ -1974,7 +1982,7 @@
 	r_pocket = /obj/item/flashlight
 	l_hand = /obj/item/vamp/keys/triads
 //	r_hand = /obj/item/police_radio
-	backpack_contents = list(/obj/item/passport=1, /obj/item/stack/dollar=1, /obj/item/clothing/mask/vampire/balaclava =1, /obj/item/gun/ballistic/automatic/vampire/glock19, /obj/item/melee/vampirearms/knife)
+	backpack_contents = list(/obj/item/passport=1, /obj/item/vamp/creditcard=1, /obj/item/clothing/mask/vampire/balaclava =1, /obj/item/gun/ballistic/automatic/vampire/glock19, /obj/item/melee/vampirearms/knife)
 
 //TZIMISCE ROLES
 /datum/job/vamp/voivode
@@ -2017,7 +2025,7 @@
 	shoes = /obj/item/clothing/shoes/vampire/jackboots
 	l_pocket = /obj/item/vamp/phone
 	//r_pocket =
-	backpack_contents = list(/obj/item/vamp/keys/old_clan_tzimisce=1, /obj/item/melee/vampirearms/eguitar=1, /obj/item/passport=1, /obj/item/flashlight=1, /obj/item/stack/dollar=1)
+	backpack_contents = list(/obj/item/vamp/keys/old_clan_tzimisce=1, /obj/item/melee/vampirearms/eguitar=1, /obj/item/passport=1, /obj/item/flashlight=1, /obj/item/vamp/creditcard/elder=1)
 
 /datum/job/vamp/bogatyr
 	title = "Bogatyr"
@@ -2064,7 +2072,7 @@
 	shoes = /obj/item/clothing/shoes/vampire/jackboots
 	l_pocket = /obj/item/vamp/phone
 	//r_pocket = /obj/item/cockclock
-	backpack_contents = list(/obj/item/vamp/keys/old_clan_tzimisce=1, /obj/item/melee/vampirearms/fireaxe=1, /obj/item/passport=1, /obj/item/flashlight=1, /obj/item/stack/dollar=1)
+	backpack_contents = list(/obj/item/vamp/keys/old_clan_tzimisce=1, /obj/item/melee/vampirearms/fireaxe=1, /obj/item/passport=1, /obj/item/flashlight=1, /obj/item/vamp/creditcard=1)
 
 /datum/job/vamp/zadruga
 	title = "Zadruga"
@@ -2107,7 +2115,7 @@
 	shoes = /obj/item/clothing/shoes/vampire/jackboots
 	l_pocket = /obj/item/vamp/phone
 	//r_pocket = /obj/item/cockclock
-	backpack_contents = list(/obj/item/vamp/keys/old_clan_tzimisce=1, /obj/item/passport=1, /obj/item/flashlight=1, /obj/item/stack/dollar=1)
+	backpack_contents = list(/obj/item/vamp/keys/old_clan_tzimisce=1, /obj/item/passport=1, /obj/item/flashlight=1, /obj/item/vamp/creditcard=1)
 
 /obj/effect/landmark/start/voivode
 	name = "Voivode"
