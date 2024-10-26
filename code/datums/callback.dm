@@ -5,10 +5,10 @@
  * ## USAGE
  *
  * ```
- * var/datum/callback/C = new(object|null, /proc/type/path|"procstring", arg1, arg2, ... argn)
+ * var/datum/callback/C = new(object|null, GLOBAL_PROC_REF(type)/path|"procstring", arg1, arg2, ... argn)
  * var/timerid = addtimer(C, time, timertype)
  * you can also use the compiler define shorthand
- * var/timerid = addtimer(CALLBACK(object|null, /proc/type/path|procstring, arg1, arg2, ... argn), time, timertype)
+ * var/timerid = addtimer(CALLBACK(object|null, GLOBAL_PROC_REF(type)/path|procstring, arg1, arg2, ... argn), time, timertype)
  * ```
  *
  * Note: proc strings can only be given for datum proc calls, global procs must be proc paths
@@ -31,7 +31,7 @@
  *
  * `CALLBACK(GLOBAL_PROC, .some_proc_here)`
  *
- * ### proc defined on current(src) object (when in a /proc/ and not an override) OR overridden at src or any of it's parents:
+ * ### proc defined on current(src) object (when in a GLOBAL_PROC_REF and not an override) OR overridden at src or any of it's parents:
  * .procname
  *
  * `CALLBACK(src, .some_proc_here)`
