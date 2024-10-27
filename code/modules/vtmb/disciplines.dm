@@ -1701,18 +1701,6 @@
 
 
 
-/mob/living/carbon/human/proc/temporis_step()
-	walk(src,0)
-	if(!CheckFrenzyMove())
-		set_glide_size(DELAY_TO_GLIDE_SIZE(total_multiplicative_slowdown()))
-		var/C = rand(1,4)
-			if(c > 2)
-				step_away(src,caster,7)
-			else if(c < 3)
-				step_to(src,caster,3)
-		face_atom(caster)
-
-
 /datum/discipline/temporis
 	name = "Temporis"
 	desc = "Temporis is a Discipline unique to the True Brujah. Supposedly a refinement of Celerity, Temporis grants the Cainite the ability to manipulate the flow of time itself."
@@ -1759,7 +1747,7 @@
 		if(1)
 			to_chat(caster, "<b>[SScity_time.timeofnight]</b>")
 		if(2)
-			var/datum/cb = CALLBACK(target,/mob/living/carbon/human/proc/temporis_step)
+			var/datum/cb = CALLBACK(target,/mob/living/carbon/human/proc/temporis_target)
 				for(var/i in 1 to 30)
 					addtimer(cb, (i - 1)*target.total_multiplicative_slowdown())
 		if(3)
