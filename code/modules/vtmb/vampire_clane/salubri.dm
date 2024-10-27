@@ -11,7 +11,3 @@
 	female_clothes = "/obj/item/clothing/under/vampire/salubri/female"
 	enlightement = FALSE
 
-/datum/discipline/valeren/post_gain(mob/living/carbon/human/H)
-	H.put_in_r_hand(new /obj/item/vamp/keys/salubri(H))
-	var/obj/item/organ/eyes/night_vision/salubri/NV = new()
-	NV.Insert(H, TRUE, FALSE)

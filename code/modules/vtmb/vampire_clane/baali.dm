@@ -19,8 +19,6 @@
 
 /datum/discipline/daimonion/post_gain(mob/living/carbon/human/H)
 	H.put_in_r_hand(new /obj/item/vamp/keys/baali(H))
-	var/obj/item/organ/eyes/night_vision/NV = new()
-	NV.Insert(H, TRUE, FALSE)
 	if(level >= 3)
 		var/obj/effect/proc_holder/spell/aimed/fireball/baali/S = new(H)
 		H.mind.AddSpell(S)
