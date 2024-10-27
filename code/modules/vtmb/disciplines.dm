@@ -1713,6 +1713,7 @@
 	clane_restricted = TRUE
 	dead_restricted = FALSE
 	var/current_cycle = 0
+	var/datum/component/temporis_target
 
 #define TEMPORIS_ATTACK_SPEED_MODIFIER 0.25
 
@@ -1747,9 +1748,9 @@
 		if(1)
 			to_chat(caster, "<b>[SScity_time.timeofnight]</b>")
 		if(2)
-			var/datum/cb = CALLBACK(target,/mob/living/carbon/human/proc/temporis_target)
-				for(var/i in 1 to 30)
-					addtimer(cb, (i - 1)*target.total_multiplicative_slowdown())
+			AddComponent(target, /datum/component/temporis_target)
+			spawn(4 SECONDS)
+				RemoveComponent(target, /datum/component/temporis_target)
 		if(3)
 			to_chat(target, "<span class='userdanger'><b>Slow down.</b></span>")
 			target.add_movespeed_modifier(/datum/movespeed_modifier/temporis)
