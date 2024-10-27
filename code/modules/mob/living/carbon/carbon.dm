@@ -232,11 +232,14 @@
 		if(start_T && end_T)
 			log_combat(src, thrown_thing, "jumped", addition="from tile in [AREACOORD(start_T)] towards tile at [AREACOORD(end_T)]")
 		var/power_throw = 0
-
 		//Move the player towards the target
 		newtonian_move(get_dir(adjusted_target, src))
-		thrown_thing.safe_throw_at(adjusted_target, thrown_thing.throw_range, thrown_thing.throw_speed + power_throw, src, null, null, null, move_force)
+		thrown_thing.safe_throw_at(adjusted_target, thrown_thing.throw_range, thrown_thing.throw_speed + power_throw, src, null, null, null, move_force, spin = FALSE)
 		visible_message("<span class='danger'>[src] jumps towards [adjusted_target].</span>")
+		if(src.gender == "male")
+			playsound(loc, 'code/modules/wod13/sounds/male_jump.ogg', 50, TRUE)
+		else if(src.gender == "female")
+			playsound(loc, 'code/modules/wod13/sounds/female_jump.ogg', 50, TRUE)
 //		newtonian_move(get_dir(target, src))
 //		thrown_thing.safe_throw_at(target, thrown_thing.throw_range, thrown_thing.throw_speed + power_throw, src, null, null, null, move_force)
 //		visible_message("<span class='danger'>[src] jumps towards [target].</span>")
