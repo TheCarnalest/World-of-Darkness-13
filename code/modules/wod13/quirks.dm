@@ -179,7 +179,7 @@ Dancer
 	gain_text = "<span class='notice'>You feel like you can burn without permanent consequences.</span>"
 	lose_text = "<span class='warning'>You don't feel like you can burn without consequences anymore.</span>"
 	allowed_species = list("Vampire")
-
+/*
 /datum/quirk/acrobatic
 	name = "Acrobatic"
 	desc = "You know a couple of acrobatic moves."
@@ -323,7 +323,7 @@ Dancer
 					H.epic_fall()
 				else if(iscrinos(H))
 					H.epic_fall()
-
+*/
 /datum/action/fly_upper
 	name = "Fly Up"
 	desc = "Fly to the upper level."

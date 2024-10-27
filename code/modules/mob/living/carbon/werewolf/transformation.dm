@@ -25,12 +25,13 @@
 
 /obj/werewolf_holder/transformation/proc/trans_gender(mob/living/carbon/trans, form)
 	if(!given_quirks)
-		given_quirks = TRUE
+		given_quirks = TRUE/*
 		if(HAS_TRAIT(trans, TRAIT_ACROBATIC))
 			var/datum/action/acrobate/DA = new()
 			DA.Grant(lupus_form)
 			var/datum/action/acrobate/NE = new()
 			NE.Grant(crinos_form)
+			*/
 		if(HAS_TRAIT(trans, TRAIT_DANCER))
 			var/datum/action/dance/DA = new()
 			DA.Grant(lupus_form)
