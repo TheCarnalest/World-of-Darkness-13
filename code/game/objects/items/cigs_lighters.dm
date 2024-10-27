@@ -262,8 +262,6 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 				reagents.expose(C, INGEST, fraction)
 				var/obj/item/organ/lungs/L = C.getorganslot(ORGAN_SLOT_LUNGS)
 				if(L && !(L.organ_flags & ORGAN_SYNTHETIC))
-					if(!iskindred(src)) //Should make cigs not do lung damage to kindred
-						C.adjustOrganLoss(ORGAN_SLOT_LUNGS, lung_harm)
 				if(!reagents.trans_to(C, to_smoke))
 					reagents.remove_any(to_smoke)
 				return
