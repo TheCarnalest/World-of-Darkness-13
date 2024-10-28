@@ -210,12 +210,23 @@
 	var/physique = H.physique
 
 	var/current_time = world.time
-	var/adjusted_jump_delay = JUMP_DELAY - (2 * physique)
+	var/adjusted_jump_delay = JUMP_DELAY - (0.4 * dexterity) - (1 * athletics)
 	if(current_time - last_jump_time < adjusted_jump_delay)
 		to_chat(src, "<span class='notice'>You can't jump so soon!")
 		return
 
-	var/adjusted_jump_range = MAX_JUMP_DISTANCE + (physique * 0.75)
+	var/adjusted_jump_range = MAX_JUMP_DISTANCE
+
+	if(physique < 2)
+		adjusted_jump_range += 0.75 + athletics
+	else
+		adjusted_jump_range += 0.75 + (physique -1) * 0.5 + athletics
+
+	if(adjusted_jump_range > 6)
+		adjusted_jump_range = 6
+	if(adjusted_jump_range <1)
+		adjusted_jump_range = 1
+
 	var/distance = get_dist(loc, target)
 	var/turf/adjusted_target = target
 	if(distance > adjusted_jump_range)
