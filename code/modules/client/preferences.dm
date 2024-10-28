@@ -539,9 +539,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<BR>"
 
 			dat += "<b>Lockpicking:</b> [lockpicking > 0 ? "•" : "o"][lockpicking > 1 ? "•" : "o"][lockpicking > 2 ? "•" : "o"][lockpicking > 3 ? "•" : "o"][lockpicking > 4 ? "•" : "o"]([lockpicking])"
-			if(true_experience >=2 && lockpicking == 0)
-				dat+= "<a href='?_src_=prefs;preference=lockpicking;task=input'>Increase([2])</a>"
-			else if(true_experience>=2*lockpicking && lockpicking != 5 || lockpicking == 0 && true_experience >=2)
+			if(true_experience >= 2 && lockpicking == 0)
+				dat += "<a href='?_src_=prefs;preference=lockpicking;task=input'>Increase([2])</a>"
+			else if(true_experience >= 2*lockpicking && lockpicking != 5 || lockpicking == 0 && true_experience >=2)
 				dat += "<a href='?_src_=prefs;preference=lockpicking;task=input'>Increase([2*lockpicking])</a>"
 			dat += "<BR>"
 
