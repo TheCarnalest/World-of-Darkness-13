@@ -58,39 +58,39 @@
 		died_already = TRUE
 		var/datum/preferences/P = GLOB.preferences_datums[ckey(key)]
 		if(P)
-			var/max_death = 6
-			if(P.generation == 11)
-				max_death = 5
-			if(P.generation == 10)
-				max_death = 4
-			if(P.generation == 9)
-				max_death = 3
-			if(P.generation == 8)
-				max_death = 2
-			if(P.generation == 7)
-				max_death = 2
-			if(P.generation <= 6)
-				max_death = 1
+//			var/max_death = 6
+//			if(P.generation == 11)
+//				max_death = 5
+//			if(P.generation == 10)
+//				max_death = 4
+//			if(P.generation == 9)
+//				max_death = 3
+//			if(P.generation == 8)
+//				max_death = 2
+//			if(P.generation == 7)
+//				max_death = 2
+//			if(P.generation <= 6)
+//				max_death = 1
 			if(P.last_torpor+60 < world.time)
 				P.last_torpor = world.time
-				P.torpor_count = P.torpor_count+1
-				if(P.torpor_count >= max_death)
-					P.torpor_count = 0
-					if(!HAS_TRAIT(src, TRAIT_PHOENIX))
+//				P.torpor_count = P.torpor_count+1
+//				if(P.torpor_count >= max_death)
+//					P.torpor_count = 0
+//					if(!HAS_TRAIT(src, TRAIT_PHOENIX))
 //					P.exper = 0
-						P.discipline1level = max(1, P.discipline1level-1)
-						P.discipline2level = max(1, P.discipline2level-1)
-						P.discipline3level = max(1, P.discipline3level-1)
-						P.discipline4level = max(1, P.discipline4level-1)
-						P.physique = max(2, P.physique-1)
-						P.social = max(2, P.social-1)
-						P.mentality = max(2, P.mentality-1)
+//						P.discipline1level = max(1, P.discipline1level-1)
+//						P.discipline2level = max(1, P.discipline2level-1)
+//						P.discipline3level = max(1, P.discipline3level-1)
+//						P.discipline4level = max(1, P.discipline4level-1)
+//						P.physique = max(2, P.physique-1)
+//						P.social = max(2, P.social-1)
+//						P.mentality = max(2, P.mentality-1)
 //						if(isghoul(src))
 //							P.exper = 0
-					generation = min(13, generation+1)
-					P.generation = generation
-				P.humanity = humanity
-				P.masquerade = masquerade
+//					generation = min(13, generation+1)
+//				P.generation = generation
+//				P.humanity = humanity
+//				P.masquerade = masquerade
 				P.save_character()
 				P.save_preferences()
 				P.reason_of_death = "Killed in action ([time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")])."

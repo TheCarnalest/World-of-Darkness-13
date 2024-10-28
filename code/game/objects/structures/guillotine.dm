@@ -162,22 +162,22 @@
 					if(loved)
 						M.emote("clap")
 			var/datum/preferences/P = GLOB.preferences_datums[ckey(H.key)]
-			var/how_much = max(1, 5-H.masquerade)
+//			var/how_much = max(1, 5-H.masquerade)
 			if(H in GLOB.masquerade_breakers_list)
-				if(P)
-					P.last_torpor = world.time
-					H.generation = min(13, H.generation+1)
-					P.generation = H.generation
-					if(!HAS_TRAIT(H, TRAIT_PHOENIX))
-						P.discipline1level = max(1, P.discipline1level-1*how_much)
-						P.discipline2level = max(1, P.discipline2level-1*how_much)
-						P.discipline3level = max(1, P.discipline3level-1*how_much)
-						P.discipline4level = max(1, P.discipline4level-1*how_much)
-						P.physique = max(1, P.physique-1*how_much)
-						P.social = max(1, P.social-1*how_much)
-						P.mentality = max(1, P.mentality-1*how_much)
-						P.lockpicking = max(1, P.lockpicking-1*how_much)
-					P.torpor_count = 0
+//				if(P)
+//					P.last_torpor = world.time
+//					H.generation = min(13, H.generation+1)
+//					P.generation = H.generation
+//					if(!HAS_TRAIT(H, TRAIT_PHOENIX))
+//						P.discipline1level = max(1, P.discipline1level-1*how_much)
+//						P.discipline2level = max(1, P.discipline2level-1*how_much)
+//						P.discipline3level = max(1, P.discipline3level-1*how_much)
+//						P.discipline4level = max(1, P.discipline4level-1*how_much)
+//						P.physique = max(1, P.physique-1*how_much)
+//						P.social = max(1, P.social-1*how_much)
+//						P.mentality = max(1, P.mentality-1*how_much)
+//						P.lockpicking = max(1, P.lockpicking-1*how_much)
+//					P.torpor_count = 0
 			if(H.diablerist)
 				if(P)
 					P.last_torpor = world.time
