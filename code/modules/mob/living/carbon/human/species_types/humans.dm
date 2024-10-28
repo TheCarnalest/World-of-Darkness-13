@@ -53,9 +53,11 @@
 				if(A.objectives)
 					dat += "[printobjectives(A.objectives)]<BR>"
 		dat += "<b>Physique</b>: [host.physique]<BR>"
+		dat += "<b>Dexterity</b>: [host.dexterity]<BR>"
 		dat += "<b>Social</b>: [host.social]<BR>"
 		dat += "<b>Mentality</b>: [host.mentality]<BR>"
 		dat += "<b>Lockpicking</b>: [host.lockpicking]<BR>"
+		dat += "<b>Athletics</b>: [host.athletics]<BR>"
 		dat += "<b>Cruelty</b>: [host.blood]<BR>"
 		if(host.friend_name)
 			dat += "<b>Friend: [host.friend_name]</b><BR>"

@@ -96,12 +96,13 @@
 				H.transformator.lupus_form.name = H.real_name
 
 				H.transformator.crinos_form.physique = H.physique
+				H.transformator.crinos_form.dexterity = H.dexterity
 				H.transformator.crinos_form.mentality = H.mentality
 				H.transformator.crinos_form.social = H.social
 				H.transformator.crinos_form.blood = H.blood
 
 				H.transformator.lupus_form.physique = H.physique
-				H.transformator.lupus_form.mentality = H.mentality
+				H.transformator.lupus_form.dexterity = H.dexterity
 				H.transformator.lupus_form.social = H.social
 				H.transformator.lupus_form.blood = H.blood
 

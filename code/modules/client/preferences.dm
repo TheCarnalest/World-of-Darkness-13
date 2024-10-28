@@ -169,11 +169,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/discipline4type
 
 	var/physique = 1
+	var/dexterity = 1
 	var/social = 1
 	var/mentality = 1
 	var/blood = 1
 
+	//Skills
 	var/lockpicking = 0
+	var/athletics = 0
 
 	var/friend = FALSE
 	var/enemy = FALSE
@@ -205,9 +208,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 /mob/living
 	var/physique = 1
+	var/dexterity = 1
 	var/social = 1
 	var/mentality = 1
 	var/lockpicking = 0
+	var/athletics = 0
 	var/blood = 1
 
 /datum/preferences/proc/add_experience(var/amount)
@@ -232,13 +237,16 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			P.torpor_count = 0
 			P.generation_bonus = 0
 			P.physique = 1
+			P.dexterity = 1
 			P.social = 1
 			P.mentality = 1
 			P.blood = 1
 			P.lockpicking = 0
+			P.athletics = 0
 			P.archetype = pick(subtypesof(/datum/archetype))
 			var/datum/archetype/A = new P.archetype()
 			P.physique = A.start_physique
+//			P.dexterity = A.start_dexterity
 			P.social = A.start_social
 			P.mentality = A.start_mentality
 			P.blood = A.start_blood
@@ -291,9 +299,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	torpor_count = 0
 	generation_bonus = 0
 	physique = 1
+	dexterity = 1
 	social = 1
 	mentality = 1
 	lockpicking = 0
+	athletics = 0
 	blood = 1
 	discipline1level = 1
 	discipline2level = 1
@@ -302,6 +312,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	archetype = pick(subtypesof(/datum/archetype))
 	var/datum/archetype/A = new archetype()
 	physique = A.start_physique
+//	dexterity = A.start_dexterity
 	social = A.start_social
 	mentality = A.start_mentality
 	blood = A.start_blood
@@ -523,6 +534,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "<a href='?_src_=prefs;preference=physique;task=input'>Increase ([3*physique])</a>"
 			dat += "<BR>"
 
+			dat += "<b>Dexterity:</b> •[dexterity > 1 ? "•" : "o"][dexterity > 2 ? "•" : "o"][dexterity > 3 ? "•" : "o"][dexterity > 4 ? "•" : "o"]([dexterity])"
+			if(true_experience >= 3*dexterity && dexterity != 5)
+				dat += "<a href='?_src_=prefs;preference=dexterity;task=input'>Increase ([3*dexterity])</a>"
+			dat += "<BR>"
+
 			dat += "<b>Social:</b> •[social > 1 ? "•" : "o"][social > 2 ? "•" : "o"][social > 3 ? "•" : "o"][social > 4 ? "•" : "o"]([social])"
 			if(true_experience >= 3*social && social != 5)
 				dat += "<a href='?_src_=prefs;preference=social;task=input'>Increase ([3*social])</a>"
@@ -543,6 +559,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "<a href='?_src_=prefs;preference=lockpicking;task=input'>Increase([2])</a>"
 			else if(true_experience >= 2*lockpicking && lockpicking != 5 || lockpicking == 0 && true_experience >=2)
 				dat += "<a href='?_src_=prefs;preference=lockpicking;task=input'>Increase([2*lockpicking])</a>"
+			dat += "<BR>"
+
+			dat += "<b>Athletics:</b> [athletics > 0 ? "•" : "o"][athletics > 1 ? "•" : "o"][athletics > 2 ? "•" : "o"][athletics > 3 ? "•" : "o"][athletics > 4 ? "•" : "o"]([athletics])"
+			if(true_experience >= 2 && athletics == 0)
+				dat += "<a href='?_src_=prefs;preference=athletics;task=input'>Increase([2])</a>"
+			else if(true_experience >= 2*athletics && athletics != 5 || athletics == 0 && true_experience >=2)
+				dat += "<a href='?_src_=prefs;preference=athletics;task=input'>Increase([2*athletics])</a>"
 			dat += "<BR>"
 
 			dat += "Experience rewarded: [true_experience]<BR>"
@@ -2186,6 +2209,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						true_experience = true_experience-physique*3
 						physique = min(5, physique+1)
 
+				if("dexterity")
+					if(true_experience >= dexterity*3 && dexterity < 6)
+						true_experience = true_experience-dexterity*3
+						dexterity = min(5, dexterity+1)
+
 				if("social")
 					if(true_experience >= social*3 && social < 6)
 						true_experience = true_experience-social*3
@@ -2203,6 +2231,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					else if(true_experience >= lockpicking*2 && lockpicking < 6)
 						true_experience = true_experience - lockpicking*2
 						lockpicking = min(5, lockpicking+1)
+
+				if("athletics")
+					if (athletics == 0)
+						true_experience = true_experience-2
+						athletics = min(5, athletics +1)
+					else if(true_experience >= athletics*2 && athletics < 6)
+						true_experience = true_experience - athletics*2
+						athletics = min(5, athletics+1)
 
 				if("blood")
 					if(true_experience >= blood*6 && blood < 6)
@@ -2931,6 +2967,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					mentality = 1
 					social = 1
 					lockpicking = 0
+					athletics = 0
 					blood = 1
 					masquerade = initial(masquerade)
 					generation = initial(generation)
@@ -2973,6 +3010,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						mentality = 1
 						social = 1
 						lockpicking = 0
+						athletics = 0
 						blood = 1
 						masquerade = initial(masquerade)
 						generation = initial(generation)
@@ -3017,6 +3055,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 /mob/living
 	var/additional_physique = 0
+	var/additional_dexterity = 0
 	var/additional_mentality = 0
 	var/additional_social = 0
 	var/additional_blood = 0
@@ -3058,9 +3097,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	character.diablerist = diablerist
 
 	character.physique = physique
+	character.dexterity = dexterity
 	character.social = social
 	character.mentality = mentality
 	character.lockpicking = lockpicking
+	character.athletics = athletics
 	character.blood = blood
 
 	var/datum/archetype/A = new archetype()
@@ -3194,11 +3235,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					character.transformator.lupus_form.name = real_name
 
 				character.transformator.crinos_form.physique = physique
+				character.transformator.crinos_form.dexterity = dexterity
 				character.transformator.crinos_form.mentality = mentality
 				character.transformator.crinos_form.social = social
 				character.transformator.crinos_form.blood = blood
 
 				character.transformator.lupus_form.physique = physique
+				character.transformator.lupus_form.dexterity = dexterity
 				character.transformator.lupus_form.mentality = mentality
 				character.transformator.lupus_form.social = social
 				character.transformator.lupus_form.blood = blood
