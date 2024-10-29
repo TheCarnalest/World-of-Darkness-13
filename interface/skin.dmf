@@ -57,6 +57,7 @@ window "mainwindow"
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		statusbar = false
+		on-status = ".winset \"[[*]] = \"\" ? status_bar.text = [[*]] status_bar.is-visible = true : status_bar.is-visible = false\""
 		icon = 'icons\\tg_32.png'
 		macro = "default"
 		menu = "menu"
@@ -108,6 +109,17 @@ window "mapwindow"
 		is-default = true
 		saved-params = "zoom;letterbox;zoom-mode"
 		style = ".center { text-align: center; } .maptext { font-family: 'Small Fonts'; font-size: 7px; -dm-text-outline: 1px black; color: white; line-height: 1.1; } .command_headset { font-weight: bold;\tfont-size: 8px; } .small { font-size: 6px; } .big { font-size: 8px; } .reallybig { font-size: 8px; } .extremelybig { font-size: 8px; } .greentext { color: #00FF00; font-size: 7px; } .redtext { color: #FF0000; font-size: 7px; } .clown { color: #FF69Bf; font-size: 7px;  font-weight: bold; } .his_grace { color: #15D512; } .hypnophrase { color: #0d0d0d; font-weight: bold; } .yell { font-weight: bold; } .italics { font-size: 6px; }"
+	elem "status_bar"
+		type = LABEL
+		pos = 0,464
+		size = 280x16
+		anchor1 = 0,100
+		is-visible = false
+		text = ""
+		align = left
+		background-color = #222222
+		text-color = #ffffff
+		border = line
 
 window "infowindow"
 	elem "infowindow"
@@ -130,8 +142,8 @@ window "infowindow"
 		is-vert = false
 	elem "changelog"
 		type = BUTTON
-		pos = 16,5
-		size = 104x20
+		pos = 5,5
+		size = 90x20
 		anchor1 = 3,0
 		anchor2 = 19,0
 		saved-params = "is-checked"
@@ -139,8 +151,8 @@ window "infowindow"
 		command = "changelog"
 	elem "rules"
 		type = BUTTON
-		pos = 120,5
-		size = 100x20
+		pos = 95,5
+		size = 90x20
 		anchor1 = 19,0
 		anchor2 = 34,0
 		saved-params = "is-checked"
@@ -148,8 +160,8 @@ window "infowindow"
 		command = "rules"
 	elem "wiki"
 		type = BUTTON
-		pos = 220,5
-		size = 100x20
+		pos = 185,5
+		size = 90x20
 		anchor1 = 34,0
 		anchor2 = 50,0
 		saved-params = "is-checked"
@@ -157,8 +169,8 @@ window "infowindow"
 		command = "wiki"
 	elem "forum"
 		type = BUTTON
-		pos = 320,5
-		size = 100x20
+		pos = 275,5
+		size = 90x20
 		anchor1 = 50,0
 		anchor2 = 66,0
 		saved-params = "is-checked"
@@ -166,8 +178,8 @@ window "infowindow"
 		command = "forum"
 	elem "discord"
 		type = BUTTON
-		pos = 420,5
-		size = 100x20
+		pos = 365,5
+		size = 90x20
 		anchor1 = 66,0
 		anchor2 = 81,0
 		saved-params = "is-checked"
@@ -175,8 +187,8 @@ window "infowindow"
 		command = "discord"
 	elem "github"
 		type = BUTTON
-		pos = 520,5
-		size = 100x20
+		pos = 455,5
+		size = 90x20
 		anchor1 = 81,0
 		anchor2 = 97,0
 		saved-params = "is-checked"
@@ -184,8 +196,8 @@ window "infowindow"
 		command = "github"
 	elem "report-issue"
 		type = BUTTON
-		pos = 620,5
-		size = 100x20
+		pos = 545,5
+		size = 90x20
 		anchor1 = 97,0
 		anchor2 = 113,0
 		saved-params = "is-checked"
