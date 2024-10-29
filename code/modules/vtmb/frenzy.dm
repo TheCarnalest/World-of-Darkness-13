@@ -331,7 +331,7 @@
 			if(!H.antifrenzy)
 				if(P.humanity < 1)
 					H.enter_frenzymod()
-					reset_shit(H)
+//					reset_shit(H)
 					H.ghostize(FALSE)
 					P.reason_of_death = "Lost control to the Beast ([time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")])."
 
