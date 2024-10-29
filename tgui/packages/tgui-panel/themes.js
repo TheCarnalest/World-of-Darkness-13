@@ -103,6 +103,8 @@ export const setClientTheme = name => {
       'wiki.text-color': COLOR_DARK_TEXT,
       'forum.background-color': '#494949',
       'forum.text-color': COLOR_DARK_TEXT,
+      'discord.background-color': '#3a3a3a',
+      'discord.text-color': COLOR_DARK_TEXT,
       'github.background-color': '#3a3a3a',
       'github.text-color': COLOR_DARK_TEXT,
       'report-issue.background-color': '#492020',
