@@ -39,8 +39,8 @@
 		R.announce_crime("murder", get_turf(src))
 	GLOB.masquerade_breakers_list -= src
 	GLOB.sabbatites -= src
-	var/allowed_to_loose = FALSE
-	if(key)
+//	var/allowed_to_loose = FALSE
+/*	if(key)
 		var/special_role_name
 		if(mind)
 			if(mind.special_role)
@@ -93,7 +93,7 @@
 				P.masquerade = masquerade
 				P.save_character()
 				P.save_preferences()
-				P.reason_of_death = "Killed in action ([time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")])."
+				P.reason_of_death = "Killed in action ([time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")])."*/
 	if(iskindred(src))
 		if(in_frenzy)
 			exit_frenzymod()
