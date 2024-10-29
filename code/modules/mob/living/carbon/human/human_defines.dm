@@ -118,6 +118,4 @@
 
 	bloodquality = 2
 
-	var/phonevoicetag = 10
-
 	var/atom/movable/screen/disciplines/toggled
