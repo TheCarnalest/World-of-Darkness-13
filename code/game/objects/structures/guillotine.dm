@@ -193,7 +193,7 @@
 			kill_count += 1
 			var/blood_overlay = "bloody"
 			if(P)
-				P.torpor_count = 0
+				//P.torpor_count = 0
 				P.reason_of_death = "Executed to sustain the Traditions ([time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")])."
 			if (kill_count == 2)
 				blood_overlay = "bloodier"
