@@ -7999,7 +7999,7 @@
 "uwr" = (/obj/effect/decal/cleanable/blood/old{icon_state = "ltrails_2-old"},/turf/open/floor/plating/rough/cave,/area/vtm/interior/mansion)
 "uwE" = (/obj/structure/vampdoor/simple{dir = 4; lock_id = "weedfarm"; locked = 1; lockpick_difficulty = 6},/turf/open/floor/plating/concrete,/area/vtm/interior)
 "uwP" = (/obj/structure/closet/cardboard,/turf/open/floor/plating/vampbeach,/area/vtm/northbeach)
-"uwU" = (/obj/item/arcane_tome{desc = "The great fagot Nikola Tesla, sucked a lot, sank into a chair, he studied faggoting for many years"; name = "arcane tome of Tesla"},/turf/open/floor/plating/rough/cave,/area/vtm/interior)
+"uwU" = (/obj/item/arcane_tome{desc = "The great Electrodyne Engineer Nikola Tesla. He struck out against the Ivory Tower with his genius, but was destroyed by the powers that be."; name = "arcane tome of Tesla"},/turf/open/floor/plating/rough/cave,/area/vtm/interior)
 "uxc" = (/obj/effect/turf_decal/weather/dirt,/obj/effect/turf_decal/weather/dirt{dir = 1},/mob/living/carbon/human/npc/hobo,/turf/open/floor/plating/vampdirt,/area/vtm)
 "uxM" = (/obj/item/paper{info = "Last warning. Go away!! Now..."},/turf/open/floor/plating/sidewalk/old,/area/vtm/pacificheights)
 "uyL" = (/obj/effect/decal/trash,/obj/effect/decal/litter,/turf/open/floor/plating/rough,/area/vtm/sewer)

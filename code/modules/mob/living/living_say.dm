@@ -280,8 +280,8 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 		if(ishuman(speaker))
 			var/mob/living/carbon/human/EX = speaker
 			if(EX.key && EX.client)
-				if(EX.last_nigging != message)
-					EX.last_nigging = message
+				if(EX.last_message != message)
+					EX.last_message = message
 //					var/datum/preferences/P = GLOB.preferences_datums[ckey(EX.key)]
 //					if(P)
 					EX.total_erp += length_char(message)

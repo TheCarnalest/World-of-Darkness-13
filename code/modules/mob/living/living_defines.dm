@@ -189,7 +189,7 @@
 	var/more_companions = 0
 	var/melee_professional = FALSE
 
-	var/last_nigging
+	var/last_message
 	var/total_erp = 0
 
 	var/last_taste_time

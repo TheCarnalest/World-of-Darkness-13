@@ -4679,7 +4679,7 @@
 "fKI" = (/obj/structure/chair/plastic{dir = 4; icon_state = "plastic_chair"},/turf/open/floor/plating/sidewalk/poor,/area/vtm)
 "fLg" = (/obj/structure/chair/stool/bar,/turf/open/floor/plating/parquetry,/area/vtm/camarilla)
 "fPG" = (/obj/structure/table/wood,/obj/item/wire_cutters,/turf/open/floor/bronze,/area/space)
-"fPN" = (/obj/effect/decal/litter{desc = "It says "you're a fag" "},/turf/open/floor/plating/rough,/area/vtm/interior)
+"fPN" = (/obj/effect/decal/litter{desc = "It says \"you're a loser\" "},/turf/open/floor/plating/rough,/area/vtm/interior)
 "fRQ" = (/obj/structure/vampdoor/anarch{dir = 4; icon_state = "cam-1"},/turf/open/floor/plating/parquetry/old,/area/vtm/anarch)
 "fSx" = (/obj/structure/table/wood,/obj/item/toy/cards/deck,/turf/open/floor/carpet/royalblack,/area/vtm/camarilla)
 "fYi" = (/obj/structure/fluff/hedge,/obj/effect/turf_decal/siding/white,/turf/open/floor/bronze,/area/space)
