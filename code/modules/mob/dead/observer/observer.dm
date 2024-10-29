@@ -73,6 +73,7 @@ var/list/CMNoir = list(0.3,0.3,0.3,0,\
 	var/datum/orbit_menu/orbit_menu
 	var/datum/spawners_menu/spawners_menu
 	var/aghosted = 0
+	var/auspex_ghosted = 0
 
 /mob/dead/observer/Login()
 	..()
@@ -294,7 +295,7 @@ Transfer_mind is there to check if mob is being deleted/not going to have a body
 Works together with spawning an observer, noted above.
 */
 
-/mob/proc/ghostize(can_reenter_corpse = TRUE, aghosted = 0)
+/mob/proc/ghostize(can_reenter_corpse = TRUE, aghosted = 0, auspex_ghosted = 0)
 	if(key)
 	/*
 		if(client)
@@ -315,10 +316,18 @@ Works together with spawning an observer, noted above.
 		ghost.client.init_verbs()
 		ghost.client = src.client
 		ghost.aghosted = aghosted
+		ghost.auspex_ghosted = auspex_ghosted
+		if(ghost.auspex_ghosted)
+			ghost.sight = SEE_TURFS | SEE_MOBS | SEE_OBJS
+			ghost.movement_type = FLYING | GROUND | PHASING
+			ghost.sight = 0
+			usr.client.prefs.chat_toggles -= CHAT_GHOSTEARS
+			ghost.client.show_popup_menus = 0
 		if(aghosted)
 			// to_chat(ghost.client, "Check rights - [check_rights_for(ghost.client, R_ADMIN)]")
 			ghost.sight = SEE_TURFS | SEE_MOBS | SEE_OBJS
 			ghost.movement_type = FLYING | PHASING | GROUND // [ChillRaccoon] - makes us available to go through dens objects [Lucifernix] - It was += that made aghosts unable to phase here.
+			ghost.stop_sound_channel(CHANNEL_AMBIENCE)
 		else
 			ghost.client.color = CMNoir // [ChillRaccoon] - noir screen effect
 			if(ghost.client.prefs.toggles & CHANNEL_AMBIENCE)
@@ -396,6 +405,20 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		return
 	if(!can_reenter_corpse)
 		to_chat(src, "<span class='warning'>You cannot re-enter your body.</span>")
+		return
+
+	var/mob/living/carbon/human/original_body = mind.current
+	var/turf/current_turf = get_turf(src)
+	var/found_body = FALSE
+
+	for(var/atom/A in current_turf)
+		if(istype(A, /mob/living/carbon/human) && A == original_body)
+			found_body = TRUE
+			break
+	if(!found_body && src.auspex_ghosted == 1)
+		var/turf/body_turf = get_turf(original_body)
+		to_chat(src, "<span class='warning'>Your body is not here. It is located at coordinates: [body_turf.x], [body_turf.y], [body_turf.z].</span>")
+		to_chat(src, "<span class='warning'>Your current coordinates are: [current_turf.x], [current_turf.y], [current_turf.z].</span>")
 		return
 	if(mind.current.key && mind.current.key[1] != "@")	//makes sure we don't accidentally kick any clients
 		to_chat(usr, "<span class='warning'>Another consciousness is in your body...It is resisting you.</span>")
@@ -484,11 +507,13 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set category = "Ghost"
 	set name = "Orbit" // "Haunt"
 	set desc = "Follow and orbit a mob."
+	if(auspex_ghosted)
+		return
+	else
+		if(!orbit_menu)
+			orbit_menu = new(src)
 
-	if(!orbit_menu)
-		orbit_menu = new(src)
-
-	orbit_menu.ui_interact(src)
+		orbit_menu.ui_interact(src)
 
 // This is the ghost's follow verb with an argument
 /mob/dead/observer/proc/ManualFollow(atom/movable/target)
@@ -887,18 +912,22 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Observe"
 	set category = "Ghost"
 
-	var/list/creatures = getpois()
-
-	reset_perspective(null)
-
-	var/eye_name = null
-
-	eye_name = input("Please, select a player!", "Observe", null, null) as null|anything in creatures
-
-	if (!eye_name)
+	if(auspex_ghosted)
 		return
 
-	do_observe(creatures[eye_name])
+	else
+		var/list/creatures = getpois()
+
+		reset_perspective(null)
+
+		var/eye_name = null
+
+		eye_name = input("Please, select a player!", "Observe", null, null) as null|anything in creatures
+
+		if (!eye_name)
+			return
+
+		do_observe(creatures[eye_name])
 
 /mob/dead/observer/proc/do_observe(mob/mob_eye)
 	//Istype so we filter out points of interest that are not mobs

@@ -307,9 +307,9 @@
 	if(level_casting >= 4)
 		caster.auspex_examine = TRUE
 	if(level_casting >= 5)
-		caster.see_invisible = SEE_INVISIBLE_OBSERVER
-		GLOB.auspex_list += caster
-		shitcasted = TRUE
+		caster.ghostize(TRUE, 0, 1)
+
+
 	spawn((delay*level_casting)+caster.discipline_time_plus)
 		if(caster)
 			if(shitcasted)

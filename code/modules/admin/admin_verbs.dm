@@ -374,7 +374,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 			ghost.client.color = CMNoir
 			// chat_toggles -= CHAT_GHOSTEARS
 //			ghost.client << sound('sound/effects/ghost_ambient.ogg', 1, 5, CHANNEL_AMBIENCE, 10)
-			to_chat(src, "Now you leave from admin ghost mode")
+//			to_chat(src, "Now you leave from admin ghost mode")
 		if(ghost.hud_used)
 			ghost.client.screen = null
 			ghost.hud_used.show_hud(ghost.hud_used.hud_version)
