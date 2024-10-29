@@ -17,7 +17,7 @@ jobs:
       run: |
         git branch -f tgs-dmapi-update
         git checkout tgs-dmapi-update
-        git reset --hard master
+        git reset --hard main
 
     - name: Apply DMAPI update
       uses: tgstation/tgs-dmapi-updater@v2
