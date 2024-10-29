@@ -171,6 +171,8 @@ Dancer
 	lose_text = "<span class='notice'>You don't feel extra <b>HUNGRY</b> anymore.</span>"
 	allowed_species = list("Vampire", "Ghoul")
 
+//Removed after changes to death consequences.
+/*
 /datum/quirk/phoenix
 	name = "Phoenix"
 	desc = "You don't loose gained experience after the Final Death."
@@ -179,6 +181,8 @@ Dancer
 	gain_text = "<span class='notice'>You feel like you can burn without permanent consequences.</span>"
 	lose_text = "<span class='warning'>You don't feel like you can burn without consequences anymore.</span>"
 	allowed_species = list("Vampire")
+*/
+
 /*
 /datum/quirk/acrobatic
 	name = "Acrobatic"
