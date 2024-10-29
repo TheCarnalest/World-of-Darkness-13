@@ -4,14 +4,11 @@
 	r_pocket = /obj/item/flashlight
 	id = /obj/item/cockclock
 	shoes = /obj/item/clothing/shoes/vampire/jackboots
-//	l_pocket = /obj/item/vamp/keys/church
 	backpack_contents = list(
-//		/obj/item/storage/book/bible = 1,
-//		/obj/item/vampire_stake = 3,
 		/obj/item/molotov = 1,
 		/obj/item/gas_can/full = 1,
 		/obj/item/vamp/keys/hack=1
-		)
+	)
 
 /datum/outfit/job/spiral/post_equip(mob/living/carbon/human/H)
 	..()
@@ -99,12 +96,13 @@
 				H.transformator.lupus_form.name = H.real_name
 
 				H.transformator.crinos_form.physique = H.physique
+				H.transformator.crinos_form.dexterity = H.dexterity
 				H.transformator.crinos_form.mentality = H.mentality
 				H.transformator.crinos_form.social = H.social
 				H.transformator.crinos_form.blood = H.blood
 
 				H.transformator.lupus_form.physique = H.physique
-				H.transformator.lupus_form.mentality = H.mentality
+				H.transformator.lupus_form.dexterity = H.dexterity
 				H.transformator.lupus_form.social = H.social
 				H.transformator.lupus_form.blood = H.blood
 

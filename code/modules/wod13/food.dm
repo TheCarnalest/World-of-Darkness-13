@@ -311,6 +311,10 @@
 		new /datum/data/mining_equipment("glasses",	/obj/item/clothing/glasses/vampire/yellow,	20),
 		new /datum/data/mining_equipment("glasses",	/obj/item/clothing/glasses/vampire/sun,	20),
 		new /datum/data/mining_equipment("glasses",	/obj/item/clothing/glasses/vampire/perception,	20),
+		new /datum/data/mining_equipment("gloves", /obj/item/clothing/gloves/vampire/leather,	25),
+		new /datum/data/mining_equipment("gloves", /obj/item/clothing/gloves/vampire/cleaning,	15),
+		new /datum/data/mining_equipment("gloves", /obj/item/clothing/gloves/vampire/latex,	5),
+		new /datum/data/mining_equipment("gloves", /obj/item/clothing/gloves/vampire/work,	45),
 		new /datum/data/mining_equipment("hat",	/obj/item/clothing/head/vampire/bandana,	10),
 		new /datum/data/mining_equipment("hat",	/obj/item/clothing/head/vampire/bandana/red,	10),
 		new /datum/data/mining_equipment("hat",	/obj/item/clothing/head/vampire/bandana/black,	10),
@@ -389,6 +393,15 @@
 		new /datum/data/mining_equipment("silver 5.56 ammo",	/obj/item/ammo_box/vampire/c556/silver,	1000),
 		new /datum/data/mining_equipment("stake",	/obj/item/vampire_stake,	100),
 		new /datum/data/mining_equipment("lockpick",	/obj/item/vamp/keys/hack, 50)
+		)
+
+/obj/machinery/mineral/equipment_vendor/fastfood/pharmacy
+	prize_list = list(
+		new /datum/data/mining_equipment("ephedrine pill bottle", /obj/item/storage/pill_bottle/ephedrine, 200),
+		new /datum/data/mining_equipment("iron pill bottle", /obj/item/storage/pill_bottle/iron, 150),
+		new /datum/data/mining_equipment("potassium iodide pill bottle", /obj/item/storage/pill_bottle/potassiodide, 100),
+		new /datum/data/mining_equipment("bruise pack", /obj/item/stack/medical/bruise_pack, 100),
+		new /datum/data/mining_equipment("burn ointment", /obj/item/stack/medical/ointment, 100)
 		)
 
 /obj/machinery/mineral/equipment_vendor/fastfood/smoking

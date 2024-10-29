@@ -62,6 +62,7 @@
 	var/lastpuke = 0
 	var/last_fire_update
 	var/account_id
+	var/bank_id
 
 	var/hardcore_survival_score = 0
 	/// For agendered spessmen, which body type to use
@@ -116,5 +117,7 @@
 	var/icon/body_sprite
 
 	bloodquality = 2
+
+	var/phonevoicetag = 10
 
 	var/atom/movable/screen/disciplines/toggled

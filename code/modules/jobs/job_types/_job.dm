@@ -74,7 +74,6 @@
 	// Fuck thin blood
 	var/minimal_generation = 13
 	var/minimal_masquerade = 1
-	var/minimal_age = 18
 //	var/list/allowed_species = list("kindred")
 	var/kindred_only = FALSE
 	var/humans_accessible = FALSE

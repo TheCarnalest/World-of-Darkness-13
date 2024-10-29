@@ -298,7 +298,7 @@ GLOBAL_VAR(restart_counter)
 		hostedby = CONFIG_GET(string/hostedby)
 	s += "Fresh roleplaying experience in World of Darkness universe!"
 	s += " ("
-	s += "<a href=\"https://discord.gg/FeptTFZfsh\">" //Change this to wherever you want the hub to link to.
+	s += "<a href=\"https://discord.gg/invite/WU92NG2Me8\">" //Change this to wherever you want the hub to link to.
 	s += "Discord"  //Replace this with something else. Or ever better, delete it and uncomment the game version.
 	s += "</a>"
 	s += ")"

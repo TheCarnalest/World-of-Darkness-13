@@ -107,8 +107,8 @@
 	var/last_beep = 0
 
 	var/component_type = /datum/component/storage/concrete
-	var/baggage_limit = 20
-	var/baggage_max = WEIGHT_CLASS_NORMAL
+	var/baggage_limit = 30
+	var/baggage_max = WEIGHT_CLASS_BULKY
 
 	var/exploded = FALSE
 	var/beep_sound = 'code/modules/wod13/sounds/beep.ogg'
@@ -179,7 +179,7 @@
 			if(!repairing)
 				repairing = TRUE
 				if(do_mob(user, src, 20 SECONDS))
-					var/roll = rand(1, 20) + (user.lockpicking+user.physique) - 8
+					var/roll = rand(1, 20) + (user.lockpicking+user.dexterity) - 8
 					if (roll <= 1)
 						to_chat(user, "<span class='warning'>Your lockpick broke!</span>")
 						qdel(K)
@@ -718,6 +718,8 @@
 	last_dir = WEST
 	beep_sound = 'code/modules/wod13/sounds/migalka.ogg'
 	access = "police"
+	baggage_limit = 45
+	baggage_max = WEIGHT_CLASS_BULKY
 	var/color_blue = FALSE
 	var/last_color_change = 0
 
@@ -747,6 +749,8 @@
 	moving_dir = WEST
 	last_dir = WEST
 	access = "taxi"
+	baggage_limit = 40
+	baggage_max = WEIGHT_CLASS_BULKY
 
 /obj/vampire_car/track
 	icon_state = "track"
@@ -756,7 +760,7 @@
 	moving_dir = WEST
 	last_dir = WEST
 	access = "none"
-	baggage_limit = 40
+	baggage_limit = 100
 	baggage_max = WEIGHT_CLASS_BULKY
 
 /obj/vampire_car/track/Initialize()
@@ -766,10 +770,12 @@
 
 /obj/vampire_car/track/volkswagen
 	icon_state = "volkswagen"
+	baggage_limit = 60
 
 /obj/vampire_car/track/ambulance
 	icon_state = "ambulance"
 	access = "clinic"
+	baggage_limit = 60
 
 /obj/effect/fari
 	invisibility = INVISIBILITY_ABSTRACT

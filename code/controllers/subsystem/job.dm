@@ -100,8 +100,6 @@ SUBSYSTEM_DEF(job)
 			return FALSE
 		if(player.client.prefs.masquerade < job.minimal_masquerade)
 			return FALSE
-		if(player.client.prefs.age < job.minimal_age)
-			return FALSE
 		var/position_limit = job.total_positions
 		if(!latejoin)
 			position_limit = job.spawn_positions
@@ -132,9 +130,6 @@ SUBSYSTEM_DEF(job)
 			continue
 		if(player.client.prefs.masquerade < job.minimal_masquerade)
 			JobDebug("FOC player not enough masquerade, Player: [player]")
-			continue
-		if(player.client.prefs.age < job.minimal_age)
-			JobDebug("FOC player not enough age, Player: [player]")
 			continue
 		if(job.kindred_only)
 			if(player.client.prefs.pref_species.name != "Vampire")
@@ -210,10 +205,6 @@ SUBSYSTEM_DEF(job)
 
 		if(player.client.prefs.masquerade < job.minimal_masquerade)
 			JobDebug("GRJ player not enough masquerade, Player: [player]")
-			continue
-
-		if(player.client.prefs.age < job.minimal_age)
-			JobDebug("GRJ player not enough age, Player: [player]")
 			continue
 
 		if(job.kindred_only)
@@ -432,10 +423,6 @@ SUBSYSTEM_DEF(job)
 
 				if(player.client.prefs.masquerade < job.minimal_masquerade)
 					JobDebug("DO player not enough masquerade, Player: [player]")
-					continue
-
-				if(player.client.prefs.age < job.minimal_age)
-					JobDebug("DO player not enough age, Player: [player]")
 					continue
 
 				if(job.kindred_only)

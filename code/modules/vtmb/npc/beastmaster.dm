@@ -137,13 +137,13 @@ SUBSYSTEM_DEF(beastmastering)
 			ClickOn(targa)
 	else
 		if(follow && isturf(beastmaster.loc))
-			if(z != beastmaster.z)
-				forceMove(get_turf(beastmaster))
-			else if(get_dist(src, beastmaster) > 15)
+			if( (z != beastmaster.z) & (get_dist(beastmaster.loc, loc) <= 10) )
 				forceMove(get_turf(beastmaster))
 			else
 				var/reqsteps = round((SSbeastmastering.next_fire-world.time)/totalshit)
 				walk_to(src, beastmaster, reqsteps, total_multiplicative_slowdown())
+		else
+			walk(src, 0)
 
 /mob/living/simple_animal/hostile/beastmaster/proc/add_beastmaster_enemies(var/mob/living/L)
 	if(istype(L, /mob/living/simple_animal/hostile/beastmaster))

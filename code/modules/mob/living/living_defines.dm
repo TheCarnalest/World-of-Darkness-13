@@ -177,9 +177,11 @@
 	var/total_cleaned = 0
 
 	var/physique = 1
+	var/dexterity = 1
 	var/social = 1
 	var/mentality = 1
 	var/lockpicking = 0
+	var/athletics = 0
 	var/blood = 1
 
 	var/additional_physique = 0

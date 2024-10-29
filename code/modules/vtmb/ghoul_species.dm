@@ -94,9 +94,11 @@
 //				humanity = "I'm slowly falling into madness..."
 //		dat += "[humanity]<BR>"
 		dat += "<b>Physique</b>: [host.physique]<BR>"
+		dat += "<b>Dexterity</b>: [host.dexterity]<BR>"
 		dat += "<b>Social</b>: [host.social]<BR>"
 		dat += "<b>Mentality</b>: [host.mentality]<BR>"
 		dat += "<b>Lockpicking</b>: [host.lockpicking]<BR>"
+		dat += "<b>Athletics</b>: [host.athletics]<BR>"
 		dat += "<b>Cruelty</b>: [host.blood]<BR>"
 		if(host.friend_name)
 			dat += "<b>Friend: [host.friend_name]</b><BR>"
@@ -108,6 +110,9 @@
 			dat += "<b>I know some other of my kind in this city. Need to check my phone, there definetely should be:</b><BR>"
 			for(var/i in host.knowscontacts)
 				dat += "-[i] contact<BR>"
+		for(var/datum/bank_account/account in GLOB.bank_account_list)
+			if(host.bank_id == account.bank_id)
+				dat += "<b>My bank account code is: [account.code]</b><BR>"
 		host << browse(dat, "window=vampire;size=400x450;border=1;can_resize=1;can_minimize=0")
 		onclose(host, "ghoul", src)
 
@@ -226,7 +231,7 @@
 					var/mob/living/carbon/human/pull = H.pulling
 					if(pull.stat == 4)
 						var/obj/item/card/id/id_card = H.get_idcard(FALSE)
-						if(!istype(id_card, /obj/item/card/id/clinic) && !istype(id_card, /obj/item/card/id/police))
+						if(!istype(id_card, /obj/item/card/id/clinic) && !istype(id_card, /obj/item/card/id/police) && !istype(id_card, /obj/item/card/id/sheriff) && !istype(id_card, /obj/item/card/id/prince) && !istype(id_card, /obj/item/card/id/camarilla))
 							if(H.CheckEyewitness(H, H, 7, FALSE))
 								if(H.last_loot_check+50 <= world.time)
 									H.last_loot_check = world.time
@@ -245,7 +250,7 @@
 					if(I.masquerade_violating)
 						if(I.loc == H)
 							var/obj/item/card/id/id_card = H.get_idcard(FALSE)
-							if(!istype(id_card, /obj/item/card/id/police))
+							if(!istype(id_card, /obj/item/card/id/police) && !istype(id_card, /obj/item/card/id/sheriff) && !istype(id_card, /obj/item/card/id/prince) && !istype(id_card, /obj/item/card/id/camarilla))
 								if(H.CheckEyewitness(H, H, 7, FALSE))
 									if(H.last_loot_check+50 <= world.time)
 										H.last_loot_check = world.time
@@ -291,14 +296,6 @@
 						to_chat(H, "<span class='warning'>You feel the rage rising as your last sins come to your head...</span>")
 						H.drop_all_held_items()
 						H.emote("scream")
-		if(last_vitae+3000 < world.time)
-			last_vitae = world.time
-			if(H.bloodpool > 1)
-				H.bloodpool = max(1, H.bloodpool-1)
-			else
-				if(prob(20))
-					to_chat(H, "<span class='userdanger'><b>I THIRST FOR BLOOD!</b></span>")
-					H.Stun(10)
 
 /datum/species/human/spec_life(mob/living/carbon/human/H)
 	. = ..()
@@ -313,7 +310,7 @@
 					var/mob/living/carbon/human/pull = H.pulling
 					if(pull.stat == 4)
 						var/obj/item/card/id/id_card = H.get_idcard(FALSE)
-						if(!istype(id_card, /obj/item/card/id/clinic) && !istype(id_card, /obj/item/card/id/police))
+						if(!istype(id_card, /obj/item/card/id/clinic) && !istype(id_card, /obj/item/card/id/police) && !istype(id_card, /obj/item/card/id/sheriff) && !istype(id_card, /obj/item/card/id/prince) && !istype(id_card, /obj/item/card/id/camarilla))
 							if(H.CheckEyewitness(H, H, 7, FALSE))
 								if(H.last_loot_check+50 <= world.time)
 									H.last_loot_check = world.time
@@ -332,7 +329,7 @@
 					if(I.masquerade_violating)
 						if(I.loc == H)
 							var/obj/item/card/id/id_card = H.get_idcard(FALSE)
-							if(!istype(id_card, /obj/item/card/id/police))
+							if(!istype(id_card, /obj/item/card/id/police) && !istype(id_card, /obj/item/card/id/sheriff) && !istype(id_card, /obj/item/card/id/prince) && !istype(id_card, /obj/item/card/id/camarilla))
 								if(H.CheckEyewitness(H, H, 7, FALSE))
 									if(H.last_loot_check+50 <= world.time)
 										H.last_loot_check = world.time
@@ -387,7 +384,7 @@
 					var/mob/living/carbon/human/pull = H.pulling
 					if(pull.stat == 4)
 						var/obj/item/card/id/id_card = H.get_idcard(FALSE)
-						if(!istype(id_card, /obj/item/card/id/clinic) && !istype(id_card, /obj/item/card/id/police))
+						if(!istype(id_card, /obj/item/card/id/clinic) && !istype(id_card, /obj/item/card/id/police) && !istype(id_card, /obj/item/card/id/sheriff) && !istype(id_card, /obj/item/card/id/prince) && !istype(id_card, /obj/item/card/id/camarilla))
 							if(H.CheckEyewitness(H, H, 7, FALSE))
 								if(H.last_loot_check+50 <= world.time)
 									H.last_loot_check = world.time
@@ -406,7 +403,7 @@
 					if(I.masquerade_violating)
 						if(I.loc == H)
 							var/obj/item/card/id/id_card = H.get_idcard(FALSE)
-							if(!istype(id_card, /obj/item/card/id/police))
+							if(!istype(id_card, /obj/item/card/id/police) && !istype(id_card, /obj/item/card/id/sheriff) && !istype(id_card, /obj/item/card/id/prince) && !istype(id_card, /obj/item/card/id/camarilla))
 								if(H.CheckEyewitness(H, H, 7, FALSE))
 									if(H.last_loot_check+50 <= world.time)
 										H.last_loot_check = world.time

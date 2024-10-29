@@ -66,22 +66,30 @@
 			if(do_mob(user, src, 15 SECONDS))
 				catching = FALSE
 				user.isfishing = FALSE
-				if(prob(33))
-					var/IT = pick(/obj/item/food/fish/shark,
-									/obj/item/food/fish/tune,
-									/obj/item/food/fish/catfish,
-									/obj/item/food/fish/crab)
-					var/i = rand(1, 1000)
-					if(i == 1000)
-						IT = /obj/item/vtm_artifact/rand
-					new IT(user.loc)
-					playsound(loc, 'code/modules/wod13/sounds/catched.ogg', 50, FALSE)
+				var/diceroll = rand(1, 20)
+				var/IT
+				if(diceroll <= 5)
+					IT = /obj/item/food/fish/tune
+				else if(diceroll <= 10)
+					IT = /obj/item/food/fish/catfish
+				else if(diceroll <= 15)
+					IT = /obj/item/food/fish/crab
+				else
+					IT = /obj/item/food/fish/shark
+				new IT(user.loc)
+				playsound(loc, 'code/modules/wod13/sounds/catched.ogg', 50, FALSE)
+//					var/IT = pick(/obj/item/food/fish/shark,
+//									/obj/item/food/fish/tune,
+//									/obj/item/food/fish/catfish,
+//									/obj/item/food/fish/crab)
+//				var/i = rand(1, 1000)
+//				if(i == 1000)
+//					IT = /obj/item/vtm_artifact/rand
+
 //					if(user.key)
 //						var/datum/preferences/P = GLOB.preferences_datums[ckey(user.key)]
 //						if(P)
 //							P.exper = min(calculate_mob_max_exper(user), P.exper+10)
-				else
-					to_chat(user, "<span class='warning'>Nothing!</span>")
 			else
 				catching = FALSE
 				user.isfishing = FALSE

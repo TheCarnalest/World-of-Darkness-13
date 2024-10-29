@@ -8,11 +8,11 @@
 /// Standard backpacks can carry tiny, small & normal items, (e.g. fire extinguisher, stun baton, gas mask, metal sheets)
 #define WEIGHT_CLASS_NORMAL   3
 /// Items that can be weilded or equipped but not stored in an inventory, (e.g. defibrillator, backpack, space suits)
-#define WEIGHT_CLASS_BULKY    4
+#define WEIGHT_CLASS_BULKY    16
 /// Usually represents objects that require two hands to operate, (e.g. shotgun, two-handed melee weapons)
-#define WEIGHT_CLASS_HUGE     5
+#define WEIGHT_CLASS_HUGE     32
 /// Essentially means it cannot be picked up or placed in an inventory, (e.g. mech parts, safe)
-#define WEIGHT_CLASS_GIGANTIC 6
+#define WEIGHT_CLASS_GIGANTIC 64
 
 //Inventory depth: limits how many nested storage items you can access directly.
 //1: stuff in mob, 2: stuff in backpack, 3: stuff in box in backpack, etc

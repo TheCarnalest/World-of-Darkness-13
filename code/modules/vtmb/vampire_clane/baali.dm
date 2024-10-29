@@ -2,9 +2,11 @@
 	name = "Baali"
 	desc = "The Baali are a bloodline of vampires associated with demon worship. Because of their affinity with the unholy, the Baali are particularly vulnerable to holy iconography, holy ground and holy water. They are highly vulnerable to True Faith."
 	curse = "Fear of the Religion."
-	clane_disciplines = list(/datum/discipline/obfuscate = 1,
-														/datum/discipline/obtenebration = 2,
-														/datum/discipline/daimonion = 3)
+	clane_disciplines = list(
+		/datum/discipline/obfuscate = 1,
+		/datum/discipline/presence = 2,
+		/datum/discipline/daimonion = 3
+	)
 	male_clothes = "/obj/item/clothing/under/vampire/baali"
 	female_clothes = "/obj/item/clothing/under/vampire/baali/female"
 	enlightement = TRUE
@@ -17,8 +19,6 @@
 
 /datum/discipline/daimonion/post_gain(mob/living/carbon/human/H)
 	H.put_in_r_hand(new /obj/item/vamp/keys/baali(H))
-	var/obj/item/organ/eyes/night_vision/NV = new()
-	NV.Insert(H, TRUE, FALSE)
 	if(level >= 3)
 		var/obj/effect/proc_holder/spell/aimed/fireball/baali/S = new(H)
 		H.mind.AddSpell(S)

@@ -171,6 +171,8 @@ Dancer
 	lose_text = "<span class='notice'>You don't feel extra <b>HUNGRY</b> anymore.</span>"
 	allowed_species = list("Vampire", "Ghoul")
 
+//Removed after changes to death consequences.
+/*
 /datum/quirk/phoenix
 	name = "Phoenix"
 	desc = "You don't loose gained experience after the Final Death."
@@ -179,7 +181,9 @@ Dancer
 	gain_text = "<span class='notice'>You feel like you can burn without permanent consequences.</span>"
 	lose_text = "<span class='warning'>You don't feel like you can burn without consequences anymore.</span>"
 	allowed_species = list("Vampire")
+*/
 
+/*
 /datum/quirk/acrobatic
 	name = "Acrobatic"
 	desc = "You know a couple of acrobatic moves."
@@ -323,7 +327,7 @@ Dancer
 					H.epic_fall()
 				else if(iscrinos(H))
 					H.epic_fall()
-
+*/
 /datum/action/fly_upper
 	name = "Fly Up"
 	desc = "Fly to the upper level."
@@ -567,13 +571,13 @@ Dancer
 		return
 	if(isturf(quirk_holder.loc))
 		SSbloodhunt.announce_hunted(quirk_holder)
-
+/*
 /datum/quirk/diablerist
 	name = "Black Secret"
 	desc = "You have a small, ancient secret, somehow related to Diablerie, and this decreases your chance to survive another one. <b>This isn't a licence to diablerie anyone you want!</b>"
 	value = -3
 	allowed_species = list("Vampire")
-
+*/
 /datum/quirk/diablerist/on_spawn()
 	if(iswerewolf(quirk_holder) || isgarou(quirk_holder))
 		return
