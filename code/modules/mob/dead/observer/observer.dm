@@ -317,11 +317,12 @@ Works together with spawning an observer, noted above.
 		ghost.client = src.client
 		ghost.aghosted = aghosted
 		ghost.auspex_ghosted = auspex_ghosted
+		var/c_toggles = TOGGLES_DEFAULT_CHAT
 		if(ghost.auspex_ghosted)
 			ghost.sight = SEE_TURFS | SEE_MOBS | SEE_OBJS
 			ghost.movement_type = FLYING | GROUND | PHASING
 			ghost.sight = 0
-			usr.client.prefs.chat_toggles -= CHAT_GHOSTEARS
+			ghost.client.prefs.chat_toggles &= ~CHAT_GHOSTEARS
 			ghost.client.show_popup_menus = 0
 		if(aghosted)
 			// to_chat(ghost.client, "Check rights - [check_rights_for(ghost.client, R_ADMIN)]")
