@@ -1,8 +1,3 @@
-/mob/living/carbon
-	var/last_gnosis_buff = 0
-	var/last_rage_penis = 0
-	var/last_veil_restore = 0
-
 /mob/living/carbon/werewolf/Life()
 	update_icons()
 	update_rage_hud()
@@ -95,9 +90,6 @@
 	if(.) //if the mob isn't on fire anymore
 		return
 	adjust_bodytemperature(BODYTEMP_HEATING_MAX) //If you're on fire, you heat up!
-
-/mob/living/carbon
-	var/last_veil_adjusting = 0
 
 /mob/living/carbon/proc/adjust_veil(var/amount)
 	if(!GLOB.canon_event)

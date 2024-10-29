@@ -40,14 +40,6 @@ And it also helps for the character set panel
 //		H.hairstyle = "Bald"
 //		H.update_hair()
 
-/mob/living/carbon
-	var/friend_name
-	var/enemy_name
-	var/lover_name
-	var/have_friend = FALSE
-	var/have_enemy = FALSE
-	var/have_lover = FALSE
-
 /mob/living/carbon/human/proc/generate_friends()
 	if(have_friend && !friend_name)
 		for(var/mob/living/carbon/human/H in GLOB.player_list)

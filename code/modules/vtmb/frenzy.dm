@@ -2,14 +2,6 @@
 
 //add_client_colour(/datum/client_colour/glass_colour/red)
 //remove_client_colour(/datum/client_colour/glass_colour/red)
-
-/mob/living/carbon
-	var/in_frenzy = FALSE
-	var/frenzy_hardness = 1
-	var/last_frenzy_check = 0
-	var/atom/frenzy_target = null
-	var/last_experience = 0
-
 /client/Click(object,location,control,params)
 	if(isatom(object))
 		if(ishuman(mob))
@@ -78,9 +70,6 @@
 		return TRUE
 	if(HAS_TRAIT(src, TRAIT_RESTRAINED))
 		return TRUE
-
-/mob/living/carbon
-	var/last_rage_hit = 0
 
 /mob/living/carbon/proc/frenzystep()
 	if(!isturf(loc) || CheckFrenzyMove())

@@ -345,10 +345,6 @@
 	spawn(5)
 		qdel(src)
 
-/mob/living/carbon
-	var/celerity_visual = FALSE
-	var/potential = 0
-
 /mob/living/carbon/human/Move(atom/newloc, direct, glide_size_override)
 	..()
 	if(celerity_visual)
@@ -722,9 +718,6 @@
 	delay = 100
 	activate_sound = 'code/modules/wod13/sounds/obfuscate_activate.ogg'
 	leveldelay = TRUE
-
-/mob/living/carbon
-	var/obfuscate_level = 0
 
 /datum/discipline/obfuscate/activate(mob/living/target, mob/living/carbon/human/caster)
 	. = ..()

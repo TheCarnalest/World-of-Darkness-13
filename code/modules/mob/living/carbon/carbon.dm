@@ -1,10 +1,6 @@
 #define JUMP_DELAY 40
 #define MAX_JUMP_DISTANCE 1
 
-/mob/living/carbon
-	var/last_jump_time = 0
-	var/jump_range = MAX_JUMP_DISTANCE
-
 /mob/living/carbon/Initialize(mapload)
 	. = ..()
 	create_reagents(1000)
@@ -1390,3 +1386,6 @@
 
 /mob/living/carbon/proc/attach_rot(mapload)
 	AddComponent(/datum/component/rot/corpse)
+
+#undef JUMP_DELAY
+#undef MAX_JUMP_DISTANCE
