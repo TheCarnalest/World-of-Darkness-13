@@ -162,7 +162,7 @@
 					if(loved)
 						M.emote("clap")
 			var/datum/preferences/P = GLOB.preferences_datums[ckey(H.key)]
-			var/how_much = max(1, 5-H.masquerade)
+		/*	var/how_much = max(1, 5-H.masquerade)
 			if(H in GLOB.masquerade_breakers_list)
 				if(P)
 					P.last_torpor = world.time
@@ -185,7 +185,7 @@
 					P.generation = H.generation
 					P.torpor_count = 0
 					P.diablerist = 0
-					H.diablerist = 0
+					H.diablerist = 0*/
 			head.dismember()
 			log_combat(user, H, "beheaded", src)
 			H.regenerate_icons()
