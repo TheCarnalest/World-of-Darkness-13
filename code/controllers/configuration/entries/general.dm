@@ -210,19 +210,16 @@
 /datum/config_entry/string/banappeals
 
 /datum/config_entry/string/wikiurl
-	config_entry_value = "https://wod13.miraheze.org/wiki/"
+	config_entry_value = "http://www.tgstation13.org/wiki"
 
 /datum/config_entry/string/forumurl
-	config_entry_value = ""
-
-/datum/config_entry/string/discordurl
-	config_entry_value = "https://discord.com/invite/WU92NG2Me8"
+	config_entry_value = "http://tgstation13.org/phpBB/index.php"
 
 /datum/config_entry/string/rulesurl
-	config_entry_value = ""
+	config_entry_value = "http://www.tgstation13.org/wiki/Rules"
 
 /datum/config_entry/string/githuburl
-	config_entry_value = "https://github.com/TheCarnalest/World-of-Darkness-13"
+	config_entry_value = "https://www.github.com/tgstation/tgstation"
 
 /datum/config_entry/string/discordbotcommandprefix
 	config_entry_value = "?"
