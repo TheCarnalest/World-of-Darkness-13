@@ -303,7 +303,7 @@
 	if(level_casting >= 4)
 		caster.auspex_examine = TRUE
 	if(level_casting >= 5)
-		caster.ghostize(TRUE, 0, 1)
+		caster.ghostize(TRUE, FALSE, TRUE)
 
 	spawn((delay*level_casting)+caster.discipline_time_plus)
 		if(caster)

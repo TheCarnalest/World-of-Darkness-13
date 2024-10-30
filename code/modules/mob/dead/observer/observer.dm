@@ -69,8 +69,8 @@ var/list/CMNoir = list(0.3,0.3,0.3,0,\
 	var/deadchat_name
 	var/datum/orbit_menu/orbit_menu
 	var/datum/spawners_menu/spawners_menu
-	var/aghosted = 0
-	var/auspex_ghosted = 0
+	var/aghosted = FALSE
+	var/auspex_ghosted = FALSE
 
 /mob/dead/observer/Login()
 	..()
@@ -81,7 +81,6 @@ var/list/CMNoir = list(0.3,0.3,0.3,0,\
 			client << sound('sound/effects/ghost_ambient.ogg', 1, 5, CHANNEL_AMBIENCE, 10)
 
 /mob/dead/observer/Initialize()
-
 	set_invisibility(GLOB.observer_default_invisibility)
 
 	add_verb(src, list(
@@ -307,7 +306,7 @@ Transfer_mind is there to check if mob is being deleted/not going to have a body
 Works together with spawning an observer, noted above.
 */
 
-/mob/proc/ghostize(can_reenter_corpse = TRUE, aghosted = 0, auspex_ghosted = 0)
+/mob/proc/ghostize(can_reenter_corpse = TRUE, aghosted = FALSE, auspex_ghosted = FALSE)
 	if(key)
 	/*
 		if(client)
@@ -358,7 +357,6 @@ Works together with spawning an observer, noted above.
 /*
 This is the proc mobs get to turn into a ghost. Forked from ghostize due to compatibility issues.
 */
-
 /mob/living/verb/ghost()
 	set category = "OOC"
 	set name = "Ghost"
@@ -425,10 +423,10 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	var/found_body = FALSE
 
 	for(var/atom/A in current_turf)
-		if(istype(A, /mob/living/carbon/human) && A == original_body)
+		if(ishuman(A) && A == original_body)
 			found_body = TRUE
 			break
-	if(!found_body && src.auspex_ghosted == 1)
+	if(!found_body && src.auspex_ghosted == TRUE)
 		var/turf/body_turf = get_turf(original_body)
 		to_chat(src, "<span class='warning'>Your body is not here. It is located at coordinates: [body_turf.x], [body_turf.y], [body_turf.z].</span>")
 		to_chat(src, "<span class='warning'>Your current coordinates are: [current_turf.x], [current_turf.y], [current_turf.z].</span>")
