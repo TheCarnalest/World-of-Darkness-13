@@ -385,11 +385,6 @@ Dancer
 						human.AdjustHumanity(1, 8)
 						last_added_humanity = world.time
 
-/mob/living
-	var/isdwarfy = FALSE
-	var/ischildren = FALSE
-	var/istower = FALSE
-
 /datum/quirk/dwarf
 	name = "Dwarf"
 	desc = "You are short."

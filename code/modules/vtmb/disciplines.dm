@@ -34,10 +34,6 @@
 /datum/discipline/proc/post_gain(var/mob/living/carbon/human/H)
 	return
 
-/mob/living
-	var/resistant_to_disciplines = FALSE
-	var/auspex_examine = FALSE
-
 /atom/examine(mob/user)
 	. = ..()
 	if(ishuman(user))
@@ -349,10 +345,6 @@
 	spawn(5)
 		qdel(src)
 
-/mob/living/carbon
-	var/celerity_visual = FALSE
-	var/potential = 0
-
 /mob/living/carbon/human/Move(atom/newloc, direct, glide_size_override)
 	..()
 	if(celerity_visual)
@@ -510,9 +502,6 @@
 	delay = 100
 	activate_sound = 'code/modules/wod13/sounds/insanity.ogg'
 	clane_restricted = TRUE
-
-/mob/living
-	var/dancing = FALSE
 
 /proc/dancefirst(mob/living/M)
 	if(M.dancing)
@@ -730,9 +719,6 @@
 	activate_sound = 'code/modules/wod13/sounds/obfuscate_activate.ogg'
 	leveldelay = TRUE
 
-/mob/living/carbon
-	var/obfuscate_level = 0
-
 /datum/discipline/obfuscate/activate(mob/living/target, mob/living/carbon/human/caster)
 	. = ..()
 	for(var/mob/living/carbon/human/npc/NPC in GLOB.npc_list)
@@ -757,9 +743,6 @@
 	activate_sound = 'code/modules/wod13/sounds/presence_activate.ogg'
 	leveldelay = FALSE
 	fearless = TRUE
-
-/mob/living/carbon/human
-	var/mob/living/caster
 
 /mob/living/carbon/human/proc/walk_to_caster()
 	walk(src, 0)

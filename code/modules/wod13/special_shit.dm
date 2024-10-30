@@ -21,9 +21,6 @@
 				to_chat(user, "[H.true_real_name], Masquerade: [H.masquerade], Diablerist: [H.diablerist ? "<b>YES</b>" : "NO"], [get_area_name(H)] X:[TT.x] Y:[TT.y]")
 	else
 		to_chat(user, "No available Masquerade breakers in city...")
-
-/mob/living
-	var/total_contracted = 0
 /*
 /obj/item/masquerade_contract/attack(mob/living/M, mob/living/user)
 	. = ..()

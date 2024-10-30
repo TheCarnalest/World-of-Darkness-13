@@ -60,9 +60,6 @@
 	layer = HUD_LAYER
 	plane = HUD_PLANE
 
-/mob/living/carbon
-	var/last_moon_look = 0
-
 /atom/movable/screen/auspice/Click()
 	if(!GLOB.moon_state)
 		GLOB.moon_state = pick("Full", "Gibbous", "Half", "Crescent", "New")

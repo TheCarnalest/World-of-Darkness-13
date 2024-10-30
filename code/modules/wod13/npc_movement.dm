@@ -33,11 +33,6 @@
 	..()
 	GLOB.npc_list += src
 
-/mob/living/carbon/human
-	var/last_showed = 0
-	var/last_raid = 0
-	var/killed_count = 0
-
 /mob/living/carbon/human/npc/death()
 	walk(src,0)
 	if(last_attacker && !key && !hostile)

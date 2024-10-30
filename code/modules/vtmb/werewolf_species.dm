@@ -17,10 +17,6 @@
 	dust_anim = "dust-h"
 	donation = FALSE
 
-/mob/living/carbon
-	var/datum/auspice/auspice
-	var/obj/werewolf_holder/transformation/transformator
-
 /datum/action/garouinfo
 	name = "About Me"
 	desc = "Check assigned role, auspice, generation, humanity, masquerade, known disciplines, known contacts etc."
