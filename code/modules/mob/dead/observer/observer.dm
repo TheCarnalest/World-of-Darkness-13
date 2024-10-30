@@ -84,6 +84,7 @@ var/list/CMNoir = list(0.3,0.3,0.3,0,\
 			client << sound('sound/effects/ghost_ambient.ogg', 1, 5, CHANNEL_AMBIENCE, 10)
 
 /mob/dead/observer/Initialize()
+
 	set_invisibility(GLOB.observer_default_invisibility)
 
 	add_verb(src, list(
@@ -167,6 +168,20 @@ var/list/CMNoir = list(0.3,0.3,0.3,0,\
 	grant_all_languages()
 	show_data_huds()
 	data_huds_on = 1
+
+	spawn(1)
+
+	if(src.auspex_ghosted)
+		remove_verb(src, /mob/dead/observer/verb/follow)
+		remove_verb(src, /mob/dead/observer/verb/jumptomob)
+		remove_verb(src, /mob/dead/observer/verb/toggle_ghostsee)
+		remove_verb(src, /mob/dead/observer/verb/toggle_darkness)
+		remove_verb(src, /mob/dead/observer/verb/view_manifest)
+		remove_verb(src, /mob/dead/observer/verb/toggle_data_huds)
+		remove_verb(src, /mob/dead/observer/verb/observe)
+		remove_verb(src, /mob/dead/observer/verb/register_pai_candidate)
+		remove_verb(src, /mob/dead/observer/proc/open_spawners_menu)
+		remove_verb(src, /mob/dead/observer/verb/stay_dead)
 
 
 /mob/dead/observer/get_photo_description(obj/item/camera/camera)
@@ -317,7 +332,6 @@ Works together with spawning an observer, noted above.
 		ghost.client = src.client
 		ghost.aghosted = aghosted
 		ghost.auspex_ghosted = auspex_ghosted
-		var/c_toggles = TOGGLES_DEFAULT_CHAT
 		if(ghost.auspex_ghosted)
 			ghost.sight = SEE_TURFS | SEE_MOBS | SEE_OBJS
 			ghost.movement_type = FLYING | GROUND | PHASING
@@ -337,6 +351,7 @@ Works together with spawning an observer, noted above.
 		if(!can_reenter_corpse)	// Disassociates observer mind from the body mind
 			ghost.mind = null
 		return ghost
+		check_ghosted_status()
 
 /mob/living/ghostize(can_reenter_corpse = TRUE)
 	. = ..()
@@ -347,6 +362,20 @@ Works together with spawning an observer, noted above.
 /*
 This is the proc mobs get to turn into a ghost. Forked from ghostize due to compatibility issues.
 */
+
+/mob/proc/check_ghosted_status()
+	if(auspex_ghosted)
+		remove_verb(src, /mob/dead/observer/verb/follow)
+		remove_verb(src, /mob/dead/observer/verb/jumptomob)
+		remove_verb(src, /mob/dead/observer/verb/toggle_ghostsee)
+		remove_verb(src, /mob/dead/observer/verb/toggle_darkness)
+		remove_verb(src, /mob/dead/observer/verb/view_manifest)
+		remove_verb(src, /mob/dead/observer/verb/toggle_data_huds)
+		remove_verb(src, /mob/dead/observer/verb/observe)
+		remove_verb(src, /mob/dead/observer/verb/register_pai_candidate)
+		remove_verb(src, /mob/dead/observer/proc/open_spawners_menu)
+		remove_verb(src, /mob/dead/observer/verb/stay_dead)
+
 /mob/living/verb/ghost()
 	set category = "OOC"
 	set name = "Ghost"
@@ -559,26 +588,27 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set desc = "Teleport to a mob"
 
 	if(isobserver(usr)) //Make sure they're an observer!
-
-
-		var/list/dest = list() //List of possible destinations (mobs)
-		var/target = null	   //Chosen target.
-
-		dest += getpois(mobs_only = TRUE) //Fill list, prompt user with list
-		target = input("Please, select a player!", "Jump to Mob", null, null) as null|anything in dest
-
-		if (!target)//Make sure we actually have a target
+		if(auspex_ghosted)
 			return
 		else
-			var/mob/M = dest[target] //Destination mob
-			var/mob/A = src			 //Source mob
-			var/turf/T = get_turf(M) //Turf of the destination mob
+			var/list/dest = list() //List of possible destinations (mobs)
+			var/target = null	   //Chosen target.
 
-			if(T && isturf(T))	//Make sure the turf exists, then move the source to that destination.
-				A.forceMove(T)
-				A.update_parallax_contents()
+			dest += getpois(mobs_only = TRUE) //Fill list, prompt user with list
+			target = input("Please, select a player!", "Jump to Mob", null, null) as null|anything in dest
+
+			if (!target)//Make sure we actually have a target
+				return
 			else
-				to_chat(A, "<span class='danger'>This mob is not located in the game world.</span>")
+				var/mob/M = dest[target] //Destination mob
+				var/mob/A = src			 //Source mob
+				var/turf/T = get_turf(M) //Turf of the destination mob
+
+				if(T && isturf(T))	//Make sure the turf exists, then move the source to that destination.
+					A.forceMove(T)
+					A.update_parallax_contents()
+				else
+					to_chat(A, "<span class='danger'>This mob is not located in the game world.</span>")
 
 /mob/dead/observer/verb/change_view_range()
 	set category = "Ghost"
@@ -636,19 +666,23 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	to_chat(usr, "<span class='boldnotice'>You [(ghostvision?"now":"no longer")] have ghost vision.</span>")
 
 /mob/dead/observer/verb/toggle_darkness()
-	set name = "Toggle Darkness"
-	set category = "Ghost"
-	switch(lighting_alpha)
-		if (LIGHTING_PLANE_ALPHA_VISIBLE)
-			lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
-		if (LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE)
-			lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
-		if (LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE)
-			lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
-		else
-			lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
 
-	update_sight()
+	if(auspex_ghosted)
+		return
+	else
+		set name = "Toggle Darkness"
+		set category = "Ghost"
+		switch(lighting_alpha)
+			if (LIGHTING_PLANE_ALPHA_VISIBLE)
+				lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE
+			if (LIGHTING_PLANE_ALPHA_MOSTLY_VISIBLE)
+				lighting_alpha = LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE
+			if (LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE)
+				lighting_alpha = LIGHTING_PLANE_ALPHA_INVISIBLE
+			else
+				lighting_alpha = LIGHTING_PLANE_ALPHA_VISIBLE
+
+		update_sight()
 
 /mob/dead/observer/update_sight()
 	if(client)
@@ -793,18 +827,21 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 		H.remove_hud_from(src)
 
 /mob/dead/observer/verb/toggle_data_huds()
-	set name = "Toggle Sec/Med/Diag HUD"
-	set desc = "Toggles whether you see medical/security/diagnostic HUDs"
-	set category = "Ghost"
-
-	if(data_huds_on) //remove old huds
-		remove_data_huds()
-		to_chat(src, "<span class='notice'>Data HUDs disabled.</span>")
-		data_huds_on = 0
+	if(auspex_ghosted)
+		return
 	else
-		show_data_huds()
-		to_chat(src, "<span class='notice'>Data HUDs enabled.</span>")
-		data_huds_on = 1
+		set name = "Toggle Sec/Med/Diag HUD"
+		set desc = "Toggles whether you see medical/security/diagnostic HUDs"
+		set category = "Ghost"
+
+		if(data_huds_on) //remove old huds
+			remove_data_huds()
+			to_chat(src, "<span class='notice'>Data HUDs disabled.</span>")
+			data_huds_on = 0
+		else
+			show_data_huds()
+			to_chat(src, "<span class='notice'>Data HUDs enabled.</span>")
+			data_huds_on = 1
 
 /mob/dead/observer/verb/toggle_health_scan()
 	set name = "Toggle Health Scan"
@@ -942,11 +979,14 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 			observetarget = mob_eye
 
 /mob/dead/observer/verb/register_pai_candidate()
-	set category = "Ghost"
-	set name = "pAI Setup"
-	set desc = "Upload a fragment of your personality to the global pAI databanks"
+	if(auspex_ghosted)
+		return
+	else
+		set category = "Ghost"
+		set name = "pAI Setup"
+		set desc = "Upload a fragment of your personality to the global pAI databanks"
 
-	register_pai()
+		register_pai()
 
 /mob/dead/observer/proc/register_pai()
 	if(isobserver(src))
@@ -992,13 +1032,16 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	GLOB.observer_default_invisibility = amount
 
 /mob/dead/observer/proc/open_spawners_menu()
-	set name = "Spawners Menu"
-	set desc = "See all currently available spawners"
-	set category = "Ghost"
-	if(!spawners_menu)
-		spawners_menu = new(src)
+	if(auspex_ghosted)
+		return
+	else
+		set name = "Spawners Menu"
+		set desc = "See all currently available spawners"
+		set category = "Ghost"
+		if(!spawners_menu)
+			spawners_menu = new(src)
 
-	spawners_menu.ui_interact(src)
+		spawners_menu.ui_interact(src)
 
 /mob/dead/observer/proc/tray_view()
 	set category = "Ghost"

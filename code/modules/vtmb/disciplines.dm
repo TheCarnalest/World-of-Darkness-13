@@ -309,7 +309,6 @@
 	if(level_casting >= 5)
 		caster.ghostize(TRUE, 0, 1)
 
-
 	spawn((delay*level_casting)+caster.discipline_time_plus)
 		if(caster)
 			if(shitcasted)

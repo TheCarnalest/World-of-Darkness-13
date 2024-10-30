@@ -2864,6 +2864,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						var/mob/dead/observer/obs = user.client.mob
 						if(obs.auspex_ghosted)
 							return
+						else
+							chat_toggles ^= CHAT_GHOSTEARS
 					else
 						chat_toggles ^= CHAT_GHOSTEARS
 
