@@ -32,8 +32,10 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/game_panel,			/*game panel, allows to change game-mode etc*/
 	/client/proc/toggle_canon,
 	/client/proc/reward_exp,
+	/*
 	/client/proc/encipher_word,
 	/client/proc/uncipher_word,
+	*/
 	/client/proc/check_ai_laws,			/*shows AI and borg laws*/
 	/client/proc/ghost_pool_protection,	/*opens a menu for toggling ghost roles*/
 	/datum/admins/proc/toggleooc,		/*toggles ooc on/off for everyone*/
@@ -348,50 +350,53 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	if(!holder)
 		return
 	. = TRUE
-	if(isobserver(mob))
-		//re-enter
+	if (isobserver(mob))
 		var/mob/dead/observer/ghost = mob
-		if(!ghost.mind || !ghost.mind.current) //won't do anything if there is no body
-			return FALSE
-		if(!ghost.can_reenter_corpse)
-			log_admin("[key_name(usr)] re-entered corpse")
-			message_admins("[key_name_admin(usr)] re-entered corpse")
-		ghost.can_reenter_corpse = 1 //force re-entering even when otherwise not possible
-		//ghost.aghosted = !ghost.aghosted
-		if(ghost.aghosted)
-			ghost.client.show_popup_menus = 1
+		if (ghost.aghosted)
+			if (ghost.mind?.current) //return to body
+				ghost.aghosted = !ghost.aghosted
+				if(!ghost.can_reenter_corpse)
+					log_admin("[key_name(usr)] re-entered corpse")
+					message_admins("[key_name_admin(usr)] re-entered corpse")
+				ghost.can_reenter_corpse = TRUE //force re-entering even when otherwise not possible
+				ghost.client.show_popup_menus = 0
+				ghost.client.color = CMNoir
+				ghost.client << sound('sound/effects/ghost_ambient.ogg', 1, 5, CHANNEL_AMBIENCE, 10)
+				ghost.reenter_corpse()
+
+				SSblackbox.record_feedback("tally", "admin_verb", 1, "Admin Reenter") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+			else
+				return FALSE
+		else //turn normal ghost into aghost
+			ghost.aghosted = !ghost.aghosted
+			ghost.movement_type = FLYING | GROUND | PHASING
 			ghost.sight = SEE_TURFS | SEE_MOBS | SEE_OBJS
-			ghost.movement_type = FLYING | PHASING | GROUND
+			ghost.icon = null
+			ghost.icon_state = null
+			ghost.overlays = null
 			ghost.client.color = null
-			ghost.stop_sound_channel(CHANNEL_AMBIENCE)
-			// chat_toggles |= CHAT_GHOSTEARS
-			to_chat(src, "Now you should've been enter in admin ghost mode")
-		/*if(!ghost.aghosted)
-			ghost.client.show_popup_menus = 0
-			ghost.sight = 0
-			ghost.movement_type = FLYING | GROUND // [ChillRaccoon] - makes us available to go through dens objects
-			*/
-			ghost.client.color = CMNoir
-			// chat_toggles -= CHAT_GHOSTEARS
-//			ghost.client << sound('sound/effects/ghost_ambient.ogg', 1, 5, CHANNEL_AMBIENCE, 10)
-//			to_chat(src, "Now you leave from admin ghost mode")
-		if(ghost.hud_used)
-			ghost.client.screen = null
-			ghost.hud_used.show_hud(ghost.hud_used.hud_version)
-		ghost.reenter_corpse()
-		SSblackbox.record_feedback("tally", "admin_verb", 1, "Admin Reenter") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
-	else if(isnewplayer(mob))
+	else if (isnewplayer(mob))
 		to_chat(src, "<font color='red'>Error: Aghost: Can't admin-ghost whilst in the lobby. Join or Observe first.</font>", confidential = TRUE)
 		return FALSE
-	else
-		//ghostize
+	else //ghostize
 		log_admin("[key_name(usr)] admin ghosted.")
 		message_admins("[key_name_admin(usr)] admin ghosted.")
+
 		var/mob/body = mob
-		body.ghostize(1, 1)
+		var/mob/dead/observer/ghost = body.ghostize(TRUE, TRUE)
 		init_verbs()
 		if(body && !body.key)
 			body.key = "@[key]"	//Haaaaaaaack. But the people have spoken. If it breaks; blame adminbus
+
+		//sets aghost-specific properties here instead of in the ghostize proc
+		ghost.movement_type = FLYING | GROUND | PHASING
+		ghost.sight = SEE_TURFS | SEE_MOBS | SEE_OBJS
+		ghost.icon = null
+		ghost.icon_state = null
+		ghost.overlays = null
+		ghost.client.color = null
+		ghost.aghosted = TRUE
+
 		SSblackbox.record_feedback("tally", "admin_verb", 1, "Admin Ghost") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/invisimin()
@@ -440,22 +445,20 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Game Panel") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/toggle_canon()
-	set name = "TOGGLE CANON"
+	set name = "Toggle Canon"
 	set category = "Admin"
-	var/cool_guy = FALSE
-	for(var/i in GLOB.psychokids)
-		if(i == "[ckey]")
-			cool_guy = TRUE
-	if(!cool_guy)
-		to_chat(src, "Alright, I decided I let that too far away. Admins gonna be restricted to harmful and lore-breaking shitspawn for canon rounds and who will disobey - will get banned same as player. Я решил что это зашло слишком далеко. Админам отныне запрещён любой вредный или лороразрушительный щитспавн в канонических раундах и кто будет нарушать это правило - будет забанен также как и игрок.")
-		return
 	GLOB.canon_event = !GLOB.canon_event
 	SEND_SOUND(world, sound('code/modules/wod13/sounds/canon.ogg'))
 	if(GLOB.canon_event)
-		to_chat(world, "<b>THE ROUND IS NOW CANON, PLEASE ROLEPLAY CORRECTLY</b>")
+		to_chat(world, "<b>THE ROUND IS NOW CANON. ALL ROLEPLAY AND ESCALATION RULES ARE IN EFFECT.</b>")
 	else
-		to_chat(world, "<b>THE ROUND IS NO MORE CANON, ANY PROGRESSION DEGRADING MECHANICS ARE NOW OFF</b>")
+		to_chat(world, "<b>THE ROUND IS NO LONGER CANON. DATA WILL NO LONGER SAVE, AND ROLEPLAY AND ESCALATION RULES ARE NO LONGER IN EFFECT.</b>")
+	message_admins("[key_name_admin(usr)] toggled the round's canonicity. The round is [GLOB.canon_event ? "now canon." : "no longer canon."]")
+	log_admin("[key_name(usr)] toggled the round's canonicity. The round is [GLOB.canon_event ? "now canon." : "no longer canon."]")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Toggle Canon") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+//I dunno why this was here or what purpose it served
+/*
 /client/proc/encipher_word()
 	set name = "ENCRYPT WORD"
 	set category = "Admin"
@@ -473,9 +476,10 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 		var/pass = input("Letter shift:") as null|num
 		if(pass)
 			to_chat(src, "<b>[uncipher(word, pass)]</b>")
+*/
 
 /client/proc/reward_exp()
-	set name = "REWARD EXPERIENCE TO"
+	set name = "Reward Experience"
 	set category = "Admin"
 	var/list/explist = list()
 	for(var/client/C in GLOB.clients)
@@ -490,7 +494,9 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 					if("[C.ckey]" == "[exper]")
 						to_chat(C, "<b>You've been rewarded with [amount] experience points. Reason: \"[reason]\"</b>")
 						C.prefs.true_experience = max(0, C.prefs.true_experience+amount)
-						message_admins("[key_name_admin(usr)] REWARDED [exper] WITH [amount] EXPERIENCE POINTS. REASON: \"[reason]\".")
+						message_admins("[key_name_admin(usr)] rewarded [key_name_admin(exper)] with [amount] experience points. Reason: [reason]")
+						log_admin("[key_name(usr)] rewarded [key_name(exper)] with [amount] experience points. Reason: [reason]")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Reward Experience") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/poll_panel()
 	set name = "Server Poll Management"
