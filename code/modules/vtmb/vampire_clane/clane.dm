@@ -90,10 +90,3 @@ And it also helps for the character set panel
 		if(H.hud_used.discipline4_icon)
 			if(H.hud_used.discipline4_icon.dscpln)
 				H.hud_used.discipline4_icon.dscpln.post_gain(H)
-//	if(H.client.ckey == "Egorium")
-//		H.put_in_r_hand(new /obj/item/melee/vampirearms/katana/kosa/egorium(H))
-//	if(H.client.ckey == "BadTeammate")
-//		H.put_in_r_hand(new /obj/item/melee/vampirearms/katana/kosa/egorium(H))
-
-/datum/action
-	var/vampiric = FALSE

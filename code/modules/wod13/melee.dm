@@ -362,15 +362,6 @@
 	resistance_flags = FIRE_PROOF
 	masquerade_violating = TRUE
 
-/obj/item/melee/vampirearms/katana/kosa/egorium
-	name = "demonic scythe"
-	icon_state = "egorium"
-	force = 60
-
-/obj/item/melee/vampirearms/katana/kosa/egorium/Initialize()
-	. = ..()
-	set_light(3, 2, "#ff0000")
-
 /obj/item/melee/vampirearms/eguitar
 	icon = 'code/modules/wod13/48x32weapons.dmi'
 	icon_state = "rock0"
