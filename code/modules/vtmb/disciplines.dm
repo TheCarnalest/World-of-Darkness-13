@@ -435,8 +435,10 @@
 	. = ..()
 	if(target.spell_immunity)
 		return
-	var/mypower = 13-caster.generation+caster.social+caster.additional_mentality
-	var/theirpower = 13-target.generation+target.mentality+target.additional_mentality
+	if (caster.generation > target.generation) //fail if used on a lower generation
+		return
+	var/mypower = caster.social + caster.additional_social
+	var/theirpower = target.mentality + target.additional_mentality
 	if(theirpower > mypower)
 		to_chat(caster, "<span class='warning'>[target] is too powerful for you!</span>")
 		return
