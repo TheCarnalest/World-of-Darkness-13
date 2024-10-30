@@ -47,9 +47,6 @@
 	else
 		walk_to(H, 0)
 
-/mob/living/carbon
-	var/lock_on_by_mannequin = FALSE
-
 /datum/species/vamp_mannequin/proc/do_spooky(var/mob/living/carbon/human/man)
 //	if(last_spooked_out+10 > world.time)
 //		return

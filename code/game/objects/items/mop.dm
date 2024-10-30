@@ -23,9 +23,6 @@
 	. = ..()
 	create_reagents(mopcap)
 
-/mob/living
-	var/total_cleaned = 0
-
 /obj/item/mop/proc/clean(turf/A, mob/living/cleaner)
 	var/really = FALSE
 	for(var/obj/effect/decal/cleanable/blood/B in A)

@@ -297,9 +297,6 @@
 						H.drop_all_held_items()
 						H.emote("scream")
 
-/mob/living
-	var/last_bloodpool_restore = 0
-
 /datum/species/human/spec_life(mob/living/carbon/human/H)
 	. = ..()
 	if(HAS_TRAIT(H, TRAIT_UNMASQUERADE))

@@ -171,6 +171,8 @@ Dancer
 	lose_text = "<span class='notice'>You don't feel extra <b>HUNGRY</b> anymore.</span>"
 	allowed_species = list("Vampire", "Ghoul")
 
+//Removed after changes to death consequences.
+/*
 /datum/quirk/phoenix
 	name = "Phoenix"
 	desc = "You don't loose gained experience after the Final Death."
@@ -179,6 +181,8 @@ Dancer
 	gain_text = "<span class='notice'>You feel like you can burn without permanent consequences.</span>"
 	lose_text = "<span class='warning'>You don't feel like you can burn without consequences anymore.</span>"
 	allowed_species = list("Vampire")
+*/
+
 /*
 /datum/quirk/acrobatic
 	name = "Acrobatic"
@@ -332,16 +336,19 @@ Dancer
 	var/last_acrobate = 0
 
 /datum/action/fly_upper/Trigger()
-	if(last_acrobate+15 > world.time)
+	owner.up()
+/*	if(last_acrobate+15 > world.time)
 		return
+	var/turf/target_turf = get_step_multiz(owner, UP)
 	if(get_step_multiz(owner, UP))
 		if(istype(get_step_multiz(owner, UP), /turf/open/openspace))
 			var/mob/living/carbon/H = owner
 			H.Immobilize(20)
 			animate(owner, pixel_y = 32, time = 20)
 			spawn(20)
-				owner.forceMove(get_step_multiz(owner, UP))
-
+				owner.forceMove(target_turf)
+				animate(owner, pixel_y = 0, time = 0)
+*/
 /datum/quirk/dancer
 	name = "Dancer"
 	desc = "You know a couple of dance moves."
@@ -377,11 +384,6 @@ Dancer
 						var/mob/living/carbon/human/human = owner
 						human.AdjustHumanity(1, 8)
 						last_added_humanity = world.time
-
-/mob/living
-	var/isdwarfy = FALSE
-	var/ischildren = FALSE
-	var/istower = FALSE
 
 /datum/quirk/dwarf
 	name = "Dwarf"

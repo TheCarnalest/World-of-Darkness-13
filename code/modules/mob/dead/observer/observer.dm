@@ -8,9 +8,6 @@ var/list/CMNoir = list(0.3,0.3,0.3,0,\
 					   0.3,0.3,0.3,0,\
 					   0.0,0.0,0.0,1,)// [ChillRaccoon] - more about "color matrix" you can read in BYOND documentation
 
-/mob
-	var/respawntimeofdeath = 0
-
 /mob/dead/observer
 	name = "ghost"
 	//desc = "It's a g-g-g-g-ghooooost" //jinkies! //[ChillRaccon] - maggot

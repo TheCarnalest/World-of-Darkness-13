@@ -1003,9 +1003,6 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 			stol += I.amount
 	return stol >= amount
 
-/mob/living
-	var/list/drunked_of = list()
-
 /datum/objective/blood
 	name = "get blood of"
 	var/target_name
@@ -1036,9 +1033,6 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 
 /datum/objective/protect_niga/check_completion()
 	return !target || !considered_alive(target)
-
-/mob/living/carbon/human
-	var/last_repainted_mark
 
 /datum/objective/become_member
 	name = "become member of"

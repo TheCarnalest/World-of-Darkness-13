@@ -16,13 +16,6 @@
 	enlightement = TRUE
 	var/obj/item/heirl
 
-/mob/living/carbon/human
-	var/hided = FALSE
-	var/additional_hands = FALSE
-	var/additional_wings = FALSE
-	var/additional_centipede = FALSE
-	var/additional_armor = FALSE
-
 /obj/effect/proc_holder/spell/targeted/shapeshift/tzimisce
 	name = "Tzimisce Form"
 	desc = "Take on the shape a beast."
@@ -107,9 +100,6 @@
 	check_flags = AB_CHECK_HANDS_BLOCKED|AB_CHECK_IMMOBILE|AB_CHECK_LYING|AB_CHECK_CONSCIOUS
 	vampiric = TRUE
 	var/used = FALSE
-
-/mob/living/carbon/human
-	var/unique_body_sprite
 
 /datum/action/basic_vicissitude/Trigger()
 	. = ..()

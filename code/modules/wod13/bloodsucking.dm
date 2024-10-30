@@ -7,10 +7,6 @@
 		if(src)
 			remove_overlay(BITE_LAYER)
 
-/mob/living/carbon/human
-	var/image/suckbar
-	var/atom/suckbar_loc
-
 /proc/get_needed_difference_between_numbers(var/number1, var/number2)
 	if(number1 > number2)
 		return number1 - number2

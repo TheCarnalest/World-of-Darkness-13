@@ -18,9 +18,6 @@
 	dust_anim = "dust-h"
 	var/datum/vampireclane/clane
 
-/mob/living
-	var/list/knowscontacts = list()
-
 /datum/action/vampireinfo
 	name = "About Me"
 	desc = "Check assigned role, clan, generation, humanity, masquerade, known disciplines, known contacts etc."
