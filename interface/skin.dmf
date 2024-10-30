@@ -207,16 +207,19 @@ window "infowindow"
 window "outputwindow"
 	elem "outputwindow"
 		type = MAIN
-		pos = 0,0
-		size = 640x480
-		anchor1 = -1, -1
-		anchor2 = -1, -1
+		pos = 281,0
+		size = 640x960
+		anchor1 = none
+		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		is-pane = true
+		outer-size = 656x1017
+		inner-size = 640x979
 	elem "input"
 		type = INPUT
-		pos = 2,460
-		size = 517x20
+		pos = 0,940
+		size = 520x20
 		anchor1 = 0,100
 		anchor2 = 100,100
 		is-default = true
@@ -224,10 +227,10 @@ window "outputwindow"
 		saved-params = "command"
 	elem "oocbutton"
 		type = BUTTON
-		pos = 599,460
+		pos = 600,940
 		size = 40x20
 		anchor1 = 100,100
-		anchor2 = -1,-1
+		anchor2 = none
 		background-color = none
 		border = line
 		saved-params = "is-checked"
@@ -237,10 +240,10 @@ window "outputwindow"
 		button-type = pushbox
 	elem "saybutton"
 		type = BUTTON
-		pos = 519,460
+		pos = 520,940
 		size = 40x20
 		anchor1 = 100,100
-		anchor2 = -1,-1
+		anchor2 = none
 		background-color = none
 		border = line
 		saved-params = "is-checked"
@@ -250,10 +253,10 @@ window "outputwindow"
 		button-type = pushbox
 	elem "mebutton"
 		type = BUTTON
-		pos = 559,460
+		pos = 560,940
 		size = 40x20
 		anchor1 = 100,100
-		anchor2 = -1,-1
+		anchor2 = none
 		background-color = none
 		border = line
 		saved-params = "is-checked"
@@ -264,7 +267,7 @@ window "outputwindow"
 	elem "browseroutput"
 		type = BROWSER
 		pos = 0,0
-		size = 640x456
+		size = 640x940
 		anchor1 = 0,0
 		anchor2 = 100,100
 		background-color = #ffffff
@@ -274,7 +277,7 @@ window "outputwindow"
 	elem "output"
 		type = OUTPUT
 		pos = 0,0
-		size = 640x456
+		size = 640x940
 		anchor1 = 0,0
 		anchor2 = 100,100
 		is-default = true
