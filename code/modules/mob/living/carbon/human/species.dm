@@ -2059,7 +2059,7 @@ GLOBAL_LIST_EMPTY(donation_races)
 /datum/species/proc/spec_stun(mob/living/carbon/human/H,amount)
 	if(flying_species && H.movement_type & FLYING)
 		ToggleFlight(H)
-		flyslip(H)
+//		flyslip(H)
 	. = stunmod * H.physiology.stun_mod * amount
 
 //////////////
