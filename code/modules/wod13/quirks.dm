@@ -336,16 +336,19 @@ Dancer
 	var/last_acrobate = 0
 
 /datum/action/fly_upper/Trigger()
-	if(last_acrobate+15 > world.time)
+	owner.up()
+/*	if(last_acrobate+15 > world.time)
 		return
+	var/turf/target_turf = get_step_multiz(owner, UP)
 	if(get_step_multiz(owner, UP))
 		if(istype(get_step_multiz(owner, UP), /turf/open/openspace))
 			var/mob/living/carbon/H = owner
 			H.Immobilize(20)
 			animate(owner, pixel_y = 32, time = 20)
 			spawn(20)
-				owner.forceMove(get_step_multiz(owner, UP))
-
+				owner.forceMove(target_turf)
+				animate(owner, pixel_y = 0, time = 0)
+*/
 /datum/quirk/dancer
 	name = "Dancer"
 	desc = "You know a couple of dance moves."
