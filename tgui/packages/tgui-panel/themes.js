@@ -53,6 +53,8 @@ export const setClientTheme = name => {
       'wiki.text-color': '#000000',
       'forum.background-color': 'none',
       'forum.text-color': '#000000',
+      'discord.background-color': 'none',
+      'discord.text-color': '#000000',
       'github.background-color': 'none',
       'github.text-color': '#000000',
       'report-issue.background-color': 'none',
@@ -79,6 +81,8 @@ export const setClientTheme = name => {
       'asset_cache_browser.text-color': '#000000',
       'tooltip.background-color': 'none',
       'tooltip.text-color': '#000000',
+      'input.background-color': '#FFFFFF',
+      'input.text-color': '#000000',
     });
   }
   if (name === 'dark') {
@@ -95,14 +99,16 @@ export const setClientTheme = name => {
       'mainwindow.background-color': COLOR_DARK_BG,
       'split.background-color': COLOR_DARK_BG,
       // Buttons
-      'changelog.background-color': '#494949',
+      'changelog.background-color': '#3a3a3a',
       'changelog.text-color': COLOR_DARK_TEXT,
-      'rules.background-color': '#494949',
+      'rules.background-color': '#3a3a3a',
       'rules.text-color': COLOR_DARK_TEXT,
-      'wiki.background-color': '#494949',
+      'wiki.background-color': '#3a3a3a',
       'wiki.text-color': COLOR_DARK_TEXT,
-      'forum.background-color': '#494949',
+      'forum.background-color': '#3a3a3a',
       'forum.text-color': COLOR_DARK_TEXT,
+      'discord.background-color': '#3a3a3a',
+      'discord.text-color': COLOR_DARK_TEXT,
       'github.background-color': '#3a3a3a',
       'github.text-color': COLOR_DARK_TEXT,
       'report-issue.background-color': '#492020',
@@ -129,6 +135,8 @@ export const setClientTheme = name => {
       'asset_cache_browser.text-color': COLOR_DARK_TEXT,
       'tooltip.background-color': COLOR_DARK_BG,
       'tooltip.text-color': COLOR_DARK_TEXT,
+      'input.background-color': COLOR_DARK_BG_DARKER,
+      'input.text-color': COLOR_DARK_TEXT,
     });
   }
 };
