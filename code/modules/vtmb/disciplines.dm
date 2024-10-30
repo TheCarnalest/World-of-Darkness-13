@@ -439,7 +439,7 @@
 		return
 	var/mypower = caster.social + caster.additional_social
 	var/theirpower = target.mentality + target.additional_mentality
-	if(theirpower > mypower)
+	if(theirpower >= mypower)
 		to_chat(caster, "<span class='warning'>[target] is too powerful for you!</span>")
 		return
 	if(HAS_TRAIT(caster, TRAIT_MUTE))
