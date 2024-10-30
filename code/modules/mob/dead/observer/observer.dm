@@ -351,7 +351,6 @@ Works together with spawning an observer, noted above.
 		if(!can_reenter_corpse)	// Disassociates observer mind from the body mind
 			ghost.mind = null
 		return ghost
-		check_ghosted_status()
 
 /mob/living/ghostize(can_reenter_corpse = TRUE)
 	. = ..()
@@ -362,19 +361,6 @@ Works together with spawning an observer, noted above.
 /*
 This is the proc mobs get to turn into a ghost. Forked from ghostize due to compatibility issues.
 */
-
-/mob/proc/check_ghosted_status()
-	if(auspex_ghosted)
-		remove_verb(src, /mob/dead/observer/verb/follow)
-		remove_verb(src, /mob/dead/observer/verb/jumptomob)
-		remove_verb(src, /mob/dead/observer/verb/toggle_ghostsee)
-		remove_verb(src, /mob/dead/observer/verb/toggle_darkness)
-		remove_verb(src, /mob/dead/observer/verb/view_manifest)
-		remove_verb(src, /mob/dead/observer/verb/toggle_data_huds)
-		remove_verb(src, /mob/dead/observer/verb/observe)
-		remove_verb(src, /mob/dead/observer/verb/register_pai_candidate)
-		remove_verb(src, /mob/dead/observer/proc/open_spawners_menu)
-		remove_verb(src, /mob/dead/observer/verb/stay_dead)
 
 /mob/living/verb/ghost()
 	set category = "OOC"
