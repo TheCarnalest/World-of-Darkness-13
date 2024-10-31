@@ -12,7 +12,7 @@
 
 /obj/item/food/vampire/burger
 	name = "burger"
-	desc = "The cornerstone of every american trucker breakfast."
+	desc = "The cornerstone of every american trucker's breakfast."
 	icon_state = "burger"
 	bite_consumption = 3
 	tastes = list("bun" = 2, "beef patty" = 4)
@@ -230,7 +230,7 @@
 	fill_icon_thresholds = null
 
 /obj/machinery/mineral/equipment_vendor/fastfood
-	name = "order menu"
+	name = "Clerk Catalogue"
 	desc = "Order some fastfood here."
 	icon = 'code/modules/wod13/props.dmi'
 	icon_state = "menu"
@@ -268,6 +268,7 @@
 	)
 
 /obj/machinery/mineral/equipment_vendor/fastfood/products
+	desc = "Purchase junkfood and crap."
 	prize_list = list(new /datum/data/mining_equipment("chocolate bar",	/obj/item/food/vampire/bar,	3),
 		new /datum/data/mining_equipment("chips",	/obj/item/food/vampire/crisps,	5),
 		new /datum/data/mining_equipment("water bottle",	/obj/item/reagent_containers/food/drinks/bottle/vampirewater,	5),
@@ -279,6 +280,7 @@
 	)
 
 /obj/machinery/mineral/equipment_vendor/fastfood/clothing
+	desc = "Purchase all the finest outfits.. Or don't wagie.."
 	prize_list = list(new /datum/data/mining_equipment("yellow sleeveless shirt",	/obj/item/clothing/under/vampire/larry,	15),
 		new /datum/data/mining_equipment("white sleeveless shirt",	/obj/item/clothing/under/vampire/bandit,	15),
 		new /datum/data/mining_equipment("biker outfit",	/obj/item/clothing/under/vampire/biker,	15),
@@ -329,6 +331,20 @@
 		new /datum/data/mining_equipment("white scarf",	/obj/item/clothing/neck/vampire/scarf/white,	10)
 	)
 
+/obj/machinery/mineral/equipment_vendor/fastfood/costumes
+	desc = "Purchase a mask for that ugly mug."
+	prize_list = list(new /datum/data/mining_equipment("bear mask",	 /obj/item/clothing/mask/animal/rat/bear,	13),
+		new /datum/data/mining_equipment("rat mask",	/obj/item/clothing/mask/animal/rat,	10),
+		new /datum/data/mining_equipment("bee mask",	/obj/item/clothing/mask/animal/rat/bee,	12),
+		new /datum/data/mining_equipment("fox mask",	/obj/item/clothing/mask/animal/rat/fox,	10),
+		new /datum/data/mining_equipment("bat mask",	/obj/item/clothing/mask/animal/rat/bat,	15),
+		new /datum/data/mining_equipment("raven mask",	/obj/item/clothing/mask/animal/rat/raven,	20),
+		new /datum/data/mining_equipment("jackal mask",	 /obj/item/clothing/mask/animal/rat/jackal,	20),
+		new /datum/data/mining_equipment("medical mask",	/obj/item/clothing/mask/surgical,	10),
+		new /datum/data/mining_equipment("mummy mask",	/obj/item/clothing/mask/mummy,	15),
+		new /datum/data/mining_equipment("scarecrow mask",	/obj/item/clothing/mask/scarecrow,	10)
+	)
+
 /obj/food_cart
 	name = "food cart"
 	desc = "Ding-aling ding dong. Get your cholesterine!"
@@ -343,6 +359,7 @@
 	icon_state = "vat[rand(1, 3)]"
 
 /obj/machinery/mineral/equipment_vendor/fastfood/america
+	desc = "Boom! Booom!! BOOOOOOM!!!!"
 	prize_list = list(new /datum/data/mining_equipment("revolver",	/obj/item/gun/ballistic/vampire/revolver,	200),
 		new /datum/data/mining_equipment("Colt M1911",	/obj/item/gun/ballistic/automatic/vampire/m1911,	250),
 		new /datum/data/mining_equipment("Glock19",	/obj/item/gun/ballistic/automatic/vampire/glock19,	500),
