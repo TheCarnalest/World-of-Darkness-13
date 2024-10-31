@@ -18,9 +18,6 @@
 	dust_anim = "dust-h"
 	var/datum/vampireclane/clane
 
-/mob/living
-	var/list/knowscontacts = list()
-
 /datum/action/vampireinfo
 	name = "About Me"
 	desc = "Check assigned role, clan, generation, humanity, masquerade, known disciplines, known contacts etc."
@@ -121,9 +118,11 @@
 
 		dat += "[humanity]<BR>"
 		dat += "<b>Physique</b>: [host.physique]<BR>"
+		dat += "<b>Dexterity</b>: [host.dexterity]<BR>"
 		dat += "<b>Social</b>: [host.social]<BR>"
 		dat += "<b>Mentality</b>: [host.mentality]<BR>"
 		dat += "<b>Lockpicking</b>: [host.lockpicking]<BR>"
+		dat += "<b>Athletics</b>: [host.athletics]<BR>"
 		dat += "<b>Cruelty</b>: [host.blood]<BR>"
 		if(host.hud_used)
 			dat += "<b>Known disciplines:</b><BR>"
@@ -146,6 +145,9 @@
 			dat += "<b>I know some other of my kind in this city. Need to check my phone, there definetely should be:</b><BR>"
 			for(var/i in host.knowscontacts)
 				dat += "-[i] contact<BR>"
+		for(var/datum/bank_account/account in GLOB.bank_account_list)
+			if(host.bank_id == account.bank_id)
+				dat += "<b>My bank account code is: [account.code]</b><BR>"
 		host << browse(dat, "window=vampire;size=400x450;border=1;can_resize=1;can_minimize=0")
 		onclose(host, "vampire", src)
 
@@ -156,6 +158,8 @@
 	C.last_experience = world.time+3000
 	var/datum/action/vampireinfo/infor = new()
 	infor.host = C
+
+
 	infor.Grant(C)
 	var/datum/action/give_vitae/vitae = new()
 	vitae.Grant(C)

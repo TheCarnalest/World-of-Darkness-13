@@ -98,12 +98,6 @@
 	true_desc = "More experience points."
 	icon_state = "saulocept"
 
-/mob/living
-	var/experience_plus = 0
-	var/discipline_time_plus = 0
-	var/bloodpower_time_plus = 0
-	var/thaum_damage_plus = 0
-
 /obj/item/vtm_artifact/saulocept/get_powers()
 	..()
 	owner.experience_plus = 10

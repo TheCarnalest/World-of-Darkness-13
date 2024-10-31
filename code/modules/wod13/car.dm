@@ -179,7 +179,7 @@
 			if(!repairing)
 				repairing = TRUE
 				if(do_mob(user, src, 20 SECONDS))
-					var/roll = rand(1, 20) + (user.lockpicking+user.physique) - 8
+					var/roll = rand(1, 20) + (user.lockpicking+user.dexterity) - 8
 					if (roll <= 1)
 						to_chat(user, "<span class='warning'>Your lockpick broke!</span>")
 						qdel(K)

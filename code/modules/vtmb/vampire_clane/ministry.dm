@@ -61,9 +61,6 @@
 	var/obj/urn/urn
 	var/cool_down = 0
 
-/mob/living
-	var/stakeimmune = FALSE
-
 /datum/action/urn/Trigger()
 	. = ..()
 	if(cool_down+200 >= world.time)

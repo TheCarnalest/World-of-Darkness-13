@@ -139,7 +139,7 @@
 /area/vtm/prince
 	name = "Millenium Tower"
 	icon_state = "prince"
-	ambience_index = AMBIENCE_INTERIOR
+	ambience_index = AMBIENCE_PRINCE
 	upper = FALSE
 	zone_type = "elysium"
 	zone_owner = "Camarilla"
@@ -351,8 +351,8 @@
 	sound = 'code/modules/wod13/sounds/chinatown.ogg'
 
 /datum/vampiremusic/prince
-	length = 314 SECONDS
-	sound = 'code/modules/wod13/sounds/clairedelune.ogg'
+	length = 132 SECONDS
+	sound = 'code/modules/wod13/sounds/prince.ogg'
 	forced = TRUE
 
 /datum/vampiremusic/church
@@ -379,11 +379,6 @@
 	length = 157 SECONDS
 	sound = 'code/modules/wod13/sounds/lift.ogg'
 	forced = TRUE
-
-/mob/living
-	var/last_vampire_ambience = 0
-	var/wait_for_music = 30
-	var/wasforced
 
 /mob/living/proc/handle_vampire_music()
 	if(!client)

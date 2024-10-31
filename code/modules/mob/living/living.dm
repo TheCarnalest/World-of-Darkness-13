@@ -48,7 +48,7 @@
 /mob/living/proc/ZImpactDamage(turf/T, levels)
 	visible_message("<span class='danger'>[src] crashes into [T] with a sickening noise!</span>", \
 					"<span class='userdanger'>You crash into [T] with a sickening noise!</span>")
-	adjustBruteLoss((levels * 5) ** 1.5)
+	adjustBruteLoss((levels * 5) ** 2)
 	Knockdown(levels * 50)
 
 //Generic Bump(). Override MobBump() and ObjBump() instead of this.

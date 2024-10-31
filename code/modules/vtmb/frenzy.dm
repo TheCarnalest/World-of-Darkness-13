@@ -2,14 +2,6 @@
 
 //add_client_colour(/datum/client_colour/glass_colour/red)
 //remove_client_colour(/datum/client_colour/glass_colour/red)
-
-/mob/living/carbon
-	var/in_frenzy = FALSE
-	var/frenzy_hardness = 1
-	var/last_frenzy_check = 0
-	var/atom/frenzy_target = null
-	var/last_experience = 0
-
 /client/Click(object,location,control,params)
 	if(isatom(object))
 		if(ishuman(mob))
@@ -17,9 +9,6 @@
 			if(H.in_frenzy)
 				return
 	..()
-
-/mob/living
-	var/frenzy_chance_boost = 10
 
 /mob/living/carbon/proc/rollfrenzy()
 	if(client)
@@ -81,9 +70,6 @@
 		return TRUE
 	if(HAS_TRAIT(src, TRAIT_RESTRAINED))
 		return TRUE
-
-/mob/living/carbon
-	var/last_rage_hit = 0
 
 /mob/living/carbon/proc/frenzystep()
 	if(!isturf(loc) || CheckFrenzyMove())
@@ -186,11 +172,6 @@
 					face_atom(T)
 					Move(T)
 
-/mob/living/carbon/human
-	var/datum/job/JOB
-	var/roundstart_vampire = FALSE
-	var/last_loot_check = 0
-
 /datum/species/kindred/spec_life(mob/living/carbon/human/H)
 	. = ..()
 	if(H.clane)
@@ -245,7 +226,7 @@
 					var/mob/living/carbon/human/pull = H.pulling
 					if(pull.stat == 4)
 						var/obj/item/card/id/id_card = H.get_idcard(FALSE)
-						if(!istype(id_card, /obj/item/card/id/clinic) && !istype(id_card, /obj/item/card/id/police))
+						if(!istype(id_card, /obj/item/card/id/clinic) && !istype(id_card, /obj/item/card/id/police) && !istype(id_card, /obj/item/card/id/sheriff) && !istype(id_card, /obj/item/card/id/prince) && !istype(id_card, /obj/item/card/id/camarilla))
 							if(H.CheckEyewitness(H, H, 7, FALSE))
 								if(H.last_loot_check+50 <= world.time)
 									H.last_loot_check = world.time
@@ -264,7 +245,7 @@
 					if(I.masquerade_violating)
 						if(I.loc == H)
 							var/obj/item/card/id/id_card = H.get_idcard(FALSE)
-							if(!istype(id_card, /obj/item/card/id/police))
+							if(!istype(id_card, /obj/item/card/id/clinic) && !istype(id_card, /obj/item/card/id/police) && !istype(id_card, /obj/item/card/id/sheriff) && !istype(id_card, /obj/item/card/id/prince) && !istype(id_card, /obj/item/card/id/camarilla))
 								if(H.CheckEyewitness(H, H, 7, FALSE))
 									if(H.last_loot_check+50 <= world.time)
 										H.last_loot_check = world.time
@@ -331,7 +312,7 @@
 			if(!H.antifrenzy)
 				if(P.humanity < 1)
 					H.enter_frenzymod()
-					reset_shit(H)
+//					reset_shit(H)
 					H.ghostize(FALSE)
 					P.reason_of_death = "Lost control to the Beast ([time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")])."
 

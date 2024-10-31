@@ -237,3 +237,7 @@
 
 	///Override for sound_environments. If this is set the user will always hear a specific type of reverb (Instead of the area defined reverb)
 	var/sound_environment_override = SOUND_ENVIRONMENT_NONE
+
+	//imported variables from all around the code
+	var/respawntimeofdeath = 0
+	var/taxist = FALSE

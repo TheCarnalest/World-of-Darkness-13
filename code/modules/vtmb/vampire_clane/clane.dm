@@ -1,5 +1,3 @@
-/mob/living/carbon/human
-	var/datum/vampireclane/clane
 //Additional game logic should be stored in the component
 GLOBAL_LIST_INIT(basic_disciplines, list(/datum/discipline/animalism)) //write here the main disciplines when I do them [Lucia] - god fucking damn it flavrius
 /*
@@ -41,14 +39,6 @@ And it also helps for the character set panel
 //		H.facial_hairstyle = "Shaved"
 //		H.hairstyle = "Bald"
 //		H.update_hair()
-
-/mob/living/carbon
-	var/friend_name
-	var/enemy_name
-	var/lover_name
-	var/have_friend = FALSE
-	var/have_enemy = FALSE
-	var/have_lover = FALSE
 
 /mob/living/carbon/human/proc/generate_friends()
 	if(have_friend && !friend_name)
@@ -100,10 +90,3 @@ And it also helps for the character set panel
 		if(H.hud_used.discipline4_icon)
 			if(H.hud_used.discipline4_icon.dscpln)
 				H.hud_used.discipline4_icon.dscpln.post_gain(H)
-//	if(H.client.ckey == "Egorium")
-//		H.put_in_r_hand(new /obj/item/melee/vampirearms/katana/kosa/egorium(H))
-//	if(H.client.ckey == "BadTeammate")
-//		H.put_in_r_hand(new /obj/item/melee/vampirearms/katana/kosa/egorium(H))
-
-/datum/action
-	var/vampiric = FALSE
