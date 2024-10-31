@@ -35,7 +35,7 @@
 	icon_state = "donut[rand(1, 3)]"
 
 /obj/item/food/vampire/pizza
-	name = "pizza slice"
+	name = "square pizza slice"
 	desc = "A nutritious slice of pizza."
 	icon_state = "pizza"
 	food_reagents = list(/datum/reagent/consumable/nutriment = 5)
@@ -182,7 +182,7 @@
 	custom_price = PAYCHECK_EASY
 
 /obj/item/reagent_containers/food/drinks/bottle/vampirecola
-	name = "cola bottle"
+	name = "two liter cola bottle"
 	desc = "Coca cola espuma..."
 	icon_state = "cola1"
 	icon = 'code/modules/wod13/items.dmi'
@@ -248,7 +248,7 @@
 	prize_list = list(new /datum/data/mining_equipment("square pizza",	/obj/item/food/vampire/pizza,	15),
 		new /datum/data/mining_equipment("taco",	/obj/item/food/vampire/taco,	10),
 		new /datum/data/mining_equipment("burger",	/obj/item/food/vampire/burger,	20),
-		new /datum/data/mining_equipment("cola bottle",	/obj/item/reagent_containers/food/drinks/bottle/vampirecola,	10),
+		new /datum/data/mining_equipment("two liter cola bottle",	/obj/item/reagent_containers/food/drinks/bottle/vampirecola,	10),
 		new /datum/data/mining_equipment("cola can",	/obj/item/reagent_containers/food/drinks/soda_cans/vampirecola,	5)
 	)
 
@@ -263,7 +263,7 @@
 	prize_list = list(new /datum/data/mining_equipment("chicken wing",	/obj/item/food/vampire/nugget,	5),
 		new /datum/data/mining_equipment("burger",	/obj/item/food/vampire/burger,	15),
 		new /datum/data/mining_equipment("square pizza",	/obj/item/food/vampire/pizza,	10),
-		new /datum/data/mining_equipment("cola bottle",	/obj/item/reagent_containers/food/drinks/bottle/vampirecola,	10),
+		new /datum/data/mining_equipment("two liter cola bottle",	/obj/item/reagent_containers/food/drinks/bottle/vampirecola,	10),
 		new /datum/data/mining_equipment("cola can",	/obj/item/reagent_containers/food/drinks/soda_cans/vampirecola,	5)
 	)
 
