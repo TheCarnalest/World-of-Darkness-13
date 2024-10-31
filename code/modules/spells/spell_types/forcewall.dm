@@ -23,6 +23,16 @@
 		new wall_type(get_step(user, SOUTH),user)
 
 
+/obj/effect/proc_holder/spell/targeted/forcewall/salubri/cast(list/targets,mob/user = usr)
+	new wall_type(get_step(user, NORTH), user)
+	new wall_type(get_step(user, SOUTH), user)
+	new wall_type(get_step(user, EAST), user)
+	new wall_type(get_step(user, WEST), user)
+	new wall_type(get_step(get_step(user, NORTH), EAST), user) // Northeast
+	new wall_type(get_step(get_step(user, NORTH), WEST), user) // Northwest
+	new wall_type(get_step(get_step(user, SOUTH), EAST), user) // Southeast
+	new wall_type(get_step(get_step(user, SOUTH), WEST), user) // Southwest
+
 /obj/effect/forcefield/wizard
 	var/mob/wizard
 

@@ -1588,16 +1588,21 @@
 //			woundscan(caster, target, src)
 			to_chat(caster, "<b>[target]</b> has <b>[target.bloodpool]/[target.maxbloodpool]</b> blood points.")
 		if(2)
-			if(current_beam)
-				qdel(current_beam)
-			caster.Beam(target, icon_state="sm_arc", time = 50, maxdistance = 9, beam_type = /obj/effect/ebeam/medical)
-			target.Paralyze(30)
-			if(target.generation >= caster.generation)
-				if(ishuman(target))
-					var/mob/living/carbon/human/H = target
-					if(!H.handcuffed)
-						H.set_handcuffed(new /obj/item/restraints/handcuffs/energy/cult/used(target))
-						H.update_handcuffed()
+			if(caster.grab_state > GRAB_PASSIVE)
+				if(ishuman(caster.pulling))
+					var/mob/living/PB = caster.pulling
+					if(isgarou(PB))
+						return
+					if(iskindred(PB))
+						PB.add_confusion(2)
+						PB.drowsyness += 2
+					else if(ishuman(PB))
+						PB.SetSleeping(300)
+				else
+					return
+			else
+				to_chat(caster, "You need to be grabbing someone to use this power.")
+				return
 		if(3)
 			if(current_beam)
 				qdel(current_beam)
@@ -1612,18 +1617,31 @@
 			target.update_damage_overlays()
 			target.update_health_hud()
 		if(4)
-			if(iskindred(target) || isghoul(target))
-				if(current_beam)
-					qdel(current_beam)
-				caster.Beam(target, icon_state="sm_arc", time = 50, maxdistance = 9, beam_type = /obj/effect/ebeam/medical)
-				target.bloodpool = 0
-				target.update_blood_hud()
-		if(5)
 			if(current_beam)
 				qdel(current_beam)
 			caster.Beam(target, icon_state="sm_arc", time = 50, maxdistance = 9, beam_type = /obj/effect/ebeam/medical)
-			if(target.revive(full_heal = TRUE, admin_revive = TRUE))
-				target.grab_ghost(force = TRUE)
+			target.adjustBruteLoss(-60, TRUE)
+			if(ishuman(target))
+				var/mob/living/carbon/human/H = target
+				if(length(H.all_wounds))
+					var/datum/wound/W = pick(H.all_wounds)
+					W.remove_wound()
+			target.adjustFireLoss(-60, TRUE)
+			target.update_damage_overlays()
+			target.update_health_hud()
+		if(5)
+			if(caster.grab_state > GRAB_PASSIVE)
+				if(ishuman(caster.pulling))
+					var/mob/living/carbon/human/PB = caster.pulling
+					if((do_after(caster, 100,target=caster)) && iskindred(PB))
+						to_chat(caster, "<span class='notice'>You healed [PB]'s soul slightly.</span>")
+						PB.AdjustHumanity(1, 10)
+					else
+						to_chat(caster, "<span class='warning'>You need to grab a kindred and stay still to use this power.</span>")
+						return
+			else
+				to_chat(caster, "<span class='warning'>You need to hold your victim properly to heal their soul.</span>")
+				return
 
 /datum/discipline/melpominee
 	name = "Melpominee"
