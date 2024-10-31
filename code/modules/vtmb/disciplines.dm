@@ -1578,6 +1578,7 @@
 	clane_restricted = TRUE
 	dead_restricted = FALSE
 	var/datum/beam/current_beam
+	var/humanity_restored = 0
 
 /datum/discipline/valeren/activate(mob/living/target, mob/living/carbon/human/caster)
 	. = ..()
@@ -1617,6 +1618,7 @@
 			target.update_damage_overlays()
 			target.update_health_hud()
 		if(4)
+			ranged = FALSE
 			if(current_beam)
 				qdel(current_beam)
 			caster.Beam(target, icon_state="sm_arc", time = 50, maxdistance = 9, beam_type = /obj/effect/ebeam/medical)
@@ -1633,9 +1635,12 @@
 			if(caster.grab_state > GRAB_PASSIVE)
 				if(ishuman(caster.pulling))
 					var/mob/living/carbon/human/PB = caster.pulling
-					if(do_after(caster, 10 SECONDS) && iskindred(PB))
+					if(do_after(caster, 10 SECONDS) && iskindred(PB) && humanity_restored < 3)
 						to_chat(caster, "<span class='notice'>You healed [PB]'s soul slightly.</span>")
 						PB.AdjustHumanity(1, 10)
+						humanity_restored += 1
+					else if(humanity_restored >=3)
+						to_chat(caster, "<span class='warning'>You can't heal anymore souls this night.</span>")
 					else
 						to_chat(caster, "<span class='warning'>You need to grab a kindred and stay still to use this power.</span>")
 						return
