@@ -304,6 +304,7 @@
 		caster.auspex_examine = TRUE
 	if(level_casting >= 5)
 		caster.ghostize(TRUE, FALSE, TRUE)
+		caster.soul_state = SOUL_PROJECTING
 
 	spawn((delay*level_casting)+caster.discipline_time_plus)
 		if(caster)
