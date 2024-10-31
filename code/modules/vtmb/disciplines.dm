@@ -1633,7 +1633,7 @@
 			if(caster.grab_state > GRAB_PASSIVE)
 				if(ishuman(caster.pulling))
 					var/mob/living/carbon/human/PB = caster.pulling
-					if((do_after(caster, 100,target=caster)) && iskindred(PB))
+					if(do_after(caster, 10 SECONDS) && iskindred(PB))
 						to_chat(caster, "<span class='notice'>You healed [PB]'s soul slightly.</span>")
 						PB.AdjustHumanity(1, 10)
 					else
