@@ -1640,7 +1640,7 @@
 						to_chat(caster, "<span class='warning'>You need to grab a kindred and stay still to use this power.</span>")
 						return
 			else
-				to_chat(caster, "<span class='warning'>You need to hold your victim properly to heal their soul.</span>")
+				to_chat(caster, "<span class='warning'>You need to hold your patient properly to heal their soul.</span>")
 				return
 
 /datum/discipline/melpominee
