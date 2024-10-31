@@ -100,7 +100,7 @@
 	animate(H, color = "#ff0000", time = 10, loop = 1)
 	if(H.CheckEyewitness(H, H, 7, FALSE))
 		H.AdjustMasquerade(-1)
-	spawn(100)
+	spawn(150)
 		if(H)
 			playsound(H.loc, 'code/modules/wod13/sounds/thaum.ogg', 50, FALSE)
 			H.physiology.damage_resistance -= 75
