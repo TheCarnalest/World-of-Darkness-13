@@ -162,8 +162,6 @@
 				if(HAS_TRAIT(src, TRAIT_PACIFISM))
 					to_chat(src, "<span class='notice'>You gently let go of [throwable_mob].</span>")
 					return
-				if(HAS_TRAIT(src, TRAIT_ELYSIUM))
-					check_elysium(FALSE)
 	else
 		thrown_thing = I.on_thrown(src, target)
 

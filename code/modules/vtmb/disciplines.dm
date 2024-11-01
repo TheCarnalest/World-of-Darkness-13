@@ -139,8 +139,6 @@
 			return FALSE
 	if(HAS_TRAIT(caster, TRAIT_PACIFISM))
 		return FALSE
-	if(HAS_TRAIT(caster, TRAIT_ELYSIUM) && violates_masquerade)
-		caster.check_elysium(FALSE)
 	if(target.resistant_to_disciplines || target.spell_immunity)
 		to_chat(caster, "<span class='danger'>[target] resists your powers!</span>")
 		return FALSE

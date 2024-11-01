@@ -967,9 +967,6 @@ GLOBAL_VAR_INIT(embedpocalypse, FALSE) // if true, all items will be able to emb
 		if(HAS_TRAIT(user, TRAIT_PACIFISM))
 			to_chat(user, "<span class='notice'>You set [src] down gently on the ground.</span>")
 			return
-		user.check_elysium(FALSE)
-	if(istype(src, /obj/item/molotov))
-		user.check_elysium(TRUE)
 	return src
 
 /**
