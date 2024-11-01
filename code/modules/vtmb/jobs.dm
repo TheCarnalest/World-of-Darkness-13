@@ -2002,7 +2002,7 @@
 	exp_type_department = EXP_TYPE_INDEPENDENT
 
 	kindred_only = TRUE
-	allowed_bloodlines = list("Old Clan Tzimisce", "Tzimisce")
+	allowed_bloodlines = list("Old Clan Tzimisce")
 	minimal_generation = 7
 
 	v_duty = "You are a Childe of the Voivode-in-Waiting, the ancient Tzimisce Elder who has rested beneath the Earth for an age longer than the city that now rests on their bones. Honor them in all your actions, and remember that you walk with their favor."
@@ -2044,7 +2044,7 @@
 	exp_type_department = EXP_TYPE_INDEPENDENT
 
 	kindred_only = TRUE
-	allowed_bloodlines = list("Old Clan Tzimisce", "Tzimisce")
+	allowed_bloodlines = list("Old Clan Tzimisce")
 	minimal_generation = 13	//Uncomment when players get exp enough
 
 	v_duty = "Whether you are of Voivode-in-Waiting's blood or if you've been honored, you are one of the Kin of the Voivode. Protect your Family, as your Family would protect you."
