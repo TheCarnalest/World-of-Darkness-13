@@ -462,6 +462,9 @@ SUBSYSTEM_DEF(carpool)
 		for(var/datum/action/carr/C in owner.actions)
 			qdel(C)
 		to_chat(owner, "<span class='notice'>You exit [V].</span>")
+		if(owner.client)
+			owner.client.pixel_x = 0
+			owner.client.pixel_y = 0
 		playsound(V, 'code/modules/wod13/sounds/door.ogg', 50, TRUE)
 
 /mob/living/carbon/human/MouseDrop(atom/over_object)
@@ -704,7 +707,7 @@ SUBSYSTEM_DEF(carpool)
 
 /atom/movable/Initialize()
 	. = ..()
-	if(density)
+	if(density && !isitem(src))
 		if(isturf(get_turf(src)))
 			var/turf/T = get_turf(src)
 			T.unpassable += src
@@ -717,7 +720,7 @@ SUBSYSTEM_DEF(carpool)
 /turf/Exited(atom/movable/AM, atom/newLoc)
 	if(..())
 		unpassable -= AM
-		if(AM.density)
+		if(AM.density && !isitem(AM))
 			if(isturf(newLoc))
 				var/turf/T = newLoc
 				T.unpassable += AM
@@ -758,9 +761,10 @@ SUBSYSTEM_DEF(carpool)
 								hit_turf = T
 		if(hit_turf)
 			Bump(pick(hit_turf.unpassable))
+			impact_delay = world.time
 //			to_chat(world, "I can't pass that [hit_turf] at [hit_turf.x] x [hit_turf.y] cause of [pick(hit_turf.unpassable)] FUCK")
-			var/actual_distance = get_dist_in_pixels(x*32+pixel_x+pixel_w, y*32+pixel_y+pixel_z, hit_turf.x*32, hit_turf.y*32)-32
-//			var/bearing = get_angle_raw(x, y, pixel_x+pixel_w, pixel_y+pixel_z, hit_turf.x, hit_turf.y, 0, 0)
+			var/bearing = get_angle_raw(x, y, pixel_x+pixel_w, pixel_y+pixel_z, hit_turf.x, hit_turf.y, 0, 0)
+			var/actual_distance = get_dist_in_pixels(x*32+pixel_x+pixel_w, y*32+pixel_y+pixel_z, hit_turf.x*32, hit_turf.y*32)-(32+round(abs(get_angle_diff(true_movement_angle, bearing)/2)))
 			moved_x = round(sin(true_movement_angle)*actual_distance)
 			moved_y = round(cos(true_movement_angle)*actual_distance)
 			speed_in_pixels = 0
@@ -819,28 +823,31 @@ SUBSYSTEM_DEF(carpool)
 		if(SOUTH)
 			controlling(-1, 0)
 		if(SOUTHEAST)
-			controlling(-1, -3)
-		if(SOUTHWEST)
 			controlling(-1, 3)
+		if(SOUTHWEST)
+			controlling(-1, -3)
 		if(EAST)
 			controlling(0, 3)
 		if(WEST)
 			controlling(0, -3)
 
 /obj/vampire_car/proc/controlling(var/adjusting_speed, var/adjusting_turn)
+	var/adjust_true = adjusting_turn
+	if(speed_in_pixels < 0)
+		adjust_true = -adjusting_turn
 	if(speed_in_pixels != 0)
-		movement_vector = SIMPLIFY_DEGREES(movement_vector+adjusting_turn)
+		movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true)
 		apply_vector_angle()
 	if(adjusting_speed)
 		if(on)
 			if(adjusting_speed > 0 && speed_in_pixels <= 0)
 				playsound(src, 'code/modules/wod13/sounds/stopping.ogg', 10, FALSE)
 				speed_in_pixels = speed_in_pixels+adjusting_speed*3
-				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjusting_turn*2)
+				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*2)
 			else if(adjusting_speed < 0 && speed_in_pixels > 0)
 				playsound(src, 'code/modules/wod13/sounds/stopping.ogg', 10, FALSE)
 				speed_in_pixels = speed_in_pixels+adjusting_speed*3
-				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjusting_turn*2)
+				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*2)
 			else
 				speed_in_pixels = min(stage*64, max(-stage*64, speed_in_pixels+adjusting_speed*stage))
 				playsound(src, 'code/modules/wod13/sounds/drive.ogg', 10, FALSE)
@@ -848,11 +855,11 @@ SUBSYSTEM_DEF(carpool)
 			if(adjusting_speed > 0 && speed_in_pixels < 0)
 				playsound(src, 'code/modules/wod13/sounds/stopping.ogg', 10, FALSE)
 				speed_in_pixels = min(0, speed_in_pixels+adjusting_speed*3)
-				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjusting_turn*2)
+				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*2)
 			else if(adjusting_speed < 0 && speed_in_pixels > 0)
 				playsound(src, 'code/modules/wod13/sounds/stopping.ogg', 10, FALSE)
 				speed_in_pixels = max(0, speed_in_pixels+adjusting_speed*3)
-				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjusting_turn*2)
+				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*2)
 
 /obj/vampire_car/proc/apply_vector_angle()
 	var/minus_angle = 0
