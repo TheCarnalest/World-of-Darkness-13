@@ -92,14 +92,14 @@
 	H.bloodpool = max(0, H.bloodpool-2)
 	playsound(H.loc, 'sound/magic/voidblink.ogg', 50, FALSE)
 	abuse_fix = world.time
-	H.physiology.damage_resistance += 75
+	H.physiology.damage_resistance += 60
 	animate(H, color = "#000000", time = 10, loop = 1)
 	if(H.CheckEyewitness(H, H, 7, FALSE))
 		H.AdjustMasquerade(-1)
 	spawn(150)
 		if(H)
 			playsound(H.loc, 'sound/magic/voidblink.ogg', 50, FALSE)
-			H.physiology.damage_resistance -= 75
+			H.physiology.damage_resistance -= 60
 			H.color = initial(H.color)
 
 /datum/action/shadowcontrol
