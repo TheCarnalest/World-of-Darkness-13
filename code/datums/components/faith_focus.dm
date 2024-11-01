@@ -251,7 +251,7 @@
 		target_shown_class = "nicegreen"
 		switch (burnt_rage)
 			if (0)
-				if ((original_rage == 0) && (modifier = VERY_HOLY) && (!ishuman(garou)))
+				if ((original_rage == 0) && (modifier == VERY_HOLY) && (!ishuman(garou)))
 					focus_light_text = "radiates the Lord's mercy"
 					target_health_text = "They look oddly calm as their body contorts back into the shape of a human!"
 					target_shown_text = "You feel the calmest you've been since your First Change. You don't feel the need to be anything but human."
