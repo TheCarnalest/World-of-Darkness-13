@@ -189,7 +189,7 @@
 
 /datum/status_effect/wound/blunt/proc/on_swap_hands()
 	SIGNAL_HANDLER
-	if(linked_wound == null) // Why does it can be null? Anyway, preventing runtime [ChillRaccoon] //FIXME
+	if(linked_wound == null) //TODO: why can it be null? FIXME
 		return
 	var/mob/living/carbon/wound_owner = owner
 	if(wound_owner.get_active_hand() == linked_limb)

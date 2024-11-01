@@ -644,4 +644,4 @@ GLOBAL_DATUM_INIT(sortInstance, /datum/sort_instance, new())
 #undef MIN_GALLOP
 #undef MIN_MERGE
 
-#undef fetchElement
+#undef FETCHELEMENT

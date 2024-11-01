@@ -1368,7 +1368,7 @@ GLOBAL_LIST_EMPTY(donation_races)
 		switch(atk_verb)//this code is really stupid but some genius apparently made "claw" and "slash" two attack types but also the same one so it's needed i guess
 			if(ATTACK_EFFECT_KICK)
 				user.do_attack_animation(target, ATTACK_EFFECT_KICK)
-			if(ATTACK_EFFECT_SLASH || ATTACK_EFFECT_CLAW)//smh
+			if(ATTACK_EFFECT_SLASH, ATTACK_EFFECT_CLAW)//smh
 				user.do_attack_animation(target, ATTACK_EFFECT_CLAW)
 			if(ATTACK_EFFECT_SMASH)
 				user.do_attack_animation(target, ATTACK_EFFECT_SMASH)
@@ -2057,7 +2057,7 @@ GLOBAL_LIST_EMPTY(donation_races)
 /datum/species/proc/spec_stun(mob/living/carbon/human/H,amount)
 	if(flying_species && H.movement_type & FLYING)
 		ToggleFlight(H)
-		flyslip(H)
+//		flyslip(H)
 	. = stunmod * H.physiology.stun_mod * amount
 
 //////////////

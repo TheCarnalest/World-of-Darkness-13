@@ -678,7 +678,6 @@
 
 	if(QDELETED(src))
 		return
-		CRASH("Qdeleted thing being thrown around.")
 
 	if (!target || speed <= 0)
 		return

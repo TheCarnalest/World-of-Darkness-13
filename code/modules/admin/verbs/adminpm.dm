@@ -226,7 +226,7 @@
 				admin_ticket_log(src, interaction_message)
 				if(recipient != src)	//reeee
 					admin_ticket_log(recipient, interaction_message)
-				if(current_ticket != null) // What, sometimes it's null [ChillRaccoon] //FIXME
+				if(current_ticket != null) //TODO: sometimes it's null, FIXME
 					SSblackbox.LogAhelp(current_ticket.id, "Reply", msg, recipient.ckey, src.ckey)
 			else		//recipient is an admin but sender is not
 				var/replymsg = "Reply PM from-<b>[key_name(src, recipient, 1)]</b>: <span class='linkify'>[keywordparsedmsg]</span>"

@@ -97,7 +97,6 @@
 		C.data = data
 	return C
 
-
 /datum/netdata/proc/json_to_data(json)
 	data = json_decode(json)
 
