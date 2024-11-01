@@ -111,7 +111,7 @@ SUBSYSTEM_DEF(carpool)
 
 	var/last_vzhzh = 0
 
-	var/obj/effect/fari/FARI
+	var/mutable_appearance/Fari
 	var/fari_on = FALSE
 
 	var/mob/living/driver
@@ -276,7 +276,6 @@ SUBSYSTEM_DEF(carpool)
 /obj/vampire_car/Destroy()
 	GLOB.car_list -= src
 	. = ..()
-	qdel(FARI)
 	for(var/mob/living/L in src)
 		L.forceMove(loc)
 		var/datum/action/carr/exit_car/E = locate() in L.actions
@@ -362,18 +361,16 @@ SUBSYSTEM_DEF(carpool)
 /datum/action/carr/fari_vrubi/Trigger()
 	if(istype(owner.loc, /obj/vampire_car))
 		var/obj/vampire_car/V = owner.loc
-		if(V.FARI)
-			if(!V.fari_on)
-				V.fari_on = TRUE
-				V.FARI.set_light(6, 4)
-				to_chat(owner, "<span class='notice'>You toggle [V]'s lights.</span>")
-				playsound(V, 'sound/weapons/magin.ogg', 40, TRUE)
-			else
-				V.fari_on = FALSE
-				V.FARI.set_light(0)
-				V.set_light(0)
-				to_chat(owner, "<span class='notice'>You toggle [V]'s lights.</span>")
-				playsound(V, 'sound/weapons/magout.ogg', 40, TRUE)
+		if(!V.fari_on)
+			V.fari_on = TRUE
+			V.add_overlay(V.Fari)
+			to_chat(owner, "<span class='notice'>You toggle [V]'s lights.</span>")
+			playsound(V, 'sound/weapons/magin.ogg', 40, TRUE)
+		else
+			V.fari_on = FALSE
+			V.cut_overlay(V.Fari)
+			to_chat(owner, "<span class='notice'>You toggle [V]'s lights.</span>")
+			playsound(V, 'sound/weapons/magout.ogg', 40, TRUE)
 
 /datum/action/carr/beep
 	name = "Signal"
@@ -462,9 +459,10 @@ SUBSYSTEM_DEF(carpool)
 		for(var/datum/action/carr/C in owner.actions)
 			qdel(C)
 		to_chat(owner, "<span class='notice'>You exit [V].</span>")
-		if(owner.client)
-			owner.client.pixel_x = 0
-			owner.client.pixel_y = 0
+		if(owner)
+			if(owner.client)
+				owner.client.pixel_x = 0
+				owner.client.pixel_y = 0
 		playsound(V, 'code/modules/wod13/sounds/door.ogg', 50, TRUE)
 
 /mob/living/carbon/human/MouseDrop(atom/over_object)
@@ -647,9 +645,6 @@ SUBSYSTEM_DEF(carpool)
 	access = "clinic"
 	baggage_limit = 60
 
-/obj/effect/fari
-	invisibility = INVISIBILITY_ABSTRACT
-
 /proc/get_dist_in_pixels(var/pixel_starts_x, var/pixel_starts_y, var/pixel_ends_x, var/pixel_ends_y)
 	var/total_x = abs(pixel_starts_x-pixel_ends_x)
 	var/total_y = abs(pixel_starts_y-pixel_ends_y)
@@ -678,10 +673,18 @@ SUBSYSTEM_DEF(carpool)
 
 /obj/vampire_car/Initialize()
 	. = ..()
+	Fari = new (src)
+	Fari.icon = 'icons/effects/light_overlays/light_cone_car.dmi'
+	Fari.icon_state = "light"
+	Fari.pixel_x = -64
+	Fari.pixel_y = -64
+	Fari.layer = O_LIGHTING_VISUAL_LAYER
+	Fari.plane = O_LIGHTING_VISUAL_PLANE
+	Fari.appearance_flags = RESET_COLOR | RESET_ALPHA | RESET_TRANSFORM
+	Fari.mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+//	Fari.vis_flags = NONE
+	Fari.alpha = 110
 	gas = rand(100, 1000)
-	FARI = new(src)
-	FARI.forceMove(get_step(src, dir))
-	FARI.anchored = TRUE
 	GLOB.car_list += src
 	last_pos["x"] = x
 	last_pos["y"] = y
@@ -718,12 +721,12 @@ SUBSYSTEM_DEF(carpool)
 	. = ..()
 
 /turf/Exited(atom/movable/AM, atom/newLoc)
-	if(..())
-		unpassable -= AM
-		if(AM.density && !isitem(AM))
-			if(isturf(newLoc))
-				var/turf/T = newLoc
-				T.unpassable += AM
+	. = ..()
+	unpassable -= AM
+	if(AM.density && !isitem(AM))
+		if(isturf(newLoc))
+			var/turf/T = newLoc
+			T.unpassable += AM
 
 /obj/vampire_car/setDir(newdir)
 	apply_vector_angle()
@@ -744,7 +747,37 @@ SUBSYSTEM_DEF(carpool)
 	var/moved_x = round(sin(movement_vector)*speed_in_pixels)
 	var/moved_y = round(cos(movement_vector)*speed_in_pixels)
 	if(speed_in_pixels != 0)
+		switch(dir)
+			if(NORTH)
+				var/turf/west_turf = get_step(src, WEST)
+				if(length(west_turf.unpassable))
+					moved_x = max(-8-last_pos["x_pix"], moved_x)
+				var/turf/east_turf = get_step(src, EAST)
+				if(length(east_turf.unpassable))
+					moved_x = min(8-last_pos["x_pix"], moved_x)
+			if(SOUTH)
+				var/turf/west_turf = get_step(src, WEST)
+				if(length(west_turf.unpassable))
+					moved_x = max(-8-last_pos["x_pix"], moved_x)
+				var/turf/east_turf = get_step(src, EAST)
+				if(length(east_turf.unpassable))
+					moved_x = min(8-last_pos["x_pix"], moved_x)
+			if(WEST)
+				var/turf/north_turf = get_step(src, NORTH)
+				if(length(north_turf.unpassable))
+					moved_y = max(-8-last_pos["x_pix"], moved_y)
+				var/turf/south_turf = get_step(src, SOUTH)
+				if(length(south_turf.unpassable))
+					moved_y = min(8-last_pos["x_pix"], moved_y)
+			if(EAST)
+				var/turf/north_turf = get_step(src, NORTH)
+				if(length(north_turf.unpassable))
+					moved_y = max(-8-last_pos["x_pix"], moved_y)
+				var/turf/south_turf = get_step(src, SOUTH)
+				if(length(south_turf.unpassable))
+					moved_y = min(8-last_pos["x_pix"], moved_y)
 		var/true_movement_angle = movement_vector
+		var/true_speed = get_dist_in_pixels(0, 0, moved_x, moved_y)
 		if(speed_in_pixels < 0)
 			true_movement_angle = SIMPLIFY_DEGREES(movement_vector+180)
 		var/turf/check_turf = get_turf_in_angle(true_movement_angle, get_turf(src), 15)
@@ -753,18 +786,18 @@ SUBSYSTEM_DEF(carpool)
 		for(var/turf/T in the_line)
 			if(T)
 				var/dist_to_hit = get_dist_in_pixels(last_pos["x"]*32+last_pos["x_pix"], last_pos["y"]*32+last_pos["y_pix"], T.x*32, T.y*32)
-				if(dist_to_hit <= abs(speed_in_pixels))
-					if(length(T.unpassable))
-						var/poop = pick(T.unpassable)
-						if(poop != src)
-							if(!hit_turf || dist_to_hit < get_dist_in_pixels(last_pos["x"]*32+last_pos["x_pix"], last_pos["y"]*32+last_pos["y_pix"], hit_turf.x*32, hit_turf.y*32))
-								hit_turf = T
+				if(dist_to_hit <= true_speed)
+					var/list/stuff = T.unpassable.Copy()
+					stuff -= src
+					if(length(stuff))
+						if(!hit_turf || dist_to_hit < get_dist_in_pixels(last_pos["x"]*32+last_pos["x_pix"], last_pos["y"]*32+last_pos["y_pix"], hit_turf.x*32, hit_turf.y*32))
+							hit_turf = T
 		if(hit_turf)
 			Bump(pick(hit_turf.unpassable))
 			impact_delay = world.time
 //			to_chat(world, "I can't pass that [hit_turf] at [hit_turf.x] x [hit_turf.y] cause of [pick(hit_turf.unpassable)] FUCK")
 			var/bearing = get_angle_raw(x, y, pixel_x+pixel_w, pixel_y+pixel_z, hit_turf.x, hit_turf.y, 0, 0)
-			var/actual_distance = get_dist_in_pixels(x*32+pixel_x+pixel_w, y*32+pixel_y+pixel_z, hit_turf.x*32, hit_turf.y*32)-(32+32*round(sin(abs(get_angle_diff(true_movement_angle, bearing)))))
+			var/actual_distance = get_dist_in_pixels(x*32+pixel_x+pixel_w, y*32+pixel_y+pixel_z, hit_turf.x*32, hit_turf.y*32)-(32+true_speed*round(sin(abs(get_angle_diff(true_movement_angle, bearing)))))
 			moved_x = round(sin(true_movement_angle)*actual_distance)
 			moved_y = round(cos(true_movement_angle)*actual_distance)
 			speed_in_pixels = 0
