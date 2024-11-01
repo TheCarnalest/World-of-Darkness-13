@@ -104,8 +104,8 @@ SUBSYSTEM_DEF(carpool)
 	density = TRUE
 	plane = GAME_PLANE
 	layer = CAR_LAYER
-	pixel_w = -32
-	pixel_z = -32
+//	pixel_w = -32
+//	pixel_z = -32
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF
 	throwforce = 150
 
@@ -500,7 +500,9 @@ SUBSYSTEM_DEF(carpool)
 /obj/vampire_car/Bump(atom/A)
 	if(!A)
 		return
-	var/prev_speed = abs(speed_in_pixels)
+	var/prev_speed = round(abs(speed_in_pixels)/8)
+	if(!prev_speed)
+		return
 	speed_in_pixels = 0
 	last_pos["x_pix"] = 0
 	last_pos["y_pix"] = 0
@@ -531,7 +533,7 @@ SUBSYSTEM_DEF(carpool)
 		if(driver)
 			if(HAS_TRAIT(driver, TRAIT_EXP_DRIVER))
 				dam = round(dam/2)
-				driver.apply_damage(prev_speed, BRUTE, BODY_ZONE_CHEST)
+			driver.apply_damage(prev_speed, BRUTE, BODY_ZONE_CHEST)
 		get_damage(dam)
 	return
 
@@ -680,8 +682,8 @@ SUBSYSTEM_DEF(carpool)
 	GLOB.car_list += src
 	last_pos["x"] = x
 	last_pos["y"] = y
-	last_pos["x_pix"] = 32
-	last_pos["y_pix"] = 32
+//	last_pos["x_pix"] = 32
+//	last_pos["y_pix"] = 32
 	switch(dir)
 		if(SOUTH)
 			movement_vector = 180
@@ -689,8 +691,38 @@ SUBSYSTEM_DEF(carpool)
 			movement_vector = 90
 		if(WEST)
 			movement_vector = 270
-	add_overlay(image(icon = src.icon, icon_state = src.icon_state, pixel_x = src.pixel_w, pixel_y = src.pixel_z))
+	add_overlay(image(icon = src.icon, icon_state = src.icon_state, pixel_x = -32, pixel_y = -32))
 	icon_state = "empty"
+
+/turf
+	var/list/unpassable = list()
+
+/turf/Initialize()
+	. = ..()
+	if(density)
+		unpassable += src
+
+/atom/movable/Initialize()
+	. = ..()
+	if(density)
+		if(isturf(get_turf(src)))
+			var/turf/T = get_turf(src)
+			T.unpassable += src
+
+/atom/movable/Destroy()
+	var/turf/T = get_turf(src)
+	T.unpassable -= src
+	. = ..()
+
+/atom/Exited(atom/movable/AM, atom/newLoc)
+	if(..())
+		if(isturf(src))
+			var/turf/T = src
+			T.unpassable -= AM
+		if(AM.density)
+			if(isturf(newLoc))
+				var/turf/T = newLoc
+				T.unpassable += AM
 
 /obj/vampire_car/setDir(newdir)
 	apply_vector_angle()
@@ -705,10 +737,7 @@ SUBSYSTEM_DEF(carpool)
 		if(last_vzhzh+10 < world.time)
 			playsound(src, 'code/modules/wod13/sounds/work.ogg', 25, FALSE)
 			last_vzhzh = world.time
-//	if(x != last_pos["x"] || y != last_pos["y"])
-//		Move(locate(clamp(last_pos["x"], 1, world.maxx), clamp(last_pos["y"], 1, world.maxx), z))
-	x = clamp(last_pos["x"], 1, world.maxx)
-	y = clamp(last_pos["y"], 1, world.maxx)		//since the map is 255x255
+	forceMove(locate(last_pos["x"], last_pos["y"], z))
 	pixel_x = last_pos["x_pix"]
 	pixel_y = last_pos["y_pix"]
 	var/moved_x = round(sin(movement_vector)*speed_in_pixels)
@@ -719,15 +748,23 @@ SUBSYSTEM_DEF(carpool)
 			true_movement_angle = SIMPLIFY_DEGREES(movement_vector+180)
 		var/turf/check_turf = get_turf_in_angle(true_movement_angle, get_turf(src), 15)
 		var/list/the_line = get_line(src, check_turf)
+		var/turf/hit_turf
 		for(var/turf/T in the_line)
 			if(T)
-				if(!T.Cross(src) && get_dist(get_turf(src), T) <= abs(speed_in_pixels)/32)
-					to_chat(world, "I can't pass that [T] at [T.x] x [T.y] FUCK")
-//					var/actual_angle = get_angle_raw(x, y, pixel_x+pixel_w, pixel_y+pixel_z, T.x, T.y, 0, 0)
-					var/actual_distance = get_dist_in_pixels(x*32+pixel_x+pixel_w, y*32+pixel_y+pixel_z, T.x*32, T.y*32)-32
-					moved_x = round(sin(true_movement_angle)*actual_distance)
-					moved_y = round(cos(true_movement_angle)*actual_distance)
-					speed_in_pixels = 0
+				if(T.x != x || T.y != y)
+					var/dist_to_hit = get_dist_in_pixels(last_pos["x"]*32+last_pos["x_pix"], last_pos["y"]*32+last_pos["y_pix"], T.x*32, T.y*32)
+					if(dist_to_hit <= abs(speed_in_pixels))
+						if(length(T.unpassable))
+							if(!hit_turf || dist_to_hit < get_dist_in_pixels(last_pos["x"]*32+last_pos["x_pix"], last_pos["y"]*32+last_pos["y_pix"], hit_turf.x*32, hit_turf.y*32))
+								hit_turf = T
+		if(hit_turf)
+			Bump(pick(hit_turf.unpassable))
+//			to_chat(world, "I can't pass that [hit_turf] at [hit_turf.x] x [hit_turf.y] cause of [pick(hit_turf.unpassable)] FUCK")
+			var/actual_distance = get_dist_in_pixels(x*32+pixel_x+pixel_w, y*32+pixel_y+pixel_z, hit_turf.x*32, hit_turf.y*32)-32
+			var/bearing = get_angle_raw(x, y, pixel_x+pixel_w, pixel_y+pixel_z, hit_turf.x, hit_turf.y, 0, 0)
+			moved_x = round(sin(true_movement_angle)*actual_distance)
+			moved_y = round(cos(true_movement_angle)*actual_distance)
+			speed_in_pixels = 0
 	for(var/mob/living/L in src)
 		if(L)
 			if(L.client)
@@ -737,22 +774,22 @@ SUBSYSTEM_DEF(carpool)
 	animate(src, pixel_x = pixel_x+moved_x, pixel_y = pixel_y+moved_y, SScarpool.wait, 1)
 	last_pos["x_pix"] = last_pos["x_pix"]+moved_x
 	last_pos["y_pix"] = last_pos["y_pix"]+moved_y
-	if(last_pos["x_pix"] > 16)
-		var/stuff = round(last_pos["x_pix"]/32)+1
-		last_pos["x"] = last_pos["x"]+stuff
-		last_pos["x_pix"] = last_pos["x_pix"]-stuff*32
-	if(last_pos["x_pix"] < 16)
-		var/stuff = ceil(last_pos["x_pix"]/32)-1
-		last_pos["x"] = last_pos["x"]+stuff
-		last_pos["x_pix"] = last_pos["x_pix"]-stuff*32
-	if(last_pos["y_pix"] > 16)
-		var/stuff = round(last_pos["y_pix"]/32)+1
-		last_pos["y"] = last_pos["y"]+stuff
-		last_pos["y_pix"] = last_pos["y_pix"]-stuff*32
-	if(last_pos["y_pix"] < 16)
-		var/stuff = ceil(last_pos["y_pix"]/32)-1
-		last_pos["y"] = last_pos["y"]+stuff
-		last_pos["y_pix"] = last_pos["y_pix"]-stuff*32
+	var/new_x = last_pos["x"]
+	var/new_y = last_pos["y"]
+	while(last_pos["x_pix"] > 16)
+		last_pos["x_pix"] -= 32
+		new_x++
+	while(last_pos["x_pix"] < -16)
+		last_pos["x_pix"] += 32
+		new_x--
+	while(last_pos["y_pix"] > 16)
+		last_pos["y_pix"] -= 32
+		new_y++
+	while(last_pos["y_pix"] < -16)
+		last_pos["y_pix"] += 32
+		new_y--
+	last_pos["x"] = clamp(new_x, 1, world.maxx)
+	last_pos["y"] = clamp(new_y, 1, world.maxx)		//since the map is 255x255
 
 /obj/vampire_car/relaymove(mob, direct)
 	if(world.time-impact_delay < 20)
