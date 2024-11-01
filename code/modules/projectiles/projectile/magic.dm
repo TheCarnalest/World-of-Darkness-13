@@ -679,13 +679,6 @@
 //	explosion(T, -1, exp_heavy, exp_light, exp_flash, 0, flame_range = 0)
 	var/obj/effect/fire/R = new(get_turf(target))
 	R.color = color
-	if(istype(get_area(target), /area/vtm))
-		var/area/vtm/V = get_area(target)
-		if(V.zone_type == "masquerade")
-			if(isliving(firer))
-				var/mob/living/L = firer
-				L.check_elysium(TRUE)
-
 
 /obj/projectile/magic/aoe/fireball/baali
 	color = "#2dff00"

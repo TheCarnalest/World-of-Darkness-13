@@ -1946,7 +1946,6 @@
 			if (INTENT_HARM)
 				if (HAS_TRAIT(src, TRAIT_PACIFISM))
 					return FALSE
-				check_elysium(FALSE)
 				attack_result = style.harm_act(src, target)
 			if (INTENT_DISARM)
 				attack_result = style.disarm_act(src, target)
