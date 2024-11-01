@@ -169,6 +169,7 @@
 
 	//actual logic for how to affect this creecher
 	if (iskindred(target)) //kindred get burnt
+		var/mob/living/carbon/human/human_target = target
 		var/previous_health = target.health
 		target.apply_damage(UNHOLY_BURN * modifier, CLONE)
 
@@ -181,9 +182,11 @@
 			if (2)
 				focus_light_text = "radiates fire"
 				target_shown_text = "Your flesh is incinerated. The Lord's judgement is here."
+				human_target.rollfrenzy()
 			if (4)
 				focus_light_text = "burns with God's fury"
 				target_shown_text = "THIS IS THE DAY YOU DIE. SAY YOUR PRAYERS, FOR THEY WILL NOT BE HEARD."
+				human_target.rollfrenzy()
 
 		//apparently switch statements want "constant expressions" so I have to do this
 		if (target.health <= -100)
