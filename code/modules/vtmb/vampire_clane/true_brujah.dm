@@ -15,7 +15,6 @@
 		var/datum/action/clock/clocke = new()
 		clocke.Grant(H)
 
-
 /datum/action/clock
 	name = "Check Time"
 	desc = "Telling the time is easy when you're True Brujah."
@@ -26,3 +25,21 @@
 /datum/action/clock/Trigger()
 	. = ..()
 	to_chat(usr, "<b>[SScity_time.timeofnight]</b>")
+
+/datum/action/temporis_step
+	name = "Cowalker"
+	desc = "Stop time for a moment in order to appear in two places at once."
+	button_icon_state = "Cowalker"
+	check_flags = AB_CHECK_CONSCIOUS
+	vampiric = TRUE
+
+/datum/action/temporis_step/Trigger(mob/living/M)
+	var/matrix/initial_matrix = matrix(M.transform)
+	var/matrix/secondary_matrix = matrix(M.transform)
+	var/matrix/tertiary_matrix = matrix(M.transform)
+	initial_matrix.Translate(1,0)
+	secondary_matrix.Translate(0,1)
+	tertiary_matrix.Translate(1)
+	animate(M, transform = initial_matrix, time = 1, loop = 0)
+	animate(M, transform = secondary_matrix, time = 1, loop = 0, ANIMATION_PARALLEL)
+	animate(M, transform = tertiary_matrix, time = 1, loop = 0, ANIMATION_PARALLEL)

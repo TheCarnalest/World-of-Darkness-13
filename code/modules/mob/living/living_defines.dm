@@ -209,6 +209,8 @@
 
 	var/dancing = FALSE
 
+	var/temporis_visual = FALSE
+
 	var/vampire_faction
 
 	var/frenzy_chance_boost = 10

@@ -1702,9 +1702,6 @@
 
 #define TEMPORIS_ATTACK_SPEED_MODIFIER 0.25
 
-/mob/living/carbon
-	var/temporis_visual = FALSE
-
 /obj/effect/temporis
 	name = "Za Warudo"
 	desc = "..."
@@ -1723,7 +1720,7 @@
 		T.name = name
 		T.appearance = appearance
 		T.dir = dir
-		animate(T, pixel_x = rand(-32,32), pixel_y = rand(-32,32), alpha = 0, time = 10, easing = SINE_EASING|EASE_IN|EASE_OUT)
+		animate(T, pixel_x = rand(-32,32), pixel_y = rand(-32,32), alpha = 255, time = 10)
 		if(CheckEyewitness(src, src, 7, FALSE))
 			AdjustMasquerade(-1)
 
@@ -1733,10 +1730,7 @@
 		if(1)
 			to_chat(caster, "<b>[SScity_time.timeofnight]</b>")
 		if(2)
-			AddComponent(target, /datum/component/dejavu)
-			target.rewind_living(2, 5 SECONDS)
-			spawn(10 SECONDS)
-				RemoveComponent(target, /datum/component/dejavu)
+			target.AddComponent(/datum/component/dejavu, rewinds = 4, interval = 2 SECONDS)
 		if(3)
 			to_chat(target, "<span class='userdanger'><b>Slow down.</b></span>")
 			target.add_movespeed_modifier(/datum/movespeed_modifier/temporis)
@@ -1744,10 +1738,7 @@
 				if(target)
 					target.remove_movespeed_modifier(/datum/movespeed_modifier/temporis)
 		if(4)
-			caster.temporis_visual = TRUE
-			spawn(15 SECONDS)
-				if(target)
-					caster.temporis_visual = FALSE
+			to_chat(caster, "<b>Use the second button at the top to cast this level of Temporis.</b>")
 		if(5)
 			caster.add_movespeed_modifier(/datum/movespeed_modifier/temporis5)
 			caster.no_fire_delay = TRUE
