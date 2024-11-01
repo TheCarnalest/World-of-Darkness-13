@@ -8,11 +8,11 @@
 #define UNHOLY -1
 #define VERY_UNHOLY -2
 
-#define HOLY_HEAL 10
-#define UNHOLY_BURN 10
+#define HOLY_HEAL 12.5
+#define UNHOLY_BURN 12.5
 
 #define STUN_DURATION 3 SECONDS
-#define ADVANCE_BLOCK_DURATION 10 SECONDS
+#define ADVANCE_BLOCK_DURATION 6 SECONDS
 
 /datum/component/faith_focus
 	var/obj/item/parent_item
@@ -235,7 +235,40 @@
 				target_shown_text = "ESCAPE. NOW. THE NECTAR IS BEING PURGED FROM YOUR VEINS. YOU NEED TO RUN."
 
 	else if (isgarou(target)) //garou get their rage reduced and forced out of human form
-		to_chat(user, "need to finish")
+		//mob/living/carbon accounts for all forms
+		var/mob/living/carbon/garou = target
+		var/burnt_rage = 0
+		var/original_rage = garou.auspice.rage
+		if (original_rage > 0)
+			if (modifier == VERY_HOLY) //True Faith loadout bonus, garou have a maximum modifier of 2 or VERY_HOLY
+				burnt_rage += 1
+			if ((prob(40)) && (original_rage - burnt_rage > 0))
+				burnt_rage += 1
+			spawn()
+				adjust_rage(-burnt_rage, garou, TRUE)
+
+		//different ways this can affect the garou
+		target_shown_class = "nicegreen"
+		switch (burnt_rage)
+			if (0)
+				if ((original_rage == 0) && (modifier = VERY_HOLY) && (!ishuman(garou)))
+					focus_light_text = "radiates the Lord's mercy"
+					target_health_text = "They look oddly calm as their body contorts back into the shape of a human!"
+					target_shown_text = "You feel the calmest you've been since your First Change. You don't feel the need to be anything but human."
+					spawn()
+						garou.transformator.trans_gender(garou, "Homid", TRUE)
+				else
+					focus_light_text = "glows"
+					target_health_text = "They seem conflicted."
+					target_shown_text = "The [parent_item.name] is attempting to purge your Rage. It feels... soothing."
+			if (1)
+				focus_light_text = "glows beautifully"
+				target_health_text = "They seem less energetic and twitchy."
+				target_shown_text = "The fury within you is silenced by the [parent_item.name]."
+			if (2)
+				focus_light_text = "radiates peace"
+				target_health_text = "They look much calmer."
+				target_shown_text = "Your Rage is deadened by the power of the [parent_item.name]. Your connection to your Garou blood is dulled."
 
 	else if (istype(target, /mob/living/simple_animal/hostile)) //creechers die
 		var/previous_health = target.health
