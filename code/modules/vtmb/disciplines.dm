@@ -1193,7 +1193,6 @@
 	violates_masquerade = TRUE
 	clane_restricted = TRUE
 	dead_restricted = FALSE
-	var/exclusive_clan = "Old Clan Tzimisce"
 
 /datum/discipline/vicissitude/activate(mob/living/target, mob/living/carbon/human/caster)
 	. = ..()
