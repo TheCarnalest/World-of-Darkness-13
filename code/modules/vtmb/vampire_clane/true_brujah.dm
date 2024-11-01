@@ -83,14 +83,12 @@
 		return
 	M.temporis_blur = TRUE
 	M.add_movespeed_modifier(/datum/movespeed_modifier/temporis5)
-	M.no_fire_delay = TRUE
 	M.next_move_modifier *= TEMPORIS_ATTACK_SPEED_MODIFIER
-	spawn(15 SECONDS)
+	spawn(10 SECONDS)
 		if(usr == M)
 			M.temporis_blur = FALSE
 			M.playsound_local(M.loc, 'code/modules/wod13/sounds/temporis end.ogg', 50, FALSE)
 			M.remove_movespeed_modifier(/datum/movespeed_modifier/temporis5)
-			M.no_fire_delay = FALSE
 			M.next_move_modifier /= TEMPORIS_ATTACK_SPEED_MODIFIER
 
 

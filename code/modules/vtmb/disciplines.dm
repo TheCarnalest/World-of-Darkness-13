@@ -1737,6 +1737,7 @@
 	switch(level_casting)
 		if(1)
 			to_chat(caster, "<b>[SScity_time.timeofnight]</b>")
+			caster.bloodpool = caster.bloodpool+1
 		if(2)
 			target.AddComponent(/datum/component/dejavu, rewinds = 4, interval = 2 SECONDS)
 		if(3)
@@ -1747,13 +1748,7 @@
 					target.remove_movespeed_modifier(/datum/movespeed_modifier/temporis)
 		if(4)
 			to_chat(caster, "<b>Use the second Temporis button at the top of the screen to cast this level of Temporis.</b>")
+			caster.bloodpool = caster.bloodpool+1
 		if(5)
-			caster.add_movespeed_modifier(/datum/movespeed_modifier/temporis5)
-			caster.no_fire_delay = TRUE
-			caster.next_move_modifier *= TEMPORIS_ATTACK_SPEED_MODIFIER
-			spawn(15 SECONDS)
-				if(caster)
-					caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/temporis end.ogg', 50, FALSE)
-					caster.remove_movespeed_modifier(/datum/movespeed_modifier/temporis5)
-					caster.no_fire_delay = FALSE
-					caster.next_move_modifier /= TEMPORIS_ATTACK_SPEED_MODIFIER
+			to_chat(caster, "<b>Use the third Temporis button at the top of the screen to cast this level of Temporis.</b>")
+			caster.bloodpool = caster.bloodpool+1
