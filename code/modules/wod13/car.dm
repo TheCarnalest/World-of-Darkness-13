@@ -714,11 +714,9 @@ SUBSYSTEM_DEF(carpool)
 	T.unpassable -= src
 	. = ..()
 
-/atom/Exited(atom/movable/AM, atom/newLoc)
+/turf/Exited(atom/movable/AM, atom/newLoc)
 	if(..())
-		if(isturf(src))
-			var/turf/T = src
-			T.unpassable -= AM
+		unpassable -= AM
 		if(AM.density)
 			if(isturf(newLoc))
 				var/turf/T = newLoc
@@ -754,8 +752,10 @@ SUBSYSTEM_DEF(carpool)
 				var/dist_to_hit = get_dist_in_pixels(last_pos["x"]*32+last_pos["x_pix"], last_pos["y"]*32+last_pos["y_pix"], T.x*32, T.y*32)
 				if(dist_to_hit <= abs(speed_in_pixels))
 					if(length(T.unpassable))
-						if(!hit_turf || dist_to_hit < get_dist_in_pixels(last_pos["x"]*32+last_pos["x_pix"], last_pos["y"]*32+last_pos["y_pix"], hit_turf.x*32, hit_turf.y*32))
-							hit_turf = T
+						var/poop = pick(T.unpassable)
+						if(poop != src)
+							if(!hit_turf || dist_to_hit < get_dist_in_pixels(last_pos["x"]*32+last_pos["x_pix"], last_pos["y"]*32+last_pos["y_pix"], hit_turf.x*32, hit_turf.y*32))
+								hit_turf = T
 		if(hit_turf)
 			Bump(pick(hit_turf.unpassable))
 //			to_chat(world, "I can't pass that [hit_turf] at [hit_turf.x] x [hit_turf.y] cause of [pick(hit_turf.unpassable)] FUCK")
