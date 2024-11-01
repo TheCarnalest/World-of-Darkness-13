@@ -1161,7 +1161,7 @@
 	if(above_turf && istype(above_turf, /turf/open/openspace))
 		to_chat(src, "<span class='notice'>You start climbing up...</span>")
 
-		var/result = do_after(src, 10, 0)
+		var/result = do_after(src, 50 - (dexterity + athletics * 5), 0)
 		if(!result)
 			to_chat(src, "<span class='warning'>You were interrupted and failed to climb up.</span>")
 			return

@@ -75,8 +75,6 @@
 		to_chat(user, "<span class='warning'>You don't want to harm [target]!</span>")
 		return
 
-	user.check_elysium(FALSE)
-
 	var/obj/item/bodypart/affecting = user.zone_selected //Find what the player is aiming at
 
 	var/armor_block = 0 //Get the target's armor values for normal attack damage.

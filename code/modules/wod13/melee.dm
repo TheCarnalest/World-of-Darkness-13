@@ -310,7 +310,6 @@
 		return
 	if(target.IsParalyzed() || target.IsKnockdown() || target.IsStun())
 		return
-	user.check_elysium(TRUE)
 	if(!target.IsParalyzed() && iskindred(target) && !target.stakeimmune)
 		visible_message("<span class='warning'>[user] aims [src] straight to the [target]'s heart!</span>", "<span class='warning'>You aim [src] straight to the [target]'s heart!</span>")
 		if(do_after(user, 20, target))

@@ -323,7 +323,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	discipline4type = null
 	enlightement = clane.enlightement
 	humanity = clane.start_humanity
-	true_experience = 10
+	true_experience = 50
 	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	C?.set_macros()
 //	pref_species = new /datum/species/kindred()
@@ -2013,8 +2013,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							var/datum/discipline/D = new i
 							if(!D.clane_restricted)
 								disc4 += i
-							if(clane.name == "Old Clan Tzimisce" && D.name == "Vicissitude")
-								disc4 += i
 							qdel(D)
 					var/discipline4 = input(user, "Select fourth discipline", "Discipline Selection") as null|anything in disc4
 					if(discipline4)
@@ -2984,7 +2982,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					random_species()
 					random_character()
 					body_model = rand(1, 3)
-					true_experience = 10
+					true_experience = 50
 					real_name = random_unique_name(gender)
 					save_character()
 
@@ -3027,7 +3025,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						random_species()
 						random_character()
 						body_model = rand(1, 3)
-						true_experience = 10
+						true_experience = 50
 						real_name = random_unique_name(gender)
 						save_character()
 
