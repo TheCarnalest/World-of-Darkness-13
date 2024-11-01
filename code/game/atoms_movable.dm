@@ -160,7 +160,7 @@
 		if(isobj(A) || ismob(A))
 			if(A.layer > highest.layer)
 				highest = A
-	INVOKE_ASYNC(src, .proc/SpinAnimation, 5, 2)
+	INVOKE_ASYNC(src, PROC_REF(SpinAnimation), 5, 2)
 	return TRUE
 
 //For physical constraints to travelling up/down.
@@ -678,6 +678,7 @@
 
 	if(QDELETED(src))
 		return
+		CRASH("Qdeleted thing being thrown around.")
 
 	if (!target || speed <= 0)
 		return

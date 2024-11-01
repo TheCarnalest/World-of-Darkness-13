@@ -109,7 +109,6 @@
 			var/obj/effect/fire/F = locate() in get_turf(src)
 			if(!F)
 				new /obj/effect/fire(get_turf(src))
-	..(AM)
 
 /obj/effect/decal/cleanable/gasoline/Initialize()
 	. = ..()

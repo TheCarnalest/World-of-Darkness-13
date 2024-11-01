@@ -956,7 +956,7 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 		/datum/objective/capture,
 		/datum/objective/absorb,
 		/datum/objective/custom
-	),/proc/cmp_typepaths_asc)
+	), GLOBAL_PROC_REF(cmp_typepaths_asc))
 
 	for(var/T in allowed_types)
 		var/datum/objective/X = T
@@ -1003,6 +1003,9 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 			stol += I.amount
 	return stol >= amount
 
+/mob/living
+	var/list/drunked_of = list()
+
 /datum/objective/blood
 	name = "get blood of"
 	var/target_name
@@ -1034,6 +1037,9 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 /datum/objective/protect_niga/check_completion()
 	return !target || !considered_alive(target)
 
+/mob/living/carbon/human
+	var/last_repainted_mark
+
 /datum/objective/become_member
 	name = "become member of"
 	var/faction
@@ -1048,6 +1054,6 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 		if(!ishuman(M.current))
 			continue
 		var/mob/living/carbon/human/L = M.current
-		if(L.last_repainted_mark == faction && L.vampire_faction == faction)
+		if(L.last_repainted_mark == faction && L.frakcja == faction)
 			return TRUE
 	return FALSE

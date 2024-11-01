@@ -124,7 +124,7 @@
 					var/mob/M = A
 					if(M.mob_negates_gravity())
 						continue
-				INVOKE_ASYNC(src, .proc/do_scatter, A, target)
+				INVOKE_ASYNC(src, PROC_REF(do_scatter), A, target)
 			var/turf/targetturf = get_turf(target)
 			log_game("[key_name(source)] used a Gravitational Catapult repulse wave on [AREACOORD(targetturf)]")
 			return ..()
@@ -248,7 +248,7 @@
 		h_boost *= -2
 	else if(chassis.internal_damage && DT_PROB(8, delta_time))
 		for(var/int_dam_flag in repairable_damage)
-			if( (!chassis.internal_damage) & int_dam_flag)
+			if(!chassis.internal_damage & int_dam_flag)
 				continue
 			chassis.clearInternalDamage(int_dam_flag)
 			repaired = TRUE
