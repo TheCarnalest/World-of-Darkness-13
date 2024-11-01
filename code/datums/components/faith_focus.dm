@@ -99,9 +99,13 @@
 			else
 				return UNHOLY
 
-		//check for werewolves
+		//check for homid werewolves
 		if (isgarou(checked_human))
 			return UNHOLY
+
+	//check for werewolves in crinos or lupus form
+	else if (istype(checked_mob, /mob/living/carbon/werewolf))
+		return UNHOLY
 
 	//check if hostile simplemob
 	else if (istype(checked_mob, /mob/living/simple_animal/hostile))
@@ -240,7 +244,7 @@
 				target_shown_class = "danger"
 				target_shown_text = "ESCAPE. NOW. THE NECTAR IS BEING PURGED FROM YOUR VEINS. YOU NEED TO RUN."
 
-	else if (isgarou(target)) //garou get their rage reduced and forced out of human form
+	else if (isgarou(target) || istype(target, /mob/living/carbon/werewolf)) //garou get their rage reduced and forced out of human form
 		//mob/living/carbon accounts for all forms
 		var/mob/living/carbon/garou = target
 		var/burnt_rage = 0
