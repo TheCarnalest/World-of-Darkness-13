@@ -210,6 +210,7 @@
 	var/dancing = FALSE
 
 	var/temporis_visual = FALSE
+	var/temporis_blur = FALSE
 
 	var/vampire_faction
 

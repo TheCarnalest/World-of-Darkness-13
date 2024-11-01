@@ -1723,6 +1723,14 @@
 		animate(T, pixel_x = rand(-32,32), pixel_y = rand(-32,32), alpha = 255, time = 10)
 		if(CheckEyewitness(src, src, 7, FALSE))
 			AdjustMasquerade(-1)
+	else if(temporis_blur)
+		var/obj/effect/temporis/T = new(loc)
+		T.name = name
+		T.appearance = appearance
+		T.dir = dir
+		animate(T, pixel_x = rand(-32,32), pixel_y = rand(-32,32), alpha = 155, time = 5)
+		if(CheckEyewitness(src, src, 7, FALSE))
+			AdjustMasquerade(-1)
 
 /datum/discipline/temporis/activate(mob/living/target, mob/living/carbon/human/caster)
 	. = ..()
@@ -1738,7 +1746,7 @@
 				if(target)
 					target.remove_movespeed_modifier(/datum/movespeed_modifier/temporis)
 		if(4)
-			to_chat(caster, "<b>Use the second button at the top to cast this level of Temporis.</b>")
+			to_chat(caster, "<b>Use the second Temporis button at the top of the screen to cast this level of Temporis.</b>")
 		if(5)
 			caster.add_movespeed_modifier(/datum/movespeed_modifier/temporis5)
 			caster.no_fire_delay = TRUE
