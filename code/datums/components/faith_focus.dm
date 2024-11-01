@@ -123,8 +123,10 @@
 	var/healed_amount = HOLY_HEAL * modifier
 	var/previous_health = target.health
 	target.heal_overall_damage(healed_amount, healed_amount, healed_amount)
-	target.adjustToxLoss(-healed_amount * 0.5) //this is a priest, not a doctor
 	target.adjustOxyLoss(-healed_amount)
+	if (modifier >= VERY_HOLY)
+		target.adjustToxLoss(-healed_amount * 0.5) //this is a fervent priest, not a doctor
+		target.adjustOrganLoss(BRAIN, -healed_amount * 0.5)
 
 	//build healing flavor text
 	var/focus_light_text
