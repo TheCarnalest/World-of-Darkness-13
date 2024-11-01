@@ -1588,6 +1588,7 @@
 			chemscan(caster, target)
 //			woundscan(caster, target, src)
 			to_chat(caster, "<b>[target]</b> has <b>[target.bloodpool]/[target.maxbloodpool]</b> blood points.")
+			to_chat(caster, "<b>[target]</b> has a rating of <b>[target.humanity]</b> on their path.")
 		if(2)
 			if(caster.grab_state > GRAB_PASSIVE)
 				if(ishuman(caster.pulling))
