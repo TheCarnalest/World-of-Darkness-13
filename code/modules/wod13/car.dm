@@ -761,7 +761,7 @@ SUBSYSTEM_DEF(carpool)
 			Bump(pick(hit_turf.unpassable))
 //			to_chat(world, "I can't pass that [hit_turf] at [hit_turf.x] x [hit_turf.y] cause of [pick(hit_turf.unpassable)] FUCK")
 			var/actual_distance = get_dist_in_pixels(x*32+pixel_x+pixel_w, y*32+pixel_y+pixel_z, hit_turf.x*32, hit_turf.y*32)-32
-			var/bearing = get_angle_raw(x, y, pixel_x+pixel_w, pixel_y+pixel_z, hit_turf.x, hit_turf.y, 0, 0)
+//			var/bearing = get_angle_raw(x, y, pixel_x+pixel_w, pixel_y+pixel_z, hit_turf.x, hit_turf.y, 0, 0)
 			moved_x = round(sin(true_movement_angle)*actual_distance)
 			moved_y = round(cos(true_movement_angle)*actual_distance)
 			speed_in_pixels = 0
