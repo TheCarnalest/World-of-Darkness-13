@@ -887,7 +887,6 @@ GLOBAL_LIST_EMPTY(allCasters)
 /obj/item/newspaper/examine(mob/user)
 	. = ..()
 	to_chat(user, "<B>Weather Forecast:</B>")
-	SScityweather.get_forecast(user)
 
 /*
 /obj/item/newspaper/attack_self(mob/user)
