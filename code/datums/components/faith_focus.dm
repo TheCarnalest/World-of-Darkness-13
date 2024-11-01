@@ -184,11 +184,12 @@
 			if (2)
 				focus_light_text = "radiates fire"
 				target_shown_text = "Your flesh is incinerated. The Lord's judgement is here."
-				human_target.rollfrenzy()
+				//human_target.rollfrenzy()
+				//[Lucia] TODO: reimplement Rotschreck pending better mechanics that don't just make them bite people
 			if (4)
 				focus_light_text = "burns with God's fury"
 				target_shown_text = "THIS IS THE DAY YOU DIE. SAY YOUR PRAYERS, FOR THEY WILL NOT BE HEARD."
-				human_target.rollfrenzy()
+				//human_target.rollfrenzy()
 
 		//apparently switch statements want "constant expressions" so I have to do this
 		if (target.health <= -100)
