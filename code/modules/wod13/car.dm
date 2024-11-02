@@ -728,6 +728,12 @@ SUBSYSTEM_DEF(carpool)
 			var/turf/T = newLoc
 			T.unpassable += AM
 
+/mob/living/death(gibbed)
+	. = ..()
+	var/turf/T = get_turf(src)
+	if(T)
+		T.unpassable -= src
+
 /obj/vampire_car/setDir(newdir)
 	apply_vector_angle()
 
