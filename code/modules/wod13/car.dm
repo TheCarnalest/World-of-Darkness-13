@@ -111,7 +111,7 @@ SUBSYSTEM_DEF(carpool)
 
 	var/last_vzhzh = 0
 
-	var/mutable_appearance/Fari
+	var/image/Fari
 	var/fari_on = FALSE
 
 	var/mob/living/driver
@@ -732,6 +732,7 @@ SUBSYSTEM_DEF(carpool)
 	apply_vector_angle()
 
 /obj/vampire_car/proc/handle_caring()
+	var/used_vector = movement_vector
 	if(gas <= 0)
 		on = FALSE
 		set_light(0)
@@ -744,8 +745,8 @@ SUBSYSTEM_DEF(carpool)
 	forceMove(locate(last_pos["x"], last_pos["y"], z))
 	pixel_x = last_pos["x_pix"]
 	pixel_y = last_pos["y_pix"]
-	var/moved_x = round(sin(movement_vector)*speed_in_pixels)
-	var/moved_y = round(cos(movement_vector)*speed_in_pixels)
+	var/moved_x = round(sin(used_vector)*speed_in_pixels)
+	var/moved_y = round(cos(used_vector)*speed_in_pixels)
 	if(speed_in_pixels != 0)
 		switch(dir)
 			if(NORTH)
@@ -776,10 +777,10 @@ SUBSYSTEM_DEF(carpool)
 				var/turf/south_turf = get_step(src, SOUTH)
 				if(length(south_turf.unpassable))
 					moved_y = min(8-last_pos["x_pix"], moved_y)
-		var/true_movement_angle = movement_vector
+		var/true_movement_angle = used_vector
 		var/true_speed = get_dist_in_pixels(0, 0, moved_x, moved_y)
 		if(speed_in_pixels < 0)
-			true_movement_angle = SIMPLIFY_DEGREES(movement_vector+180)
+			true_movement_angle = SIMPLIFY_DEGREES(used_vector+180)
 		var/turf/check_turf = get_turf_in_angle(true_movement_angle, get_turf(src), 15)
 		var/list/the_line = get_line(src, check_turf)
 		var/turf/hit_turf
@@ -796,18 +797,26 @@ SUBSYSTEM_DEF(carpool)
 			Bump(pick(hit_turf.unpassable))
 			impact_delay = world.time
 //			to_chat(world, "I can't pass that [hit_turf] at [hit_turf.x] x [hit_turf.y] cause of [pick(hit_turf.unpassable)] FUCK")
-			var/bearing = get_angle_raw(x, y, pixel_x+pixel_w, pixel_y+pixel_z, hit_turf.x, hit_turf.y, 0, 0)
-			var/actual_distance = get_dist_in_pixels(x*32+pixel_x+pixel_w, y*32+pixel_y+pixel_z, hit_turf.x*32, hit_turf.y*32)-(32+true_speed*round(sin(abs(get_angle_diff(true_movement_angle, bearing)))))
+//			var/bearing = get_angle_raw(x, y, pixel_x, pixel_y, hit_turf.x, hit_turf.y, 0, 0)
+			var/actual_distance = get_dist_in_pixels(last_pos["x"]*32+last_pos["x_pix"], last_pos["y"]*32+last_pos["y_pix"], hit_turf.x*32, hit_turf.y*32)-32
 			moved_x = round(sin(true_movement_angle)*actual_distance)
 			moved_y = round(cos(true_movement_angle)*actual_distance)
+			if(last_pos["x"]*32+last_pos["x_pix"] > hit_turf.x*32)
+				moved_x = max((hit_turf.x*32+32)-(last_pos["x"]*32+last_pos["x_pix"]), moved_x)
+			if(last_pos["x"]*32+last_pos["x_pix"] < hit_turf.x*32)
+				moved_x = min((hit_turf.x*32-32)-(last_pos["x"]*32+last_pos["x_pix"]), moved_x)
+			if(last_pos["y"]*32+last_pos["y_pix"] > hit_turf.y*32)
+				moved_y = max((hit_turf.y*32+32)-(last_pos["y"]*32+last_pos["y_pix"]), moved_y)
+			if(last_pos["y"]*32+last_pos["y_pix"] < hit_turf.y*32)
+				moved_y = min((hit_turf.y*32-32)-(last_pos["y"]*32+last_pos["y_pix"]), moved_y)
 			speed_in_pixels = 0
 	for(var/mob/living/L in src)
 		if(L)
 			if(L.client)
-				L.client.pixel_x = last_pos["x_pix"]+initial(pixel_w)
-				L.client.pixel_y = last_pos["y_pix"]+initial(pixel_z)
-				animate(L.client, pixel_x = last_pos["x_pix"]+initial(pixel_w)+moved_x, pixel_y = last_pos["y_pix"]+initial(pixel_z)+moved_y, SScarpool.wait, 1)
-	animate(src, pixel_x = pixel_x+moved_x, pixel_y = pixel_y+moved_y, SScarpool.wait, 1)
+				L.client.pixel_x = last_pos["x_pix"]
+				L.client.pixel_y = last_pos["y_pix"]
+				animate(L.client, pixel_x = last_pos["x_pix"]+moved_x, pixel_y = last_pos["y_pix"]+moved_y, SScarpool.wait, 1)
+	animate(src, pixel_x = last_pos["x_pix"]+moved_x, pixel_y = last_pos["y_pix"]+moved_y, SScarpool.wait, 1)
 	last_pos["x_pix"] = last_pos["x_pix"]+moved_x
 	last_pos["y_pix"] = last_pos["y_pix"]+moved_y
 	var/new_x = last_pos["x"]
