@@ -183,7 +183,7 @@
 	desc = "Summons Spectral Animals over your targets. Violates Masquerade."
 	icon_state = "animalism"
 	cost = 1
-	delay = 20
+	delay = 50
 	ranged = FALSE
 	violates_masquerade = TRUE
 	activate_sound = 'code/modules/wod13/sounds/wolves.ogg'
@@ -211,7 +211,7 @@
 	. = ..()
 	if(!AN)
 		AN = new(caster)
-	var/limit = min(3, level)+caster.social-1+caster.more_companions
+	var/limit = min(2, level)+caster.social-1+caster.more_companions
 	if(length(caster.beastmaster) >= limit)
 		var/mob/living/simple_animal/hostile/beastmaster/B = pick(caster.beastmaster)
 		B.death()

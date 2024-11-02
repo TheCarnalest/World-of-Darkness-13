@@ -81,8 +81,8 @@ SUBSYSTEM_DEF(beastmastering)
 //	move_to_delay = 3
 //	rapid = 3
 //	ranged = 1
-	maxHealth = 75
-	health = 75
+	maxHealth = 50
+	health = 50
 	harm_intent_damage = 5
 	melee_damage_lower = 25
 	melee_damage_upper = 25
