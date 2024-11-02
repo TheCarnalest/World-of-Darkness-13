@@ -880,6 +880,10 @@ SUBSYSTEM_DEF(carpool)
 			controlling(0, -3)
 
 /obj/vampire_car/proc/controlling(var/adjusting_speed, var/adjusting_turn)
+	var/drift = 1
+	if(driver)
+		if(HAS_TRAIT(driver, TRAIT_EXP_DRIVER))
+			drift = 2
 	var/adjust_true = adjusting_turn
 	if(speed_in_pixels < 0)
 		adjust_true = -adjusting_turn
@@ -891,11 +895,11 @@ SUBSYSTEM_DEF(carpool)
 			if(adjusting_speed > 0 && speed_in_pixels <= 0)
 				playsound(src, 'code/modules/wod13/sounds/stopping.ogg', 10, FALSE)
 				speed_in_pixels = speed_in_pixels+adjusting_speed*3
-				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*2)
+				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*drift)
 			else if(adjusting_speed < 0 && speed_in_pixels > 0)
 				playsound(src, 'code/modules/wod13/sounds/stopping.ogg', 10, FALSE)
 				speed_in_pixels = speed_in_pixels+adjusting_speed*3
-				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*2)
+				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*drift)
 			else
 				speed_in_pixels = min(stage*64, max(-stage*64, speed_in_pixels+adjusting_speed*stage))
 				playsound(src, 'code/modules/wod13/sounds/drive.ogg', 10, FALSE)
@@ -903,11 +907,11 @@ SUBSYSTEM_DEF(carpool)
 			if(adjusting_speed > 0 && speed_in_pixels < 0)
 				playsound(src, 'code/modules/wod13/sounds/stopping.ogg', 10, FALSE)
 				speed_in_pixels = min(0, speed_in_pixels+adjusting_speed*3)
-				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*2)
+				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*drift)
 			else if(adjusting_speed < 0 && speed_in_pixels > 0)
 				playsound(src, 'code/modules/wod13/sounds/stopping.ogg', 10, FALSE)
 				speed_in_pixels = max(0, speed_in_pixels+adjusting_speed*3)
-				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*2)
+				movement_vector = SIMPLIFY_DEGREES(movement_vector+adjust_true*drift)
 
 /obj/vampire_car/proc/apply_vector_angle()
 	var/minus_angle = 0
