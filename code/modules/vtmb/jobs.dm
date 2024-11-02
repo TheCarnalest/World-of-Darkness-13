@@ -1416,7 +1416,7 @@
 
 /datum/job/vamp/giovanni
 	title = "Giovanni Member"
-	department_head = list("Justicar")
+	department_head = list("The Boss")
 	faction = "Vampire"
 	total_positions = 10
 	spawn_positions = 10
@@ -1434,7 +1434,7 @@
 
 //	minimal_generation = 11	//Uncomment when players get exp enough
 
-	v_duty = "Protect the Family."
+	v_duty = "Whether born or Embraced into the family, you are one of the Giovanni. Be you a necromancer, financier or lowly fledgling, remember that so long as you stand with your family, they too will stand with you."
 	minimal_masquerade = 0
 	experience_addition = 10
 	kindred_only = TRUE
@@ -1462,7 +1462,105 @@
 
 /obj/effect/landmark/start/giovanni
 	name = "Giovanni Member"
+//
+/datum/job/vamp/giovannielder
+	title = "Giovanni Boss"
+	department_head = list("Uncle Augie")
+	faction = "Vampire"
+	total_positions = 1
+	spawn_positions = 1
+	supervisors = "the Family and the Traditions"
+	selection_color = "#cb4aad"
 
+	outfit = /datum/outfit/job/giovannielder
+
+	access = list(ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_MORGUE, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE)
+	minimal_access = list(ACCESS_BAR, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE)
+	paycheck = PAYCHECK_EASY
+	paycheck_department = ACCOUNT_SRV
+	display_order = JOB_DISPLAY_ORDER_GIOVANNI
+	exp_type_department = EXP_TYPE_INDEPENDENT
+
+	minimal_generation = 11	//Uncomment when players get exp enough
+
+	v_duty = " Pure blood runs through your veins and, with it, old power. Throughout your long life you have learnt to hold onto two things and never let go: money, and family."
+	minimal_masquerade = 0
+	experience_addition = 10
+	kindred_only = TRUE
+	allowed_bloodlines = list("Giovanni")
+
+/datum/outfit/job/giovannielder
+	name = "Giovanni Boss"
+	jobtype = /datum/job/vamp/giovannielder
+
+	id = /obj/item/cockclock
+	glasses = /obj/item/clothing/glasses/vampire/sun
+	uniform = /obj/item/clothing/under/vampire/suit
+	suit = /obj/item/clothing/suit/vampire/trench
+	shoes = /obj/item/clothing/shoes/vampire
+	l_pocket = /obj/item/vamp/phone
+	r_pocket = /obj/item/vamp/keys/giovanni
+	backpack_contents = list(/obj/item/passport=1, /obj/item/flashlight=1, /obj/item/vamp/creditcard/giovanniboss=1)
+
+/datum/outfit/job/giovannielder/pre_equip(mob/living/carbon/human/H)
+	..()
+	H.vampire_faction = "Giovanni"
+	if(H.gender == FEMALE)
+		uniform = /obj/item/clothing/under/vampire/suit/female
+		shoes = /obj/item/clothing/shoes/vampire/heels
+
+/obj/effect/landmark/start/giovannielder
+	name = "Giovanni Boss"
+//
+/datum/job/vamp/giovannimafia
+	title = "Mortal Giovanni"
+	department_head = list("Uncle Augie")
+	faction = "Vampire"
+	total_positions = 10
+	spawn_positions = 10
+	supervisors = "the Family"
+	selection_color = "#cb4aad"
+
+	outfit = /datum/outfit/job/giovannimafia
+
+	access = list(ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_MORGUE, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE)
+	minimal_access = list(ACCESS_BAR, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE)
+	paycheck = PAYCHECK_EASY
+	paycheck_department = ACCOUNT_SRV
+	display_order = JOB_DISPLAY_ORDER_GIOVANNI
+	exp_type_department = EXP_TYPE_INDEPENDENT
+
+//	minimal_generation = 11	//Uncomment when players get exp enough
+
+	kindred_only = FALSE
+	human_only = TRUE
+	humans_accessible = TRUE
+	duty = "Your family is a strange one. Maybe you are strange too, because sitting next to your great uncles as an equal is something you are greatly interested in."
+	minimal_masquerade = 0
+	experience_addition = 10
+
+
+/datum/outfit/job/giovannimafia
+	name = "Mortal Giovanni"
+	jobtype = /datum/job/vamp/giovannimafia
+	id = /obj/item/cockclock
+	glasses = /obj/item/clothing/glasses/vampire/sun
+	uniform = /obj/item/clothing/under/vampire/suit
+	suit = /obj/item/clothing/suit/vampire/trench
+	shoes = /obj/item/clothing/shoes/vampire
+	l_pocket = /obj/item/vamp/phone
+	r_pocket = /obj/item/vamp/keys/giovanni
+	backpack_contents = list(/obj/item/passport=1, /obj/item/flashlight=1, /obj/item/vamp/creditcard=1)
+
+/datum/outfit/job/giovannimafia/pre_equip(mob/living/carbon/human/H)
+	..()
+	if(H.gender == FEMALE)
+		uniform = /obj/item/clothing/under/vampire/suit/female
+		shoes = /obj/item/clothing/shoes/vampire/heels
+
+/obj/effect/landmark/start/giovannimafia
+	name = "Mortal Giovanni"
+//
 /datum/job/vamp/taxi
 	title = "Taxi Driver"
 	department_head = list("Justicar")
