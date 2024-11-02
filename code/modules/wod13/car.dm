@@ -731,6 +731,11 @@ SUBSYSTEM_DEF(carpool)
 /obj/vampire_car/setDir(newdir)
 	apply_vector_angle()
 
+/obj/vampire_car/Moved(atom/OldLoc, Dir)
+	. = ..()
+	last_pos["x"] = x
+	last_pos["y"] = y
+
 /obj/vampire_car/proc/handle_caring()
 	var/used_vector = movement_vector
 	if(gas <= 0)
