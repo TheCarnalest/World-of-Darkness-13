@@ -738,6 +738,7 @@ SUBSYSTEM_DEF(carpool)
 
 /obj/vampire_car/proc/handle_caring()
 	var/used_vector = movement_vector
+	var/used_speed = speed_in_pixels
 	if(gas <= 0)
 		on = FALSE
 		set_light(0)
@@ -750,9 +751,9 @@ SUBSYSTEM_DEF(carpool)
 	forceMove(locate(last_pos["x"], last_pos["y"], z))
 	pixel_x = last_pos["x_pix"]
 	pixel_y = last_pos["y_pix"]
-	var/moved_x = round(sin(used_vector)*speed_in_pixels)
-	var/moved_y = round(cos(used_vector)*speed_in_pixels)
-	if(speed_in_pixels != 0)
+	var/moved_x = round(sin(used_vector)*used_speed)
+	var/moved_y = round(cos(used_vector)*used_speed)
+	if(used_speed != 0)
 		switch(dir)
 			if(NORTH)
 				var/turf/west_turf = get_step(src, WEST)
@@ -784,7 +785,7 @@ SUBSYSTEM_DEF(carpool)
 					moved_y = min(8-last_pos["x_pix"], moved_y)
 		var/true_movement_angle = used_vector
 		var/true_speed = get_dist_in_pixels(0, 0, moved_x, moved_y)
-		if(speed_in_pixels < 0)
+		if(used_speed < 0)
 			true_movement_angle = SIMPLIFY_DEGREES(used_vector+180)
 		var/turf/check_turf = get_turf_in_angle(true_movement_angle, get_turf(src), 15)
 		var/list/the_line = get_line(src, check_turf)
