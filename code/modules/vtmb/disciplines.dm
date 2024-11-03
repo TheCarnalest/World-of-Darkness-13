@@ -1322,7 +1322,7 @@
 	switch(level_casting)
 		if(1)
 			for(var/mob/living/carbon/human/H in oviewers(7, caster))
-				ADD_TRAIT(H, TRAIT_MUTE, "quietus")
+				ADD_TRAIT(H, TRAIT_DEAF, "quietus")
 				H.remove_overlay(MUTATIONS_LAYER)
 				var/mutable_appearance/quietus_overlay = mutable_appearance('code/modules/wod13/icons.dmi', "quietus", -MUTATIONS_LAYER)
 				H.overlays_standing[MUTATIONS_LAYER] = quietus_overlay
@@ -1332,7 +1332,7 @@
 					H.add_confusion(min(15, diff))
 				spawn(50)
 					if(H)
-						REMOVE_TRAIT(H, TRAIT_MUTE, "quietus")
+						REMOVE_TRAIT(H, TRAIT_DEAF, "quietus")
 						H.remove_overlay(MUTATIONS_LAYER)
 		if(2)
 			caster.drop_all_held_items()
