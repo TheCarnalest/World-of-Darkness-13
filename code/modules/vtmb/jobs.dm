@@ -1066,7 +1066,6 @@
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
 	worn_icon = 'code/modules/wod13/worn.dmi'
 	worn_icon_state = "id11"
-	var/last_detonated = 0
 
 /obj/item/card/id/primogen
 	name = "mysterious primogen badge"
