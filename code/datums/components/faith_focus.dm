@@ -28,13 +28,17 @@
 
 	//NO SELF HEALING
 	if (user == target)
+		user.visible_message(
+			"<span class='notice'>[usr] presses [user.p_their()] [parent_item.name] to [user.p_them()]self.</span>",
+			"<span class='notice'>You press your [parent_item.name] to yourself.</span>"
+		)
 		return
 
 	var/user_holiness = get_holiness(user)
 	//no miracles for the wicked
 	if (user_holiness < HOLY)
 		user.visible_message(
-			"<span class='notice'>[usr] presses their [parent_item.name] against [target].</span>",
+			"<span class='notice'>[usr] presses [user.p_their()] [parent_item.name] against [target].</span>",
 			"<span class='notice'>You press your [parent_item.name] against [target]. You feel silly.</span>"
 		)
 		return
@@ -149,13 +153,13 @@
 
 	//apparently switch statements want "constant expressions" so I have to do this
 	if (target.stat == DEAD)
-		target_health_text = "They are still dead!"
+		target_health_text = "[target.p_they(TRUE)] are still dead!"
 	else if (target.health == previous_health)
-		target_health_text = pick("They look happier.", "", "They look calmer.", "They visibly relax.", "There's a sparkle in their eyes.")
+		target_health_text = pick("[target.p_they(TRUE)] look happier.", "", "[target.p_they(TRUE)] look calmer.", "[target.p_they(TRUE)] visibly relax.", "There's a sparkle in [target.p_their()] eyes.")
 	else if (target.health <= (target.maxHealth - 1))
-		target_health_text = "Their wounds knit together before your eyes!"
+		target_health_text = "[target.p_their(TRUE)] wounds knit together before your eyes!"
 	else if (target.health == target.maxHealth)
-		target_health_text = "They are suddenly restored to perfect physical condition!"
+		target_health_text = "[target.p_they(TRUE)] are suddenly restored to perfect physical condition!"
 
 	//and finally, give some flavour text in chat
 	user.visible_message(
@@ -197,14 +201,14 @@
 
 		//apparently switch statements want "constant expressions" so I have to do this
 		if (target.health <= -100)
-			target_health_text = "God's vengeance returns the last of their flesh to dust!"
+			target_health_text = "God's vengeance returns the last of [target.p_their()] flesh to dust!"
 		else if (target.health < 0)
 			if (previous_health > 0)
-				target_health_text = "Their unliving muscles slow down as fire overtakes them!"
+				target_health_text = "[target.p_their(TRUE)] unliving muscles slow down as fire overtakes [target.p_them()]!"
 			else
-				target_health_text = "Further chunks of their flesh turn to ash!"
+				target_health_text = "Further chunks of [target.p_their()] flesh turn to ash!"
 		else if (target.health > 0)
-			target_health_text = "They hiss as it chars their flesh!"
+			target_health_text = "[target.p_they(TRUE)] hiss as it chars [target.p_their()] flesh!"
 
 	else if (isghoul(target)) //ghouls get the vitae burnt out of them and their blood bond purged
 		var/burnt_vitae = 0
@@ -223,24 +227,24 @@
 			if (0)
 				if ((original_bloodpool == 1) && (modifier == VERY_HOLY)) //True Faith loadout only, ghouls have a max modifier of 2 or VERY_HOLY
 					focus_light_text = "radiates the Lord's mercy"
-					target_health_text = "They look stunned."
+					target_health_text = "[target.p_they(TRUE)] look stunned."
 					target_shown_class = "nicegreen"
 					target_shown_text = "Finally, freedom... You have been released from the blood bond by the power of True Faith."
 					//sets them free from the blood bond
 					target.remove_status_effect(STATUS_EFFECT_INLOVE)
 				else
 					focus_light_text = "radiates light"
-					target_health_text = "They are visibly panicked."
+					target_health_text = "[target.p_they(TRUE)] are visibly panicked."
 					target_shown_class = "boldwarning"
 					target_shown_text = "You feel the light of God inside you! GET IT OUT!"
 			if (1)
 				focus_light_text = "radiates purifying light"
-				target_health_text = "They look frenzied, and much more decrepit."
+				target_health_text = "[target.p_they(TRUE)] look frenzied, and much more decrepit."
 				target_shown_class = "danger"
 				target_shown_text = "YOUR VITAE IS BURNING! RUN OR YOU'LL LOSE EVERYTHING!"
 			if (2)
 				focus_light_text = "shines like the sun"
-				target_health_text = "They look like they've aged ten years."
+				target_health_text = "[target.p_they(TRUE)] look[target.p_s()] like [target.p_theyve()] aged ten years."
 				target_shown_class = "danger"
 				target_shown_text = "ESCAPE. NOW. THE NECTAR IS BEING PURGED FROM YOUR VEINS. YOU NEED TO RUN."
 
@@ -263,21 +267,21 @@
 			if (0)
 				if ((original_rage == 0) && (modifier == VERY_HOLY) && (!ishuman(garou)))
 					focus_light_text = "radiates the Lord's mercy"
-					target_health_text = "They look oddly calm as their body contorts back into the shape of a human!"
+					target_health_text = "[target.p_they(TRUE)] look[target.p_s()] oddly calm as [target.p_their()] body contorts back into the shape of a human!"
 					target_shown_text = "You feel the calmest you've been since your First Change. You don't feel the need to be anything but human."
 					spawn()
 						garou.transformator.trans_gender(garou, "Homid", TRUE)
 				else
 					focus_light_text = "glows"
-					target_health_text = "They seem conflicted."
+					target_health_text = "[target.p_they(TRUE)] seem[target.p_s()] conflicted."
 					target_shown_text = "The [parent_item.name] is attempting to purge your Rage. It feels... soothing."
 			if (1)
 				focus_light_text = "glows beautifully"
-				target_health_text = "They seem less energetic and twitchy."
+				target_health_text = "[target.p_they(TRUE)] seem[target.p_s()] less energetic and twitchy."
 				target_shown_text = "The fury within you is silenced by the [parent_item.name]."
 			if (2)
 				focus_light_text = "radiates peace"
-				target_health_text = "They look much calmer."
+				target_health_text = "[target.p_they(TRUE)] look[target.p_s()] much calmer."
 				target_shown_text = "Your Rage is deadened by the power of the [parent_item.name]. Your connection to your Garou blood is dulled."
 
 	else if (istype(target, /mob/living/simple_animal/hostile)) //creechers die
@@ -294,16 +298,16 @@
 
 		//apparently switch statements want "constant expressions" so I have to do this
 		if (previous_stat == DEAD)
-			target_health_text = "More of their dead flesh sloughs off!"
+			target_health_text = "More of [target.p_their()] dead flesh sloughs off!"
 		else if (target.stat == DEAD)
-			target_health_text = "God's vengeance returns the last of their flesh to dust!"
+			target_health_text = "God's vengeance returns the last of [target.p_their()] flesh to dust!"
 		else if (target.health < 0)
 			if (previous_health > 0)
-				target_health_text = "Their muscles slow down as fire overtakes them!"
+				target_health_text = "[target.p_their(TRUE)] muscles slow down as fire overtakes [target.p_them()]!"
 			else
-				target_health_text = "Further chunks of their flesh turn to ash!"
+				target_health_text = "Further chunks of [target.p_their()] flesh turn to ash!"
 		else if (target.health > 0)
-			target_health_text = "They hiss as it chars their flesh!"
+			target_health_text = "[target.p_they(TRUE)] hiss[target.p_es()] as it chars [target.p_their()] flesh!"
 
 	//finally, display the flavour text to bystanders, the user, and the target
 	user.visible_message(
