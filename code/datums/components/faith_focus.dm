@@ -142,7 +142,7 @@
 		last_heal = world.time
 	else
 		user.visible_message(
-			"<span class='notice'>[usr] press[user.p_es()] [user.p_their()] [parent_item.name] against [target].</span>",
+			"<span class='notice'>[user] press[user.p_es()] [user.p_their()] [parent_item.name] against [target].</span>",
 			"<span class='notice'>You press your [parent_item.name] against [target].</span>"
 		)
 		return
@@ -183,7 +183,7 @@
 
 	//and finally, give some flavour text in chat
 	user.visible_message(
-		"<span class='notice'>[usr]'s [parent_item.name] [focus_light_text] as they press it against [target]. [target_health_text]</span>",
+		"<span class='notice'>[user]'s [parent_item.name] [focus_light_text] as [user.p_they()] press[user.p_es()] it against [target]. [target_health_text]</span>",
 		"<span class='notice'>Your [parent_item.name] [focus_light_text] as you press it against [target]. [target_health_text]</span>"
 	)
 
@@ -195,7 +195,7 @@
 		last_harm = world.time
 	else
 		user.visible_message(
-			"<span class='notice'>[usr] furiously press[user.p_es()] [user.p_their()] [parent_item.name] against [target].</span>",
+			"<span class='notice'>[user] furiously press[user.p_es()] [user.p_their()] [parent_item.name] against [target].</span>",
 			"<span class='notice'>You angrily press your [parent_item.name] against [target].</span>"
 		)
 		return
@@ -340,7 +340,7 @@
 
 	//finally, display the flavour text to bystanders, the user, and the target
 	user.visible_message(
-		"<span class='notice'>[user]'s [parent_item.name] [focus_light_text] as they press it against [target]. [target_health_text]</span>",
+		"<span class='notice'>[user]'s [parent_item.name] [focus_light_text] as [user.p_they()] press[user.p_es()] it against [target]. [target_health_text]</span>",
 		"<span class='notice'>Your [parent_item.name] [focus_light_text] as you press it against [target]. [target_health_text]</span>"
 	)
 
