@@ -203,6 +203,11 @@
 			if(do_mob(owner, BLOODBONDED, 10 SECONDS))
 				var/new_master = FALSE
 				giving = FALSE
+				//prevent Embracing or Blood Bonding True Faith hunters
+				if (BLOODBONDED.mind?.holy_role == 2)
+					to_chat(owner, "<span class='notice'>Your Vitae burns up as it touches [BLOODBONDED.name]'s lips!</span>")
+					H.bloodpool = max(0, H.bloodpool - 2)
+					return
 				BLOODBONDED.faction |= H.faction
 				if(!istype(BLOODBONDED, /mob/living/carbon/human/npc))
 					if(H.vampire_faction == "Camarilla" || H.vampire_faction == "Anarch" || H.vampire_faction == "Sabbat")
