@@ -717,7 +717,8 @@ SUBSYSTEM_DEF(carpool)
 
 /atom/movable/Destroy()
 	var/turf/T = get_turf(src)
-	T.unpassable -= src
+	if(T)
+		T.unpassable -= src
 	. = ..()
 
 /turf/Exited(atom/movable/AM, atom/newLoc)
