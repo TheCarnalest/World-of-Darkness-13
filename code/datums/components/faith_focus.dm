@@ -41,7 +41,7 @@
 	//no miracles for the wicked
 	if (user_holiness < HOLY)
 		user.visible_message(
-			"<span class='notice'>[usr] presses [user.p_their()] [parent_item.name] against [target].</span>",
+			"<span class='notice'>[usr] press[user.p_es()] [user.p_their()] [parent_item.name] against [target].</span>",
 			"<span class='notice'>You press your [parent_item.name] against [target]. You feel silly.</span>"
 		)
 		return
@@ -142,7 +142,7 @@
 		last_heal = world.time
 	else
 		user.visible_message(
-			"<span class='notice'>[usr] presses [user.p_their()] [parent_item.name] against [target].</span>",
+			"<span class='notice'>[usr] press[user.p_es()] [user.p_their()] [parent_item.name] against [target].</span>",
 			"<span class='notice'>You press your [parent_item.name] against [target].</span>"
 		)
 		return
@@ -195,7 +195,7 @@
 		last_harm = world.time
 	else
 		user.visible_message(
-			"<span class='notice'>[usr] furiously presses [user.p_their()] [parent_item.name] against [target].</span>",
+			"<span class='notice'>[usr] furiously press[user.p_es()] [user.p_their()] [parent_item.name] against [target].</span>",
 			"<span class='notice'>You angrily press your [parent_item.name] against [target].</span>"
 		)
 		return
