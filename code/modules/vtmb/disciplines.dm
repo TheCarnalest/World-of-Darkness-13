@@ -433,11 +433,9 @@
 	. = ..()
 	if(target.spell_immunity)
 		return
-	if (caster.generation > target.generation) //fail if used on a lower generation
-		return
 	var/mypower = caster.social + caster.additional_social
 	var/theirpower = target.mentality + target.additional_mentality
-	if(theirpower >= mypower)
+	if((theirpower >= mypower) || (caster.generation > target.generation))
 		to_chat(caster, "<span class='warning'>[target] is too powerful for you!</span>")
 		return
 	if(HAS_TRAIT(caster, TRAIT_MUTE))
@@ -602,9 +600,9 @@
 	//5 - victim starts to attack themself
 	if(target.spell_immunity)
 		return
-	var/mypower = 13-caster.generation+caster.social+caster.additional_mentality
-	var/theirpower = 13-target.generation+target.mentality+target.additional_mentality
-	if(theirpower > mypower)
+	var/mypower = caster.social + caster.additional_social
+	var/theirpower = target.mentality + target.additional_mentality
+	if(theirpower >= mypower)
 		to_chat(caster, "<span class='warning'>[target] is too powerful for you!</span>")
 		return
 	if(!ishuman(target))
@@ -773,9 +771,9 @@
 
 /datum/discipline/presence/activate(mob/living/target, mob/living/carbon/human/caster)
 	. = ..()
-	var/mypower = 13-caster.generation+caster.social+caster.additional_mentality
-	var/theirpower = 13-target.generation+target.mentality+target.additional_mentality
-	if(theirpower > mypower)
+	var/mypower = caster.social + caster.additional_social
+	var/theirpower = target.mentality + target.additional_mentality
+	if((theirpower >= mypower) || ((caster.generation - 3) >= target.generation))
 		to_chat(caster, "<span class='warning'>[target] is too powerful for you!</span>")
 		return
 	if(ishuman(target))
@@ -827,7 +825,7 @@
 				for(var/obj/item/clothing/W in H.contents)
 					if(W)
 						H.dropItemToGround(W, TRUE)
-		spawn(delay+caster.discipline_time_plus)
+		spawn(delay + caster.discipline_time_plus)
 			if(H)
 				H.remove_overlay(MUTATIONS_LAYER)
 				if(caster)
