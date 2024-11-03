@@ -909,60 +909,6 @@
 	. = ..()
 	AddComponent(/datum/component/faith_focus)
 
-/obj/item/card/id/hunter/attack_self(mob/user)
-	. = ..()
-	if(last_detonated+300 > world.time)
-		return
-	if(!user.mind)
-		return
-	if(user.mind.holy_role != HOLY_ROLE_PRIEST)
-		return
-	last_detonated = world.time
-	do_sparks(rand(5, 9), FALSE, user)
-	playsound(user.loc, 'code/modules/wod13/sounds/cross.ogg', 100, FALSE, 8, 0.9)
-	for(var/mob/living/M in get_hearers_in_view(7, user.loc))
-		bang(get_turf(M), M, user)
-
-/obj/item/card/id/hunter/proc/bang(turf/T, mob/living/M, var/mob/living/user)
-	if(M.stat == DEAD)	//They're dead!
-		return
-	var/mob/living/carbon/human/H
-	if(ishuman(M))
-		H = M
-	if(H)
-		for(var/obj/item/card/id/hunter/HUNT in H.contents)
-			if(HUNT)
-				if(H.mind)
-					if(H.mind.holy_role >= HOLY_ROLE_PRIEST)
-						return
-		if(iskindred(H))
-			if(H.clane)
-				if(H.clane.name == "Baali")
-					H.emote("scream")
-					H.pointed(user)
-	M.show_message("<span class='warning'><b>GOD SEES YOU!</b></span>", MSG_AUDIBLE)
-	var/distance = max(0,get_dist(get_turf(src),T))
-
-	if(M.flash_act(affect_silicon = 1))
-		M.Immobilize(max(10/max(1,distance), 5))
-
-/obj/item/card/id/hunter/attack(mob/living/target, mob/living/user)
-	. = ..()
-	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		return
-	if(last_detonated+300 > world.time)
-		return
-	if(iskindred(target))
-		var/mob/living/carbon/human/H = target
-		if(H.clane)
-			if(H.clane.name == "Baali")
-				last_detonated = world.time
-				var/turf/lightning_source = get_step(get_step(H, NORTH), NORTH)
-				lightning_source.Beam(H, icon_state="lightning[rand(1,12)]", time = 5)
-				H.adjustFireLoss(100)
-				H.electrocution_animation(50)
-				to_chat(H, "<span class='userdanger'>The God has punished you for your sins!</span>", confidential = TRUE)
-
 /obj/item/card/id/prince
 	name = "leader badge"
 	id_type_name = "leader badge"

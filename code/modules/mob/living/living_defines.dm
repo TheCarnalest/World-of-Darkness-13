@@ -168,3 +168,6 @@
 	var/body_position_pixel_x_offset = 0
 	///The x amount a mob's sprite should be offset due to the current position they're in
 	var/body_position_pixel_y_offset = 0
+
+	///List of atoms this mob is incapable of approaching. Blocks movement towards the atom within 5 tiles.
+	var/list/atom/approach_blocked = list()

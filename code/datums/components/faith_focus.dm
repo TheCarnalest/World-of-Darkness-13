@@ -12,16 +12,19 @@
 #define UNHOLY_BURN 12.5
 
 #define STUN_DURATION 3 SECONDS
-#define ADVANCE_BLOCK_DURATION 6 SECONDS
+#define ADVANCE_BLOCK_DURATION 9 SECONDS
 
 /datum/component/faith_focus
 	var/obj/item/parent_item
+	var/last_inhand = 0
+	var/last_heal = 0
+	var/last_harm = 0
 
 /datum/component/faith_focus/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_ITEM_ATTACK, PROC_REF(attack))
 	RegisterSignal(parent, COMSIG_ITEM_ATTACK_SELF, PROC_REF(attack_self))
 	RegisterSignal(parent, COMSIG_ITEM_PICKUP, PROC_REF(pickup))
-	parent_item = parent //still can't believe this works
+	parent_item = parent
 
 /datum/component/faith_focus/proc/attack(source, var/mob/living/target, var/mob/living/user)
 	SIGNAL_HANDLER
@@ -59,6 +62,19 @@
 	//no miracles for the wicked
 	if (user_holiness < HOLY)
 		return
+
+	if (world.time > (last_inhand + INHAND_COOLDOWN))
+		last_inhand = world.time
+		do_sparks(rand(5, 9), FALSE, user)
+		playsound(user.loc, 'code/modules/wod13/sounds/cross.ogg', 100, FALSE, 8, 0.9)
+		for (var/mob/living/target in get_hearers_in_view(7, user.loc))
+			if (target != user)
+				repel(target, user)
+	else
+		user.visible_message(
+			"<span class='notice'>[user.name] shows [user.p_their()] [parent_item.name].</span>",
+			"<span class='notice'>You show your [parent_item.name].</span>"
+		)
 
 /datum/component/faith_focus/proc/pickup(source, var/mob/living/taker)
 	SIGNAL_HANDLER
@@ -127,6 +143,15 @@
 		return abs(user_holiness)
 
 /datum/component/faith_focus/proc/heal(var/mob/living/target, var/mob/living/user, var/modifier)
+	if (world.time > (last_heal + HEAL_COOLDOWN))
+		last_heal = world.time
+	else
+		user.visible_message(
+			"<span class='notice'>[usr] presses [user.p_their()] [parent_item.name] against [target].</span>",
+			"<span class='notice'>You press your [parent_item.name] against [target].</span>"
+		)
+		return
+
 	//do the actual healing
 	var/healed_amount = HOLY_HEAL * modifier
 	var/previous_health = target.health
@@ -155,8 +180,8 @@
 	if (target.stat == DEAD)
 		target_health_text = "[target.p_they(TRUE)] are still dead!"
 	else if (target.health == previous_health)
-		target_health_text = pick("[target.p_they(TRUE)] look happier.", "", "[target.p_they(TRUE)] look calmer.", "[target.p_they(TRUE)] visibly relax.", "There's a sparkle in [target.p_their()] eyes.")
-	else if (target.health <= (target.maxHealth - 1))
+		target_health_text = pick("[target.p_they(TRUE)] look[target.p_s()] happier.", "", "[target.p_they(TRUE)] look[target.p_s()] calmer.", "[target.p_they(TRUE)] visibly relax.", "There's a sparkle in [target.p_their()] eyes.")
+	else if (target.health < target.maxHealth)
 		target_health_text = "[target.p_their(TRUE)] wounds knit together before your eyes!"
 	else if (target.health == target.maxHealth)
 		target_health_text = "[target.p_they(TRUE)] are suddenly restored to perfect physical condition!"
@@ -171,6 +196,15 @@
 		to_chat(target, "<span class='nicegreen'>[target_shown_text]</span>")
 
 /datum/component/faith_focus/proc/harm(var/mob/living/target, var/mob/living/user, var/modifier)
+	if (world.time > (last_harm + BURN_COOLDOWN))
+		last_harm = world.time
+	else
+		user.visible_message(
+			"<span class='notice'>[usr] furiously presses [user.p_their()] [parent_item.name] against [target].</span>",
+			"<span class='notice'>You angrily press your [parent_item.name] against [target].</span>"
+		)
+		return
+
 	//some universal flavour text variables
 	var/focus_light_text
 	var/target_health_text
@@ -179,7 +213,7 @@
 
 	//actual logic for how to affect this creecher
 	if (iskindred(target)) //kindred get burnt
-		var/mob/living/carbon/human/human_target = target
+		//var/mob/living/carbon/human/human_target = target
 		var/previous_health = target.health
 		target.apply_damage(UNHOLY_BURN * modifier, CLONE)
 
@@ -317,6 +351,23 @@
 
 	if (target_shown_text && target_shown_class)
 		to_chat(target, "<span class='[target_shown_class]'>[target_shown_text]</span>")
+
+/datum/component/faith_focus/proc/repel(var/mob/living/target, var/mob/living/user)
+	var/target_holiness = get_holiness(target)
+	var/user_holiness = get_holiness(user)
+
+	switch(target_holiness)
+		if(UNHOLY)
+			to_chat(target, "<span class='warning'>The power of the [parent_item.name] repels you!</span>")
+			target.Stun(STUN_DURATION * user_holiness)
+			target.block_approach(user, ADVANCE_BLOCK_DURATION * user_holiness)
+		if(VERY_UNHOLY)
+			to_chat(target, "<span class='danger'>YOU WILL COME NO CLOSER.</span>")
+			target.Stun(STUN_DURATION * user_holiness * 2)
+			target.block_approach(user, ADVANCE_BLOCK_DURATION * user_holiness * 2)
+			//[Lucia] TODO: implement running away from caster
+		else
+			to_chat(target, "<span class='notice'>The Lord's might washes over you.</span>")
 
 #undef INHAND_COOLDOWN
 #undef VERY_HOLY
