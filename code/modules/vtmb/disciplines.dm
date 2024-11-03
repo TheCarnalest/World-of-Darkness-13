@@ -436,7 +436,7 @@
 	var/mypower = caster.social + caster.additional_social
 	var/theirpower = target.mentality + target.additional_mentality
 	if((theirpower >= mypower) || (caster.generation > target.generation))
-		to_chat(caster, "<span class='warning'>[target] is too powerful for you!</span>")
+		to_chat(caster, "<span class='warning'>[target]'s mind is too powerful to dominate!</span>")
 		return
 	if(HAS_TRAIT(caster, TRAIT_MUTE))
 		to_chat(caster, "<span class='warning'>You find yourself unable to speak!</span>")
@@ -603,7 +603,7 @@
 	var/mypower = caster.social + caster.additional_social
 	var/theirpower = target.mentality + target.additional_mentality
 	if(theirpower >= mypower)
-		to_chat(caster, "<span class='warning'>[target] is too powerful for you!</span>")
+		to_chat(caster, "<span class='warning'>[target]'s mind is too powerful to corrupt!</span>")
 		return
 	if(!ishuman(target))
 		to_chat(caster, "<span class='warning'>[target] doesn't have enough mind to get affected by this discipline!</span>")
@@ -774,7 +774,7 @@
 	var/mypower = caster.social + caster.additional_social
 	var/theirpower = target.mentality + target.additional_mentality
 	if((theirpower >= mypower) || ((caster.generation - 3) >= target.generation))
-		to_chat(caster, "<span class='warning'>[target] is too powerful for you!</span>")
+		to_chat(caster, "<span class='warning'>[target]'s mind is too powerful to sway!</span>")
 		return
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
