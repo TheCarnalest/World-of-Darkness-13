@@ -173,13 +173,13 @@
 
 	//apparently switch statements want "constant expressions" so I have to do this
 	if (target.stat == DEAD)
-		target_health_text = "[target.p_they(TRUE)] are still dead!"
+		target_health_text = "[target.p_they(TRUE)] [target.p_are()] still dead!"
 	else if (target.health == previous_health)
-		target_health_text = pick("[target.p_they(TRUE)] look[target.p_s()] happier.", "", "[target.p_they(TRUE)] look[target.p_s()] calmer.", "[target.p_they(TRUE)] visibly relax.", "There's a sparkle in [target.p_their()] eyes.")
+		target_health_text = pick("[target.p_they(TRUE)] look[target.p_s()] happier.", "", "[target.p_they(TRUE)] look[target.p_s()] calmer.", "[target.p_they(TRUE)] visibly relax[target.p_es()].", "There's a sparkle in [target.p_their()] eyes.")
 	else if (target.health < target.maxHealth)
 		target_health_text = "[target.p_their(TRUE)] wounds knit together before your eyes!"
 	else if (target.health == target.maxHealth)
-		target_health_text = "[target.p_they(TRUE)] are suddenly restored to perfect physical condition!"
+		target_health_text = "[target.p_they(TRUE)] [target.p_are()] suddenly restored to perfect physical condition!"
 
 	//and finally, give some flavour text in chat
 	user.visible_message(
@@ -263,7 +263,7 @@
 					target.remove_status_effect(STATUS_EFFECT_INLOVE)
 				else
 					focus_light_text = "radiates light"
-					target_health_text = "[target.p_they(TRUE)] are visibly panicked."
+					target_health_text = "[target.p_they(TRUE)] [target.p_are()] visibly panicked."
 					target_shown_class = "boldwarning"
 					target_shown_text = "You feel the light of God inside you! GET IT OUT!"
 			if (1)
