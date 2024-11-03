@@ -134,7 +134,6 @@
 	show_to_ghosts = TRUE
 
 /datum/antagonist/spiral/on_gain()
-	owner.holy_role = HOLY_ROLE_PRIEST
 	add_antag_hud(ANTAG_HUD_HERETIC, "spiral", owner.current)
 	owner.special_role = src
 	var/datum/objective/spiral/die_objective = new
