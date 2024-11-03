@@ -107,7 +107,6 @@
 	accesslocks = list(
 		"bar",
 		"anarch",
-		"supply"
 	)
 	color = "#434343"
 
@@ -148,7 +147,8 @@
 /obj/item/vamp/keys/giovanni
 	name = "Mafia keys"
 	accesslocks = list(
-		"giovanni"
+		"giovanni",
+		"bianchiBank"
 	)
 
 /obj/item/vamp/keys/taxi
@@ -405,7 +405,7 @@
 				if(P)
 					P.Aggro(user)
 			if(do_mob(user, src, (lockpick_timer-user.lockpicking*2) SECONDS))
-				var/roll = rand(1, 20) + (user.lockpicking*2+user.physique) - lockpick_difficulty
+				var/roll = rand(1, 20) + (user.lockpicking*2+user.dexterity) - lockpick_difficulty
 				if(roll <=1)
 					to_chat(user, "<span class='warning'>Your lockpick broke!</span>")
 					qdel(W)

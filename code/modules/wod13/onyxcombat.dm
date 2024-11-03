@@ -1,22 +1,3 @@
-/mob/living
-	var/mob/parrying = null
-	var/parry_class = WEIGHT_CLASS_TINY
-	var/parry_cd = 0
-	var/blocking = FALSE
-	var/last_m_intent = MOVE_INTENT_RUN
-	var/last_bloodheal_use = 0
-	var/last_bloodpower_use = 0
-	var/last_drinkblood_use = 0
-	var/last_bloodheal_click = 0
-	var/last_bloodpower_click = 0
-	var/last_drinkblood_click = 0
-	var/harm_focus = SOUTH
-	var/masquerade_votes = 0
-	var/list/voted_for = list()
-	var/flavor_text
-	var/true_real_name
-	var/died_already = FALSE
-
 /datum/preferences
 	var/last_torpor = 0
 
@@ -39,8 +20,8 @@
 		R.announce_crime("murder", get_turf(src))
 	GLOB.masquerade_breakers_list -= src
 	GLOB.sabbatites -= src
-	var/allowed_to_loose = FALSE
-	if(key)
+//	var/allowed_to_loose = FALSE
+/*	if(key)
 		var/special_role_name
 		if(mind)
 			if(mind.special_role)
@@ -93,7 +74,7 @@
 				P.masquerade = masquerade
 				P.save_character()
 				P.save_preferences()
-				P.reason_of_death = "Killed in action ([time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")])."
+				P.reason_of_death = "Killed in action ([time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")])."*/
 	if(iskindred(src))
 		if(in_frenzy)
 			exit_frenzymod()
@@ -283,12 +264,6 @@
 //	icon_state = "drink"
 	layer = HUD_LAYER
 	plane = HUD_PLANE
-
-/mob/living
-	var/bloodquality = BLOOD_QUALITY_LOW
-
-/mob/living/carbon/human
-	bloodquality = BLOOD_QUALITY_NORMAL
 
 /atom/movable/screen/drinkblood/Click()
 	SEND_SOUND(usr, sound('code/modules/wod13/sounds/highlight.ogg', 0, 0, 50))
@@ -576,9 +551,6 @@
 						return
 	..()
 
-/mob/living/carbon/human
-	var/atom/movable/screen/disciplines/toggled
-
 /atom/movable/screen/disciplines/Initialize()
 	. = ..()
 
@@ -680,16 +652,6 @@
 	active = FALSE
 	icon_state = main_state
 
-/mob/living
-	var/bloodpool = 5
-	var/maxbloodpool = 5
-	var/generation = 13
-	var/humanity = 7
-	var/masquerade = 5
-	var/last_masquerade_violation = 0
-	var/last_nonraid = 0
-	var/warrant = FALSE
-
 /mob/living/carbon/werewolf/Life()
 	. = ..()
 	update_blood_hud()
@@ -734,10 +696,6 @@
 			last_nonraid = world.time
 			killed_count = max(0, killed_count-1)
 	..()
-
-
-/mob/living
-	var/obj/overlay/gnosis
 
 /mob/living/Initialize()
 	. = ..()

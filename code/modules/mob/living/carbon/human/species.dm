@@ -1352,7 +1352,6 @@ GLOBAL_LIST_EMPTY(donation_races)
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
 		to_chat(user, "<span class='warning'>You don't want to harm [target]!</span>")
 		return FALSE
-	user.check_elysium(FALSE)
 	if(target.check_block())
 		target.visible_message("<span class='warning'>[target] blocks [user]'s attack!</span>", \
 						"<span class='userdanger'>You block [user]'s attack!</span>", "<span class='hear'>You hear a swoosh!</span>", COMBAT_MESSAGE_RANGE, user)
@@ -2059,7 +2058,7 @@ GLOBAL_LIST_EMPTY(donation_races)
 /datum/species/proc/spec_stun(mob/living/carbon/human/H,amount)
 	if(flying_species && H.movement_type & FLYING)
 		ToggleFlight(H)
-		flyslip(H)
+//		flyslip(H)
 	. = stunmod * H.physiology.stun_mod * amount
 
 //////////////

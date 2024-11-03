@@ -25,8 +25,12 @@
 			break
 
 /obj/machinery/door/poddoor/shutters/armory/New()
-	..()
 	id = 10
+	..()
+
+/obj/machinery/door/poddoor/shutters/bankvault/New()
+	id = 11
+	..()
 
 /proc/find_keypad(keypad_type)
     for(var/obj/keypad/K in world)
@@ -37,6 +41,7 @@
 /obj/keypad/New()
 	..()
 	pincode = create_unique_pincode()
+	spawn(1)
 	connect_to_shutter()
 
 
@@ -62,4 +67,9 @@
 	icon_state = "keypad"
 	id = 10
 
-
+/obj/keypad/bankvault
+	name = "keypad"
+	desc = "Requires a password to open."
+	icon = 'icons/obj/terminals_vtm.dmi'
+	icon_state = "keypad"
+	id = 11

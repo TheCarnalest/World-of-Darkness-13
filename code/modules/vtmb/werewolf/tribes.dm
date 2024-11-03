@@ -84,9 +84,6 @@
 				C.dizziness += 10
 				C.add_confusion(10)
 
-/mob/living/carbon
-	var/tox_damage_plus = 0
-
 /datum/action/gift/venom_claws
 	name = "Venom Claws"
 	desc = "While this ability is active, strikes with claws poison foes of garou."

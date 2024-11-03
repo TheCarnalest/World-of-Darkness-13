@@ -124,7 +124,6 @@
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
 		to_chat(user, "<span class='danger'>Throwing [pushed_mob] onto the table might hurt them!</span>")
 		return
-	user.check_elysium(FALSE)
 	var/added_passtable = FALSE
 	if((!pushed_mob.pass_flags) & PASSTABLE)
 		added_passtable = TRUE

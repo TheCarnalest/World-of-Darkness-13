@@ -1,10 +1,6 @@
 #define JUMP_DELAY 40
 #define MAX_JUMP_DISTANCE 1
 
-/mob/living/carbon
-	var/last_jump_time = 0
-	var/jump_range = MAX_JUMP_DISTANCE
-
 /mob/living/carbon/Initialize(mapload)
 	. = ..()
 	create_reagents(1000)
@@ -166,8 +162,6 @@
 				if(HAS_TRAIT(src, TRAIT_PACIFISM))
 					to_chat(src, "<span class='notice'>You gently let go of [throwable_mob].</span>")
 					return
-				if(HAS_TRAIT(src, TRAIT_ELYSIUM))
-					check_elysium(FALSE)
 	else
 		thrown_thing = I.on_thrown(src, target)
 
@@ -210,12 +204,23 @@
 	var/physique = H.physique
 
 	var/current_time = world.time
-	var/adjusted_jump_delay = JUMP_DELAY - (2 * physique)
+	var/adjusted_jump_delay = JUMP_DELAY - (0.4 * dexterity) - (1 * athletics)
 	if(current_time - last_jump_time < adjusted_jump_delay)
 		to_chat(src, "<span class='notice'>You can't jump so soon!")
 		return
 
-	var/adjusted_jump_range = MAX_JUMP_DISTANCE + (physique * 0.75)
+	var/adjusted_jump_range = MAX_JUMP_DISTANCE
+
+	if(physique < 2)
+		adjusted_jump_range += 0.75 + athletics
+	else
+		adjusted_jump_range += 0.75 + (physique -1) * 0.5 + athletics
+
+	if(adjusted_jump_range > 6)
+		adjusted_jump_range = 6
+	if(adjusted_jump_range <1)
+		adjusted_jump_range = 1
+
 	var/distance = get_dist(loc, target)
 	var/turf/adjusted_target = target
 	if(distance > adjusted_jump_range)
@@ -223,6 +228,7 @@
 		var/dy = target.y - loc.y
 		var/scale = adjusted_jump_range / distance
 		adjusted_target = locate(loc.x + round(dx * scale), loc.y + round(dy * scale), loc.z)
+	playsound(loc, 'code/modules/wod13/sounds/jump_neutral.ogg', 50, TRUE)
 
 	var/atom/movable/thrown_thing = src
 
@@ -232,11 +238,20 @@
 		if(start_T && end_T)
 			log_combat(src, thrown_thing, "jumped", addition="from tile in [AREACOORD(start_T)] towards tile at [AREACOORD(end_T)]")
 		var/power_throw = 0
-
 		//Move the player towards the target
+
 		newtonian_move(get_dir(adjusted_target, src))
-		thrown_thing.safe_throw_at(adjusted_target, thrown_thing.throw_range, thrown_thing.throw_speed + power_throw, src, null, null, null, move_force)
+		thrown_thing.safe_throw_at(adjusted_target, thrown_thing.throw_range, thrown_thing.throw_speed + power_throw, src, null, null, null, move_force, spin = FALSE)
 		visible_message("<span class='danger'>[src] jumps towards [adjusted_target].</span>")
+
+
+
+		var/travel_time = distance * 0.5
+		spawn(travel_time)
+			if(get_dist(loc, adjusted_target) <= 1 && H.potential > 0)
+				H.epic_fall(FALSE, FALSE)
+
+
 //		newtonian_move(get_dir(target, src))
 //		thrown_thing.safe_throw_at(target, thrown_thing.throw_range, thrown_thing.throw_speed + power_throw, src, null, null, null, move_force)
 //		visible_message("<span class='danger'>[src] jumps towards [target].</span>")
@@ -1390,3 +1405,6 @@
 
 /mob/living/carbon/proc/attach_rot(mapload)
 	AddComponent(/datum/component/rot/corpse)
+
+#undef JUMP_DELAY
+#undef MAX_JUMP_DISTANCE

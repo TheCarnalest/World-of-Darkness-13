@@ -171,6 +171,8 @@ Dancer
 	lose_text = "<span class='notice'>You don't feel extra <b>HUNGRY</b> anymore.</span>"
 	allowed_species = list("Vampire", "Ghoul")
 
+//Removed after changes to death consequences.
+/*
 /datum/quirk/phoenix
 	name = "Phoenix"
 	desc = "You don't loose gained experience after the Final Death."
@@ -179,7 +181,9 @@ Dancer
 	gain_text = "<span class='notice'>You feel like you can burn without permanent consequences.</span>"
 	lose_text = "<span class='warning'>You don't feel like you can burn without consequences anymore.</span>"
 	allowed_species = list("Vampire")
+*/
 
+/*
 /datum/quirk/acrobatic
 	name = "Acrobatic"
 	desc = "You know a couple of acrobatic moves."
@@ -323,7 +327,7 @@ Dancer
 					H.epic_fall()
 				else if(iscrinos(H))
 					H.epic_fall()
-
+*/
 /datum/action/fly_upper
 	name = "Fly Up"
 	desc = "Fly to the upper level."
@@ -332,16 +336,19 @@ Dancer
 	var/last_acrobate = 0
 
 /datum/action/fly_upper/Trigger()
-	if(last_acrobate+15 > world.time)
+	owner.up()
+/*	if(last_acrobate+15 > world.time)
 		return
+	var/turf/target_turf = get_step_multiz(owner, UP)
 	if(get_step_multiz(owner, UP))
 		if(istype(get_step_multiz(owner, UP), /turf/open/openspace))
 			var/mob/living/carbon/H = owner
 			H.Immobilize(20)
 			animate(owner, pixel_y = 32, time = 20)
 			spawn(20)
-				owner.forceMove(get_step_multiz(owner, UP))
-
+				owner.forceMove(target_turf)
+				animate(owner, pixel_y = 0, time = 0)
+*/
 /datum/quirk/dancer
 	name = "Dancer"
 	desc = "You know a couple of dance moves."
@@ -377,11 +384,6 @@ Dancer
 						var/mob/living/carbon/human/human = owner
 						human.AdjustHumanity(1, 8)
 						last_added_humanity = world.time
-
-/mob/living
-	var/isdwarfy = FALSE
-	var/ischildren = FALSE
-	var/istower = FALSE
 
 /datum/quirk/dwarf
 	name = "Dwarf"
@@ -572,13 +574,13 @@ Dancer
 		return
 	if(isturf(quirk_holder.loc))
 		SSbloodhunt.announce_hunted(quirk_holder)
-
+/*
 /datum/quirk/diablerist
 	name = "Black Secret"
 	desc = "You have a small, ancient secret, somehow related to Diablerie, and this decreases your chance to survive another one. <b>This isn't a licence to diablerie anyone you want!</b>"
 	value = -3
 	allowed_species = list("Vampire")
-
+*/
 /datum/quirk/diablerist/on_spawn()
 	if(iswerewolf(quirk_holder) || isgarou(quirk_holder))
 		return

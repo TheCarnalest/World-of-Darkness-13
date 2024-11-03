@@ -48,7 +48,7 @@
 /mob/living/proc/ZImpactDamage(turf/T, levels)
 	visible_message("<span class='danger'>[src] crashes into [T] with a sickening noise!</span>", \
 					"<span class='userdanger'>You crash into [T] with a sickening noise!</span>")
-	adjustBruteLoss((levels * 5) ** 1.5)
+	adjustBruteLoss((levels * 5) ** 2)
 	Knockdown(levels * 50)
 
 //Generic Bump(). Override MobBump() and ObjBump() instead of this.
@@ -1951,7 +1951,6 @@
 			if (INTENT_HARM)
 				if (HAS_TRAIT(src, TRAIT_PACIFISM))
 					return FALSE
-				check_elysium(FALSE)
 				attack_result = style.harm_act(src, target)
 			if (INTENT_DISARM)
 				attack_result = style.disarm_act(src, target)

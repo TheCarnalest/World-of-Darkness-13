@@ -21,7 +21,7 @@
 			return
 	if(W.cost > 0)
 		if(W.illegal == illegal)
-			for(var/i in 1 to (W.cost/3)*user.social)
+			for(var/i in 1 to (W.cost/5)*(user.social + user.additional_social * 0.1))
 				new /obj/item/stack/dollar(loc)
 			playsound(loc, 'code/modules/wod13/sounds/sell.ogg', 50, TRUE)
 			if(istype(W, /obj/item/organ))
@@ -53,42 +53,42 @@
 
 /obj/item/organ/heart
 	illegal = TRUE
-	cost = 1000
+	cost = 1500
 
 /obj/item/organ/lungs
 	illegal = TRUE
-	cost = 500
+	cost = 800
 
 /obj/item/organ/liver
 	illegal = TRUE
-	cost = 500
+	cost = 800
 
 /obj/item/organ/stomach
 	illegal = TRUE
-	cost = 100
+	cost = 300
 
 /obj/item/organ/eyes
 	illegal = TRUE
-	cost = 100
+	cost = 300
 
 /obj/item/organ/ears
 	illegal = TRUE
-	cost = 100
+	cost = 300
 
 /obj/item/organ/tongue
 	illegal = TRUE
-	cost = 50
+	cost = 200
 
 /obj/item/weedseed
 	illegal = TRUE
-	cost = 50
+	cost = 100
 /obj/item/weedpack
 	illegal = TRUE
-	cost = 50
+	cost = 100
 
 /obj/item/reagent_containers/food/drinks/meth
 	illegal = TRUE
-	cost = 300
+	cost = 500
 
 /obj/item/clothing/under/vampire
 	cost = 10
@@ -112,7 +112,13 @@
 	cost = 50
 /obj/item/melee/vampirearms/katana
 	cost = 250
-/obj/item/food/fish
-	cost = 20
+/obj/item/food/fish/catfish
+	cost = 50
+/obj/item/food/fish/shark
+	cost = 400
+/obj/item/food/fish/tune
+	cost = 125
+/obj/item/food/fish/crab
+	cost = 200
 /obj/item/cockclock
 	cost = 50

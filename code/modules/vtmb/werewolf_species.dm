@@ -17,10 +17,6 @@
 	dust_anim = "dust-h"
 	donation = FALSE
 
-/mob/living/carbon
-	var/datum/auspice/auspice
-	var/obj/werewolf_holder/transformation/transformator
-
 /datum/action/garouinfo
 	name = "About Me"
 	desc = "Check assigned role, auspice, generation, humanity, masquerade, known disciplines, known contacts etc."
@@ -67,6 +63,7 @@
 					dat += "[printobjectives(A.objectives)]<BR>"
 
 		dat += "<b>Physique</b>: [host.physique]<BR>"
+		dat += "<b>Dexterity</b>: [host.dexterity]<BR>"
 		dat += "<b>Social</b>: [host.social]<BR>"
 		dat += "<b>Mentality</b>: [host.mentality]<BR>"
 		dat += "<b>Cruelty</b>: [host.blood]<BR>"

@@ -26,6 +26,10 @@
 /obj/structure/vampfence/corner/rich
 	icon = 'code/modules/wod13/32x48.dmi'
 
+/obj/structure/vampfence/Initialize()
+	.=..()
+	AddElement(/datum/element/climbable)
+
 /obj/structure/gargoyle
 	name = "\improper gargoyle"
 	desc = "Some kind of gothic architecture."
@@ -510,6 +514,14 @@
 /obj/structure/roadsign/speedlimit
 	name = "speed limit sign"
 	icon_state = "speed50"
+
+/obj/structure/roadsign/speedlimit40
+	name = "speed limit sign"
+	icon_state = "speed40"
+
+/obj/structure/roadsign/speedlimit25
+	name = "speed limit sign"
+	icon_state = "speed25"
 
 /obj/structure/roadsign/warningtrafficlight
 	name = "traffic light warning sign"
