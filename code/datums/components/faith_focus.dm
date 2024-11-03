@@ -70,11 +70,6 @@
 		for (var/mob/living/target in get_hearers_in_view(7, user.loc))
 			if (target != user)
 				repel(target, user)
-	else
-		user.visible_message(
-			"<span class='notice'>[user.name] shows [user.p_their()] [parent_item.name].</span>",
-			"<span class='notice'>You show your [parent_item.name].</span>"
-		)
 
 /datum/component/faith_focus/proc/pickup(source, var/mob/living/taker)
 	SIGNAL_HANDLER
