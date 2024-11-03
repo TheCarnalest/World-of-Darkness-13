@@ -183,7 +183,7 @@
 	desc = "Summons Spectral Animals over your targets. Violates Masquerade."
 	icon_state = "animalism"
 	cost = 1
-	delay = 50
+	delay = 5 SECONDS
 	ranged = FALSE
 	violates_masquerade = TRUE
 	activate_sound = 'code/modules/wod13/sounds/wolves.ogg'
@@ -211,7 +211,7 @@
 	. = ..()
 	if(!AN)
 		AN = new(caster)
-	var/limit = min(2, level)+caster.social-1+caster.more_companions
+	var/limit = min(2, level) + caster.social + caster.more_companions - 1
 	if(length(caster.beastmaster) >= limit)
 		var/mob/living/simple_animal/hostile/beastmaster/B = pick(caster.beastmaster)
 		B.death()
@@ -266,7 +266,7 @@
 //			caster.remove_overlay(PROTEAN_LAYER)
 //			caster.overlays_standing[PROTEAN_LAYER] = protean_overlay
 //			caster.apply_overlay(PROTEAN_LAYER)
-			spawn(200+caster.discipline_time_plus)
+			spawn(20 SECONDS + caster.discipline_time_plus)
 				if(caster && caster.stat != DEAD)
 					AN.Restore(AN.myshape)
 					caster.Stun(15)
@@ -1096,12 +1096,12 @@
 			if(iscarbon(target))
 				target.Stun(30)
 				target.visible_message("<span class='danger'>[target] throws up!</span>", "<span class='userdanger'>You throw up!</span>")
-				target.bloodpool = target.bloodpool-round((level_casting*0.5), 1)
+				target.bloodpool -= round(level_casting * 0.5)
 				playsound(get_turf(target), 'code/modules/wod13/sounds/vomit.ogg', 75, TRUE)
 				target.add_splatter_floor(get_turf(target))
 				target.add_splatter_floor(get_turf(get_step(target, target.dir)))
 			else
-				caster.bloodpool = min(caster.maxbloodpool, caster.bloodpool+target.bloodpool)
+				caster.bloodpool = min(caster.maxbloodpool, caster.bloodpool + target.bloodpool)
 				if(!istype(target, /mob/living/simple_animal/hostile/megafauna))
 //				if(isnpc(target))
 //					AdjustHumanity(caster, -1, 0)
@@ -1486,8 +1486,8 @@
 				M.beastmaster = caster
 				target.gib()
 	else
-		target.apply_damage(5*level_casting, BRUTE, BODY_ZONE_CHEST)
-		target.apply_damage(6*level_casting, CLONE)
+		target.apply_damage(5 * level_casting, BRUTE, caster.zone_selected)
+		target.apply_damage(6 * level_casting, CLONE, caster.zone_selected)
 		target.emote("scream")
 
 /datum/discipline/obtenebration

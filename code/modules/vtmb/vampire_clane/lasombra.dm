@@ -63,7 +63,7 @@
 //	animate(H, color = "#000000", time = 10, loop = 1)
 	if(H.CheckEyewitness(H, H, 7, FALSE))
 		H.AdjustMasquerade(-1)
-	spawn(200)
+	spawn(20 SECONDS)
 		if(H)
 			playsound(H.loc, 'sound/magic/voidblink.ogg', 50, FALSE)
 			for(var/obj/item/melee/vampirearms/knife/gangrel/lasombra/G in H.contents)
@@ -96,7 +96,7 @@
 	animate(H, color = "#000000", time = 10, loop = 1)
 	if(H.CheckEyewitness(H, H, 7, FALSE))
 		H.AdjustMasquerade(-1)
-	spawn(150)
+	spawn(15 SECONDS)
 		if(H)
 			playsound(H.loc, 'sound/magic/voidblink.ogg', 50, FALSE)
 			H.physiology.damage_resistance -= 60
