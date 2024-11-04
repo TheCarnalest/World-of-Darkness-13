@@ -1,4 +1,4 @@
-// The language of the podpeople. Yes, it's a shameless ripoff of elvish.
+// The language of the italiano. Yes, it's a shameless ripoff of de romans.
 /datum/language/sylvan
 	name = "Italian"
 	desc = "A complicated, ancient language spoken by sentient pizza cooks."

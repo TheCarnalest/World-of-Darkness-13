@@ -549,6 +549,24 @@ Dancer
 	var/mob/living/carbon/H = quirk_holder
 	H.grant_language(/datum/language/sylvan)
 
+/datum/quirk/german
+	name = "German"
+	desc = "You know the German language, FUR DAR FATERLAND!"
+	value = 1
+
+/datum/quirk/german/add()
+	var/mob/living/carbon/H = quirk_holder
+	H.grant_language(/datum/language/german)
+
+/datum/quirk/latin
+	name = "Latin"
+	desc = "You know the ancient holy language OF THE ROMANS AND THE CLERGY!!"
+	value = 2
+
+/datum/quirk/latin/add()
+	var/mob/living/carbon/H = quirk_holder
+	H.grant_language(/datum/language/latin)
+
 /datum/quirk/consumption
 	name = "Consumption"
 	desc = "Your blood is wrought with flesh eating bacteria that is literally eating you from inside out. You take some damage every random amount of time."
