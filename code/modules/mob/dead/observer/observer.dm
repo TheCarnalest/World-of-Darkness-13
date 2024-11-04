@@ -77,8 +77,7 @@ var/list/CMNoir = list(0.3,0.3,0.3,0,\
 	if(client && !aghosted)
 		animate(client, color = CMNoir, time = 30)
 		client.color = CMNoir
-		if(client.prefs.toggles & CHANNEL_AMBIENCE)
-			client << sound('sound/effects/ghost_ambient.ogg', 1, 5, CHANNEL_AMBIENCE, 10)
+//There was observer music here. It's gone now.
 
 /mob/dead/observer/Initialize()
 	set_invisibility(GLOB.observer_default_invisibility)
@@ -339,11 +338,6 @@ Works together with spawning an observer, noted above.
 			// to_chat(ghost.client, "Check rights - [check_rights_for(ghost.client, R_ADMIN)]")
 			ghost.sight = SEE_TURFS | SEE_MOBS | SEE_OBJS
 			ghost.movement_type = FLYING | PHASING | GROUND // [ChillRaccoon] - makes us available to go through dens objects [Lucifernix] - It was += that made aghosts unable to phase here.
-			ghost.stop_sound_channel(CHANNEL_AMBIENCE)
-		else
-			ghost.client.color = CMNoir // [ChillRaccoon] - noir screen effect
-			if(ghost.client.prefs.toggles & CHANNEL_AMBIENCE)
-				ghost.client << sound('sound/effects/ghost_ambient.ogg', 1, 5, CHANNEL_AMBIENCE, 10)
 
 		if(!can_reenter_corpse)	// Disassociates observer mind from the body mind
 			ghost.mind = null
