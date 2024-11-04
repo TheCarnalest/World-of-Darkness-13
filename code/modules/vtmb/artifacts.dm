@@ -186,8 +186,8 @@
 /obj/item/vtm_artifact/key_of_alamut/get_powers()
 	..()
 	var/mob/living/carbon/human/H = owner
-		if(H.dna.species.brutemod == 0.3)
-			return
+	if(H.dna.species.brutemod == 0.3)
+		return
 	if(H.dna)
 		H.dna.species.brutemod = H.dna.species.brutemod-0.2
 		H.dna.species.burnmod = H.dna.species.burnmod-0.2
