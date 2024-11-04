@@ -427,7 +427,7 @@
 				var/mob/living/carbon/human/H = src
 				if(H.clane)
 					if(H.clane.name == "Daughters of Cacaphony")
-						cacaphony = TRUE
+						cacaphony = FALSE //This Variable was TRUE, which makes the DoC music loop play.
 
 			if(!cacaphony)
 				if(!(client && (client.prefs.toggles & SOUND_AMBIENCE)))
