@@ -152,6 +152,8 @@
 				continue
 			if((user.social + user.additional_social) <= (L.mentality + L.additional_mentality)) //Dominate must defeat resistance
 				continue
+			if(L.resistant_to_disciplines)
+				continue
 			listeners += L
 
 	if(!listeners.len)
