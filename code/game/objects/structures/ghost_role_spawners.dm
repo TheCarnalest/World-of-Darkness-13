@@ -109,7 +109,7 @@
 		H.underwear = "Nude"
 		H.update_body()
 		ADD_TRAIT(H, TRAIT_PRIMITIVE, ROUNDSTART_TRAIT)
-		H.remove_language(/datum/language/common)
+		H.remove_language(/datum/language/english)
 	team.players_spawned += (new_spawn.key)
 	eggshell.egg = null
 	qdel(eggshell)

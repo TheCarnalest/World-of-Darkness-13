@@ -15,8 +15,8 @@
 	var/taste_sensitivity = 15 // lower is more sensitive.
 	var/modifies_speech = FALSE
 	var/static/list/languages_possible_base = typecacheof(list(
-		/datum/language/common,
-		/datum/language/uncommon,
+		/datum/language/english,
+		/datum/language/espanol,
 		/datum/language/draconic,
 		/datum/language/codespeak,
 		/datum/language/monkey,
@@ -25,11 +25,11 @@
 		/datum/language/aphasia,
 		/datum/language/piratespeak,
 		/datum/language/moffic,
-		/datum/language/sylvan,
+		/datum/language/italian,
 		/datum/language/latin,
 		/datum/language/german,
 		/datum/language/shadowtongue,
-		/datum/language/terrum,
+		/datum/language/hebrew,
 		/datum/language/japanese
 	))
 
@@ -102,7 +102,7 @@
 	taste_sensitivity = 25 // you eat vomit, this is a mercy
 	modifies_speech = TRUE
 	var/static/list/languages_possible_fly = typecacheof(list(
-		/datum/language/common,
+		/datum/language/english,
 		/datum/language/draconic,
 		/datum/language/codespeak,
 		/datum/language/monkey,
@@ -112,11 +112,11 @@
 		/datum/language/piratespeak,
 		/datum/language/moffic,
 		/datum/language/german,
-		/datum/language/sylvan,
+		/datum/language/italian,
 		/datum/language/german,
 		/datum/language/latin,
 		/datum/language/shadowtongue,
-		/datum/language/terrum,
+		/datum/language/hebrew,
 		/datum/language/japanese,
 		/datum/language/buzzwords
 	))
@@ -223,7 +223,7 @@
 	modifies_speech = TRUE // not really, they just hiss
 	var/static/list/languages_possible_alien = typecacheof(list(
 		/datum/language/xenocommon,
-		/datum/language/common,
+		/datum/language/english,
 		/datum/language/draconic,
 		/datum/language/monkey))
 
@@ -247,7 +247,7 @@
 	var/phomeme_type = "sans"
 	var/list/phomeme_types = list("sans", "papyrus")
 	var/static/list/languages_possible_skeleton = typecacheof(list(
-		/datum/language/common,
+		/datum/language/english,
 		/datum/language/draconic,
 		/datum/language/codespeak,
 		/datum/language/monkey,
@@ -257,10 +257,10 @@
 		/datum/language/piratespeak,
 		/datum/language/moffic,
 		/datum/language/german,
-		/datum/language/sylvan,
+		/datum/language/italian,
 		/datum/language/latin,
 		/datum/language/shadowtongue,
-		/datum/language/terrum,
+		/datum/language/hebrew,
 		/datum/language/japanese,
 		/datum/language/calcic
 	))
@@ -328,7 +328,7 @@
 	attack_verb_simple = list("shock", "jolt", "zap")
 	sense_of_taste = FALSE
 	var/static/list/languages_possible_ethereal = typecacheof(list(
-		/datum/language/common,
+		/datum/language/english,
 		/datum/language/draconic,
 		/datum/language/codespeak,
 		/datum/language/monkey,
@@ -339,9 +339,9 @@
 		/datum/language/aphasia,
 		/datum/language/piratespeak,
 		/datum/language/moffic,
-		/datum/language/sylvan,
+		/datum/language/italian,
 		/datum/language/shadowtongue,
-		/datum/language/terrum,
+		/datum/language/hebrew,
 		/datum/language/japanese,
 		/datum/language/voltaic
 	))

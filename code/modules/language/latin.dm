@@ -2,7 +2,7 @@
 	name = "Latin"
 	desc = "A complicated, ancient language spoken by powerful men."
 	flags = TONGUELESS_SPEECH
-	key = "h"
+	key = "l"
 	space_chance = 100
 	syllables = list(
 		"deus", "invictus", "dominae", "non ducor", "vendi", "vidi", "vici", "cogito ergo sum", "alea iacta est", "bona fide", "carpe diem",
