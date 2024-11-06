@@ -15,6 +15,7 @@
 	var/speech_sound = 'sound/magic/clockwork/invoke_general.ogg'
 	var/speech_volume = 300
 	var/speech_vary = TRUE
+	var/reverb = FALSE
 
 /obj/effect/proc_holder/spell/voice_of_god/can_cast(mob/user = usr)
 	if(!user.can_speak())
@@ -24,6 +25,7 @@
 
 /obj/effect/proc_holder/spell/voice_of_god/choose_targets(mob/user = usr)
 	perform(user=user)
+
 /obj/effect/proc_holder/spell/voice_of_god/perform(list/targets, recharge = 1, mob/user = usr)
 	command = input(user, "Speak with the Voice of Domination", "Command")
 	if(QDELETED(src) || QDELETED(user))
@@ -38,11 +40,13 @@
 		speech_sound = 'sound/magic/fall.ogg'
 		speech_volume = 1500
 		speech_vary = FALSE
+		reverb = TRUE
 	else
 		speech_sound = 'sound/magic/clockwork/invoke_general.ogg'
 		speech_volume = 200
 		speech_vary = TRUE
-	playsound(get_turf(user), speech_sound, speech_volume, speech_vary, 5)
+		reverb = FALSE
+	playsound(get_turf(user), speech_sound, speech_volume, speech_vary, 5, use_reverb = reverb)
 	var/cooldown = voice_of_god(uppertext(command), user, spans, base_multiplier = power_mod)
 	charge_max = (cooldown * cooldown_mod)
 
