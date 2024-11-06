@@ -2015,6 +2015,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 								disc4 += i
 							if(clane.name == "Old Clan Tzimisce" && D.name == "Vicissitude")
 								disc4 += i
+							if(D.clane_barred == TRUE && clane.name == "True Brujah")
+								disc4.Remove(/datum/discipline/celerity)
 							qdel(D)
 					var/discipline4 = input(user, "Select fourth discipline", "Discipline Selection") as null|anything in disc4
 					if(discipline4)

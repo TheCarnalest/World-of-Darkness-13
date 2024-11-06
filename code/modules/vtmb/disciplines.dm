@@ -28,6 +28,8 @@
 	var/level_casting = 1
 	///Whether this Discipline is exclusive to one Clan.
 	var/clane_restricted = FALSE
+	///Whether this Discipline is barred from one Clan.
+	var/clane_barred = FALSE
 	///Whether this Discipline is restricted from affecting dead people.
 	var/clane_exclusion = FALSE
 	var/dead_restricted = TRUE
@@ -335,6 +337,7 @@
 	violates_masquerade = FALSE
 	activate_sound = 'code/modules/wod13/sounds/celerity_activate.ogg'
 	leveldelay = TRUE
+	clane_barred = TRUE
 
 /obj/effect/celerity
 	name = "Damn"
