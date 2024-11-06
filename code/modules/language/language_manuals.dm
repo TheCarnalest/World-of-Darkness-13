@@ -67,7 +67,7 @@
 		/datum/language/voltaic, \
 		/datum/language/japanese, \
 		/datum/language/draconic, \
-		/datum/language/moffic, \
+		/datum/language/russian, \
 		/datum/language/calcic \
 	)
 	name = "[initial(language.name)] manual"

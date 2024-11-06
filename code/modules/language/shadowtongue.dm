@@ -3,7 +3,7 @@
 /datum/language/shadowtongue
 	name = "Shadowtongue"
 	desc = "What a grand and intoxicating innocence."
-	key = "x"
+	key = "sh"
 	space_chance = 50
 	syllables = list(
 		"er", "sint", "en", "et", "nor", "bahr", "sint", "un", "ku'elm", "lakor", "eri",
