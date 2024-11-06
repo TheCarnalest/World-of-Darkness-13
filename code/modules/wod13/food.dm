@@ -276,7 +276,8 @@
 		new /datum/data/mining_equipment("two liter cola bottle",	/obj/item/reagent_containers/food/drinks/bottle/vampirecola,	7),
 		new /datum/data/mining_equipment("cola can",	/obj/item/reagent_containers/food/drinks/soda_cans/vampirecola,	5),
 		new /datum/data/mining_equipment("milk",	/obj/item/reagent_containers/food/condiment/vampiremilk,	5),
-		new /datum/data/mining_equipment("beer bottle",	/obj/item/reagent_containers/food/drinks/beer/vampire,	10)
+		new /datum/data/mining_equipment("beer bottle",	/obj/item/reagent_containers/food/drinks/beer/vampire,	10),
+		new /datum/data/mining_equipment("bruise pack", /obj/item/stack/medical/bruise_pack, 100)
 	)
 
 /obj/machinery/mineral/equipment_vendor/fastfood/clothing
@@ -342,7 +343,10 @@
 		new /datum/data/mining_equipment("jackal mask",	 /obj/item/clothing/mask/animal/rat/jackal,	20),
 		new /datum/data/mining_equipment("medical mask",	/obj/item/clothing/mask/surgical,	10),
 		new /datum/data/mining_equipment("mummy mask",	/obj/item/clothing/mask/mummy,	15),
-		new /datum/data/mining_equipment("scarecrow mask",	/obj/item/clothing/mask/scarecrow,	10)
+		new /datum/data/mining_equipment("scarecrow mask",	/obj/item/clothing/mask/scarecrow,	10),
+		new /datum/data/mining_equipment("black and gold luchador mask",	/obj/item/clothing/mask/luchador,	10),
+		new /datum/data/mining_equipment("green luchador mask",	/obj/item/clothing/mask/luchador/tecnicos,	10),
+		new /datum/data/mining_equipment("red and blue luchador mask",	/obj/item/clothing/mask/luchador/rudos,	10)
 	)
 
 /obj/food_cart
@@ -410,7 +414,9 @@
 		new /datum/data/mining_equipment("silver .44 ammo",	/obj/item/ammo_box/vampire/c44/silver,	1000),
 		new /datum/data/mining_equipment("silver 5.56 ammo",	/obj/item/ammo_box/vampire/c556/silver,	1000),
 		new /datum/data/mining_equipment("stake",	/obj/item/vampire_stake,	100),
-		new /datum/data/mining_equipment("lockpick",	/obj/item/vamp/keys/hack, 50)
+		new /datum/data/mining_equipment("lockpick",	/obj/item/vamp/keys/hack, 50),
+		new /datum/data/mining_equipment("zippo lighter",	/obj/item/lighter,	20),
+		new /datum/data/mining_equipment("lighter",		/obj/item/lighter/greyscale,	10)
 		)
 
 /obj/machinery/mineral/equipment_vendor/fastfood/pharmacy

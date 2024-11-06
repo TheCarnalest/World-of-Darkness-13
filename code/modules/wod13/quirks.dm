@@ -498,11 +498,11 @@ Dancer
 
 /datum/quirk/foreign/add()
 	var/mob/living/carbon/H = quirk_holder
-	H.add_blocked_language(/datum/language/common)
+	H.add_blocked_language(/datum/language/english)
 
 /datum/quirk/foreign/remove()
 	var/mob/living/carbon/H = quirk_holder
-	H.remove_blocked_language(/datum/language/common)
+	H.remove_blocked_language(/datum/language/english)
 
 /datum/quirk/espanol
 	name = "Espanol"
@@ -511,7 +511,7 @@ Dancer
 
 /datum/quirk/espanol/add()
 	var/mob/living/carbon/H = quirk_holder
-	H.grant_language(/datum/language/uncommon)
+	H.grant_language(/datum/language/espanol)
 
 /datum/quirk/chinese
 	name = "Chinese"
@@ -547,7 +547,43 @@ Dancer
 
 /datum/quirk/italian/add()
 	var/mob/living/carbon/H = quirk_holder
-	H.grant_language(/datum/language/sylvan)
+	H.grant_language(/datum/language/italian)
+
+/datum/quirk/german
+	name = "German"
+	desc = "You know the German language, FUR DAR FATERLAND!"
+	value = 1
+
+/datum/quirk/german/add()
+	var/mob/living/carbon/H = quirk_holder
+	H.grant_language(/datum/language/german)
+
+/datum/quirk/latin
+	name = "Latin"
+	desc = "You know the ancient holy language OF THE ROMANS AND THE CLERGY!!"
+	value = 2
+
+/datum/quirk/latin/add()
+	var/mob/living/carbon/H = quirk_holder
+	H.grant_language(/datum/language/latin)
+
+/datum/quirk/hebrew
+	name = "Hebrew"
+	desc = "You know the language of the ancient Hebrews!"
+	value = 1
+
+/datum/quirk/hebrew/add()
+	var/mob/living/carbon/H = quirk_holder
+	H.grant_language(/datum/language/hebrew)
+
+/datum/quirk/french
+	name = "French"
+	desc = "You know the romantic language of the French."
+	value = 1
+
+/datum/quirk/french/add()
+	var/mob/living/carbon/H = quirk_holder
+	H.grant_language(/datum/language/french)
 
 /datum/quirk/consumption
 	name = "Consumption"

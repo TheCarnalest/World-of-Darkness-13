@@ -38,9 +38,9 @@ Key procs
 
 /datum/language_holder
 	/// Understood languages.
-	var/list/understood_languages = list(/datum/language/common = list(LANGUAGE_MIND))
+	var/list/understood_languages = list(/datum/language/english = list(LANGUAGE_MIND))
 	/// A list of languages that can be spoken. Tongue organ may also set limits beyond this list.
-	var/list/spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM))
+	var/list/spoken_languages = list(/datum/language/english = list(LANGUAGE_ATOM))
 	/// A list of blocked languages. Used to prevent understanding and speaking certain languages, ie for certain mobs, mutations etc.
 	var/list/blocked_languages = list()
 	/// If true, overrides tongue limitations.
@@ -235,85 +235,85 @@ Key procs
 /datum/language_holder/alien
 	understood_languages = list(/datum/language/xenocommon = list(LANGUAGE_ATOM))
 	spoken_languages = list(/datum/language/xenocommon = list(LANGUAGE_ATOM))
-	blocked_languages = list(/datum/language/common = list(LANGUAGE_ATOM))
+	blocked_languages = list(/datum/language/english = list(LANGUAGE_ATOM))
 
 /datum/language_holder/construct
-	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+	understood_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
 								/datum/language/narsie = list(LANGUAGE_ATOM))
-	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+	spoken_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
 							/datum/language/narsie = list(LANGUAGE_ATOM))
 
 /datum/language_holder/drone
 	understood_languages = list(/datum/language/drone = list(LANGUAGE_ATOM),
 								/datum/language/machine = list(LANGUAGE_ATOM))
 	spoken_languages = list(/datum/language/drone = list(LANGUAGE_ATOM))
-	blocked_languages = list(/datum/language/common = list(LANGUAGE_ATOM))
+	blocked_languages = list(/datum/language/english = list(LANGUAGE_ATOM))
 
 /datum/language_holder/drone/syndicate
 	blocked_languages = list()
 
 /datum/language_holder/jelly
-	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+	understood_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
 								/datum/language/slime = list(LANGUAGE_ATOM))
-	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+	spoken_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
 							/datum/language/slime = list(LANGUAGE_ATOM))
 
 /datum/language_holder/lightbringer
 	understood_languages = list(/datum/language/slime = list(LANGUAGE_ATOM))
 	spoken_languages = list(/datum/language/slime = list(LANGUAGE_ATOM))
-	blocked_languages = list(/datum/language/common = list(LANGUAGE_ATOM))
+	blocked_languages = list(/datum/language/english = list(LANGUAGE_ATOM))
 
 /datum/language_holder/lizard
-	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+	understood_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
 								/datum/language/draconic = list(LANGUAGE_ATOM))
-	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+	spoken_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
 							/datum/language/draconic = list(LANGUAGE_ATOM))
 
 /datum/language_holder/lizard/ash
 	selected_language = /datum/language/draconic
 
 /datum/language_holder/monkey
-	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+	understood_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
 								/datum/language/monkey = list(LANGUAGE_ATOM))
 	spoken_languages = list(/datum/language/monkey = list(LANGUAGE_ATOM))
 
 /datum/language_holder/mushroom
-	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+	understood_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
 								/datum/language/mushroom = list(LANGUAGE_ATOM))
-	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+	spoken_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
 							/datum/language/mushroom = list(LANGUAGE_ATOM))
 
 /datum/language_holder/slime
-	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+	understood_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
 								/datum/language/slime = list(LANGUAGE_ATOM))
 	spoken_languages = list(/datum/language/slime = list(LANGUAGE_ATOM))
 
 /datum/language_holder/swarmer
 	understood_languages = list(/datum/language/swarmer = list(LANGUAGE_ATOM))
 	spoken_languages = list(/datum/language/swarmer = list(LANGUAGE_ATOM))
-	blocked_languages = list(/datum/language/common = list(LANGUAGE_ATOM))
+	blocked_languages = list(/datum/language/english = list(LANGUAGE_ATOM))
 
 /datum/language_holder/venus
-	understood_languages = list(/datum/language/sylvan = list(LANGUAGE_ATOM))
-	spoken_languages = list(/datum/language/sylvan = list(LANGUAGE_ATOM))
-	blocked_languages = list(/datum/language/common = list(LANGUAGE_ATOM))
+	understood_languages = list(/datum/language/italian = list(LANGUAGE_ATOM))
+	spoken_languages = list(/datum/language/italian = list(LANGUAGE_ATOM))
+	blocked_languages = list(/datum/language/english = list(LANGUAGE_ATOM))
 
 /datum/language_holder/spider
 	understood_languages = list(/datum/language/buzzwords = list(LANGUAGE_ATOM))
 	spoken_languages = list(/datum/language/buzzwords = list(LANGUAGE_ATOM))
-	blocked_languages = list(/datum/language/common = list(LANGUAGE_ATOM))
+	blocked_languages = list(/datum/language/english = list(LANGUAGE_ATOM))
 
 /datum/language_holder/synthetic
-	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
-								/datum/language/uncommon = list(LANGUAGE_ATOM),
+	understood_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
+								/datum/language/espanol = list(LANGUAGE_ATOM),
 								/datum/language/machine = list(LANGUAGE_ATOM),
 								/datum/language/draconic = list(LANGUAGE_ATOM),
 								/datum/language/moffic = list(LANGUAGE_ATOM),
 								/datum/language/calcic = list(LANGUAGE_ATOM),
 								/datum/language/voltaic = list(LANGUAGE_ATOM),
 								/datum/language/japanese = list(LANGUAGE_ATOM))
-	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
-							/datum/language/uncommon = list(LANGUAGE_ATOM),
+	spoken_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
+							/datum/language/espanol = list(LANGUAGE_ATOM),
 							/datum/language/machine = list(LANGUAGE_ATOM),
 							/datum/language/draconic = list(LANGUAGE_ATOM),
 							/datum/language/moffic = list(LANGUAGE_ATOM),
@@ -322,67 +322,67 @@ Key procs
 							/datum/language/japanese = list(LANGUAGE_ATOM))
 
 /datum/language_holder/moth
-	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+	understood_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
 								/datum/language/moffic = list(LANGUAGE_ATOM))
-	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+	spoken_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
 							/datum/language/moffic = list(LANGUAGE_ATOM))
 
 /datum/language_holder/skeleton
-	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+	understood_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
 								/datum/language/calcic = list(LANGUAGE_ATOM))
-	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+	spoken_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
 							/datum/language/calcic = list(LANGUAGE_ATOM))
 
 /datum/language_holder/ethereal
-	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+	understood_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
 								/datum/language/voltaic = list(LANGUAGE_ATOM))
-	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+	spoken_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
 							/datum/language/voltaic = list(LANGUAGE_ATOM))
 
 /datum/language_holder/golem
-	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
-								/datum/language/terrum = list(LANGUAGE_ATOM))
-	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
-							/datum/language/terrum = list(LANGUAGE_ATOM))
+	understood_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
+								/datum/language/hebrew = list(LANGUAGE_ATOM))
+	spoken_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
+							/datum/language/hebrew = list(LANGUAGE_ATOM))
 
 /datum/language_holder/golem/bone
-	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
-								/datum/language/terrum = list(LANGUAGE_ATOM),
+	understood_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
+								/datum/language/hebrew = list(LANGUAGE_ATOM),
 								/datum/language/calcic = list(LANGUAGE_ATOM))
-	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
-							/datum/language/terrum = list(LANGUAGE_ATOM),
+	spoken_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
+							/datum/language/hebrew = list(LANGUAGE_ATOM),
 							/datum/language/calcic = list(LANGUAGE_ATOM))
 
 /datum/language_holder/golem/runic
-	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
-								/datum/language/terrum = list(LANGUAGE_ATOM),
+	understood_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
+								/datum/language/hebrew = list(LANGUAGE_ATOM),
 								/datum/language/narsie = list(LANGUAGE_ATOM))
-	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
-							/datum/language/terrum = list(LANGUAGE_ATOM),
+	spoken_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
+							/datum/language/hebrew = list(LANGUAGE_ATOM),
 							/datum/language/narsie = list(LANGUAGE_ATOM))
 
 /datum/language_holder/fly
-	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+	understood_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
 								/datum/language/buzzwords = list(LANGUAGE_ATOM))
-	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+	spoken_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
 							/datum/language/buzzwords = list(LANGUAGE_ATOM))
 
 /datum/language_holder/plant
-	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
-								/datum/language/sylvan = list(LANGUAGE_ATOM))
-	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
-							/datum/language/sylvan = list(LANGUAGE_ATOM))
+	understood_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
+								/datum/language/italian = list(LANGUAGE_ATOM))
+	spoken_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
+							/datum/language/italian = list(LANGUAGE_ATOM))
 
 /datum/language_holder/felinid
-	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+	understood_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
 								/datum/language/japanese = list(LANGUAGE_ATOM))
-	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+	spoken_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
 							/datum/language/japanese = list(LANGUAGE_ATOM))
 
 /datum/language_holder/shadowpeople
-	understood_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+	understood_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
 								/datum/language/shadowtongue = list(LANGUAGE_ATOM))
-	spoken_languages = list(/datum/language/common = list(LANGUAGE_ATOM),
+	spoken_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
 							/datum/language/shadowtongue = list(LANGUAGE_ATOM))
 
 /datum/language_holder/empty

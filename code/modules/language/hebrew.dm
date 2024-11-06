@@ -1,7 +1,7 @@
-/datum/language/terrum
-	name = "Terrum"
-	desc = "The language of the golems. Sounds similar to old-earth Hebrew."
-	key = "g"
+/datum/language/hebrew
+	name = "Hebrew"
+	desc = "The language of the ancient Hebrews."
+	key = "h"
 	space_chance = 100
 	syllables = list(
 		"sha", "vu", "nah", "ha", "yom", "ma", "cha", "ar", "et", "mol", "lua",
@@ -10,5 +10,5 @@
 		"cho", "ar", "kas", "kal", "ra", "lom", "im", "'", "'", "'", "'", "bok",
 		"erev", "shlo", "lo", "ta", "im", "yom"
 	)
-	icon_state = "golem"
+	icon_state = "hebrew"
 	default_priority = 90
