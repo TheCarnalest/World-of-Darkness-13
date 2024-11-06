@@ -1,4 +1,4 @@
-/datum/language/moffic
+/datum/language/russian
 	name = "Russian"
 	desc = "The language of the Mother Russia."
 	key = "r"

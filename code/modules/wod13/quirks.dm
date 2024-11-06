@@ -529,7 +529,7 @@ Dancer
 
 /datum/quirk/russian/add()
 	var/mob/living/carbon/H = quirk_holder
-	H.grant_language(/datum/language/moffic)
+	H.grant_language(/datum/language/russian)
 
 /datum/quirk/japanese
 	name = "Japanese"
@@ -584,6 +584,15 @@ Dancer
 /datum/quirk/french/add()
 	var/mob/living/carbon/H = quirk_holder
 	H.grant_language(/datum/language/french)
+
+/datum/quirk/arabic
+	name = "Arabic"
+	desc = "You know the melodic language of the Middle East."
+	value = 1
+
+/datum/quirk/arabic/add()
+	var/mob/living/carbon/H = quirk_holder
+	H.grant_language(/datum/language/arabic)
 
 /datum/quirk/consumption
 	name = "Consumption"
