@@ -736,6 +736,7 @@ SUBSYSTEM_DEF(carpool)
 		T.unpassable -= src
 
 /obj/vampire_car/setDir(newdir)
+	. = ..()
 	apply_vector_angle()
 
 /obj/vampire_car/Moved(atom/OldLoc, Dir)
