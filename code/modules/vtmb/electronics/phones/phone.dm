@@ -516,8 +516,8 @@
 
 /obj/item/vamp/phone/street
 	desc = "An ordinary street payphone"
-	icon = 'code/modules/wod13/onfloor.dmi'
-	icon_state = "streetphone"
+	icon = 'code/modules/wod13/props.dmi'
+	icon_state = "payphone"
 	anchored = TRUE
 	number = "1447"
 	can_fold = 0
