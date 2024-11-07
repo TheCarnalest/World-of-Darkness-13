@@ -40,36 +40,70 @@ And it also helps for the character set panel
 //		H.hairstyle = "Bald"
 //		H.update_hair()
 
-/mob/living/carbon/human/proc/generate_friends()
-	if(have_friend && !friend_name)
-		for(var/mob/living/carbon/human/H in GLOB.player_list)
-			if(H.stat != DEAD && H.have_friend && !H.friend_name && H.client && H.enemy_name != real_name && H.lover_name != real_name && H.dna.real_name != real_name)
-				H.friend_name = real_name
-				friend_name = H.dna.real_name
-				to_chat(src, "Your friend, <b>[friend_name]</b>, is now in the city!")
-				to_chat(H, "Your friend, <b>[H.friend_name]</b>, is now in the city!")
-	if(have_enemy && !enemy_name)
-		for(var/mob/living/carbon/human/H in GLOB.player_list)
-			if(H.stat != DEAD && H.have_enemy && !H.enemy_name && H.client && H.friend_name != real_name && H.lover_name != real_name && H.dna.real_name != real_name)
-				H.enemy_name = real_name
-				enemy_name = H.dna.real_name
-				to_chat(src, "Your enemy, <b>[enemy_name]</b>, is now in the city!")
-				to_chat(H, "Your enemy, <b>[H.enemy_name]</b>, is now in the city!")
-	if(have_lover && !lover_name)
-		if(HAS_TRAIT(src, TRAIT_HOMOSEXUAL))
-			for(var/mob/living/carbon/human/H in GLOB.player_list)
-				if(H.stat != DEAD && H.have_lover && !H.lover_name && H.client && HAS_TRAIT(H, TRAIT_HOMOSEXUAL) && H.gender == gender && H.enemy_name != real_name && H.friend_name != real_name && H.dna.real_name != real_name)
-					H.lover_name = real_name
-					lover_name = H.dna.real_name
-					to_chat(src, "Your lover, <b>[lover_name]</b>, is now in the city!")
-					to_chat(H, "Your lover, <b>[H.lover_name]</b>, is now in the city!")
-		else
-			for(var/mob/living/carbon/human/H in GLOB.player_list)
-				if(H.stat != DEAD && H.have_lover && !H.lover_name && H.client && !HAS_TRAIT(H, TRAIT_HOMOSEXUAL) && H.gender != gender && H.enemy_name != real_name && H.friend_name != real_name && H.dna.real_name != real_name)
-					H.lover_name = real_name
-					lover_name = H.client.prefs.real_name
-					to_chat(src, "Your lover, <b>[lover_name]</b>, is now in the city!")
-					to_chat(H, "Your lover, <b>[H.lover_name]</b>, is now in the city!")
+/mob/living/carbon
+	var/datum/relationship/Myself
+
+/datum/relationship/proc/publish()
+	GLOB.relationship_list += src
+	generate_relationships()
+
+/datum/relationship
+	var/need_friend = FALSE
+	var/need_enemy = FALSE
+	var/need_lover = FALSE
+
+	var/datum/relationship/Friend
+	var/datum/relationship/Enemy
+	var/datum/relationship/Lover
+
+	var/friend_text
+	var/enemy_text
+	var/lover_text
+
+	var/phone_number
+
+	var/mob/living/carbon/human/owner
+
+/datum/relationship/proc/generate_relationships()
+	if(!owner)
+		return
+	if(need_friend)
+		for(var/datum/relationship/R in GLOB.relationship_list)
+			if(R)
+				if(R != src)
+					if(R.need_friend && need_friend && !R.Friend && !Friend && R.Enemy != src && Enemy != R && R.Lover != src && Lover != R)
+						Friend = R
+						R.Friend = src
+						to_chat(owner, "Your friend, <b>[R.owner.real_name]</b>, is now in the city!")
+						to_chat(R.owner, "Your friend, <b>[owner.real_name]</b>, is now in the city!")
+						need_friend = FALSE
+	if(need_enemy)
+		for(var/datum/relationship/R in GLOB.relationship_list)
+			if(R)
+				if(R != src)
+					if(R.need_enemy && need_enemy && !R.Enemy && !Enemy && R.Friend != src && Friend != R && R.Lover != src && Lover != R)
+						Enemy = R
+						R.Enemy = src
+						to_chat(owner, "Your enemy, <b>[R.owner.real_name]</b>, is now in the city!")
+						to_chat(R.owner, "Your enemy, <b>[owner.real_name]</b>, is now in the city!")
+						need_enemy = FALSE
+	if(need_lover)
+		for(var/datum/relationship/R in GLOB.relationship_list)
+			if(R)
+				if(R != src)
+					if(R.need_lover && need_lover && !R.Lover && !Lover && R.Friend != src && Friend != R && R.Enemy != src && Enemy != R)
+						if(R.owner.gender == owner.gender && HAS_TRAIT(R.owner, TRAIT_HOMOSEXUAL) && HAS_TRAIT(owner, TRAIT_HOMOSEXUAL))
+							Lover = R
+							R.Lover = src
+							to_chat(owner, "Your lover, <b>[R.owner.real_name]</b>, is now in the city!")
+							to_chat(R.owner, "Your lover, <b>[owner.real_name]</b>, is now in the city!")
+							need_lover = FALSE
+						if(!HAS_TRAIT(R.owner, TRAIT_HOMOSEXUAL) && !HAS_TRAIT(owner, TRAIT_HOMOSEXUAL) && R.owner.gender != owner.gender)
+							Lover = R
+							R.Lover = src
+							to_chat(owner, "Your lover, <b>[R.owner.real_name]</b>, is now in the city!")
+							to_chat(R.owner, "Your lover, <b>[owner.real_name]</b>, is now in the city!")
+							need_lover = FALSE
 
 /datum/vampireclane/proc/post_gain(var/mob/living/carbon/human/H)
 	if(violating_appearance)
