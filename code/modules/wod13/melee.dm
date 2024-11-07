@@ -165,7 +165,8 @@
 
 /obj/item/melee/vampirearms/knife/gangrel/lasombra
 	name = "shadow tentacle"
-	force = 23
+	force = 12
+	damtype = BURN
 	armour_penetration = 100
 	icon_state = "lasombra"
 	masquerade_violating = TRUE
@@ -175,7 +176,7 @@
 		return
 	if(isliving(target))
 		var/mob/living/L = target
-		L.apply_damage(12, CLONE)
+		L.apply_damage(15, CLONE)
 
 /obj/item/melee/touch_attack/quietus
 	name = "\improper poison touch"
@@ -245,7 +246,7 @@
 	icon = 'code/modules/wod13/weapons.dmi'
 	icon_state = "chainsaw"
 	flags_1 = CONDUCT_1
-	force = 35
+	force = 15
 	var/force_on = 150
 	w_class = WEIGHT_CLASS_BULKY
 	throwforce = 10
