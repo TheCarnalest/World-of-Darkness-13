@@ -74,7 +74,7 @@
 	throwforce = 10
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BELT
-	block_chance = 45
+	block_chance = 40
 	armour_penetration = 35
 	sharpness = SHARP_EDGED
 	attack_verb_continuous = list("slashes", "cuts")
@@ -445,7 +445,7 @@
 	lefthand_file = 'code/modules/wod13/righthand.dmi'
 	righthand_file = 'code/modules/wod13/lefthand.dmi'
 	force = 20
-	block_chance = 60
+	block_chance = 45
 	throwforce = 40
 	throw_speed = 2
 	throw_range = 3
