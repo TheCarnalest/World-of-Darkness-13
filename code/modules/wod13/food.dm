@@ -95,7 +95,7 @@
 	desc = "Big Wing for a big man."
 	icon_state = "nugget1"
 	trash_type = /obj/item/trash/vampirenugget
-	bite_consumption = 3
+	bite_consumption = 1
 	tastes = list("chicken" = 1)
 	foodtypes = MEAT
 	food_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/nutriment/protein = 3)
