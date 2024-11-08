@@ -165,6 +165,13 @@
 	. = ..()
 	recursive_organ_check(src)
 
+/obj/structure/closet/crate/freezer/fridge
+	name = "fridge"
+	desc = "Store food or bodyparts here."
+	icon = 'code/modules/wod13/props.dmi'
+	icon_state = "fridge"
+	anchored = TRUE
+
 
 
 /obj/structure/closet/crate/freezer/blood

@@ -1304,9 +1304,32 @@
 
 /obj/structure/vampstatue
 	name = "statue"
-	desc = "Epic kind of art."
+	desc = "A cloaked figure forgotten to the ages."
 	icon = 'icons/effects/32x64.dmi'
 	icon_state = "statue"
+	plane = GAME_PLANE
+	layer = ABOVE_ALL_MOB_LAYER
+	anchored = TRUE
+	density = TRUE
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF
+
+/obj/structure/vampstatue/angel
+	name = "angel statue"
+	desc = "An angel stands before you. You're glad it's only stone."
+	icon = 'code/modules/wod13/64x64.dmi'
+	icon_state = "angelstatue"
+
+/obj/structure/vampstatue/cloaked
+	name = "cloaked figure"
+	desc = "He appears to be sitting."
+	icon = 'code/modules/wod13/32x48.dmi'
+	icon_state = "cloakedstatue"
+
+/obj/structure/bath
+	name = "bath"
+	desc = "Not big enough for hiding in."
+	icon = 'code/modules/wod13/props.dmi'
+	icon_state = "tub"
 	plane = GAME_PLANE
 	layer = ABOVE_ALL_MOB_LAYER
 	anchored = TRUE
