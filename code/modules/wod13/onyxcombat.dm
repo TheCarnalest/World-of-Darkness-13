@@ -239,7 +239,7 @@
 
 /atom/movable/screen/blood
 	name = "bloodpool"
-	icon = 'code/modules/wod13/vamphud.dmi'
+	icon = 'code/modules/wod13/UI/bloodpool.dmi'
 	icon_state = "blood0"
 	layer = HUD_LAYER
 	plane = HUD_PLANE
