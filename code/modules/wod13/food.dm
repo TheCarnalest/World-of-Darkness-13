@@ -237,6 +237,30 @@
 	icon_deny = "menu"
 	prize_list = list()
 
+/obj/machinery/mineral/equipment_vendor/fastfood/sodavendor
+	name = "Drink Vendor"
+	desc = "Order drinks here."
+	icon = 'code/modules/wod13/props.dmi'
+	icon_state = "vend_r"
+	anchored = TRUE
+	density = TRUE
+	owner_needed = FALSE
+	prize_list = list(new /datum/data/mining_equipment("cola",	/obj/item/reagent_containers/food/drinks/soda_cans/vampirecola,	10),
+		new /datum/data/mining_equipment("soda", /obj/item/reagent_containers/food/drinks/soda_cans/vampiresoda, 5)
+	)
+
+/obj/machinery/mineral/equipment_vendor/fastfood/coffeevendor
+	name = "Coffee Vendor"
+	desc = "For those sleepy mornings."
+	icon = 'code/modules/wod13/props.dmi'
+	icon_state = "vend_g"
+	anchored = TRUE
+	density = TRUE
+	owner_needed = FALSE
+	prize_list = list(new /datum/data/mining_equipment("cola",	/obj/item/reagent_containers/food/drinks/coffee/vampire,	10),
+		new /datum/data/mining_equipment("soda", /obj/item/reagent_containers/food/drinks/coffee/vampire/robust, 5)
+	)
+
 /obj/machinery/mineral/equipment_vendor/fastfood/AltClick(mob/user)
 	. = ..()
 	if(points)

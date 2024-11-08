@@ -136,7 +136,7 @@ GLOBAL_LIST_INIT(dye_registry, list(
 /obj/machinery/washing_machine
 	name = "washing machine"
 	desc = "Gets rid of those pesky bloodstains, or your money back!"
-	icon = 'icons/obj/machines/washing_machine.dmi'
+	icon = 'code/modules/wod13/props.dmi'
 	icon_state = "wm_1_0"
 	density = TRUE
 	state_open = TRUE
@@ -281,7 +281,7 @@ GLOBAL_LIST_INIT(dye_registry, list(
 
 /obj/machinery/washing_machine/update_icon_state()
 	if(busy)
-		icon_state = "wm_running_[bloody_mess]"
+		icon_state = "washing_on"
 	else if(bloody_mess)
 		icon_state = "wm_[state_open]_blood"
 	else
