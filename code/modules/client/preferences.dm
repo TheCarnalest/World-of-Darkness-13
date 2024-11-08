@@ -510,7 +510,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if(generation_allowed)
 					if(generation_bonus)
 						dat += " (+[generation_bonus]/[min(6, generation-7)])"
-					if(true_experience >= 10 && generation_bonus < max(0, generation-7))
+					if(true_experience >= 20 && generation_bonus < max(0, generation-7))
 						dat += " <a href='?_src_=prefs;preference=generation;task=input'>Claim generation bonus (20)</a><BR>"
 					else
 						dat += "<BR>"
