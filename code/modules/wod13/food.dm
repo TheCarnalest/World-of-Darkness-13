@@ -95,7 +95,7 @@
 	desc = "Big Wing for a big man."
 	icon_state = "nugget1"
 	trash_type = /obj/item/trash/vampirenugget
-	bite_consumption = 3
+	bite_consumption = 1
 	tastes = list("chicken" = 1)
 	foodtypes = MEAT
 	food_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/nutriment/protein = 3)
@@ -260,7 +260,7 @@
 	)
 
 /obj/machinery/mineral/equipment_vendor/fastfood/gummaguts
-	prize_list = list(new /datum/data/mining_equipment("chicken wing",	/obj/item/food/vampire/nugget,	5),
+	prize_list = list(new /datum/data/mining_equipment("five-piece chicken wing box",	/obj/item/storage/fancy/nugget_box,	5),
 		new /datum/data/mining_equipment("burger",	/obj/item/food/vampire/burger,	15),
 		new /datum/data/mining_equipment("square pizza",	/obj/item/food/vampire/pizza,	10),
 		new /datum/data/mining_equipment("two liter cola bottle",	/obj/item/reagent_containers/food/drinks/bottle/vampirecola,	10),
@@ -271,12 +271,13 @@
 	desc = "Purchase junkfood and crap."
 	prize_list = list(new /datum/data/mining_equipment("chocolate bar",	/obj/item/food/vampire/bar,	3),
 		new /datum/data/mining_equipment("chips",	/obj/item/food/vampire/crisps,	5),
-		new /datum/data/mining_equipment("water bottle",	/obj/item/reagent_containers/food/drinks/bottle/vampirewater,	5),
+		new /datum/data/mining_equipment("water bottle",	/obj/item/reagent_containers/food/drinks/bottle/vampirewater,	3),
 		new /datum/data/mining_equipment("soda can",	/obj/item/reagent_containers/food/drinks/soda_cans/vampiresoda,	3),
 		new /datum/data/mining_equipment("two liter cola bottle",	/obj/item/reagent_containers/food/drinks/bottle/vampirecola,	7),
 		new /datum/data/mining_equipment("cola can",	/obj/item/reagent_containers/food/drinks/soda_cans/vampirecola,	5),
 		new /datum/data/mining_equipment("milk",	/obj/item/reagent_containers/food/condiment/vampiremilk,	5),
 		new /datum/data/mining_equipment("beer bottle",	/obj/item/reagent_containers/food/drinks/beer/vampire,	10),
+		new /datum/data/mining_equipment("candle pack",	/obj/item/storage/fancy/candle_box,	12),
 		new /datum/data/mining_equipment("bruise pack", /obj/item/stack/medical/bruise_pack, 100)
 	)
 
