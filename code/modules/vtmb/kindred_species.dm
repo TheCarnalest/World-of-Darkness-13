@@ -209,9 +209,10 @@
 			plus = 1
 		if(BD.bloodpool >= 2+plus)
 			playsound(usr, 'code/modules/wod13/sounds/bloodhealing.ogg', 50, FALSE)
+			button.color = "#970000"
+			animate(button, color = "#ffffff", time = 20, loop = 1)
 			BD.last_bloodpower_use = world.time
 			BD.bloodpool = max(0, BD.bloodpool-(2+plus))
-			icon_state = "[initial(icon_state)]-on"
 			to_chat(BD, "<span class='notice'>You use blood to become more powerful.</span>")
 			BD.dna.species.punchdamagehigh = BD.dna.species.punchdamagehigh+5
 			BD.physiology.armor.melee = BD.physiology.armor.melee+15
@@ -316,10 +317,8 @@
 								BLOODBONDED.health = round((initial(BLOODBONDED.maxHealth)-initial(BLOODBONDED.maxHealth)/4)+(initial(BLOODBONDED.maxHealth)/4)*(BLOODBONDED.physique+13-BLOODBONDED.generation))
 						else
 							BLOODBONDED.clane = new /datum/vampireclane/caitiff()
-						BLOODBONDED.hud_used.drinkblood_icon.icon_state = "drink"
-						BLOODBONDED.hud_used.bloodheal_icon.icon_state = "bloodheal"
-						BLOODBONDED.hud_used.bloodpower_icon.icon_state = "bloodpower"
-						BLOODBONDED.hud_used.healths.icon = 'code/modules/wod13/32x48.dmi'
+//						BLOODBONDED.hud_used.drinkblood_icon.icon_state = "drink"
+//						BLOODBONDED.hud_used.healths.icon = 'code/modules/wod13/32x48.dmi'
 //						qdel(BLOODBONDED.hud_used)
 //						BLOODBONDED.hud_used = new BLOODBONDED.hud_type(BLOODBONDED)
 //						BLOODBONDED.update_sight()

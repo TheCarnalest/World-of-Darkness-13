@@ -31,7 +31,7 @@
 //			DI.icon_state = null
 		for(var/datum/action/A in H.actions)
 			if(A.vampiric)
-				qdel(A)
+				A.Remove(H)
 		var/datum/hud/HD = H.hud_used
 		var/atom/movable/screen/transform_werewolf
 		transform_werewolf = new /atom/movable/screen/transform_lupus()

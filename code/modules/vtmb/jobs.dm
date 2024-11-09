@@ -1272,7 +1272,7 @@
 //		DI.icon_state = null
 	for(var/datum/action/A in H.actions)
 		if(A.vampiric)
-			qdel(A)
+			A.Remove(H)
 	H.thaumaturgy_knowledge = FALSE
 	QDEL_NULL(H.clane)
 	var/obj/item/organ/eyes/NV = new()

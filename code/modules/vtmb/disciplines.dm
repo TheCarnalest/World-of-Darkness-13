@@ -29,8 +29,6 @@
 				owning.discipline_ranged = null
 				button.color = "#ffffff"
 		else
-			if(world.time < next_fire_after)
-				return
 			if(discipline)
 				if(discipline.check_activated(owner, owner))
 					discipline.activate(owner, owner)

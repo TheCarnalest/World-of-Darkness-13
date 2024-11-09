@@ -266,7 +266,7 @@
 	plane = HUD_PLANE
 
 /atom/movable/screen/drinkblood/Click()
-	SEND_SOUND(usr, sound('code/modules/wod13/sounds/highlight.ogg', 0, 0, 50))
+//	SEND_SOUND(usr, sound('code/modules/wod13/sounds/highlight.ogg', 0, 0, 50))
 	if(ishuman(usr))
 		var/mob/living/carbon/human/BD = usr
 		BD.update_blood_hud()
@@ -282,6 +282,15 @@
 		if(BD.grab_state > GRAB_PASSIVE)
 			if(ishuman(BD.pulling))
 				var/mob/living/carbon/human/PB = BD.pulling
+				if(isghoul(usr))
+					if(!iskindred(PB))
+						SEND_SOUND(BD, sound('code/modules/wod13/sounds/need_blood.ogg', 0, 0, 75))
+						to_chat(BD, "<span class='warning'>Eww, that is <b>GROSS</b>.</span>")
+						return
+				if(!isghoul(usr) && !iskindred(usr))
+					SEND_SOUND(BD, sound('code/modules/wod13/sounds/need_blood.ogg', 0, 0, 75))
+					to_chat(BD, "<span class='warning'>Eww, that is <b>GROSS</b>.</span>")
+					return
 				if(PB.stat == 4 && !HAS_TRAIT(BD, TRAIT_GULLET))
 					SEND_SOUND(BD, sound('code/modules/wod13/sounds/need_blood.ogg', 0, 0, 75))
 					to_chat(BD, "<span class='warning'>This creature is <b>DEAD</b>.</span>")
