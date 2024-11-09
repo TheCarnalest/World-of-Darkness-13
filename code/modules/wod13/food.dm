@@ -257,8 +257,8 @@
 	anchored = TRUE
 	density = TRUE
 	owner_needed = FALSE
-	prize_list = list(new /datum/data/mining_equipment("cola",	/obj/item/reagent_containers/food/drinks/coffee/vampire,	10),
-		new /datum/data/mining_equipment("soda", /obj/item/reagent_containers/food/drinks/coffee/vampire/robust, 5)
+	prize_list = list(new /datum/data/mining_equipment("coffee",	/obj/item/reagent_containers/food/drinks/coffee/vampire,	10),
+		new /datum/data/mining_equipment("strong coffee", /obj/item/reagent_containers/food/drinks/coffee/vampire/robust, 5)
 	)
 
 /obj/machinery/mineral/equipment_vendor/fastfood/AltClick(mob/user)
