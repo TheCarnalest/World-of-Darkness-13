@@ -13,7 +13,7 @@
 	var/buttontooltipstyle = ""
 	var/transparent_when_unavailable = TRUE
 
-	var/button_icon = 'icons/mob/actions/backgrounds.dmi' //This is the file for the BACKGROUND icon
+	var/button_icon = 'code/modules/wod13/UI/actions.dmi' //This is the file for the BACKGROUND icon
 	var/background_icon_state = ACTION_BUTTON_DEFAULT_BACKGROUND //And this is the state for the background icon
 
 	var/icon_icon = 'icons/hud/actions.dmi' //This is the file for the ACTION icon

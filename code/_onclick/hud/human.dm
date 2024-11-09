@@ -369,25 +369,25 @@
 	blood_icon.hud = src
 	infodisplay += blood_icon
 
-	discipline1_icon = new /atom/movable/screen/disciplines()
-	discipline1_icon.screen_loc = ui_discipline1
-	discipline1_icon.hud = src
-	static_inventory += discipline1_icon
+//	discipline1_icon = new /atom/movable/screen/disciplines()
+//	discipline1_icon.screen_loc = ui_discipline1
+//	discipline1_icon.hud = src
+//	static_inventory += discipline1_icon
 
-	discipline2_icon = new /atom/movable/screen/disciplines()
-	discipline2_icon.screen_loc = ui_discipline2
-	discipline2_icon.hud = src
-	static_inventory += discipline2_icon
+//	discipline2_icon = new /atom/movable/screen/disciplines()
+//	discipline2_icon.screen_loc = ui_discipline2
+//	discipline2_icon.hud = src
+//	static_inventory += discipline2_icon
 
-	discipline3_icon = new /atom/movable/screen/disciplines()
-	discipline3_icon.screen_loc = ui_discipline3
-	discipline3_icon.hud = src
-	static_inventory += discipline3_icon
+//	discipline3_icon = new /atom/movable/screen/disciplines()
+//	discipline3_icon.screen_loc = ui_discipline3
+//	discipline3_icon.hud = src
+//	static_inventory += discipline3_icon
 
-	discipline4_icon = new /atom/movable/screen/disciplines()
-	discipline4_icon.screen_loc = ui_discipline4
-	discipline4_icon.hud = src
-	static_inventory += discipline4_icon
+//	discipline4_icon = new /atom/movable/screen/disciplines()
+//	discipline4_icon.screen_loc = ui_discipline4
+//	discipline4_icon.hud = src
+//	static_inventory += discipline4_icon
 
 	drinkblood_icon = new /atom/movable/screen/drinkblood()
 	drinkblood_icon.icon_state = "act_bite"
@@ -411,7 +411,6 @@
 	static_inventory += bloodpower_icon
 
 	zone_icon = new /atom/movable/screen/vtm_zone()
-	zone_icon.screen_loc = ui_bloodpower
 	zone_icon.screen_loc = ui_vtm_zone
 	zone_icon.hud = src
 	static_inventory += zone_icon

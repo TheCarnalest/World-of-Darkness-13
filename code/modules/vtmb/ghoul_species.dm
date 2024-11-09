@@ -125,22 +125,21 @@
 	infor.Grant(C)
 	var/datum/action/blood_heal/bloodheal = new()
 	bloodheal.Grant(C)
-	var/datum/action/take_vitae/TV = new()
-	TV.Grant(C)
 	C.generation = 13
 	C.bloodpool = 10
 	C.maxbloodpool = 10
-	C.maxHealth = 100
-	C.health = 100
+//	C.maxHealth = 100
+//	C.health = 100
 
 /datum/species/ghoul/on_species_loss(mob/living/carbon/human/C, datum/species/new_species, pref_load)
 	. = ..()
-	for(var/datum/action/ghoulinfo/GI in C.actions)
-		qdel(GI)
-	for(var/datum/action/blood_heal/BH in C.actions)
-		qdel(BH)
-	for(var/datum/action/take_vitae/TV in C.actions)
-		qdel(TV)
+	for(var/datum/action/A in C.actions)
+		if(A)
+			if(A.vampiric)
+				A.Remove(C)
+	for(var/datum/action/ghoulinfo/infor in C.actions)
+		if(infor)
+			infor.Remove(C)
 
 /datum/action/take_vitae
 	name = "Take Vitae"
@@ -185,13 +184,18 @@
 	name = "Blood Heal"
 	desc = "Use vitae in your blood to heal your wounds."
 	button_icon_state = "bloodheal"
+	button_icon = 'code/modules/wod13/UI/actions.dmi'
+	background_icon_state = "discipline"
+	icon_icon = 'code/modules/wod13/UI/actions.dmi'
 	check_flags = AB_CHECK_HANDS_BLOCKED|AB_CHECK_IMMOBILE|AB_CHECK_LYING|AB_CHECK_CONSCIOUS
+	vampiric = TRUE
 	var/last_heal = 0
 	var/level = 1
 
 /datum/action/blood_heal/Trigger()
 	if(istype(owner, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = owner
+		level = max(1, 13-H.generation)
 		if(HAS_TRAIT(H, TRAIT_COFFIN_THERAPY))
 			if(!istype(H.loc, /obj/structure/closet/crate/coffin))
 				to_chat(usr, "<span class='warning'>You need to be in a coffin to use that!</span>")

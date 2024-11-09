@@ -502,16 +502,16 @@
 	else
 		harm_focus = dir
 
-/mob/living/Click()
-	if(ishuman(usr) && usr != src)
-		var/mob/living/carbon/human/SH = usr
-		for(var/atom/movable/screen/disciplines/DISCP in SH.hud_used.static_inventory)
-			if(DISCP)
-				if(DISCP.active)
-					DISCP.range_activate(src, SH)
-					SH.face_atom(src)
-					return
-	..()
+//mob/living/Click()
+//	if(ishuman(usr) && usr != src)
+//		var/mob/living/carbon/human/SH = usr
+//		for(var/atom/movable/screen/disciplines/DISCP in SH.hud_used.static_inventory)
+//			if(DISCP)
+//				if(DISCP.active)
+//					DISCP.range_activate(src, SH)
+//					SH.face_atom(src)
+//					return
+//	..()
 
 /atom/Click(location,control,params)
 /*
@@ -550,7 +550,7 @@
 							HUY.put_in_active_hand(item_to_pick)
 						return
 	..()
-
+/*
 /atom/movable/screen/disciplines/Initialize()
 	. = ..()
 
@@ -651,7 +651,7 @@
 		last_discipline_use = world.time
 	active = FALSE
 	icon_state = main_state
-
+*/
 /mob/living/carbon/werewolf/Life()
 	. = ..()
 	update_blood_hud()

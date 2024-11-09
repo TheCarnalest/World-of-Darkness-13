@@ -409,7 +409,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 	// Fetch aspect ratio
 	var/view_size = getviewsize(view)
-	var/aspect_ratio = view_size[1]+2 / view_size[2]
+	var/aspect_ratio = view_size[1] / view_size[2]
 
 	// Calculate desired pixel width using window size and aspect ratio
 	var/list/sizes = params2list(winget(src, "mainwindow.split;mapwindow", "size"))
