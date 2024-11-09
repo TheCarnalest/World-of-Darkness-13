@@ -3,7 +3,7 @@
 /obj/machinery/microwave
 	name = "microwave oven"
 	desc = "Cooks and boils stuff."
-	icon = 'code/modules/wod13/props.dmi'
+	icon = 'icons/obj/kitchen.dmi'
 	icon_state = "mw"
 	layer = BELOW_OBJ_LAYER
 	density = TRUE
@@ -89,15 +89,15 @@
 
 /obj/machinery/microwave/update_icon_state()
 	if(broken)
-		icon_state = "mw"
-	else if(dirty_anim_playing)
 		icon_state = "mwb"
+	else if(dirty_anim_playing)
+		icon_state = "mwbloody1"
 	else if(dirty == 100)
-		icon_state = "mw"
+		icon_state = "mwbloody"
 	else if(operating)
 		icon_state = "mw1"
 	else if(panel_open)
-		icon_state = "mw"
+		icon_state = "mw-o"
 	else
 		icon_state = "mw"
 
