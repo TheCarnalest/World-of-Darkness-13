@@ -61,7 +61,8 @@
 //Lower right, persistent menu
 #define ui_throw "WEST-4:15,SOUTH+4:12"
 #define ui_drop "WEST-4:15,SOUTH+4:2"
-#define ui_pull "WEST-2:11,SOUTH+2:27"
+#define ui_jump "WEST-2:11,SOUTH+2:26"
+#define ui_pull "WEST-2:11,SOUTH+2:16"
 #define ui_resist "WEST-2:11,SOUTH+4:12"
 #define ui_rest "WEST-4:15,SOUTH+3:24"
 #define ui_block "WEST-2:11,SOUTH+4:2"
@@ -69,9 +70,9 @@
 #define ui_acti "WEST-3:16,SOUTH+1:16"
 #define ui_zonesel "WEST-4:16,SOUTH+1:16"
 #define ui_acti_alt "WEST-3:16,SOUTH+1:16"	//alternative intent switcher for when the interface is hidden (F12)
-#define ui_crafting	"WEST-2:11,SOUTH+3:5"
+#define ui_crafting	"WEST-2:11,SOUTH+3:4"
 #define ui_building "EAST-4:22,SOUTH:21"
-#define ui_language_menu "WEST-2:11,SOUTH+3:15"
+#define ui_language_menu "WEST-2:11,SOUTH+3:14"
 #define ui_skill_menu "EAST-4:22,SOUTH:5"
 
 //Upper-middle right (alerts)

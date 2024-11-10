@@ -216,9 +216,16 @@
 
 //(source.pulledby && source.pulledby.grab_state > GRAB_PASSIVE)
 
+/atom/movable/screen/jump
+	name = "jump"
+	icon = 'code/modules/wod13/UI/buttons_wide.dmi'
+	icon_state = "act_jump_off"
+	layer = HUD_LAYER
+	plane = HUD_PLANE
+
 /atom/movable/screen/block
 	name = "block"
-	icon = 'code/modules/wod13/icons.dmi'
+	icon = 'code/modules/wod13/UI/buttons_wide.dmi'
 	icon_state = "act_block_off"
 	layer = HUD_LAYER
 	plane = HUD_PLANE

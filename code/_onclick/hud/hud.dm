@@ -41,6 +41,7 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 	var/atom/movable/screen/pull_icon
 	var/atom/movable/screen/rest_icon
 	var/atom/movable/screen/block_icon
+	var/atom/movable/screen/jump_icon
 	var/atom/movable/screen/blood_icon
 	var/atom/movable/screen/rage_icon
 	var/atom/movable/screen/drinkblood_icon

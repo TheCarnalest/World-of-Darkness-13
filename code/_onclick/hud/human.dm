@@ -351,6 +351,12 @@
 	block_icon.hud = src
 	static_inventory += block_icon
 
+	jump_icon = new /atom/movable/screen/jump()
+	jump_icon.icon = 'code/modules/wod13/UI/buttons_wide.dmi'
+	jump_icon.screen_loc = ui_jump
+	jump_icon.hud = src
+	static_inventory += jump_icon
+
 //	internals = new /atom/movable/screen/internals()
 //	internals.hud = src
 //	infodisplay += internals
