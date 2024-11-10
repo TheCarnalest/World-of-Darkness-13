@@ -220,7 +220,7 @@ GLOBAL_LIST_EMPTY(donation_races)
 	for(var/I in subtypesof(/datum/species))
 		var/datum/species/S = new I
 		if(S.selectable)
-			GLOB.donation_races += S.id
+			GLOB.roundstart_races += S.id
 	if(!GLOB.roundstart_races.len)
 		GLOB.roundstart_races += "kindred"
 
