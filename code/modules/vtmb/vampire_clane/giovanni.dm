@@ -9,6 +9,7 @@
 	)
 	male_clothes = "/obj/item/clothing/under/vampire/suit"
 	female_clothes = "/obj/item/clothing/under/vampire/suit/female"
+	whitelisted = TRUE
 
 /datum/discipline/necromancy/post_gain(mob/living/carbon/human/H)
 	H.faction |= "Giovanni"

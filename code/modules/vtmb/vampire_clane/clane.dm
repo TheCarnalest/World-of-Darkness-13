@@ -24,7 +24,7 @@ And it also helps for the character set panel
 	var/male_clothes
 	var/female_clothes
 	var/enlightement = FALSE
-	var/list/whitelist = list()	//For whitelisting [Lucia] - remove this shit, make it a database
+	var/whitelisted = FALSE
 
 //var/datum/action/innate/drink_blood/sosalka = new
 

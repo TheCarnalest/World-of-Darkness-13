@@ -12,10 +12,9 @@
 	brutemod = 1
 	heatmod = 1
 	burnmod = 1
-//	punchdamagelow = 5
-//	punchdamagehigh = 7
 	dust_anim = "dust-h"
-	donation = FALSE
+	whitelisted = TRUE
+	selectable = TRUE
 
 /datum/action/garouinfo
 	name = "About Me"

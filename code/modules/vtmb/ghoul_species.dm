@@ -16,6 +16,7 @@
 	var/mob/living/carbon/human/master
 	var/changed_master = FALSE
 	var/last_vitae = 0
+	selectable = TRUE
 
 /datum/action/ghoulinfo
 	name = "About Me"

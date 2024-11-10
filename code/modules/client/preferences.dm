@@ -495,7 +495,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<b>Species:</b><BR><a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a><BR>"
 			if(pref_species.name == "Vampire")
 				dat += "<b>Path of [enlightement == FALSE ? "Humanity" : "Enlightement"]:</b> [humanity]/10<BR>"
-				if(!slotlocked)
+				if(SSwhitelists.is_whitelisted(parent.ckey, "enlightenment") && !slotlocked)
 					dat += "<a href='?_src_=prefs;preference=pathof;task=input'>Switch Path</a><BR>"
 			if(pref_species.name == "Werewolf")
 				dat += "<b>Veil:</b> [masquerade]/5<BR>"
@@ -2111,13 +2111,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(slotlocked)
 						link_bug_fix = FALSE
 						return
-					var/list/shittedmyself = list()
+					var/list/auspice_choices = list()
 					for(var/i in GLOB.auspices_list)
 						var/a = GLOB.auspices_list[i]
 						var/datum/auspice/V = new a
-						shittedmyself[V.name] += GLOB.auspices_list[i]
+						auspice_choices[V.name] += GLOB.auspices_list[i]
 						qdel(V)
-					var/result = input(user, "Select an Auspice", "Auspice Selection") as null|anything in shittedmyself
+					var/result = input(user, "Select an Auspice", "Auspice Selection") as null|anything in auspice_choices
 					if(result)
 						var/newtype = GLOB.auspices_list[result]
 						var/datum/auspice/Auspic = new newtype()
@@ -2127,17 +2127,17 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(slotlocked)
 						link_bug_fix = FALSE
 						return
-					var/list/shittedmyself = list()
+					var/list/available_clans = list()
 					for(var/i in GLOB.clanes_list)
 						var/a = GLOB.clanes_list[i]
 						var/datum/vampireclane/V = new a
-						if(length(V.whitelist))
-							if(parent.ckey in V.whitelist)
-								shittedmyself[V.name] += GLOB.clanes_list[i]
+						if (V.whitelisted)
+							if (SSwhitelists.is_whitelisted(user.ckey, V.name))
+								available_clans[V.name] += GLOB.clanes_list
 						else
-							shittedmyself[V.name] += GLOB.clanes_list[i]
+							available_clans[V.name] += GLOB.clanes_list[i]
 						qdel(V)
-					var/result = input(user, "Select a clane", "Clane Selection") as null|anything in shittedmyself
+					var/result = input(user, "Select a clane", "Clane Selection") as null|anything in available_clans
 					if(result)
 						var/newtype = GLOB.clanes_list[result]
 						var/datum/vampireclane/Clan = new newtype()
@@ -2399,66 +2399,35 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(slotlocked)
 						link_bug_fix = FALSE
 						return
-					//[Lucia] keeping this here for when we decide to restrict it again
-					var/donator = TRUE
-					if(donator)
-						var/result = input(user, "Select a species", "Species Selection") as null|anything in GLOB.donation_races
 
-						if(result)
-							all_quirks = list()
-							SetQuirks(user)
-							var/newtype = GLOB.species_list[result]
-							pref_species = new newtype()
-							if(pref_species.id == "ghoul" || pref_species.id == "human")
-								discipline1type = null
-								discipline2type = null
-								discipline3type = null
-								discipline4type = null
-							if(pref_species.id == "kindred")
-								qdel(clane)
-								clane = new /datum/vampireclane/brujah()
-								if(length(clane.clane_disciplines) >= 1)
-									discipline1type = clane.clane_disciplines[1]
-								if(length(clane.clane_disciplines) >= 2)
-									discipline2type = clane.clane_disciplines[2]
-								if(length(clane.clane_disciplines) >= 3)
-									discipline3type = clane.clane_disciplines[3]
-								discipline4type = null
-							//Now that we changed our species, we must verify that the mutant colour is still allowed.
-							var/temp_hsv = RGBtoHSV(features["mcolor"])
-							if(features["mcolor"] == "#000" || (!(MUTCOLORS_PARTSONLY in pref_species.species_traits) && ReadHSV(temp_hsv)[3] < ReadHSV("#7F7F7F")[3]))
-								features["mcolor"] = pref_species.default_color
-							if(randomise[RANDOM_NAME])
-								real_name = pref_species.random_name(gender)
-					else
-						var/result = input(user, "Select a species", "Species Selection") as null|anything in GLOB.roundstart_races
+					var/result = input(user, "Select a species", "Species Selection") as null|anything in GLOB.donation_races
 
-						if(result)
-							all_quirks = list()
-							SetQuirks(user)
-							var/newtype = GLOB.species_list[result]
-							pref_species = new newtype()
-							if(pref_species.id == "ghoul" || pref_species.id == "human")
-								discipline1type = null
-								discipline2type = null
-								discipline3type = null
-								discipline4type = null
-							if(pref_species.id == "kindred")
-								qdel(clane)
-								clane = new /datum/vampireclane/brujah()
-								if(length(clane.clane_disciplines) >= 1)
-									discipline1type = clane.clane_disciplines[1]
-								if(length(clane.clane_disciplines) >= 2)
-									discipline2type = clane.clane_disciplines[2]
-								if(length(clane.clane_disciplines) >= 3)
-									discipline3type = clane.clane_disciplines[3]
-								discipline4type = null
-							//Now that we changed our species, we must verify that the mutant colour is still allowed.
-							var/temp_hsv = RGBtoHSV(features["mcolor"])
-							if(features["mcolor"] == "#000" || (!(MUTCOLORS_PARTSONLY in pref_species.species_traits) && ReadHSV(temp_hsv)[3] < ReadHSV("#7F7F7F")[3]))
-								features["mcolor"] = pref_species.default_color
-							if(randomise[RANDOM_NAME])
-								real_name = pref_species.random_name(gender)
+					if(result)
+						all_quirks = list()
+						SetQuirks(user)
+						var/newtype = GLOB.species_list[result]
+						pref_species = new newtype()
+						if(pref_species.id == "ghoul" || pref_species.id == "human")
+							discipline1type = null
+							discipline2type = null
+							discipline3type = null
+							discipline4type = null
+						if(pref_species.id == "kindred")
+							qdel(clane)
+							clane = new /datum/vampireclane/brujah()
+							if(length(clane.clane_disciplines) >= 1)
+								discipline1type = clane.clane_disciplines[1]
+							if(length(clane.clane_disciplines) >= 2)
+								discipline2type = clane.clane_disciplines[2]
+							if(length(clane.clane_disciplines) >= 3)
+								discipline3type = clane.clane_disciplines[3]
+							discipline4type = null
+						//Now that we changed our species, we must verify that the mutant colour is still allowed.
+						var/temp_hsv = RGBtoHSV(features["mcolor"])
+						if(features["mcolor"] == "#000" || (!(MUTCOLORS_PARTSONLY in pref_species.species_traits) && ReadHSV(temp_hsv)[3] < ReadHSV("#7F7F7F")[3]))
+							features["mcolor"] = pref_species.default_color
+						if(randomise[RANDOM_NAME])
+							real_name = pref_species.random_name(gender)
 
 				if("mutant_color")
 					if(slotlocked)
@@ -3189,7 +3158,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	var/datum/species/chosen_species
 	chosen_species = pref_species.type
-	if(roundstart_checks && !(pref_species.id in GLOB.donation_races) && !(pref_species.id in (CONFIG_GET(keyed_list/roundstart_no_hard_check))))
+	if(roundstart_checks && !(pref_species.id in GLOB.roundstart_races) && !(pref_species.id in (CONFIG_GET(keyed_list/roundstart_no_hard_check))))
 		chosen_species = /datum/species/human
 		pref_species = new /datum/species/human
 		save_character()

@@ -15,6 +15,7 @@
 	female_clothes = "/obj/item/clothing/under/vampire/red"
 	enlightement = TRUE
 	var/obj/item/heirl
+	whitelisted = TRUE
 
 /datum/vampireclane/old_clan_tzimisce/post_gain(mob/living/carbon/human/H)
 	..()

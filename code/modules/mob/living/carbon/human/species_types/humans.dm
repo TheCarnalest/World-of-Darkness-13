@@ -10,6 +10,7 @@
 	liked_food = JUNKFOOD | FRIED
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_MAGIC | MIRROR_PRIDE | ERT_SPAWN | RACE_SWAP | SLIME_EXTRACT
 	payday_modifier = 1
+	selectable = TRUE
 
 /datum/action/humaninfo
 	name = "About Me"

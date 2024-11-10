@@ -17,6 +17,7 @@
 	punchdamagehigh = 20
 	dust_anim = "dust-h"
 	var/datum/vampireclane/clane
+	selectable = TRUE
 
 /datum/action/vampireinfo
 	name = "About Me"
