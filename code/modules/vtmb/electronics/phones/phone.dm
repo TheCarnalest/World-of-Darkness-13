@@ -528,11 +528,11 @@
 	folded_state = "streetphone"
 
 /obj/item/vamp/phone/clean
-	desc = "The usual phone of a cleaning company used to communicate with employees"
+	desc = "The landline phone of a cleaning company used to communicate with employees"
 	icon = 'code/modules/wod13/onfloor.dmi'
 	icon_state = "redphone"
 	anchored = TRUE
-	number = "700 4424"
+	number = "7004424"
 	can_fold = 0
 
 	open_state = "redphone"
@@ -540,6 +540,40 @@
 	folded_state = "redphone"
 
 /obj/item/vamp/phone/clean/Initialize()
+	. = ..()
+	GLOB.phone_numbers_list += number
+	GLOB.phones_list += src
+
+/obj/item/vamp/phone/clinic
+	desc = "The landline phone of a San-Fran clinic used to communicate with incoming patient calls"
+	icon = 'code/modules/wod13/onfloor.dmi'
+	icon_state = "redphone"
+	anchored = TRUE
+	number = "7002001"
+	can_fold = 0
+
+	open_state = "redphone"
+	closed_state = "redphone"
+	folded_state = "redphone"
+
+/obj/item/vamp/phone/clinic/Initialize()
+	. = ..()
+	GLOB.phone_numbers_list += number
+	GLOB.phones_list += src
+
+/obj/item/vamp/phone/pd
+	desc = "The landline phone of a San-Fran Police Department used to communicate with incoming emergency calls"
+	icon = 'code/modules/wod13/onfloor.dmi'
+	icon_state = "redphone"
+	anchored = TRUE
+	number = "7001911"
+	can_fold = 0
+
+	open_state = "redphone"
+	closed_state = "redphone"
+	folded_state = "redphone"
+
+/obj/item/vamp/phone/clinic/Initialize()
 	. = ..()
 	GLOB.phone_numbers_list += number
 	GLOB.phones_list += src
