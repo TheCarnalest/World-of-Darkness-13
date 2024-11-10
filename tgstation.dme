@@ -275,6 +275,7 @@
 #include "code\controllers\configuration\entries\general.dm"
 #include "code\controllers\configuration\entries\interview.dm"
 #include "code\controllers\configuration\entries\resources.dm"
+#include "code\controllers\configuration\entries\whitelist.dm"
 #include "code\controllers\subsystem\achievements.dm"
 #include "code\controllers\subsystem\adjacent_air.dm"
 #include "code\controllers\subsystem\air.dm"

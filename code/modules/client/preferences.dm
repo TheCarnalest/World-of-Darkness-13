@@ -2400,7 +2400,15 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						link_bug_fix = FALSE
 						return
 
-					var/result = input(user, "Select a species", "Species Selection") as null|anything in GLOB.donation_races
+					var/list/selectable_species = GLOB.roundstart_races
+					for (var/key in selectable_species)
+						var/newtype = GLOB.species_list[key]
+						var/datum/species/new_species = new newtype
+						if (new_species.whitelisted)
+							if (!SSwhitelists.is_whitelisted(parent.ckey, key))
+								selectable_species.Remove(key)
+
+					var/result = input(user, "Select a species", "Species Selection") as null|anything in selectable_species
 
 					if(result)
 						all_quirks = list()

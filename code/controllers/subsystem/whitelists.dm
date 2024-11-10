@@ -12,6 +12,8 @@ SUBSYSTEM_DEF(whitelists)
 /datum/controller/subsystem/whitelists/Initialize(timeofday)
 	if(!SSdbcore.Connect())
 		return ..()
+	if(!CONFIG_GET(flag/whitelists_enabled))
+		return ..()
 	whitelists_enabled = TRUE
 
 	for (var/key in subtypesof(/datum/vampireclane))
@@ -40,7 +42,7 @@ SUBSYSTEM_DEF(whitelists)
 	return ..()
 
 /datum/controller/subsystem/whitelists/proc/is_whitelisted(checked_ckey, checked_whitelist)
-	if (!SSdbcore.Connect())
+	if (!whitelists_enabled)
 		return TRUE
 
 	for (var/datum/whitelist/current_whitelist in whitelist_entries)
