@@ -15,6 +15,7 @@
 	female_clothes = "/obj/item/clothing/under/vampire/red"
 	enlightement = TRUE
 	var/obj/item/heirl
+	whitelisted = TRUE
 
 /obj/effect/proc_holder/spell/targeted/shapeshift/tzimisce
 	name = "Tzimisce Form"

@@ -779,7 +779,7 @@
 	display_order = JOB_DISPLAY_ORDER_CITIZEN
 
 	humans_accessible = TRUE
-	garou_allowed = FALSE
+	garou_allowed = TRUE
 
 	v_duty = "Follow the traditions of the Camarilla. Obey the Prince and their authority. The city belongs to him. Aligning yourself with your clan members would be of benefit."
 	duty = "Obey the authorities... Or don't. You are up late tonight for one reason or another."
@@ -1581,7 +1581,7 @@
 
 //	minimal_generation = 11	//Uncomment when players get exp enough
 	humans_accessible = TRUE
-	garou_allowed = FALSE
+	garou_allowed = TRUE
 
 	v_duty = "Drive people in the city."
 	duty = "Drive people in the city."
