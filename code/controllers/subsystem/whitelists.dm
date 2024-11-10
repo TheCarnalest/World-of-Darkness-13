@@ -46,7 +46,7 @@ SUBSYSTEM_DEF(whitelists)
 	return FALSE
 
 /datum/controller/subsystem/whitelists/proc/add_whitelist(var/ckey, var/whitelist, var/approver_ckey, var/ticket_link, var/approval_reason)
-	if (!whitelists_enabled)
+	if (!whitelists_enabled || !SSdbcore.Connect())
 		return FALSE
 	if (is_whitelisted(ckey, whitelist))
 		return FALSE
@@ -74,7 +74,7 @@ SUBSYSTEM_DEF(whitelists)
 		return FALSE
 
 /datum/controller/subsystem/whitelists/proc/remove_whitelist(var/ckey, var/whitelist)
-	if (!whitelists_enabled)
+	if (!whitelists_enabled || !SSdbcore.Connect())
 		return FALSE
 	if (!is_whitelisted(ckey, whitelist))
 		return FALSE
@@ -100,7 +100,7 @@ SUBSYSTEM_DEF(whitelists)
 		return FALSE
 
 /datum/controller/subsystem/whitelists/proc/update_from_database()
-	if (!whitelists_enabled)
+	if (!whitelists_enabled || !SSdbcore.Connect())
 		return
 
 	whitelist_entries = list()
