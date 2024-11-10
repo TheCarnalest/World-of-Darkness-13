@@ -13,7 +13,7 @@
 	icon_state = "fireaxe0"
 	name = "fire axe"
 	desc = "Truly, the weapon of a madman. Who would think to fight fire with an axe?"
-	force = 15
+	force = 10
 	throwforce = 50
 	w_class = WEIGHT_CLASS_BULKY
 	slot_flags = ITEM_SLOT_BACK
@@ -26,7 +26,7 @@
 	resistance_flags = FIRE_PROOF
 	wound_bonus = -15
 	bare_wound_bonus = 20
-	armour_penetration = 30
+	armour_penetration = 35
 	block_chance = 15
 	pixel_w = -8
 	masquerade_violating = FALSE
@@ -73,9 +73,9 @@
 	force = 55
 	throwforce = 10
 	w_class = WEIGHT_CLASS_BULKY
-	slot_flags = ITEM_SLOT_BELT
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT
 	block_chance = 40
-	armour_penetration = 35
+	armour_penetration = 32
 	sharpness = SHARP_EDGED
 	attack_verb_continuous = list("slashes", "cuts")
 	attack_verb_simple = list("slash", "cut")
@@ -92,8 +92,9 @@
 	icon = 'code/modules/wod13/weapons.dmi'
 	icon_state = "baseball"
 	force = 30
-	wound_bonus = -10
+	wound_bonus = 10
 	throwforce = 10
+	slot_flags = ITEM_SLOT_BELT
 	attack_verb_continuous = list("beats", "smacks")
 	attack_verb_simple = list("beat", "smack")
 	w_class = WEIGHT_CLASS_NORMAL
@@ -121,11 +122,12 @@
 	icon = 'code/modules/wod13/weapons.dmi'
 	icon_state = "pipe"
 	force = 20
-	wound_bonus = -10
+	wound_bonus = 15
 	throwforce = 10
 	attack_verb_continuous = list("beats", "smacks")
 	attack_verb_simple = list("beat", "smack")
 	w_class = WEIGHT_CLASS_NORMAL
+	slot_flags = ITEM_SLOT_BELT
 	resistance_flags = FIRE_PROOF
 
 /obj/item/melee/vampirearms/knife
@@ -134,7 +136,7 @@
 	icon = 'code/modules/wod13/weapons.dmi'
 	icon_state = "knife"
 	force = 30
-	wound_bonus = -10
+	wound_bonus = -5
 	bare_wound_bonus = 5
 	throwforce = 15
 	attack_verb_continuous = list("slashes", "cuts")
@@ -144,13 +146,14 @@
 	block_chance = 3
 	sharpness = SHARP_EDGED
 	w_class = WEIGHT_CLASS_SMALL
+	slot_flags = ITEM_SLOT_BELT
 	resistance_flags = FIRE_PROOF
 
 /obj/item/melee/vampirearms/knife/gangrel
 	name = "claws"
 	icon_state = "gangrel"
 	w_class = WEIGHT_CLASS_BULKY
-	force = 10
+	force = 6
 	armour_penetration = 100	//It's magical damage
 	block_chance = 20
 	item_flags = DROPDEL
@@ -165,9 +168,9 @@
 
 /obj/item/melee/vampirearms/knife/gangrel/lasombra
 	name = "shadow tentacle"
-	force = 12
-	damtype = BURN
+	force = 7
 	armour_penetration = 100
+	block_chance = 0
 	icon_state = "lasombra"
 	masquerade_violating = TRUE
 
@@ -176,7 +179,8 @@
 		return
 	if(isliving(target))
 		var/mob/living/L = target
-		L.apply_damage(15, CLONE)
+		L.apply_damage(16, CLONE)
+		L.apply_damage(7, BURN)
 
 /obj/item/melee/touch_attack/quietus
 	name = "\improper poison touch"
@@ -339,7 +343,7 @@
 	desc = "Great weapon against mortal or immortal."
 	force = 40
 	throwforce = 10
-	block_chance = 40
+	block_chance = 30
 	w_class = WEIGHT_CLASS_BULKY
 	attack_verb_continuous = list("attacks", "chops", "tears", "beats")
 	attack_verb_simple = list("attack", "chop", "tear", "beat")
@@ -445,10 +449,11 @@
 	lefthand_file = 'code/modules/wod13/righthand.dmi'
 	righthand_file = 'code/modules/wod13/lefthand.dmi'
 	force = 20
-	block_chance = 45
+	block_chance = 25
 	throwforce = 40
 	throw_speed = 2
 	throw_range = 3
+	masquerade_violating = TRUE
 	w_class = WEIGHT_CLASS_BULKY
 	attack_verb_continuous = list("shoves", "bashes")
 	attack_verb_simple = list("shove", "bash")
