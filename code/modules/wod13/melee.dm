@@ -40,7 +40,7 @@
 /obj/item/melee/vampirearms/fireaxe/ComponentInitialize()
 	. = ..()
 	AddComponent(/datum/component/butchering, 100, 80, 0 , hitsound)
-	AddComponent(/datum/component/two_handed, force_unwielded=15, force_wielded=70, icon_wielded="fireaxe1")
+	AddComponent(/datum/component/two_handed, force_unwielded=10, force_wielded=70, icon_wielded="fireaxe1")
 
 /obj/item/melee/vampirearms/fireaxe/proc/on_wield(obj/item/source, mob/user)
 	SIGNAL_HANDLER
