@@ -12,4 +12,8 @@
 	src.approver_ckey = approver_ckey
 	src.ticket_link = ticket_link
 	src.approval_reason = approval_reason
-	src.date_whitelisted = date_whitelisted
+	if (date_whitelisted)
+		src.date_whitelisted = date_whitelisted
+	else
+		src.date_whitelisted = time2text(world.timeofday, "yyyy-MM-dd HH:mm:ss")
+
