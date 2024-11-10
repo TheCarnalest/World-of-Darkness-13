@@ -29,7 +29,7 @@ SUBSYSTEM_DEF(whitelists)
 		qdel(species)
 
 	//placeholder until a proper morality system is added
-	possible_whitelists += "enlightenment"
+	//possible_whitelists += "enlightenment"
 
 	update_from_database()
 

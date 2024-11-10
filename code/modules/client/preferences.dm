@@ -495,7 +495,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<b>Species:</b><BR><a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a><BR>"
 			if(pref_species.name == "Vampire")
 				dat += "<b>Path of [enlightement == FALSE ? "Humanity" : "Enlightement"]:</b> [humanity]/10<BR>"
-				if(SSwhitelists.is_whitelisted(parent.ckey, "enlightenment") && !slotlocked)
+				//if(SSwhitelists.is_whitelisted(parent.ckey, "enlightenment") && !slotlocked)
+				if(!slotlocked)
 					dat += "<a href='?_src_=prefs;preference=pathof;task=input'>Switch Path</a><BR>"
 			if(pref_species.name == "Werewolf")
 				dat += "<b>Veil:</b> [masquerade]/5<BR>"
