@@ -15,5 +15,5 @@
 	if (date_whitelisted)
 		src.date_whitelisted = date_whitelisted
 	else
-		src.date_whitelisted = time2text(world.timeofday, "yyyy-MM-dd HH:mm:ss")
+		src.date_whitelisted = SQLtime()
 
