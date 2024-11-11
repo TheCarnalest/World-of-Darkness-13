@@ -232,7 +232,7 @@
 	inhand_icon_state = "uzi"
 	worn_icon_state = "uzi"
 	mag_type = /obj/item/ammo_box/magazine/vamp9mm
-	burst_size = 2
+	burst_size = 5
 	bolt_type = BOLT_TYPE_OPEN
 	show_bolt_icon = FALSE
 	mag_display = TRUE
@@ -249,7 +249,7 @@
 	icon_state = "mp5"
 	ammo_type = /obj/item/ammo_casing/vampire/c9mm
 	caliber = CALIBER_9MM
-	max_ammo = 25
+	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/gun/ballistic/automatic/vampire/mp5
@@ -260,7 +260,7 @@
 	inhand_icon_state = "mp5"
 	worn_icon_state = "mp5"
 	mag_type = /obj/item/ammo_box/magazine/vamp9mp5
-	burst_size = 3
+	burst_size = 4
 	bolt_type = BOLT_TYPE_OPEN
 	show_bolt_icon = FALSE
 	mag_display = TRUE
@@ -291,7 +291,7 @@
 	mag_type = /obj/item/ammo_box/magazine/vamp556
 	burst_size = 2
 	fire_delay = 2
-	spread = 5
+	spread = 4
 	bolt_type = BOLT_TYPE_OPEN
 	show_bolt_icon = FALSE
 	mag_display = TRUE
@@ -321,7 +321,7 @@
 	w_class = WEIGHT_CLASS_BULKY
 	mag_type = /obj/item/ammo_box/magazine/vamp545
 	burst_size = 3
-	fire_delay = 2
+	fire_delay = 3
 	spread = 5
 	bolt_type = BOLT_TYPE_OPEN
 	show_bolt_icon = FALSE
@@ -352,8 +352,8 @@
 	w_class = WEIGHT_CLASS_BULKY
 	mag_type = /obj/item/ammo_box/magazine/vampaug
 	burst_size = 3
-	fire_delay = 1
-	spread = 5
+	fire_delay = 2
+	spread = 3
 	bolt_type = BOLT_TYPE_OPEN
 	show_bolt_icon = FALSE
 	mag_display = TRUE
@@ -382,9 +382,9 @@
 	worn_icon_state = "thompson"
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/vampthompson
-	burst_size = 10
+	burst_size = 4
 	fire_delay = 1
-	spread = 5
+	spread = 7
 	bolt_type = BOLT_TYPE_OPEN
 	show_bolt_icon = FALSE
 	mag_display = TRUE
@@ -448,7 +448,7 @@
 	icon_state = "pomp"
 	inhand_icon_state = "pomp"
 	worn_icon_state = "pomp"
-	fire_delay = 8
+	fire_delay = 6
 	mag_type = /obj/item/ammo_box/magazine/internal/vampshotgun
 	can_be_sawn_off	= FALSE
 	fire_sound = 'code/modules/wod13/sounds/pomp.ogg'
