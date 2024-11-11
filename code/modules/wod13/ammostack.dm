@@ -67,6 +67,7 @@
 /obj/projectile/beam/beam_rifle/vampire/vamp12g
 	name = "12g shotgun slug"
 	damage = 55
+	range = 22 //range of where you can see + one screen after
 
 /obj/projectile/beam/beam_rifle/vampire/vamp12g/pellet
 	name = "12g shotgun pellet"
