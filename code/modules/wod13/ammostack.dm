@@ -70,7 +70,7 @@
 
 /obj/projectile/beam/beam_rifle/vampire/vamp12g/pellet
 	name = "12g shotgun pellet"
-	damage = 8
+	damage = 9
 
 /obj/projectile/beam/beam_rifle/vampire/vamp12g/on_hit(atom/target, blocked = FALSE)
 	. = ..()
@@ -157,6 +157,7 @@
 	projectile_type = /obj/projectile/beam/beam_rifle/vampire/vamp12g/pellet
 	pellets = 8
 	variance = 25
+
 /*
 /obj/item/storage/ammostack
 	icon = 'code/modules/wod13/ammo.dmi'
@@ -235,6 +236,11 @@
 	icon_state = "12box"
 	ammo_type = /obj/item/ammo_casing/vampire/c12g
 	max_ammo = 30
+
+/obj/item/ammo_box/vampire/c12g/buck
+	name = "ammo box (12g, 00 buck)"
+	icon_state = "12box_buck"
+	ammo_type = /obj/item/ammo_casing/vampire/c12g/buck
 
 /obj/item/ammo_box/vampire/arrows
 	name = "ammo box (arrows)"
