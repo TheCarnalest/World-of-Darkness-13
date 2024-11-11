@@ -189,6 +189,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/ambitious = FALSE
 	var/flavor_text
 
+	var/friend_text
+	var/enemy_text
+	var/lover_text
+
 	var/diablerist = 0
 
 	var/reason_of_death = "None"
@@ -748,8 +752,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			dat += "<BR><BR><b>Relationships:</b><BR>"
 			dat += "Have a Friend: <a href='?_src_=prefs;preference=friend'>[friend == TRUE ? "Enabled" : "Disabled"]</A><BR>"
+			dat += "What a Friend knows about me: [friend_text] <a href='?_src_=prefs;preference=friend_text;task=input'>Change</a><BR>"
+			dat += "<BR>"
 			dat += "Have an Enemy: <a href='?_src_=prefs;preference=enemy'>[enemy == TRUE ? "Enabled" : "Disabled"]</A><BR>"
-			dat += "Have an Lover: <a href='?_src_=prefs;preference=lover'>[lover == TRUE ? "Enabled" : "Disabled"]</A><BR>"
+			dat += "What an Enemy knows about me: [enemy_text] <a href='?_src_=prefs;preference=enemy_text;task=input'>Change</a><BR>"
+			dat += "<BR>"
+			dat += "Have a Lover: <a href='?_src_=prefs;preference=lover'>[lover == TRUE ? "Enabled" : "Disabled"]</A><BR>"
+			dat += "What a Lover knows about me: [lover_text] <a href='?_src_=prefs;preference=lover_text;task=input'>Change</a><BR>"
 
 			dat += "<BR><b>Be Ambitious: </b><a href='?_src_=prefs;preference=ambitious'>[ambitious == TRUE ? "Enabled" : "Disabled"]</A><BR>"
 
@@ -2332,6 +2341,19 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 //							exper = max(0, exper+exper_plus)
 //							exper_plus = 0
 
+				if("friend_text")
+					var/new_text = input(user, "What a Friend knows about me:", "Character Preference") as text|null
+					if(new_text)
+						friend_text = sanitize_text(new_text)
+				if("enemy_text")
+					var/new_text = input(user, "What an Enemy knows about me:", "Character Preference") as text|null
+					if(new_text)
+						enemy_text = sanitize_text(new_text)
+				if("lover_text")
+					var/new_text = input(user, "What a Lover knows about me:", "Character Preference") as text|null
+					if(new_text)
+						lover_text = sanitize_text(new_text)
+
 				if("flavor_text")
 					var/new_flavor = input(user, "Choose your character's flavor text:", "Character Preference")  as text|null
 					if(new_flavor)
@@ -3251,12 +3273,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				character.AddElement(/datum/element/children, COMSIG_PARENT_PREQDELETED, src)
 		parent << browse(null, "window=preferences_window")
 		parent << browse(null, "window=preferences_browser")
-		if(friend)
-			character.have_friend = TRUE
-		if(enemy)
-			character.have_enemy = TRUE
-		if(lover)
-			character.have_lover = TRUE
 
 /mob/living/carbon/human/proc/create_disciplines(var/discipline_pref = TRUE, var/discipline1, var/discipline2, var/discipline3)	//EMBRACE BASIC
 	if(client)

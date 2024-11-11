@@ -101,12 +101,26 @@
 		dat += "<b>Lockpicking</b>: [host.lockpicking]<BR>"
 		dat += "<b>Athletics</b>: [host.athletics]<BR>"
 		dat += "<b>Cruelty</b>: [host.blood]<BR>"
-		if(host.friend_name)
-			dat += "<b>Friend: [host.friend_name]</b><BR>"
-		if(host.enemy_name)
-			dat += "<b>Enemy: [host.enemy_name]</b><BR>"
-		if(host.lover_name)
-			dat += "<b>Lover: [host.lover_name]</b><BR>"
+		if(host.Myself)
+			if(host.Myself.Friend)
+				if(host.Myself.Friend.owner)
+					dat += "<b>My friend's name is [host.Myself.Friend.owner.true_real_name].</b><BR>"
+					if(host.Myself.Friend.phone_number)
+						dat += "Their number is [host.Myself.Friend.phone_number].<BR>"
+					if(host.Myself.Friend.friend_text)
+						dat += "[host.Myself.Friend.friend_text]<BR>"
+			if(host.Myself.Enemy)
+				if(host.Myself.Enemy.owner)
+					dat += "<b>My nemesis is [host.Myself.Enemy.owner.true_real_name]!</b><BR>"
+					if(host.Myself.Enemy.enemy_text)
+						dat += "[host.Myself.Enemy.enemy_text]<BR>"
+			if(host.Myself.Lover)
+				if(host.Myself.Lover.owner)
+					dat += "<b>I'm in love with [host.Myself.Lover.owner.true_real_name].</b><BR>"
+					if(host.Myself.Lover.phone_number)
+						dat += "Their number is [host.Myself.Lover.phone_number].<BR>"
+					if(host.Myself.Lover.lover_text)
+						dat += "[host.Myself.Lover.lover_text]<BR>"
 		if(length(host.knowscontacts) > 0)
 			dat += "<b>I know some other of my kind in this city. Need to check my phone, there definetely should be:</b><BR>"
 			for(var/i in host.knowscontacts)

@@ -552,8 +552,17 @@
 				if(H.client.prefs.ambitious)
 					if(H.mind)
 						H.mind.add_antag_datum(/datum/antagonist/ambitious)
-				H.generate_friends()
 				GLOB.fucking_joined |= H.client.prefs.real_name
+				var/datum/relationship/R = new ()
+				H.Myself = R
+				R.owner = H
+				R.need_friend = H.client.prefs.friend
+				R.need_enemy = H.client.prefs.enemy
+				R.need_lover = H.client.prefs.lover
+				R.friend_text = H.client.prefs.friend_text
+				R.enemy_text = H.client.prefs.enemy_text
+				R.lover_text = H.client.prefs.lover_text
+				R.publish()
 		new_character = null
 		qdel(src)
 
