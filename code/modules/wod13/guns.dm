@@ -233,7 +233,8 @@
 	worn_icon_state = "uzi"
 	mag_type = /obj/item/ammo_box/magazine/vamp9mm
 	burst_size = 5
-	spread = 2
+	spread = 5
+	recoil = 5
 	bolt_type = BOLT_TYPE_OPEN
 	show_bolt_icon = FALSE
 	mag_display = TRUE
@@ -322,6 +323,7 @@
 	worn_icon_state = "ak74"
 	w_class = WEIGHT_CLASS_BULKY
 	mag_type = /obj/item/ammo_box/magazine/vamp545
+	recoil = 3
 	burst_size = 3
 	fire_delay = 3
 	spread = 5
@@ -384,9 +386,10 @@
 	worn_icon_state = "thompson"
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/vampthompson
+	recoil = 4
 	burst_size = 4
 	fire_delay = 3
-	spread = 7
+	spread = 8
 	bolt_type = BOLT_TYPE_OPEN
 	show_bolt_icon = FALSE
 	mag_display = TRUE
@@ -454,7 +457,7 @@
 	mag_type = /obj/item/ammo_box/magazine/internal/vampshotgun
 	can_be_sawn_off	= FALSE
 	fire_sound = 'code/modules/wod13/sounds/pomp.ogg'
-	recoil = 2
+	recoil = 4
 	inhand_x_dimension = 32
 	inhand_y_dimension = 32
 
