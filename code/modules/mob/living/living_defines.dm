@@ -270,3 +270,6 @@
 	var/istower = FALSE
 
 	var/total_contracted = 0
+
+	///Whether the mob currently has the JUMP button selected
+	var/prepared_to_jump = FALSE

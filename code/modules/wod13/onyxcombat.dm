@@ -216,9 +216,6 @@
 
 //(source.pulledby && source.pulledby.grab_state > GRAB_PASSIVE)
 
-/mob/living
-	var/prepared_to_jump = FALSE
-
 /atom/movable/screen/jump
 	name = "jump"
 	icon = 'code/modules/wod13/UI/buttons_wide.dmi'
