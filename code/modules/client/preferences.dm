@@ -2011,12 +2011,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					for(var/i in subtypesof(/datum/discipline))
 						if(i != discipline1type && i != discipline2type && i != discipline3type)
 							var/datum/discipline/D = new i
-							if(!D.clane_restricted)
+							if(!D.clane_restricted && !clane.restricted_disciplines.Find(i))
 								disc4 += i
-							if(clane.name == "Old Clan Tzimisce" && D.name == "Vicissitude")
-								disc4 += i
-							if(D.clane_barred == TRUE && clane.name == "True Brujah")
-								disc4.Remove(/datum/discipline/celerity)
 							qdel(D)
 					var/discipline4 = input(user, "Select fourth discipline", "Discipline Selection") as null|anything in disc4
 					if(discipline4)
