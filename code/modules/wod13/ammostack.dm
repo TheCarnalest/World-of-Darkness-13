@@ -68,6 +68,10 @@
 	name = "12g shotgun slug"
 	damage = 55
 
+/obj/projectile/beam/beam_rifle/vampire/vamp12g/pellet
+	name = "12g shotgun pellet"
+	damage = 8
+
 /obj/projectile/beam/beam_rifle/vampire/vamp12g/on_hit(atom/target, blocked = FALSE)
 	. = ..()
 	if(iscarbon(target))
@@ -141,13 +145,18 @@
 	projectile_type = /obj/projectile/beam/beam_rifle/vampire/vamp556mm/incendiary
 
 /obj/item/ammo_casing/vampire/c12g
-	name = "12g bullet casing"
-	desc = "A 12g bullet casing."
+	name = "12g shell casing"
+	desc = "A 12g shell casing."
 	caliber = CALIBER_12G
 	projectile_type = /obj/projectile/beam/beam_rifle/vampire/vamp12g
 	icon_state = "12"
 	base_iconstate = "12"
 
+/obj/item/ammo_casing/vampire/c12g/buck
+	desc = "A 12g shell casing (00 buck)."
+	projectile_type = /obj/projectile/beam/beam_rifle/vampire/vamp12g/pellet
+	pellets = 8
+	variance = 25
 /*
 /obj/item/storage/ammostack
 	icon = 'code/modules/wod13/ammo.dmi'
