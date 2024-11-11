@@ -43,36 +43,47 @@
 
 /obj/projectile/beam/beam_rifle/vampire/vamp9mm
 	name = "9mm bullet"
-	damage = 25
+	damage = 20
+	bare_wound_bonus = 15
 
 /obj/projectile/beam/beam_rifle/vampire/vamp45acp
 	name = ".45 ACP bullet"
-	damage = 25
+	damage = 20
+	armour_penetration = 2
 
 /obj/projectile/beam/beam_rifle/vampire/vamp44
 	name = ".44 bullet"
 	damage = 35
 	armour_penetration = 15
+	bare_wound_bonus = 5
+	wound_bonus = 20
 
 /obj/projectile/beam/beam_rifle/vampire/vamp556mm
 	name = "5.56mm bullet"
 	damage = 45
-	armour_penetration = 30
+	armour_penetration = 25
+	bare_wound_bonus = -5
+	wound_bonus = 15
 
 /obj/projectile/beam/beam_rifle/vampire/vamp545mm
 	name = "5.45mm bullet"
-	damage = 45
+	damage = 40
 	armour_penetration = 30
+	bare_wound_bonus = 5
+	wound_bonus = 10
 
 /obj/projectile/beam/beam_rifle/vampire/vamp12g
 	name = "12g shotgun slug"
-	damage = 55
+	damage = 90
+	armour_penetration = 10
+	bare_wound_bonus = 5
+	wound_bonus = 5
 
 /obj/projectile/beam/beam_rifle/vampire/vamp12g/on_hit(atom/target, blocked = FALSE)
 	. = ..()
 	if(iscarbon(target))
 		var/mob/living/carbon/M = target
-		M.Stun(20)
+		M.Stun(40)
 
 /obj/projectile/beam/beam_rifle/vampire/vamp556mm/incendiary
 	armour_penetration = 0
@@ -87,8 +98,8 @@
 
 /obj/projectile/bullet/crossbow_bolt
 	name = "bolt"
-	damage = 200
-	armour_penetration = 100
+	damage = 140
+	armour_penetration = 75
 	sharpness = SHARP_POINTY
 	wound_bonus = 50
 
