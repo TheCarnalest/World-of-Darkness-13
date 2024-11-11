@@ -75,7 +75,7 @@
 /obj/projectile/beam/beam_rifle/vampire/vamp12g
 	name = "12g shotgun slug"
 	damage = 90
-	armour_penetration = 10
+	armour_penetration = 40
 	bare_wound_bonus = 5
 	wound_bonus = 5
 
