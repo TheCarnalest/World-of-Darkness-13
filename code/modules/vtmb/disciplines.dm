@@ -62,10 +62,14 @@
 	if(discipline)
 		if(discipline.level_casting < discipline.level)
 			discipline.level_casting = discipline.level_casting+1
+			if(button)
+				ApplyIcon(button, TRUE)
+			return
 		else
 			discipline.level_casting = 1
-		if(button)
-			ApplyIcon(button, TRUE)
+			if(button)
+				ApplyIcon(button, TRUE)
+			return
 
 /mob/living/Click()
 	if(isliving(usr) && usr != src)
