@@ -96,7 +96,7 @@
 	if(spam_fix+200 > world.time)
 		return
 	var/mob/living/carbon/human/H = owner
-	if(H.bloodpool < 1)
+	if(H.bloodpool < 3)
 		to_chat(owner, "<span class='warning'>You don't have enough <b>BLOOD</b> to do that!</span>")
 		return
 	H.bloodpool = max(0, H.bloodpool-3)
