@@ -314,6 +314,8 @@
 		new /datum/data/mining_equipment("sport clothes",	/obj/item/clothing/under/vampire/sport,	20),
 		new /datum/data/mining_equipment("white buisness suit",	/obj/item/clothing/under/vampire/office,	20),
 		new /datum/data/mining_equipment("punk outfit",	/obj/item/clothing/under/vampire/emo,	20),
+		new /datum/data/mining_equipment("whore outfit",	/obj/item/clothing/under/vampire/whore,	15),
+		new /datum/data/mining_equipment("daisy dukes",	/obj/item/clothing/under/vampire/whore/daisyd,	10),
 		new /datum/data/mining_equipment("black grunge outfit",	/obj/item/clothing/under/vampire/black,	20),
 		new /datum/data/mining_equipment("red hipster outfit",	/obj/item/clothing/under/vampire/red,	20),
 		new /datum/data/mining_equipment("gothic clothes",	/obj/item/clothing/under/vampire/gothic,	20),
