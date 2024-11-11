@@ -194,7 +194,10 @@ GLOBAL_LIST_EMPTY(donation_races)
 	///List of results you get from knife-butchering. null means you cant butcher it. Associated by resulting type - value of amount
 	var/list/knife_butcher_results
 
-	var/donation = FALSE
+	///If this species requires whitelisting before it can be selected for characters.
+	var/whitelisted = FALSE
+	///If this species can be selected for characters at all.
+	var/selectable = FALSE
 
 ///////////
 // PROCS //
@@ -216,12 +219,8 @@ GLOBAL_LIST_EMPTY(donation_races)
 /proc/generate_selectable_species()
 	for(var/I in subtypesof(/datum/species))
 		var/datum/species/S = new I
-		if(S.check_roundstart_eligible())
+		if(S.selectable)
 			GLOB.roundstart_races += S.id
-			GLOB.donation_races += S.id
-			qdel(S)
-		if(S.donation)
-			GLOB.donation_races += S.id
 	if(!GLOB.roundstart_races.len)
 		GLOB.roundstart_races += "kindred"
 

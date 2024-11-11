@@ -2326,6 +2326,26 @@
 			return
 		GLOB.interviews.ui_interact(usr)
 
+	else if (href_list["deletewhitelist"])
+		if(!check_rights(R_ADMIN))
+			return
+		var/datum/whitelist/whitelist = locate(href_list["deletewhitelist"])
+		whitelist_option_parse_href(href_list, whitelist)
+
+	else if (href_list["reloadwhitelists"])
+		if(!check_rights(R_ADMIN))
+			return
+		whitelist_panel()
+
+	else if (href_list["newwhitelist"])
+		if(!check_rights(R_ADMIN))
+			return
+		usr.client.grant_whitelist()
+		whitelist_panel()
+
+	else if (href_list["searchwhitelistckey"])
+		whitelist_panel(href_list["searchwhitelistckey"])
+
 /datum/admins/proc/HandleCMode()
 	if(!check_rights(R_ADMIN))
 		return
