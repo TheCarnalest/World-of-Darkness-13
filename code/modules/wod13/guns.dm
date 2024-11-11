@@ -233,6 +233,7 @@
 	worn_icon_state = "uzi"
 	mag_type = /obj/item/ammo_box/magazine/vamp9mm
 	burst_size = 5
+	spread = 2
 	bolt_type = BOLT_TYPE_OPEN
 	show_bolt_icon = FALSE
 	mag_display = TRUE
@@ -261,6 +262,7 @@
 	worn_icon_state = "mp5"
 	mag_type = /obj/item/ammo_box/magazine/vamp9mp5
 	burst_size = 4
+	spread = 1
 	bolt_type = BOLT_TYPE_OPEN
 	show_bolt_icon = FALSE
 	mag_display = TRUE
