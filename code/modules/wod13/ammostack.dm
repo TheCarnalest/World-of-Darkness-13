@@ -43,8 +43,8 @@
 
 /obj/projectile/beam/beam_rifle/vampire/vamp9mm
 	name = "9mm bullet"
-	damage = 20
-	bare_wound_bonus = 15
+	damage = 18
+	bare_wound_bonus = 20
 
 /obj/projectile/beam/beam_rifle/vampire/vamp45acp
 	name = ".45 ACP bullet"
@@ -74,7 +74,7 @@
 
 /obj/projectile/beam/beam_rifle/vampire/vamp12g
 	name = "12g shotgun slug"
-	damage = 90
+	damage = 80
 	armour_penetration = 40
 	bare_wound_bonus = 5
 	wound_bonus = 5
