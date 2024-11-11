@@ -3318,7 +3318,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		if(D2)
 			D2 = new D2()
 			if(discipline_pref)
-				D2.level = client.prefs.discipline1level
+				D2.level = client.prefs.discipline2level
 			var/datum/action/discipline/D = new ()
 			D.discipline = D2
 			D.Grant(src)
@@ -3326,7 +3326,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		if(D3)
 			D3 = new D3()
 			if(discipline_pref)
-				D3.level = client.prefs.discipline1level
+				D3.level = client.prefs.discipline3level
 			var/datum/action/discipline/D = new ()
 			D.discipline = D3
 			D.Grant(src)
