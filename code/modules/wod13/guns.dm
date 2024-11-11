@@ -313,7 +313,7 @@
 
 /obj/item/gun/ballistic/automatic/vampire/ak74
 	name = "\improper Kalashnikov's Automatic Rifle 74"
-	desc = "Pretty old, but also easy fireable and cleanable by vodka."
+	desc = "Pretty old, but also easy fireable and cleanable by vodka.Uses 5.45 rounds."
 	icon = 'code/modules/wod13/48x32weapons.dmi'
 	icon_state = "ak74"
 	inhand_icon_state = "ak74"
@@ -383,7 +383,7 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/vampthompson
 	burst_size = 4
-	fire_delay = 1
+	fire_delay = 3
 	spread = 7
 	bolt_type = BOLT_TYPE_OPEN
 	show_bolt_icon = FALSE
