@@ -48,7 +48,7 @@ SUBSYSTEM_DEF(bad_guys_party)
 				threat = min(100, threat+30)
 				max_candidates = 3
 				go_on_next_fire = TRUE
-				Next = new /datum/outfit/job/caitiff()
+				Next = new /datum/outfit/job/sabbatist()
 		if(2)
 			if(prob(30))
 				//spiral
