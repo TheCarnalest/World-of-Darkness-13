@@ -709,7 +709,7 @@
 	icon_living = "gangrel_f"
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	speak_chance = 0
-	speed = -1
+	speed = -0.5
 	maxHealth = 300
 	health = 300
 	butcher_results = list(/obj/item/stack/human_flesh = 20)
@@ -733,7 +733,7 @@
 	health = 500
 	melee_damage_lower = 45
 	melee_damage_upper = 45
-	speed = -1.1
+	speed = -0.8
 
 /mob/living/simple_animal/hostile/gangrel/best
 	icon_state = "gangrel_m"
@@ -742,7 +742,7 @@
 	health = 600
 	melee_damage_lower = 55
 	melee_damage_upper = 55
-	speed = -1.25
+	speed = -1
 
 /mob/living/simple_animal/hostile/gargoyle
 	name = "Gargoyle"
