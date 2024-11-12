@@ -2408,7 +2408,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						link_bug_fix = FALSE
 						return
 
-					var/list/selectable_species = GLOB.roundstart_races
+					var/list/selectable_species = GLOB.selectable_races
 					for (var/key in selectable_species)
 						var/newtype = GLOB.species_list[key]
 						var/datum/species/new_species = new newtype

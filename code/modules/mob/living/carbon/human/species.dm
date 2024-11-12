@@ -1,6 +1,6 @@
 GLOBAL_LIST_EMPTY(roundstart_races)
 
-GLOBAL_LIST_EMPTY(donation_races)
+GLOBAL_LIST_EMPTY(selectable_races)
 
 /**
  * # species datum
@@ -218,7 +218,8 @@ GLOBAL_LIST_EMPTY(donation_races)
  */
 /proc/generate_selectable_species()
 	//[Lucia] TODO: make this good what the fuck is wrong with the previous thing
-	GLOB.roundstart_races = list("human", "kindred", "ghoul", "garou")
+	GLOB.roundstart_races = list("human", "kindred", "ghoul")
+	GLOB.selectable_races = list("human", "kindred", "ghoul", "garou")
 	/*
 	for(var/I in subtypesof(/datum/species))
 		var/datum/species/S = new I
