@@ -210,7 +210,7 @@
 
 	werewolf_armor = 25
 
-	/datum/movespeed_modifier/crinosform
+/datum/movespeed_modifier/crinosform
 	multiplicative_slowdown = -0.5
 
 /mob/living/carbon/werewolf/crinos/Initialize()

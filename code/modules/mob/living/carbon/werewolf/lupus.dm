@@ -24,7 +24,7 @@
 //		/obj/item/bodypart/l_leg,
 //		)
 
-	/datum/movespeed_modifier/lupusform
+/datum/movespeed_modifier/lupusform
 	multiplicative_slowdown = -1.2
 
 /mob/living/carbon/werewolf/lupus/update_icons()
