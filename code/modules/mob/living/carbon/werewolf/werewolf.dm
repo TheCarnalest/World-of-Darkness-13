@@ -188,8 +188,8 @@
 	possible_a_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB, INTENT_HARM)
 	limb_destroyer = 1
 	hud_type = /datum/hud/werewolf
-	melee_damage_lower = 45
-	melee_damage_upper = 65
+	melee_damage_lower = 40
+	melee_damage_upper = 55
 	health = 500
 	maxHealth = 500
 //	speed = -1  doesn't work on carbons
