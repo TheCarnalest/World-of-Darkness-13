@@ -55,9 +55,9 @@
 	butcher_results = list(/obj/item/food/meat/slab = 5)
 	layer = LARGE_MOB_LAYER
 	var/obj_damage = 30
-	var/wound_bonus = 30
-	var/bare_wound_bonus = 30
-	var/sharpness = 100
+	var/wound_bonus = 10
+	var/bare_wound_bonus = 45
+	var/sharpness = 50
 	var/armour_penetration = 100
 	var/melee_damage_type = BRUTE
 	var/list/damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
