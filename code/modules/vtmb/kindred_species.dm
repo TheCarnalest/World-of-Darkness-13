@@ -157,9 +157,9 @@
 		if(K && (host.mind.assigned_role == "Prince" || host.mind.assigned_role == "Sheriff"))
 			dat += "<b>The pincode for the armory keypad is: [K.pincode]</b><BR>"
 		var/obj/keypad/bankvault/V = find_keypad(/obj/keypad/bankvault)
-		if(V && (host.mind.assigned_role == "Giovanni Boss"))
+		if(V && (host.mind.assigned_role == "Capo"))
 			dat += "<b>The pincode for the bank vault keypad is: [V.pincode]</b><BR>"
-		if(V && (host.mind.assigned_role == "Giovanni Member"))
+		if(V && (host.mind.assigned_role == "La Squadra"))
 			if(prob(50))
 				dat += "<b>The pincode for the bank vault keypad is: [V.pincode]</b><BR>"
 			else
