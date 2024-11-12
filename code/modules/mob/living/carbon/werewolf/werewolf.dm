@@ -56,7 +56,7 @@
 	layer = LARGE_MOB_LAYER
 	var/obj_damage = 30
 	var/wound_bonus = 10
-	var/bare_wound_bonus = 45
+	var/bare_wound_bonus = 25
 	var/sharpness = 50
 	var/armour_penetration = 100
 	var/melee_damage_type = BRUTE
@@ -188,10 +188,10 @@
 	possible_a_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB, INTENT_HARM)
 	limb_destroyer = 1
 	hud_type = /datum/hud/werewolf
-	melee_damage_lower = 40
-	melee_damage_upper = 55
-	health = 400
-	maxHealth = 400
+	melee_damage_lower = 25
+	melee_damage_upper = 50
+	health = 350
+	maxHealth = 350
 //	speed = -1  doesn't work on carbons
 	var/obj/item/r_store = null
 	var/obj/item/l_store = null

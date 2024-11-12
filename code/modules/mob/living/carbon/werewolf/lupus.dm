@@ -39,13 +39,13 @@
 		icon_state = "[sprite_color]"
 
 	switch(getFireLoss()+getBruteLoss())
-		if(50 to 100)
+		if(25 to 75)
 			var/mutable_appearance/damage_overlay = mutable_appearance(icon, "damage1[laid_down ? "_rest" : ""]")
 			add_overlay(damage_overlay)
-		if(100 to 200)
+		if(75 to 190)
 			var/mutable_appearance/damage_overlay = mutable_appearance(icon, "damage2[laid_down ? "_rest" : ""]")
 			add_overlay(damage_overlay)
-		if(200 to INFINITY)
+		if(190 to INFINITY)
 			var/mutable_appearance/damage_overlay = mutable_appearance(icon, "damage3[laid_down ? "_rest" : ""]")
 			add_overlay(damage_overlay)
 
