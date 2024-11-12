@@ -345,8 +345,8 @@
 	footstep_type = FOOTSTEP_MOB_CLAW
 	bloodpool = 1
 	maxbloodpool = 1
-	maxHealth = 45
-	health = 45
+	maxHealth = 30
+	health = 30
 	harm_intent_damage = 20
 	melee_damage_lower = 15
 	melee_damage_upper = 35
