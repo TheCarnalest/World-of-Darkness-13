@@ -709,7 +709,7 @@
 	icon_living = "gangrel_f"
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	speak_chance = 0
-	speed = -0.5
+	speed = -1
 	maxHealth = 300
 	health = 300
 	butcher_results = list(/obj/item/stack/human_flesh = 20)
@@ -724,24 +724,21 @@
 	minbodytemp = 0
 	bloodpool = 10
 	maxbloodpool = 10
-	dextrous = TRUE
-	held_items = list(null, null)
-	possible_a_intents = list(INTENT_HELP, INTENT_GRAB, INTENT_DISARM, INTENT_HARM)
 
 /mob/living/simple_animal/hostile/gangrel/better
 	maxHealth = 500
 	health = 500
-	melee_damage_lower = 45
-	melee_damage_upper = 45
-	speed = -0.8
+	melee_damage_lower = 50
+	melee_damage_upper = 50
+	speed = -1
 
 /mob/living/simple_animal/hostile/gangrel/best
 	icon_state = "gangrel_m"
 	icon_living = "gangrel_m"
-	maxHealth = 600
-	health = 600
-	melee_damage_lower = 55
-	melee_damage_upper = 55
+	maxHealth = 500
+	health = 500
+	melee_damage_lower = 60
+	melee_damage_upper = 60
 	speed = -1
 
 /mob/living/simple_animal/hostile/gargoyle
@@ -757,8 +754,8 @@
 	health = 300
 	butcher_results = list(/obj/item/stack/human_flesh = 20)
 	harm_intent_damage = 5
-	melee_damage_lower = 30
-	melee_damage_upper = 30
+	melee_damage_lower = 15
+	melee_damage_upper = 15
 	attack_verb_continuous = "punches"
 	attack_verb_simple = "punch"
 	attack_sound = 'sound/weapons/punch1.ogg'

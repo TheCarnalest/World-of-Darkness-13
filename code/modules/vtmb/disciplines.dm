@@ -183,7 +183,7 @@
 	desc = "Summons Spectral Animals over your targets. Violates Masquerade."
 	icon_state = "animalism"
 	cost = 1
-	delay = 8 SECONDS
+	delay = 5 SECONDS
 	ranged = FALSE
 	violates_masquerade = TRUE
 	activate_sound = 'code/modules/wod13/sounds/wolves.ogg'
@@ -328,7 +328,7 @@
 	icon_state = "celerity"
 	cost = 1
 	ranged = FALSE
-	delay = 7.5 SECONDS
+	delay = 50
 	violates_masquerade = FALSE
 	activate_sound = 'code/modules/wod13/sounds/celerity_activate.ogg'
 	leveldelay = TRUE
@@ -687,7 +687,7 @@
 	icon_state = "fortitude"
 	cost = 1
 	ranged = FALSE
-	delay = 7.5 SECONDS
+	delay = 100
 	activate_sound = 'code/modules/wod13/sounds/fortitude_activate.ogg'
 
 /datum/discipline/fortitude/activate(mob/living/target, mob/living/carbon/human/caster)
@@ -959,8 +959,8 @@
 			spawn(delay+caster.discipline_time_plus)
 				if(caster && caster.stat != DEAD)
 					GA.Restore(GA.myshape)
-					caster.Stun(1 SECONDS)
-					caster.do_jitter_animation(1.5 SECONDS)
+					caster.Stun(15)
+					caster.do_jitter_animation(30)
 //					if(caster.dna)
 					caster.playsound_local(caster, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
 //						caster.dna.species.attack_verb = initial(caster.dna.species.attack_verb)
