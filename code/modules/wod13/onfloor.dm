@@ -10,10 +10,6 @@
 		else
 			worn_icon = initial(worn_icon)
 
-/mob/living/carbon/human
-	var/base_body_mod = ""
-	var/icon/body_sprite
-
 /obj/item/equipped(mob/M, slot)
 	if(onflooricon)
 		icon = initial(icon)

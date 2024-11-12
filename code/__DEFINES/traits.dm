@@ -258,7 +258,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_COFFIN_THERAPY			"coffin_therapy"
 #define TRAIT_RUBICON			"rubicon"
 #define TRAIT_HUNGRY			"hungry"
-#define TRAIT_PHOENIX			"phoenix"
+//#define TRAIT_PHOENIX			"phoenix"
 #define TRAIT_LAZY			"lazy"
 #define TRAIT_HOMOSEXUAL			"homosexual"
 #define TRAIT_HUNTED			"hunted"

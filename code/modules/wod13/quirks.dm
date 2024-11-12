@@ -171,6 +171,8 @@ Dancer
 	lose_text = "<span class='notice'>You don't feel extra <b>HUNGRY</b> anymore.</span>"
 	allowed_species = list("Vampire", "Ghoul")
 
+//Removed after changes to death consequences.
+/*
 /datum/quirk/phoenix
 	name = "Phoenix"
 	desc = "You don't loose gained experience after the Final Death."
@@ -179,6 +181,8 @@ Dancer
 	gain_text = "<span class='notice'>You feel like you can burn without permanent consequences.</span>"
 	lose_text = "<span class='warning'>You don't feel like you can burn without consequences anymore.</span>"
 	allowed_species = list("Vampire")
+*/
+
 /*
 /datum/quirk/acrobatic
 	name = "Acrobatic"
@@ -332,16 +336,19 @@ Dancer
 	var/last_acrobate = 0
 
 /datum/action/fly_upper/Trigger()
-	if(last_acrobate+15 > world.time)
+	owner.up()
+/*	if(last_acrobate+15 > world.time)
 		return
+	var/turf/target_turf = get_step_multiz(owner, UP)
 	if(get_step_multiz(owner, UP))
 		if(istype(get_step_multiz(owner, UP), /turf/open/openspace))
 			var/mob/living/carbon/H = owner
 			H.Immobilize(20)
 			animate(owner, pixel_y = 32, time = 20)
 			spawn(20)
-				owner.forceMove(get_step_multiz(owner, UP))
-
+				owner.forceMove(target_turf)
+				animate(owner, pixel_y = 0, time = 0)
+*/
 /datum/quirk/dancer
 	name = "Dancer"
 	desc = "You know a couple of dance moves."
@@ -377,11 +384,6 @@ Dancer
 						var/mob/living/carbon/human/human = owner
 						human.AdjustHumanity(1, 8)
 						last_added_humanity = world.time
-
-/mob/living
-	var/isdwarfy = FALSE
-	var/ischildren = FALSE
-	var/istower = FALSE
 
 /datum/quirk/dwarf
 	name = "Dwarf"
@@ -496,11 +498,11 @@ Dancer
 
 /datum/quirk/foreign/add()
 	var/mob/living/carbon/H = quirk_holder
-	H.add_blocked_language(/datum/language/common)
+	H.add_blocked_language(/datum/language/english)
 
 /datum/quirk/foreign/remove()
 	var/mob/living/carbon/H = quirk_holder
-	H.remove_blocked_language(/datum/language/common)
+	H.remove_blocked_language(/datum/language/english)
 
 /datum/quirk/espanol
 	name = "Espanol"
@@ -509,7 +511,7 @@ Dancer
 
 /datum/quirk/espanol/add()
 	var/mob/living/carbon/H = quirk_holder
-	H.grant_language(/datum/language/uncommon)
+	H.grant_language(/datum/language/espanol)
 
 /datum/quirk/chinese
 	name = "Chinese"
@@ -527,7 +529,7 @@ Dancer
 
 /datum/quirk/russian/add()
 	var/mob/living/carbon/H = quirk_holder
-	H.grant_language(/datum/language/moffic)
+	H.grant_language(/datum/language/russian)
 
 /datum/quirk/japanese
 	name = "Japanese"
@@ -545,7 +547,52 @@ Dancer
 
 /datum/quirk/italian/add()
 	var/mob/living/carbon/H = quirk_holder
-	H.grant_language(/datum/language/sylvan)
+	H.grant_language(/datum/language/italian)
+
+/datum/quirk/german
+	name = "German"
+	desc = "You know the German language, FUR DAR FATERLAND!"
+	value = 1
+
+/datum/quirk/german/add()
+	var/mob/living/carbon/H = quirk_holder
+	H.grant_language(/datum/language/german)
+
+/datum/quirk/latin
+	name = "Latin"
+	desc = "You know the ancient holy language OF THE ROMANS AND THE CLERGY!!"
+	value = 2
+
+/datum/quirk/latin/add()
+	var/mob/living/carbon/H = quirk_holder
+	H.grant_language(/datum/language/latin)
+
+/datum/quirk/hebrew
+	name = "Hebrew"
+	desc = "You know the language of the ancient Hebrews!"
+	value = 1
+
+/datum/quirk/hebrew/add()
+	var/mob/living/carbon/H = quirk_holder
+	H.grant_language(/datum/language/hebrew)
+
+/datum/quirk/french
+	name = "French"
+	desc = "You know the romantic language of the French."
+	value = 1
+
+/datum/quirk/french/add()
+	var/mob/living/carbon/H = quirk_holder
+	H.grant_language(/datum/language/french)
+
+/datum/quirk/arabic
+	name = "Arabic"
+	desc = "You know the melodic language of the Middle East."
+	value = 1
+
+/datum/quirk/arabic/add()
+	var/mob/living/carbon/H = quirk_holder
+	H.grant_language(/datum/language/arabic)
 
 /datum/quirk/consumption
 	name = "Consumption"

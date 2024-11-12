@@ -63,6 +63,10 @@ var/mob/living/carbon/human/H
 	icon_state = "card3"
 	inhand_icon_state = "card3"
 
+/obj/item/vamp/creditcard/giovanniboss
+	icon_state = "card2"
+	inhand_icon_state = "card2"
+
 /obj/item/vamp/creditcard/rich
 
 /obj/item/vamp/creditcard/New(mob/user)
@@ -77,6 +81,8 @@ var/mob/living/carbon/human/H
 		account.balance = rand(3000, 7000)
 	else if(istype(src, /obj/item/vamp/creditcard/rich))
 		account.balance = rand(1000, 4000)
+	else if(istype(src, /obj/item/vamp/creditcard/giovanniboss))
+		account.balance = rand(8000, 15000)
 	else
 		account.balance = rand(100, 1000)
 

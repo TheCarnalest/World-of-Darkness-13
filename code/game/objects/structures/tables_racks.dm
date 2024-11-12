@@ -124,7 +124,6 @@
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
 		to_chat(user, "<span class='danger'>Throwing [pushed_mob] onto the table might hurt them!</span>")
 		return
-	user.check_elysium(FALSE)
 	var/added_passtable = FALSE
 	if((!pushed_mob.pass_flags) & PASSTABLE)
 		added_passtable = TRUE
@@ -552,8 +551,8 @@
 /obj/structure/table/optable
 	name = "operating table"
 	desc = "Used for advanced medical procedures."
-	icon = 'icons/obj/surgery.dmi'
-	icon_state = "optable"
+	icon = 'code/modules/wod13/props.dmi'
+	icon_state = "surgeonchair"
 	buildstack = /obj/item/stack/sheet/mineral/silver
 	smoothing_flags = NONE
 	smoothing_groups = null

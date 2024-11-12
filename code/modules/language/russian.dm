@@ -1,7 +1,7 @@
-/datum/language/moffic
+/datum/language/russian
 	name = "Russian"
 	desc = "The language of the Mother Russia."
-	key = "m"
+	key = "r"
 	flags = TONGUELESS_SPEECH
 	space_chance = 100
 	syllables = list(

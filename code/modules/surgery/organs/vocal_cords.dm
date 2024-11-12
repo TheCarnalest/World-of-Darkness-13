@@ -148,6 +148,12 @@
 				var/mob/living/carbon/human/H = L
 				if(istype(H.ears, /obj/item/clothing/ears/earmuffs))
 					continue
+			if(user.generation > L.generation) //Dominate can't be used on lower Generations
+				continue
+			if((user.social + user.additional_social) <= (L.mentality + L.additional_mentality)) //Dominate must defeat resistance
+				continue
+			if(L.resistant_to_disciplines)
+				continue
 			listeners += L
 
 	if(!listeners.len)
@@ -156,6 +162,8 @@
 
 	var/power_multiplier = base_multiplier
 
+	//not applicable to WoD13
+	/*
 	if(user.mind)
 		//Chaplains are very good at speaking with the voice of god
 		if(user.mind.assigned_role == "Chaplain")
@@ -167,9 +175,11 @@
 		if(user.mind.assigned_role == "Mime")
 			power_multiplier *= 0.5
 
+
 	//Cultists are closer to their gods and are more powerful, but they'll give themselves away
 	if(iscultist(user))
 		power_multiplier *= 2
+	*/
 
 	//Try to check if the speaker specified a name or a job to focus on
 	var/list/specific_listeners = list()
@@ -200,25 +210,26 @@
 		power_multiplier *= (1 + (1/specific_listeners.len)) //2x on a single guy, 1.5x on two and so on
 		message = copytext(message, length(found_string) + 1)
 
-	var/static/regex/stun_words = regex("stop|wait|stand still|hold on|halt")
+	//removed some keywords as they don't fit mental domination
+	var/static/regex/stun_words = regex("stop|wait|stand still|hold on|halt|cease")
 	var/static/regex/knockdown_words = regex("drop|fall|trip|knockdown")
 	var/static/regex/sleep_words = regex("sleep|slumber|rest")
-	var/static/regex/vomit_words = regex("vomit|throw up|sick")
+	//var/static/regex/vomit_words = regex("vomit|throw up|sick")
 	var/static/regex/silence_words = regex("shut up|silence|be silent|ssh|quiet|hush")
-	var/static/regex/hallucinate_words = regex("see the truth|hallucinate")
+	//var/static/regex/hallucinate_words = regex("see the truth|hallucinate")
 	var/static/regex/wakeup_words = regex("wake up|awaken")
-	var/static/regex/heal_words = regex("live|heal|survive|mend|life|heroes never die")
-	var/static/regex/hurt_words = regex("die|suffer|hurt|pain|death")
-	var/static/regex/bleed_words = regex("bleed|there will be blood")
-	var/static/regex/burn_words = regex("burn|ignite")
-	var/static/regex/hot_words = regex("heat|hot|hell")
-	var/static/regex/cold_words = regex("cold|cool down|chill|freeze")
+	//var/static/regex/heal_words = regex("live|heal|survive|mend|life|heroes never die")
+	//var/static/regex/hurt_words = regex("die|suffer|hurt|pain|death")
+	//var/static/regex/bleed_words = regex("bleed|there will be blood")
+	//var/static/regex/burn_words = regex("burn|ignite")
+	//var/static/regex/hot_words = regex("heat|hot|hell")
+	//var/static/regex/cold_words = regex("cold|cool down|chill|freeze")
 	var/static/regex/repulse_words = regex("shoo|go away|leave me alone|begone|flee|fus ro dah|get away|repulse")
 	var/static/regex/attract_words = regex("come here|come to me|get over here|attract")
 	var/static/regex/whoareyou_words = regex("who are you|say your name|state your name|identify")
 	var/static/regex/saymyname_words = regex("say my name|who am i|whoami")
 	var/static/regex/knockknock_words = regex("knock knock")
-	var/static/regex/statelaws_words = regex("state laws|state your laws")
+	//var/static/regex/statelaws_words = regex("state laws|state your laws")
 	var/static/regex/move_words = regex("move|walk")
 	var/static/regex/left_words = regex("left|west|port")
 	var/static/regex/right_words = regex("right|east|starboard")
@@ -266,10 +277,12 @@
 			C.Sleeping(40 * power_multiplier)
 
 	//VOMIT
+	/*
 	else if((findtext(message, vomit_words)))
 		cooldown = COOLDOWN_STUN
 		for(var/mob/living/carbon/C in listeners)
 			C.vomit(10 * power_multiplier, distance = power_multiplier)
+	*/
 
 	//SILENCE
 	else if((findtext(message, silence_words)))
@@ -280,10 +293,12 @@
 			C.silent += (10 * power_multiplier)
 
 	//HALLUCINATE
+	/*
 	else if((findtext(message, hallucinate_words)))
 		cooldown = COOLDOWN_MEME
 		for(var/mob/living/carbon/C in listeners)
 			new /datum/hallucination/delusion(C, TRUE, null,150 * power_multiplier,0)
+	*/
 
 	//WAKE UP
 	else if((findtext(message, wakeup_words)))
@@ -293,47 +308,59 @@
 			L.SetSleeping(0)
 
 	//HEAL
+	/*
 	else if((findtext(message, heal_words)))
 		cooldown = COOLDOWN_DAMAGE
 		for(var/V in listeners)
 			var/mob/living/L = V
 			L.heal_overall_damage(10 * power_multiplier, 10 * power_multiplier)
+	*/
 
 	//BRUTE DAMAGE
+	/*
 	else if((findtext(message, hurt_words)))
 		cooldown = COOLDOWN_DAMAGE
 		for(var/V in listeners)
 			var/mob/living/L = V
 			L.apply_damage(15 * power_multiplier, def_zone = BODY_ZONE_CHEST, wound_bonus=CANT_WOUND)
+	*/
 
 	//BLEED
+	/*
 	else if((findtext(message, bleed_words)))
 		cooldown = COOLDOWN_DAMAGE
 		for(var/mob/living/carbon/human/H in listeners)
 			var/obj/item/bodypart/BP = pick(H.bodyparts)
 			BP.generic_bleedstacks += 5
+	*/
 
 	//FIRE
+	/*
 	else if((findtext(message, burn_words)))
 		cooldown = COOLDOWN_DAMAGE
 		for(var/V in listeners)
 			var/mob/living/L = V
 			L.adjust_fire_stacks(1 * power_multiplier)
 			L.IgniteMob()
+	*/
 
 	//HOT
+	/*
 	else if((findtext(message, hot_words)))
 		cooldown = COOLDOWN_DAMAGE
 		for(var/V in listeners)
 			var/mob/living/L = V
 			L.adjust_bodytemperature(50 * power_multiplier)
+	*/
 
 	//COLD
+	/*
 	else if((findtext(message, cold_words)))
 		cooldown = COOLDOWN_DAMAGE
 		for(var/V in listeners)
 			var/mob/living/L = V
 			L.adjust_bodytemperature(-50 * power_multiplier)
+	*/
 
 	//REPULSE
 	else if((findtext(message, repulse_words)))
@@ -375,10 +402,12 @@
 			i++
 
 	//STATE LAWS
+	/*
 	else if((findtext(message, statelaws_words)))
 		cooldown = COOLDOWN_STUN
 		for(var/mob/living/silicon/S in listeners)
 			S.statelaws(force = 1)
+	*/
 
 	//MOVE
 	else if((findtext(message, move_words)))

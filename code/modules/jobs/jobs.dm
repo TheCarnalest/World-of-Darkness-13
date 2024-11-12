@@ -42,7 +42,9 @@ GLOBAL_LIST_INIT(neutral_positions, list(
 	"Doctor"))
 
 GLOBAL_LIST_INIT(independent_positions, list(
-	"Giovanni Member",
+	"Capo",
+	"La Squadra",
+	"La Famiglia",
 	"Primogen Malkavian",
 	"Primogen Nosferatu",
 	"Primogen Toreador",
@@ -60,7 +62,7 @@ GLOBAL_LIST_INIT(tremere_positions, list(
 ))
 
 GLOBAL_LIST_INIT(gang_positions, list(
-	"Triad Soldier"
+	"Triad Soldier",
 ))
 
 GLOBAL_LIST_INIT(security_positions, list(

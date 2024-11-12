@@ -1,6 +1,6 @@
 /datum/vampireclane/giovanni
 	name = "Giovanni"
-	desc = "The Giovanni are the usurpers of Clan Cappadocian and one of the youngest clans. The Giovanni has historically been both a clan and a family, and more recently a bloodline, due to the formation of Clan Hecata. They Embrace almost exclusively within their family, and are heavily focused on the goals of money and necromantic power."
+	desc = "The Giovanni are the usurpers of Clan Cappadocian and one of the youngest clans. The Giovanni has historically been both a clan and a family. They Embrace almost exclusively within their family, and are heavily focused on the goals of money and necromantic power."
 	curse = "Harmful bites."
 	clane_disciplines = list(
 		/datum/discipline/potence = 1,
@@ -9,16 +9,14 @@
 	)
 	male_clothes = "/obj/item/clothing/under/vampire/suit"
 	female_clothes = "/obj/item/clothing/under/vampire/suit/female"
+	whitelisted = FALSE
 
 /datum/discipline/necromancy/post_gain(mob/living/carbon/human/H)
 	H.faction |= "Giovanni"
-	H.grant_language(/datum/language/sylvan)
+	H.grant_language(/datum/language/italian)
 	if(level >= 2)
 		var/datum/action/ghost_hear/GH = new()
 		GH.Grant(H)
-
-/mob/living
-	var/hearing_ghosts = FALSE
 
 /datum/action/ghost_hear
 	name = "See Ghosts"

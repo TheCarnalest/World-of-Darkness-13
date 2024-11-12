@@ -1,10 +1,6 @@
 #define JUMP_DELAY 40
 #define MAX_JUMP_DISTANCE 1
 
-/mob/living/carbon
-	var/last_jump_time = 0
-	var/jump_range = MAX_JUMP_DISTANCE
-
 /mob/living/carbon/Initialize(mapload)
 	. = ..()
 	create_reagents(1000)
@@ -166,8 +162,6 @@
 				if(HAS_TRAIT(src, TRAIT_PACIFISM))
 					to_chat(src, "<span class='notice'>You gently let go of [throwable_mob].</span>")
 					return
-				if(HAS_TRAIT(src, TRAIT_ELYSIUM))
-					check_elysium(FALSE)
 	else
 		thrown_thing = I.on_thrown(src, target)
 
@@ -1411,3 +1405,6 @@
 
 /mob/living/carbon/proc/attach_rot(mapload)
 	AddComponent(/datum/component/rot/corpse)
+
+#undef JUMP_DELAY
+#undef MAX_JUMP_DISTANCE

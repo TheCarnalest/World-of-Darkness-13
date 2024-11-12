@@ -676,10 +676,6 @@
 
 #define CPR_PANIC_SPEED (0.8 SECONDS)
 
-/// Performs CPR on the target after a delay.
-/mob/living/carbon/human
-	var/last_cpr_exp = 0
-
 /mob/living/carbon/human/proc/do_cpr(mob/living/carbon/target)
 	if(target == src)
 		return
@@ -1165,7 +1161,7 @@
 	if(above_turf && istype(above_turf, /turf/open/openspace))
 		to_chat(src, "<span class='notice'>You start climbing up...</span>")
 
-		var/result = do_after(src, 10, 0)
+		var/result = do_after(src, 50 - (dexterity + athletics * 5), 0)
 		if(!result)
 			to_chat(src, "<span class='warning'>You were interrupted and failed to climb up.</span>")
 			return

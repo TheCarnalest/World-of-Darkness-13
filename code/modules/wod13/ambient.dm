@@ -51,6 +51,14 @@
 	zone_owner = "Giovanni"
 	fire_controled = TRUE
 
+/area/vtm/interior/bianchiBank
+	name = "Bianchi Bank"
+	icon_state = "giovanni"
+	upper = FALSE
+	zone_type = "elysium"
+	zone_owner = "Giovanni"
+	fire_controled = TRUE
+
 /area/vtm/interior/police
 	name = "Police Station"
 	icon_state = "police"
@@ -380,11 +388,6 @@
 	sound = 'code/modules/wod13/sounds/lift.ogg'
 	forced = TRUE
 
-/mob/living
-	var/last_vampire_ambience = 0
-	var/wait_for_music = 30
-	var/wasforced
-
 /mob/living/proc/handle_vampire_music()
 	if(!client)
 		return
@@ -418,15 +421,15 @@
 //				else
 //					clear_fullscreen("rain")
 
-			var/cacaphony = FALSE
+			var/cacophony = FALSE
 
 			if(iskindred(src))
 				var/mob/living/carbon/human/H = src
 				if(H.clane)
-					if(H.clane.name == "Daughters of Cacaphony")
-						cacaphony = TRUE
+					if(H.clane.name == "Daughters of Cacophony")
+						cacophony = FALSE //This Variable was TRUE, which makes the DoC music loop play.
 
-			if(!cacaphony)
+			if(!cacophony)
 				if(!(client && (client.prefs.toggles & SOUND_AMBIENCE)))
 					return
 

@@ -1,9 +1,9 @@
-// The language of the podpeople. Yes, it's a shameless ripoff of elvish.
-/datum/language/sylvan
+// The language of the italiano. Yes, it's a shameless ripoff of de romans.
+/datum/language/italian
 	name = "Italian"
 	desc = "A complicated, ancient language spoken by sentient pizza cooks."
 	flags = TONGUELESS_SPEECH
-	key = "h"
+	key = "i"
 	space_chance = 100
 	syllables = list(
 		"prego", "mi", "scuci", "dispiace", "ciao", "non", "buona", "quanto", "vorrei", "perfetto", "mario",

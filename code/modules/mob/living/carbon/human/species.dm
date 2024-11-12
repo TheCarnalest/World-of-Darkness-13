@@ -194,7 +194,10 @@ GLOBAL_LIST_EMPTY(donation_races)
 	///List of results you get from knife-butchering. null means you cant butcher it. Associated by resulting type - value of amount
 	var/list/knife_butcher_results
 
-	var/donation = FALSE
+	///If this species requires whitelisting before it can be selected for characters.
+	var/whitelisted = FALSE
+	///If this species can be selected for characters at all.
+	var/selectable = FALSE
 
 ///////////
 // PROCS //
@@ -214,16 +217,16 @@ GLOBAL_LIST_EMPTY(donation_races)
  * If there are no available roundstart species, defaults to human.
  */
 /proc/generate_selectable_species()
+	//[Lucia] TODO: make this good what the fuck is wrong with the previous thing
+	GLOB.roundstart_races = list("human", "kindred", "ghoul", "garou")
+	/*
 	for(var/I in subtypesof(/datum/species))
 		var/datum/species/S = new I
-		if(S.check_roundstart_eligible())
+		if(S.selectable)
 			GLOB.roundstart_races += S.id
-			GLOB.donation_races += S.id
-			qdel(S)
-		if(S.donation)
-			GLOB.donation_races += S.id
 	if(!GLOB.roundstart_races.len)
 		GLOB.roundstart_races += "kindred"
+	*/
 
 /**
  * Checks if a species is eligible to be picked at roundstart.
@@ -1352,7 +1355,6 @@ GLOBAL_LIST_EMPTY(donation_races)
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
 		to_chat(user, "<span class='warning'>You don't want to harm [target]!</span>")
 		return FALSE
-	user.check_elysium(FALSE)
 	if(target.check_block())
 		target.visible_message("<span class='warning'>[target] blocks [user]'s attack!</span>", \
 						"<span class='userdanger'>You block [user]'s attack!</span>", "<span class='hear'>You hear a swoosh!</span>", COMBAT_MESSAGE_RANGE, user)
@@ -2059,7 +2061,7 @@ GLOBAL_LIST_EMPTY(donation_races)
 /datum/species/proc/spec_stun(mob/living/carbon/human/H,amount)
 	if(flying_species && H.movement_type & FLYING)
 		ToggleFlight(H)
-		flyslip(H)
+//		flyslip(H)
 	. = stunmod * H.physiology.stun_mod * amount
 
 //////////////
