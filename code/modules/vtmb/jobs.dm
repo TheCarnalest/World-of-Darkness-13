@@ -1431,8 +1431,6 @@
 	display_order = JOB_DISPLAY_ORDER_GIOVANNI
 	exp_type_department = EXP_TYPE_INDEPENDENT
 
-//	minimal_generation = 11	//Uncomment when players get exp enough
-
 	v_duty = "Whether born or Embraced into the family, you are one of the Giovanni. Be you a necromancer, financier or lowly fledgling, remember that so long as you stand with your family, they too will stand with you."
 	minimal_masquerade = 0
 	experience_addition = 10
@@ -1463,7 +1461,7 @@
 	name = "Giovanni Member"
 //
 /datum/job/vamp/giovannielder
-	title = "Giovanni Boss"
+	title = "Don"
 	department_head = list("Uncle Augie")
 	faction = "Vampire"
 	total_positions = 1
@@ -1489,7 +1487,7 @@
 	allowed_bloodlines = list("Giovanni")
 
 /datum/outfit/job/giovannielder
-	name = "Giovanni Boss"
+	name = "Don"
 	jobtype = /datum/job/vamp/giovannielder
 
 	id = /obj/item/cockclock
@@ -1509,11 +1507,11 @@
 		shoes = /obj/item/clothing/shoes/vampire/heels
 
 /obj/effect/landmark/start/giovannielder
-	name = "Giovanni Boss"
-//
+	name = "Don"
+
 /datum/job/vamp/giovannimafia
-	title = "Mortal Giovanni"
-	department_head = list("Uncle Augie")
+	title = "La Famiglia"
+	department_head = list("Don")
 	faction = "Vampire"
 	total_positions = 10
 	spawn_positions = 10
@@ -1538,7 +1536,7 @@
 
 
 /datum/outfit/job/giovannimafia
-	name = "Mortal Giovanni"
+	name = "La Famiglia"
 	jobtype = /datum/job/vamp/giovannimafia
 	id = /obj/item/cockclock
 	glasses = /obj/item/clothing/glasses/vampire/sun
@@ -1556,8 +1554,8 @@
 		shoes = /obj/item/clothing/shoes/vampire/heels
 
 /obj/effect/landmark/start/giovannimafia
-	name = "Mortal Giovanni"
-//
+	name = "La Famiglia"
+
 /datum/job/vamp/taxi
 	title = "Taxi Driver"
 	department_head = list("Justicar")
@@ -1576,7 +1574,6 @@
 	display_order = JOB_DISPLAY_ORDER_TAXI
 	exp_type_department = EXP_TYPE_INDEPENDENT
 
-//	minimal_generation = 11	//Uncomment when players get exp enough
 	allowed_species = list("Vampire", "Ghoul", "Human", "Garou")
 
 	v_duty = "Drive people in the city."
