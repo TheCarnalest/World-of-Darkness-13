@@ -28,13 +28,13 @@
 		add_overlay(scar_overlay)
 
 	switch(getFireLoss()+getBruteLoss())
-		if(50 to 150)
+		if(25 to 50)
 			var/mutable_appearance/damage_overlay = mutable_appearance(icon, "damage1[laid_down ? "_rest" : ""]")
 			add_overlay(damage_overlay)
-		if(150 to 300)
+		if(50 to 75)
 			var/mutable_appearance/damage_overlay = mutable_appearance(icon, "damage2[laid_down ? "_rest" : ""]")
 			add_overlay(damage_overlay)
-		if(300 to INFINITY)
+		if(75 to INFINITY)
 			var/mutable_appearance/damage_overlay = mutable_appearance(icon, "damage3[laid_down ? "_rest" : ""]")
 			add_overlay(damage_overlay)
 

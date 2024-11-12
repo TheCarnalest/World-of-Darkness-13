@@ -835,8 +835,8 @@
 	anchored = FALSE
 	footstep_type = FOOTSTEP_MOB_CLAW
 	bloodquality = BLOOD_QUALITY_LOW
-	bloodpool = 2
-	maxbloodpool = 2
+	bloodpool = 1
+	maxbloodpool = 1
 	del_on_death = 1
 	maxHealth = 5
 	health = 5
@@ -912,7 +912,7 @@
 	if(ishuman(A))
 		var/mob/living/carbon/human/H = A
 		if(H.bloodpool)
-			if(prob(25))
+			if(prob(5))
 				H.bloodpool = max(0, H.bloodpool-1)
 				beastmaster.bloodpool = min(beastmaster.maxbloodpool, beastmaster.bloodpool+1)
 

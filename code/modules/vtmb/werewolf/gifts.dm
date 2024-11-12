@@ -347,7 +347,7 @@
 		var/mob/living/carbon/C = owner
 		if(C.stat != DEAD)
 			SEND_SOUND(owner, sound('code/modules/wod13/sounds/rage_heal.ogg', 0, 0, 75))
-			C.adjustBruteLoss(-75*C.auspice.level, TRUE)
+			C.adjustBruteLoss(-50*C.auspice.level, TRUE)
 			C.adjustFireLoss(-50*C.auspice.level, TRUE)
 			C.adjustCloneLoss(-50*C.auspice.level, TRUE)
 			if(ishuman(owner))
