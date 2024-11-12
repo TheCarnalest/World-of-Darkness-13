@@ -687,7 +687,7 @@
 	icon_state = "fortitude"
 	cost = 1
 	ranged = FALSE
-	delay = 75
+	delay = 7.5 SECONDS
 	activate_sound = 'code/modules/wod13/sounds/fortitude_activate.ogg'
 
 /datum/discipline/fortitude/activate(mob/living/target, mob/living/carbon/human/caster)
