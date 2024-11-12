@@ -188,13 +188,18 @@
 /obj/item/reagent_containers/food/drinks/bottle/vampirecola
 	name = "two liter cola bottle"
 	desc = "Coca cola espuma..."
-	icon_state = "cola1"
+	icon_state = "colared"
 	icon = 'code/modules/wod13/items.dmi'
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
 	isGlass = FALSE
 	list_reagents = list(/datum/reagent/consumable/space_cola = 100)
 	foodtype = SUGAR
 	age_restricted = FALSE
+
+/obj/item/reagent_containers/food/drinks/bottle/vampirecola/blue
+	desc = "Pep Cola. Put some pep in your step"
+	list_reagents = list(/datum/reagent/consumable/space_up = 100)
+	icon_state = "colablue"
 
 /obj/item/reagent_containers/food/drinks/bottle/vampirewater
 	name = "water bottle"
@@ -209,11 +214,16 @@
 /obj/item/reagent_containers/food/drinks/soda_cans/vampirecola
 	name = "cola"
 	desc = "Coca cola espuma..."
-	icon_state = "cola2"
+	icon_state = "colared2"
 	icon = 'code/modules/wod13/items.dmi'
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
 	list_reagents = list(/datum/reagent/consumable/space_cola = 50)
 	foodtype = SUGAR
+
+/obj/item/reagent_containers/food/drinks/soda_cans/vampirecola/blue
+	desc = "Pep cola. Put some Pep in your step"
+	icon_state = "colablue2"
+	list_reagents = list(/datum/reagent/consumable/space_up = 50)
 
 /obj/item/reagent_containers/food/drinks/soda_cans/vampiresoda
 	name = "soda"
@@ -260,7 +270,9 @@
 
 /obj/machinery/mineral/equipment_vendor/fastfood/sodavendor/blue
 	icon_state = "vend_c"
-
+	prize_list = list(new /datum/data/mining_equipment("cola",	/obj/item/reagent_containers/food/drinks/soda_cans/vampirecola/blue,10),
+		new /datum/data/mining_equipment("soda", /obj/item/reagent_containers/food/drinks/soda_cans/vampiresoda/blue, 5)
+	)
 /obj/machinery/mineral/equipment_vendor/fastfood/coffeevendor
 	name = "Coffee Vendor"
 	desc = "For those sleepy mornings."
