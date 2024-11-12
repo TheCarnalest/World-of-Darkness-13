@@ -290,6 +290,10 @@
 			return "[jobtitle] is already filled to capacity."
 		if(JOB_UNAVAILABLE_GENERATION)
 			return "Your generation is too young for [jobtitle]."
+		if(JOB_UNAVAILABLE_SPECIES)
+			return "Your species cannot be [jobtitle]."
+		if(JOB_UNAVAILABLE_SPECIES_LIMITED)
+			return "Your species has a limit on how many can be [jobtitle]."
 	return "Error: Unknown job availability."
 
 /mob/dead/new_player/proc/IsJobUnavailable(rank, latejoin = FALSE)
@@ -319,21 +323,10 @@
 		return JOB_UNAVAILABLE_GENERATION
 	if(client.prefs.masquerade < job.minimal_masquerade)
 		return JOB_UNAVAILABLE_MASQUERADE
-	if(job.kindred_only)
-		if(client.prefs.pref_species.name != "Vampire")
-			return JOB_UNAVAILABLE_SPECIES
-	if(!job.garou_allowed)
-		if(client.prefs.pref_species.name == "Werewolf")
-			return JOB_UNAVAILABLE_SPECIES
-	if(job.human_only)
-		if(client.prefs.pref_species.name != "Human")
-			return JOB_UNAVAILABLE_SPECIES
-	if(job.ghoul_only)
-		if(client.prefs.pref_species.name != "Ghoul")
-			return JOB_UNAVAILABLE_SPECIES
-	if(!job.humans_accessible)
-		if(client.prefs.pref_species.name == "Human")
-			return JOB_UNAVAILABLE_SPECIES
+	if(!job.allowed_species.Find(client.prefs.pref_species.name))
+		return JOB_UNAVAILABLE_SPECIES
+	if (job.species_slots[client.prefs.pref_species.name] == 0)
+		return JOB_UNAVAILABLE_SPECIES_LIMITED
 	if(client.prefs.pref_species.name == "Vampire")
 		if(client.prefs.clane)
 			for(var/i in job.allowed_bloodlines)

@@ -48,7 +48,7 @@
 
 	minimal_generation = 10	//Uncomment when players get exp enough
 	minimal_masquerade = 5
-	kindred_only = TRUE
+	allowed_species = list("Vampire")
 	allowed_bloodlines = list("Tremere", "Ventrue", "Nosferatu", "Toreador", "Malkavian", "Brujah", "Lasombra", "Gangrel")
 
 	my_contact_is_important = TRUE
@@ -133,7 +133,7 @@
 
 	minimal_generation = 12	//Uncomment when players get exp enough
 	minimal_masquerade = 5
-	kindred_only = TRUE
+	allowed_species = list("Vampire")
 
 	my_contact_is_important = TRUE
 	known_contacts = list("Prince")
@@ -374,7 +374,7 @@
 
 	liver_traits = list(TRAIT_MEDICAL_METABOLISM)
 
-	humans_accessible = TRUE
+	allowed_species = list("Vampire", "Ghoul", "Human")
 	display_order = JOB_DISPLAY_ORDER_DOCTOR
 	bounty_types = CIV_JOB_MED
 
@@ -423,7 +423,7 @@
 	paycheck = PAYCHECK_EASY
 	paycheck_department = ACCOUNT_SRV
 
-	humans_accessible = TRUE
+	allowed_species = list("Vampire", "Ghoul", "Human")
 
 	display_order = JOB_DISPLAY_ORDER_STREETJAN
 	allowed_bloodlines = list("Daughters of Cacaphony", "Salubri", "Baali", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Tzimisce", "Lasombra", "Caitiff")
@@ -470,7 +470,7 @@
 
 	v_duty = "Keep a census of events and provide information to archivists. Lead the Chantry. You report to the Tremere Lord of this region first, Prince second."
 	minimal_masquerade = 4
-	kindred_only = TRUE
+	allowed_species = list("Vampire")
 	allowed_bloodlines = list("Tremere")
 	experience_addition = 20
 
@@ -521,7 +521,7 @@
 
 	v_duty = "Keep a census of events and provide information to neonates. Listen to the Regent Carefully. Study blood magic and protect the chantry."
 	minimal_masquerade = 3
-	kindred_only = TRUE
+	allowed_species = list("Vampire")
 	allowed_bloodlines = list("Tremere")
 	experience_addition = 15
 
@@ -578,7 +578,7 @@
 
 	v_duty = "You lead the Anarchs in the City. A Camarilla faction that values freedom and individuality. While not a fan of the traditions, you still respect the Masquerade."
 	minimal_masquerade = 3
-	kindred_only = TRUE
+	allowed_species = list("Vampire")
 	allowed_bloodlines = list("Brujah", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Ventrue", "Lasombra")
 	experience_addition = 20
 
@@ -685,7 +685,7 @@
 
 	v_duty = "You provide supplies to other kindred. The warehouse is yours, and it's your business who you'll deal with."
 	minimal_masquerade = 3
-	kindred_only = TRUE
+	allowed_species = list("Vampire")
 	experience_addition = 20
 
 /datum/outfit/job/dealer
@@ -728,7 +728,7 @@
 	paycheck_department = ACCOUNT_CAR
 	display_order = JOB_DISPLAY_ORDER_SUPPLY
 	bounty_types = CIV_JOB_RANDOM
-	humans_accessible = TRUE
+	allowed_species = list("Vampire", "Ghoul", "Human")
 	known_contacts = list("Baron", "Prince", "Sheriff")
 	allowed_bloodlines = list("Daughters of Cacaphony", "Brujah", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Tzimisce", "Caitiff", "Lasombra")
 
@@ -778,8 +778,7 @@
 	paycheck_department = ACCOUNT_CIV
 	display_order = JOB_DISPLAY_ORDER_CITIZEN
 
-	humans_accessible = TRUE
-	garou_allowed = TRUE
+	allowed_species = list("Vampire", "Ghoul", "Human", "Werewolf")
 
 	v_duty = "Follow the traditions of the Camarilla. Obey the Prince and their authority. The city belongs to him. Aligning yourself with your clan members would be of benefit."
 	duty = "Obey the authorities... Or don't. You are up late tonight for one reason or another."
@@ -837,7 +836,7 @@
 
 	paycheck_department = ACCOUNT_CIV
 	display_order = JOB_DISPLAY_ORDER_STRIP
-	humans_accessible = TRUE
+	allowed_species = list("Vampire", "Ghoul", "Human")
 
 	v_duty = "Offer strip club services to humans or undead."
 	duty = "Offer strip club services."
@@ -1437,7 +1436,7 @@
 	v_duty = "Whether born or Embraced into the family, you are one of the Giovanni. Be you a necromancer, financier or lowly fledgling, remember that so long as you stand with your family, they too will stand with you."
 	minimal_masquerade = 0
 	experience_addition = 10
-	kindred_only = TRUE
+	allowed_species = list("Vampire")
 	allowed_bloodlines = list("Giovanni")
 
 /datum/outfit/job/giovanni
@@ -1486,7 +1485,7 @@
 	v_duty = " Pure blood runs through your veins and, with it, old power. Throughout your long life you have learnt to hold onto two things and never let go: money, and family."
 	minimal_masquerade = 0
 	experience_addition = 10
-	kindred_only = TRUE
+	allowed_species = list("Vampire")
 	allowed_bloodlines = list("Giovanni")
 
 /datum/outfit/job/giovannielder
@@ -1532,9 +1531,7 @@
 
 //	minimal_generation = 11	//Uncomment when players get exp enough
 
-	kindred_only = FALSE
-	human_only = TRUE
-	humans_accessible = TRUE
+	allowed_species = list("Ghoul", "Human")
 	duty = "Your family is a strange one. Maybe you are strange too, because sitting next to your great uncles as an equal is something you are greatly interested in."
 	minimal_masquerade = 0
 	experience_addition = 10
@@ -1580,8 +1577,7 @@
 	exp_type_department = EXP_TYPE_INDEPENDENT
 
 //	minimal_generation = 11	//Uncomment when players get exp enough
-	humans_accessible = TRUE
-	garou_allowed = TRUE
+	allowed_species = list("Vampire", "Ghoul", "Human", "Garou")
 
 	v_duty = "Drive people in the city."
 	duty = "Drive people in the city."
@@ -1722,7 +1718,7 @@
 	display_order = JOB_DISPLAY_ORDER_MALKAVIAN
 	exp_type_department = EXP_TYPE_INDEPENDENT
 
-	kindred_only = TRUE
+	allowed_species = list("Vampire")
 	allowed_bloodlines = list("Malkavian")
 	minimal_generation = 7	//Uncomment when players get exp enough
 
@@ -1772,7 +1768,7 @@
 	display_order = JOB_DISPLAY_ORDER_NOSFERATU
 	exp_type_department = EXP_TYPE_INDEPENDENT
 
-	kindred_only = TRUE
+	allowed_species = list("Vampire")
 	allowed_bloodlines = list("Nosferatu")
 	minimal_generation = 7	//Uncomment when players get exp enough
 
@@ -1818,7 +1814,7 @@
 	display_order = JOB_DISPLAY_ORDER_VENTRUE
 	exp_type_department = EXP_TYPE_INDEPENDENT
 
-	kindred_only = TRUE
+	allowed_species = list("Vampire")
 	allowed_bloodlines = list("Ventrue")
 	minimal_generation = 7	//Uncomment when players get exp enough
 
@@ -1864,7 +1860,7 @@
 	display_order = JOB_DISPLAY_ORDER_TOREADOR
 	exp_type_department = EXP_TYPE_INDEPENDENT
 
-	kindred_only = TRUE
+	allowed_species = list("Vampire")
 	allowed_bloodlines = list("Toreador")
 	minimal_generation = 7	//Uncomment when players get exp enough
 
@@ -1912,7 +1908,7 @@
 	display_order = JOB_DISPLAY_ORDER_BRUJAH
 	exp_type_department = EXP_TYPE_INDEPENDENT
 
-	kindred_only = TRUE
+	allowed_species = list("Vampire")
 	allowed_bloodlines = list("Brujah")
 	minimal_generation = 7	//Uncomment when players get exp enough
 
@@ -1955,11 +1951,8 @@
 	display_order = JOB_DISPLAY_ORDER_POLICE
 	exp_type_department = EXP_TYPE_INDEPENDENT
 
-	kindred_only = FALSE
-	human_only = TRUE
-	humans_accessible = TRUE
-//	allowed_bloodlines = list()
-	minimal_generation = 13
+	allowed_species = list("Ghoul", "Human")
+	species_slots = list("Ghoul" = 1)
 
 	duty = "Enforce the Law."
 	minimal_masquerade = 0
@@ -2001,10 +1994,7 @@
 	display_order = JOB_DISPLAY_ORDER_FBI
 	exp_type_department = EXP_TYPE_INDEPENDENT
 
-	kindred_only = FALSE
-	human_only = TRUE
-	humans_accessible = TRUE
-//	allowed_bloodlines = list()
+	allowed_species = list("Human")
 	minimal_generation = 13
 
 	duty = "Enforce the Law."
@@ -2046,17 +2036,13 @@
 	display_order = JOB_DISPLAY_ORDER_POLICE
 	exp_type_department = EXP_TYPE_INDEPENDENT
 
-	kindred_only = FALSE
-	human_only = TRUE
-	humans_accessible = TRUE
-//	allowed_bloodlines = list()
+	allowed_species = list("Human")
 	minimal_generation = 13
 
 	duty = "Make money, do drugs, fight law. Your hideout is the laundromat in Chinatown."
 	experience_addition = 10
 	minimal_masquerade = 0
 	my_contact_is_important = FALSE
-//	known_contacts = list("Investigator")
 
 /datum/outfit/job/triad_soldier/pre_equip(mob/living/carbon/human/H)
 	..()
@@ -2099,7 +2085,7 @@
 	display_order = JOB_DISPLAY_ORDER_VOIVODE
 	exp_type_department = EXP_TYPE_INDEPENDENT
 
-	kindred_only = TRUE
+	allowed_species = list("Vampire")
 	allowed_bloodlines = list("Old Clan Tzimisce")
 	minimal_generation = 7
 
@@ -2141,7 +2127,7 @@
 	display_order = JOB_DISPLAY_ORDER_BOGATYR
 	exp_type_department = EXP_TYPE_INDEPENDENT
 
-	kindred_only = TRUE
+	allowed_species = list("Vampire")
 	allowed_bloodlines = list("Old Clan Tzimisce")
 	minimal_generation = 13	//Uncomment when players get exp enough
 

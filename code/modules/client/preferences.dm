@@ -1385,26 +1385,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[FROM [job.minimal_generation] GENERATION AND OLDER\]</font></td></tr>"
 				continue
 			if(masquerade < job.minimal_masquerade)
-				HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[[job.minimal_masquerade] MASQUERADE POINTS REQUIED\]</font></td></tr>"
+				HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[[job.minimal_masquerade] MASQUERADE POINTS REQUIRED\]</font></td></tr>"
 				continue
-			if(job.kindred_only)
-				if(pref_species.name != "Vampire")
-					HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[[pref_species.name] RESTRICTED\]</font></td></tr>"
-					continue
-			if(!job.garou_allowed)
-				if(pref_species.name == "Werewolf")
-					HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[[pref_species.name] RESTRICTED\]</font></td></tr>"
-					continue
-			if(!job.humans_accessible)
-				if(pref_species.name == "Human")
-					HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[[pref_species.name] RESTRICTED\]</font></td></tr>"
-					continue
-			if(job.human_only)
-				if(pref_species.name != "Human")
-					HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[[pref_species.name] RESTRICTED\]</font></td></tr>"
-			if(job.ghoul_only)
-				if(pref_species.name != "Ghoul")
-					HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[[pref_species.name] RESTRICTED\]</font></td></tr>"
+			if(!job.allowed_species.Find(pref_species.name))
+				HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[[pref_species.name] RESTRICTED\]</font></td></tr>"
+				continue
 			if(pref_species.name == "Vampire")
 				if(clane)
 					var/alloww = FALSE
