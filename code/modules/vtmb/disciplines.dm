@@ -328,7 +328,7 @@
 	icon_state = "celerity"
 	cost = 1
 	ranged = FALSE
-	delay = 75
+	delay = 7.5 SECONDS
 	violates_masquerade = FALSE
 	activate_sound = 'code/modules/wod13/sounds/celerity_activate.ogg'
 	leveldelay = TRUE
