@@ -1574,7 +1574,7 @@
 	display_order = JOB_DISPLAY_ORDER_TAXI
 	exp_type_department = EXP_TYPE_INDEPENDENT
 
-	allowed_species = list("Vampire", "Ghoul", "Human", "Garou")
+	allowed_species = list("Vampire", "Ghoul", "Human", "Werewolf")
 
 	v_duty = "Drive people in the city."
 	duty = "Drive people in the city."

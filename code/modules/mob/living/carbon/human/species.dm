@@ -217,12 +217,16 @@ GLOBAL_LIST_EMPTY(donation_races)
  * If there are no available roundstart species, defaults to human.
  */
 /proc/generate_selectable_species()
+	//[Lucia] TODO: make this good what the fuck is wrong with the previous thing
+	GLOB.roundstart_races = list("human", "kindred", "ghoul", "garou")
+	/*
 	for(var/I in subtypesof(/datum/species))
 		var/datum/species/S = new I
 		if(S.selectable)
 			GLOB.roundstart_races += S.id
 	if(!GLOB.roundstart_races.len)
 		GLOB.roundstart_races += "kindred"
+	*/
 
 /**
  * Checks if a species is eligible to be picked at roundstart.
