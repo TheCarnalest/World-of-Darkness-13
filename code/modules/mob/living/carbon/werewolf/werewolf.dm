@@ -191,7 +191,7 @@
 	melee_damage_lower = 35
 	melee_damage_upper = 55
 	health = 350
-	maxHealth = 350
+	maxHealth = 100
 //	speed = -1  doesn't work on carbons
 	var/obj/item/r_store = null
 	var/obj/item/l_store = null

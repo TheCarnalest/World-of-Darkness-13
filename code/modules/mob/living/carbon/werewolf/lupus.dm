@@ -25,7 +25,7 @@
 //		)
 
 /datum/movespeed_modifier/lupusform
-	multiplicative_slowdown = -0.9
+	multiplicative_slowdown = -0.85
 
 /mob/living/carbon/werewolf/lupus/update_icons()
 	cut_overlays()
