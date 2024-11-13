@@ -271,7 +271,7 @@
 /obj/machinery/mineral/equipment_vendor/fastfood/sodavendor/blue
 	icon_state = "vend_c"
 	prize_list = list(new /datum/data/mining_equipment("cola",	/obj/item/reagent_containers/food/drinks/soda_cans/vampirecola/blue,10),
-		new /datum/data/mining_equipment("soda", /obj/item/reagent_containers/food/drinks/soda_cans/vampiresoda/blue, 5)
+		new /datum/data/mining_equipment("soda", /obj/item/reagent_containers/food/drinks/soda_cans/vampirecola/blue, 5)
 	)
 /obj/machinery/mineral/equipment_vendor/fastfood/coffeevendor
 	name = "Coffee Vendor"
