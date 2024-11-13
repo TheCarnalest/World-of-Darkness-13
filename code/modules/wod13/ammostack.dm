@@ -44,7 +44,7 @@
 /obj/projectile/beam/beam_rifle/vampire/vamp9mm
 	name = "9mm bullet"
 	damage = 18
-	bare_wound_bonus = 20
+	bare_wound_bonus = 10
 
 /obj/projectile/beam/beam_rifle/vampire/vamp45acp
 	name = ".45 ACP bullet"
@@ -55,28 +55,28 @@
 	name = ".44 bullet"
 	damage = 35
 	armour_penetration = 15
-	bare_wound_bonus = 5
-	wound_bonus = 20
+	bare_wound_bonus = -5
+	wound_bonus = 10
 
 /obj/projectile/beam/beam_rifle/vampire/vamp556mm
 	name = "5.56mm bullet"
 	damage = 45
 	armour_penetration = 25
 	bare_wound_bonus = -5
-	wound_bonus = 15
+	wound_bonus = 5
 
 /obj/projectile/beam/beam_rifle/vampire/vamp545mm
 	name = "5.45mm bullet"
 	damage = 40
 	armour_penetration = 30
 	bare_wound_bonus = 5
-	wound_bonus = 10
+	wound_bonus = -5
 
 /obj/projectile/beam/beam_rifle/vampire/vamp12g
 	name = "12g shotgun slug"
-	damage = 80
-	armour_penetration = 40
-	bare_wound_bonus = 5
+	damage = 70
+	armour_penetration = 15
+	bare_wound_bonus = 10
 	wound_bonus = 5
 
 /obj/projectile/beam/beam_rifle/vampire/vamp12g/on_hit(atom/target, blocked = FALSE)
@@ -98,7 +98,7 @@
 
 /obj/projectile/bullet/crossbow_bolt
 	name = "bolt"
-	damage = 140
+	damage = 160
 	armour_penetration = 75
 	sharpness = SHARP_POINTY
 	wound_bonus = 50
@@ -247,7 +247,7 @@
 /obj/projectile/beam/beam_rifle/vampire/vamp556mm/silver
 	name = "5.56mm silver bullet"
 	armour_penetration = 10
-	damage = 30
+	damage = 35
 
 /obj/projectile/beam/beam_rifle/vampire/vamp556mm/silver/on_hit(atom/target, blocked = FALSE)
 	. = ..()
@@ -262,7 +262,7 @@
 
 /obj/projectile/beam/beam_rifle/vampire/vamp9mm/silver
 	name = "9mm silver bullet"
-	damage = 25
+	damage = 23
 
 /obj/projectile/beam/beam_rifle/vampire/vamp9mm/silver/on_hit(atom/target, blocked = FALSE)
 	. = ..()
@@ -292,7 +292,7 @@
 
 /obj/projectile/beam/beam_rifle/vampire/vamp44/silver
 	name = ".44 silver bullet"
-	damage = 35
+	damage = 40
 	armour_penetration = 15
 
 /obj/projectile/beam/beam_rifle/vampire/vamp44/silver/on_hit(atom/target, blocked = FALSE)
