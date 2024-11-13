@@ -54,6 +54,11 @@
 	damage = 35
 	armour_penetration = 15
 
+/obj/projectile/beam/beam_rifle/vampire/vamp50
+	name = ".50 bullet"
+	damage = 70
+	armour_penetration = 20
+
 /obj/projectile/beam/beam_rifle/vampire/vamp556mm
 	name = "5.56mm bullet"
 	damage = 45
@@ -120,6 +125,14 @@
 	projectile_type = /obj/projectile/beam/beam_rifle/vampire/vamp44
 	icon_state = "44"
 	base_iconstate = "44"
+
+/obj/item/ammo_casing/vampire/c50
+	name = ".50 bullet casing"
+	desc = "A .50 bullet casing."
+	caliber = CALIBER_50
+	projectile_type = /obj/projectile/beam/beam_rifle/vampire/vamp50
+	icon_state = "50"
+	base_iconstate = "50"
 
 /obj/item/ammo_casing/vampire/c556mm
 	name = "5.56mm bullet casing"
