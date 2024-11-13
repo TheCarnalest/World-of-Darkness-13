@@ -92,13 +92,13 @@ And it also helps for the character set panel
 			if(R)
 				if(R != src)
 					if(R.need_lover && need_lover && !R.Lover && !Lover && R.Friend != src && Friend != R && R.Enemy != src && Enemy != R)
-						if(R.owner.gender == owner.gender && HAS_TRAIT(R.owner, TRAIT_HOMOSEXUAL) && HAS_TRAIT(owner, TRAIT_HOMOSEXUAL))
+						if((R.owner.gender == owner.gender) && HAS_TRAIT(R.owner, TRAIT_HOMOSEXUAL) && HAS_TRAIT(owner, TRAIT_HOMOSEXUAL))
 							Lover = R
 							R.Lover = src
 							to_chat(owner, "Your lover, <b>[R.owner.real_name]</b>, is now in the city!")
 							to_chat(R.owner, "Your lover, <b>[owner.real_name]</b>, is now in the city!")
 							need_lover = FALSE
-						if(!HAS_TRAIT(R.owner, TRAIT_HOMOSEXUAL) && !HAS_TRAIT(owner, TRAIT_HOMOSEXUAL) && R.owner.gender != owner.gender)
+						else if(!HAS_TRAIT(R.owner, TRAIT_HOMOSEXUAL) && !HAS_TRAIT(owner, TRAIT_HOMOSEXUAL) && (R.owner.gender != owner.gender))
 							Lover = R
 							R.Lover = src
 							to_chat(owner, "Your lover, <b>[R.owner.real_name]</b>, is now in the city!")
