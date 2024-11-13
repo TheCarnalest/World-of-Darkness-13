@@ -55,9 +55,9 @@
 	butcher_results = list(/obj/item/food/meat/slab = 5)
 	layer = LARGE_MOB_LAYER
 	var/obj_damage = 30
-	var/wound_bonus = 30
-	var/bare_wound_bonus = 30
-	var/sharpness = 100
+	var/wound_bonus = 10
+	var/bare_wound_bonus = 25
+	var/sharpness = 50
 	var/armour_penetration = 100
 	var/melee_damage_type = BRUTE
 	var/list/damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
@@ -188,10 +188,10 @@
 	possible_a_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB, INTENT_HARM)
 	limb_destroyer = 1
 	hud_type = /datum/hud/werewolf
-	melee_damage_lower = 40
-	melee_damage_upper = 40
-	health = 500
-	maxHealth = 500
+	melee_damage_lower = 35
+	melee_damage_upper = 55
+	health = 350
+	maxHealth = 350
 //	speed = -1  doesn't work on carbons
 	var/obj/item/r_store = null
 	var/obj/item/l_store = null
@@ -211,7 +211,7 @@
 	werewolf_armor = 25
 
 /datum/movespeed_modifier/crinosform
-	multiplicative_slowdown = -0.5
+	multiplicative_slowdown = -0.25
 
 /mob/living/carbon/werewolf/crinos/Initialize()
 	. = ..()
