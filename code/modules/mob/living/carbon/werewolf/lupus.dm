@@ -13,8 +13,8 @@
 //	var/move_delay_add = -1.5 // movement delay to add    also didn't work
 	melee_damage_lower = 15
 	melee_damage_upper = 30
-	health = 250
-	maxHealth = 250
+	health = 200
+	maxHealth = 100
 //	bodyparts = list(
 //		/obj/item/bodypart/chest,
 //		/obj/item/bodypart/head,
@@ -42,10 +42,10 @@
 		if(25 to 75)
 			var/mutable_appearance/damage_overlay = mutable_appearance(icon, "damage1[laid_down ? "_rest" : ""]")
 			add_overlay(damage_overlay)
-		if(75 to 190)
+		if(75 to 150)
 			var/mutable_appearance/damage_overlay = mutable_appearance(icon, "damage2[laid_down ? "_rest" : ""]")
 			add_overlay(damage_overlay)
-		if(190 to INFINITY)
+		if(150 to INFINITY)
 			var/mutable_appearance/damage_overlay = mutable_appearance(icon, "damage3[laid_down ? "_rest" : ""]")
 			add_overlay(damage_overlay)
 
