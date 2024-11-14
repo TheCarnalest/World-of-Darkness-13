@@ -105,6 +105,13 @@ VENTORY!
 	var/maximum_depth = 1
 	var/storage_flags = NONE
 
+/obj/item/storage/ComponentInitialize() //backpacks are smaller but hold larger things
+	. = ..()
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	STR.max_w_class = WEIGHT_CLASS_HUGE
+	STR.max_items = 40 //max grid
+	STR.max_combined_w_class = 100
+
 /datum/component/storage/Initialize(datum/component/storage/concrete/master)
 	if(!grid_box_size)
 		grid_box_size = world.icon_size
