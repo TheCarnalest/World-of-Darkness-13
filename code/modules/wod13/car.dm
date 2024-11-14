@@ -130,7 +130,7 @@ SUBSYSTEM_DEF(carpool)
 
 	var/last_beep = 0
 
-	var/component_type = /datum/component/storage/concrete
+	var/component_type = /datum/component/storage/concrete/vtm/car
 	var/baggage_limit = 30
 	var/baggage_max = WEIGHT_CLASS_BULKY
 
