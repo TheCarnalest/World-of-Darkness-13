@@ -300,15 +300,10 @@
 	var/datum/job/job = SSjob.GetJob(rank)
 	if(!job)
 		return JOB_UNAVAILABLE_GENERIC
-	if((job.current_positions >= job.total_positions) && job.total_positions != -1)
-		if(job.title == "Citizen")
-			if(isnum(client.player_age) && client.player_age <= 14) //Newbies can always be assistants
-				return JOB_AVAILABLE
-			for(var/datum/job/J in SSjob.occupations)
-				if(J && J.current_positions < J.total_positions && J.title != job.title)
-					return JOB_UNAVAILABLE_SLOTFULL
-		else
-			return JOB_UNAVAILABLE_SLOTFULL
+	if (job.title == "Citizen")
+		return JOB_AVAILABLE
+	if((job.current_positions >= job.total_positions) && (job.total_positions != -1))
+		return JOB_UNAVAILABLE_SLOTFULL
 	if(is_banned_from(ckey, rank))
 		return JOB_UNAVAILABLE_BANNED
 	if(QDELETED(src))
