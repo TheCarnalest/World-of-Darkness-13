@@ -1780,6 +1780,7 @@
 	jobtype = /datum/job/vamp/primogen_nosferatu
 
 	id = /obj/item/card/id/primogen
+	mask = /obj/item/clothing/mask/vampire/shemagh
 	glasses = /obj/item/clothing/glasses/vampire/sun
 	uniform = /obj/item/clothing/under/vampire/suit
 	suit = /obj/item/clothing/suit/vampire/trench

@@ -800,3 +800,12 @@
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	visor_flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
 	w_class = WEIGHT_CLASS_SMALL
+
+/obj/item/clothing/mask/vampire/shemagh
+	name = "shemagh"
+	desc = "Covers your face pretty well."
+	icon_state = "shemagh"
+	inhand_icon_state = "shemagh"
+	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
+	visor_flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
+	w_class = WEIGHT_CLASS_SMALL
