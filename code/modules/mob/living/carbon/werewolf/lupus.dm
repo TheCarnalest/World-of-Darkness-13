@@ -13,8 +13,8 @@
 //	var/move_delay_add = -1.5 // movement delay to add    also didn't work
 	melee_damage_lower = 15
 	melee_damage_upper = 30
-	health = 200
-	maxHealth = 100
+	health = 180
+	maxHealth = 180
 //	bodyparts = list(
 //		/obj/item/bodypart/chest,
 //		/obj/item/bodypart/head,
