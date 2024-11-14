@@ -251,7 +251,7 @@
 	icon_state = "mp5"
 	ammo_type = /obj/item/ammo_casing/vampire/c9mm
 	caliber = CALIBER_9MM
-	max_ammo = 30
+	max_ammo = 25
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/gun/ballistic/automatic/vampire/mp5
