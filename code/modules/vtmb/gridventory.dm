@@ -786,6 +786,7 @@ VENTORY!
 	icon_state = "background"
 	plane = HUD_PLANE
 	layer = 1
+	alpha = 180
 	var/atom/movable/screen/storage_hover/hovering
 
 /atom/movable/screen/storage/Initialize(mapload, new_master)
