@@ -605,7 +605,7 @@ What a mess.*/
 							active1.fields["age"] = t1
 					if("species")
 						if(istype(active1, /datum/data/record))
-							var/t1 = input("Select a species", "Species Selection") as null|anything in GLOB.roundstart_races
+							var/t1 = input("Select a species", "Species Selection") as null|anything in GLOB.selectable_races
 							if(!canUseSecurityRecordsConsole(usr, t1, a1))
 								return
 							active1.fields["species"] = t1
