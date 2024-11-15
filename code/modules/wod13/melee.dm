@@ -387,7 +387,7 @@
 	force = 40
 	throwforce = 25
 	w_class = WEIGHT_CLASS_BULKY
-	slot_flags = ITEM_SLOT_BACK
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT
 	attack_verb_continuous = list("attacks", "chops", "rocks", "hits")
 	attack_verb_simple = list("attack", "chop", "rock", "hit")
 	hitsound = 'code/modules/wod13/sounds/rock.ogg'
