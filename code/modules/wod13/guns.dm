@@ -23,8 +23,8 @@
 	max_ammo = 6
 
 /obj/item/gun/ballistic/vampire/revolver
-	name = "\improper revolver"
-	desc = "Old, but reliable."
+	name = "\improper magnum revolver"
+	desc = "Feelin' lucky, punk?"
 	icon_state = "revolver"
 	inhand_icon_state = "revolver"
 	worn_icon_state = "revolver"
@@ -100,6 +100,16 @@
 	. += "[live_ammo ? live_ammo : "None"] of those are live rounds."
 	if (current_skin)
 		. += "It can be spun with <b>alt+click</b>"
+
+
+/obj/item/gun/ballistic/vampire/revolver/snub
+	name = "\improper snub-nosed revolver"
+	desc = "a cheap Saturday night special revolver. Sometimes called a 'purse gun'. It takes 9mm rounds."
+	icon_state = "revolver_snub"
+	inhand_icon_state = "revolver"
+	worn_icon_state = "revolver"
+	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/rev44
+	initial_caliber = CALIBER_44
 
 /obj/item/ammo_box/magazine/m44
 	name = "handgun magazine (.44)"
