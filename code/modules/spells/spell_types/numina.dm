@@ -15,8 +15,7 @@
 /obj/effect/proc_holder/spell/self/numina_heal/cast(list/targets, mob/living/carbon/human/user) //Note the lack of "list/targets" here. Instead, use a "user" var depending on mob requirements.
 	//Also, notice the lack of a "for()" statement that looks through the targets. This is, again, because the spell can only have a single target.
 	user.visible_message("<span class='warning'>[user]'s wounds seem to heal on their own!</span>", "<span class='notice'>You give your flesh unto the lord, and your faith heals you.</span>")
-	user.adjustBruteLoss(-10)
-	user.adjustFireLoss(-10)
+	user.heal_overall_damage(brute = 10, burn = 10)
 
 /obj/effect/proc_holder/spell/targeted/numina_freeze
 	name = "Tears of the Martyr"
@@ -40,17 +39,20 @@
 	src.user = user
 	src.target = target
 	src.initial_loc = user.loc
-	RegisterSignal(user, COMSIG_MOB_CLICKON, .proc/HandleUserClick)
+	RegisterSignal(user, COMSIG_MOB_CLICKON, PROC_REF(HandleUserClick))
 
 /datum/freeze_handler/proc/HandleUserClick(mob/living/carbon/human/user, atom/what)
-	frozen = FALSE
+	target.AdjustStun(-15 SECONDS)
+	to_chat(user, "<span class='notice'>You are no longer freezing [target].</span>")
+	to_chat(target, "<span class='notice'>You are no longer frozen.</span>")
+	Cleanup()
 
 /datum/freeze_handler/proc/Cleanup()
-	UnregisterSignal(user, COMSIG_MOB_CLICKON, .proc/HandleUserClick)
+	UnregisterSignal(user, COMSIG_MOB_CLICKON, PROC_REF(HandleUserClick))
 
 
 /obj/effect/proc_holder/spell/targeted/numina_freeze/cast(list/targets, mob/living/carbon/human/user)
-	if(!targets || !targets.len)
+	if(!targets.len)
 		to_chat(user, "<span class='warning'>You need to target someone to freeze them!</span>")
 		return
 
@@ -60,25 +62,21 @@
 		return
 
 	var/datum/freeze_handler/freeze_handler = new(user, target)
-	var/freeze_duration = 10 SECONDS
 
 	to_chat(target, "<span class='notice'>You witness [user] crying, and something deep inside you stops you from acting.</span>")
 	to_chat(user, "<span class='notice'>You freeze [target] in place with your tears.</span>")
 
-	user.visible_message("<span class='warning'>[user] begins to cry tears of sorrow.</span>", "<span class='notice'>You feel tears streaming down your face as you stare into the soul of [target].</span>")
+	user.visible_message("<span class='warning'>[user] begins to cry tears of sorrow.</span>",
+	"<span class='notice'>You feel tears streaming down your face as you stare into the soul of [target].</span>")
 	user.emote("weeps at [target] with tears of sorrow.")
 
-	spawn(freeze_duration)
-		freeze_handler.frozen = FALSE
+	target.Stun(15 SECONDS)
+	if (user.loc != freeze_handler.initial_loc)
+		target.AdjustStun(-15 SECONDS)
 		to_chat(target, "<span class='notice'>You are no longer frozen.</span>")
-
-
-	while(freeze_handler.frozen)
-		target.Stun(10)
-		sleep(9)
-		if (user.loc != freeze_handler.initial_loc)
-			freeze_handler.frozen = FALSE
-			to_chat(target, "<span class='notice'>You are no longer frozen.</span>")
-			to_chat(user, "<span class='notice'>You are no longer freezing [target].</span>")
-			break
+		freeze_handler.Cleanup()
+		return
+	sleep(15 SECONDS)
+	to_chat(user, "<span class='notice'>You are no longer freezing [target].</span>")
+	to_chat(target, "<span class='notice'>You are no longer frozen.</span>")
 	freeze_handler.Cleanup()
