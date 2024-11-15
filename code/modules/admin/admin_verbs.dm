@@ -32,6 +32,7 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/game_panel,			/*game panel, allows to change game-mode etc*/
 	/client/proc/toggle_canon,
 	/client/proc/reward_exp,
+	/client/proc/whitelist_panel,
 	/*
 	/client/proc/encipher_word,
 	/client/proc/uncipher_word,
@@ -496,6 +497,40 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 						message_admins("[key_name_admin(usr)] rewarded [key_name_admin(exper)] with [amount] experience points. Reason: [reason]")
 						log_admin("[key_name(usr)] rewarded [key_name(exper)] with [amount] experience points. Reason: [reason]")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Reward Experience") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+/client/proc/grant_whitelist()
+	set name = "Grant Whitelist"
+	set category = "Admin"
+
+	if (!SSwhitelists.whitelists_enabled)
+		to_chat(usr, "<span class='warning'>Whitelisting isn't enabled!</span>")
+		return
+
+	var/whitelistee = input("CKey to whitelist:") as null|text
+	if (whitelistee)
+		whitelistee = ckey(whitelistee)
+		var/list/whitelist_pool = (SSwhitelists.possible_whitelists - SSwhitelists.get_user_whitelists(whitelistee))
+		if (whitelist_pool.len == 0)
+			to_chat(usr, "<span class='warning'>[whitelistee] already has all whitelists!</span>")
+			return
+		var/whitelist = input("Whitelist to give:") as null|anything in whitelist_pool
+		if (whitelist)
+			var/ticket_link = input("Link to whitelist request ticket:") as null|text
+			if (ticket_link)
+				var/approval_reason = input("Reason for whitelist approval:") as null|text
+				if (approval_reason)
+					SSwhitelists.add_whitelist(whitelistee, whitelist, usr.ckey, ticket_link, approval_reason)
+					message_admins("[key_name_admin(usr)] gave [whitelistee] the [whitelist] whitelist. Reason: [approval_reason]")
+					log_admin("[key_name(usr)] gave [whitelistee] the [whitelist] whitelist. Reason: [approval_reason]")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Grant Whitelist") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
+/client/proc/whitelist_panel()
+	set name = "Whitelist Management"
+	set category = "Admin"
+	if (!check_rights(R_ADMIN))
+		return
+	holder.whitelist_panel()
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Whitelist Management") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
 /client/proc/poll_panel()
 	set name = "Server Poll Management"

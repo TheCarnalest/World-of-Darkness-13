@@ -5,7 +5,7 @@
 SUBSYSTEM_DEF(bad_guys_party)
 	name = "Bad Guys Party"
 	init_order = INIT_ORDER_DEFAULT
-	wait = 12000
+	wait = 4000
 	priority = FIRE_PRIORITY_DEFAULT
 
 	var/threat = 0	//Bigger number - less chance
@@ -34,21 +34,21 @@ SUBSYSTEM_DEF(bad_guys_party)
 	switch(level)
 		if(1)
 			if(prob(20))
-				//spiral
+				//caitiff
 				if(Next)
 					qdel(Next)
 				threat = min(100, threat+60)
 				max_candidates = 2
 				go_on_next_fire = TRUE
-				Next = new /datum/outfit/job/spiral()
+				Next = new /datum/outfit/job/caitiff()
 			else
-				//caitiff
+				//sabbat
 				if(Next)
 					qdel(Next)
 				threat = min(100, threat+30)
 				max_candidates = 3
 				go_on_next_fire = TRUE
-				Next = new /datum/outfit/job/caitiff()
+				Next = new /datum/outfit/job/sabbatist()
 		if(2)
 			if(prob(30))
 				//spiral
@@ -66,7 +66,7 @@ SUBSYSTEM_DEF(bad_guys_party)
 				max_candidates = 5
 				go_on_next_fire = TRUE
 				Next = new /datum/outfit/job/hunter()
-		if(3)
+		/*if(3)
 			if(prob(50))
 				//spiral
 				if(Next)
@@ -82,7 +82,7 @@ SUBSYSTEM_DEF(bad_guys_party)
 				threat = min(100, threat+90)
 				max_candidates = 7
 				go_on_next_fire = TRUE
-				Next = new /datum/outfit/job/sabbatist()
+				Next = new /datum/outfit/job/sabbatist()*/
 
 /mob/dead/new_player/proc/ForceLateSpawn()
 	if(SSticker.late_join_disabled)

@@ -10,6 +10,7 @@
 	male_clothes = "/obj/item/clothing/under/vampire/salubri"
 	female_clothes = "/obj/item/clothing/under/vampire/salubri/female"
 	enlightement = FALSE
+	whitelisted = FALSE
 
 /datum/discipline/valeren/post_gain(mob/living/carbon/human/H)
 	H.put_in_r_hand(new /obj/item/vamp/keys/salubri(H))

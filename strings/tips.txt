@@ -36,7 +36,6 @@ As a Dealer, you hold a powerful domain. You can make deals with whomever you wa
 As a Supply Technician, you work for the dealer - who has graciously accepted you into his coterie.
 As a Chantry Regent, your objectives are to lead the Tremere of San Francisco and keep the Chantry secure, as well as hunt down any who would steal your clan's secrets.
 As an Archivist, your objectives are to protect Tremere knowledge and the Chantry.
-As a Giovanni Member, you must deal with the bank. The Old World family wants it, and the New World family is not so willing to give away what they've built.
 As a Taxi Driver, your objectives are to drive. Real human being.
 As a Primogen, your objectives are to represent your clan in the city, and make sure they are organized and loyal enough to keep you in power.
 As a Sabbat member, you must fight the enemies of the Dark Father - servants of the vile Antediluvians.

@@ -9,6 +9,7 @@
 	)
 	male_clothes = "/obj/item/clothing/under/vampire/bandit"
 	female_clothes = "/obj/item/clothing/under/vampire/bandit"
+	whitelisted = TRUE
 
 /*
 /datum/discipline/quietus/post_gain(mob/living/carbon/human/H)

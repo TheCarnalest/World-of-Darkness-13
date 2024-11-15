@@ -66,12 +66,14 @@ SUBSYSTEM_DEF(job)
 
 	return TRUE
 
-/datum/controller/subsystem/job/proc/FreeRole(rank)
+/datum/controller/subsystem/job/proc/FreeRole(rank, var/mob/living/carbon/human/mob)
 	if(!rank)
 		return
 	var/datum/job/job = GetJob(rank)
 	if(!job)
 		return FALSE
+	if (job.species_slots[mob.dna.species.name] >= 0)
+		job.species_slots[mob.dna.species.name]++
 	job.current_positions = max(0, job.current_positions - 1)
 
 /datum/controller/subsystem/job/proc/GetJob(rank)
@@ -100,12 +102,18 @@ SUBSYSTEM_DEF(job)
 			return FALSE
 		if(player.client.prefs.masquerade < job.minimal_masquerade)
 			return FALSE
+		if(!job.allowed_species.Find(player.client.prefs.pref_species.name))
+			return FALSE
+		if (job.species_slots[player.client.prefs.pref_species.name] == 0)
+			return FALSE
 		var/position_limit = job.total_positions
 		if(!latejoin)
 			position_limit = job.spawn_positions
 		JobDebug("Player: [player] is now Rank: [rank], JCP:[job.current_positions], JPL:[position_limit]")
 		player.mind.assigned_role = rank
 		unassigned -= player
+		if (job.species_slots[player.client.prefs.pref_species.name] > 0)
+			job.species_slots[player.client.prefs.pref_species.name]--
 		job.current_positions++
 		return TRUE
 	JobDebug("AR has failed, Player: [player], Rank: [rank]")
@@ -131,26 +139,12 @@ SUBSYSTEM_DEF(job)
 		if(player.client.prefs.masquerade < job.minimal_masquerade)
 			JobDebug("FOC player not enough masquerade, Player: [player]")
 			continue
-		if(job.kindred_only)
-			if(player.client.prefs.pref_species.name != "Vampire")
-				JobDebug("FOC player species not allowed, Player: [player]")
-				continue
-		if(job.ghoul_only)
-			if(player.client.prefs.pref_species.name != "Vampire")
-				JobDebug("FOC player species not allowed, Player: [player]")
-				continue
-		if(!job.garou_allowed)
-			if(player.client.prefs.pref_species.name == "Werewolf")
-				JobDebug("FOC player species not allowed, Player: [player]")
-				continue
-		if(job.human_only)
-			if(player.client.prefs.pref_species.name != "Human")
-				JobDebug("FOC player species not allowed, Player: [player]")
-				continue
-		if(!job.humans_accessible)
-			if(player.client.prefs.pref_species.name == "Human")
-				JobDebug("FOC player species not allowed, Player: [player]")
-				continue
+		if(!job.allowed_species.Find(player.client.prefs.pref_species.name))
+			JobDebug("FOC player species not allowed, Player: [player]")
+			continue
+		if(job.species_slots[player.client.prefs.pref_species.name] == 0)
+			JobDebug("FOC player species limit overrun, Player: [player]")
+			continue
 		if(player.client.prefs.pref_species.name == "Vampire")
 			if(player.client.prefs.clane)
 				var/alloww = FALSE
@@ -207,26 +201,14 @@ SUBSYSTEM_DEF(job)
 			JobDebug("GRJ player not enough masquerade, Player: [player]")
 			continue
 
-		if(job.kindred_only)
-			if(player.client.prefs.pref_species.name != "Vampire")
-				JobDebug("GRJ player species not allowed, Player: [player]")
-				continue
-		if(job.ghoul_only)
-			if(player.client.prefs.pref_species.name != "Ghoul")
-				JobDebug("GRJ player species not allowed, Player: [player]")
-				continue
-		if(!job.garou_allowed)
-			if(player.client.prefs.pref_species.name == "Werewolf")
-				JobDebug("GRJ player species not allowed, Player: [player]")
-				continue
-		if(job.human_only)
-			if(player.client.prefs.pref_species.name != "Human")
-				JobDebug("GRJ player species not allowed, Player: [player]")
-				continue
-		if(!job.humans_accessible)
-			if(player.client.prefs.pref_species.name == "Human")
-				JobDebug("GRJ player species not allowed, Player: [player]")
-				continue
+		if(!job.allowed_species.Find(player.client.prefs.pref_species.name))
+			JobDebug("GRJ player species not allowed, Player: [player]")
+			continue
+
+		if(job.species_slots[player.client.prefs.pref_species.name] == 0)
+			JobDebug("GRJ player species limit overrun, Player: [player]")
+			continue
+
 		if(player.client.prefs.pref_species.name == "Vampire")
 			if(player.client.prefs.clane)
 				var/alloww = FALSE
@@ -425,26 +407,14 @@ SUBSYSTEM_DEF(job)
 					JobDebug("DO player not enough masquerade, Player: [player]")
 					continue
 
-				if(job.kindred_only)
-					if(player.client.prefs.pref_species.name != "Vampire")
-						JobDebug("DO player species not allowed, Player: [player]")
-						continue
-				if(job.ghoul_only)
-					if(player.client.prefs.pref_species.name != "Ghoul")
-						JobDebug("DO player species not allowed, Player: [player]")
-						continue
-				if(!job.garou_allowed)
-					if(player.client.prefs.pref_species.name == "Werewolf")
-						JobDebug("DO player species not allowed, Player: [player]")
-						continue
-				if(job.human_only)
-					if(player.client.prefs.pref_species.name != "Human")
-						JobDebug("DO player species not allowed, Player: [player]")
-						continue
-				if(!job.humans_accessible)
-					if(player.client.prefs.pref_species.name == "Human")
-						JobDebug("DO player species not allowed, Player: [player]")
-						continue
+				if(!job.allowed_species.Find(player.client.prefs.pref_species.name))
+					JobDebug("DO player species not allowed, Player: [player]")
+					continue
+
+				if(job.species_slots[player.client.prefs.pref_species.name] == 0)
+					JobDebug("DO player species limit overrun, Player: [player]")
+					continue
+
 				if(player.client.prefs.pref_species.name == "Vampire")
 					if(player.client.prefs.clane)
 						var/alloww = FALSE
