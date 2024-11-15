@@ -203,6 +203,9 @@
 	var/mob/living/carbon/H = src
 	var/physique = H.physique
 
+	if(HAS_TRAIT(H, TRAIT_IMMOBILIZED))
+		return
+
 	var/current_time = world.time
 	var/adjusted_jump_delay = JUMP_DELAY - (0.4 * dexterity) - (1 * athletics)
 	if(current_time - last_jump_time < adjusted_jump_delay)
