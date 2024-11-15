@@ -106,10 +106,19 @@
 	name = "\improper snub-nosed revolver"
 	desc = "a cheap Saturday night special revolver. Sometimes called a 'purse gun'. It takes 9mm rounds."
 	icon_state = "revolver_snub"
-	inhand_icon_state = "revolver"
-	worn_icon_state = "revolver"
-	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/rev44
-	initial_caliber = CALIBER_44
+	inhand_icon_state = "revolver_snub"
+	worn_icon_state = "revolver_snub"
+	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/rev9mm
+	w_class = WEIGHT_CLASS_TINY
+	initial_caliber = CALIBER_9MM
+	fire_sound_volume = 65
+	projectile_damage_multiplier = 1.2 //21.6 damage, slightly higher than the m1911, just so it is possible to kill NPCs within 6 bullets
+
+/obj/item/ammo_box/magazine/internal/cylinder/rev9mm
+	name = "revolver cylinder"
+	ammo_type = /obj/item/ammo_casing/vampire/c9mm
+	caliber = CALIBER_9MM
+	max_ammo = 6
 
 /obj/item/ammo_box/magazine/m44
 	name = "handgun magazine (.44)"
@@ -167,7 +176,7 @@
 	desc = "An extremely powerful, and rare, handcannon."
 	icon_state = "deagle50"
 	mag_type = /obj/item/ammo_box/magazine/m50
-	fire_sound_volume = 85 //MY EARS
+	fire_sound_volume = 125 //MY EARS
 
 /obj/item/ammo_box/magazine/vamp45acp
 	name = "pistol magazine (.45 ACP)"
@@ -481,6 +490,7 @@
 	righthand_file = 'code/modules/wod13/lefthand.dmi'
 	worn_icon = 'code/modules/wod13/worn.dmi'
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	w_class = WEIGHT_CLASS_BULKY
 	icon_state = "pomp"
 	inhand_icon_state = "pomp"
 	worn_icon_state = "pomp"
