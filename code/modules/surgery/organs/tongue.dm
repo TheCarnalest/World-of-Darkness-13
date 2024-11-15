@@ -17,7 +17,7 @@
 	var/static/list/languages_possible_base = typecacheof(list(
 		/datum/language/english,
 		/datum/language/espanol,
-		/datum/language/draconic,
+		/datum/language/chinese,
 		/datum/language/codespeak,
 		/datum/language/monkey,
 		/datum/language/narsie,
@@ -106,7 +106,7 @@
 	modifies_speech = TRUE
 	var/static/list/languages_possible_fly = typecacheof(list(
 		/datum/language/english,
-		/datum/language/draconic,
+		/datum/language/chinese,
 		/datum/language/codespeak,
 		/datum/language/monkey,
 		/datum/language/narsie,
@@ -227,7 +227,7 @@
 	var/static/list/languages_possible_alien = typecacheof(list(
 		/datum/language/xenocommon,
 		/datum/language/english,
-		/datum/language/draconic,
+		/datum/language/chinese,
 		/datum/language/monkey))
 
 /obj/item/organ/tongue/alien/Initialize(mapload)
@@ -251,7 +251,7 @@
 	var/list/phomeme_types = list("sans", "papyrus")
 	var/static/list/languages_possible_skeleton = typecacheof(list(
 		/datum/language/english,
-		/datum/language/draconic,
+		/datum/language/chinese,
 		/datum/language/codespeak,
 		/datum/language/monkey,
 		/datum/language/narsie,
@@ -332,7 +332,7 @@
 	sense_of_taste = FALSE
 	var/static/list/languages_possible_ethereal = typecacheof(list(
 		/datum/language/english,
-		/datum/language/draconic,
+		/datum/language/chinese,
 		/datum/language/codespeak,
 		/datum/language/monkey,
 		/datum/language/narsie,
