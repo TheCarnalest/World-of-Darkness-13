@@ -9,7 +9,7 @@
 	if(biten == FALSE)
 		biten = TRUE
 		icon_state = "[icon_state]-biten"
-
+//----------FAST FOOD--------///
 /obj/item/food/vampire/burger
 	name = "burger"
 	desc = "The cornerstone of every american trucker's breakfast."
@@ -50,6 +50,25 @@
 	tastes = list("taco" = 4, "meat" = 2, "cheese" = 2, "lettuce" = 1)
 	foodtypes = MEAT | DAIRY | GRAIN | VEGETABLES
 
+/obj/item/trash/vampirenugget
+	name = "chicken wing bone"
+	icon_state = "nugget0"
+	icon = 'code/modules/wod13/items.dmi'
+	onflooricon = 'code/modules/wod13/onfloor.dmi'
+
+/obj/item/food/vampire/nugget
+	name = "chicken wing"
+	desc = "Big Wing for a big man."
+	icon_state = "nugget1"
+	trash_type = /obj/item/trash/vampirenugget
+	bite_consumption = 1
+	tastes = list("chicken" = 1)
+	foodtypes = MEAT
+	food_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/nutriment/protein = 3)
+	eat_time = 15
+
+//--------PACKAGED SNACKS-----------//
+
 /obj/item/trash/vampirebar
 	name = "chocolate bar wrapper"
 	icon_state = "bar0"
@@ -83,23 +102,6 @@
 		to_chat(user, "<span class='warning'>[src]'s wrapper hasn't been opened!</span>")
 		return FALSE
 	return ..()
-
-/obj/item/trash/vampirenugget
-	name = "chicken wing bone"
-	icon_state = "nugget0"
-	icon = 'code/modules/wod13/items.dmi'
-	onflooricon = 'code/modules/wod13/onfloor.dmi'
-
-/obj/item/food/vampire/nugget
-	name = "chicken wing"
-	desc = "Big Wing for a big man."
-	icon_state = "nugget1"
-	trash_type = /obj/item/trash/vampirenugget
-	bite_consumption = 1
-	tastes = list("chicken" = 1)
-	foodtypes = MEAT
-	food_reagents = list(/datum/reagent/consumable/nutriment = 1, /datum/reagent/consumable/nutriment/protein = 3)
-	eat_time = 15
 
 /obj/item/trash/vampirecrisps
 	name = "chips wrapper"
@@ -155,6 +157,8 @@
 	tastes = list("berry" = 2, "ice cream" = 2)
 	food_reagents = list(/datum/reagent/consumable/berryjuice = 4, /datum/reagent/consumable/salt = 1,  /datum/reagent/consumable/cream = 2, /datum/reagent/consumable/vanilla = 1, /datum/reagent/consumable/sugar = 4)
 
+//---------DRINKS---------//
+
 /obj/item/reagent_containers/food/drinks/coffee/vampire
 	name = "coffee"
 	desc = "Careful, the beverage you're about to enjoy is extremely hot."
@@ -184,13 +188,18 @@
 /obj/item/reagent_containers/food/drinks/bottle/vampirecola
 	name = "two liter cola bottle"
 	desc = "Coca cola espuma..."
-	icon_state = "cola1"
+	icon_state = "colared"
 	icon = 'code/modules/wod13/items.dmi'
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
 	isGlass = FALSE
 	list_reagents = list(/datum/reagent/consumable/space_cola = 100)
 	foodtype = SUGAR
 	age_restricted = FALSE
+
+/obj/item/reagent_containers/food/drinks/bottle/vampirecola/blue
+	desc = "Pep Cola. Put some pep in your step"
+	list_reagents = list(/datum/reagent/consumable/space_up = 100)
+	icon_state = "colablue"
 
 /obj/item/reagent_containers/food/drinks/bottle/vampirewater
 	name = "water bottle"
@@ -205,11 +214,16 @@
 /obj/item/reagent_containers/food/drinks/soda_cans/vampirecola
 	name = "cola"
 	desc = "Coca cola espuma..."
-	icon_state = "cola2"
+	icon_state = "colared2"
 	icon = 'code/modules/wod13/items.dmi'
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
 	list_reagents = list(/datum/reagent/consumable/space_cola = 50)
 	foodtype = SUGAR
+
+/obj/item/reagent_containers/food/drinks/soda_cans/vampirecola/blue
+	desc = "Pep cola. Put some Pep in your step"
+	icon_state = "colablue2"
+	list_reagents = list(/datum/reagent/consumable/space_up = 50)
 
 /obj/item/reagent_containers/food/drinks/soda_cans/vampiresoda
 	name = "soda"
@@ -228,6 +242,11 @@
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
 	list_reagents = list(/datum/reagent/consumable/milk = 50)
 	fill_icon_thresholds = null
+
+/obj/item/reagent_containers/food/condiment/vampiremilk/malk
+	desc = "a carton of fish-brand milk, a subsidary of malk incorporated."
+
+//--------VENDING MACHINES AND CLERKS--------//
 
 /obj/machinery/mineral/equipment_vendor/fastfood
 	name = "Clerk Catalogue"
@@ -249,6 +268,11 @@
 		new /datum/data/mining_equipment("soda", /obj/item/reagent_containers/food/drinks/soda_cans/vampiresoda, 5)
 	)
 
+/obj/machinery/mineral/equipment_vendor/fastfood/sodavendor/blue
+	icon_state = "vend_c"
+	prize_list = list(new /datum/data/mining_equipment("cola",	/obj/item/reagent_containers/food/drinks/soda_cans/vampirecola/blue,10),
+		new /datum/data/mining_equipment("soda", /obj/item/reagent_containers/food/drinks/soda_cans/vampirecola/blue, 5)
+	)
 /obj/machinery/mineral/equipment_vendor/fastfood/coffeevendor
 	name = "Coffee Vendor"
 	desc = "For those sleepy mornings."
@@ -267,6 +291,17 @@
 		for(var/i in 1 to points)
 			new /obj/item/stack/dollar(loc)
 		points = 0
+
+/obj/machinery/mineral/equipment_vendor/fastfood/snacks
+	name = "Snack Vendor"
+	desc = "That candy bar better not get stuck this time..."
+	icon_state = "vend_b"
+	anchored = TRUE
+	density = TRUE
+	owner_needed = FALSE
+	prize_list = list(new /datum/data/mining_equipment("chocolate bar",	/obj/item/food/vampire/bar,	3),
+		new /datum/data/mining_equipment("chips",	/obj/item/food/vampire/crisps,	5)
+	)
 
 /obj/machinery/mineral/equipment_vendor/fastfood/bacotell
 	prize_list = list(new /datum/data/mining_equipment("square pizza",	/obj/item/food/vampire/pizza,	15),
