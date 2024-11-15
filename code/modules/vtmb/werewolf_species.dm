@@ -9,7 +9,7 @@
 	limbs_id = "human"
 	wings_icon = "Dragon"
 	mutant_bodyparts = list("tail_human" = "None", "ears" = "None", "wings" = "None")
-	brutemod = 1
+	brutemod = 0.75
 	heatmod = 1
 	burnmod = 1
 	dust_anim = "dust-h"

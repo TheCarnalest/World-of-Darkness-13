@@ -72,19 +72,19 @@ SUBSYSTEM_DEF(beastmastering)
 	icon_state = "dog"
 	icon_living = "dog"
 	icon_dead = "dog_dead"
-//	del_on_death = 1
+	del_on_death = 1
 	footstep_type = FOOTSTEP_MOB_SHOE
 	mob_biotypes = MOB_ORGANIC
 	speak_chance = 0
 	turns_per_move = 1
-	speed = 0
+	speed = 0.35
 //	move_to_delay = 3
 //	rapid = 3
 //	ranged = 1
-	maxHealth = 50
-	health = 50
+	maxHealth = 80
+	health = 85
 	harm_intent_damage = 5
-	melee_damage_lower = 25
+	melee_damage_lower = 10
 	melee_damage_upper = 25
 	attack_verb_continuous = "bites"
 	attack_verb_simple = "bite"
@@ -92,8 +92,8 @@ SUBSYSTEM_DEF(beastmastering)
 	a_intent = INTENT_HARM
 	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_tox" = 0, "max_tox" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
 	minbodytemp = 0
-	bloodpool = 1
-	maxbloodpool = 1
+	bloodpool = 2
+	maxbloodpool = 2
 //	retreat_distance = 3
 //	minimum_distance = 5
 //	casingtype = /obj/item/ammo_casing/vampire/c556mm
