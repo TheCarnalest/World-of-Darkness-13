@@ -37,8 +37,8 @@
 
 	movement_type = GROUND // [ChillRaccoon] - fucking flying werewolfes is a meme
 
-	bloodpool = 10
-	maxbloodpool = 10
+	bloodpool = 20
+	maxbloodpool = 20
 
 	var/move_delay_add = 0 // movement delay to add
 
@@ -55,9 +55,9 @@
 	butcher_results = list(/obj/item/food/meat/slab = 5)
 	layer = LARGE_MOB_LAYER
 	var/obj_damage = 30
-	var/wound_bonus = 30
-	var/bare_wound_bonus = 30
-	var/sharpness = 100
+	var/wound_bonus = 10
+	var/bare_wound_bonus = 25
+	var/sharpness = 50
 	var/armour_penetration = 100
 	var/melee_damage_type = BRUTE
 	var/list/damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
@@ -188,10 +188,11 @@
 	possible_a_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB, INTENT_HARM)
 	limb_destroyer = 1
 	hud_type = /datum/hud/werewolf
-	melee_damage_lower = 40
-	melee_damage_upper = 40
-	health = 200
-	maxHealth = 200
+	melee_damage_lower = 35
+	melee_damage_upper = 55
+	health = 300
+	maxHealth = 300
+//	speed = -1  doesn't work on carbons
 	var/obj/item/r_store = null
 	var/obj/item/l_store = null
 	var/pounce_cooldown = 0
@@ -207,7 +208,10 @@
 		/obj/item/bodypart/l_leg,
 		)
 
-	werewolf_armor = 25
+	werewolf_armor = 35
+
+/datum/movespeed_modifier/crinosform
+	multiplicative_slowdown = -0.25
 
 /mob/living/carbon/werewolf/crinos/Initialize()
 	. = ..()
