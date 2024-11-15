@@ -492,6 +492,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 //		var/newtype = GLOB.clanes_list["Brujah"]
 //		clane = new newtype()
 
+	//Prevent Wighting upon joining a round
+	if(humanity <= 0)
+		humanity = 1
+
 	for(var/custom_name_id in GLOB.preferences_custom_names)
 		var/namedata = GLOB.preferences_custom_names[custom_name_id]
 		custom_names[custom_name_id] = reject_bad_name(custom_names[custom_name_id],namedata["allow_numbers"])

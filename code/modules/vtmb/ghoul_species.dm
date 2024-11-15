@@ -145,8 +145,8 @@
 	C.generation = 13
 	C.bloodpool = 10
 	C.maxbloodpool = 10
-	C.maxHealth = 100
-	C.health = 100
+	C.maxHealth = 200
+	C.health = 200
 
 /datum/species/ghoul/on_species_loss(mob/living/carbon/human/C, datum/species/new_species, pref_load)
 	. = ..()
