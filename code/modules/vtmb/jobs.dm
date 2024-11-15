@@ -1971,7 +1971,7 @@
 	r_pocket = /obj/item/flashlight
 	l_hand = /obj/item/vamp/keys/police
 	r_hand = /obj/item/police_radio
-	backpack_contents = list(/obj/item/passport=1, /obj/item/implant/radio=1, /obj/item/vamp/creditcard=1)
+	backpack_contents = list(/obj/item/passport=1, /obj/item/implant/radio=1, /obj/item/vamp/creditcard=1, /obj/item/gun/ballistic/vampire/revolver/snub=1)
 
 
 /datum/job/vamp/fbi

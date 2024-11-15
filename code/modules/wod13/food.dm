@@ -468,7 +468,7 @@
 		new /datum/data/mining_equipment("cannabis leaf",	/obj/item/food/vampire/weed,	25),
 		new /datum/data/mining_equipment("cannabis seed",	/obj/item/weedseed,		10),
 		new /datum/data/mining_equipment("bong",	/obj/item/bong,		50),
-		new /datum/data/mining_equipment("snub-nose revolver",	/obj/item/gun/ballistic/vampire/revolver/snub,	100)
+		new /datum/data/mining_equipment("snub-nose revolver",	/obj/item/gun/ballistic/vampire/revolver/snub,	100),
 		new /datum/data/mining_equipment("bailer",	/obj/item/bailer,		20),
 		new /datum/data/mining_equipment("incendiary 5.56 ammo",	/obj/item/ammo_box/vampire/c556/incendiary,	3000),
 		new /datum/data/mining_equipment("silver 9mm ammo",	/obj/item/ammo_box/vampire/c9mm/silver,	1000),
