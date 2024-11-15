@@ -4595,7 +4595,7 @@
 "bKF" = (/obj/item/stocks_license,/obj/item/stocks_license,/obj/item/stocks_license,/obj/item/stocks_license,/obj/item/stocks_license,/obj/item/stocks_license,/obj/item/stocks_license,/obj/item/stocks_license,/obj/item/stocks_license,/obj/item/stocks_license,/obj/structure/table,/turf/open/floor/plating/vampplating,/area/vtm/camarilla)
 "bKG" = (/obj/fusebox,/turf/open/floor/plating/parquetry/old,/area/vtm/church)
 "bKH" = (/obj/fusebox,/turf/open/floor/carpet/lone,/area/vtm/interior/giovanni)
-"bKI" = (/obj/vampire_computer{owner = "Giovanni Member"},/obj/structure/table/wood,/turf/open/floor/carpet/lone,/area/vtm/interior/giovanni)
+"bKI" = (/obj/vampire_computer{owner = "La Squadra"},/obj/structure/table/wood,/turf/open/floor/carpet/lone,/area/vtm/interior/giovanni)
 "bKJ" = (/obj/effect/decal/shadow{pixel_y = -32},/turf/open/floor/plasteel/stairs/left,/area/vtm/interior/mansion)
 "bKK" = (/obj/effect/decal/shadow,/obj/effect/decal/shadow{pixel_y = -32},/turf/open/floor/plating/rough,/area/vtm/interior/mansion)
 "bKL" = (/obj/effect/decal/shadow{pixel_y = -32},/turf/open/floor/plasteel/stairs/right,/area/vtm/interior/mansion)

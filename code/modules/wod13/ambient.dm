@@ -421,15 +421,15 @@
 //				else
 //					clear_fullscreen("rain")
 
-			var/cacaphony = FALSE
+			var/cacophony = FALSE
 
 			if(iskindred(src))
 				var/mob/living/carbon/human/H = src
 				if(H.clane)
-					if(H.clane.name == "Daughters of Cacaphony")
-						cacaphony = FALSE //This Variable was TRUE, which makes the DoC music loop play.
+					if(H.clane.name == "Daughters of Cacophony")
+						cacophony = FALSE //This Variable was TRUE, which makes the DoC music loop play.
 
-			if(!cacaphony)
+			if(!cacophony)
 				if(!(client && (client.prefs.toggles & SOUND_AMBIENCE)))
 					return
 

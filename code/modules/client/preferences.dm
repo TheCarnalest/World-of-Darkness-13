@@ -189,6 +189,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/ambitious = FALSE
 	var/flavor_text
 
+	var/friend_text
+	var/enemy_text
+	var/lover_text
+
 	var/diablerist = 0
 
 	var/reason_of_death = "None"
@@ -748,8 +752,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			dat += "<BR><BR><b>Relationships:</b><BR>"
 			dat += "Have a Friend: <a href='?_src_=prefs;preference=friend'>[friend == TRUE ? "Enabled" : "Disabled"]</A><BR>"
+			dat += "What a Friend knows about me: [friend_text] <a href='?_src_=prefs;preference=friend_text;task=input'>Change</a><BR>"
+			dat += "<BR>"
 			dat += "Have an Enemy: <a href='?_src_=prefs;preference=enemy'>[enemy == TRUE ? "Enabled" : "Disabled"]</A><BR>"
-			dat += "Have an Lover: <a href='?_src_=prefs;preference=lover'>[lover == TRUE ? "Enabled" : "Disabled"]</A><BR>"
+			dat += "What an Enemy knows about me: [enemy_text] <a href='?_src_=prefs;preference=enemy_text;task=input'>Change</a><BR>"
+			dat += "<BR>"
+			dat += "Have a Lover: <a href='?_src_=prefs;preference=lover'>[lover == TRUE ? "Enabled" : "Disabled"]</A><BR>"
+			dat += "What a Lover knows about me: [lover_text] <a href='?_src_=prefs;preference=lover_text;task=input'>Change</a><BR>"
 
 			dat += "<BR><b>Be Ambitious: </b><a href='?_src_=prefs;preference=ambitious'>[ambitious == TRUE ? "Enabled" : "Disabled"]</A><BR>"
 
@@ -1376,26 +1385,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[FROM [job.minimal_generation] GENERATION AND OLDER\]</font></td></tr>"
 				continue
 			if(masquerade < job.minimal_masquerade)
-				HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[[job.minimal_masquerade] MASQUERADE POINTS REQUIED\]</font></td></tr>"
+				HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[[job.minimal_masquerade] MASQUERADE POINTS REQUIRED\]</font></td></tr>"
 				continue
-			if(job.kindred_only)
-				if(pref_species.name != "Vampire")
-					HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[[pref_species.name] RESTRICTED\]</font></td></tr>"
-					continue
-			if(!job.garou_allowed)
-				if(pref_species.name == "Werewolf")
-					HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[[pref_species.name] RESTRICTED\]</font></td></tr>"
-					continue
-			if(!job.humans_accessible)
-				if(pref_species.name == "Human")
-					HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[[pref_species.name] RESTRICTED\]</font></td></tr>"
-					continue
-			if(job.human_only)
-				if(pref_species.name != "Human")
-					HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[[pref_species.name] RESTRICTED\]</font></td></tr>"
-			if(job.ghoul_only)
-				if(pref_species.name != "Ghoul")
-					HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[[pref_species.name] RESTRICTED\]</font></td></tr>"
+			if(!job.allowed_species.Find(pref_species.name))
+				HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[[pref_species.name] RESTRICTED\]</font></td></tr>"
+				continue
 			if(pref_species.name == "Vampire")
 				if(clane)
 					var/alloww = FALSE
@@ -2332,6 +2326,19 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 //							exper = max(0, exper+exper_plus)
 //							exper_plus = 0
 
+				if("friend_text")
+					var/new_text = input(user, "What a Friend knows about me:", "Character Preference") as text|null
+					if(new_text)
+						friend_text = sanitize_text(new_text)
+				if("enemy_text")
+					var/new_text = input(user, "What an Enemy knows about me:", "Character Preference") as text|null
+					if(new_text)
+						enemy_text = sanitize_text(new_text)
+				if("lover_text")
+					var/new_text = input(user, "What a Lover knows about me:", "Character Preference") as text|null
+					if(new_text)
+						lover_text = sanitize_text(new_text)
+
 				if("flavor_text")
 					var/new_flavor = input(user, "Choose your character's flavor text:", "Character Preference")  as text|null
 					if(new_flavor)
@@ -2401,7 +2408,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						link_bug_fix = FALSE
 						return
 
-					var/list/selectable_species = GLOB.roundstart_races
+					var/list/selectable_species = GLOB.selectable_races
 					for (var/key in selectable_species)
 						var/newtype = GLOB.species_list[key]
 						var/datum/species/new_species = new newtype
@@ -3167,10 +3174,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	var/datum/species/chosen_species
 	chosen_species = pref_species.type
-	if(roundstart_checks && !(pref_species.id in GLOB.roundstart_races) && !(pref_species.id in (CONFIG_GET(keyed_list/roundstart_no_hard_check))))
-		chosen_species = /datum/species/human
-		pref_species = new /datum/species/human
-		save_character()
 
 	character.dna.features = features.Copy()
 	character.set_species(chosen_species, icon_update = FALSE, pref_load = TRUE)
@@ -3251,12 +3254,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				character.AddElement(/datum/element/children, COMSIG_PARENT_PREQDELETED, src)
 		parent << browse(null, "window=preferences_window")
 		parent << browse(null, "window=preferences_browser")
-		if(friend)
-			character.have_friend = TRUE
-		if(enemy)
-			character.have_enemy = TRUE
-		if(lover)
-			character.have_lover = TRUE
 
 /mob/living/carbon/human/proc/create_disciplines(var/discipline_pref = TRUE, var/discipline1, var/discipline2, var/discipline3)	//EMBRACE BASIC
 	if(client)
