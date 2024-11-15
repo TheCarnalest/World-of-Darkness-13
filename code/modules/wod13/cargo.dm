@@ -160,10 +160,17 @@
 	crate_name = "ammo crate"
 
 /datum/supply_pack/vampire/ammo12g
-	name = "Ammo (12g)"
-	desc = "Contains box of 12g ammunition."
+	name = "Ammo (12g, slug)"
+	desc = "Contains box of 12 gauge shotgun slugs."
 	cost = 400
 	contains = list(/obj/item/ammo_box/vampire/c12g)
+	crate_name = "ammo crate"
+
+/datum/supply_pack/vampire/ammo12g
+	name = "Ammo (12g, buckshot)"
+	desc = "Contains box of 12g 00 buckshot shells."
+	cost = 400
+	contains = list(/obj/item/ammo_box/vampire/c12g/buck)
 	crate_name = "ammo crate"
 
 /datum/supply_pack/vampire/ammobolt

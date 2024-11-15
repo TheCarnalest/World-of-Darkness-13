@@ -439,7 +439,7 @@
 
 /obj/item/gun/ballistic/shotgun/vampire
 	name = "shotgun"
-	desc = "A traditional shotgun with wood furniture and a four-shell capacity underneath."
+	desc = "A traditional shotgun with wood furniture and a six-round tube magazine."
 	icon = 'code/modules/wod13/48x32weapons.dmi'
 	lefthand_file = 'code/modules/wod13/righthand.dmi'
 	righthand_file = 'code/modules/wod13/lefthand.dmi'

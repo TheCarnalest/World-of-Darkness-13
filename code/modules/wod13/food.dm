@@ -406,6 +406,7 @@
 		new /datum/data/mining_equipment("9mm ammo",	/obj/item/ammo_box/vampire/c9mm,	600),
 		new /datum/data/mining_equipment(".44 ammo",	/obj/item/ammo_box/vampire/c44,	800),
 		new /datum/data/mining_equipment("5.56 ammo",	/obj/item/ammo_box/vampire/c556,	1200),
+		new /datum/data/mining_equipment("12ga shotgun shells, buckshot",/obj/item/ammo_box/vampire/c12g/buck,	400),
 		new /datum/data/mining_equipment("mini uzi magazine",	/obj/item/ammo_box/magazine/vamp9mm,	200),
 		new /datum/data/mining_equipment("desert eagle magazine",	/obj/item/ammo_box/magazine/m44,	100),
 		new /datum/data/mining_equipment("AR-15 rifle magazine",	/obj/item/ammo_box/magazine/vamp556,	200),
