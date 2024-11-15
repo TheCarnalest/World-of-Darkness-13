@@ -43,16 +43,20 @@
 
 /obj/projectile/beam/beam_rifle/vampire/vamp9mm
 	name = "9mm bullet"
-	damage = 25
+	damage = 18
+	bare_wound_bonus = 10
 
 /obj/projectile/beam/beam_rifle/vampire/vamp45acp
 	name = ".45 ACP bullet"
-	damage = 25
+	damage = 20
+	armour_penetration = 2
 
 /obj/projectile/beam/beam_rifle/vampire/vamp44
 	name = ".44 bullet"
 	damage = 35
 	armour_penetration = 15
+	bare_wound_bonus = -5
+	wound_bonus = 10
 
 /obj/projectile/beam/beam_rifle/vampire/vamp50
 	name = ".50 bullet"
@@ -62,16 +66,28 @@
 /obj/projectile/beam/beam_rifle/vampire/vamp556mm
 	name = "5.56mm bullet"
 	damage = 45
-	armour_penetration = 30
+	armour_penetration = 25
+	bare_wound_bonus = -5
+	wound_bonus = 5
 
 /obj/projectile/beam/beam_rifle/vampire/vamp545mm
 	name = "5.45mm bullet"
-	damage = 45
+	damage = 40
 	armour_penetration = 30
+	bare_wound_bonus = 5
+	wound_bonus = -5
 
 /obj/projectile/beam/beam_rifle/vampire/vamp12g
 	name = "12g shotgun slug"
-	damage = 55
+	damage = 70
+	armour_penetration = 15
+	bare_wound_bonus = 10
+	wound_bonus = 5
+
+/obj/projectile/beam/beam_rifle/vampire/vamp12g/pellet
+	name = "12g shotgun pellet"
+	damage = 9
+	range = 22 //range of where you can see + one screen after
 
 /obj/projectile/beam/beam_rifle/vampire/vamp12g/on_hit(atom/target, blocked = FALSE)
 	. = ..()
@@ -92,8 +108,8 @@
 
 /obj/projectile/bullet/crossbow_bolt
 	name = "bolt"
-	damage = 200
-	armour_penetration = 100
+	damage = 160
+	armour_penetration = 75
 	sharpness = SHARP_POINTY
 	wound_bonus = 50
 
@@ -154,12 +170,18 @@
 	projectile_type = /obj/projectile/beam/beam_rifle/vampire/vamp556mm/incendiary
 
 /obj/item/ammo_casing/vampire/c12g
-	name = "12g bullet casing"
-	desc = "A 12g bullet casing."
+	name = "12g shell casing"
+	desc = "A 12g shell casing."
 	caliber = CALIBER_12G
 	projectile_type = /obj/projectile/beam/beam_rifle/vampire/vamp12g
 	icon_state = "12"
 	base_iconstate = "12"
+
+/obj/item/ammo_casing/vampire/c12g/buck
+	desc = "A 12g shell casing (00 buck)."
+	projectile_type = /obj/projectile/beam/beam_rifle/vampire/vamp12g/pellet
+	pellets = 8
+	variance = 25
 
 /*
 /obj/item/storage/ammostack
@@ -240,6 +262,11 @@
 	ammo_type = /obj/item/ammo_casing/vampire/c12g
 	max_ammo = 30
 
+/obj/item/ammo_box/vampire/c12g/buck
+	name = "ammo box (12g, 00 buck)"
+	icon_state = "12box_buck"
+	ammo_type = /obj/item/ammo_casing/vampire/c12g/buck
+
 /obj/item/ammo_box/vampire/arrows
 	name = "ammo box (arrows)"
 	icon_state = "arrows"
@@ -249,7 +276,7 @@
 /obj/projectile/beam/beam_rifle/vampire/vamp556mm/silver
 	name = "5.56mm silver bullet"
 	armour_penetration = 10
-	damage = 30
+	damage = 35
 
 /obj/projectile/beam/beam_rifle/vampire/vamp556mm/silver/on_hit(atom/target, blocked = FALSE)
 	. = ..()
@@ -264,7 +291,7 @@
 
 /obj/projectile/beam/beam_rifle/vampire/vamp9mm/silver
 	name = "9mm silver bullet"
-	damage = 25
+	damage = 23
 
 /obj/projectile/beam/beam_rifle/vampire/vamp9mm/silver/on_hit(atom/target, blocked = FALSE)
 	. = ..()
@@ -294,7 +321,7 @@
 
 /obj/projectile/beam/beam_rifle/vampire/vamp44/silver
 	name = ".44 silver bullet"
-	damage = 35
+	damage = 40
 	armour_penetration = 15
 
 /obj/projectile/beam/beam_rifle/vampire/vamp44/silver/on_hit(atom/target, blocked = FALSE)

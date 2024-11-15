@@ -374,7 +374,7 @@
 
 	liver_traits = list(TRAIT_MEDICAL_METABOLISM)
 
-	allowed_species = list("Vampire", "Ghoul", "Human")
+	allowed_species = list("Vampire", "Ghoul", "Human", "Werewolf")
 	display_order = JOB_DISPLAY_ORDER_DOCTOR
 	bounty_types = CIV_JOB_MED
 
@@ -836,7 +836,7 @@
 
 	paycheck_department = ACCOUNT_CIV
 	display_order = JOB_DISPLAY_ORDER_STRIP
-	allowed_species = list("Vampire", "Ghoul", "Human")
+	allowed_species = list("Vampire", "Ghoul", "Human", "Werewolf")
 
 	v_duty = "Offer strip club services to humans or undead."
 	duty = "Offer strip club services."
@@ -1780,6 +1780,7 @@
 	jobtype = /datum/job/vamp/primogen_nosferatu
 
 	id = /obj/item/card/id/primogen
+	mask = /obj/item/clothing/mask/vampire/shemagh
 	glasses = /obj/item/clothing/glasses/vampire/sun
 	uniform = /obj/item/clothing/under/vampire/suit
 	suit = /obj/item/clothing/suit/vampire/trench
@@ -2033,7 +2034,7 @@
 	display_order = JOB_DISPLAY_ORDER_POLICE
 	exp_type_department = EXP_TYPE_INDEPENDENT
 
-	allowed_species = list("Human")
+	allowed_species = list("Human", "Werewolf")
 	minimal_generation = 13
 
 	duty = "Make money, do drugs, fight law. Your hideout is the laundromat in Chinatown."
