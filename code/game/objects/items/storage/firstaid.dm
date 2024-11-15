@@ -544,7 +544,7 @@
 	/// var to prevent it freezing the same things over and over
 	var/cooling = FALSE
 
-//obj/item/storage/organbox/ComponentInitialize()
+/obj/item/storage/organbox/ComponentInitialize()
 	. = ..()
 //	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 //	STR.max_w_class = WEIGHT_CLASS_BULKY /// you have to remove it from your bag before opening it but I think that's fine
