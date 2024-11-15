@@ -2034,7 +2034,7 @@
 	display_order = JOB_DISPLAY_ORDER_FBI
 	exp_type_department = EXP_TYPE_INDEPENDENT
 
-	allowed_species = list("Human", "Ghoul", "Vampire")
+	allowed_species = list("Human")
 	minimal_generation = 13
 
 	duty = "Be the shepherd of the flock in San Francisco, lead them to salvation, piety and righteousness."
@@ -2072,6 +2072,9 @@
 					if("True Faith")
 						H.resistant_to_disciplines = TRUE
 						to_chat(H, "<span class='alertsyndie'>Your faith in God is made of iron. None could shake it, and even in the darkest moments it holds you up.</span>")
+
+/obj/effect/landmark/start/priest
+	name = "Priest"
 
 /datum/job/vamp/triad_soldier
 	title = "Triad Soldier"
