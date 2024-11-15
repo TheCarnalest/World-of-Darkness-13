@@ -546,7 +546,7 @@
 
 /obj/item/storage/organbox/ComponentInitialize()
 	. = ..()
-//	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
 //	STR.max_w_class = WEIGHT_CLASS_BULKY /// you have to remove it from your bag before opening it but I think that's fine
 //	STR.max_combined_w_class = 21
 	STR.set_holdable(list(
