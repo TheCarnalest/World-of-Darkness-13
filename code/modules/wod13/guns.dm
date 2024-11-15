@@ -109,7 +109,7 @@
 	inhand_icon_state = "revolver_snub"
 	worn_icon_state = "revolver_snub"
 	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/rev9mm
-	w_class = WEIGHT_CLASS_TINY
+	w_class = WEIGHT_CLASS_SMALL
 	initial_caliber = CALIBER_9MM
 	fire_sound_volume = 65
 	projectile_damage_multiplier = 1.2 //21.6 damage, slightly higher than the m1911, just so it is possible to kill NPCs within 6 bullets
