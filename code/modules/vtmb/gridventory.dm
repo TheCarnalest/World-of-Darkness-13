@@ -67,6 +67,8 @@ VENTORY!
 /datum/component/storage/concrete/vtm
 	grid = TRUE
 	max_w_class = WEIGHT_CLASS_BULKY
+	max_combined_w_class = 1000
+	max_items = 1000
 
 /datum/component/storage/concrete/vtm/backpack
 	screen_max_columns = 6
@@ -77,6 +79,12 @@ VENTORY!
 /datum/component/storage/concrete/vtm/duffel
 	screen_max_columns = 8
 	screen_max_rows = 6
+	screen_start_y = 9
+	screen_start_x = 1
+
+/datum/component/storage/concrete/vtm/firstaid
+	screen_max_columns = 4
+	screen_max_rows = 4
 	screen_start_y = 9
 	screen_start_x = 1
 

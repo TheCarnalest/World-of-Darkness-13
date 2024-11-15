@@ -16,6 +16,7 @@
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	throw_speed = 3
 	throw_range = 7
+	component_type = /datum/component/storage/concrete/vtm/firstaid
 	var/empty = FALSE
 	var/damagetype_healed //defines damage type of the medkit. General ones stay null. Used for medibot healing bonuses
 
@@ -62,10 +63,10 @@
 
 /obj/item/storage/firstaid/medical/ComponentInitialize()
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_w_class = WEIGHT_CLASS_NORMAL //holds the same equipment as a medibelt
-	STR.max_items = 12
-	STR.max_combined_w_class = 24
+//	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+//	STR.max_w_class = WEIGHT_CLASS_NORMAL //holds the same equipment as a medibelt
+//	STR.max_items = 12
+//	STR.max_combined_w_class = 24
 	STR.set_holdable(list(
 		/obj/item/healthanalyzer,
 		/obj/item/dnainjector,
@@ -274,10 +275,10 @@
 	icon_state = "bezerk"
 	damagetype_healed = "all"
 
-/obj/item/storage/firstaid/tactical/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_w_class = WEIGHT_CLASS_NORMAL
+//obj/item/storage/firstaid/tactical/ComponentInitialize()
+//	. = ..()
+//	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+//	STR.max_w_class = WEIGHT_CLASS_NORMAL
 
 /obj/item/storage/firstaid/tactical/PopulateContents()
 	if(empty)
@@ -543,11 +544,11 @@
 	/// var to prevent it freezing the same things over and over
 	var/cooling = FALSE
 
-/obj/item/storage/organbox/ComponentInitialize()
+//obj/item/storage/organbox/ComponentInitialize()
 	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_w_class = WEIGHT_CLASS_BULKY /// you have to remove it from your bag before opening it but I think that's fine
-	STR.max_combined_w_class = 21
+//	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+//	STR.max_w_class = WEIGHT_CLASS_BULKY /// you have to remove it from your bag before opening it but I think that's fine
+//	STR.max_combined_w_class = 21
 	STR.set_holdable(list(
 		/obj/item/organ,
 		/obj/item/bodypart,
