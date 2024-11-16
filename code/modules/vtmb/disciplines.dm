@@ -183,7 +183,7 @@
 	desc = "Summons Spectral Animals over your targets. Violates Masquerade."
 	icon_state = "animalism"
 	cost = 1
-	delay = 20
+	delay = 8 SECONDS
 	ranged = FALSE
 	violates_masquerade = TRUE
 	activate_sound = 'code/modules/wod13/sounds/wolves.ogg'
@@ -211,7 +211,7 @@
 	. = ..()
 	if(!AN)
 		AN = new(caster)
-	var/limit = min(3, level)+caster.social-1+caster.more_companions
+	var/limit = min(2, level) + caster.social + caster.more_companions - 1
 	if(length(caster.beastmaster) >= limit)
 		var/mob/living/simple_animal/hostile/beastmaster/B = pick(caster.beastmaster)
 		B.death()
@@ -266,7 +266,7 @@
 //			caster.remove_overlay(PROTEAN_LAYER)
 //			caster.overlays_standing[PROTEAN_LAYER] = protean_overlay
 //			caster.apply_overlay(PROTEAN_LAYER)
-			spawn(200+caster.discipline_time_plus)
+			spawn(20 SECONDS + caster.discipline_time_plus)
 				if(caster && caster.stat != DEAD)
 					AN.Restore(AN.myshape)
 					caster.Stun(15)
@@ -301,9 +301,9 @@
 	if(level_casting >= 4)
 		caster.auspex_examine = TRUE
 	if(level_casting >= 5)
-		caster.see_invisible = SEE_INVISIBLE_OBSERVER
-		GLOB.auspex_list += caster
-		shitcasted = TRUE
+		caster.ghostize(TRUE, FALSE, TRUE)
+		caster.soul_state = SOUL_PROJECTING
+
 	spawn((delay*level_casting)+caster.discipline_time_plus)
 		if(caster)
 			if(shitcasted)
@@ -328,7 +328,7 @@
 	icon_state = "celerity"
 	cost = 1
 	ranged = FALSE
-	delay = 50
+	delay = 75
 	violates_masquerade = FALSE
 	activate_sound = 'code/modules/wod13/sounds/celerity_activate.ogg'
 	leveldelay = TRUE
@@ -433,12 +433,10 @@
 	. = ..()
 	if(target.spell_immunity)
 		return
-	if (caster.generation > target.generation) //fail if used on a lower generation
-		return
 	var/mypower = caster.social + caster.additional_social
 	var/theirpower = target.mentality + target.additional_mentality
-	if(theirpower >= mypower)
-		to_chat(caster, "<span class='warning'>[target] is too powerful for you!</span>")
+	if((theirpower >= mypower) || (caster.generation > target.generation))
+		to_chat(caster, "<span class='warning'>[target]'s mind is too powerful to dominate!</span>")
 		return
 	if(HAS_TRAIT(caster, TRAIT_MUTE))
 		to_chat(caster, "<span class='warning'>You find yourself unable to speak!</span>")
@@ -602,10 +600,10 @@
 	//5 - victim starts to attack themself
 	if(target.spell_immunity)
 		return
-	var/mypower = 13-caster.generation+caster.social+caster.additional_mentality
-	var/theirpower = 13-target.generation+target.mentality+target.additional_mentality
-	if(theirpower > mypower)
-		to_chat(caster, "<span class='warning'>[target] is too powerful for you!</span>")
+	var/mypower = caster.social + caster.additional_social
+	var/theirpower = target.mentality + target.additional_mentality
+	if(theirpower >= mypower)
+		to_chat(caster, "<span class='warning'>[target]'s mind is too powerful to corrupt!</span>")
 		return
 	if(!ishuman(target))
 		to_chat(caster, "<span class='warning'>[target] doesn't have enough mind to get affected by this discipline!</span>")
@@ -689,7 +687,7 @@
 	icon_state = "fortitude"
 	cost = 1
 	ranged = FALSE
-	delay = 100
+	delay = 75
 	activate_sound = 'code/modules/wod13/sounds/fortitude_activate.ogg'
 
 /datum/discipline/fortitude/activate(mob/living/target, mob/living/carbon/human/caster)
@@ -773,10 +771,10 @@
 
 /datum/discipline/presence/activate(mob/living/target, mob/living/carbon/human/caster)
 	. = ..()
-	var/mypower = 13-caster.generation+caster.social+caster.additional_mentality
-	var/theirpower = 13-target.generation+target.mentality+target.additional_mentality
-	if(theirpower > mypower)
-		to_chat(caster, "<span class='warning'>[target] is too powerful for you!</span>")
+	var/mypower = caster.social + caster.additional_social
+	var/theirpower = target.mentality + target.additional_mentality
+	if((theirpower >= mypower) || ((caster.generation - 3) >= target.generation))
+		to_chat(caster, "<span class='warning'>[target]'s mind is too powerful to sway!</span>")
 		return
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
@@ -827,7 +825,7 @@
 				for(var/obj/item/clothing/W in H.contents)
 					if(W)
 						H.dropItemToGround(W, TRUE)
-		spawn(delay+caster.discipline_time_plus)
+		spawn(delay + caster.discipline_time_plus)
 			if(H)
 				H.remove_overlay(MUTATIONS_LAYER)
 				if(caster)
@@ -961,8 +959,8 @@
 			spawn(delay+caster.discipline_time_plus)
 				if(caster && caster.stat != DEAD)
 					GA.Restore(GA.myshape)
-					caster.Stun(15)
-					caster.do_jitter_animation(30)
+					caster.Stun(10)
+					caster.do_jitter_animation(15)
 //					if(caster.dna)
 					caster.playsound_local(caster, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
 //						caster.dna.species.attack_verb = initial(caster.dna.species.attack_verb)
@@ -1051,6 +1049,7 @@
 			else
 				if(VL.bloodpool >= 1)
 					var/sucked = min(VL.bloodpool, 1*level)
+					VL.bloodpool = VL.bloodpool-sucked
 					VH.bloodpool = VH.bloodpool+sucked
 					VH.bloodpool = min(VH.maxbloodpool, VH.bloodpool)
 
@@ -1095,11 +1094,12 @@
 			if(iscarbon(target))
 				target.Stun(30)
 				target.visible_message("<span class='danger'>[target] throws up!</span>", "<span class='userdanger'>You throw up!</span>")
+				target.bloodpool -= round(level_casting * 0.5)
 				playsound(get_turf(target), 'code/modules/wod13/sounds/vomit.ogg', 75, TRUE)
 				target.add_splatter_floor(get_turf(target))
 				target.add_splatter_floor(get_turf(get_step(target, target.dir)))
 			else
-				caster.bloodpool = min(caster.maxbloodpool, caster.bloodpool+target.bloodpool)
+				caster.bloodpool = min(caster.maxbloodpool, caster.bloodpool + target.bloodpool)
 				if(!istype(target, /mob/living/simple_animal/hostile/megafauna))
 //				if(isnpc(target))
 //					AdjustHumanity(caster, -1, 0)
@@ -1320,7 +1320,7 @@
 	switch(level_casting)
 		if(1)
 			for(var/mob/living/carbon/human/H in oviewers(7, caster))
-				ADD_TRAIT(H, TRAIT_MUTE, "quietus")
+				ADD_TRAIT(H, TRAIT_DEAF, "quietus")
 				H.remove_overlay(MUTATIONS_LAYER)
 				var/mutable_appearance/quietus_overlay = mutable_appearance('code/modules/wod13/icons.dmi', "quietus", -MUTATIONS_LAYER)
 				H.overlays_standing[MUTATIONS_LAYER] = quietus_overlay
@@ -1330,7 +1330,7 @@
 					H.add_confusion(min(15, diff))
 				spawn(50)
 					if(H)
-						REMOVE_TRAIT(H, TRAIT_MUTE, "quietus")
+						REMOVE_TRAIT(H, TRAIT_DEAF, "quietus")
 						H.remove_overlay(MUTATIONS_LAYER)
 		if(2)
 			caster.drop_all_held_items()
@@ -1484,7 +1484,8 @@
 				M.beastmaster = caster
 				target.gib()
 	else
-		target.apply_damage(10*level_casting, BRUTE, BODY_ZONE_CHEST)
+		target.apply_damage(5 * level_casting, BRUTE, caster.zone_selected)
+		target.apply_damage(6 * level_casting, CLONE, caster.zone_selected)
 		target.emote("scream")
 
 /datum/discipline/obtenebration
@@ -1575,6 +1576,7 @@
 	clane_restricted = TRUE
 	dead_restricted = FALSE
 	var/datum/beam/current_beam
+	var/humanity_restored = 0
 
 /datum/discipline/valeren/activate(mob/living/target, mob/living/carbon/human/caster)
 	. = ..()
@@ -1584,17 +1586,23 @@
 			chemscan(caster, target)
 //			woundscan(caster, target, src)
 			to_chat(caster, "<b>[target]</b> has <b>[target.bloodpool]/[target.maxbloodpool]</b> blood points.")
+			to_chat(caster, "<b>[target]</b> has a rating of <b>[target.humanity]</b> on their path.")
 		if(2)
-			if(current_beam)
-				qdel(current_beam)
-			caster.Beam(target, icon_state="sm_arc", time = 50, maxdistance = 9, beam_type = /obj/effect/ebeam/medical)
-			target.Paralyze(30)
-			if(target.generation >= caster.generation)
-				if(ishuman(target))
-					var/mob/living/carbon/human/H = target
-					if(!H.handcuffed)
-						H.set_handcuffed(new /obj/item/restraints/handcuffs/energy/cult/used(target))
-						H.update_handcuffed()
+			if(caster.grab_state > GRAB_PASSIVE)
+				if(ishuman(caster.pulling))
+					var/mob/living/PB = caster.pulling
+					if(isgarou(PB))
+						return
+					if(iskindred(PB))
+						PB.add_confusion(2)
+						PB.drowsyness += 2
+					else if(ishuman(PB))
+						PB.SetSleeping(300)
+				else
+					return
+			else
+				to_chat(caster, "You need to be grabbing someone to use this power.")
+				return
 		if(3)
 			if(current_beam)
 				qdel(current_beam)
@@ -1609,18 +1617,35 @@
 			target.update_damage_overlays()
 			target.update_health_hud()
 		if(4)
-			if(iskindred(target) || isghoul(target))
-				if(current_beam)
-					qdel(current_beam)
-				caster.Beam(target, icon_state="sm_arc", time = 50, maxdistance = 9, beam_type = /obj/effect/ebeam/medical)
-				target.bloodpool = 0
-				target.update_blood_hud()
-		if(5)
+			ranged = FALSE
 			if(current_beam)
 				qdel(current_beam)
 			caster.Beam(target, icon_state="sm_arc", time = 50, maxdistance = 9, beam_type = /obj/effect/ebeam/medical)
-			if(target.revive(full_heal = TRUE, admin_revive = TRUE))
-				target.grab_ghost(force = TRUE)
+			target.adjustBruteLoss(-60, TRUE)
+			if(ishuman(target))
+				var/mob/living/carbon/human/H = target
+				if(length(H.all_wounds))
+					var/datum/wound/W = pick(H.all_wounds)
+					W.remove_wound()
+			target.adjustFireLoss(-60, TRUE)
+			target.update_damage_overlays()
+			target.update_health_hud()
+		if(5)
+			if(caster.grab_state > GRAB_PASSIVE)
+				if(ishuman(caster.pulling))
+					var/mob/living/carbon/human/PB = caster.pulling
+					if(do_after(caster, 10 SECONDS) && iskindred(PB) && humanity_restored < 3)
+						to_chat(caster, "<span class='notice'>You healed [PB]'s soul slightly.</span>")
+						PB.AdjustHumanity(1, 10)
+						humanity_restored += 1
+					else if(humanity_restored >=3)
+						to_chat(caster, "<span class='warning'>You can't heal anymore souls this night.</span>")
+					else
+						to_chat(caster, "<span class='warning'>You need to grab a kindred and stay still to use this power.</span>")
+						return
+			else
+				to_chat(caster, "<span class='warning'>You need to hold your patient properly to heal their soul.</span>")
+				return
 
 /datum/discipline/melpominee
 	name = "Melpominee"

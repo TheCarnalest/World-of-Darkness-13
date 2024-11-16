@@ -320,6 +320,36 @@
 	icon_state = "wood-window"
 	window = /obj/structure/window/fulltile
 
+/turf/closed/wall/vampwall/rust
+	name = "rusty wall"
+	desc = "A huge chunk of rusty metal used to separate rooms."
+	icon_state = "rust-0"
+	base_icon_state = "rust"
+
+/turf/closed/wall/vampwall/dirtywood
+	name = "dirty wood wall"
+	desc = "A huge chunk of brown metal used to separate rooms."
+	icon_state = "dirtywood-0"
+	base_icon_state = "dirtywood"
+
+/turf/closed/wall/vampwall/green
+	name = "green wall"
+	desc = "A huge chunk of green metal used to separate rooms."
+	icon_state = "green-0"
+	base_icon_state = "green"
+
+/turf/closed/wall/vampwall/rustbad
+	name = "rusty wall"
+	desc = "A huge chunk of rusty metal used to separate rooms."
+	icon_state = "rustbad-0"
+	base_icon_state = "rustbad"
+
+/turf/closed/wall/vampwall/redbrick
+	name = "red brick wall"
+	desc = "A huge chunk of red bricks used to separate rooms."
+	icon_state = "redbrick-0"
+	base_icon_state = "redbrick"
+
 //TURFS
 
 /obj/effect/decal/asphalt
@@ -710,6 +740,26 @@
 
 /turf/open/floor/plating/rough/cave/Initialize()
 	. = ..()
+	icon_state = "cave[rand(1, 7)]"
+
+/turf/open/floor/plating/stone
+	gender = PLURAL
+	name = "rough floor"
+	icon = 'code/modules/wod13/tiles.dmi'
+	icon_state = "stone"
+	flags_1 = NONE
+	attachment_holes = FALSE
+	bullet_bounce_sound = null
+	footstep = FOOTSTEP_TROTUAR
+	barefootstep = FOOTSTEP_TROTUAR
+	clawfootstep = FOOTSTEP_HARD_CLAW
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+
+/turf/open/floor/plating/stone
+	icon_state = "stone1"
+
+/turf/open/floor/plating/stone/Initialize()
+	.=..()
 	icon_state = "cave[rand(1, 7)]"
 
 /turf/open/floor/plating/toilet

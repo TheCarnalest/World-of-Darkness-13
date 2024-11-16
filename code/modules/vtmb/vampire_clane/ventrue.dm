@@ -19,7 +19,6 @@
 /datum/discipline/dominate/post_gain(mob/living/carbon/human/H)
 	var/obj/effect/proc_holder/spell/voice_of_god/S = new(H)
 	H.mind.AddSpell(S)
-	H.additional_mentality += 3
 
 /datum/action/dominate
 	name = "Dominate"

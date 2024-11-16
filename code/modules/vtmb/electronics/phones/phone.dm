@@ -52,12 +52,16 @@
 	var/folded_state = "phone0"
 
 /obj/item/vamp/phone/Initialize()
-	..()
+	. = ..()
 	RegisterSignal(src, COMSIG_MOVABLE_HEAR, .proc/handle_hearing)
 	if(!number || number == "")
 		number = create_unique_phone_number(exchange_num)
 		GLOB.phone_numbers_list += number
 		GLOB.phones_list += src
+		if(ishuman(loc))
+			var/mob/living/carbon/human/H = loc
+			if(H.Myself)
+				H.Myself.phone_number = number
 
 /obj/item/vamp/phone/Destroy()
 	GLOB.phone_numbers_list -= number
@@ -516,8 +520,8 @@
 
 /obj/item/vamp/phone/street
 	desc = "An ordinary street payphone"
-	icon = 'code/modules/wod13/onfloor.dmi'
-	icon_state = "streetphone"
+	icon = 'code/modules/wod13/props.dmi'
+	icon_state = "payphone"
 	anchored = TRUE
 	number = "1447"
 	can_fold = 0

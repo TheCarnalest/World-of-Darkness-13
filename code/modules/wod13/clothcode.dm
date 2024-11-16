@@ -529,9 +529,15 @@
 	body_worn = TRUE
 
 /obj/item/clothing/glasses/vampire/yellow
-	name = "yellow glasses"
+	name = "yellow aviators"
 	desc = "For working in dark environment."
 	icon_state = "yellow"
+	inhand_icon_state = "glasses"
+
+/obj/item/clothing/glasses/vampire/red
+	name = "red aviators"
+	desc = "For working in dark environment."
+	icon_state = "redg"
 	inhand_icon_state = "glasses"
 
 /obj/item/clothing/glasses/vampire/sun
@@ -791,6 +797,15 @@
 	desc = "LOADSAMONEY"
 	icon_state = "balaclava"
 	inhand_icon_state = "balaclava"
+	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
+	visor_flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
+	w_class = WEIGHT_CLASS_SMALL
+
+/obj/item/clothing/mask/vampire/shemagh
+	name = "shemagh"
+	desc = "Covers your face pretty well."
+	icon_state = "shemagh"
+	inhand_icon_state = "shemagh"
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	visor_flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
 	w_class = WEIGHT_CLASS_SMALL

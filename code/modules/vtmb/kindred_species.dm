@@ -17,6 +17,7 @@
 	punchdamagehigh = 20
 	dust_anim = "dust-h"
 	var/datum/vampireclane/clane
+	selectable = TRUE
 
 /datum/action/vampireinfo
 	name = "About Me"
@@ -132,15 +133,38 @@
 				dat += "[host.hud_used.discipline2_icon.dscpln.name] [host.hud_used.discipline2_icon.dscpln.level] - [host.hud_used.discipline2_icon.dscpln.desc]<BR>"
 			if(host.hud_used.discipline3_icon.dscpln)
 				dat += "[host.hud_used.discipline3_icon.dscpln.name] [host.hud_used.discipline3_icon.dscpln.level] - [host.hud_used.discipline3_icon.dscpln.desc]<BR>"
-		if(host.friend_name)
-			dat += "<b>Friend: [host.friend_name]</b><BR>"
-		if(host.enemy_name)
-			dat += "<b>Enemy: [host.enemy_name]</b><BR>"
-		if(host.lover_name)
-			dat += "<b>Lover: [host.lover_name]</b><BR>"
+		if(host.Myself)
+			if(host.Myself.Friend)
+				if(host.Myself.Friend.owner)
+					dat += "<b>My friend's name is [host.Myself.Friend.owner.true_real_name].</b><BR>"
+					if(host.Myself.Friend.phone_number)
+						dat += "Their number is [host.Myself.Friend.phone_number].<BR>"
+					if(host.Myself.Friend.friend_text)
+						dat += "[host.Myself.Friend.friend_text]<BR>"
+			if(host.Myself.Enemy)
+				if(host.Myself.Enemy.owner)
+					dat += "<b>My nemesis is [host.Myself.Enemy.owner.true_real_name]!</b><BR>"
+					if(host.Myself.Enemy.enemy_text)
+						dat += "[host.Myself.Enemy.enemy_text]<BR>"
+			if(host.Myself.Lover)
+				if(host.Myself.Lover.owner)
+					dat += "<b>I'm in love with [host.Myself.Lover.owner.true_real_name].</b><BR>"
+					if(host.Myself.Lover.phone_number)
+						dat += "Their number is [host.Myself.Lover.phone_number].<BR>"
+					if(host.Myself.Lover.lover_text)
+						dat += "[host.Myself.Lover.lover_text]<BR>"
 		var/obj/keypad/armory/K = find_keypad(/obj/keypad/armory)
 		if(K && (host.mind.assigned_role == "Prince" || host.mind.assigned_role == "Sheriff"))
 			dat += "<b>The pincode for the armory keypad is: [K.pincode]</b><BR>"
+		var/obj/keypad/bankvault/V = find_keypad(/obj/keypad/bankvault)
+		if(V && (host.mind.assigned_role == "Capo"))
+			dat += "<b>The pincode for the bank vault keypad is: [V.pincode]</b><BR>"
+		if(V && (host.mind.assigned_role == "La Squadra"))
+			if(prob(50))
+				dat += "<b>The pincode for the bank vault keypad is: [V.pincode]</b><BR>"
+			else
+				dat += "<b>Unfortunately you don't know the vault code.</b><BR>"
+
 		if(length(host.knowscontacts) > 0)
 			dat += "<b>I know some other of my kind in this city. Need to check my phone, there definetely should be:</b><BR>"
 			for(var/i in host.knowscontacts)

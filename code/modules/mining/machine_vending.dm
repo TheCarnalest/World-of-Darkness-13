@@ -9,6 +9,7 @@
 	circuit = /obj/item/circuitboard/machine/mining_equipment_vendor
 	var/icon_deny = "mining-deny"
 	var/mob/living/carbon/human/npc/my_owner
+	var/owner_needed = TRUE
 	var/obj/item/card/id/inserted_id
 	var/points = 0
 	var/list/prize_list = list( //if you add something to this, please, for the love of god, sort it by price/type. use tabs and not spaces.
@@ -78,9 +79,10 @@
 
 /obj/machinery/mineral/equipment_vendor/Initialize()
 	. = ..()
-	for(var/mob/living/carbon/human/npc/NPC in range(2, src))
-		if(NPC)
-			my_owner = NPC
+	if(owner_needed == TRUE)
+		for(var/mob/living/carbon/human/npc/NPC in range(2, src))
+			if(NPC)
+				my_owner = NPC
 	build_inventory()
 
 /obj/machinery/mineral/equipment_vendor/proc/build_inventory()
@@ -100,12 +102,13 @@
 	)
 
 /obj/machinery/mineral/equipment_vendor/ui_interact(mob/user, datum/tgui/ui)
-	if(!my_owner)
-		return
-	if(get_dist(src, my_owner) > 4)
-		return
-	if(my_owner.stat >= 2)
-		return
+	if(owner_needed == TRUE)
+		if(!my_owner)
+			return
+		if(get_dist(src, my_owner) > 4)
+			return
+		if(my_owner.stat >= 2)
+			return
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "MiningVendor", name)
@@ -146,12 +149,13 @@
 	if(.)
 		return
 
-	if(!my_owner)
-		return
-	if(get_dist(src, my_owner) > 4)
-		return
-	if(my_owner.stat >= 2)
-		return
+	if(owner_needed == TRUE)
+		if(!my_owner)
+			return
+		if(get_dist(src, my_owner) > 4)
+			return
+		if(my_owner.stat >= 2)
+			return
 
 	switch(action)
 		if("purchase")
@@ -179,12 +183,13 @@
 			. = TRUE
 
 /obj/machinery/mineral/equipment_vendor/attackby(obj/item/I, mob/user, params)
-	if(!my_owner)
-		return
-	if(get_dist(src, my_owner) > 4)
-		return
-	if(my_owner.stat >= 2)
-		return
+	if(owner_needed == TRUE)
+		if(!my_owner)
+			return
+		if(get_dist(src, my_owner) > 4)
+			return
+		if(my_owner.stat >= 2)
+			return
 	if(istype(I, /obj/item/mining_voucher))
 		RedeemVoucher(I, user)
 		return

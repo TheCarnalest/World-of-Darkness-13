@@ -33,6 +33,7 @@ GLOBAL_LIST_EMPTY(human_list)				//all instances of /mob/living/carbon/human and
 GLOBAL_LIST_EMPTY(npc_list)
 GLOBAL_LIST_EMPTY(frenzy_list)
 GLOBAL_LIST_EMPTY(fires_list)
+GLOBAL_LIST_EMPTY(relationship_list)
 GLOBAL_LIST_EMPTY(ai_list)
 GLOBAL_LIST_EMPTY(pai_list)
 GLOBAL_LIST_EMPTY(available_ai_shells)

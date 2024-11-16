@@ -140,12 +140,7 @@
 
 	var/list/beastmaster = list()
 
-	var/friend_name
-	var/enemy_name
-	var/lover_name
-	var/have_friend = FALSE
-	var/have_enemy = FALSE
-	var/have_lover = FALSE
+	var/datum/relationship/MyRelationships
 
 	var/inspired = FALSE
 

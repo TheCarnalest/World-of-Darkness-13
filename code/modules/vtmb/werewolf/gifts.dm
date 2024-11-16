@@ -25,7 +25,7 @@
 				SEND_SOUND(owner, sound('code/modules/wod13/sounds/werewolf_cast_failed.ogg', 0, 0, 75))
 				allowed_to_proceed = FALSE
 				return
-		if(cool_down+200 >= world.time)
+		if(cool_down+150 >= world.time)
 			allowed_to_proceed = FALSE
 			return
 		cool_down = world.time
@@ -347,9 +347,9 @@
 		var/mob/living/carbon/C = owner
 		if(C.stat != DEAD)
 			SEND_SOUND(owner, sound('code/modules/wod13/sounds/rage_heal.ogg', 0, 0, 75))
-			C.adjustBruteLoss(-50*C.auspice.level, TRUE)
-			C.adjustFireLoss(-50*C.auspice.level, TRUE)
-			C.adjustCloneLoss(-50*C.auspice.level, TRUE)
+			C.adjustBruteLoss(-40*C.auspice.level, TRUE)
+			C.adjustFireLoss(-40*C.auspice.level, TRUE)
+			C.adjustCloneLoss(-40*C.auspice.level, TRUE)
 			if(ishuman(owner))
 				var/mob/living/carbon/human/BD = owner
 				if(length(BD.all_wounds))
