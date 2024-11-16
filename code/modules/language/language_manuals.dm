@@ -66,7 +66,7 @@
 	language = pick( \
 		/datum/language/voltaic, \
 		/datum/language/japanese, \
-		/datum/language/draconic, \
+		/datum/language/chinese, \
 		/datum/language/russian, \
 		/datum/language/calcic \
 	)

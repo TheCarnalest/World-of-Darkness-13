@@ -2,7 +2,7 @@
 	name = "Hebrew"
 	desc = "The language of the ancient Hebrews."
 	key = "h"
-	space_chance = 100
+	space_chance = 50
 	syllables = list(
 		"sha", "vu", "nah", "ha", "yom", "ma", "cha", "ar", "et", "mol", "lua",
 		"ch", "na", "sh", "ni", "yah", "bes", "ol", "hish", "ev", "la", "ot", "la",
