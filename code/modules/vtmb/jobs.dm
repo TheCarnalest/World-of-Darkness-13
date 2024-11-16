@@ -2057,11 +2057,19 @@
 
 /datum/outfit/job/priest/pre_equip(mob/living/carbon/human/H)
 	..()
+	add_verb(H, /datum/job/vampire/priest/verb/choose_special)
+
+/datum/job/vampire/priest/verb/choose_special()
+	set category = "Priest"
+	set name = "Choose Special"
+	set desc = "Select Priest special ability."
 	var/list/loadouts = list("Numina", "True Faith")
 	spawn()
+		var/mob/living/carbon/human/H = src
 		if(is_species(H, /datum/species/human))
 			if(H.client)
 				var/loadout_type = input(H, "Choose what makes you special:", "Loadout") as anything in loadouts
+				remove_verb(H, /datum/job/vampire/priest/verb/choose_special)
 				switch(loadout_type)
 					if("Numina")
 						to_chat(H, "<span class='alertsyndie'>You have been blessed with psychic powers. They make you extraordinary among mortals, yet you still fear the horrors lurking unknown.</span>")

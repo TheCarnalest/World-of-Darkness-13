@@ -64,7 +64,7 @@
 	var/datum/freeze_handler/freeze_handler = new(user, target)
 
 	to_chat(target, "<span class='notice'>You witness [user] crying, and something deep inside you stops you from acting.</span>")
-	to_chat(user, "<span class='notice'>You freeze [target] in place with your tears.</span>")
+	to_chat(user, "<span class='notice'>You freeze [target] in place with your tears. Any movement or actions besides speech will free them.</span>")
 
 	user.visible_message("<span class='warning'>[user] begins to cry tears of sorrow.</span>",
 	"<span class='notice'>You feel tears streaming down your face as you stare into the soul of [target].</span>")
