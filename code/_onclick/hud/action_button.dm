@@ -235,9 +235,9 @@
 	var/coord_col = "+[col-1]"
 //	var/coord_col_offset = 4 + 2 * col
 
-	var/coord_row = "[row ? -row : "+0"]"
+	var/coord_row = "[row ? row : "+0"]"
 
-	return "WEST[coord_col],NORTH[coord_row]:-6"	//:[coord_col_offset]
+	return "WEST[coord_col],SOUTH[coord_row]:+6"	//:[coord_col_offset]
 
 /datum/hud/proc/SetButtonCoords(atom/movable/screen/button,number)
 	var/row = round((number-1)/AB_MAX_COLUMNS)
