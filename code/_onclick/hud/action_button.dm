@@ -201,6 +201,8 @@
 			if(reload_screen)
 				client.screen += A.button
 	else
+		hud_used.spellbuttons = 1
+		hud_used.actionbuttons = 1
 		for(var/datum/action/A in actions)
 			A.UpdateButtonIcon()
 			var/atom/movable/screen/movable/action_button/B = A.button
@@ -209,7 +211,12 @@
 			if(B.moved)
 				B.screen_loc = B.moved
 			else
-				B.screen_loc = hud_used.ButtonNumberToScreenCoords(button_number, A.vampiric)
+				if(A.vampiric)
+					B.screen_loc = hud_used.ButtonNumberToScreenCoords(hud_used.spellbuttons, A.vampiric)
+					hud_used.spellbuttons = hud_used.spellbuttons+1
+				else
+					B.screen_loc = hud_used.ButtonNumberToScreenCoords(hud_used.actionbuttons, A.vampiric)
+					hud_used.actionbuttons = hud_used.actionbuttons+1
 			if(reload_screen)
 				client.screen += B
 
@@ -227,6 +234,10 @@
 
 
 #define AB_MAX_COLUMNS 10
+
+/datum/hud
+	var/actionbuttons = 0
+	var/spellbuttons = 0
 
 /datum/hud/proc/ButtonNumberToScreenCoords(number, spell) // TODO : Make this zero-indexed for readabilty
 	var/row = round((number - 1)/AB_MAX_COLUMNS)

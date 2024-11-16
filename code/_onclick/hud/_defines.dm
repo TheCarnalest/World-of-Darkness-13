@@ -20,16 +20,16 @@
 /proc/ui_hand_position(i) //values based on old hand ui positions (CENTER:-/+16,SOUTH:5)
 	var/x_off = -(!(i % 2))
 	var/y_off = round((i-1) / 2)
-	return "CENTER+[x_off]:16,SOUTH+[y_off]:5"
+	return "WEST-[3+x_off],SOUTH+[y_off+6]:16"
 
 /proc/ui_equip_position(mob/M)
 	var/y_off = round((M.held_items.len-1) / 2) //values based on old equip ui position (CENTER: +/-16,SOUTH+1:5)
-	return "CENTER:-16,SOUTH+[y_off+1]:5"
+	return "WEST-3:16,SOUTH+[y_off+7]:16"
 
 /proc/ui_swaphand_position(mob/M, which = 1) //values based on old swaphand ui positions (CENTER: +/-16,SOUTH+1:5)
 	var/x_off = which == 1 ? -1 : 0
 	var/y_off = round((M.held_items.len-1) / 2)
-	return "CENTER+[x_off]:16,SOUTH+[y_off+1]:5"
+	return "WEST-[2-x_off],SOUTH+[y_off+7]:16"
 
 //Lower left, persistent menu
 #define ui_inventory "WEST:6,SOUTH:5"
@@ -45,8 +45,8 @@
 #define ui_id "WEST-4:16,SOUTH+8:22"
 #define ui_belt "WEST-3:16,SOUTH+10:7"
 #define ui_back "WEST-3:16,SOUTH+8:6"
-#define ui_storage1 "CENTER+1:16,SOUTH:5"
-#define ui_storage2 "CENTER+2:16,SOUTH:5"
+#define ui_storage1 "WEST-4:16,SOUTH+7:22"
+#define ui_storage2 "WEST-2:16,SOUTH+7:22"
 #define ui_combo "CENTER+4:24,SOUTH+1:7" //combo meter for martial arts
 
 #define ui_drinkblood "WEST-2:11,SOUTH+3:24"
