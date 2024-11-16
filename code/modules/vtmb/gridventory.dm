@@ -1009,3 +1009,7 @@ VENTORY!
 /obj/item/clothing/suit
 	grid_width = 64
 	grid_height = 96
+
+/obj/item/clothing/head
+	grid_width = 64
+	grid_height = 64
