@@ -209,7 +209,7 @@
 			if(B.moved)
 				B.screen_loc = B.moved
 			else
-				B.screen_loc = hud_used.ButtonNumberToScreenCoords(button_number)
+				B.screen_loc = hud_used.ButtonNumberToScreenCoords(button_number, A.vampiric)
 			if(reload_screen)
 				client.screen += B
 
@@ -228,16 +228,21 @@
 
 #define AB_MAX_COLUMNS 10
 
-/datum/hud/proc/ButtonNumberToScreenCoords(number) // TODO : Make this zero-indexed for readabilty
+/datum/hud/proc/ButtonNumberToScreenCoords(number, spell) // TODO : Make this zero-indexed for readabilty
 	var/row = round((number - 1)/AB_MAX_COLUMNS)
 	var/col = ((number - 1)%(AB_MAX_COLUMNS)) + 1
 
 	var/coord_col = "+[col-1]"
 //	var/coord_col_offset = 4 + 2 * col
+	if(spell)
+		var/coord_row = "[row ? row : "+0"]"
 
-	var/coord_row = "[row ? row : "+0"]"
+		return "WEST[coord_col],SOUTH[coord_row]:+6"	//:[coord_col_offset]
+	else
+		var/coord_row = "[row ? -row : "+0"]"
 
-	return "WEST[coord_col],SOUTH[coord_row]:+6"	//:[coord_col_offset]
+		return "WEST[coord_col],NORTH[coord_row]:-6"	//:[coord_col_offset]
+
 
 /datum/hud/proc/SetButtonCoords(atom/movable/screen/button,number)
 	var/row = round((number-1)/AB_MAX_COLUMNS)
