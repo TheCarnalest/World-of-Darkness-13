@@ -225,7 +225,8 @@
 			return
 
 	if(!hud_used.hide_actions_toggle.moved)
-		hud_used.hide_actions_toggle.screen_loc = hud_used.ButtonNumberToScreenCoords(button_number+1)
+		hud_used.hide_actions_toggle.screen_loc = hud_used.ButtonNumberToScreenCoords(hud_used.actionbuttons, FALSE)
+		hud_used.actionbuttons = hud_used.actionbuttons+1
 	else
 		hud_used.hide_actions_toggle.screen_loc = hud_used.hide_actions_toggle.moved
 	if(reload_screen)
