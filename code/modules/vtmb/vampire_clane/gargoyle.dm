@@ -51,7 +51,7 @@
 	cost = 1
 	ranged = FALSE
 	delay = 150
-	activate_sound = 'code/modules/wod13/sounds/presence_activate.ogg'
+	activate_sound = 'code/modules/wod13/sounds/visceratika.ogg'
 	leveldelay = FALSE
 	fearless = TRUE
 
