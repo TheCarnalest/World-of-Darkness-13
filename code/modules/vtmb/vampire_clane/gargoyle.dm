@@ -12,6 +12,19 @@
 	violating_appearance = TRUE
 	male_clothes = "/obj/item/clothing/under/vampire/malkavian"
 	female_clothes = "/obj/item/clothing/under/vampire/malkavian"
+	haircuts = list(
+		"Bald",
+		"Pyotr",
+		"Balding Hair",
+		"Boddicker",
+		"Feather",
+		"Gelled Back",
+		"Cornrows",
+		"Cornrows 2",
+		"Cornrow Bun",
+		"Cornrow Braid",
+		"Cornrow Tail"
+	)
 	current_accessory = "gargoyle_full"
 	accessories = list("gargoyle_full", "gargoyle_left", "gargoyle_right", "gargoyle_broken", "gargoyle_round")
 	whitelisted = TRUE
@@ -19,7 +32,12 @@
 /datum/vampireclane/gargoyle/on_gain(mob/living/carbon/human/H)
 	..()
 	H.dna.species.no_equip = list(ITEM_SLOT_OCLOTHING, ITEM_SLOT_SUITSTORE)
-	H.dna.species.wings_icon = "gargoyle"
+	H.dna.species.wings_icon = "Gargoyle"
+	H.physiology.armor.melee += 20
+	H.physiology.armor.bullet += 20
+
+/datum/vampireclane/gargoyle/post_gain(mob/living/carbon/human/H)
+	..()
 	H.dna.species.GiveSpeciesFlight(H)
 
 //datum/discipline/visceratika/post_gain(mob/living/carbon/human/H)
@@ -81,10 +99,10 @@
 /mob/living
 	var/gargoyle_pass = FALSE
 
-/turf/Enter(atom/movable/mover, atom/oldloc)
+/turf/closed/Enter(atom/movable/mover, atom/oldloc)
 	if(isliving(mover))
 		var/mob/living/L = mover
 		if(L.gargoyle_pass)
 			if(get_area(L) == get_area(src))
 				return TRUE
-	..()
+	return ..()
