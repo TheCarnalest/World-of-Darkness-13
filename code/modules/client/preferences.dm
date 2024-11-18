@@ -3129,7 +3129,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 //			character.maxHealth = initial(character.maxHealth)+50*(13-generation)
 //			character.health = initial(character.health)+50*(13-generation)
 	else
-		character.clane.current_accessory = null
+//		character.clane.current_accessory = null
 		character.clane = null
 		character.generation = 13
 		character.bloodpool = character.maxbloodpool
