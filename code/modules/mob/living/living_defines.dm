@@ -270,3 +270,6 @@
 	var/istower = FALSE
 
 	var/total_contracted = 0
+
+	///Allows Gargoyles to move through solid objects using Visceratika 5.
+	var/gargoyle_pass = FALSE

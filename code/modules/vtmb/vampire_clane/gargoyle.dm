@@ -6,7 +6,7 @@
 		/datum/discipline/fortitude = 1,
 		/datum/discipline/potence = 2,
 		/datum/discipline/visceratika = 3
-		)
+	)
 	alt_sprite = "gargoyle"
 	no_facial = TRUE
 	violating_appearance = TRUE
@@ -95,9 +95,6 @@
 				caster.alpha = 255
 				caster.gargoyle_pass = FALSE
 				REMOVE_TRAIT(caster, TRAIT_THERMAL_VISION, TRAIT_GENERIC)
-
-/mob/living
-	var/gargoyle_pass = FALSE
 
 /turf/closed/Enter(atom/movable/mover, atom/oldloc)
 	if(isliving(mover))
