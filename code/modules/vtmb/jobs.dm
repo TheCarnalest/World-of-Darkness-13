@@ -222,7 +222,7 @@
 	v_duty = "You are the right hand man or woman of the most powerful vampire in the city. The Camarilla trusts you to run the city, even in their stead."
 	duty = "You are the right hand man or woman of the most powerful vampire in the city. The Camarilla trusts you to run the city, even in their stead."
 	experience_addition = 15
-	allowed_bloodlines = list("Daughters of Cacophony", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Lasombra")
+	allowed_bloodlines = list("Daughters of Cacophony", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Lasombra", "Gargoyle")
 
 /datum/outfit/job/clerk
 	name = "Seneschal"
@@ -579,7 +579,7 @@
 	v_duty = "You lead the Anarchs in the City. A Camarilla faction that values freedom and individuality. While not a fan of the traditions, you still respect the Masquerade."
 	minimal_masquerade = 3
 	allowed_species = list("Vampire")
-	allowed_bloodlines = list("Brujah", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Ventrue", "Lasombra")
+	allowed_bloodlines = list("Brujah", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Ventrue", "Lasombra", "Gargoyle")
 	experience_addition = 20
 
 /datum/outfit/job/barkeeper
@@ -628,7 +628,7 @@
 
 	display_order = JOB_DISPLAY_ORDER_BOUNCER
 	known_contacts = list("Baron")
-	allowed_bloodlines = list("Daughters of Cacophony", "Brujah", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Tzimisce", "Caitiff", "Lasombra")
+	allowed_bloodlines = list("Daughters of Cacophony", "Brujah", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Tzimisce", "Caitiff", "Lasombra", "Gargoyle")
 
 	v_duty = "You work with the baron - whether because of your own ideals or friendship, or other reasons. That doesn't mean you will let someone disregard the one tradition you do agree with - the Masquerade."
 	minimal_masquerade = 2
@@ -681,7 +681,7 @@
 
 	my_contact_is_important = TRUE
 	known_contacts = list("Baron", "Prince", "Sheriff")
-	allowed_bloodlines = list("Brujah", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Tzimisce", "Caitiff", "Ventrue", "Ministry")
+	allowed_bloodlines = list("Brujah", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Tzimisce", "Caitiff", "Ventrue", "Ministry", "Gargoyle")
 
 	v_duty = "You provide supplies to other kindred. The warehouse is yours, and it's your business who you'll deal with."
 	minimal_masquerade = 3
@@ -730,7 +730,7 @@
 	bounty_types = CIV_JOB_RANDOM
 	allowed_species = list("Vampire", "Ghoul", "Human")
 	known_contacts = list("Baron", "Prince", "Sheriff")
-	allowed_bloodlines = list("Daughters of Cacophony", "Brujah", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Tzimisce", "Caitiff", "Lasombra")
+	allowed_bloodlines = list("Daughters of Cacophony", "Brujah", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Tzimisce", "Caitiff", "Lasombra", "Gargoyle")
 
 	v_duty = "You work for the Dealer, or are a part of their coterie. They pay well and the job is easy. Don't disappoint them."
 	duty = "Though your boss is odd and only works late night hours, they pay you well enough that you avoid questioning it."
@@ -1580,7 +1580,7 @@
 	duty = "Drive people in the city."
 	minimal_masquerade = 0
 	experience_addition = 10
-	allowed_bloodlines = list("Daughters of Cacophony", "Salubri", "Baali", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Tzimisce", "Lasombra", "Caitiff")
+	allowed_bloodlines = list("Daughters of Cacophony", "Salubri", "Baali", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Tzimisce", "Lasombra", "Caitiff", "Gargoyle")
 
 /datum/job/vamp/taxi/after_spawn(mob/living/H, mob/M, latejoin = FALSE)
 	..()
