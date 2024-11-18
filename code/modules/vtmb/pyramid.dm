@@ -342,9 +342,9 @@
 							to_chat(G, "<span class='ghostalert'>Gargoyle Transformation rune has been triggered.</span>")
 					if(LAZYLEN(candidates))
 						var/mob/dead/observer/C = pick(candidates)
-						H.ley = C.key
-					Y.key = C.key
-					Y.my_creator = last_activator
+						H.key = C.key
+//					Y.key = C.key
+//					Y.my_creator = last_activator
 				playsound(loc, 'code/modules/wod13/sounds/thaum.ogg', 50, FALSE)
 				qdel(src)
 				return
