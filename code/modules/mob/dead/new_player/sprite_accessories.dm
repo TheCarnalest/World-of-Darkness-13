@@ -1728,6 +1728,21 @@
 	center = TRUE
 	dimension_y = 32
 
+/datum/sprite_accessory/wings/gargoyle
+	name = "Gargoyle"
+	icon_state = "gargoyle"
+	dimension_x = 96
+	center = TRUE
+	dimension_y = 32
+	locked = TRUE
+
+/datum/sprite_accessory/wings_open/gargoyle
+	name = "Gargoyle"
+	icon_state = "gargoyle"
+	dimension_x = 96
+	center = TRUE
+	dimension_y = 32
+
 /datum/sprite_accessory/wings/megamoth
 	name = "Megamoth"
 	icon_state = "megamoth"
