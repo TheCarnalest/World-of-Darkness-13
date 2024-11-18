@@ -435,13 +435,7 @@
 		return
 	var/mypower = caster.social + caster.additional_social
 	var/theirpower = target.mentality + target.additional_mentality
-	var/dominate_me = FALSE
-	if(ishuman(target))
-		var/mob/living/carbon/human/H = target
-		if(H.clane)
-			if(H.clane.name == "Gargoyle")
-				dominate_me = TRUE
-	if(((theirpower >= mypower) || (caster.generation > target.generation)) && !dominate_me)
+	if((theirpower >= mypower) || (caster.generation > target.generation))
 		to_chat(caster, "<span class='warning'>[target]'s mind is too powerful to dominate!</span>")
 		return
 	if(HAS_TRAIT(caster, TRAIT_MUTE))

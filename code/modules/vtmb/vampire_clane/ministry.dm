@@ -115,7 +115,7 @@
 		G.AdjustMasquerade(-1)
 	abuse_fix = world.time
 	G.Stun(100)
-	G.petrify(100, "Serpentis")
+	G.petrify(100)
 
 /obj/effect/proc_holder/spell/targeted/shapeshift/cobra
 	name = "Cobra"

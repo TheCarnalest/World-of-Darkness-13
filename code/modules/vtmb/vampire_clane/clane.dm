@@ -25,18 +25,10 @@ And it also helps for the character set panel
 	var/female_clothes
 	var/enlightement = FALSE
 	var/whitelisted = FALSE
-	var/accessories = list()
-	var/current_accessory
 
 //var/datum/action/innate/drink_blood/sosalka = new
 
 /datum/vampireclane/proc/on_gain(var/mob/living/carbon/human/H)
-	if(length(accessories))
-		if(current_accessory)
-			H.remove_overlay(UNICORN_LAYER)
-			var/mutable_appearance/acc_overlay = mutable_appearance('code/modules/wod13/icons.dmi', current_accessory, -UNICORN_LAYER)
-			H.overlays_standing[UNICORN_LAYER] = acc_overlay
-			H.apply_overlay(UNICORN_LAYER)
 	if(alt_sprite)
 		H.skin_tone = "albino"
 		H.dna.species.limbs_id = alt_sprite

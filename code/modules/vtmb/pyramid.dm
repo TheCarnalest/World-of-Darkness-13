@@ -326,27 +326,28 @@
 	for(var/mob/living/carbon/human/H in loc)
 		if(H)
 			if(H.stat > 1)
-				for(var/datum/action/A in H.actions)
-					if(A)
-						if(A.vampiric)
-							A.Remove(H)
-				H.set_species(/datum/species/kindred)
-				H.clane = new /datum/vampireclane/gargoyle()
-				H.clane.on_gain(H)
-				H.clane.post_gain(H)
-				H.create_disciplines(FALSE, /datum/discipline/potence, /datum/discipline/fortitude, /datum/discipline/visceratika)
-				if(!H.key)
+				if(H.key)
+					var/mob/living/simple_animal/hostile/gargoyle/Y = new(loc)
+					Y.key = H.key
+					Y.my_creator = last_activator
+					qdel(H)
+					playsound(loc, 'code/modules/wod13/sounds/thaum.ogg', 50, FALSE)
+					qdel(src)
+					return
+				else
 					var/list/mob/dead/observer/candidates = pollCandidatesForMob("Do you wish to play as Sentient Gargoyle?", null, null, null, 50, src)
 					for(var/mob/dead/observer/G in GLOB.player_list)
 						if(G.key)
 							to_chat(G, "<span class='ghostalert'>Gargoyle Transformation rune has been triggered.</span>")
 					if(LAZYLEN(candidates))
 						var/mob/dead/observer/C = pick(candidates)
-						H.key = C.key
-//					Y.key = C.key
-//					Y.my_creator = last_activator
-				playsound(loc, 'code/modules/wod13/sounds/thaum.ogg', 50, FALSE)
-				qdel(src)
+						var/mob/living/simple_animal/hostile/gargoyle/Y = new(loc)
+						Y.key = C.key
+						Y.my_creator = last_activator
+						qdel(H)
+						playsound(loc, 'code/modules/wod13/sounds/thaum.ogg', 50, FALSE)
+						qdel(src)
+						return
 				return
 			else
 				playsound(loc, 'code/modules/wod13/sounds/thaum.ogg', 50, FALSE)
