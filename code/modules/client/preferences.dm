@@ -212,8 +212,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/werewolf_name
 	var/auspice_level = 1
 
-	var/clane_accessory
-
 /datum/preferences/proc/add_experience(var/amount)
 	if(amount)
 		true_experience = true_experience+amount
@@ -651,14 +649,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "<b>Clane/Bloodline:</b> <a href='?_src_=prefs;preference=clane;task=input'>[clane.name]</a><BR>"
 				dat += "<b>Description:</b> [clane.desc]<BR>"
 				dat += "<b>Curse:</b> [clane.curse]<BR>"
-				if(length(clane.accessories))
-					if(clane_accessory in clane.accessories)
-						dat += "<b>Marks:</b> <a href='?_src_=prefs;preference=clane_acc;task=input'>[clane_accessory]</a><BR>"
-					else
-						clane_accessory = pick(clane.accessories)
-						dat += "<b>Marks:</b> <a href='?_src_=prefs;preference=clane_acc;task=input'>[clane_accessory]</a><BR>"
-				else
-					clane_accessory = null
 				dat += "<h2>[make_font_cool("DISCIPLINES")]</h2>"
 
 //				else
@@ -2128,17 +2118,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						var/datum/auspice/Auspic = new newtype()
 						auspice = Auspic
 
-				if("clane_acc")
-					if(slotlocked)
-						link_bug_fix = FALSE
-						return
-					if(!length(clane.accessories))
-						clane_accessory = null
-						return
-					var/result = input(user, "Select a mark", "Marks") as null|anything in clane.accessories
-					if(result)
-						clane_accessory = result
-
 				if("clane")
 					if(slotlocked)
 						link_bug_fix = FALSE
@@ -2205,8 +2184,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							hairstyle = "Bald"
 						if(clane.no_facial)
 							facial_hairstyle = "Shaved"
-						if(length(clane.accessories))
-							clane_accessory = pick(clane.accessories)
 //						real_name = clane.random_name(gender)		//potom sdelat
 				if("auspice_level")
 					if(true_experience >= auspice_level*10 && auspice_level < 3)
@@ -3120,7 +3097,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if(pref_species.name == "Vampire")
 		var/datum/vampireclane/CLN = new clane.type()
 		character.clane = CLN
-		character.clane.current_accessory = clane_accessory
 		character.maxbloodpool = 10+((13-generation)*3)
 		character.bloodpool = rand(2, character.maxbloodpool)
 		character.generation = generation
@@ -3129,7 +3105,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 //			character.maxHealth = initial(character.maxHealth)+50*(13-generation)
 //			character.health = initial(character.health)+50*(13-generation)
 	else
-		character.clane.current_accessory = null
 		character.clane = null
 		character.generation = 13
 		character.bloodpool = character.maxbloodpool

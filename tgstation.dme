@@ -3375,7 +3375,6 @@
 #include "code\modules\vtmb\vampire_clane\caitiff.dm"
 #include "code\modules\vtmb\vampire_clane\clane.dm"
 #include "code\modules\vtmb\vampire_clane\doc.dm"
-#include "code\modules\vtmb\vampire_clane\gargoyle.dm"
 #include "code\modules\vtmb\vampire_clane\gangrel.dm"
 #include "code\modules\vtmb\vampire_clane\giovanni.dm"
 #include "code\modules\vtmb\vampire_clane\lasombra.dm"

@@ -142,19 +142,15 @@
 	var/list/mob/living/listeners = list()
 	for(var/mob/living/L in get_hearers_in_view(8, user))
 		if(L.can_hear() && !L.anti_magic_check(FALSE, TRUE) && L.stat != DEAD)
-			var/dominate_me = FALSE
 			if(L == user && !include_speaker)
 				continue
 			if(ishuman(L))
 				var/mob/living/carbon/human/H = L
-				if(H.clane)
-					if(H.clane.name == "Gargoyle")
-						dominate_me = TRUE
 				if(istype(H.ears, /obj/item/clothing/ears/earmuffs))
 					continue
-			if(user.generation > L.generation && !dominate_me) //Dominate can't be used on lower Generations
+			if(user.generation > L.generation) //Dominate can't be used on lower Generations
 				continue
-			if(((user.social + user.additional_social) <= (L.mentality + L.additional_mentality)) && !dominate_me) //Dominate must defeat resistance
+			if((user.social + user.additional_social) <= (L.mentality + L.additional_mentality)) //Dominate must defeat resistance
 				continue
 			if(L.resistant_to_disciplines)
 				continue
