@@ -2,7 +2,7 @@
 	"version": 1,
 	"map_name": "San Francisco",
 	"map_path": "map_files/Vampire",
-	"map_file": "KindredCity2.dmm",
+	"map_file": "SanFrancisco.dmm",
 	"traits": [
 		{
 			"Up": 1,
