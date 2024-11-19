@@ -325,7 +325,7 @@
 /obj/ritualrune/gargoyle/complete()
 	for(var/mob/living/carbon/human/H in loc)
 		if(H)
-			if(H.stat > 1)
+			if(H.stat > SOFT_CRIT)
 				for(var/datum/action/A in H.actions)
 					if(A)
 						if(A.vampiric)
