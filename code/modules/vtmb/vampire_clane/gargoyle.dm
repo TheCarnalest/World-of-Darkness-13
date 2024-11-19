@@ -54,6 +54,7 @@
 	activate_sound = 'code/modules/wod13/sounds/visceratika.ogg'
 	leveldelay = FALSE
 	fearless = TRUE
+	clane_restricted = TRUE
 
 /datum/discipline/visceratika/activate(mob/living/target, mob/living/carbon/human/caster)
 	. = ..()
