@@ -1094,18 +1094,17 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	set name = "Toggle Fullscreen"
 	set category = "OOC"
 
-	fullscreen = !fullscreen
+	prefs.fullscreen = !prefs.fullscreen
 
-	if (fullscreen)
-		winset(usr, "mainwindow", "on-size=")
-		winset(usr, "mainwindow", "titlebar=false")
-		winset(usr, "mainwindow", "can-resize=false")
-		winset(usr, "mainwindow", "menu=")
-		winset(usr, "mainwindow", "is-maximized=false")
-		winset(usr, "mainwindow", "is-maximized=true")
+	if (prefs.fullscreen)
+		winset(usr, "mainwindow", "menu=\"\"")
+		winset(usr, "mainwindow","titlebar=false")
+		winset(usr, "mainwindow","can-resize=false")
+		winset(usr, "mainwindow","is-minimized=true")
+		winset(usr, "mainwindow","is-maximized=true")
+		winset(usr, null, "split.size=mainwindow.size")
 	else
-		winset(usr, "mainwindow", "menu=menu")
-		winset(usr, "mainwindow", "titlebar=true")
-		winset(usr, "mainwindow", "can-resize=true")
-		winset(usr, "mainwindow", "is-maximized=false")
-		winset(usr, "mainwindow", "on-size=attempt_auto_fit_viewport")
+		winset(usr, "mainwindow", "menu=\"menu\"")
+		winset(usr, "mainwindow","titlebar=true")
+		winset(usr, "mainwindow","can-resize=true")
+	fit_viewport()
