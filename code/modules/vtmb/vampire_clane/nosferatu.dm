@@ -27,6 +27,7 @@
 	male_clothes = "/obj/item/clothing/under/vampire/nosferatu"
 	female_clothes = "/obj/item/clothing/under/vampire/nosferatu/female"
 	accessories = list("nosferatu_ears")
+	accessories_layers = list("nosferatu_ears" = UPPER_EARS_LAYER)
 	current_accessory = "nosferatu_ears"
 
 /datum/vampireclane/nosferatu/on_gain(mob/living/carbon/human/H)

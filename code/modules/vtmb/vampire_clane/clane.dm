@@ -26,6 +26,7 @@ And it also helps for the character set panel
 	var/enlightement = FALSE
 	var/whitelisted = FALSE
 	var/accessories = list()
+	var/accessories_layers = list()
 	var/current_accessory
 
 //var/datum/action/innate/drink_blood/sosalka = new
@@ -33,10 +34,10 @@ And it also helps for the character set panel
 /datum/vampireclane/proc/on_gain(var/mob/living/carbon/human/H)
 	if(length(accessories))
 		if(current_accessory)
-			H.remove_overlay(UNICORN_LAYER)
-			var/mutable_appearance/acc_overlay = mutable_appearance('code/modules/wod13/icons.dmi', current_accessory, -UNICORN_LAYER)
-			H.overlays_standing[UNICORN_LAYER] = acc_overlay
-			H.apply_overlay(UNICORN_LAYER)
+			H.remove_overlay(accessories_layers[current_accessory])
+			var/mutable_appearance/acc_overlay = mutable_appearance('code/modules/wod13/icons.dmi', current_accessory, -accessories_layers[current_accessory])
+			H.overlays_standing[accessories_layers[current_accessory]] = acc_overlay
+			H.apply_overlay(accessories_layers[current_accessory])
 	if(alt_sprite)
 		H.skin_tone = "albino"
 		H.dna.species.limbs_id = alt_sprite

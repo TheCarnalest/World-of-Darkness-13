@@ -91,10 +91,11 @@
 			if(clane_type == "Visceratika")
 				ADD_TRAIT(src, TRAIT_NOBLEED, MAGIC_TRAIT)
 				var/obj/structure/statue/petrified/S = new(loc, src, statue_timer)
-				S.name = "statue"
-				S.icon = 'code/modules/wod13/64x64.dmi'
-				S.icon_state = "angelstatue"
-				S.desc = "Some gothic statue."
+				S.name = "\improper gargoyle"
+				S.desc = "Some kind of gothic architecture."
+				S.icon = 'code/modules/wod13/32x48.dmi'
+				S.icon_state = "gargoyle"
+				S.pixel_z = -16
 		else
 			var/obj/structure/statue/petrified/S = new(loc, src, statue_timer)
 			S.name = "statue of [name]"
