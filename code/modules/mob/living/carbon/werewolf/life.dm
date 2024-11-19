@@ -63,15 +63,29 @@
 					if(last_frenzy_check+400 <= world.time)
 						last_frenzy_check = world.time
 						rollfrenzy()
+
 			if(istype(get_area(src), /area/vtm/interior/penumbra))
-				if(last_veil_restore+600 < world.time)
-					last_veil_restore = world.time
+				if(last_veil_restore+400 < world.time)
 					adjust_veil(1)
+					last_veil_restore = world.time
+
+			switch(src.auspice.tribe)
+				if("Wendigo")
+					if(istype(get_area(src), /area/vtm/forest))
+						if(last_veil_restore+600 <= world.time)
+							adjust_veil(1)
+							last_veil_restore = world.time
+
+				if("Glasswalkers")
+					if(istype(get_area(src), /area/vtm/interior/glasswalker))
+						if(last_veil_restore+600 <= world.time)
+							adjust_veil(1) // These three instances of adjust_veil don't add to masq points?
+							last_veil_restore = world.time		
 
 /mob/living/carbon/werewolf/crinos/Life()
 	. = ..()
 	if(CheckEyewitness(src, src, 5, FALSE))
-		adjust_veil(-1)
+		adjust_veil(-1) // BUT THIS WORKS AND REMOVES MASQ POINTS, WHY??
 
 /mob/living/carbon/werewolf/check_breath(datum/gas_mixture/breath)
 	return
@@ -92,17 +106,18 @@
 	adjust_bodytemperature(BODYTEMP_HEATING_MAX) //If you're on fire, you heat up!
 
 /mob/living/carbon/proc/adjust_veil(var/amount)
-	if(!GLOB.canon_event)
-		return
-	if(last_veil_adjusting+100 >= world.time)
+	//if(!GLOB.canon_event)
+	//	return
+	if(last_veil_adjusting+100 >= world.time)  //time on this very low for testing, needs correcting later
 		return
 	if(amount > 0)
 		if(HAS_TRAIT(src, TRAIT_VIOLATOR))
 			return
-	if(istype(get_area(src), /area/vtm))
-		var/area/vtm/V = get_area(src)
-		if(V.zone_type != "masquerade")
-			return
+	if(amount < 0)	
+		if(istype(get_area(src), /area/vtm))
+			var/area/vtm/V = get_area(src)
+			if(V.zone_type != "masquerade")
+				return
 	last_veil_adjusting = world.time
 	var/special_role_name
 	if(mind)
@@ -115,8 +130,10 @@
 				SEND_SOUND(src, sound('code/modules/wod13/sounds/veil_violation.ogg', 0, 0, 75))
 				to_chat(src, "<span class='boldnotice'><b>VEIL VIOLATION</b></span>")
 				masquerade = max(0, masquerade+amount)
+				//AdjustMasquerade(-1) couldn't define these properly I'm too stupid. but this should be unnecessary if the adjust_veil would work properly ???
 		if(amount > 0)
 			if(masquerade < 5)
 				SEND_SOUND(src, sound('code/modules/wod13/sounds/humanity_gain.ogg', 0, 0, 75))
 				to_chat(src, "<span class='boldnotice'><b>VEIL REINFORCEMENT</b></span>")
 				masquerade = max(0, masquerade-amount)
+				//AdjustMasquerade(1)
