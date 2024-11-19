@@ -33,6 +33,7 @@ GLOBAL_LIST_INIT(citizen_positions, list(
 	"Taxi Driver",
 	"Police Officer",
 	"Federal Investigator",
+	"Priest"
 ))
 
 GLOBAL_LIST_INIT(neutral_positions, list(

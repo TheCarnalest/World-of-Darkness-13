@@ -296,7 +296,7 @@
 	desc = "Summons Spectral Animals over your targets. Violates Masquerade."
 	icon_state = "animalism"
 	cost = 1
-	delay = 5 SECONDS
+	delay = 8 SECONDS
 	ranged = FALSE
 	violates_masquerade = TRUE
 	activate_sound = 'code/modules/wod13/sounds/wolves.ogg'
@@ -441,7 +441,7 @@
 	icon_state = "celerity"
 	cost = 1
 	ranged = FALSE
-	delay = 50
+	delay = 75
 	violates_masquerade = FALSE
 	activate_sound = 'code/modules/wod13/sounds/celerity_activate.ogg'
 	leveldelay = TRUE
@@ -548,7 +548,13 @@
 		return
 	var/mypower = caster.social + caster.additional_social
 	var/theirpower = target.mentality + target.additional_mentality
-	if((theirpower >= mypower) || (caster.generation > target.generation))
+	var/dominate_me = FALSE
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = target
+		if(H.clane)
+			if(H.clane.name == "Gargoyle")
+				dominate_me = TRUE
+	if(((theirpower >= mypower) || (caster.generation > target.generation)) && !dominate_me)
 		to_chat(caster, "<span class='warning'>[target]'s mind is too powerful to dominate!</span>")
 		return
 	if(HAS_TRAIT(caster, TRAIT_MUTE))
@@ -800,7 +806,7 @@
 	icon_state = "fortitude"
 	cost = 1
 	ranged = FALSE
-	delay = 100
+	delay = 75
 	activate_sound = 'code/modules/wod13/sounds/fortitude_activate.ogg'
 
 /datum/discipline/fortitude/activate(mob/living/target, mob/living/carbon/human/caster)
@@ -1072,8 +1078,8 @@
 			spawn(delay+caster.discipline_time_plus)
 				if(caster && caster.stat != DEAD)
 					GA.Restore(GA.myshape)
-					caster.Stun(15)
-					caster.do_jitter_animation(30)
+					caster.Stun(10)
+					caster.do_jitter_animation(15)
 //					if(caster.dna)
 					caster.playsound_local(caster, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
 //						caster.dna.species.attack_verb = initial(caster.dna.species.attack_verb)

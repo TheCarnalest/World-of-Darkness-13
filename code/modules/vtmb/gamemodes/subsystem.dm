@@ -38,7 +38,7 @@ SUBSYSTEM_DEF(bad_guys_party)
 				if(Next)
 					qdel(Next)
 				threat = min(100, threat+60)
-				max_candidates = 2
+				max_candidates = 1
 				go_on_next_fire = TRUE
 				Next = new /datum/outfit/job/caitiff()
 			else
@@ -46,18 +46,18 @@ SUBSYSTEM_DEF(bad_guys_party)
 				if(Next)
 					qdel(Next)
 				threat = min(100, threat+30)
-				max_candidates = 3
+				max_candidates = 2
 				go_on_next_fire = TRUE
 				Next = new /datum/outfit/job/sabbatist()
 		if(2)
 			if(prob(30))
-				//spiral
+			//sabbat
 				if(Next)
 					qdel(Next)
-				threat = min(100, threat+60)
+				threat = min(100, threat+90)
 				max_candidates = 4
 				go_on_next_fire = TRUE
-				Next = new /datum/outfit/job/spiral()
+				Next = new /datum/outfit/job/sabbatist()
 			else
 				//hunt
 				if(Next)
@@ -68,19 +68,19 @@ SUBSYSTEM_DEF(bad_guys_party)
 				Next = new /datum/outfit/job/hunter()
 		/*if(3)
 			if(prob(50))
-				//spiral
+				//hunt
 				if(Next)
 					qdel(Next)
 				threat = min(100, threat+60)
-				max_candidates = 6
+				max_candidates = 2
 				go_on_next_fire = TRUE
-				Next = new /datum/outfit/job/spiral()
+				Next = new /datum/outfit/job/hunter()
 			else
 				//sabbat
 				if(Next)
 					qdel(Next)
 				threat = min(100, threat+90)
-				max_candidates = 7
+				max_candidates = 3
 				go_on_next_fire = TRUE
 				Next = new /datum/outfit/job/sabbatist()*/
 

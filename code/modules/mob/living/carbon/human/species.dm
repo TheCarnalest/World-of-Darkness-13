@@ -1309,7 +1309,7 @@ GLOBAL_LIST_EMPTY(selectable_races)
 	if(radiation > RAD_MOB_HAIRLOSS)
 		if(prob(15) && !(H.hairstyle == "Bald") && (HAIR in species_traits))
 			to_chat(H, "<span class='danger'>Your hair starts to fall out in clumps...</span>")
-			addtimer(CALLBACK(src, .proc/go_bald, H), 50)
+			addtimer(CALLBACK(src, PROC_REF(go_bald), H), 50)
 
 /datum/species/proc/go_bald(mob/living/carbon/human/H)
 	if(QDELETED(H))	//may be called from a timer
@@ -1887,13 +1887,12 @@ GLOBAL_LIST_EMPTY(selectable_races)
 	if(humi.coretemperature < cold_damage_limit && !HAS_TRAIT(humi, TRAIT_RESISTCOLD))
 		var/damage_type = is_hulk ? BRUTE : BURN
 		var/damage_mod = coldmod * humi.physiology.cold_mod * (is_hulk ? HULK_COLD_DAMAGE_MOD : 1)
-		if(humi.coretemperature >= 201 && humi.coretemperature <= cold_damage_limit)
+		if(humi.bodytemperature >= 201 && humi.bodytemperature <= bodytemp_cold_damage_limit)
 			humi.apply_damage(COLD_DAMAGE_LEVEL_1 * damage_mod, damage_type)
-		else if(humi.coretemperature >= 120 && humi.coretemperature < 201)
+		else if(humi.bodytemperature >= 120 && humi.bodytemperature < 201)
 			humi.apply_damage(COLD_DAMAGE_LEVEL_2 * damage_mod, damage_type)
 		else
 			humi.apply_damage(COLD_DAMAGE_LEVEL_3 * damage_mod, damage_type)
-
 
 /**
  * Used to apply burn wounds on random limbs
@@ -2195,7 +2194,7 @@ GLOBAL_LIST_EMPTY(selectable_races)
 		buckled_obj.unbuckle_mob(H)
 		step(buckled_obj, olddir)
 	else
-		new /datum/forced_movement(H, get_ranged_target_turf(H, olddir, 4), 1, FALSE, CALLBACK(H, /mob/living/carbon/.proc/spin, 1, 1))
+		new /datum/forced_movement(H, get_ranged_target_turf(H, olddir, 4), 1, FALSE, CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon, spin), 1, 1))
 	return TRUE
 
 //UNSAFE PROC, should only be called through the Activate or other sources that check for CanFly
