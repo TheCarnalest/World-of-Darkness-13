@@ -46,6 +46,7 @@ GLOBAL_LIST_INIT(independent_positions, list(
 	"Capo",
 	"La Squadra",
 	"La Famiglia",
+	"Associate",
 	"Primogen Malkavian",
 	"Primogen Nosferatu",
 	"Primogen Toreador",
