@@ -95,6 +95,7 @@
 					lupus_form.mind = trans.mind
 					lupus_form.update_blood_hud()
 					transfer_damage(trans, lupus_form)
+					lupus_form.add_movespeed_modifier(/datum/movespeed_modifier/lupusform)
 					trans.forceMove(src)
 					transformating = FALSE
 					animate(trans, transform = null, color = "#FFFFFF", time = 1)
@@ -132,6 +133,7 @@
 					crinos_form.mind = trans.mind
 					crinos_form.update_blood_hud()
 					transfer_damage(trans, crinos_form)
+					crinos_form.add_movespeed_modifier(/datum/movespeed_modifier/crinosform)
 					trans.forceMove(src)
 					transformating = FALSE
 					animate(trans, transform = null, color = "#FFFFFF", time = 1)
@@ -169,6 +171,8 @@
 					human_form.mind = trans.mind
 					human_form.update_blood_hud()
 					transfer_damage(trans, human_form)
+					human_form.remove_movespeed_modifier(/datum/movespeed_modifier/crinosform)
+					human_form.remove_movespeed_modifier(/datum/movespeed_modifier/lupusform)
 					trans.forceMove(src)
 					transformating = FALSE
 					animate(trans, transform = null, color = "#FFFFFF", time = 1)

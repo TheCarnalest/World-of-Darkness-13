@@ -40,9 +40,9 @@
 	. = ..()
 	if(var_name == NAMEOF(src, config_entry_value) || var_name == NAMEOF(src, default))
 		. &= !(protection & CONFIG_ENTRY_HIDDEN)
-//var/static/list/banned_edits = list(NAMEOF(src, name), NAMEOF(src, vv_VAS), NAMEOF(src, default), NAMEOF(src, resident_file), NAMEOF(src, protection), NAMEOF(src, abstract_type), NAMEOF(src, modified), NAMEOF(src, dupes_allowed))
-/datum/config_entry/vv_edit_var(var_name, var_value)
 
+/datum/config_entry/vv_edit_var(var_name, var_value)
+	//var/static/list/banned_edits = list(NAMEOF(src, name), NAMEOF(src, vv_VAS), NAMEOF(src, default), NAMEOF(src, resident_file), NAMEOF(src, protection), NAMEOF(src, abstract_type), NAMEOF(src, modified), NAMEOF(src, dupes_allowed))
 	if(var_name == NAMEOF(src, config_entry_value))
 		if(protection & CONFIG_ENTRY_LOCKED)
 			return FALSE
@@ -105,7 +105,7 @@
 	return FALSE
 
 /datum/config_entry/number/vv_edit_var(var_name, var_value)
-	//var/static/list/banned_edits = list(NAMEOF(src, max_val), NAMEOF(src, min_val), NAMEOF(src, integer))
+	//var/static/list/banned_edits = list(NAMEOF_STATIC(src, max_val), NAMEOF_STATIC(src, min_val), NAMEOF_STATIC(src, integer))
 	return ..()
 
 /datum/config_entry/flag

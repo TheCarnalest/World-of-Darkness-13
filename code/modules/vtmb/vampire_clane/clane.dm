@@ -25,10 +25,19 @@ And it also helps for the character set panel
 	var/female_clothes
 	var/enlightement = FALSE
 	var/whitelisted = FALSE
+	var/accessories = list()
+	var/accessories_layers = list()
+	var/current_accessory
 
 //var/datum/action/innate/drink_blood/sosalka = new
 
 /datum/vampireclane/proc/on_gain(var/mob/living/carbon/human/H)
+	if(length(accessories))
+		if(current_accessory)
+			H.remove_overlay(accessories_layers[current_accessory])
+			var/mutable_appearance/acc_overlay = mutable_appearance('code/modules/wod13/icons.dmi', current_accessory, -accessories_layers[current_accessory])
+			H.overlays_standing[accessories_layers[current_accessory]] = acc_overlay
+			H.apply_overlay(accessories_layers[current_accessory])
 	if(alt_sprite)
 		H.skin_tone = "albino"
 		H.dna.species.limbs_id = alt_sprite
@@ -92,13 +101,13 @@ And it also helps for the character set panel
 			if(R)
 				if(R != src)
 					if(R.need_lover && need_lover && !R.Lover && !Lover && R.Friend != src && Friend != R && R.Enemy != src && Enemy != R)
-						if(R.owner.gender == owner.gender && HAS_TRAIT(R.owner, TRAIT_HOMOSEXUAL) && HAS_TRAIT(owner, TRAIT_HOMOSEXUAL))
+						if((R.owner.gender == owner.gender) && HAS_TRAIT(R.owner, TRAIT_HOMOSEXUAL) && HAS_TRAIT(owner, TRAIT_HOMOSEXUAL))
 							Lover = R
 							R.Lover = src
 							to_chat(owner, "Your lover, <b>[R.owner.real_name]</b>, is now in the city!")
 							to_chat(R.owner, "Your lover, <b>[owner.real_name]</b>, is now in the city!")
 							need_lover = FALSE
-						if(!HAS_TRAIT(R.owner, TRAIT_HOMOSEXUAL) && !HAS_TRAIT(owner, TRAIT_HOMOSEXUAL) && R.owner.gender != owner.gender)
+						else if(!HAS_TRAIT(R.owner, TRAIT_HOMOSEXUAL) && !HAS_TRAIT(owner, TRAIT_HOMOSEXUAL) && (R.owner.gender != owner.gender))
 							Lover = R
 							R.Lover = src
 							to_chat(owner, "Your lover, <b>[R.owner.real_name]</b>, is now in the city!")
