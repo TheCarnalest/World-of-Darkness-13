@@ -95,6 +95,7 @@
 				S.desc = "Some kind of gothic architecture."
 				S.icon = 'code/modules/wod13/32x48.dmi'
 				S.icon_state = "gargoyle"
+				S.dir = dir
 				S.pixel_z = -16
 		else
 			var/obj/structure/statue/petrified/S = new(loc, src, statue_timer)
