@@ -172,8 +172,8 @@
 //							ghostize(FALSE)
 //							key = K.key
 //							generation = K.generation
-//							maxHealth = initial(maxHealth)+100*(13-generation)
-//							health = initial(health)+100*(13-generation)
+//							maxHealth = initial(maxHealth)
+//							health = initial(health)
 //							mob.death()
 						else
 							message_admins("[src]([key]) successes in diablerie over [mob](mob.key])!")
@@ -182,8 +182,8 @@
 								P.generation = K.generation
 								generation = P.generation
 							diablerist = 1
-							maxHealth = initial(maxHealth)+max(0, 50*(13-generation))
-							health = initial(health)+max(0, 50*(13-generation))
+							maxHealth = initial(maxHealth)
+							health = initial(health)
 							if(K.client)
 								K.generation = 13
 								P2.generation = 13

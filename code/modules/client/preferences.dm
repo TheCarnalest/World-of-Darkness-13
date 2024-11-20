@@ -3121,13 +3121,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		var/datum/vampireclane/CLN = new clane.type()
 		character.clane = CLN
 		character.clane.current_accessory = clane_accessory
-		character.maxbloodpool = 10+((13-generation)*3)
+		character.maxbloodpool = 10+(13-generation)
 		character.bloodpool = rand(2, character.maxbloodpool)
 		character.generation = generation
 		character.clane.enlightement = enlightement
 //		if(generation < 13)
-//			character.maxHealth = initial(character.maxHealth)+50*(13-generation)
-//			character.health = initial(character.health)+50*(13-generation)
+//			character.maxHealth = initial(character.maxHealth)
+//			character.health = initial(character.health)
 	else
 //		character.clane.current_accessory = null
 		character.clane = null
@@ -3138,8 +3138,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		character.maxHealth = round((initial(character.maxHealth)+(initial(character.maxHealth)/4)*character.physique))
 		character.health = round((initial(character.maxHealth)+(initial(character.maxHealth)/4)*character.physique))
 	else
-		character.maxHealth = round((initial(character.maxHealth)-initial(character.maxHealth)/4)+(initial(character.maxHealth)/4)*(character.physique+13-generation))
-		character.health = round((initial(character.health)-initial(character.health)/4)+(initial(character.health)/4)*(character.physique+13-generation))
+		character.maxHealth = round((initial(character.maxHealth)-initial(character.maxHealth)/4)+(initial(character.maxHealth)/4)*character.physique)
+		character.health = round((initial(character.health)-initial(character.health)/4)+(initial(character.health)/4)*character.physique)
 	if(pref_species.name == "Vampire")
 		character.humanity = humanity
 	character.masquerade = masquerade
