@@ -31,6 +31,16 @@
 	set category = "IC"
 	var/flavor = input("Choose your new flavor text:") as text|null
 	if(flavor)
+		var/pattern = "<img"
+		var/pos = findtext(flavor, pattern)
+		if(pos)
+			to_chat(src, "Embedding images is not allowed.")
+			return
+		pattern = "<picture"
+		pos = findtext(flavor, pattern)
+		if(pos)
+			to_chat(src, "Embedding images is not allowed.")
+			return
 		if(length(flavor) > 3 * 512)
 			to_chat(src, "Too long...")
 		else
@@ -90,6 +100,8 @@
 			return
 
 	var/mob/dead/observer/O = src
+	if(isobserver(src) && O.auspex_ghosted) //[Lucifernix] - Makes it so you can't talk to ghosts in auspex
+		return
 	if(isobserver(src) && O.deadchat_name)
 		name = "[O.deadchat_name]"
 	else

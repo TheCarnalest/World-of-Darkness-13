@@ -51,6 +51,14 @@
 	zone_owner = "Giovanni"
 	fire_controled = TRUE
 
+/area/vtm/interior/bianchiBank
+	name = "Bianchi Bank"
+	icon_state = "giovanni"
+	upper = FALSE
+	zone_type = "elysium"
+	zone_owner = "Giovanni"
+	fire_controled = TRUE
+
 /area/vtm/interior/police
 	name = "Police Station"
 	icon_state = "police"
@@ -419,7 +427,7 @@
 				var/mob/living/carbon/human/H = src
 				if(H.clane)
 					if(H.clane.name == "Daughters of Cacaphony")
-						cacaphony = TRUE
+						cacaphony = FALSE //This Variable was TRUE, which makes the DoC music loop play.
 
 			if(!cacaphony)
 				if(!(client && (client.prefs.toggles & SOUND_AMBIENCE)))

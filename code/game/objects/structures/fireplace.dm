@@ -16,6 +16,18 @@
 	var/fuel_added = 0
 	var/flame_expiry_timer
 
+/obj/structure/fireplace/large
+	name = "large fireplace"
+	desc = "A large stone brick fireplace, warm and cozy."
+	icon = 'code/modules/wod13/48x64.dmi'
+	icon_state = "fireplace_large"
+
+/obj/structure/fireplace/largeburning
+	name = "large fireplace"
+	desc = "A large stone brick fireplace, warm and cozy."
+	icon = 'code/modules/wod13/48x64.dmi'
+	icon_state = "fireplace_large_burning"
+
 /obj/structure/fireplace/New()
 	..()
 	START_PROCESSING(SSobj, src)
