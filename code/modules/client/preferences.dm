@@ -650,7 +650,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					qdel(discipline)
 
 				var/list/possible_new_disciplines = subtypesof(/datum/discipline) - discipline_types
-				if (possible_new_disciplines.len && (true_experience >= 10))
+				if (possible_new_disciplines.len && (true_experience >= 15))
 					dat += "<a href='?_src_=prefs;preference=newghouldiscipline;task=input'>Learn a new Discipline (10)</a><BR>"
 
 			if(true_experience >= 3 && slotlocked)
@@ -1906,7 +1906,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						eye_color = sanitize_hexcolor(new_eyes)
 
 				if("newdiscipline")
-					if(true_experience < 10)
+					if(true_experience < 15)
 						link_bug_fix = FALSE
 						return
 					var/list/possible_new_disciplines = subtypesof(/datum/discipline) - discipline_types
@@ -1919,7 +1919,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(new_discipline)
 						discipline_types += new_discipline
 						discipline_levels += 1
-						true_experience -= 10
+						true_experience -= 15
 
 				if("newghouldiscipline")
 					if(true_experience < 10)
