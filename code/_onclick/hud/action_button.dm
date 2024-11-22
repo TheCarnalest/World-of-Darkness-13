@@ -234,7 +234,7 @@
 
 
 
-#define AB_MAX_COLUMNS 10
+#define AB_MAX_COLUMNS 15
 
 /datum/hud
 	var/actionbuttons = 0

@@ -613,52 +613,45 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "<h2>[make_font_cool("DISCIPLINES")]</h2>"
 
 				for (var/i in 1 to discipline_types.len)
-					var/type_to_create = discipline_types[i]
-					var/datum/discipline/discipline = new type_to_create
+					var/discipline_type = discipline_types[i]
+					var/datum/discipline/discipline = new discipline_type
 					var/discipline_level = discipline_levels[i]
+					var/cost
+					if (clane.name == "Caitiff")
+						cost = discipline_level * 6
+					else if (clane.clane_disciplines.Find(discipline_type))
+						cost = discipline_level * 5
+					else
+						cost = discipline_level * 7
 					dat += "<b>[discipline.name]</b>: •[discipline_level > 1 ? "•" : "o"][discipline_level > 2 ? "•" : "o"][discipline_level > 3 ? "•" : "o"][discipline_level > 4 ? "•" : "o"]([discipline_level])"
-					if((true_experience >= discipline_level * 5) && (discipline_level != 5))
-						dat += "<a href='?_src_=prefs;preference=discipline;task=input;upgradediscipline=[i]'>Learn ([discipline_level * 5])</a><BR>"
+					if((true_experience >= cost) && (discipline_level != 5))
+						dat += "<a href='?_src_=prefs;preference=discipline;task=input;upgradediscipline=[i]'>Learn ([cost])</a><BR>"
 					else
 						dat += "<BR>"
 					dat += "-[discipline.desc]<BR>"
 					qdel(discipline)
 
-				/*
-				if(!discipline4type && !slotlocked)
-					dat += "<a href='?_src_=prefs;preference=disciplineplus;task=input'>Learn custom type of disciplines</a><BR>"
-				*/
-				//TODO: custom discipline purchases here for caitiffs
+				if (clane.name == "Caitiff")
+					var/list/possible_new_disciplines = subtypesof(/datum/discipline) - discipline_types
+					for (var/discipline_type in possible_new_disciplines)
+						var/datum/discipline/discipline = new discipline_type
+						if (discipline.clane_restricted)
+							possible_new_disciplines -= discipline_type
+						qdel(discipline)
+					if (possible_new_disciplines.len)
+						dat += "<a href='?_src_=prefs;preference=newdiscipline;task=input'>Learn a new Discipline (10)</a><BR>"
 
 			if(pref_species.name == "Ghoul")
-				if(!discipline1type && true_experience >= 5)
-					dat += "<a href='?_src_=prefs;preference=discipline1ghoul;task=input'>Learn new type of discipline (5)</a><BR>"
-				if(discipline1type)
-					var/datum/discipline/AD = new discipline1type()
-					dat += "<b>[AD.name]</b>: •(1)<BR>"
-					dat += "-[AD.desc]<BR>"
-				if(discipline1type && !discipline2type && true_experience >= 5)
-					dat += "<a href='?_src_=prefs;preference=discipline2ghoul;task=input'>Learn new type of discipline (5)</a><BR>"
-				if(discipline2type)
-					var/datum/discipline/AD = new discipline2type()
-					dat += "<b>[AD.name]</b>: •(1)<BR>"
-					dat += "-[AD.desc]<BR>"
-				if(discipline1type && discipline2type && !discipline3type && true_experience >= 5)
-					dat += "<a href='?_src_=prefs;preference=discipline3ghoul;task=input'>Learn new type of discipline (5)</a><BR>"
-				if(discipline3type)
-					var/datum/discipline/AD = new discipline3type()
-					dat += "<b>[AD.name]</b>: •(1)<BR>"
-					dat += "-[AD.desc]<BR>"
-				if(discipline1type && discipline2type && discipline3type && !discipline4type && true_experience >= 5)
-					dat += "<a href='?_src_=prefs;preference=discipline4ghoul;task=input'>Learn new type of discipline (5)</a><BR>"
-				if(discipline4type)
-					var/datum/discipline/AD = new discipline4type()
-					dat += "<b>[AD.name]</b>: •(1)<BR>"
-					dat += "-[AD.desc]<BR>"
-				//TODO: ghoul disciplines
+				for (var/i in 1 to discipline_types.len)
+					var/discipline_type = discipline_types[i]
+					var/datum/discipline/discipline = new discipline_type
+					dat += "<b>[discipline.name]</b>: •(1)<BR>"
+					dat += "-[discipline.desc]<BR>"
+					qdel(discipline)
 
-//			dat += "<a href='?_src_=prefs;preference=species;task=random'>Random Species</A> "
-//			dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_SPECIES]'>Always Random Species: [(randomise[RANDOM_SPECIES]) ? "Yes" : "No"]</A><br>"
+				var/list/possible_new_disciplines = subtypesof(/datum/discipline) - discipline_types
+				if (possible_new_disciplines.len)
+					dat += "<a href='?_src_=prefs;preference=newghouldiscipline;task=input'>Learn a new Discipline (10)</a><BR>"
 
 			if(true_experience >= 3 && slotlocked)
 				dat += "<a href='?_src_=prefs;preference=change_appearance;task=input'>Change Appearance (3)</a><BR>"
@@ -1912,60 +1905,26 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(new_eyes)
 						eye_color = sanitize_hexcolor(new_eyes)
 
-				if("disciplineplus")
-					if(slotlocked)
-						link_bug_fix = FALSE
-						return
-					var/list/disc4 = list()
-					for(var/i in subtypesof(/datum/discipline))
-						if(i != discipline1type && i != discipline2type && i != discipline3type)
-							var/datum/discipline/D = new i
-							if(!D.clane_restricted)
-								disc4 += i
-							qdel(D)
-					var/discipline4 = input(user, "Select fourth discipline", "Discipline Selection") as null|anything in disc4
-					if(discipline4)
-						discipline4type = discipline4
+				if("newdiscipline")
+					var/list/possible_new_disciplines = subtypesof(/datum/discipline) - discipline_types
+					for (var/discipline_type in possible_new_disciplines)
+						var/datum/discipline/discipline = new discipline_type
+						if (discipline.clane_restricted)
+							possible_new_disciplines -= discipline_type
+						qdel(discipline)
+					var/new_discipline = input(user, "Select your new Discipline", "Discipline Selection") as null|anything in possible_new_disciplines
+					if(new_discipline)
+						discipline_types += new_discipline
+						discipline_levels += 1
+						true_experience -= 10
 
-				if("discipline1ghoul")
-					var/discipline1 = input(user, "Select second discipline", "Discipline Selection") as null|anything in subtypesof(/datum/discipline)
-					if(discipline1)
-						if(true_experience >= 5 && pref_species.name == "Ghoul")
-							discipline1type = discipline1
-							true_experience = true_experience-5
-
-				if("discipline2ghoul")
-					var/list/disc2 = list()
-					for(var/i in subtypesof(/datum/discipline))
-						if(i != discipline1type)
-							disc2 += i
-					var/discipline2 = input(user, "Select second discipline", "Discipline Selection") as null|anything in disc2
-					if(discipline2)
-						if(true_experience >= 5 && pref_species.name == "Ghoul")
-							discipline2type = discipline2
-							true_experience = true_experience-5
-
-				if("discipline3ghoul")
-					var/list/disc3 = list()
-					for(var/i in subtypesof(/datum/discipline))
-						if(i != discipline1type && i != discipline2type)
-							disc3 += i
-					var/discipline3 = input(user, "Select second discipline", "Discipline Selection") as null|anything in disc3
-					if(discipline3)
-						if(true_experience >= 5 && pref_species.name == "Ghoul")
-							discipline3type = discipline3
-							true_experience = true_experience-5
-
-				if("discipline4ghoul")
-					var/list/disc4 = list()
-					for(var/i in subtypesof(/datum/discipline))
-						if(i != discipline1type && i != discipline2type && i != discipline3type)
-							disc4 += i
-					var/discipline4 = input(user, "Select second discipline", "Discipline Selection") as null|anything in disc4
-					if(discipline4)
-						if(true_experience >= 5 && pref_species.name == "Ghoul")
-							discipline4type = discipline4
-							true_experience = true_experience-5
+				if("newghouldiscipline")
+					var/list/possible_new_disciplines = subtypesof(/datum/discipline) - discipline_types
+					var/new_discipline = input(user, "Select your new Discipline", "Discipline Selection") as null|anything in possible_new_disciplines
+					if(new_discipline)
+						discipline_types += new_discipline
+						discipline_levels += 1
+						true_experience -= 10
 
 				if("werewolf_color")
 					if(slotlocked)
@@ -2060,38 +2019,21 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/result = input(user, "Select a clane", "Clane Selection") as null|anything in available_clans
 					if(result)
 						var/newtype = GLOB.clanes_list[result]
-						var/datum/vampireclane/Clan = new newtype()
-						if(result == "Caitiff")
-							generation = 13
-							var/list/disc1 = list()
-							for(var/i in subtypesof(/datum/discipline))
-								var/datum/discipline/D = new i
-								if(!D.clane_restricted)
-									disc1 += i
-								qdel(D)
-							var/discipline1 = input(user, "Select first start discipline", "Discipline Selection") as null|anything in disc1
-							if(discipline1)
-								Clan.clane_disciplines |= 1
-								Clan.clane_disciplines[1] = discipline1
-								var/list/disc2 = list()
-								for(var/i in subtypesof(/datum/discipline))
-									if( (i != discipline1) && (i in disc1) )
-										disc2 += i
-								var/discipline2 = input(user, "Select second start discipline", "Discipline Selection") as null|anything in disc2
-								if(discipline2)
-									var/list/disc3 = list()
-									for(var/i in subtypesof(/datum/discipline))
-										if( (i != discipline1) && (i != discipline2) && (i in disc1) )
-											disc3 += i
-									Clan.clane_disciplines |= 2
-									Clan.clane_disciplines[2] = discipline2
-									var/discipline3 = input(user, "Select third start discipline", "Discipline Selection") as null|anything in disc3
-									if(discipline3)
-										Clan.clane_disciplines |= 3
-										Clan.clane_disciplines[3] = discipline3
-						clane = Clan
+						clane = new newtype()
 						discipline_types = list()
 						discipline_levels = list()
+						if(result == "Caitiff")
+							generation = 13
+							while (clane.clane_disciplines.len < 3)
+								var/list/possible_new_disciplines = subtypesof(/datum/discipline) - clane.clane_disciplines
+								for (var/discipline_type in possible_new_disciplines)
+									var/datum/discipline/discipline = new discipline_type
+									if (discipline.clane_restricted)
+										possible_new_disciplines -= discipline_type
+									qdel(discipline)
+								var/new_discipline = input(user, "Select a Discipline", "Discipline Selection") as null|anything in possible_new_disciplines
+								if (new_discipline)
+									clane.clane_disciplines += new_discipline
 						for (var/i in 1 to clane.clane_disciplines.len)
 							discipline_types += clane.clane_disciplines[i]
 							discipline_levels += 1
@@ -2188,7 +2130,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("discipline")
 					var/i = text2num(href_list["upgradediscipline"])
 					var/discipline_level = discipline_levels[i]
-					var/cost = discipline_level * 5
+					var/cost
+					if (clane.name == "Caitiff")
+						cost = discipline_level * 6
+					else if (clane.clane_disciplines.Find(discipline_types[i]))
+						cost = discipline_level * 5
+					else
+						cost = discipline_level * 7
 					if ((true_experience >= cost) && (discipline_level != 5))
 						true_experience = true_experience - cost
 						discipline_levels[i] = min(5, discipline_levels[i] + 1)
@@ -3136,8 +3084,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			action.Grant(src)
 			discipline.post_gain(src)
 
-	if(clane)
-		clane.post_gain(src)
+		if(clane)
+			clane.post_gain(src)
 
 /datum/preferences/proc/can_be_random_hardcore()
 	if(parent.mob.mind.assigned_role in GLOB.command_positions) //No command staff
