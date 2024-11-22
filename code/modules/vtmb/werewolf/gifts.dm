@@ -350,6 +350,7 @@
 			C.adjustBruteLoss(-40*C.auspice.level, TRUE)
 			C.adjustFireLoss(-40*C.auspice.level, TRUE)
 			C.adjustCloneLoss(-40*C.auspice.level, TRUE)
+			C.adjustOxyLoss(-25*C.auspice.level, TRUE)
 			if(ishuman(owner))
 				var/mob/living/carbon/human/BD = owner
 				if(length(BD.all_wounds))
