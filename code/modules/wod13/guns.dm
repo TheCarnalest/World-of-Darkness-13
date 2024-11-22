@@ -155,6 +155,7 @@
 	worn_icon_state = "deagle"
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/m44
+	recoil = 3
 	burst_size = 1
 	fire_delay = 0
 	actions_types = list()
@@ -273,7 +274,7 @@
 	worn_icon_state = "uzi"
 	mag_type = /obj/item/ammo_box/magazine/vamp9mm
 	burst_size = 5
-	spread = 5
+	spread = 11
 	recoil = 5
 	bolt_type = BOLT_TYPE_OPEN
 	show_bolt_icon = FALSE
@@ -303,7 +304,7 @@
 	worn_icon_state = "mp5"
 	mag_type = /obj/item/ammo_box/magazine/vamp9mp5
 	burst_size = 4
-	spread = 1
+	spread = 4
 	bolt_type = BOLT_TYPE_OPEN
 	show_bolt_icon = FALSE
 	mag_display = TRUE
@@ -325,7 +326,7 @@
 
 /obj/item/gun/ballistic/automatic/vampire/ar15
 	name = "\improper AR-15 Carbine"
-	desc = "A five-round burst 5.56 toploading carbine, designated 'AR-15'."
+	desc = "A two-round burst 5.56 toploading carbine, designated 'AR-15'."
 	icon = 'code/modules/wod13/48x32weapons.dmi'
 	icon_state = "rifle"
 	inhand_icon_state = "rifle"
@@ -363,10 +364,10 @@
 	worn_icon_state = "ak74"
 	w_class = WEIGHT_CLASS_BULKY
 	mag_type = /obj/item/ammo_box/magazine/vamp545
-	recoil = 3
+	recoil = 5
 	burst_size = 3
 	fire_delay = 3
-	spread = 5
+	spread = 8
 	bolt_type = BOLT_TYPE_OPEN
 	show_bolt_icon = FALSE
 	mag_display = TRUE
@@ -388,7 +389,7 @@
 
 /obj/item/gun/ballistic/automatic/vampire/aug
 	name = "\improper Steyr AUG-77"
-	desc = "A five-round burst 5.56 toploading carbine, designated 'Steyr AUG-77'."
+	desc = "A three-round burst 5.56 bullpup design, designated 'Steyr AUG-77'."
 	icon = 'code/modules/wod13/48x32weapons.dmi'
 	icon_state = "aug"
 	inhand_icon_state = "aug"
@@ -426,10 +427,10 @@
 	worn_icon_state = "thompson"
 	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/vampthompson
-	recoil = 4
-	burst_size = 4
+	recoil = 7
+	burst_size = 5
 	fire_delay = 3
-	spread = 8
+	spread = 15
 	bolt_type = BOLT_TYPE_OPEN
 	show_bolt_icon = FALSE
 	mag_display = TRUE
@@ -494,6 +495,7 @@
 	icon_state = "pomp"
 	inhand_icon_state = "pomp"
 	worn_icon_state = "pomp"
+	recoil = 6
 	fire_delay = 6
 	mag_type = /obj/item/ammo_box/magazine/internal/vampshotgun
 	can_be_sawn_off	= FALSE

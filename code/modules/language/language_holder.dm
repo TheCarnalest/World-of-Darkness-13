@@ -265,12 +265,12 @@ Key procs
 
 /datum/language_holder/lizard
 	understood_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
-								/datum/language/draconic = list(LANGUAGE_ATOM))
+								/datum/language/chinese = list(LANGUAGE_ATOM))
 	spoken_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
-							/datum/language/draconic = list(LANGUAGE_ATOM))
+							/datum/language/chinese = list(LANGUAGE_ATOM))
 
 /datum/language_holder/lizard/ash
-	selected_language = /datum/language/draconic
+	selected_language = /datum/language/chinese
 
 /datum/language_holder/monkey
 	understood_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
@@ -307,7 +307,7 @@ Key procs
 	understood_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
 								/datum/language/espanol = list(LANGUAGE_ATOM),
 								/datum/language/machine = list(LANGUAGE_ATOM),
-								/datum/language/draconic = list(LANGUAGE_ATOM),
+								/datum/language/chinese = list(LANGUAGE_ATOM),
 								/datum/language/russian = list(LANGUAGE_ATOM),
 								/datum/language/calcic = list(LANGUAGE_ATOM),
 								/datum/language/voltaic = list(LANGUAGE_ATOM),
@@ -315,7 +315,7 @@ Key procs
 	spoken_languages = list(/datum/language/english = list(LANGUAGE_ATOM),
 							/datum/language/espanol = list(LANGUAGE_ATOM),
 							/datum/language/machine = list(LANGUAGE_ATOM),
-							/datum/language/draconic = list(LANGUAGE_ATOM),
+							/datum/language/chinese = list(LANGUAGE_ATOM),
 							/datum/language/russian = list(LANGUAGE_ATOM),
 							/datum/language/calcic = list(LANGUAGE_ATOM),
 							/datum/language/voltaic = list(LANGUAGE_ATOM),

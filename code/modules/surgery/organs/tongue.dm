@@ -17,7 +17,7 @@
 	var/static/list/languages_possible_base = typecacheof(list(
 		/datum/language/english,
 		/datum/language/espanol,
-		/datum/language/draconic,
+		/datum/language/chinese,
 		/datum/language/codespeak,
 		/datum/language/monkey,
 		/datum/language/narsie,
@@ -47,7 +47,7 @@
 	if(say_mod && M.dna && M.dna.species)
 		M.dna.species.say_mod = say_mod
 	if (modifies_speech)
-		RegisterSignal(M, COMSIG_MOB_SAY, .proc/handle_speech)
+		RegisterSignal(M, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 	M.UnregisterSignal(M, COMSIG_MOB_SAY)
 
 	/* This could be slightly simpler, by making the removal of the
@@ -63,8 +63,8 @@
 	..()
 	if(say_mod && M.dna && M.dna.species)
 		M.dna.species.say_mod = initial(M.dna.species.say_mod)
-	UnregisterSignal(M, COMSIG_MOB_SAY, .proc/handle_speech)
-	M.RegisterSignal(M, COMSIG_MOB_SAY, /mob/living/carbon/.proc/handle_tongueless_speech)
+	UnregisterSignal(M, COMSIG_MOB_SAY, PROC_REF(handle_speech))
+	M.RegisterSignal(M, COMSIG_MOB_SAY, TYPE_PROC_REF(/mob/living/carbon, handle_tongueless_speech))
 	REMOVE_TRAIT(M, TRAIT_AGEUSIA, ORGAN_TRAIT)
 	// Carbons by default start with NO_TONGUE_TRAIT caused TRAIT_AGEUSIA
 	ADD_TRAIT(M, TRAIT_AGEUSIA, NO_TONGUE_TRAIT)
@@ -106,7 +106,7 @@
 	modifies_speech = TRUE
 	var/static/list/languages_possible_fly = typecacheof(list(
 		/datum/language/english,
-		/datum/language/draconic,
+		/datum/language/chinese,
 		/datum/language/codespeak,
 		/datum/language/monkey,
 		/datum/language/narsie,
@@ -227,7 +227,7 @@
 	var/static/list/languages_possible_alien = typecacheof(list(
 		/datum/language/xenocommon,
 		/datum/language/english,
-		/datum/language/draconic,
+		/datum/language/chinese,
 		/datum/language/monkey))
 
 /obj/item/organ/tongue/alien/Initialize(mapload)
@@ -251,7 +251,7 @@
 	var/list/phomeme_types = list("sans", "papyrus")
 	var/static/list/languages_possible_skeleton = typecacheof(list(
 		/datum/language/english,
-		/datum/language/draconic,
+		/datum/language/chinese,
 		/datum/language/codespeak,
 		/datum/language/monkey,
 		/datum/language/narsie,
@@ -332,7 +332,7 @@
 	sense_of_taste = FALSE
 	var/static/list/languages_possible_ethereal = typecacheof(list(
 		/datum/language/english,
-		/datum/language/draconic,
+		/datum/language/chinese,
 		/datum/language/codespeak,
 		/datum/language/monkey,
 		/datum/language/narsie,
