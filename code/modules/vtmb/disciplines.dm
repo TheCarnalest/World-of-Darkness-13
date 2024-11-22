@@ -1902,8 +1902,8 @@
 				if(target)
 					target.remove_movespeed_modifier(/datum/movespeed_modifier/temporis)
 		if(4)
-			to_chat(caster, "<b>Use the second Temporis button at the top of the screen to cast this level of Temporis.</b>")
+			to_chat(caster, "<b>Use the second Temporis button at the bottom of the screen to cast this level of Temporis.</b>")
 			caster.bloodpool = caster.bloodpool+1
 		if(5)
-			to_chat(caster, "<b>Use the third Temporis button at the top of the screen to cast this level of Temporis.</b>")
+			to_chat(caster, "<b>Use the third Temporis button at the bottom of the screen to cast this level of Temporis.</b>")
 			caster.bloodpool = caster.bloodpool+1
