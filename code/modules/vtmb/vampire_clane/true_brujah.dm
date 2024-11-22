@@ -62,7 +62,7 @@
 		playsound(M.loc, 'code/modules/wod13/sounds/temporis end.ogg', 50, FALSE)
 
 /datum/action/temporis_step/Trigger()
-	if(spam_fix+150 > world.time)
+	if(spam_fix + 15 SECONDS > world.time)
 		return
 	var/mob/living/carbon/human/H = owner
 	if(H.bloodpool < 1)
@@ -97,7 +97,7 @@
 
 
 /datum/action/clotho/Trigger()
-	if(spam_fix+200 > world.time)
+	if(spam_fix + 20 SECONDS > world.time)
 		return
 	var/mob/living/carbon/human/H = owner
 	if(H.bloodpool < 3)
