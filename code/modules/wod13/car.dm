@@ -130,8 +130,8 @@ SUBSYSTEM_DEF(carpool)
 
 	var/last_beep = 0
 
-	var/component_type = /datum/component/storage/concrete
-	var/baggage_limit = 30
+	var/component_type = /datum/component/storage/concrete/vtm/car
+	var/baggage_limit = 40
 	var/baggage_max = WEIGHT_CLASS_BULKY
 
 	var/exploded = FALSE
@@ -143,7 +143,7 @@ SUBSYSTEM_DEF(carpool)
 	. = ..()
 	AddComponent(component_type)
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_combined_w_class = baggage_limit
+	STR.max_combined_w_class = 100
 	STR.max_w_class = baggage_max
 	STR.max_items = baggage_limit
 	STR.locked = TRUE

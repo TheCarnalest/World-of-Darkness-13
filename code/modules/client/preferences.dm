@@ -114,6 +114,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/auto_fit_viewport = FALSE
 	///Should we be in the widescreen mode set by the config?
 	var/widescreenpref = TRUE
+	///Old discipline icons
+	var/old_discipline = FALSE
 	///What size should pixels be displayed as? 0 is strech to fit
 	var/pixel_size = 0
 	///What scaling method should we use? Distort means nearest neighbor
@@ -1108,7 +1110,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				else
 					dat += "High"
 			dat += "</a><br>"
-
+			dat += "<b>Use old discipline icons:</b> <a href='?_src_=prefs;preference=old_discipline'>[old_discipline ? "Yes" : "No"]</a><br>"
 			dat += "<b>Ambient Occlusion:</b> <a href='?_src_=prefs;preference=ambientocclusion'>[ambientocclusion ? "Enabled" : "Disabled"]</a><br>"
 			dat += "<b>Fit Viewport:</b> <a href='?_src_=prefs;preference=auto_fit_viewport'>[auto_fit_viewport ? "Auto" : "Manual"]</a><br>"
 			if (CONFIG_GET(string/default_view) != CONFIG_GET(string/default_view_square))
@@ -2930,6 +2932,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(auto_fit_viewport && parent)
 						parent.fit_viewport()
 
+				if("old_discipline")
+					old_discipline = !old_discipline
+
 				if("widescreenpref")
 					widescreenpref = !widescreenpref
 					user.client.view_size.setDefault(getScreenSize(widescreenpref))
@@ -3309,6 +3314,38 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			D3 = client.prefs.discipline3type
 
 		if(D1)
+			D1 = new D1()
+			if(discipline_pref)
+				D1.level = client.prefs.discipline1level
+			var/datum/action/discipline/D = new ()
+			D.discipline = D1
+			D.Grant(src)
+			D.discipline.post_gain(src)
+		if(D2)
+			D2 = new D2()
+			if(discipline_pref)
+				D2.level = client.prefs.discipline2level
+			var/datum/action/discipline/D = new ()
+			D.discipline = D2
+			D.Grant(src)
+			D.discipline.post_gain(src)
+		if(D3)
+			D3 = new D3()
+			if(discipline_pref)
+				D3.level = client.prefs.discipline3level
+			var/datum/action/discipline/D = new ()
+			D.discipline = D3
+			D.Grant(src)
+			D.discipline.post_gain(src)
+		if(discipline_pref)
+			if(client.prefs.discipline4type)
+				var/datum/action/discipline/D = new ()
+				D.discipline = new client.prefs.discipline4type()
+				D.discipline.level = client.prefs.discipline4level
+				D.Grant(src)
+				D.discipline.post_gain(src)
+/*
+		if(D1)
 			hud_used.discipline1_icon.icon = 'code/modules/wod13/disciplines.dmi'
 			hud_used.discipline1_icon.dscpln = new D1()
 			if(discipline_pref && dna.species.id != "ghoul")
@@ -3353,6 +3390,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			hud_used.discipline4_icon.desc = hud_used.discipline4_icon.dscpln.desc
 			hud_used.discipline4_icon.icon_state = hud_used.discipline4_icon.dscpln.icon_state
 			hud_used.discipline4_icon.main_state = hud_used.discipline4_icon.dscpln.icon_state
+*/
 	if(clane)
 		clane.post_gain(src)
 

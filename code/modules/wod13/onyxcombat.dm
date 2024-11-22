@@ -216,9 +216,35 @@
 
 //(source.pulledby && source.pulledby.grab_state > GRAB_PASSIVE)
 
+/atom/movable/screen/jump
+	name = "jump"
+	icon = 'code/modules/wod13/UI/buttons_wide.dmi'
+	icon_state = "act_jump_off"
+	layer = HUD_LAYER
+	plane = HUD_PLANE
+
+/atom/movable/screen/jump/Click()
+	var/mob/living/L = usr
+	if(!L.prepared_to_jump)
+		L.prepared_to_jump = TRUE
+		icon_state = "act_jump_on"
+		to_chat(usr, "<span class='notice'>You prepare to jump.</span>")
+	else
+		L.prepared_to_jump = FALSE
+		icon_state = "act_jump_off"
+		to_chat(usr, "<span class='notice'>You are not prepared to jump anymore.</span>")
+	..()
+
+/atom/Click()
+	. = ..()
+	if(isliving(usr) && usr != src)
+		var/mob/living/L = usr
+		if(L.prepared_to_jump)
+			L.jump(src)
+
 /atom/movable/screen/block
 	name = "block"
-	icon = 'code/modules/wod13/icons.dmi'
+	icon = 'code/modules/wod13/UI/buttons_wide.dmi'
 	icon_state = "act_block_off"
 	layer = HUD_LAYER
 	plane = HUD_PLANE
@@ -239,7 +265,7 @@
 
 /atom/movable/screen/blood
 	name = "bloodpool"
-	icon = 'code/modules/wod13/vamphud.dmi'
+	icon = 'code/modules/wod13/UI/bloodpool.dmi'
 	icon_state = "blood0"
 	layer = HUD_LAYER
 	plane = HUD_PLANE
@@ -266,7 +292,7 @@
 	plane = HUD_PLANE
 
 /atom/movable/screen/drinkblood/Click()
-	SEND_SOUND(usr, sound('code/modules/wod13/sounds/highlight.ogg', 0, 0, 50))
+//	SEND_SOUND(usr, sound('code/modules/wod13/sounds/highlight.ogg', 0, 0, 50))
 	if(ishuman(usr))
 		var/mob/living/carbon/human/BD = usr
 		BD.update_blood_hud()
@@ -282,6 +308,15 @@
 		if(BD.grab_state > GRAB_PASSIVE)
 			if(ishuman(BD.pulling))
 				var/mob/living/carbon/human/PB = BD.pulling
+				if(isghoul(usr))
+					if(!iskindred(PB))
+						SEND_SOUND(BD, sound('code/modules/wod13/sounds/need_blood.ogg', 0, 0, 75))
+						to_chat(BD, "<span class='warning'>Eww, that is <b>GROSS</b>.</span>")
+						return
+				if(!isghoul(usr) && !iskindred(usr))
+					SEND_SOUND(BD, sound('code/modules/wod13/sounds/need_blood.ogg', 0, 0, 75))
+					to_chat(BD, "<span class='warning'>Eww, that is <b>GROSS</b>.</span>")
+					return
 				if(PB.stat == 4 && !HAS_TRAIT(BD, TRAIT_GULLET))
 					SEND_SOUND(BD, sound('code/modules/wod13/sounds/need_blood.ogg', 0, 0, 75))
 					to_chat(BD, "<span class='warning'>This creature is <b>DEAD</b>.</span>")
@@ -502,16 +537,16 @@
 	else
 		harm_focus = dir
 
-/mob/living/Click()
-	if(ishuman(usr) && usr != src)
-		var/mob/living/carbon/human/SH = usr
-		for(var/atom/movable/screen/disciplines/DISCP in SH.hud_used.static_inventory)
-			if(DISCP)
-				if(DISCP.active)
-					DISCP.range_activate(src, SH)
-					SH.face_atom(src)
-					return
-	..()
+//mob/living/Click()
+//	if(ishuman(usr) && usr != src)
+//		var/mob/living/carbon/human/SH = usr
+//		for(var/atom/movable/screen/disciplines/DISCP in SH.hud_used.static_inventory)
+//			if(DISCP)
+//				if(DISCP.active)
+//					DISCP.range_activate(src, SH)
+//					SH.face_atom(src)
+//					return
+//	..()
 
 /atom/Click(location,control,params)
 /*
@@ -550,7 +585,7 @@
 							HUY.put_in_active_hand(item_to_pick)
 						return
 	..()
-
+/*
 /atom/movable/screen/disciplines/Initialize()
 	. = ..()
 
@@ -651,7 +686,7 @@
 		last_discipline_use = world.time
 	active = FALSE
 	icon_state = main_state
-
+*/
 /mob/living/carbon/werewolf/Life()
 	. = ..()
 	update_blood_hud()
