@@ -1040,7 +1040,7 @@
 					VL.bloodpool = VL.bloodpool-sucked
 					VL.blood_volume = max(VL.blood_volume-50, 0)
 					if(isgarou(VL))
-						VL.apply_damage(20, BURN )
+						VL.apply_damage(20, BURN)
 						return
 					if(ishuman(VL))
 						var/mob/living/carbon/human/VHL = VL
