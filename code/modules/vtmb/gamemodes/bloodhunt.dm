@@ -8,7 +8,7 @@
 			var/area/A = get_area(H)
 			to_chat(usr, "[icon2html(getFlatIcon(H), usr)][H.true_real_name], [H.mind ? H.mind.assigned_role : "Citizen"]. Was last seen at [A.name]")
 
-/mob/living/proc/check_elysium(var/instant = FALSE)
+/*/mob/living/proc/check_elysium(var/instant = FALSE)
 	if(ishuman(src))
 		var/mob/living/carbon/human/human = src
 		if(human.obfuscate_level < 5)
@@ -42,7 +42,7 @@
 			SSbloodhunt.announce_hunted(src)
 			if(V)
 				V.break_elysium()
-
+*/
 SUBSYSTEM_DEF(bloodhunt)
 	name = "Blood Hunt"
 	init_order = INIT_ORDER_DEFAULT

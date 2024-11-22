@@ -32,15 +32,15 @@
 
 /datum/quirk/foreigner/add()
 	var/mob/living/carbon/human/H = quirk_holder
-	H.add_blocked_language(/datum/language/common)
+	H.add_blocked_language(/datum/language/english)
 	if(ishumanbasic(H))
-		H.grant_language(/datum/language/uncommon)
+		H.grant_language(/datum/language/espanol)
 
 /datum/quirk/foreigner/remove()
 	var/mob/living/carbon/human/H = quirk_holder
-	H.remove_blocked_language(/datum/language/common)
+	H.remove_blocked_language(/datum/language/english)
 	if(ishumanbasic(H))
-		H.remove_language(/datum/language/uncommon)
+		H.remove_language(/datum/language/espanol)
 
 /datum/quirk/vegetarian
 	name = "Vegetarian"
@@ -226,8 +226,8 @@
 	old_hair = H.hairstyle
 	H.hairstyle = "Bald"
 	H.update_hair()
-	RegisterSignal(H, COMSIG_CARBON_EQUIP_HAT, .proc/equip_hat)
-	RegisterSignal(H, COMSIG_CARBON_UNEQUIP_HAT, .proc/unequip_hat)
+	RegisterSignal(H, COMSIG_CARBON_EQUIP_HAT, PROC_REF(equip_hat))
+	RegisterSignal(H, COMSIG_CARBON_UNEQUIP_HAT, PROC_REF(unequip_hat))
 
 /datum/quirk/bald/remove()
 	var/mob/living/carbon/human/H = quirk_holder

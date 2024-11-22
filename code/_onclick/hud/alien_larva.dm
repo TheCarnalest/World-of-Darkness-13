@@ -22,7 +22,7 @@
 	pull_icon = new /atom/movable/screen/pull()
 	pull_icon.icon = 'icons/hud/screen_alien.dmi'
 	pull_icon.update_icon()
-	pull_icon.screen_loc = ui_above_movement
+	pull_icon.screen_loc = ui_pull
 	pull_icon.hud = src
 	hotkeybuttons += pull_icon
 

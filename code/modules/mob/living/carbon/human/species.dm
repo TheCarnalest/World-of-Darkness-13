@@ -1,6 +1,6 @@
 GLOBAL_LIST_EMPTY(roundstart_races)
 
-GLOBAL_LIST_EMPTY(donation_races)
+GLOBAL_LIST_EMPTY(selectable_races)
 
 /**
  * # species datum
@@ -194,7 +194,10 @@ GLOBAL_LIST_EMPTY(donation_races)
 	///List of results you get from knife-butchering. null means you cant butcher it. Associated by resulting type - value of amount
 	var/list/knife_butcher_results
 
-	var/donation = FALSE
+	///If this species requires whitelisting before it can be selected for characters.
+	var/whitelisted = FALSE
+	///If this species can be selected for characters at all.
+	var/selectable = FALSE
 
 ///////////
 // PROCS //
@@ -214,16 +217,17 @@ GLOBAL_LIST_EMPTY(donation_races)
  * If there are no available roundstart species, defaults to human.
  */
 /proc/generate_selectable_species()
+	//[Lucia] TODO: make this good what the fuck is wrong with the previous thing
+	GLOB.roundstart_races = list("human", "kindred", "ghoul")
+	GLOB.selectable_races = list("human", "kindred", "ghoul", "garou")
+	/*
 	for(var/I in subtypesof(/datum/species))
 		var/datum/species/S = new I
-		if(S.check_roundstart_eligible())
+		if(S.selectable)
 			GLOB.roundstart_races += S.id
-			GLOB.donation_races += S.id
-			qdel(S)
-		if(S.donation)
-			GLOB.donation_races += S.id
 	if(!GLOB.roundstart_races.len)
 		GLOB.roundstart_races += "kindred"
+	*/
 
 /**
  * Checks if a species is eligible to be picked at roundstart.
@@ -1305,7 +1309,7 @@ GLOBAL_LIST_EMPTY(donation_races)
 	if(radiation > RAD_MOB_HAIRLOSS)
 		if(prob(15) && !(H.hairstyle == "Bald") && (HAIR in species_traits))
 			to_chat(H, "<span class='danger'>Your hair starts to fall out in clumps...</span>")
-			addtimer(CALLBACK(src, .proc/go_bald, H), 50)
+			addtimer(CALLBACK(src, PROC_REF(go_bald), H), 50)
 
 /datum/species/proc/go_bald(mob/living/carbon/human/H)
 	if(QDELETED(H))	//may be called from a timer
@@ -1352,7 +1356,6 @@ GLOBAL_LIST_EMPTY(donation_races)
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
 		to_chat(user, "<span class='warning'>You don't want to harm [target]!</span>")
 		return FALSE
-	user.check_elysium(FALSE)
 	if(target.check_block())
 		target.visible_message("<span class='warning'>[target] blocks [user]'s attack!</span>", \
 						"<span class='userdanger'>You block [user]'s attack!</span>", "<span class='hear'>You hear a swoosh!</span>", COMBAT_MESSAGE_RANGE, user)
@@ -1884,13 +1887,12 @@ GLOBAL_LIST_EMPTY(donation_races)
 	if(humi.coretemperature < cold_damage_limit && !HAS_TRAIT(humi, TRAIT_RESISTCOLD))
 		var/damage_type = is_hulk ? BRUTE : BURN
 		var/damage_mod = coldmod * humi.physiology.cold_mod * (is_hulk ? HULK_COLD_DAMAGE_MOD : 1)
-		if(humi.coretemperature >= 201 && humi.coretemperature <= cold_damage_limit)
+		if(humi.bodytemperature >= 201 && humi.bodytemperature <= bodytemp_cold_damage_limit)
 			humi.apply_damage(COLD_DAMAGE_LEVEL_1 * damage_mod, damage_type)
-		else if(humi.coretemperature >= 120 && humi.coretemperature < 201)
+		else if(humi.bodytemperature >= 120 && humi.bodytemperature < 201)
 			humi.apply_damage(COLD_DAMAGE_LEVEL_2 * damage_mod, damage_type)
 		else
 			humi.apply_damage(COLD_DAMAGE_LEVEL_3 * damage_mod, damage_type)
-
 
 /**
  * Used to apply burn wounds on random limbs
@@ -2192,7 +2194,7 @@ GLOBAL_LIST_EMPTY(donation_races)
 		buckled_obj.unbuckle_mob(H)
 		step(buckled_obj, olddir)
 	else
-		new /datum/forced_movement(H, get_ranged_target_turf(H, olddir, 4), 1, FALSE, CALLBACK(H, /mob/living/carbon/.proc/spin, 1, 1))
+		new /datum/forced_movement(H, get_ranged_target_turf(H, olddir, 4), 1, FALSE, CALLBACK(H, TYPE_PROC_REF(/mob/living/carbon, spin), 1, 1))
 	return TRUE
 
 //UNSAFE PROC, should only be called through the Activate or other sources that check for CanFly

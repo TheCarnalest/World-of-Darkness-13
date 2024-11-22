@@ -114,6 +114,19 @@
 	action_background_icon_state = "bg_demon"
 
 
+/obj/effect/proc_holder/spell/targeted/forcewall/salubri
+	name = "Shepherd's Wall"
+	desc = " The third eye opens and flares a bright white, illuminating a barely-visible ward around the Unicorn and his charge. No foe may breach this sacred shield. The Salubri himself must stand among those he defends as he generates this barrier; he cannot guard them from afar."
+	school = "transmutation"
+	charge_max = 400
+	clothes_req = FALSE
+	invocation = "none"
+	invocation_type = "none"
+	wall_type = /obj/effect/forcefield/cult
+	action_icon = 'icons/mob/actions/actions_cult.dmi'
+	action_icon_state = "cultforcewall"
+	action_background_icon_state = "bg_demon"
+
 
 /obj/effect/proc_holder/spell/targeted/ethereal_jaunt/shift
 	name = "Phase Shift"
@@ -210,7 +223,7 @@
 	target.playsound_local(get_turf(target), 'sound/hallucinations/i_see_you1.ogg', 50, 1)
 	user.playsound_local(get_turf(user), 'sound/effects/ghost2.ogg', 50, 1)
 	target.become_blind(ABYSSAL_GAZE_BLIND)
-	addtimer(CALLBACK(src, .proc/cure_blindness, target), 40)
+	addtimer(CALLBACK(src, PROC_REF(cure_blindness), target), 40)
 	if(ishuman(targets[1]))
 		var/mob/living/carbon/human/humi = targets[1]
 		humi.adjust_coretemperature(-200)

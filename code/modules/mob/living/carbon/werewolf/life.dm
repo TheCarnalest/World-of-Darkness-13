@@ -63,10 +63,24 @@
 					if(last_frenzy_check+400 <= world.time)
 						last_frenzy_check = world.time
 						rollfrenzy()
+
 			if(istype(get_area(src), /area/vtm/interior/penumbra))
-				if(last_veil_restore+600 < world.time)
+				if(last_veil_restore+400 < world.time)
+					adjust_veil(1, src, TRUE)
 					last_veil_restore = world.time
-					adjust_veil(1)
+
+			switch(src.auspice.tribe)
+				if("Wendigo")
+					if(istype(get_area(src), /area/vtm/forest))
+						if(last_veil_restore+500 <= world.time)
+							adjust_veil(1, src, TRUE)
+							last_veil_restore = world.time
+
+				if("Glasswalkers")
+					if(istype(get_area(src), /area/vtm/interior/glasswalker))
+						if(last_veil_restore+500 <= world.time)
+							adjust_veil(1, src, TRUE)
+							last_veil_restore = world.time
 
 /mob/living/carbon/werewolf/crinos/Life()
 	. = ..()
@@ -94,15 +108,16 @@
 /mob/living/carbon/proc/adjust_veil(var/amount)
 	if(!GLOB.canon_event)
 		return
-	if(last_veil_adjusting+100 >= world.time)
+	if(last_veil_adjusting+200 >= world.time)
 		return
 	if(amount > 0)
 		if(HAS_TRAIT(src, TRAIT_VIOLATOR))
 			return
-	if(istype(get_area(src), /area/vtm))
-		var/area/vtm/V = get_area(src)
-		if(V.zone_type != "masquerade")
-			return
+	if(amount < 0)
+		if(istype(get_area(src), /area/vtm))
+			var/area/vtm/V = get_area(src)
+			if(V.zone_type != "masquerade")
+				return
 	last_veil_adjusting = world.time
 	var/special_role_name
 	if(mind)
@@ -119,4 +134,4 @@
 			if(masquerade < 5)
 				SEND_SOUND(src, sound('code/modules/wod13/sounds/humanity_gain.ogg', 0, 0, 75))
 				to_chat(src, "<span class='boldnotice'><b>VEIL REINFORCEMENT</b></span>")
-				masquerade = max(0, masquerade-amount)
+				masquerade = min(5, masquerade+amount)

@@ -714,11 +714,17 @@
 //			return
 
 	if(respawntimeofdeath+12000 > world.time)
-		var/timetoresp = round(((respawntimeofdeath+12000)-world.time)/10)
-		to_chat(usr, "<span class='notice'>You need to wait [timetoresp] seconds before respawn</span>")
-		if(check_rights_for(usr.client, R_ADMIN))
-			if(alert(usr, "Do you want to respawn faster than usual player? (only admins can)", "Respawn", "Yes", "No") != "Yes")
+		if(istype(usr.client.mob, /mob/dead/observer))
+			var/mob/dead/observer/obs = usr.client.mob
+			if(obs.auspex_ghosted)
+				to_chat(usr, "<span class='notice'>You cannot respawn while using auspex!</span>")
 				return
+			else
+				var/timetoresp = round(((respawntimeofdeath+12000)-world.time)/10)
+				to_chat(usr, "<span class='notice'>You need to wait [timetoresp] seconds before respawn</span>")
+				if(check_rights_for(usr.client, R_ADMIN))
+					if(alert(usr, "Do you want to respawn faster than usual player? (only admins can)", "Respawn", "Yes", "No") != "Yes")
+						return
 		else
 			return
 
@@ -1196,10 +1202,10 @@
 		var/mob/living/carbon/human/H = src
 		if(istype(H.get_active_held_item(), /obj/item/gun))
 			shootahell = TRUE
-		for(var/atom/movable/screen/disciplines/DISCP in H.hud_used.static_inventory)
-			if(DISCP)
-				if(DISCP.active)
-					discipliner = TRUE
+//		for(var/atom/movable/screen/disciplines/DISCP in H.hud_used.static_inventory)
+//			if(DISCP)
+//				if(DISCP.active)
+//					discipliner = TRUE
 	if(examine_cursor_icon && client.keys_held["Shift"]) //mouse shit is hardcoded, make this non hard-coded once we make mouse modifiers bindable
 		client.mouse_pointer_icon = examine_cursor_icon
 	else if(discipliner)

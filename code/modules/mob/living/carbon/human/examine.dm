@@ -274,13 +274,13 @@
 			msg += "[t_He] look[p_s()] extremely disgusted.\n"
 
 	var/apparent_blood_volume = bloodpool
-//	if(skin_tone == "albino")
-//		apparent_blood_volume -= 150 // enough to knock you down one tier
-	if(apparent_blood_volume >= round(maxbloodpool/2) && apparent_blood_volume <= maxbloodpool)
+	if(skin_tone == "albino")
+		apparent_blood_volume -= 3
+	if((apparent_blood_volume >= round(maxbloodpool * 0.5)) && (apparent_blood_volume < maxbloodpool))
 		msg += "[t_He] [t_has] pale skin.\n"
-	else if(apparent_blood_volume >= 1 && apparent_blood_volume < round(maxbloodpool/2))
+	else if((apparent_blood_volume >= 1) && (apparent_blood_volume < round(maxbloodpool/2)))
 		msg += "<b>[t_He] look[p_s()] like pale death.</b>\n"
-	else if(apparent_blood_volume <= 0)
+	else if(bloodpool <= 0)
 		msg += "<span class='deadsay'><b>[t_He] resemble[p_s()] a crushed, empty juice pouch.</b></span>\n"
 
 	if(is_bleeding())
@@ -390,10 +390,12 @@
 		if(getorgan(/obj/item/organ/brain))
 			if(ai_controller?.ai_status == AI_STATUS_ON)
 				msg += "<span class='deadsay'>[t_He] do[t_es]n't appear to be [t_him]self.</span>\n"
-			if(!key && !istype(src, /mob/living/carbon/human/npc))
-				msg += "<span class='deadsay'>[t_He] [t_is] totally catatonic. The stresses of life in deep-space must have been too much for [t_him]. Any recovery is unlikely.</span>\n"
-			else if(!client && !istype(src, /mob/living/carbon/human/npc))
+			if(!key && !istype(src, /mob/living/carbon/human/npc) && (src.soul_state != SOUL_PROJECTING))
+				msg += "<span class='deadsay'>[t_He] [t_is] totally catatonic. The stresses of life must have been too much for [t_him]. Any recovery is unlikely.</span>\n"
+			else if(!client && !istype(src, /mob/living/carbon/human/npc) && (src.soul_state != SOUL_PROJECTING))
 				msg += "[t_He] [t_has] a blank, absent-minded stare and appears completely unresponsive to anything. [t_He] may snap out of it soon.\n"
+			if(src.soul_state == SOUL_PROJECTING)
+				msg += "<span class='deadsay'>[t_He] [t_is] staring blanky into space, [t_his] eyes are slightly grayed out.</span>\n"
 
 	var/scar_severity = 0
 	for(var/i in all_scars)

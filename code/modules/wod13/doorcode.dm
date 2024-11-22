@@ -147,7 +147,8 @@
 /obj/item/vamp/keys/giovanni
 	name = "Mafia keys"
 	accesslocks = list(
-		"giovanni"
+		"giovanni",
+		"bianchiBank"
 	)
 
 /obj/item/vamp/keys/taxi

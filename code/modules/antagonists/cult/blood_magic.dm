@@ -159,7 +159,7 @@
 	invocation = "Ta'gh fara'qha fel d'amar det!"
 
 /datum/action/innate/cult/blood_spell/emp/Activate()
-	owner.whisper(invocation, language = /datum/language/common)
+	owner.whisper(invocation, language = /datum/language/english)
 	owner.visible_message("<span class='warning'>[owner]'s hand flashes a bright blue!</span>", \
 		"<span class='cultitalic'>You speak the cursed words, emitting an EMP blast from your hand.</span>")
 	empulse(owner, 2, 5)
@@ -195,7 +195,7 @@
 
 /datum/action/innate/cult/blood_spell/dagger/Activate()
 	var/turf/owner_turf = get_turf(owner)
-	owner.whisper(invocation, language = /datum/language/common)
+	owner.whisper(invocation, language = /datum/language/english)
 	owner.visible_message("<span class='warning'>[owner]'s hand glows red for a moment.</span>", \
 		"<span class='cultitalic'>Your plea for aid is answered, and light begins to shimmer and take form within your hand!</span>")
 	var/obj/item/melee/cultblade/dagger/summoned_blade = new (owner_turf)
@@ -265,7 +265,7 @@
 		SEND_SOUND(ranged_ability_user, sound('sound/effects/ghost.ogg',0,1,50))
 		var/image/C = image('icons/effects/cult_effects.dmi',H,"bloodsparkles", ABOVE_MOB_LAYER)
 		add_alt_appearance(/datum/atom_hud/alternate_appearance/basic/cult, "cult_apoc", C, NONE)
-		addtimer(CALLBACK(H,/atom/.proc/remove_alt_appearance,"cult_apoc",TRUE), 2400, TIMER_OVERRIDE|TIMER_UNIQUE)
+		addtimer(CALLBACK(H, TYPE_PROC_REF(/atom, remove_alt_appearance),"cult_apoc",TRUE), 2400, TIMER_OVERRIDE|TIMER_UNIQUE)
 		to_chat(ranged_ability_user,"<span class='cult'><b>[H] has been cursed with living nightmares!</b></span>")
 		attached_action.charges--
 		attached_action.desc = attached_action.base_desc
@@ -289,7 +289,7 @@
 			"<span class='cultitalic'>You invoke the veiling spell, hiding nearby runes.</span>")
 		charges--
 		SEND_SOUND(owner, sound('sound/magic/smoke.ogg',0,1,25))
-		owner.whisper(invocation, language = /datum/language/common)
+		owner.whisper(invocation, language = /datum/language/english)
 		for(var/obj/effect/rune/R in range(5,owner))
 			R.conceal()
 		for(var/obj/structure/destructible/cult/S in range(5,owner))
@@ -307,7 +307,7 @@
 		owner.visible_message("<span class='warning'>A flash of light shines from [owner]'s hand!</span>", \
 			"<span class='cultitalic'>You invoke the counterspell, revealing nearby runes.</span>")
 		charges--
-		owner.whisper(invocation, language = /datum/language/common)
+		owner.whisper(invocation, language = /datum/language/english)
 		SEND_SOUND(owner, sound('sound/magic/enter_blood.ogg',0,1,25))
 		for(var/obj/effect/rune/R in range(7,owner)) //More range in case you weren't standing in exactly the same spot
 			R.reveal()
@@ -393,7 +393,7 @@
 /obj/item/melee/blood_magic/afterattack(atom/target, mob/living/carbon/user, proximity)
 	. = ..()
 	if(invocation)
-		user.whisper(invocation, language = /datum/language/common)
+		user.whisper(invocation, language = /datum/language/english)
 	if(health_cost)
 		if(user.active_hand_index == 1)
 			user.apply_damage(health_cost, BRUTE, BODY_ZONE_L_ARM)
@@ -431,7 +431,7 @@
 			L.mob_light(_range = 2, _color = LIGHT_COLOR_HOLY_MAGIC, _duration = 10 SECONDS)
 			var/mutable_appearance/forbearance = mutable_appearance('icons/effects/genetics.dmi', "servitude", -MUTATIONS_LAYER)
 			L.add_overlay(forbearance)
-			addtimer(CALLBACK(L, /atom/proc/cut_overlay, forbearance), 100)
+			addtimer(CALLBACK(L, TYPE_PROC_REF(/atom, cut_overlay), forbearance), 100)
 
 			if(istype(anti_magic_source, /obj/item))
 				var/obj/item/ams_object = anti_magic_source
@@ -609,7 +609,7 @@
 						"Wraith" = image(icon = 'icons/mob/cult.dmi', icon_state = "wraith"),
 						"Artificer" = image(icon = 'icons/mob/cult.dmi', icon_state = "artificer")
 						)
-					var/construct_class = show_radial_menu(user, src, constructs, custom_check = CALLBACK(src, .proc/check_menu, user), require_near = TRUE, tooltips = TRUE)
+					var/construct_class = show_radial_menu(user, src, constructs, custom_check = CALLBACK(src, PROC_REF(check_menu), user), require_near = TRUE, tooltips = TRUE)
 					if(!check_menu(user))
 						return
 					if(QDELETED(candidate))

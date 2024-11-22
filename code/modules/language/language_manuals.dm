@@ -4,7 +4,7 @@
 	/// Number of charges the book has, limits the number of times it can be used.
 	var/charges = 1
 	/// Path to a language datum that the book teaches.
-	var/datum/language/language = /datum/language/common
+	var/datum/language/language = /datum/language/english
 	/// Flavour text to display when the language is successfully learned.
 	var/flavour_text = "suddenly your mind is filled with codewords and responses"
 
@@ -66,8 +66,8 @@
 	language = pick( \
 		/datum/language/voltaic, \
 		/datum/language/japanese, \
-		/datum/language/draconic, \
-		/datum/language/moffic, \
+		/datum/language/chinese, \
+		/datum/language/russian, \
 		/datum/language/calcic \
 	)
 	name = "[initial(language.name)] manual"
