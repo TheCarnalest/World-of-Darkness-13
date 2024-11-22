@@ -1039,6 +1039,9 @@
 					var/sucked = min(VL.bloodpool, 2)
 					VL.bloodpool = VL.bloodpool-sucked
 					VL.blood_volume = max(VL.blood_volume-50, 0)
+					if(isgarou(VL))
+						VL.apply_damage(20, BURN )
+						return
 					if(ishuman(VL))
 						var/mob/living/carbon/human/VHL = VL
 						VHL.blood_volume = max(VHL.blood_volume-10*sucked, 0)
@@ -1200,10 +1203,15 @@
 
 /datum/discipline/vicissitude/activate(mob/living/target, mob/living/carbon/human/caster)
 	. = ..()
-	if(iswerewolf(target))
+	if(iswerewolf(target) || isgarou(target))
 		caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/vicissitude.ogg', 50, TRUE)
-		caster.adjustFireLoss(50)		//abusers suffer
+		caster.adjustFireLoss(35)		//abusers suffer
+		caster.Stun(30)
 		caster.emote("scream")
+		target.apply_damage(10*level_casting, BRUTE)
+		target.apply_damage(5*level_casting, CLONE)
+		target.Stun(30)
+		target.emote("scream")
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
 		caster.playsound_local(target.loc, 'code/modules/wod13/sounds/vicissitude.ogg', 50, TRUE)
@@ -1211,7 +1219,7 @@
 			if(istype(target, /mob/living/carbon/human/npc))
 				var/mob/living/carbon/human/npc/NPC = target
 				NPC.last_attacker = null
-			if(!iskindred(target))
+			if(!iskindred(target) || !isgarou(target))
 				if(H.stat != DEAD)
 					H.death()
 				switch(level_casting)
@@ -1292,8 +1300,8 @@
 				var/obj/item/bodypart/B = H.get_bodypart(pick(BODY_ZONE_R_ARM, BODY_ZONE_L_ARM, BODY_ZONE_R_LEG, BODY_ZONE_L_LEG))
 				if(B)
 					B.drop_limb()
-	else
-		target.death()
+	//else
+		//target.death() - Removed until a better solution is found to not have insta-kills on player mobs, unsure of side effects for normal vicissitude use but call death above already so should be fine?
 
 /turf
 	var/silented = FALSE
