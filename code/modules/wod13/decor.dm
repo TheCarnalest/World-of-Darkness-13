@@ -30,6 +30,11 @@
 	.=..()
 	AddElement(/datum/element/climbable)
 
+/obj/structure/vampfence/rich/Initialize()
+	.=..()
+	RemoveElement(/datum/element/climbable)
+
+
 /obj/structure/gargoyle
 	name = "\improper gargoyle"
 	desc = "Some kind of gothic architecture."
@@ -930,7 +935,7 @@
 		// Handle job slot/tater cleanup.
 		var/job = mob_occupant.mind.assigned_role
 		crew_member["job"] = job
-		SSjob.FreeRole(job)
+		SSjob.FreeRole(job, mob_occupant)
 //		if(LAZYLEN(mob_occupant.mind.objectives))
 //			mob_occupant.mind.objectives.Cut()
 		mob_occupant.mind.special_role = null

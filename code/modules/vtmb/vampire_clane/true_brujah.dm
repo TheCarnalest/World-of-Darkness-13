@@ -12,6 +12,7 @@
 	male_clothes = "/obj/item/clothing/under/vampire/rich"
 	female_clothes = "/obj/item/clothing/under/vampire/business"
 	restricted_disciplines = list(/datum/discipline/celerity)
+	whitelisted = TRUE
 
 /datum/discipline/temporis/post_gain(mob/living/carbon/human/H)
 	if(level >= 1)
@@ -61,7 +62,7 @@
 		playsound(M.loc, 'code/modules/wod13/sounds/temporis end.ogg', 50, FALSE)
 
 /datum/action/temporis_step/Trigger()
-	if(spam_fix+150 > world.time)
+	if(spam_fix + 15 SECONDS > world.time)
 		return
 	var/mob/living/carbon/human/H = owner
 	if(H.bloodpool < 1)
@@ -96,7 +97,7 @@
 
 
 /datum/action/clotho/Trigger()
-	if(spam_fix+200 > world.time)
+	if(spam_fix + 20 SECONDS > world.time)
 		return
 	var/mob/living/carbon/human/H = owner
 	if(H.bloodpool < 3)

@@ -136,22 +136,23 @@
 			new /obj/item/coin/gold(src)
 			new /obj/item/storage/wallet(src)
 		if(2)
-			new /obj/item/clothing/glasses/meson(src)
+			new /obj/item/quran(src)
 		if(3)
 			new /obj/item/coin/silver(src)
-			new /obj/item/shovel/spade(src)
+			new /obj/item/molotov(src)
 		if(4)
-			new /obj/item/storage/book/bible/booze(src)
+			new /obj/item/storage/book/bible(src)
+			new /obj/item/card/id/hunter(src)
 		if(5)
 			new /obj/item/clothing/neck/stethoscope(src)
 			new	/obj/item/scalpel(src)
 			new /obj/item/hemostat(src)
+			new /obj/item/melee/vampirearms/baseball/hand(src)
 
 		if(6)
-			new /obj/item/reagent_containers/glass/beaker(src)
-			new /obj/item/clothing/glasses/science(src)
+			new /obj/item/ravnos(src)
 		if(7)
-			new /obj/item/clothing/glasses/sunglasses(src)
+			new /obj/item/clothing/glasses/vampire/sun(src)
 			new /obj/item/clothing/mask/cigarette/rollie(src)
 		else
 			//nothing!
@@ -214,7 +215,7 @@
 /obj/structure/closet/crate/grave/lead_researcher/PopulateContents()  //ADVANCED GRAVEROBBING
 	..()
 	new /obj/effect/decal/cleanable/blood/gibs/old(src)
-	new /obj/item/book/granter/crafting_recipe/boneyard_notes(src)
+	new /obj/item/food/spaghetti/meatballspaghetti(src)
 
 /obj/effect/decal/remains/human/grave
 	turf_loc_check = FALSE

@@ -520,7 +520,7 @@ Dancer
 
 /datum/quirk/chinese/add()
 	var/mob/living/carbon/H = quirk_holder
-	H.grant_language(/datum/language/draconic)
+	H.grant_language(/datum/language/chinese)
 
 /datum/quirk/russian
 	name = "Russian"

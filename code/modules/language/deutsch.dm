@@ -1,14 +1,19 @@
 /datum/language/german
 	name = "German"
-	desc = "The language of the Germanics."
+	desc = "A precise and powerful language spoken in Germany and beyond."
 	key = "g"
 	flags = TONGUELESS_SPEECH
-	space_chance = 100
+	space_chance = 30
 	syllables = list(
-		"danke", "hallo", "auf wiedersehen", "ja", "erhein", "doych", "liebe", "katze", "fragen", "lacheln", "tschuss", "suss",
-		"wollen", "wissen", "faufen", "stunde", "heute", "tee", "fisch", "wein", "bier", "vergangenheitsbewaltigung", "luftkuss", "ich",
-		"zeitgeist", "uber-", "menschen", "achtang", "sehnsucht", "salat", "kaffee", "wiener", "wasser", "suppe", "rindleisch", "jahr",
-		"unter-", "nehmen", "hund", "gluck", "nein", "salat", "ruhrei", "entschuldigung", "guten tag", "herr", "grub", "bitte", "fuupen"
+		"al", "an", "auf", "aus", "bei", "da", "de", "di", "do", "du",
+		"ein", "es", "fa", "fe", "ge", "ha", "he", "hi", "in", "ja",
+		"ka", "ko", "la", "le", "li", "ma", "me", "mi", "mo", "na",
+		"ne", "ni", "no", "ob", "ra", "re", "ri", "ro", "sa", "se",
+		"so", "ta", "te", "ti", "to", "um", "un", "ver", "vor", "wa",
+		"we", "wi", "wo", "zu", "acht", "ich", "du", "sie", "wir",
+		"von", "mit", "gut", "schon", "lang", "zeit", "haus", "mann",
+		"frau", "kind", "brot", "wasser", "bier", "kaffee", "kuh", "kat",
+		"hund", "tag", "nacht", "ja", "nein", "bitte", "danke", "lieben", "fragen"
 	)
 	icon_state = "german"
 	default_priority = 90

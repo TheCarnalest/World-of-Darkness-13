@@ -210,6 +210,45 @@
 	if(!loc.AllowClick() && !last_locc)
 		return
 
+	if(iswerewolf(src) && get_dist(src, A) <= 1)
+		if(istype(A, /obj/manholeup))
+			var/obj/manholeup/M = A
+			if(!M.climbing)
+				M.climbing = TRUE
+				if(do_after(src, 30, A))
+					M.climbing = FALSE
+					var/turf/destination = get_step_multiz(A, UP)
+					var/mob/living/L = src
+					if(L.pulling)
+						L.pulling.forceMove(destination)
+					forceMove(destination)
+					playsound(A, 'code/modules/wod13/sounds/manhole.ogg', 50, TRUE)
+				else
+					M.climbing = FALSE
+		if(istype(A, /obj/manholedown))
+			var/obj/manholeup/M = A
+			if(!M.climbing)
+				M.climbing = TRUE
+				if(do_after(src, 30, A))
+					M.climbing = FALSE
+					var/turf/destination = get_step_multiz(A, DOWN)
+					var/mob/living/L = src
+					if(L.pulling)
+						L.pulling.forceMove(destination)
+					forceMove(destination)
+					playsound(A, 'code/modules/wod13/sounds/manhole.ogg', 50, TRUE)
+				else
+					M.climbing = FALSE
+		if(istype(A, /obj/structure/vampdoor))
+			if(iscrinos(src))
+				var/obj/structure/vampdoor/V = A
+				playsound(get_turf(A), 'code/modules/wod13/sounds/get_bent.ogg', 100, FALSE)
+				var/obj/item/shield/door/D = new(get_turf(A))
+				D.icon_state = V.baseicon
+				var/atom/throw_target = get_edge_target_turf(A, dir)
+				D.throw_at(throw_target, rand(2, 4), 4, src)
+				qdel(A)
+
 	if(iscrinos(src))
 		if(!W)
 			var/mob/living/carbon/werewolf/wolf = src
@@ -446,6 +485,15 @@
  * For most objects, pull
  */
 /mob/proc/CtrlClickOn(atom/A)
+	if(isitem(A))
+		var/obj/item/flipper = A
+		if((!usr.Adjacent(flipper) && !usr.DirectAccess(flipper)) || !isliving(usr) || usr.incapacitated())
+			return
+		var/old_width = flipper.grid_width
+		var/old_height = flipper.grid_height
+		flipper.grid_height = old_width
+		flipper.grid_width = old_height
+		to_chat(usr, "<span class='notice'>You flip the item for storage.</span>")
 	A.CtrlClick(src)
 	return
 

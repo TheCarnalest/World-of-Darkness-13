@@ -16,6 +16,7 @@
 	var/mob/living/carbon/human/master
 	var/changed_master = FALSE
 	var/last_vitae = 0
+	selectable = TRUE
 
 /datum/action/ghoulinfo
 	name = "About Me"
@@ -100,12 +101,26 @@
 		dat += "<b>Lockpicking</b>: [host.lockpicking]<BR>"
 		dat += "<b>Athletics</b>: [host.athletics]<BR>"
 		dat += "<b>Cruelty</b>: [host.blood]<BR>"
-		if(host.friend_name)
-			dat += "<b>Friend: [host.friend_name]</b><BR>"
-		if(host.enemy_name)
-			dat += "<b>Enemy: [host.enemy_name]</b><BR>"
-		if(host.lover_name)
-			dat += "<b>Lover: [host.lover_name]</b><BR>"
+		if(host.Myself)
+			if(host.Myself.Friend)
+				if(host.Myself.Friend.owner)
+					dat += "<b>My friend's name is [host.Myself.Friend.owner.true_real_name].</b><BR>"
+					if(host.Myself.Friend.phone_number)
+						dat += "Their number is [host.Myself.Friend.phone_number].<BR>"
+					if(host.Myself.Friend.friend_text)
+						dat += "[host.Myself.Friend.friend_text]<BR>"
+			if(host.Myself.Enemy)
+				if(host.Myself.Enemy.owner)
+					dat += "<b>My nemesis is [host.Myself.Enemy.owner.true_real_name]!</b><BR>"
+					if(host.Myself.Enemy.enemy_text)
+						dat += "[host.Myself.Enemy.enemy_text]<BR>"
+			if(host.Myself.Lover)
+				if(host.Myself.Lover.owner)
+					dat += "<b>I'm in love with [host.Myself.Lover.owner.true_real_name].</b><BR>"
+					if(host.Myself.Lover.phone_number)
+						dat += "Their number is [host.Myself.Lover.phone_number].<BR>"
+					if(host.Myself.Lover.lover_text)
+						dat += "[host.Myself.Lover.lover_text]<BR>"
 		if(length(host.knowscontacts) > 0)
 			dat += "<b>I know some other of my kind in this city. Need to check my phone, there definetely should be:</b><BR>"
 			for(var/i in host.knowscontacts)
@@ -125,22 +140,21 @@
 	infor.Grant(C)
 	var/datum/action/blood_heal/bloodheal = new()
 	bloodheal.Grant(C)
-	var/datum/action/take_vitae/TV = new()
-	TV.Grant(C)
 	C.generation = 13
 	C.bloodpool = 10
 	C.maxbloodpool = 10
-	C.maxHealth = 100
-	C.health = 100
+	C.maxHealth = 200
+	C.health = 200
 
 /datum/species/ghoul/on_species_loss(mob/living/carbon/human/C, datum/species/new_species, pref_load)
 	. = ..()
-	for(var/datum/action/ghoulinfo/GI in C.actions)
-		qdel(GI)
-	for(var/datum/action/blood_heal/BH in C.actions)
-		qdel(BH)
-	for(var/datum/action/take_vitae/TV in C.actions)
-		qdel(TV)
+	for(var/datum/action/A in C.actions)
+		if(A)
+			if(A.vampiric)
+				A.Remove(C)
+	for(var/datum/action/ghoulinfo/infor in C.actions)
+		if(infor)
+			infor.Remove(C)
 
 /datum/action/take_vitae
 	name = "Take Vitae"
@@ -185,13 +199,30 @@
 	name = "Blood Heal"
 	desc = "Use vitae in your blood to heal your wounds."
 	button_icon_state = "bloodheal"
+	button_icon = 'code/modules/wod13/UI/actions.dmi'
+	background_icon_state = "discipline"
+	icon_icon = 'code/modules/wod13/UI/actions.dmi'
 	check_flags = AB_CHECK_HANDS_BLOCKED|AB_CHECK_IMMOBILE|AB_CHECK_LYING|AB_CHECK_CONSCIOUS
+	vampiric = TRUE
 	var/last_heal = 0
 	var/level = 1
+
+/datum/action/blood_heal/ApplyIcon(atom/movable/screen/movable/action_button/current_button, force = FALSE)
+	if(owner)
+		if(owner.client)
+			if(owner.client.prefs)
+				if(owner.client.prefs.old_discipline)
+					button_icon = 'code/modules/wod13/disciplines.dmi'
+					icon_icon = 'code/modules/wod13/disciplines.dmi'
+				else
+					button_icon = 'code/modules/wod13/UI/actions.dmi'
+					icon_icon = 'code/modules/wod13/UI/actions.dmi'
+	. = ..()
 
 /datum/action/blood_heal/Trigger()
 	if(istype(owner, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = owner
+		level = max(1, 13-H.generation)
 		if(HAS_TRAIT(H, TRAIT_COFFIN_THERAPY))
 			if(!istype(H.loc, /obj/structure/closet/crate/coffin))
 				to_chat(usr, "<span class='warning'>You need to be in a coffin to use that!</span>")
@@ -204,12 +235,35 @@
 			return
 		last_heal = world.time
 		H.bloodpool = max(0, H.bloodpool-1)
-		H.playsound_local(H, 'code/modules/wod13/sounds/bloodhealing.ogg', 50, FALSE)
-		H.adjustBruteLoss(-10*level, TRUE)
-		H.adjustFireLoss(-10*level, TRUE)
+		SEND_SOUND(H, sound('code/modules/wod13/sounds/bloodhealing.ogg', 0, 0, 50))
+		H.adjustBruteLoss(-15*min(4, level), TRUE)
+		H.adjustFireLoss(-10*min(4, level), TRUE)
+		button.color = "#970000"
+		animate(button, color = "#ffffff", time = 20, loop = 1)
 		if(length(H.all_wounds))
 			var/datum/wound/W = pick(H.all_wounds)
 			W.remove_wound()
+		if(length(H.all_wounds))
+			var/datum/wound/W = pick(H.all_wounds)
+			W.remove_wound()
+		if(length(H.all_wounds))
+			var/datum/wound/W = pick(H.all_wounds)
+			W.remove_wound()
+		if(length(H.all_wounds))
+			var/datum/wound/W = pick(H.all_wounds)
+			W.remove_wound()
+		if(length(H.all_wounds))
+			var/datum/wound/W = pick(H.all_wounds)
+			W.remove_wound()
+		H.adjustCloneLoss(-5, TRUE)
+		var/obj/item/organ/eyes/eyes = H.getorganslot(ORGAN_SLOT_EYES)
+		if(eyes)
+			H.adjust_blindness(-2)
+			H.adjust_blurriness(-2)
+			eyes.applyOrganDamage(-5)
+		var/obj/item/organ/brain/brain = H.getorganslot(ORGAN_SLOT_BRAIN)
+		if(brain)
+			brain.applyOrganDamage(-100)
 		H.update_damage_overlays()
 		H.update_health_hud()
 		H.update_blood_hud()

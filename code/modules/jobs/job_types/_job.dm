@@ -1,8 +1,8 @@
 /datum/job
-	//The name of the job , used for preferences, bans and more. Make sure you know what you're doing before changing this.
+	///The name of the job , used for preferences, bans and more. Make sure you know what you're doing before changing this.
 	var/title = "NOPE"
 
-	//Job access. The use of minimal_access or access is determined by a config setting: config.jobs_have_minimal_access
+	///Job access. The use of minimal_access or access is determined by a config setting: config.jobs_have_minimal_access
 	var/list/minimal_access = list()		//Useful for servers which prefer to only have access given to the places a job absolutely needs (Larger server population)
 	var/list/access = list()				//Useful for servers which either have fewer players, so each person needs to fill more than one role, or servers which like to give more access, so players can't hide forever in their super secure departments (I'm looking at you, chemistry!)
 
@@ -23,26 +23,26 @@
 	//Players will be allowed to spawn in as jobs that are set to "Station"
 	var/faction = "None"
 
-	//How many players can be this job
+	///How many players can be this job
 	var/total_positions = 0
 
-	//How many players can spawn in as this job
+	///How many players can spawn in as this job
 	var/spawn_positions = 0
 
-	//How many players have this job
+	///How many players have this job
 	var/current_positions = 0
 
-	//Supervisors, who this person answers to directly
+	///Supervisors, who this person answers to directly
 	var/supervisors = ""
 
-	//Sellection screen color
+	///Selection screen color
 	var/selection_color = "#ffffff"
 
 
-	//If this is set to 1, a text is printed to the player when jobs are assigned, telling him that he should let admins know that he has to disconnect.
+	///If this is set to 1, a text is printed to the player when jobs are assigned, telling him that he should let admins know that he has to disconnect.
 	var/req_admin_notify
 
-	//If you have the use_age_restriction_for_jobs config option enabled and the database set up, this option will add a requirement for players to be at least minimal_player_age days old. (meaning they first signed in at least that many days before.)
+	///If you have the use_age_restriction_for_jobs config option enabled and the database set up, this option will add a requirement for players to be at least minimal_player_age days old. (meaning they first signed in at least that many days before.)
 	var/minimal_player_age = 0
 
 	var/outfit = null
@@ -68,19 +68,20 @@
 
 	var/bounty_types = CIV_JOB_BASIC
 
-	/// Should this job be allowed to be picked for the bureaucratic error event?
+	///Should this job be allowed to be picked for the bureaucratic error event?
 	var/allow_bureaucratic_error = FALSE
 
-	// Fuck thin blood
+	///Minimum vampire Generation necessary to do this job.
 	var/minimal_generation = 13
+	///Minimum Masquerade level necessary to do this job.
 	var/minimal_masquerade = 1
-//	var/list/allowed_species = list("kindred")
-	var/kindred_only = FALSE
-	var/humans_accessible = FALSE
-	var/human_only = FALSE
-	var/ghoul_only = FALSE
-	var/garou_allowed = FALSE
-	var/list/allowed_bloodlines = list("Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry",)
+
+	///List of species that are allowed to do this job.
+	var/list/allowed_species = list("Vampire")
+	///List of species that are limited to a certain amount of that species doing this job.
+	var/list/species_slots = list()
+	///List of Bloodlines that are allowed to do this job.
+	var/list/allowed_bloodlines = list("Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry")
 
 	// List for phone shit
 	var/my_contact_is_important = FALSE
@@ -204,7 +205,7 @@
 /datum/job/proc/announce_head(mob/living/carbon/human/H, channels) //tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
 	if(H && GLOB.announcement_systems.len)
 		//timer because these should come after the captain announcement
-		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, .proc/_addtimer, CALLBACK(pick(GLOB.announcement_systems), /obj/machinery/announcement_system/proc/announce, "NEWHEAD", H.real_name, H.job, channels), 1))
+		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_addtimer), CALLBACK(pick(GLOB.announcement_systems), TYPE_PROC_REF(/obj/machinery/announcement_system, announce), "NEWHEAD", H.real_name, H.job, channels), 1))
 
 //If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1
 /datum/job/proc/player_old_enough(client/C)

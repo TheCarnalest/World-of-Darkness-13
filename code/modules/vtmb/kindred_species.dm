@@ -17,6 +17,7 @@
 	punchdamagehigh = 20
 	dust_anim = "dust-h"
 	var/datum/vampireclane/clane
+	selectable = TRUE
 
 /datum/action/vampireinfo
 	name = "About Me"
@@ -126,25 +127,43 @@
 		dat += "<b>Cruelty</b>: [host.blood]<BR>"
 		if(host.hud_used)
 			dat += "<b>Known disciplines:</b><BR>"
-			if(host.hud_used.discipline1_icon.dscpln)
-				dat += "[host.hud_used.discipline1_icon.dscpln.name] [host.hud_used.discipline1_icon.dscpln.level] - [host.hud_used.discipline1_icon.dscpln.desc]<BR>"
-			if(host.hud_used.discipline2_icon.dscpln)
-				dat += "[host.hud_used.discipline2_icon.dscpln.name] [host.hud_used.discipline2_icon.dscpln.level] - [host.hud_used.discipline2_icon.dscpln.desc]<BR>"
-			if(host.hud_used.discipline3_icon.dscpln)
-				dat += "[host.hud_used.discipline3_icon.dscpln.name] [host.hud_used.discipline3_icon.dscpln.level] - [host.hud_used.discipline3_icon.dscpln.desc]<BR>"
-		if(host.friend_name)
-			dat += "<b>Friend: [host.friend_name]</b><BR>"
-		if(host.enemy_name)
-			dat += "<b>Enemy: [host.enemy_name]</b><BR>"
-		if(host.lover_name)
-			dat += "<b>Lover: [host.lover_name]</b><BR>"
+			for(var/datum/action/discipline/D in host.actions)
+				if(D)
+					if(D.discipline)
+						dat += "[D.discipline.name] [D.discipline.level] - [D.discipline.desc]<BR>"
+//			if(host.hud_used.discipline1_icon.dscpln)
+//				dat += "[host.hud_used.discipline1_icon.dscpln.name] [host.hud_used.discipline1_icon.dscpln.level] - [host.hud_used.discipline1_icon.dscpln.desc]<BR>"
+//			if(host.hud_used.discipline2_icon.dscpln)
+//				dat += "[host.hud_used.discipline2_icon.dscpln.name] [host.hud_used.discipline2_icon.dscpln.level] - [host.hud_used.discipline2_icon.dscpln.desc]<BR>"
+//			if(host.hud_used.discipline3_icon.dscpln)
+//				dat += "[host.hud_used.discipline3_icon.dscpln.name] [host.hud_used.discipline3_icon.dscpln.level] - [host.hud_used.discipline3_icon.dscpln.desc]<BR>"
+		if(host.Myself)
+			if(host.Myself.Friend)
+				if(host.Myself.Friend.owner)
+					dat += "<b>My friend's name is [host.Myself.Friend.owner.true_real_name].</b><BR>"
+					if(host.Myself.Friend.phone_number)
+						dat += "Their number is [host.Myself.Friend.phone_number].<BR>"
+					if(host.Myself.Friend.friend_text)
+						dat += "[host.Myself.Friend.friend_text]<BR>"
+			if(host.Myself.Enemy)
+				if(host.Myself.Enemy.owner)
+					dat += "<b>My nemesis is [host.Myself.Enemy.owner.true_real_name]!</b><BR>"
+					if(host.Myself.Enemy.enemy_text)
+						dat += "[host.Myself.Enemy.enemy_text]<BR>"
+			if(host.Myself.Lover)
+				if(host.Myself.Lover.owner)
+					dat += "<b>I'm in love with [host.Myself.Lover.owner.true_real_name].</b><BR>"
+					if(host.Myself.Lover.phone_number)
+						dat += "Their number is [host.Myself.Lover.phone_number].<BR>"
+					if(host.Myself.Lover.lover_text)
+						dat += "[host.Myself.Lover.lover_text]<BR>"
 		var/obj/keypad/armory/K = find_keypad(/obj/keypad/armory)
 		if(K && (host.mind.assigned_role == "Prince" || host.mind.assigned_role == "Sheriff"))
 			dat += "<b>The pincode for the armory keypad is: [K.pincode]</b><BR>"
 		var/obj/keypad/bankvault/V = find_keypad(/obj/keypad/bankvault)
-		if(V && (host.mind.assigned_role == "Giovanni Boss"))
+		if(V && (host.mind.assigned_role == "Capo"))
 			dat += "<b>The pincode for the bank vault keypad is: [V.pincode]</b><BR>"
-		if(V && (host.mind.assigned_role == "Giovanni Member"))
+		if(V && (host.mind.assigned_role == "La Squadra"))
 			if(prob(50))
 				dat += "<b>The pincode for the bank vault keypad is: [V.pincode]</b><BR>"
 			else
@@ -167,24 +186,96 @@
 	C.last_experience = world.time+3000
 	var/datum/action/vampireinfo/infor = new()
 	infor.host = C
-
-
 	infor.Grant(C)
 	var/datum/action/give_vitae/vitae = new()
 	vitae.Grant(C)
+	var/datum/action/blood_heal/bloodheal = new()
+	bloodheal.Grant(C)
+	var/datum/action/blood_power/bloodpower = new()
+	bloodpower.Grant(C)
 
 /datum/species/kindred/on_species_loss(mob/living/carbon/human/C, datum/species/new_species, pref_load)
 	. = ..()
 	for(var/datum/action/vampireinfo/VI in C.actions)
-		qdel(VI)
-	for(var/datum/action/give_vitae/GI in C.actions)
-		qdel(GI)
+		if(VI)
+			VI.Remove(C)
+	for(var/datum/action/A in C.actions)
+		if(A)
+			if(A.vampiric)
+				A.Remove(C)
+
+/datum/action/blood_power
+	name = "Blood Power"
+	desc = "Use vitae to gain supernatural abilities."
+	button_icon_state = "bloodpower"
+	button_icon = 'code/modules/wod13/UI/actions.dmi'
+	background_icon_state = "discipline"
+	icon_icon = 'code/modules/wod13/UI/actions.dmi'
+	check_flags = AB_CHECK_HANDS_BLOCKED|AB_CHECK_IMMOBILE|AB_CHECK_LYING|AB_CHECK_CONSCIOUS
+	vampiric = TRUE
+
+/datum/action/blood_power/ApplyIcon(atom/movable/screen/movable/action_button/current_button, force = FALSE)
+	if(owner)
+		if(owner.client)
+			if(owner.client.prefs)
+				if(owner.client.prefs.old_discipline)
+					button_icon = 'code/modules/wod13/disciplines.dmi'
+					icon_icon = 'code/modules/wod13/disciplines.dmi'
+				else
+					button_icon = 'code/modules/wod13/UI/actions.dmi'
+					icon_icon = 'code/modules/wod13/UI/actions.dmi'
+	. = ..()
+
+/datum/action/blood_power/Trigger()
+	if(istype(owner, /mob/living/carbon/human))
+		var/mob/living/carbon/human/BD = usr
+		if(world.time < BD.last_bloodpower_use+110)
+			return
+		var/plus = 0
+		if(HAS_TRAIT(BD, TRAIT_HUNGRY))
+			plus = 1
+		if(BD.bloodpool >= 2+plus)
+			playsound(usr, 'code/modules/wod13/sounds/bloodhealing.ogg', 50, FALSE)
+			button.color = "#970000"
+			animate(button, color = "#ffffff", time = 20, loop = 1)
+			BD.last_bloodpower_use = world.time
+			BD.bloodpool = max(0, BD.bloodpool-(2+plus))
+			to_chat(BD, "<span class='notice'>You use blood to become more powerful.</span>")
+			BD.dna.species.punchdamagehigh = BD.dna.species.punchdamagehigh+5
+			BD.physiology.armor.melee = BD.physiology.armor.melee+15
+			BD.physiology.armor.bullet = BD.physiology.armor.bullet+15
+			BD.dexterity = BD.dexterity+2
+			BD.athletics = BD.athletics+2
+			BD.lockpicking = BD.lockpicking+2
+			if(!HAS_TRAIT(BD, TRAIT_IGNORESLOWDOWN))
+				ADD_TRAIT(BD, TRAIT_IGNORESLOWDOWN, SPECIES_TRAIT)
+			BD.update_blood_hud()
+			spawn(100+BD.discipline_time_plus+BD.bloodpower_time_plus)
+				end_bloodpower()
+		else
+			SEND_SOUND(BD, sound('code/modules/wod13/sounds/need_blood.ogg', 0, 0, 75))
+			to_chat(BD, "<span class='warning'>You don't have enough <b>BLOOD</b> to become more powerful.</span>")
+
+/datum/action/blood_power/proc/end_bloodpower()
+	if(owner && ishuman(owner))
+		var/mob/living/carbon/human/BD = owner
+		to_chat(BD, "<span class='warning'>You feel like your <b>BLOOD</b>-powers slowly decrease.</span>")
+		if(BD.dna.species)
+			BD.dna.species.punchdamagehigh = BD.dna.species.punchdamagehigh-5
+			BD.physiology.armor.melee = BD.physiology.armor.melee-15
+			BD.physiology.armor.bullet = BD.physiology.armor.bullet-15
+			if(HAS_TRAIT(BD, TRAIT_IGNORESLOWDOWN))
+				REMOVE_TRAIT(BD, TRAIT_IGNORESLOWDOWN, SPECIES_TRAIT)
+		BD.dexterity = BD.dexterity-2
+		BD.athletics = BD.athletics-2
+		BD.lockpicking = BD.lockpicking-2
 
 /datum/action/give_vitae
 	name = "Give Vitae"
 	desc = "Give your vitae to someone, make the Blood Bond."
 	button_icon_state = "vitae"
 	check_flags = AB_CHECK_HANDS_BLOCKED|AB_CHECK_IMMOBILE|AB_CHECK_LYING|AB_CHECK_CONSCIOUS
+	vampiric = TRUE
 	var/giving = FALSE
 
 /datum/action/give_vitae/Trigger()
@@ -253,10 +344,8 @@
 								BLOODBONDED.health = round((initial(BLOODBONDED.maxHealth)-initial(BLOODBONDED.maxHealth)/4)+(initial(BLOODBONDED.maxHealth)/4)*(BLOODBONDED.physique+13-BLOODBONDED.generation))
 						else
 							BLOODBONDED.clane = new /datum/vampireclane/caitiff()
-						BLOODBONDED.hud_used.drinkblood_icon.icon_state = "drink"
-						BLOODBONDED.hud_used.bloodheal_icon.icon_state = "bloodheal"
-						BLOODBONDED.hud_used.bloodpower_icon.icon_state = "bloodpower"
-						BLOODBONDED.hud_used.healths.icon = 'code/modules/wod13/32x48.dmi'
+//						BLOODBONDED.hud_used.drinkblood_icon.icon_state = "drink"
+//						BLOODBONDED.hud_used.healths.icon = 'code/modules/wod13/32x48.dmi'
 //						qdel(BLOODBONDED.hud_used)
 //						BLOODBONDED.hud_used = new BLOODBONDED.hud_type(BLOODBONDED)
 //						BLOODBONDED.update_sight()
