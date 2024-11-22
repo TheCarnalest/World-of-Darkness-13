@@ -31,13 +31,15 @@ VENTORY!
 // ~storage component
 ///from base of datum/component/storage/can_user_take(): (mob/user)
 #define COMSIG_STORAGE_BLOCK_USER_TAKE "storage_block_user_take"
+///Length of one inventory grid box in pixels.
+#define GRID_BOXES *32
 
 /obj/item
 	// ~Grid INVENTORY VARIABLES
 	/// Width we occupy on the hud - Keep null to generate based on w_class
-	var/grid_width = 32
+	var/grid_width = 1 GRID_BOXES
 	/// Height we occupy on the hud - Keep null to generate based on w_class
-	var/grid_height = 32
+	var/grid_height = 1 GRID_BOXES
 
 /obj/item/storage
 	var/grid = TRUE
@@ -73,20 +75,14 @@ VENTORY!
 /datum/component/storage/concrete/vtm/backpack
 	screen_max_columns = 6
 	screen_max_rows = 6
-	screen_start_y = 9
-	screen_start_x = 1
 
 /datum/component/storage/concrete/vtm/duffel
 	screen_max_columns = 8
 	screen_max_rows = 6
-	screen_start_y = 9
-	screen_start_x = 1
 
 /datum/component/storage/concrete/vtm/firstaid
 	screen_max_columns = 4
 	screen_max_rows = 4
-	screen_start_y = 9
-	screen_start_x = 1
 
 /obj/item/storage/backpack
 	component_type = /datum/component/storage/concrete/vtm/backpack
@@ -94,8 +90,6 @@ VENTORY!
 /datum/component/storage/concrete/vtm/car
 	screen_max_columns = 9
 	screen_max_rows = 9
-	screen_start_y = 9
-	screen_start_x = 1
 
 /datum/component/storage
 	screen_max_columns = 5
@@ -867,149 +861,149 @@ VENTORY!
 	alpha = 96
 
 /obj/item/melee/vampirearms/fireaxe
-	grid_width = 96
-	grid_height = 32
+	grid_width = 3 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/melee/vampirearms/katana
-	grid_width = 96
-	grid_height = 32
+	grid_width = 3 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/melee/vampirearms/baseball
-	grid_width = 96
-	grid_height = 32
+	grid_width = 3 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/melee/vampirearms/baseball/hand
-	grid_width = 96
-	grid_height = 32
+	grid_width = 3 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/melee/vampirearms/tire
-	grid_width = 64
-	grid_height = 32
+	grid_width = 2 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/melee/vampirearms/knife
-	grid_width = 64
-	grid_height = 32
+	grid_width = 2 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/melee/vampirearms/chainsaw
-	grid_width = 96
-	grid_height = 64
+	grid_width = 3 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/vampire_stake
-	grid_width = 32
-	grid_height = 64
+	grid_width = 1 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/melee/vampirearms/shovel
-	grid_width = 64
-	grid_height = 32
+	grid_width = 2 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/melee/vampirearms/katana/kosa
-	grid_width = 96
-	grid_height = 32
+	grid_width = 3 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/melee/vampirearms/eguitar
-	grid_width = 96
-	grid_height = 64
+	grid_width = 3 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/shield/door
-	grid_width = 128
-	grid_height = 128
+	grid_width = 4 GRID_BOXES
+	grid_height = 4 GRID_BOXES
 
 /obj/item/ammo_box/magazine/vamp9mm
-	grid_width = 32
-	grid_height = 64
+	grid_width = 1 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/gun/ballistic/automatic/vampire/uzi
-	grid_width = 64
-	grid_height = 64
+	grid_width = 2 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/ammo_box/magazine/vamp9mp5
-	grid_width = 32
-	grid_height = 64
+	grid_width = 1 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/gun/ballistic/automatic/vampire/mp5
-	grid_width = 64
-	grid_height = 64
+	grid_width = 2 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/ammo_box/magazine/vamp556
-	grid_width = 32
-	grid_height = 64
+	grid_width = 1 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/gun/ballistic/automatic/vampire/ar15
-	grid_width = 96
-	grid_height = 64
+	grid_width = 3 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/ammo_box/magazine/vamp545
-	grid_width = 32
-	grid_height = 64
+	grid_width = 1 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/gun/ballistic/automatic/vampire/ak74
-	grid_width = 96
-	grid_height = 64
+	grid_width = 3 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/ammo_box/magazine/vampaug
-	grid_width = 32
-	grid_height = 64
+	grid_width = 1 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/gun/ballistic/automatic/vampire/aug
-	grid_width = 96
-	grid_height = 64
+	grid_width = 3 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/ammo_box/magazine/vampthompson
-	grid_width = 32
-	grid_height = 64
+	grid_width = 1 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/gun/ballistic/automatic/vampire/thompson
-	grid_width = 96
-	grid_height = 64
+	grid_width = 3 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/gun/ballistic/automatic/vampire/sniper
-	grid_width = 96
-	grid_height = 64
+	grid_width = 3 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/gun/ballistic/shotgun/vampire
-	grid_width = 96
-	grid_height = 64
+	grid_width = 3 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/gun/ballistic/shotgun/toy/crossbow/vampire
-	grid_width = 64
-	grid_height = 64
+	grid_width = 2 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/ammo_casing/caseless/bolt
-	grid_width = 32
-	grid_height = 64
+	grid_width = 1 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/molotov
-	grid_width = 32
-	grid_height = 64
+	grid_width = 1 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/vampire_flamethrower
-	grid_width = 64
-	grid_height = 64
+	grid_width = 2 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/food/fish/shark
-	grid_width = 96
-	grid_height = 32
+	grid_width = 3 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/food/fish/tune
-	grid_width = 64
-	grid_height = 32
+	grid_width = 2 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/food/fish/catfish
-	grid_width = 64
-	grid_height = 32
+	grid_width = 2 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/fishing_rod
-	grid_width = 96
-	grid_height = 32
+	grid_width = 3 GRID_BOXES
+	grid_height = 1 GRID_BOXES
 
 /obj/item/clothing/under
-	grid_width = 64
-	grid_height = 64
+	grid_width = 2 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/clothing/suit
-	grid_width = 64
-	grid_height = 96
+	grid_width = 2 GRID_BOXES
+	grid_height = 3 GRID_BOXES
 
 /obj/item/clothing/head
-	grid_width = 64
-	grid_height = 64
+	grid_width = 2 GRID_BOXES
+	grid_height = 2 GRID_BOXES
