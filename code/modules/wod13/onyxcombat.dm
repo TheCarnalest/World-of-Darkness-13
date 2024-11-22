@@ -20,66 +20,10 @@
 		R.announce_crime("murder", get_turf(src))
 	GLOB.masquerade_breakers_list -= src
 	GLOB.sabbatites -= src
-//	var/allowed_to_loose = FALSE
-/*	if(key)
-		var/special_role_name
-		if(mind)
-			if(mind.special_role)
-				var/datum/antagonist/A = mind.special_role
-				special_role_name = A.name
-			if(!mind.special_role || special_role_name == "Ambitious")
-				allowed_to_loose = TRUE
-	if(!roundstart_vampire)
-		allowed_to_loose = FALSE
-	if(died_already)
-		allowed_to_loose = FALSE
-	if(!GLOB.canon_event)
-		allowed_to_loose = FALSE
-	if(allowed_to_loose)
-		died_already = TRUE
-		var/datum/preferences/P = GLOB.preferences_datums[ckey(key)]
-		if(P)
-			var/max_death = 6
-			if(P.generation == 11)
-				max_death = 5
-			if(P.generation == 10)
-				max_death = 4
-			if(P.generation == 9)
-				max_death = 3
-			if(P.generation == 8)
-				max_death = 2
-			if(P.generation == 7)
-				max_death = 2
-			if(P.generation <= 6)
-				max_death = 1
-			if(P.last_torpor+60 < world.time)
-				P.last_torpor = world.time
-				P.torpor_count = P.torpor_count+1
-				if(P.torpor_count >= max_death)
-					P.torpor_count = 0
-					if(!HAS_TRAIT(src, TRAIT_PHOENIX))
-//					P.exper = 0
-						P.discipline1level = max(1, P.discipline1level-1)
-						P.discipline2level = max(1, P.discipline2level-1)
-						P.discipline3level = max(1, P.discipline3level-1)
-						P.discipline4level = max(1, P.discipline4level-1)
-						P.physique = max(2, P.physique-1)
-						P.social = max(2, P.social-1)
-						P.mentality = max(2, P.mentality-1)
-//						if(isghoul(src))
-//							P.exper = 0
-					generation = min(13, generation+1)
-					P.generation = generation
-				P.humanity = humanity
-				P.masquerade = masquerade
-				P.save_character()
-				P.save_preferences()
-				P.reason_of_death = "Killed in action ([time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")])."*/
+
 	if(iskindred(src))
 		if(in_frenzy)
 			exit_frenzymod()
-//		fire_stacks += 5
-//		IgniteMob()
 		playsound(src, 'code/modules/wod13/sounds/burning_death.ogg', 80, TRUE)
 		SEND_SOUND(src, sound('code/modules/wod13/sounds/final_death.ogg', 0, 0, 50))
 		lying_fix()

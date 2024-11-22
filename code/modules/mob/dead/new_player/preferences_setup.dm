@@ -58,20 +58,16 @@
 	if(randomise[RANDOM_NAME])
 		real_name = pref_species.random_name(gender,1)
 	if(pref_species.id == "ghoul")
-		discipline1type = null
-		discipline2type = null
-		discipline3type = null
-		discipline4type = null
+		discipline_types = list()
+		discipline_levels = list()
 	if(pref_species.id == "kindred")
 		qdel(clane)
 		clane = new /datum/vampireclane/brujah()
-		if(length(clane.clane_disciplines) >= 1)
-			discipline1type = clane.clane_disciplines[1]
-		if(length(clane.clane_disciplines) >= 2)
-			discipline2type = clane.clane_disciplines[2]
-		if(length(clane.clane_disciplines) >= 3)
-			discipline3type = clane.clane_disciplines[3]
-		discipline4type = null
+		discipline_types = list()
+		discipline_levels = list()
+		for (var/i in 1 to clane.clane_disciplines.len)
+			discipline_types += clane.clane_disciplines[i]
+			discipline_levels += 1
 
 ///Setup a hardcore random character and calculate their hardcore random score
 /datum/preferences/proc/hardcore_random_setup(mob/living/carbon/human/character, antagonist, is_latejoiner)

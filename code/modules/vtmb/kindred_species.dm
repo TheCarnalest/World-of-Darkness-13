@@ -131,12 +131,6 @@
 				if(D)
 					if(D.discipline)
 						dat += "[D.discipline.name] [D.discipline.level] - [D.discipline.desc]<BR>"
-//			if(host.hud_used.discipline1_icon.dscpln)
-//				dat += "[host.hud_used.discipline1_icon.dscpln.name] [host.hud_used.discipline1_icon.dscpln.level] - [host.hud_used.discipline1_icon.dscpln.desc]<BR>"
-//			if(host.hud_used.discipline2_icon.dscpln)
-//				dat += "[host.hud_used.discipline2_icon.dscpln.name] [host.hud_used.discipline2_icon.dscpln.level] - [host.hud_used.discipline2_icon.dscpln.desc]<BR>"
-//			if(host.hud_used.discipline3_icon.dscpln)
-//				dat += "[host.hud_used.discipline3_icon.dscpln.name] [host.hud_used.discipline3_icon.dscpln.level] - [host.hud_used.discipline3_icon.dscpln.desc]<BR>"
 		if(host.Myself)
 			if(host.Myself.Friend)
 				if(host.Myself.Friend.owner)
@@ -336,7 +330,11 @@
 							if(BLOODBONDED.clane.alt_sprite)
 								BLOODBONDED.skin_tone = "albino"
 								BLOODBONDED.update_body()
-							BLOODBONDED.create_disciplines(FALSE, H.client.prefs.discipline1type, H.client.prefs.discipline2type, H.client.prefs.discipline3type)
+							//Gives the Childe the Sire's first three Disciplines
+							var/list/disciplines_to_give = list()
+							for (var/i in 1 to min(3, H.client.prefs.discipline_types.len))
+								disciplines_to_give += H.client.prefs.discipline_types[i]
+							BLOODBONDED.create_disciplines(FALSE, disciplines_to_give)
 							BLOODBONDED.maxbloodpool = 10+((13-min(13, BLOODBONDED.generation))*3)
 							BLOODBONDED.clane.enlightement = H.clane.enlightement
 							if(BLOODBONDED.generation < 13)
