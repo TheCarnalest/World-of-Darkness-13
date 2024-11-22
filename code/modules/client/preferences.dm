@@ -506,16 +506,16 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<BR>"
 
 			dat += "<b>Lockpicking:</b> [lockpicking > 0 ? "•" : "o"][lockpicking > 1 ? "•" : "o"][lockpicking > 2 ? "•" : "o"][lockpicking > 3 ? "•" : "o"][lockpicking > 4 ? "•" : "o"]([lockpicking])"
-			if(true_experience >= 2 && lockpicking == 0)
+			if((true_experience >= 2) && (lockpicking == 0))
 				dat += "<a href='?_src_=prefs;preference=lockpicking;task=input'>Increase([2])</a>"
-			else if(true_experience >= 2*lockpicking && lockpicking != 5 || lockpicking == 0 && true_experience >=2)
+			else if(((true_experience >= max(2, lockpicking * 2)) && (lockpicking != 5)) || ((lockpicking == 0) && (true_experience >= 2)))
 				dat += "<a href='?_src_=prefs;preference=lockpicking;task=input'>Increase([2*lockpicking])</a>"
 			dat += "<BR>"
 
 			dat += "<b>Athletics:</b> [athletics > 0 ? "•" : "o"][athletics > 1 ? "•" : "o"][athletics > 2 ? "•" : "o"][athletics > 3 ? "•" : "o"][athletics > 4 ? "•" : "o"]([athletics])"
-			if(true_experience >= 2 && athletics == 0)
+			if((true_experience >= 2) && (athletics == 0))
 				dat += "<a href='?_src_=prefs;preference=athletics;task=input'>Increase([2])</a>"
-			else if(true_experience >= 2*athletics && athletics != 5 || athletics == 0 && true_experience >=2)
+			else if(((true_experience >= max(2, athletics * 2)) && (athletics != 5)) || ((athletics == 0) && (true_experience >= 2)))
 				dat += "<a href='?_src_=prefs;preference=athletics;task=input'>Increase([2*athletics])</a>"
 			dat += "<BR>"
 
@@ -638,7 +638,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						if (discipline.clane_restricted)
 							possible_new_disciplines -= discipline_type
 						qdel(discipline)
-					if (possible_new_disciplines.len)
+					if (possible_new_disciplines.len && (true_experience >= 10))
 						dat += "<a href='?_src_=prefs;preference=newdiscipline;task=input'>Learn a new Discipline (10)</a><BR>"
 
 			if(pref_species.name == "Ghoul")
@@ -650,7 +650,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					qdel(discipline)
 
 				var/list/possible_new_disciplines = subtypesof(/datum/discipline) - discipline_types
-				if (possible_new_disciplines.len)
+				if (possible_new_disciplines.len && (true_experience >= 10))
 					dat += "<a href='?_src_=prefs;preference=newghouldiscipline;task=input'>Learn a new Discipline (10)</a><BR>"
 
 			if(true_experience >= 3 && slotlocked)
@@ -1906,6 +1906,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						eye_color = sanitize_hexcolor(new_eyes)
 
 				if("newdiscipline")
+					if(true_experience < 10)
+						link_bug_fix = FALSE
+						return
 					var/list/possible_new_disciplines = subtypesof(/datum/discipline) - discipline_types
 					for (var/discipline_type in possible_new_disciplines)
 						var/datum/discipline/discipline = new discipline_type
@@ -1919,6 +1922,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						true_experience -= 10
 
 				if("newghouldiscipline")
+					if(true_experience < 10)
+						link_bug_fix = FALSE
+						return
 					var/list/possible_new_disciplines = subtypesof(/datum/discipline) - discipline_types
 					var/new_discipline = input(user, "Select your new Discipline", "Discipline Selection") as null|anything in possible_new_disciplines
 					if(new_discipline)
