@@ -234,6 +234,7 @@
 	desc = "A trendy looking satchel."
 	icon_state = "satchel-norm"
 	inhand_icon_state = "satchel-norm"
+	component_type = /datum/component/storage/concrete/vtm/satchel
 
 /obj/item/storage/backpack/satchel/leather
 	name = "leather satchel"
