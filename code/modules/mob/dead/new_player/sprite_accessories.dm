@@ -1063,10 +1063,6 @@
 	name = "Scully"
 	icon_state = "hair_scully"
 
-/datum/sprite_accessory/hair/shaggy
-	name = "Shaggy"
-	icon_state = "hair_shaggy"
-
 /datum/sprite_accessory/hair/shaved
 	name = "Shaved"
 	icon_state = "hair_shaved"
@@ -1206,10 +1202,6 @@
 /datum/sprite_accessory/hair/stacybun
 	name = "Stacy (Bun)"
 	icon_state = "hair_stacy_bun"
-
-/datum/sprite_accessory/hair/straight
-	name = "Straight"
-	icon_state = "hair_straight"
 
 /datum/sprite_accessory/hair/strict
 	name = "Strict"
