@@ -22,23 +22,24 @@
 	max_integrity = 300
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
 	worn_icon = 'code/modules/wod13/worn.dmi'
+	component_type = /datum/component/storage/concrete/vtm/backpack
 	body_worn = TRUE
 
-/obj/item/storage/backpack/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_combined_w_class = 21
-	STR.max_w_class = WEIGHT_CLASS_NORMAL
-	STR.max_items = 21
+//obj/item/storage/backpack/ComponentInitialize()
+//	. = ..()
+//	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+//	STR.max_combined_w_class = 21
+//	STR.max_w_class = WEIGHT_CLASS_NORMAL
+//	STR.max_items = 21
 
 /*
  * Backpack Types
  */
 
-/obj/item/storage/backpack/old/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_combined_w_class = 12
+//obj/item/storage/backpack/old/ComponentInitialize()
+//	. = ..()
+//	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+//	STR.max_combined_w_class = 12
 
 /obj/item/bag_of_holding_inert
 	name = "inert bag of holding"
@@ -348,12 +349,13 @@
 	inhand_icon_state = "duffel"
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
 	slowdown = 1
+	component_type = /datum/component/storage/concrete/vtm/duffel
 
-/obj/item/storage/backpack/duffelbag/ComponentInitialize()
-	. = ..()
-	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_w_class = WEIGHT_CLASS_BULKY
-	STR.max_combined_w_class = 30
+//obj/item/storage/backpack/duffelbag/ComponentInitialize()
+//	. = ..()
+//	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+//	STR.max_w_class = WEIGHT_CLASS_BULKY
+//	STR.max_combined_w_class = 30
 
 /obj/item/storage/backpack/duffelbag/cursed
 	name = "living duffel bag"

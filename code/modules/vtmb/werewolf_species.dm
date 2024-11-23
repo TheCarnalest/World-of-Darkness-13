@@ -4,7 +4,7 @@
 	default_color = "FFFFFF"
 	toxic_food = PINEAPPLE
 	species_traits = list(EYECOLOR, HAIR, FACEHAIR, LIPS, HAS_FLESH, HAS_BONE)
-	inherent_traits = list(TRAIT_ADVANCEDTOOLUSER, TRAIT_VIRUSIMMUNE)
+	inherent_traits = list(TRAIT_ADVANCEDTOOLUSER, TRAIT_VIRUSIMMUNE, TRAIT_PERFECT_ATTACKER)
 	use_skintones = TRUE
 	limbs_id = "human"
 	wings_icon = "Dragon"

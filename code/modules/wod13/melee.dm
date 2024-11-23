@@ -34,8 +34,8 @@
 
 /obj/item/melee/vampirearms/fireaxe/Initialize()
 	. = ..()
-	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, .proc/on_wield)
-	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, .proc/on_unwield)
+	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, PROC_REF(on_wield))
+	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, PROC_REF(on_unwield))
 
 /obj/item/melee/vampirearms/fireaxe/ComponentInitialize()
 	. = ..()
@@ -269,8 +269,8 @@
 
 /obj/item/melee/vampirearms/chainsaw/Initialize()
 	. = ..()
-	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, .proc/on_wield)
-	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, .proc/on_unwield)
+	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, PROC_REF(on_wield))
+	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, PROC_REF(on_unwield))
 
 /obj/item/melee/vampirearms/chainsaw/ComponentInitialize()
 	. = ..()
@@ -387,7 +387,7 @@
 	force = 40
 	throwforce = 25
 	w_class = WEIGHT_CLASS_BULKY
-	slot_flags = ITEM_SLOT_BACK
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT
 	attack_verb_continuous = list("attacks", "chops", "rocks", "hits")
 	attack_verb_simple = list("attack", "chop", "rock", "hit")
 	hitsound = 'code/modules/wod13/sounds/rock.ogg'
@@ -421,8 +421,8 @@
 
 /obj/item/melee/vampirearms/eguitar/Initialize()
 	. = ..()
-	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, .proc/on_wield)
-	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, .proc/on_unwield)
+	RegisterSignal(src, COMSIG_TWOHANDED_WIELD, PROC_REF(on_wield))
+	RegisterSignal(src, COMSIG_TWOHANDED_UNWIELD, PROC_REF(on_unwield))
 
 /obj/item/melee/vampirearms/eguitar/ComponentInitialize()
 	. = ..()
