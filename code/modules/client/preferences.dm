@@ -3085,13 +3085,16 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				adding_disciplines += discipline
 
 		for (var/datum/discipline/discipline in adding_disciplines)
-			var/datum/action/discipline/action = new
-			action.discipline = discipline
-			action.Grant(src)
-			discipline.post_gain(src)
+			give_discipline(discipline)
 
 		if(clane)
 			clane.post_gain(src)
+
+/mob/living/carbon/human/proc/give_discipline(datum/discipline/discipline)
+	var/datum/action/discipline/action = new
+	action.discipline = discipline
+	action.Grant(src)
+	discipline.post_gain(src)
 
 /datum/preferences/proc/can_be_random_hardcore()
 	if(parent.mob.mind.assigned_role in GLOB.command_positions) //No command staff

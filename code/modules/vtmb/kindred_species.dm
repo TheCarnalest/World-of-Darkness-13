@@ -187,6 +187,7 @@
 	bloodheal.Grant(C)
 	var/datum/action/blood_power/bloodpower = new()
 	bloodpower.Grant(C)
+	add_verb(C, /mob/living/carbon/human/verb/teach_discipline)
 
 /datum/species/kindred/on_species_loss(mob/living/carbon/human/C, datum/species/new_species, pref_load)
 	. = ..()
@@ -412,3 +413,51 @@
 
 /datum/species/kindred/check_roundstart_eligible()
 	return TRUE
+
+/mob/living/carbon/human/verb/teach_discipline(mob/living/carbon/human/student in (range(1, src) - src))
+	set name = "Teach Discipline"
+	set category = "IC"
+	set desc ="Teach a Discipline to a Kindred who has recently drank your blood. Costs 10 experience points."
+
+	var/datum/preferences/teacher_prefs = src.client.prefs
+	if (!student.client)
+		to_chat(src, "<span class='warning'>Your student needs to be a player!</span>")
+		return
+	var/datum/preferences/student_prefs = student.client.prefs
+
+	if (!iskindred(student))
+		to_chat(src, "<span class='warning'>Your student needs to be a vampire!</span>")
+		return
+	//checks that the teacher has blood bonded the student, this is something that needs to be reworked when blood bonds are made better
+	if (student.mind.enslaved_to != src)
+		to_chat(src, "<span class='warning'>You need to have fed your student your blood to teach them Disciplines!</span>")
+		return
+	if (student.stat >= UNCONSCIOUS)
+		to_chat(src, "<span class='warning'>Your student needs to be conscious!</span>")
+		return
+	if (teacher_prefs.true_experience < 10)
+		to_chat(src, "<span class='warning'>You don't have enough experience to teach them this Discipline!</span>")
+		return
+
+	var/possible_disciplines = teacher_prefs.discipline_types - student_prefs.discipline_types
+	var/teaching_discipline = input(src, "What Discipline do you want to teach [student.name]?", "Discipline Selection") as null|anything in possible_disciplines
+
+	if (teaching_discipline)
+		var/datum/discipline/giving_discipline = new teaching_discipline
+		if (giving_discipline.clane_restricted)
+			if (alert(src, "Are you sure you want to teach [student.name] [giving_discipline.name], one of your Clan's most tightly guarded secrets? This will cost 10 experience points.", "Confirmation", "Yes", "No") == "No")
+				qdel(giving_discipline)
+				return
+		else
+			if (alert(src, "Are you sure you want to teach [student.name] [giving_discipline.name]? This will cost 10 experience points.", "Confirmation", "Yes", "No") == "No")
+				qdel(giving_discipline)
+				return
+
+		visible_message("<span class='notice'>[src.name] begins mentoring [student.name] in [giving_discipline.name].</span>")
+		if (do_after(src, 30 SECONDS, student))
+			teacher_prefs.true_experience -= 10
+			student_prefs.discipline_types += teaching_discipline
+			student_prefs.discipline_levels += 1
+			student.give_discipline(giving_discipline)
+			student_prefs.save_character()
+			teacher_prefs.save_character()
