@@ -383,10 +383,6 @@
 	name = "CIA"
 	icon_state = "hair_cia"
 
-/datum/sprite_accessory/hair/clean
-	name = "Clean"
-	icon_state = "hair_clean"
-
 /datum/sprite_accessory/hair/coffeehouse
 	name = "Coffee House"
 	icon_state = "hair_coffeehouse"
