@@ -176,6 +176,8 @@
 	name = "\improper McLusky .50 caliber "
 	desc = "An extremely powerful, and rare, handcannon."
 	icon_state = "deagle50"
+	inhand_icon_state = "deagle"
+	worn_icon_state = "deagle"
 	mag_type = /obj/item/ammo_box/magazine/m50
 	fire_sound_volume = 125 //MY EARS
 
