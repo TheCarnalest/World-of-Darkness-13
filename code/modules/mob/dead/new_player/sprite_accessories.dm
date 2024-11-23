@@ -1241,7 +1241,7 @@
 
 /datum/sprite_accessory/hair/toriyama
 	name = "Toriyama"
-	icon_state = "*hair_toriyama"
+	icon_state = "hair_toriyama"
 
 /datum/sprite_accessory/hair/tressshoulder
 	name = "Tress Shoulder"
