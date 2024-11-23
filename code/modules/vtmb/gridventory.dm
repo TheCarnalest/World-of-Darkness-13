@@ -81,8 +81,8 @@ VENTORY!
 	screen_max_rows = 7
 
 /datum/component/storage/concrete/vtm/duffel
-	screen_max_columns = 6
-	screen_max_rows = 8
+	screen_max_columns = 8
+	screen_max_rows = 6
 
 /datum/component/storage/concrete/vtm/firstaid
 	screen_max_columns = 4
@@ -911,6 +911,10 @@ VENTORY!
 /obj/item/shield/door
 	grid_width = 7 GRID_BOXES
 	grid_height = 9 GRID_BOXES
+
+/obj/item/ammo_box/vampire
+	grid_width = 2 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/ammo_box/magazine/glock9mm
 	grid_width = 1 GRID_BOXES
