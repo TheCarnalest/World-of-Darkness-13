@@ -120,4 +120,4 @@
 
 	var/soul_state = SOUL_PRESENT
 
-	var/atom/movable/screen/disciplines/toggled
+//	var/atom/movable/screen/disciplines/toggled

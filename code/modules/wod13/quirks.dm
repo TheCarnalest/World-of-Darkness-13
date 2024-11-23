@@ -427,7 +427,7 @@ Dancer
 		L.transform = L.transform.Scale(1, SHORT)
 		L.transform = L.transform.Translate(0, 16*(SHORT-1)) //Makes sure you stand on the tile no matter the size - sand
 	attached_targets[target] = comsig_target
-	RegisterSignal(target, comsig, .proc/check_loss) //Second arg of the signal will be checked against the comsig_target.
+	RegisterSignal(target, comsig, PROC_REF(check_loss)) //Second arg of the signal will be checked against the comsig_target.
 
 /datum/element/dwarfism/proc/check_loss(mob/living/L, comsig_target)
 	if(attached_targets[L] == comsig_target)
@@ -466,7 +466,7 @@ Dancer
 	var/mob/living/carbon/human/L = target
 	L.transform = L.transform.Scale(81/100, 81/100)
 	attached_targets[target] = comsig_target
-	RegisterSignal(target, comsig, .proc/check_loss) //Second arg of the signal will be checked against the comsig_target.
+	RegisterSignal(target, comsig, PROC_REF(check_loss)) //Second arg of the signal will be checked against the comsig_target.
 
 /datum/element/children/proc/check_loss(mob/living/L, comsig_target)
 	if(attached_targets[L] == comsig_target)
@@ -718,7 +718,7 @@ Dancer
 		L.transform = L.transform.Scale(1, TALL)
 		L.transform = L.transform.Translate(0, 16*(TALL-1)) //Makes sure you stand on the tile no matter the size - sand
 	attached_targets[target] = comsig_target
-	RegisterSignal(target, comsig, .proc/check_loss) //Second arg of the signal will be checked against the comsig_target.
+	RegisterSignal(target, comsig, PROC_REF(check_loss)) //Second arg of the signal will be checked against the comsig_target.
 
 /datum/element/giantism/proc/check_loss(mob/living/L, comsig_target)
 	if(attached_targets[L] == comsig_target)

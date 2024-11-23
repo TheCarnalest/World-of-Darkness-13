@@ -1,3 +1,103 @@
+/mob/living
+	var/datum/action/discipline/discipline_ranged
+
+/datum/action/discipline
+	check_flags = AB_CHECK_HANDS_BLOCKED|AB_CHECK_CONSCIOUS
+	button_icon = 'code/modules/wod13/UI/actions.dmi' //This is the file for the BACKGROUND icon
+	background_icon_state = "discipline" //And this is the state for the background icon
+
+	icon_icon = 'code/modules/wod13/UI/actions.dmi' //This is the file for the ACTION icon
+	button_icon_state = "discipline" //And this is the state for the action icon
+	vampiric = TRUE
+	var/level_icon_state = "1" //And this is the state for the action icon
+	var/datum/discipline/discipline
+	var/active_check = FALSE
+
+/datum/action/discipline/Trigger()
+	if(discipline && isliving(owner))
+		var/mob/living/owning = owner
+		if(discipline.ranged)
+			if(!active_check)
+				active_check = TRUE
+				if(owning.discipline_ranged)
+					owning.discipline_ranged.Trigger()
+				owning.discipline_ranged = src
+				if(button)
+					button.color = "#970000"
+			else
+				active_check = FALSE
+				owning.discipline_ranged = null
+				button.color = "#ffffff"
+		else
+			if(discipline)
+				if(discipline.check_activated(owner, owner))
+					discipline.activate(owner, owner)
+	. = ..()
+
+/datum/action/discipline/ApplyIcon(atom/movable/screen/movable/action_button/current_button, force = FALSE)
+	if(owner)
+		if(owner.client)
+			if(owner.client.prefs)
+				if(owner.client.prefs.old_discipline)
+					button_icon = 'code/modules/wod13/disciplines.dmi'
+					icon_icon = 'code/modules/wod13/disciplines.dmi'
+				else
+					button_icon = 'code/modules/wod13/UI/actions.dmi'
+					icon_icon = 'code/modules/wod13/UI/actions.dmi'
+	if(icon_icon && button_icon_state && ((current_button.button_icon_state != button_icon_state) || force))
+		current_button.cut_overlays(TRUE)
+		if(discipline)
+			current_button.name = discipline.name
+			current_button.desc = discipline.desc
+			current_button.add_overlay(mutable_appearance(icon_icon, "[discipline.icon_state]"))
+			current_button.button_icon_state = "[discipline.icon_state]"
+			if(discipline.leveled)
+				current_button.add_overlay(mutable_appearance(icon_icon, "[discipline.level_casting]"))
+		else
+			current_button.add_overlay(mutable_appearance(icon_icon, button_icon_state))
+			current_button.button_icon_state = button_icon_state
+
+/datum/action/discipline/proc/switch_level()
+	SEND_SOUND(owner, sound('code/modules/wod13/sounds/highlight.ogg', 0, 0, 50))
+	if(discipline)
+		if(discipline.level_casting < discipline.level)
+			discipline.level_casting = discipline.level_casting+1
+			if(button)
+				ApplyIcon(button, TRUE)
+			return
+		else
+			discipline.level_casting = 1
+			if(button)
+				ApplyIcon(button, TRUE)
+			return
+
+/mob/living/Click()
+	if(isliving(usr) && usr != src)
+		var/mob/living/L = usr
+		if(L.discipline_ranged)
+			L.discipline_ranged.active_check = FALSE
+			if(L.discipline_ranged.button)
+				animate(L.discipline_ranged.button, color = "#ffffff", time = 10, loop = 1)
+			if(L.discipline_ranged.discipline.check_activated(src, usr))
+				L.discipline_ranged.discipline.activate(src, usr)
+			L.discipline_ranged = null
+	. = ..()
+
+//			if(DISCP)
+//				if(DISCP.active)
+//					DISCP.range_activate(src, SH)
+//					SH.face_atom(src)
+//					return
+
+/atom/movable/screen/movable/action_button/Click(location,control,params)
+	if(istype(linked_action, /datum/action/discipline))
+		var/list/modifiers = params2list(params)
+		if(LAZYACCESS(modifiers, "right"))
+			var/datum/action/discipline/D = linked_action
+			D.switch_level()
+			return
+	. = ..()
+
 /datum/discipline
 	///Name of this Discipline.
 	var/name = "Vampiric Discipline"
@@ -17,6 +117,7 @@
 	var/violates_masquerade = FALSE
 	///What rank, or how many dots the caster has in this Discipline.
 	var/level = 1
+	var/leveled = TRUE
 	///The sound that plays when any power of this Discipline is activated.
 	var/activate_sound = 'code/modules/wod13/sounds/bloodhealing.ogg'
 	///Whether this Discipline's cooldowns are multipled by the level it's being casted at.
@@ -30,6 +131,8 @@
 	var/clane_restricted = FALSE
 	///Whether this Discipline is restricted from affecting dead people.
 	var/dead_restricted = TRUE
+
+	var/next_fire_after = 0
 
 /datum/discipline/proc/post_gain(var/mob/living/carbon/human/H)
 	return
@@ -131,6 +234,11 @@
 	if(HAS_TRAIT(caster, TRAIT_HUNGRY))
 		plus = 1
 	if(caster.bloodpool < cost+plus)
+		SEND_SOUND(caster, sound('code/modules/wod13/sounds/need_blood.ogg', 0, 0, 75))
+		to_chat(caster, "<span class='warning'>You don't have enough <b>BLOOD</b> to use this discipline.</span>")
+		return FALSE
+	if(world.time < next_fire_after)
+		to_chat(caster, "<span class='warning'>It's too soon to use this discipline again!</span>")
 		return FALSE
 	if(target.stat == DEAD && dead_restricted)
 		return FALSE
@@ -171,6 +279,11 @@
 		return
 	if(!caster)
 		return
+
+	if(leveldelay)
+		next_fire_after = world.time+delay*level_casting
+	else
+		next_fire_after = world.time+delay
 //	if(!target)
 //		var/choice = input(caster, "Choose your target", "Available Targets") as mob in oviewers(4, caster)
 //		if(choice)

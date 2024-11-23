@@ -1,11 +1,11 @@
 
 /atom/movable/screen/ghost
-	icon = 'icons/hud/screen_ghost.dmi'
+	icon = 'code/modules/wod13/UI/buttons32.dmi'
 	plane = 45 // [ChillRaccoon] - 42 was a value by default
-
+/*
 /atom/movable/screen/ghost/MouseEntered()
 	flick(icon_state + "_anim", src)
-
+*/
 /atom/movable/screen/ghost/jumptomob
 	name = "Jump to mob"
 	icon_state = "jumptomob"
@@ -95,15 +95,15 @@
 	using.hud = src
 	static_inventory += using
 
-	using = new /atom/movable/screen/ghost/pai()
-	using.screen_loc = ui_ghost_pai
-	using.hud = src
-	static_inventory += using
+//	using = new /atom/movable/screen/ghost/pai()
+//	using.screen_loc = ui_ghost_pai
+//	using.hud = src
+//	static_inventory += using
 
-	using = new /atom/movable/screen/language_menu
-	using.icon = ui_style
-	using.hud = src
-	static_inventory += using
+//	using = new /atom/movable/screen/language_menu
+//	using.icon = ui_style
+//	using.hud = src
+//	static_inventory += using
 
 
 	// [ChillRaccoon] - LFWB like GUI implementation
