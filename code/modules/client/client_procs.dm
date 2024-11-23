@@ -1094,9 +1094,9 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	set name = "Toggle Fullscreen"
 	set category = "OOC"
 
-	prefs.fullscreen = !prefs.fullscreen
+	fullscreen = !fullscreen
 
-	if (prefs.fullscreen)
+	if (fullscreen)
 		winset(usr, "mainwindow", "menu=\"\"")
 		winset(usr, "mainwindow","titlebar=false")
 		winset(usr, "mainwindow","can-resize=false")
