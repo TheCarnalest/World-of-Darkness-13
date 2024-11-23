@@ -3349,6 +3349,7 @@
 #include "code\modules\vtmb\faith.dm"
 #include "code\modules\vtmb\frenzy.dm"
 #include "code\modules\vtmb\ghoul_species.dm"
+#include "code\modules\vtmb\gridventory.dm"
 #include "code\modules\vtmb\jobs.dm"
 #include "code\modules\vtmb\kindred_species.dm"
 #include "code\modules\vtmb\mysticism.dm"
