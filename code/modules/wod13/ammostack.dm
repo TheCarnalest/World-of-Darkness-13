@@ -220,6 +220,8 @@
 /obj/item/ammo_box/vampire
 	icon = 'code/modules/wod13/ammo.dmi'
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	w_class = WEIGHT_CLASS_NORMAL
+///9mm/////////////
 
 /obj/item/ammo_box/vampire/c9mm
 	name = "ammo box (9mm)"
@@ -227,6 +229,15 @@
 	ammo_type = /obj/item/ammo_casing/vampire/c9mm
 	max_ammo = 100
 
+/obj/item/ammo_box/vampire/c9mm/moonclip
+	name = "ammo clip (9mm)"
+	desc = "a 3 round clip to hold 9mm rounds. For once, calling it a clip is accurate."
+	icon_state = "9moonclip"
+	max_ammo = 3
+	w_class = WEIGHT_CLASS_TINY
+	multiple_sprites = AMMO_BOX_PER_BULLET
+
+//////////////////
 /obj/item/ammo_box/vampire/c45acp
 	name = "ammo box (.45 ACP)"
 	icon_state = "45box"
