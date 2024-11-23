@@ -172,15 +172,15 @@
 	icon_state = "hair_bedheadv4"
 
 /datum/sprite_accessory/hair/bedheadlong
-	name = "Bedhead (Long)"
+	name = "Long Bedhead"
 	icon_state = "hair_long_bedhead"
 
 /datum/sprite_accessory/hair/bedheadfloorlength
-	name = "Bedhead (Floorlength)"
+	name = "Floorlength Bedhead"
 	icon_state = "hair_floorlength_bedhead"
 
 /datum/sprite_accessory/hair/bedheadlonger
-	name = "Bedhead (Longest)"
+	name = "Longest Bedhead"
 	icon_state = "hair_longer_bedhead"
 
 /datum/sprite_accessory/hair/beehive
@@ -500,7 +500,7 @@
 	icon_state = "hair_emoshort"
 
 /datum/sprite_accessory/hair/emofrine
-	name = "Emo (Fringe)"
+	name = "Emo Fringe"
 	icon_state = "hair_emofringe"
 
 /datum/sprite_accessory/hair/nofade
