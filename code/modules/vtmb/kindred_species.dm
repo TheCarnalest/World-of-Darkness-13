@@ -461,3 +461,4 @@
 			student.give_discipline(giving_discipline)
 			student_prefs.save_character()
 			teacher_prefs.save_character()
+			//[Lucia] TODO: make this respect Clan restrictions and make Old Clan Tzimisce into normal Tzimisce
