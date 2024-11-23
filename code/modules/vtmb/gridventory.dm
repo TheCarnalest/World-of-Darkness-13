@@ -908,25 +908,9 @@ VENTORY!
 	grid_width = 4 GRID_BOXES
 	grid_height = 4 GRID_BOXES
 
-/obj/item/ammo_box/vampire
-	grid_width = 2 GRID_BOXES
-	grid_height = 2 GRID_BOXES
-
 /obj/item/ammo_box/magazine/vamp9mm
 	grid_width = 1 GRID_BOXES
 	grid_height = 2 GRID_BOXES
-
-/obj/item/ammo_box/vampire/c9mm/moonclip
-	grid_width = 1 GRID_BOXES
-	grid_height = 1 GRID_BOXES
-
-/obj/item/gun/ballistic/automatic/vampire/deagle
-	grid_width = 2 GRID_BOXES
-	grid_height = 1 GRID_BOXES
-
-/obj/item/gun/ballistic/automatic/vampire/glock19
-	grid_width = 2 GRID_BOXES
-	grid_height = 1 GRID_BOXES
 
 /obj/item/gun/ballistic/automatic/vampire/uzi
 	grid_width = 2 GRID_BOXES

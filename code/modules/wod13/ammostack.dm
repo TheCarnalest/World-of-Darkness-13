@@ -220,7 +220,7 @@
 /obj/item/ammo_box/vampire
 	icon = 'code/modules/wod13/ammo.dmi'
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
-
+	w_class = WEIGHT_CLASS_NORMAL
 ///9mm/////////////
 
 /obj/item/ammo_box/vampire/c9mm
@@ -234,6 +234,7 @@
 	desc = "a 3 round clip to hold 9mm rounds. For once, calling it a clip is accurate."
 	icon_state = "9moonclip"
 	max_ammo = 3
+	w_class = WEIGHT_CLASS_TINY
 	multiple_sprites = AMMO_BOX_PER_BULLET
 
 //////////////////
