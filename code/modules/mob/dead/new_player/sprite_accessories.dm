@@ -87,10 +87,6 @@
 	name = "Afro (Large)"
 	icon_state = "hair_bigafro"
 
-/datum/sprite_accessory/hair/hugeafro
-	name = "Afro (Huge)"
-	icon_state = "hair_hugeafro"
-
 /datum/sprite_accessory/hair/afropuffdouble
 	name = "Afro Puff (Double)"
 	icon_state = "hair_afropuffdouble"
