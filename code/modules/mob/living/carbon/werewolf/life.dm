@@ -6,7 +6,7 @@
 /mob/living/carbon/Life()
 	. = ..()
 	if(isgarou(src) || iswerewolf(src))
-		if(key && stat <= 3)
+		if(key && stat <= UNCONSCIOUS)
 			var/datum/preferences/P = GLOB.preferences_datums[ckey(key)]
 			if(P)
 				if(P.masquerade != masquerade)
