@@ -213,6 +213,8 @@
 /datum/movespeed_modifier/crinosform
 	multiplicative_slowdown = -0.25
 
+/datum/movespeed_modifier/silver_slowdown = 0.3
+
 /mob/living/carbon/werewolf/crinos/Initialize()
 	. = ..()
 	var/datum/action/change_apparel/A = new()
