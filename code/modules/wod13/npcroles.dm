@@ -77,55 +77,55 @@
 
 	//[Lucia] - this has been edited to have better English because it included slurs, but none of the others have yet
 	male_phrases = list(
-		"What are you staring at, bitch?",
-		"Are you threatening me?",
-		"You need something, motherfucker?",
-		"You've got some balls, bitchass.",
-		"Back off before I fuck you up!",
-		"Get lost, liberal.",
-		"What don't you understand?",
-		"Go away.",
-		"Piss off.",
-		"Fuck you."
+		"Whatchu staring at?",
+		"Tryina threaten me or sumthin'?",
+		"You need somethin'?",
+		"You've got some balls, thats for sure.",
+		"You know who I work for?",
+		"Get the hell outta here, for I get my gang on yo ass.",
+		"you need sumn' punk?",
+		"Get outta this side of town.",
+		"Think you scare me? you know who I work for?",
+		"Think you're hot shit?"
 	)
 	neutral_phrases = list(
-		"What are you staring at, bitch?",
-		"Are you threatening me?",
-		"You need something, motherfucker?",
-		"You've got some balls, bitchass.",
-		"Back off before I fuck you up!",
-		"Get lost, liberal.",
-		"What don't you understand?",
-		"Go away.",
-		"Piss off.",
-		"Fuck you."
+		"Why you starin' at me like that?",
+		"another dumbass tryin' to look threatening.",
+		"Halloweens over, whats with the costumes.",
+		"I think that whore gave me the clap",
+		"gotta get home soon, family to feed and all that.",
+		"I think.. I miss my wife.",
+		"What? you need somethin?",
+		"outta my way.",
+		"Piss off asshole, ain't in the mood for your shit.",
+		"Fuck off."
 	)
 	random_phrases = list(
-		"Dumbass!",
-		"I miss my lady...",
+		"Dumbass.",
+		"I miss my girl...",
 		"What's wrong bro?",
-		"GOOD. FUCKING. EVENING.",
-		"I saw you selling weed!",
-		"We're gonna die...",
+		"evenin.",
+		"Y'know I saw you sellin' dope, right?",
+		"We're fucking doomed...",
 		"It's over...",
 		"Guh..."
 	)
 	answer_phrases = list(
 		"I've got it...",
-		"Fucking apocalypse.",
+		"Fucking hellhole, this whole town.",
 		"Shit, man.",
-		"Bitch, do I know you?",
+		"You don' look like I know you.. DO I know you?",
 		"Right.",
-		"Uhmm...",
-		"Had some good food."
+		"Uhmm... Cool I guess",
+		"Had some good food over at gummaguts, stomach hurts though..."
 	)
 	help_phrases = list(
-		"God damn!",
-		"FUCK OFF!!",
-		"What the hell!?",
-		"Fucking hell!",
-		"Get gunned, bros!",
-		"Lie down and die!"
+		"God , not again!",
+		"Fucking FREAK!",
+		"What the hell are you doing!?",
+		"You fucked up!",
+		"check yo self fool!",
+		"we got shit shit that'll shut you up for good!"
 	)
 
 /datum/socialrole/usualmale
@@ -214,11 +214,11 @@
 	)
 
 	male_phrases = list(
-		"What do you need, mate?",
-		"Do you need something?",
-		"Can you repeat what you were saying?",
-		"I'm late, don't interrupt me.",
-		"Check bar for new company...",
+		"need something? orrr are you just trying to waste my time.",
+		"whats up?",
+		"what'd you say?",
+		"I'm late, my wife is gonna kill me.",
+		"You heard about th new place in town?...",
 		"Can't speak right now.",
 		"Good night I guess?",
 		"Guh...",
@@ -275,7 +275,7 @@
 	preferedgender = FEMALE
 	female_names = null
 	surnames = null
-
+// [dentbrain] man... actually coming up with shit for people to say is HARD work........
 	hair_colors = list("040404",	//Black
 										"120b05",	//Dark Brown
 										"342414",	//Brown
@@ -645,38 +645,24 @@
 					/obj/item/stack/dollar/hundred)
 
 	male_phrases = list("Did you ask something?",
+											"My stocks! my stocks! their Faalling....",
+											"You know, eventually we'll have our money on the computer, and the computer will do our taxes for us!",
+											"I'm going somewhere important... unlike you.",
+											"Get lost, Filthy hobo...",
+											"ugh, work has me up so late, they better be paying me more...",
+											"Finally quit that stupid job... so glad I moved here.")
+	neutral_phrases = list("Did you say somethin..?",
 											"Excuse me?",
-											"What?",
-											"I'm going somewhere important.",
-											"Get lost, peasant...",
-											"Whaa-aat...",
-											"Stop doing that, imbecile.")
-	neutral_phrases = list("Did you ask something?",
-											"Excuse me?",
-											"What?",
-											"I'm going somewhere important.",
-											"Get lost, peasant...",
-											"Whaa-aat...",
-											"Stop doing that, imbecile.")
-	random_phrases = list("Хэй, приятель!",
-												"Эхх, сейчас бы пинту пива...",
-												"В чём дело, друг?",
-												"Хочу поприветствоваться.",
-												"Ого, а мы встречались раньше?",
-												"Слышали? Что-то неладное творится в городе.",
-												"Оо-о, чувак...")
-	answer_phrases = list("Стараюсь...",
-												"Неописуемо.",
-												"Плохо, друг.",
-												"Вы кажется перепутали меня с кем-то.",
-												"Да, точно.",
-												"О'ке-ей...",
-												"Хорошо.")
+											"hm? what is it.?",
+											"I've got to get going, got somewhere important to be.",
+											"Get lost, jackass, get a job or something",
+											"huh..? sorry, the coffee hasn't kicked in.",
+											"it's the middle of the night, I don't wanna deal with your shit right now.")
 	help_phrases = list("What in the god damn?!",
-											"Go away or I will call the cops!!",
-											"What is happening?!",
-											"Stop doing this!",
-											"Someone, call the ambulance!")
+											"I'm Calling the cops!",
+											"oh HELL NO.",
+											"That ain't gonna be happening to me!",
+											"Someone, call the cops!")
 
 /datum/socialrole/richfemale
 	s_tones = list("albino")
@@ -730,12 +716,12 @@
 					/obj/item/stack/dollar/fifty,
 					/obj/item/stack/dollar/hundred)
 
-	female_phrases = list("Did you ask something?",
-											"Excuse me?",
-											"What?",
-											"I'm going somewhere important.",
-											"Get lost, peasant...",
-											"Whaa-aat...",
+	female_phrases = list("whaddya want, I'm busy!",
+											"Excuse me, do you know the way to the pyramid?",
+											"...What?",
+											"I'm going somewhere important, not like you'd get it.",
+											"Get lost, filthy hobo...",
+											"Have you been to the bar tonight? people go there all the time and sit there for the entire night, it's crazy...",
 											"Stop doing that, imbecile.")
 	neutral_phrases = list("Did you ask something?",
 											"Excuse me?",
@@ -744,21 +730,7 @@
 											"Get lost, peasant...",
 											"Whaa-aat...",
 											"Stop doing that, imbecile.")
-	random_phrases = list("Хэй, пышка!",
-												"Эхх, сейчас бы вина...",
-												"В чём дело?",
-												"Приветики.",
-												"Ого, а мы встречались раньше?",
-												"Слышали? Что-то неладное творится в городе.",
-												"Оо-о, ничего себе...")
-	answer_phrases = list("Стараюсь...",
-												"Неописуемо.",
-												"Плохо, пупсик.",
-												"Вы кажется перепутали меня с кем-то.",
-												"Да, точно.",
-												"О'ке-ей...",
-												"Хорошо.")
-	help_phrases = list("What in the god damn?!",
+	help_phrases = list("!",
 											"Go away or I will call the cops!!",
 											"What is happening?!",
 											"Stop doing this!",
