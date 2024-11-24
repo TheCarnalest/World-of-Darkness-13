@@ -17,21 +17,21 @@
 		H.generation = 13
 		H.maxHealth = round((initial(H.maxHealth)+(initial(H.maxHealth)/4)*H.physique))
 		H.health = round((initial(H.maxHealth)+(initial(H.maxHealth)/4)*H.physique))
-		for(var/atom/movable/screen/blood/B in H.hud_used.infodisplay)
-			B.icon_state = null
-		for(var/atom/movable/screen/healths/HE in H.hud_used.infodisplay)
-			HE.icon = 'code/modules/wod13/ghoul_health.dmi'
-		for(var/atom/movable/screen/drinkblood/DB in H.hud_used.static_inventory)
-			DB.icon_state = null
-		for(var/atom/movable/screen/bloodheal/BH in H.hud_used.static_inventory)
-			BH.icon_state = null
-		for(var/atom/movable/screen/bloodpower/BP in H.hud_used.static_inventory)
-			BP.icon_state = null
-		for(var/atom/movable/screen/disciplines/DI in H.hud_used.static_inventory)
-			DI.icon_state = null
+//		for(var/atom/movable/screen/blood/B in H.hud_used.infodisplay)
+//			B.icon_state = null
+//		for(var/atom/movable/screen/healths/HE in H.hud_used.infodisplay)
+//			HE.icon = 'code/modules/wod13/ghoul_health.dmi'
+//		for(var/atom/movable/screen/drinkblood/DB in H.hud_used.static_inventory)
+//			DB.icon_state = null
+//		for(var/atom/movable/screen/bloodheal/BH in H.hud_used.static_inventory)
+//			BH.icon_state = null
+//		for(var/atom/movable/screen/bloodpower/BP in H.hud_used.static_inventory)
+//			BP.icon_state = null
+//		for(var/atom/movable/screen/disciplines/DI in H.hud_used.static_inventory)
+//			DI.icon_state = null
 		for(var/datum/action/A in H.actions)
 			if(A.vampiric)
-				qdel(A)
+				A.Remove(H)
 		var/datum/hud/HD = H.hud_used
 		var/atom/movable/screen/transform_werewolf
 		transform_werewolf = new /atom/movable/screen/transform_lupus()

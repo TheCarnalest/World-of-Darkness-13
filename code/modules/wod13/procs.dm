@@ -1,3 +1,26 @@
+/mob/living/carbon/human/proc/AdminAdjustHumanity(var/value)
+	var/enlight = FALSE
+	if(!iskindred(src))
+		return
+	if(mind)
+		if(clane)
+			enlight = clane.enlightement
+
+	if(value > 0)
+		humanity += value
+		SEND_SOUND(src, sound('code/modules/wod13/sounds/humanity_gain.ogg', 0, 0, 75))
+		if(enlight)
+			to_chat(src, "<span class='userhelp'><b>ENLIGHTENMENT INCREASED!</b></span>")
+		else
+			to_chat(src, "<span class='userhelp'><b>HUMANITY INCREASED!</b></span>")
+	else if(value < 0)
+		humanity += value
+		SEND_SOUND(src, sound('code/modules/wod13/sounds/humanity_loss.ogg', 0, 0, 75))
+		if(enlight)
+			to_chat(src, "<span class='userdanger'><b>ENLIGHTENMENT DECREASED!</b></span>")
+		else
+			to_chat(src, "<span class='userdanger'><b>HUMANITY DECREASED!</b></span>")
+
 /mob/living/carbon/human/proc/AdjustHumanity(var/value, var/limit)
 	if(!iskindred(src))
 		return
@@ -42,6 +65,27 @@
 						humanity = min(limit, humanity+(value*mod))
 						SEND_SOUND(src, sound('code/modules/wod13/sounds/humanity_gain.ogg', 0, 0, 75))
 						to_chat(src, "<span class='userhelp'><b>HUMANITY INCREASED!</b></span>")
+
+/mob/living/carbon/human/proc/AdminAdjustMasquerade(var/value)
+	if(!iskindred(src) && !isghoul(src))
+		return
+	if(value < 0)
+		if(masquerade > 0)
+			masquerade = max(0, masquerade+value)
+			SEND_SOUND(src, sound('code/modules/wod13/sounds/masquerade_violation.ogg', 0, 0, 75))
+			to_chat(src, "<span class='userdanger'><b>MASQUERADE VIOLATION!</b></span>")
+	if(value > 0)
+		for(var/mob/living/carbon/human/H in GLOB.player_list)
+			H.voted_for -= dna.real_name
+		if(masquerade < 5)
+			masquerade = min(5, masquerade+value)
+			SEND_SOUND(src, sound('code/modules/wod13/sounds/general_good.ogg', 0, 0, 75))
+			to_chat(src, "<span class='userhelp'><b>MASQUERADE REINFORCED!</b></span>")
+		SSbad_guys_party.next_fire = max(world.time, SSbad_guys_party.next_fire+600)
+		if(masquerade > 2)
+			GLOB.masquerade_breakers_list -= src
+		else if(masquerade < 3)
+			GLOB.masquerade_breakers_list |= src
 
 /mob/living/carbon/human/proc/AdjustMasquerade(var/value)
 	if(!iskindred(src) && !isghoul(src))

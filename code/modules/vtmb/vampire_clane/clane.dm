@@ -8,6 +8,7 @@ And it also helps for the character set panel
 	var/name = "Caitiff"
 	var/desc = "The clanless. The rabble. Of no importance."
 	var/list/clane_disciplines = list() //discipline datums
+	var/list/restricted_disciplines = list()
 	var/datum/outfit/clane_outfit
 	var/curse = "None."
 	var/list/allowed_jobs = list()
@@ -120,16 +121,3 @@ And it also helps for the character set panel
 			var/obj/effect/landmark/latejoin_masquerade/LM = pick(GLOB.masquerade_latejoin)
 			if(LM)
 				H.forceMove(LM.loc)
-	if(H.hud_used)
-		if(H.hud_used.discipline1_icon)
-			if(H.hud_used.discipline1_icon.dscpln)
-				H.hud_used.discipline1_icon.dscpln.post_gain(H)
-		if(H.hud_used.discipline2_icon)
-			if(H.hud_used.discipline2_icon.dscpln)
-				H.hud_used.discipline2_icon.dscpln.post_gain(H)
-		if(H.hud_used.discipline3_icon)
-			if(H.hud_used.discipline3_icon.dscpln)
-				H.hud_used.discipline3_icon.dscpln.post_gain(H)
-		if(H.hud_used.discipline4_icon)
-			if(H.hud_used.discipline4_icon.dscpln)
-				H.hud_used.discipline4_icon.dscpln.post_gain(H)

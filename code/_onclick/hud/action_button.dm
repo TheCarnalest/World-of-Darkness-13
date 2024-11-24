@@ -201,6 +201,8 @@
 			if(reload_screen)
 				client.screen += A.button
 	else
+		hud_used.spellbuttons = 1
+		hud_used.actionbuttons = 1
 		for(var/datum/action/A in actions)
 			A.UpdateButtonIcon()
 			var/atom/movable/screen/movable/action_button/B = A.button
@@ -209,7 +211,12 @@
 			if(B.moved)
 				B.screen_loc = B.moved
 			else
-				B.screen_loc = hud_used.ButtonNumberToScreenCoords(button_number)
+				if(A.vampiric)
+					B.screen_loc = hud_used.ButtonNumberToScreenCoords(hud_used.spellbuttons, A.vampiric)
+					hud_used.spellbuttons = hud_used.spellbuttons+1
+				else
+					B.screen_loc = hud_used.ButtonNumberToScreenCoords(hud_used.actionbuttons, A.vampiric)
+					hud_used.actionbuttons = hud_used.actionbuttons+1
 			if(reload_screen)
 				client.screen += B
 
@@ -218,7 +225,8 @@
 			return
 
 	if(!hud_used.hide_actions_toggle.moved)
-		hud_used.hide_actions_toggle.screen_loc = hud_used.ButtonNumberToScreenCoords(button_number+1)
+		hud_used.hide_actions_toggle.screen_loc = hud_used.ButtonNumberToScreenCoords(hud_used.actionbuttons, FALSE)
+		hud_used.actionbuttons = hud_used.actionbuttons+1
 	else
 		hud_used.hide_actions_toggle.screen_loc = hud_used.hide_actions_toggle.moved
 	if(reload_screen)
@@ -228,16 +236,25 @@
 
 #define AB_MAX_COLUMNS 10
 
-/datum/hud/proc/ButtonNumberToScreenCoords(number) // TODO : Make this zero-indexed for readabilty
+/datum/hud
+	var/actionbuttons = 0
+	var/spellbuttons = 0
+
+/datum/hud/proc/ButtonNumberToScreenCoords(number, spell) // TODO : Make this zero-indexed for readabilty
 	var/row = round((number - 1)/AB_MAX_COLUMNS)
 	var/col = ((number - 1)%(AB_MAX_COLUMNS)) + 1
 
 	var/coord_col = "+[col-1]"
 //	var/coord_col_offset = 4 + 2 * col
+	if(spell)
+		var/coord_row = "[row ? row : "+0"]"
 
-	var/coord_row = "[row ? -row : "+0"]"
+		return "WEST[coord_col],SOUTH[coord_row]:+6"	//:[coord_col_offset]
+	else
+		var/coord_row = "[row ? -row : "+0"]"
 
-	return "WEST[coord_col],NORTH[coord_row]:-6"	//:[coord_col_offset]
+		return "WEST[coord_col],NORTH[coord_row]:-6"	//:[coord_col_offset]
+
 
 /datum/hud/proc/SetButtonCoords(atom/movable/screen/button,number)
 	var/row = round((number-1)/AB_MAX_COLUMNS)

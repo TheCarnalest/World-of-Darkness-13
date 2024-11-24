@@ -7,7 +7,7 @@
 
 	var/datum/hud/H = user.hud_used
 	var/atom/movable/screen/craft/C = new()
-	C.icon = H.ui_style
+	C.icon = 'code/modules/wod13/UI/buttons_wide.dmi'
 	H.static_inventory += C
 	CL.screen += C
 	RegisterSignal(C, COMSIG_CLICK, PROC_REF(component_ui_interact))
