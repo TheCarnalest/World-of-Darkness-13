@@ -193,6 +193,8 @@
 	bloodheal.Grant(C)
 	var/datum/action/blood_power/bloodpower = new()
 	bloodpower.Grant(C)
+	for (var/obj/item/bodypart/bodypart in C.bodyparts)
+		bodypart.max_damage *= 1.5
 
 /datum/species/kindred/on_species_loss(mob/living/carbon/human/C, datum/species/new_species, pref_load)
 	. = ..()

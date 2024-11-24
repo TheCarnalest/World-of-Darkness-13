@@ -166,7 +166,7 @@ GENE SCANNER
 		mob_status = "<span class='alert'><b>Deceased</b></span>"
 		oxy_loss = max(rand(1, 40), oxy_loss, (300 - (tox_loss + fire_loss + brute_loss)))
 
-	if(HAS_TRAIT(M, TRAIT_FAKEDEATH) || HAS_TRAIT(M, TRAIT_TORPOR) && !advanced)
+	if(HAS_TRAIT(M, TRAIT_FAKEDEATH) && !advanced)
 		mob_status = "<span class='alert'><b>Deceased</b></span>"
 		oxy_loss = max(rand(1, 40), oxy_loss, (300 - (tox_loss + fire_loss + brute_loss))) // Random oxygen loss
 
@@ -370,7 +370,7 @@ GENE SCANNER
 	render_list += "<span class='info ml-1'>Body temperature: [round(M.bodytemperature-T0C,0.1)] &deg;C ([round(M.bodytemperature*1.8-459.67,0.1)] &deg;F)</span>\n"
 
 	// Time of death
-	if(M.tod && (M.stat == DEAD || ((HAS_TRAIT(M, TRAIT_FAKEDEATH)) || ((HAS_TRAIT(M, TRAIT_TORPOR))) && !advanced)))
+	if(M.tod && (M.stat == DEAD || ((HAS_TRAIT(M, TRAIT_FAKEDEATH)) && !advanced)))
 		render_list += "<span class='info ml-1'>Time of Death: [M.tod]</span>\n"
 		var/tdelta = round(world.time - M.timeofdeath)
 		render_list += "<span class='alert ml-1'><b>Subject died [DisplayTimeText(tdelta)] ago.</b></span>\n"

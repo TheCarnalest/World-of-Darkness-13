@@ -19,6 +19,9 @@
 
 	victim = dismembered_part.owner
 
+	if(((dismembered_part.body_zone == BODY_ZONE_CHEST) || (dismembered_part.body_zone == BODY_ZONE_HEAD)) && (victim.stat != DEAD))
+		return
+
 	if(dismembered_part.body_zone == BODY_ZONE_CHEST)
 		occur_text = "is split open, causing [victim.p_their()] internals organs to spill out!"
 	else if(outright)

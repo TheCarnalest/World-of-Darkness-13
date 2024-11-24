@@ -457,28 +457,21 @@
 
 /mob/living/proc/fakedeath(source, silent = FALSE)
 	if(stat == DEAD)
-		return
+		return FALSE
 	if(!silent)
 		emote("deathgasp")
 	ADD_TRAIT(src, TRAIT_FAKEDEATH, source)
 	ADD_TRAIT(src, TRAIT_DEATHCOMA, source)
 	tod = station_time_timestamp()
+	return TRUE
 
 /mob/living/proc/cure_torpor(source)
+	cure_fakedeath(source)
 	REMOVE_TRAIT(src, TRAIT_TORPOR, source)
-	REMOVE_TRAIT(src, TRAIT_DEATHCOMA, source)
-	if(stat != DEAD)
-		tod = null
 
 /mob/living/proc/torpor(source, silent = FALSE)
-	if(stat == DEAD)
-		return
-	if(!silent)
-		emote("deathgasp")
-	ADD_TRAIT(src, TRAIT_TORPOR, source)
-	ADD_TRAIT(src, TRAIT_DEATHCOMA, source)
-	tod = station_time_timestamp()
-
+	if (fakedeath(source, silent))
+		ADD_TRAIT(src, TRAIT_TORPOR, source)
 
 ///Unignores all slowdowns that lack the IGNORE_NOSLOW flag.
 /mob/living/proc/unignore_slowdown(source)
