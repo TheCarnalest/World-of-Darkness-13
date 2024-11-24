@@ -1219,7 +1219,6 @@
 			if(iscarbon(target))
 				target.Stun(2.5 SECONDS)
 				target.visible_message("<span class='danger'>[target] throws up!</span>", "<span class='userdanger'>You throw up!</span>")
-				target.bloodpool -= round(level_casting * 0.5)
 				playsound(get_turf(target), 'code/modules/wod13/sounds/vomit.ogg', 75, TRUE)
 				target.add_splatter_floor(get_turf(target))
 				target.add_splatter_floor(get_turf(get_step(target, target.dir)))
