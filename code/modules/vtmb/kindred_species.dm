@@ -181,7 +181,6 @@
 
 /datum/species/kindred/on_species_gain(mob/living/carbon/human/C)
 	. = ..()
-//	ADD_TRAIT(C, TRAIT_NOBLEED, HIGHLANDER)
 	C.update_body(0)
 	C.last_experience = world.time+3000
 	var/datum/action/vampireinfo/infor = new()
@@ -193,8 +192,13 @@
 	bloodheal.Grant(C)
 	var/datum/action/blood_power/bloodpower = new()
 	bloodpower.Grant(C)
+
+	//vampires go to -200 damage before dying
 	for (var/obj/item/bodypart/bodypart in C.bodyparts)
 		bodypart.max_damage *= 1.5
+
+	//vampires die instantly upon having their heart removed
+	RegisterSignal(C, COMSIG_CARBON_LOSE_ORGAN, PROC_REF(handle_organ_removed))
 
 /datum/species/kindred/on_species_loss(mob/living/carbon/human/C, datum/species/new_species, pref_load)
 	. = ..()
@@ -416,3 +420,9 @@
 
 /datum/species/kindred/check_roundstart_eligible()
 	return TRUE
+
+/datum/species/kindred/proc/handle_organ_removed(var/mob/living/carbon/human/source, var/obj/item/organ/organ)
+	SIGNAL_HANDLER
+
+	if (istype(organ, /obj/item/organ/heart))
+		source.death()

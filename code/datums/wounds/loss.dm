@@ -19,7 +19,8 @@
 
 	victim = dismembered_part.owner
 
-	if(((dismembered_part.body_zone == BODY_ZONE_CHEST) || (dismembered_part.body_zone == BODY_ZONE_HEAD)) && (victim.stat != DEAD))
+	//only allows deathblow dismemberment if the victim is dead or in torpor
+	if(((dismembered_part.body_zone == BODY_ZONE_CHEST) || (dismembered_part.body_zone == BODY_ZONE_HEAD)) && (victim.health > HEALTH_THRESHOLD_DEAD))
 		return
 
 	if(dismembered_part.body_zone == BODY_ZONE_CHEST)
