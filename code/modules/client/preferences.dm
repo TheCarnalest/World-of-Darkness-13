@@ -1906,7 +1906,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						eye_color = sanitize_hexcolor(new_eyes)
 
 				if("newdiscipline")
-					if(true_experience < 15)
+					if(true_experience < 10)
 						link_bug_fix = FALSE
 						return
 					var/list/possible_new_disciplines = subtypesof(/datum/discipline) - discipline_types
@@ -1919,7 +1919,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(new_discipline)
 						discipline_types += new_discipline
 						discipline_levels += 1
-						true_experience -= 15
+						true_experience -= 10
 
 				if("newghouldiscipline")
 					if(true_experience < 10)

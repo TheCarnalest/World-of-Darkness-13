@@ -444,6 +444,7 @@
 
 	if (teaching_discipline)
 		var/datum/discipline/giving_discipline = new teaching_discipline
+
 		if (giving_discipline.clane_restricted)
 			if (alert(src, "Are you sure you want to teach [student.name] [giving_discipline.name], one of your Clan's most tightly guarded secrets? This will cost 10 experience points.", "Confirmation", "Yes", "No") == "No")
 				qdel(giving_discipline)
@@ -453,12 +454,31 @@
 				qdel(giving_discipline)
 				return
 
+		var/alienation = FALSE
+		if (student.clane.restricted_disciplines.Find(teaching_discipline))
+			if (alert(student, "Learning [giving_discipline.name] will alienate you from the rest of the [student.clane.name], making you just like the false Clan. Do you wish to continue?", "Confirmation", "Yes", "No") == "No")
+				visible_message("<span class='warning'>[student.name] refuses [src.name]'s mentoring!</span>")
+				return
+			else
+				alienation = TRUE
+
 		visible_message("<span class='notice'>[src.name] begins mentoring [student.name] in [giving_discipline.name].</span>")
 		if (do_after(src, 30 SECONDS, student))
 			teacher_prefs.true_experience -= 10
+
 			student_prefs.discipline_types += teaching_discipline
 			student_prefs.discipline_levels += 1
 			student.give_discipline(giving_discipline)
+
+			if (alienation)
+				var/datum/vampireclane/main_clan
+				switch(student.clane.name)
+					if ("True Brujah")
+						main_clan = new /datum/vampireclane/brujah
+					if ("Old Clan Tzimisce")
+						main_clan = new /datum/vampireclane/tzimisce
+
+				student.clane = main_clan
+
 			student_prefs.save_character()
 			teacher_prefs.save_character()
-			//[Lucia] TODO: make this respect Clan restrictions and make Old Clan Tzimisce into normal Tzimisce

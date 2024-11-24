@@ -30,8 +30,6 @@ And it also helps for the character set panel
 	var/accessories_layers = list()
 	var/current_accessory
 
-//var/datum/action/innate/drink_blood/sosalka = new
-
 /datum/vampireclane/proc/on_gain(var/mob/living/carbon/human/H)
 	if(length(accessories))
 		if(current_accessory)
@@ -45,10 +43,6 @@ And it also helps for the character set panel
 		H.update_body_parts()
 		H.update_body()
 		H.update_icon()
-//	if(no_hair)
-//		H.facial_hairstyle = "Shaved"
-//		H.hairstyle = "Bald"
-//		H.update_hair()
 
 /mob/living/carbon
 	var/datum/relationship/Myself
