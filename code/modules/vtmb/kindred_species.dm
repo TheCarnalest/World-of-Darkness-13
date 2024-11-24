@@ -425,4 +425,5 @@
 	SIGNAL_HANDLER
 
 	if (istype(organ, /obj/item/organ/heart))
-		source.death()
+		if (!source.getorganslot(ORGAN_SLOT_HEART))
+			source.death()
