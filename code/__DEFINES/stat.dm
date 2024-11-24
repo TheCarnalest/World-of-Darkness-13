@@ -8,6 +8,7 @@
 #define UNCONSCIOUS	2
 #define HARD_CRIT	3
 #define DEAD		4
+#define TORPOR		5
 
 //Maximum healthiness an individual can have
 #define MAX_SATIETY 600

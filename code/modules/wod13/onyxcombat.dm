@@ -75,6 +75,7 @@
 				P.save_character()
 				P.save_preferences()
 				P.reason_of_death = "Killed in action ([time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")])."*/
+
 	if(iskindred(src))
 		if(in_frenzy)
 			exit_frenzymod()

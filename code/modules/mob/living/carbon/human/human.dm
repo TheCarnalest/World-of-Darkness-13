@@ -687,7 +687,7 @@
 		if (DOING_INTERACTION_WITH_TARGET(src,target))
 			return FALSE
 
-		if (target.stat == DEAD || HAS_TRAIT(target, TRAIT_FAKEDEATH))
+		if (target.stat == DEAD || HAS_TRAIT(target, TRAIT_TORPOR) || HAS_TRAIT(target, TRAIT_FAKEDEATH))
 			to_chat(src, "<span class='warning'>[target.name] is dead!</span>")
 			return FALSE
 

@@ -464,6 +464,21 @@
 	ADD_TRAIT(src, TRAIT_DEATHCOMA, source)
 	tod = station_time_timestamp()
 
+/mob/living/proc/cure_torpor(source)
+	REMOVE_TRAIT(src, TRAIT_TORPOR, source)
+	REMOVE_TRAIT(src, TRAIT_DEATHCOMA, source)
+	if(stat != DEAD)
+		tod = null
+
+/mob/living/proc/torpor(source, silent = FALSE)
+	if(stat == DEAD)
+		return
+	if(!silent)
+		emote("deathgasp")
+	ADD_TRAIT(src, TRAIT_TORPOR, source)
+	ADD_TRAIT(src, TRAIT_DEATHCOMA, source)
+	tod = station_time_timestamp()
+
 
 ///Unignores all slowdowns that lack the IGNORE_NOSLOW flag.
 /mob/living/proc/unignore_slowdown(source)

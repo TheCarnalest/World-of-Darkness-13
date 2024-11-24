@@ -150,7 +150,7 @@
 	var/appears_dead = FALSE
 	var/just_sleeping = FALSE
 
-	if(stat == DEAD || (HAS_TRAIT(src, TRAIT_FAKEDEATH)))
+	if(stat == DEAD || (HAS_TRAIT(src, TRAIT_TORPOR)) || (HAS_TRAIT(src, TRAIT_FAKEDEATH)))
 		appears_dead = TRUE
 
 		var/obj/item/clothing/glasses/G = get_item_by_slot(ITEM_SLOT_EYES)

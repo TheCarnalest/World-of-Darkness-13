@@ -899,9 +899,13 @@
 
 
 /mob/living/carbon/update_stat()
+	var/mob/living/carbon/human/H = src
 	if(status_flags & GODMODE)
 		return
 	if(stat != DEAD)
+		if(iskindred(H) && health <= HEALTH_THRESHOLD_DEAD)
+			set_stat(TORPOR)
+			return
 		if(health <= HEALTH_THRESHOLD_DEAD && !HAS_TRAIT(src, TRAIT_NODEATH))
 			death()
 			return
