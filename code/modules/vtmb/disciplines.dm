@@ -1147,14 +1147,17 @@
 		var/mob/living/carbon/human/VH = firer
 		if(isliving(target))
 			var/mob/living/VL = target
-			if(!iskindred(target))
+			if(isgarou(VL))
 				if(VL.bloodpool >= 1 && VL.stat != DEAD)
 					var/sucked = min(VL.bloodpool, 2)
 					VL.bloodpool = VL.bloodpool-sucked
-					VL.blood_volume = max(VL.blood_volume-50, 0)
-					if(isgarou(VL))
-						VL.apply_damage(20, BURN)
-						return
+					VL.blood_volume = max(VL.blood_volume-10, 0) // matched the blood_volume of how much humans lose so the old insta-kill is still possible just garou will be able to rage heal to prevent it
+					VL.apply_damage(20, BURN)
+				if(!iskindred(target))
+					if(VL.bloodpool >= 1 && VL.stat != DEAD)
+						var/sucked = min(VL.bloodpool, 2)
+						VL.bloodpool = VL.bloodpool-sucked
+						VL.blood_volume = max(VL.blood_volume-50, 0)
 					if(ishuman(VL))
 						var/mob/living/carbon/human/VHL = VL
 						VHL.blood_volume = max(VHL.blood_volume-10*sucked, 0)
@@ -1318,7 +1321,7 @@
 	. = ..()
 	if(iswerewolf(target) || isgarou(target))
 		caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/vicissitude.ogg', 50, TRUE)
-		caster.adjustFireLoss(35)		//abusers suffer
+		//caster.adjustFireLoss(35)		//abusers suffer no more
 		caster.Stun(30)
 		caster.emote("scream")
 		target.apply_damage(10*level_casting, BRUTE)
