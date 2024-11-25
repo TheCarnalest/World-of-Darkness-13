@@ -1151,8 +1151,11 @@
 				if(VL.bloodpool >= 1 && VL.stat != DEAD)
 					var/sucked = min(VL.bloodpool, 2)
 					VL.bloodpool = VL.bloodpool-sucked
-					VL.blood_volume = max(VL.blood_volume-10, 0) // matched the blood_volume of how much humans lose so the old insta-kill is still possible just garou will be able to rage heal to prevent it
-					VL.apply_damage(20, BURN)
+					VL.blood_volume = max(VL.blood_volume-50, 0) // average blood_volume of most carbons seems to be 560
+					VL.apply_damage(45, BURN)
+					VL.visible_message("<span class='danger'>[target]'s wounds spray boiling hot blood!</span>", "<span class='userdanger'>Your blood boils!</span>")
+					VL.add_splatter_floor(get_turf(target))
+					VL.add_splatter_floor(get_turf(get_step(target, target.dir)))
 				if(!iskindred(target))
 					if(VL.bloodpool >= 1 && VL.stat != DEAD)
 						var/sucked = min(VL.bloodpool, 2)
@@ -1161,7 +1164,7 @@
 					if(ishuman(VL))
 						if(VL.bloodpool >= 1 && VL.stat != DEAD)
 							var/mob/living/carbon/human/VHL = VL
-							VHL.blood_volume = max(VHL.blood_volume-10, 0)
+							VHL.blood_volume = max(VHL.blood_volume-25, 0)
 							if(VL.bloodpool == 0)
 								VHL.blood_volume = 0
 								VL.death()
