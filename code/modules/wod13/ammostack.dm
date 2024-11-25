@@ -275,6 +275,7 @@
 		else
 			M.Stun(1.5 SECONDS)
 			M.adjustBruteLoss(50, TRUE)
+			M.adjustCloneLoss(20, TRUE)
 			M.add_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
 			spawn(5 SECONDS)
 			M.remove_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
@@ -293,6 +294,7 @@
 		else
 			M.Stun(1.5 SECONDS)
 			M.adjustBruteLoss(25, TRUE)
+			M.adjustCloneLoss(10, TRUE)
 			M.add_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
 			spawn(5 SECONDS)
 			M.remove_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
@@ -311,6 +313,7 @@
 		else
 			M.Stun(1.5 SECONDS)
 			M.adjustBruteLoss(30, TRUE)
+			M.adjustCloneLoss(15, TRUE)
 			M.add_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
 			spawn(5 SECONDS)
 			M.remove_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
@@ -330,6 +333,7 @@
 		else
 			M.Stun(1.5 SECONDS)
 			M.adjustBruteLoss(40, TRUE)
+			M.adjustCloneLoss(20, TRUE)
 			M.add_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
 			spawn(5 SECONDS)
 			M.remove_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
