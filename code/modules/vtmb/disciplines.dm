@@ -1159,18 +1159,19 @@
 						VL.bloodpool = VL.bloodpool-sucked
 						VL.blood_volume = max(VL.blood_volume-50, 0)
 					if(ishuman(VL))
-						var/mob/living/carbon/human/VHL = VL
-						VHL.blood_volume = max(VHL.blood_volume-10*sucked, 0)
-						if(VL.bloodpool == 0)
-							VHL.blood_volume = 0
-							VL.death()
+						if(VL.bloodpool >= 1 && VL.stat != DEAD)
+							var/mob/living/carbon/human/VHL = VL
+							VHL.blood_volume = max(VHL.blood_volume-10, 0)
+							if(VL.bloodpool == 0)
+								VHL.blood_volume = 0
+								VL.death()
 //							if(isnpc(VL))
 //								AdjustHumanity(VH, -1, 3)
 					else
 						if(VL.bloodpool == 0)
 							VL.death()
-					VH.bloodpool = VH.bloodpool+(sucked*max(1, VL.bloodquality-1))
-					VH.bloodpool = min(VH.maxbloodpool, VH.bloodpool)
+					//VH.bloodpool = VH.bloodpool+(sucked*max(1, VL.bloodquality-1))
+					//VH.bloodpool = min(VH.maxbloodpool, VH.bloodpool)
 			else
 				if(VL.bloodpool >= 1)
 					var/sucked = min(VL.bloodpool, 1*level)

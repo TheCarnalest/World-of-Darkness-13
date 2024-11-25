@@ -277,7 +277,7 @@
 			M.adjustBruteLoss(50, TRUE)
 			M.add_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
 			spawn(5 SECONDS)
-  			    M.remove_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
+			M.remove_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
 
 /obj/projectile/beam/beam_rifle/vampire/vamp9mm/silver
 	name = "9mm silver bullet"
@@ -295,7 +295,7 @@
 			M.adjustBruteLoss(25, TRUE)
 			M.add_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
 			spawn(5 SECONDS)
-  			    M.remove_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
+			M.remove_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
 
 /obj/projectile/beam/beam_rifle/vampire/vamp45acp/silver
 	name = ".45 ACP silver bullet"
@@ -313,7 +313,7 @@
 			M.adjustBruteLoss(30, TRUE)
 			M.add_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
 			spawn(5 SECONDS)
-  			    M.remove_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
+			M.remove_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
 
 /obj/projectile/beam/beam_rifle/vampire/vamp44/silver
 	name = ".44 silver bullet"
@@ -332,7 +332,7 @@
 			M.adjustBruteLoss(40, TRUE)
 			M.add_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
 			spawn(5 SECONDS)
-  			    M.remove_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
+			M.remove_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
 
 /obj/item/ammo_casing/vampire/c9mm/silver
 	name = "9mm silver bullet casing"
