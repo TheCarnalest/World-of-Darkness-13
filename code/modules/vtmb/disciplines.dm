@@ -1326,12 +1326,12 @@
 	if(iswerewolf(target) || isgarou(target))
 		caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/vicissitude.ogg', 50, TRUE)
 		//caster.adjustFireLoss(35)		//abusers suffer no more
-		caster.Stun(2 SECOND)
+		caster.Stun(20)
 		caster.emote("scream")
 		target.apply_damage(10*level_casting, BRUTE)
 		target.apply_damage(5*level_casting, CLONE)
 		target.visible_message("<span class='danger'>[target]'s skin writhes like worms, twisting and contorting!</span>", "<span class='userdanger'>Your flesh twists unnaturally!</span>")
-		target.Stun(3 SECOND)
+		target.Stun(30)
 		target.emote("scream")
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
