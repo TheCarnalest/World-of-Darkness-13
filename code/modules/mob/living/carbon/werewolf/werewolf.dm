@@ -61,7 +61,6 @@
 	var/armour_penetration = 100
 	var/melee_damage_type = BRUTE
 	var/list/damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
-	var/stakeimmune = TRUE
 	var/attack_verb_continuous = "attacks"
 	var/attack_verb_simple = "attack"
 	var/friendly_verb_continuous = "nuzzles"
