@@ -133,6 +133,10 @@
 	desc = "Some whore clothes."
 	icon_state = "whore"
 
+/obj/item/clothing/under/vampire/whore/daisyd
+	desc = "Some short shorts."
+	icon_state = "daisyd"
+
 /obj/item/clothing/under/vampire/emo
 	desc = "Some usual clothes."
 	icon_state = "emo"
