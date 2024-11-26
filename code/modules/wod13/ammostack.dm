@@ -276,10 +276,10 @@
 			M.Stun(1.5 SECONDS)
 			M.adjustBruteLoss(50, TRUE)
 			M.adjustCloneLoss(20, TRUE)
-			if !M.has_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
-  				M.add_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
-  				spawn(7 SECONDS)
-					M.remove_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
+			if (!M.has_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown))
+  			M.add_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
+  			spawn(7 SECONDS)
+				M.remove_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
 
 /mob/living/proc/remove_silver()
 	if(last_silver_slowdown+world.time <= world.time)
@@ -300,10 +300,10 @@
 			M.Stun(1.5 SECONDS)
 			M.adjustBruteLoss(25, TRUE)
 			M.adjustCloneLoss(10, TRUE)
-			if !M.has_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
-  				M.add_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
-  				spawn(7 SECONDS)
-					M.remove_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
+			if (!M.has_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown))
+  			M.add_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
+  			spawn(7 SECONDS)
+				M.remove_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
 
 /obj/projectile/beam/beam_rifle/vampire/vamp45acp/silver
 	name = ".45 ACP silver bullet"
@@ -320,10 +320,10 @@
 			M.Stun(1.5 SECONDS)
 			M.adjustBruteLoss(30, TRUE)
 			M.adjustCloneLoss(15, TRUE)
-			if !M.has_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
-  				M.add_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
-  				spawn(7 SECONDS)
-					M.remove_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
+			if (!M.has_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown))
+  			M.add_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
+  			spawn(7 SECONDS)
+				M.remove_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
 
 /obj/projectile/beam/beam_rifle/vampire/vamp44/silver
 	name = ".44 silver bullet"
@@ -341,10 +341,10 @@
 			M.Stun(1.5 SECONDS)
 			M.adjustBruteLoss(40, TRUE)
 			M.adjustCloneLoss(20, TRUE)
-			if !M.has_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
-  				M.add_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
-  				spawn(7 SECONDS)
-					M.remove_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
+			if (!M.has_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown))
+  			M.add_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
+  			spawn(7 SECONDS)
+				M.remove_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown)
 
 /obj/item/ammo_casing/vampire/c9mm/silver
 	name = "9mm silver bullet casing"
