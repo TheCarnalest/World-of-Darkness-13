@@ -87,6 +87,10 @@
 	desc = "Some historical clothes."
 	icon_state = "nazi"
 
+/obj/item/clothing/under/vampire/nazi/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_NODROP, ADMIN_TRAIT)
+
 //FOR NPC
 
 //GANGSTERS AND BANDITS
@@ -619,6 +623,10 @@
 	desc = "\"Du wirst immer ein Schwein sein!\""
 	icon_state = "ss"
 	armor = list(MELEE = 20, BULLET = 20, LASER = 10, ENERGY = 10, BOMB = 10, BIO = 0, RAD = 0, FIRE = 0, ACID = 10, WOUND = 10)
+
+/obj/item/clothing/head/vampire/nazi/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_NODROP, ADMIN_TRAIT)
 
 /obj/item/clothing/head/vampire/top
 	name = "top hat"
