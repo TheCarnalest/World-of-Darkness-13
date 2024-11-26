@@ -467,7 +467,22 @@
 
 /mob/living/proc/cure_torpor(source)
 	cure_fakedeath(source)
+	while(health < HEALTH_THRESHOLD_VAMPIRE_TORPOR)
+		if(src.getStaminaLoss() > 0)
+			src.heal_overall_damage(stamina = 10)
+		else if(src.getBruteLoss() > 0)
+			src.heal_overall_damage(brute = 10)
+		else if(src.getFireLoss() > 0)
+			src.heal_overall_damage(burn = 10)
+		else if(src.getCloneLoss() > 0)
+			src.adjustCloneLoss(-10)
+		else if(src.getToxLoss() > 0)
+			src.adjustToxLoss(-10)
+		else if(src.getOxyLoss() > 0)
+			src.adjustOxyLoss(-10)
+
 	REMOVE_TRAIT(src, TRAIT_TORPOR, source)
+	to_chat(src, "<span class='notice'>You have awoken from your torpor.</span>")
 
 /mob/living/proc/torpor(source, silent = FALSE)
 	if (fakedeath(source, silent))

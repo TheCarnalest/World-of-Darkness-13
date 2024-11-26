@@ -363,6 +363,22 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 	if (length(last_whisper))
 		living_owner.say("#[last_whisper]")
 
+/atom/movable/screen/alert/untorpor
+	name = "Untorpor"
+	desc = "Free yourself of this sleep."
+	icon_state = "succumb"
+
+/atom/movable/screen/alert/untorpor/Click()
+	if(isobserver(usr))
+		return
+	var/mob/living/living_owner = owner
+	if(!CAN_UNTORPOR(owner))
+		return
+	else
+		living_owner.untorpor()
+
+
+
 //	living_owner.succumb(whispered = length(last_whisper) > 0)
 
 //ALIENS
