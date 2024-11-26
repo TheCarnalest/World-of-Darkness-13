@@ -260,7 +260,7 @@ RULESURL https://discord.gg/WU92NG2Me8
 # GAMELOGURL
 
 ## Ban appeals URL - usually for a forum or wherever people should go to contact your admins.
-BANAPPEALS https://discord.gg/FeptTFZfsh
+BANAPPEALS https://discord.gg/WU92NG2Me8
 
 ## System command that invokes youtube-dl, used by Play Internet Sound.
 ## You can install youtube-dl with
