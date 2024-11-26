@@ -1321,13 +1321,12 @@
 	equip_to_slot_or_del(new /obj/item/clothing/shoes/vampire/jackboots/high(src), ITEM_SLOT_FEET)
 	equip_to_slot_or_del(new /obj/item/clothing/under/vampire/nazi(src), ITEM_SLOT_ICLOTHING)
 
-//lightning bolt gibs anyone who tries to collect the nazi memorabilia
+//prevents this thing from being stripped
 /mob/living/carbon/human/species/vamp_mannequin/nazi/Topic(href, href_list)
 	if(href_list["item"])
-		var/mob/living/carbon/human/target = usr
-		var/turf/lightning_source = get_step(get_step(target, NORTH), NORTH)
-		lightning_source.Beam(target, icon_state="lightning[rand(1,12)]", time = 1 SECOND)
-		target.gib(no_brain = TRUE)
+		message_admins("[ADMIN_LOOKUPFLW(usr)] tried to strip the Nazi mannequin.")
+		to_chat(usr, "<span class='warning'>You don't really want to pick that up...</span>")
+		return
 	else
 		..()
 
