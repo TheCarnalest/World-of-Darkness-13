@@ -61,6 +61,7 @@
 	var/armour_penetration = 100
 	var/melee_damage_type = BRUTE
 	var/list/damage_coeff = list(BRUTE = 1, BURN = 1, TOX = 1, CLONE = 1, STAMINA = 0, OXY = 1)
+	var/stakeimmune = TRUE
 	var/attack_verb_continuous = "attacks"
 	var/attack_verb_simple = "attack"
 	var/friendly_verb_continuous = "nuzzles"
@@ -76,7 +77,7 @@
 
 	var/step_variable = 0
 
-	var/werewolf_armor = 0
+	var/werewolf_armor = 5
 
 	var/assigned_quirks = FALSE
 
@@ -188,8 +189,8 @@
 	possible_a_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB, INTENT_HARM)
 	limb_destroyer = 1
 	hud_type = /datum/hud/werewolf
-	melee_damage_lower = 35
-	melee_damage_upper = 55
+	melee_damage_lower = 25
+	melee_damage_upper = 65
 	health = 300
 	maxHealth = 300
 //	speed = -1  doesn't work on carbons
