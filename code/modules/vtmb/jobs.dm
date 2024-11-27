@@ -2021,8 +2021,8 @@
 	title = "Priest"
 	department_head = list("Bishop")
 	faction = "Vampire"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 2
+	spawn_positions = 2
 	supervisors = "God"
 	selection_color = "#7e7e7e"
 
@@ -2079,6 +2079,7 @@
 						H.mind.AddSpell(n_freeze)
 						H.mind.AddSpell(n_heal)
 					if("True Faith")
+						H.mind.holy_role = HOLY_ROLE_PRIEST
 						H.resistant_to_disciplines = TRUE
 						to_chat(H, "<span class='alertsyndie'>Your faith in God is made of iron. None could shake it, and even in the darkest moments it holds you up.</span>")
 
