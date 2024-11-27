@@ -289,9 +289,11 @@ GLOBAL_VAR(restart_counter)
 	if(config)
 		var/server_name = CONFIG_GET(string/servername)
 		if (server_name)
-			s += "<a href=\"https://discord.gg/invite/WU92NG2Me8\"><b>[server_name] &#8212; Werewolf-Friendly</b></a><br>"
+			s += "<a href=\"https://discord.gg/invite/WU92NG2Me8\"><b>[server_name] &#8212; Werewolf-Friendly</b></a>"
 		hostedby = CONFIG_GET(string/hostedby)
-	s += "Persistent roleplaying server set in the World of Darkness universe.<br>"
+	s += "<br>Persistent roleplaying server in the World of Darkness.<br>"
+	s += "<br>Active development, pretty art, and a gothic atmosphere."
+	s += "<br><b>Round Time:</b> [worldtime2text()]"
 
 	var/players = GLOB.clients.len
 
@@ -299,10 +301,6 @@ GLOBAL_VAR(restart_counter)
 	var/popcap = max(CONFIG_GET(number/extreme_popcap), CONFIG_GET(number/hard_popcap), CONFIG_GET(number/soft_popcap))
 	if (popcap)
 		popcaptext = "/[popcap]"
-
-	features += "Active development, pretty art, and a gothic atmosphere.<br>"
-	features += "Respawning and free round leaving are enabled.<br>"
-	features += "<b>Round Time:</b> [worldtime2text()]"
 
 	if (players > 1)
 		features += "[players][popcaptext] players"
