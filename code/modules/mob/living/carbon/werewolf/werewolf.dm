@@ -31,8 +31,6 @@
 //	sight = SEE_MOBS
 	see_in_dark = 2
 	verb_say = "woofs"
-	density = TRUE
-	anchored = TRUE
 	rotate_on_lying = 0
 
 	movement_type = GROUND // [ChillRaccoon] - fucking flying werewolfes is a meme
