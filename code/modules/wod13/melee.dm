@@ -1,4 +1,4 @@
-	/obj/item/melee/vampirearms
+/obj/item/melee/vampirearms
 	lefthand_file = 'code/modules/wod13/righthand.dmi'
 	righthand_file = 'code/modules/wod13/lefthand.dmi'
 	worn_icon = 'code/modules/wod13/worn.dmi'
