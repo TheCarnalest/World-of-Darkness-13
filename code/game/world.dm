@@ -291,9 +291,8 @@ GLOBAL_VAR(restart_counter)
 		if (server_name)
 			s += "<a href=\"https://discord.gg/invite/WU92NG2Me8\"><b>[server_name] &#8212; Werewolf-Friendly</b></a>"
 		hostedby = CONFIG_GET(string/hostedby)
-	s += "<br>Persistent roleplaying server in the World of Darkness.<br>"
+	s += "<br>Persistent roleplaying server in the World of Darkness."
 	s += "<br>Active development, pretty art, and a gothic atmosphere."
-	s += "<br><b>Round Time:</b> [worldtime2text()]"
 
 	var/players = GLOB.clients.len
 
