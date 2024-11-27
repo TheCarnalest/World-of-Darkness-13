@@ -23,8 +23,8 @@
 	max_ammo = 6
 
 /obj/item/gun/ballistic/vampire/revolver
-	name = "\improper revolver"
-	desc = "Old, but reliable."
+	name = "\improper magnum revolver"
+	desc = "Feelin' lucky, punk?"
 	icon_state = "revolver"
 	inhand_icon_state = "revolver"
 	worn_icon_state = "revolver"
@@ -101,6 +101,25 @@
 	if (current_skin)
 		. += "It can be spun with <b>alt+click</b>"
 
+
+/obj/item/gun/ballistic/vampire/revolver/snub
+	name = "\improper snub-nosed revolver"
+	desc = "a cheap Saturday night special revolver. Sometimes called a 'purse gun'. It takes 9mm rounds."
+	icon_state = "revolver_snub"
+	inhand_icon_state = "revolver_snub"
+	worn_icon_state = "revolver_snub"
+	mag_type = /obj/item/ammo_box/magazine/internal/cylinder/rev9mm
+	w_class = WEIGHT_CLASS_SMALL
+	initial_caliber = CALIBER_9MM
+	fire_sound_volume = 65
+	projectile_damage_multiplier = 1.2 //21.6 damage, slightly higher than the m1911, just so it is possible to kill NPCs within 6 bullets
+
+/obj/item/ammo_box/magazine/internal/cylinder/rev9mm
+	name = "revolver cylinder"
+	ammo_type = /obj/item/ammo_casing/vampire/c9mm
+	caliber = CALIBER_9MM
+	max_ammo = 6
+
 /obj/item/ammo_box/magazine/m44
 	name = "handgun magazine (.44)"
 	icon = 'code/modules/wod13/ammo.dmi'
@@ -114,13 +133,27 @@
 	max_ammo = 7
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
+/obj/item/ammo_box/magazine/m50
+	name = "handgun magazine (.50)"
+	icon = 'code/modules/wod13/ammo.dmi'
+	lefthand_file = 'code/modules/wod13/righthand.dmi'
+	righthand_file = 'code/modules/wod13/lefthand.dmi'
+	worn_icon = 'code/modules/wod13/worn.dmi'
+	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	icon_state = "deagle"
+	ammo_type = /obj/item/ammo_casing/vampire/c50
+	caliber = CALIBER_50
+	max_ammo = 7
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
+
+
 /obj/item/gun/ballistic/automatic/vampire/deagle
 	name = "\improper Desert Eagle"
 	desc = "A powerful .44 handgun."
 	icon_state = "deagle"
 	inhand_icon_state = "deagle"
 	worn_icon_state = "deagle"
-	w_class = WEIGHT_CLASS_SMALL
+	w_class = WEIGHT_CLASS_NORMAL
 	mag_type = /obj/item/ammo_box/magazine/m44
 	recoil = 3
 	burst_size = 1
@@ -138,6 +171,15 @@
 	lock_back_sound = 'sound/weapons/gun/pistol/lock_small.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/drop_small.ogg'
 	fire_sound_volume = 75
+
+/obj/item/gun/ballistic/automatic/vampire/deagle/c50
+	name = "\improper McLusky .50 caliber "
+	desc = "An extremely powerful, and rare, handcannon."
+	icon_state = "deagle50"
+	inhand_icon_state = "deagle"
+	worn_icon_state = "deagle"
+	mag_type = /obj/item/ammo_box/magazine/m50
+	fire_sound_volume = 125 //MY EARS
 
 /obj/item/ammo_box/magazine/vamp45acp
 	name = "pistol magazine (.45 ACP)"
@@ -451,6 +493,7 @@
 	righthand_file = 'code/modules/wod13/lefthand.dmi'
 	worn_icon = 'code/modules/wod13/worn.dmi'
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	w_class = WEIGHT_CLASS_BULKY
 	icon_state = "pomp"
 	inhand_icon_state = "pomp"
 	worn_icon_state = "pomp"
