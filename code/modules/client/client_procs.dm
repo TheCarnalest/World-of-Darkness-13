@@ -1107,6 +1107,4 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		winset(usr, "mainwindow", "menu=\"menu\"")
 		winset(usr, "mainwindow","titlebar=true")
 		winset(usr, "mainwindow","can-resize=true")
-		winset(usr, "mainwindow","is-minimized=true")
-		winset(usr, "mainwindow","is-maximized=true")
 	fit_viewport()
