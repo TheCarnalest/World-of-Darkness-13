@@ -79,16 +79,16 @@
 	illegal = TRUE
 	cost = 200
 
-/obj/item/weedseed
+/obj/item/food/vampire/weed
 	illegal = TRUE
-	cost = 100
+	cost = 50
 /obj/item/weedpack
 	illegal = TRUE
-	cost = 100
+	cost = 175
 
 /obj/item/reagent_containers/food/drinks/meth
 	illegal = TRUE
-	cost = 500
+	cost = 300
 
 /obj/item/clothing/under/vampire
 	cost = 10
