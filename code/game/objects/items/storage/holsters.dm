@@ -37,23 +37,19 @@
 /obj/item/storage/belt/holster/detective/ComponentInitialize()
 	. = ..()
 	var/datum/component/storage/STR = GetComponent(/datum/component/storage)
-	STR.max_items = 3
+	STR.max_items = 4
 	STR.max_w_class = WEIGHT_CLASS_NORMAL
 	STR.set_holdable(list(
-		/obj/item/gun/ballistic/automatic/pistol,
-		/obj/item/ammo_box/magazine/m9mm, // Pistol magazines.
-		/obj/item/ammo_box/magazine/m9mm_aps,
-		/obj/item/ammo_box/magazine/m45,
+		/obj/item/gun/ballistic/vampire/revolver,
+		/obj/item/gun/ballistic/automatic/vampire/deagle,
+		/obj/item/gun/ballistic/automatic/vampire/m1911,
+		/obj/item/gun/ballistic/automatic/vampire/glock19,
+		/obj/item/ammo_box/vampire/c9mm/moonclip,
+		/obj/item/ammo_box/magazine/m44,
 		/obj/item/ammo_box/magazine/m50,
-		/obj/item/gun/ballistic/revolver,
-		/obj/item/ammo_box/c38, // Revolver speedloaders.
-		/obj/item/ammo_box/a357,
-		/obj/item/ammo_box/a762,
-		/obj/item/gun/ballistic/automatic/toy/pistol,
+		/obj/item/ammo_box/magazine/vamp45acp,
 		/obj/item/ammo_box/magazine/toy/pistol,
-		/obj/item/gun/energy/e_gun/mini,	
-		/obj/item/gun/energy/disabler,
-		/obj/item/gun/energy/dueling
+		/obj/item/ammo_box/magazine/glock9mm,	,
 		))
 
 /obj/item/storage/belt/holster/detective/full/PopulateContents()
