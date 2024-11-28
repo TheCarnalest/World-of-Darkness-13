@@ -111,10 +111,6 @@
 	name = "Amazon"
 	icon_state = "hair_amazon"
 
-/datum/sprite_accessory/hair/astolfo
-	name = "Astolfo"
-	icon_state = "hair_astolfo"
-
 /datum/sprite_accessory/hair/bald
 	name = "Bald"
 	icon_state = null
@@ -1026,6 +1022,10 @@
 /datum/sprite_accessory/hair/quiff
 	name = "Quiff"
 	icon_state = "hair_quiff"
+
+/datum/sprite_accessory/hair/ribbonbraid
+	name = "Ribbon Braid"
+	icon_state = "hair_ribbonbraid"
 
 /datum/sprite_accessory/hair/ringtails
 	name = "Ringtails"
