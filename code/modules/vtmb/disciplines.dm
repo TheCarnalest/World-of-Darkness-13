@@ -1813,7 +1813,7 @@
 			if(new_say)
 				target.say("[new_say]", forced = "melpominee 2")
 
-				var/base_difficulty = 6
+				var/base_difficulty = 5
 				var/difficulty_malus = 0
 				var/masked = FALSE
 				if (ishuman(target)) //apply a malus and different text if victim's mouth isn't visible, and a malus if they're already typing
