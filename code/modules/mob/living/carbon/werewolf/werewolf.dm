@@ -74,7 +74,7 @@
 
 	var/step_variable = 0
 
-	var/werewolf_armor = 0
+	var/werewolf_armor = 5
 
 	var/assigned_quirks = FALSE
 
@@ -186,8 +186,8 @@
 	possible_a_intents = list(INTENT_HELP, INTENT_DISARM, INTENT_GRAB, INTENT_HARM)
 	limb_destroyer = 1
 	hud_type = /datum/hud/werewolf
-	melee_damage_lower = 35
-	melee_damage_upper = 55
+	melee_damage_lower = 25
+	melee_damage_upper = 65
 	health = 300
 	maxHealth = 300
 //	speed = -1  doesn't work on carbons
@@ -210,6 +210,9 @@
 
 /datum/movespeed_modifier/crinosform
 	multiplicative_slowdown = -0.25
+
+/datum/movespeed_modifier/silver_slowdown
+	multiplicative_slowdown = 0.3
 
 /mob/living/carbon/werewolf/crinos/Initialize()
 	. = ..()

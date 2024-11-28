@@ -773,7 +773,7 @@
 	name = "Potence"
 	desc = "Boosts melee and unarmed damage."
 	icon_state = "potence"
-	cost = 1.0
+	cost = 1
 	ranged = FALSE
 	delay = 100
 	activate_sound = 'code/modules/wod13/sounds/potence_activate.ogg'
@@ -1153,24 +1153,34 @@
 		var/mob/living/carbon/human/VH = firer
 		if(isliving(target))
 			var/mob/living/VL = target
-			if(!iskindred(target))
+			if(isgarou(VL))
 				if(VL.bloodpool >= 1 && VL.stat != DEAD)
 					var/sucked = min(VL.bloodpool, 2)
 					VL.bloodpool = VL.bloodpool-sucked
-					VL.blood_volume = max(VL.blood_volume-50, 0)
+					VL.blood_volume = max(VL.blood_volume-50, 0) // average blood_volume of most carbons seems to be 560
+					VL.apply_damage(45, BURN)
+					VL.visible_message("<span class='danger'>[target]'s wounds spray boiling hot blood!</span>", "<span class='userdanger'>Your blood boils!</span>")
+					VL.add_splatter_floor(get_turf(target))
+					VL.add_splatter_floor(get_turf(get_step(target, target.dir)))
+				if(!iskindred(target))
+					if(VL.bloodpool >= 1 && VL.stat != DEAD)
+						var/sucked = min(VL.bloodpool, 2)
+						VL.bloodpool = VL.bloodpool-sucked
+						VL.blood_volume = max(VL.blood_volume-50, 0)
 					if(ishuman(VL))
-						var/mob/living/carbon/human/VHL = VL
-						VHL.blood_volume = max(VHL.blood_volume-10*sucked, 0)
-						if(VL.bloodpool == 0)
-							VHL.blood_volume = 0
-							VL.death()
+						if(VL.bloodpool >= 1 && VL.stat != DEAD)
+							var/mob/living/carbon/human/VHL = VL
+							VHL.blood_volume = max(VHL.blood_volume-25, 0)
+							if(VL.bloodpool == 0)
+								VHL.blood_volume = 0
+								VL.death()
 //							if(isnpc(VL))
 //								AdjustHumanity(VH, -1, 3)
 					else
 						if(VL.bloodpool == 0)
 							VL.death()
-					VH.bloodpool = VH.bloodpool+(sucked*max(1, VL.bloodquality-1))
-					VH.bloodpool = min(VH.maxbloodpool, VH.bloodpool)
+					//VH.bloodpool = VH.bloodpool+(sucked*max(1, VL.bloodquality-1))
+					//VH.bloodpool = min(VH.maxbloodpool, VH.bloodpool)
 			else
 				if(VL.bloodpool >= 1)
 					var/sucked = min(VL.bloodpool, 1*level)
@@ -1319,10 +1329,16 @@
 
 /datum/discipline/vicissitude/activate(mob/living/target, mob/living/carbon/human/caster)
 	. = ..()
-	if(iswerewolf(target))
+	if(iswerewolf(target) || isgarou(target))
 		caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/vicissitude.ogg', 50, TRUE)
-		caster.adjustFireLoss(50)		//abusers suffer
+		//caster.adjustFireLoss(35)		//abusers suffer no more
+		caster.Stun(20)
 		caster.emote("scream")
+		target.apply_damage(10*level_casting, BRUTE)
+		target.apply_damage(5*level_casting, CLONE)
+		target.visible_message("<span class='danger'>[target]'s skin writhes like worms, twisting and contorting!</span>", "<span class='userdanger'>Your flesh twists unnaturally!</span>")
+		target.Stun(30)
+		target.emote("scream")
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
 		caster.playsound_local(target.loc, 'code/modules/wod13/sounds/vicissitude.ogg', 50, TRUE)
@@ -1330,7 +1346,7 @@
 			if(istype(target, /mob/living/carbon/human/npc))
 				var/mob/living/carbon/human/npc/NPC = target
 				NPC.last_attacker = null
-			if(!iskindred(target))
+			if(!iskindred(target) || !isgarou(target))
 				if(H.stat != DEAD)
 					H.death()
 				switch(level_casting)
@@ -1411,8 +1427,8 @@
 				var/obj/item/bodypart/B = H.get_bodypart(pick(BODY_ZONE_R_ARM, BODY_ZONE_L_ARM, BODY_ZONE_R_LEG, BODY_ZONE_L_LEG))
 				if(B)
 					B.drop_limb()
-	else
-		target.death()
+	//else
+		//target.death() - Removed until a better solution is found to not have insta-kills on player mobs, unsure of side effects for normal vicissitude use but call death above already so should be fine?
 
 /turf
 	var/silented = FALSE
