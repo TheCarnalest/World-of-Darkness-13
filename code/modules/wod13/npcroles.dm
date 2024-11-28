@@ -776,6 +776,8 @@
 		my_weapon = new /obj/item/gun/ballistic/automatic/vampire/deagle(src)
 	else
 		if(prob(50))
+			my_weapon = new /obj/item/gun/ballistic/vampire/revolver/snub(src)
+		if(prob(50))
 			my_weapon = new /obj/item/melee/vampirearms/baseball(src)
 		else
 			my_weapon = new /obj/item/melee/vampirearms/knife(src)

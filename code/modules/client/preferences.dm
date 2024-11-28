@@ -2018,7 +2018,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					for(var/i in subtypesof(/datum/discipline))
 						if(i != discipline1type && i != discipline2type && i != discipline3type)
 							var/datum/discipline/D = new i
-							if(!D.clane_restricted)
+							if(!D.clane_restricted && !clane.restricted_disciplines.Find(i))
 								disc4 += i
 							qdel(D)
 					var/discipline4 = input(user, "Select fourth discipline", "Discipline Selection") as null|anything in disc4

@@ -1462,6 +1462,24 @@
 		var/mob/M = locate(href_list["subtlemessage"])
 		usr.client.cmd_admin_subtle_message(M)
 
+	else if(href_list["adjustmasquerade"])
+		if(!check_rights(R_ADMIN))
+			return
+		var/mob/living/carbon/human/M = locate(href_list["adjustmasquerade"])
+		if(!M)
+			to_chat(usr, "Error: Could not locate the specified mob.")
+			return
+		usr.client.cmd_admin_adjust_masquerade(M)
+
+	else if(href_list["adjusthumanity"])
+		if(!check_rights(R_ADMIN))
+			return
+		var/mob/living/carbon/human/M = locate(href_list["adjusthumanity"])
+		if(!M)
+			to_chat(usr, "Error: Could not locate the specified mob.")
+			return
+		usr.client.cmd_admin_adjust_humanity(M)
+
 	else if(href_list["playsoundto"])
 		if(!check_rights(R_SOUND))
 			return

@@ -424,7 +424,7 @@
 
 /obj/machinery/mineral/equipment_vendor/fastfood/america
 	desc = "Boom! Booom!! BOOOOOOM!!!!"
-	prize_list = list(new /datum/data/mining_equipment("revolver",	/obj/item/gun/ballistic/vampire/revolver,	200),
+	prize_list = list(new /datum/data/mining_equipment("magnum revolver",	/obj/item/gun/ballistic/vampire/revolver,	200),
 		new /datum/data/mining_equipment("Colt M1911",	/obj/item/gun/ballistic/automatic/vampire/m1911,	250),
 		new /datum/data/mining_equipment("Glock19",	/obj/item/gun/ballistic/automatic/vampire/glock19,	500),
 		new /datum/data/mining_equipment("desert eagle",	/obj/item/gun/ballistic/automatic/vampire/deagle,	600),
@@ -468,6 +468,8 @@
 		new /datum/data/mining_equipment("cannabis leaf",	/obj/item/food/vampire/weed,	25),
 		new /datum/data/mining_equipment("cannabis seed",	/obj/item/weedseed,		10),
 		new /datum/data/mining_equipment("bong",	/obj/item/bong,		50),
+		new /datum/data/mining_equipment("snub-nose revolver",	/obj/item/gun/ballistic/vampire/revolver/snub,	100),
+		new /datum/data/mining_equipment("9mm ammo clip", /obj/item/ammo_box/vampire/c9mm/moonclip, 20),
 		new /datum/data/mining_equipment("bailer",	/obj/item/bailer,		20),
 		new /datum/data/mining_equipment("incendiary 5.56 ammo",	/obj/item/ammo_box/vampire/c556/incendiary,	3000),
 		new /datum/data/mining_equipment("silver 9mm ammo",	/obj/item/ammo_box/vampire/c9mm/silver,	1000),

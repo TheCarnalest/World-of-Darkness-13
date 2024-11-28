@@ -37,6 +37,7 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/encipher_word,
 	/client/proc/uncipher_word,
 	*/
+	/client/proc/set_late_party,		/*sets the party for late joiners*/
 	/client/proc/check_ai_laws,			/*shows AI and borg laws*/
 	/client/proc/ghost_pool_protection,	/*opens a menu for toggling ghost roles*/
 	/datum/admins/proc/toggleooc,		/*toggles ooc on/off for everyone*/
@@ -50,6 +51,8 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/getserverlogs,		/*for accessing server logs*/
 	/client/proc/getcurrentlogs,		/*for accessing server logs for the current round*/
 	/client/proc/cmd_admin_subtle_message,	/*send a message to somebody as a 'voice in their head'*/
+	/client/proc/cmd_admin_adjust_masquerade, /*adjusts the masquerade level of a player*/
+	/client/proc/cmd_admin_adjust_humanity, /*adjusts the humanity level of a player*/
 	/client/proc/cmd_admin_headset_message,	/*send a message to somebody through their headset as CentCom*/
 	/client/proc/cmd_admin_delete,		/*delete an instance/object/mob/etc*/
 	/client/proc/cmd_admin_check_contents,	/*displays the contents of an instance*/
@@ -215,6 +218,8 @@ GLOBAL_LIST_INIT(admin_verbs_hideable, list(
 	/client/proc/admin_ghost,
 	/client/proc/toggle_view_range,
 	/client/proc/cmd_admin_subtle_message,
+	/client/proc/cmd_admin_adjust_masquerade,
+	/client/proc/cmd_admin_adjust_humanity,
 	/client/proc/cmd_admin_headset_message,
 	/client/proc/cmd_admin_check_contents,
 	/datum/admins/proc/access_news_network,
@@ -806,6 +811,22 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	set category = "Admin.Game"
 	if(holder)
 		src.holder.output_ai_laws()
+
+/client/proc/set_late_party()
+	set name = "Set Late Party"
+	set category = "Admin.Game"
+
+	var/setting = input(usr, "Choose the bad guys party setting:", "Set Late Party") in list("caitiff", "sabbat", "hunter", "random")
+	if(setting == "random")
+		SSbad_guys_party.setting = null
+		SSbad_guys_party.get_badguys()
+	else
+		SSbad_guys_party.set_badguys(setting)
+		SSbad_guys_party.get_badguys()
+
+	log_admin("[key_name(usr)] set the bad guys party setting to [setting]")
+	message_admins("<span class='adminnotice'>[key_name_admin(usr)] set the bad guys party setting to [setting]</span>")
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Set Late Party")
 
 /client/proc/deadmin()
 	set name = "Deadmin"
