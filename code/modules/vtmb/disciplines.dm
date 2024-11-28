@@ -1813,21 +1813,24 @@
 			if(new_say)
 				target.say("[new_say]", forced = "melpominee 2")
 
+				var/base_difficulty = 6
 				var/difficulty_malus = 0
 				var/masked = FALSE
-				if (ishuman(target)) //apply a malus and different text if victim's mouth isn't visible
+				if (ishuman(target)) //apply a malus and different text if victim's mouth isn't visible, and a malus if they're already typing
 					var/mob/living/carbon/human/victim = target
 					if ((victim.wear_mask?.flags_inv & HIDEFACE) || (victim.head?.flags_inv & HIDEFACE))
 						masked = TRUE
+						base_difficulty += 2
+					if (victim.overlays_standing[SAY_LAYER]) //ugly way to check for if the victim is currently typing
+						base_difficulty += 1
+
 				for (var/mob/living/hearer in (view(7, target) - caster - target))
 					if (!hearer.client)
 						continue
 					difficulty_malus = 0
-					if (masked)
-						difficulty_malus += 2
 					if (get_dist(hearer, target) > 3)
 						difficulty_malus += 1
-					if (storyteller_roll(hearer.mentality + hearer.additional_mentality, 6 + difficulty_malus) == ROLL_SUCCESS)
+					if (storyteller_roll(hearer.mentality + hearer.additional_mentality, base_difficulty + difficulty_malus) == ROLL_SUCCESS)
 						if (masked)
 							to_chat(hearer, "<span class='warning'>[target.name]'s jaw isn't moving to match [target.p_their()] words.</span>")
 						else
