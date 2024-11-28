@@ -299,8 +299,6 @@
 	var/lock_sound = 'code/modules/wod13/sounds/door_locked.ogg'
 	var/burnable = FALSE
 
-	var/potence_punchable = FALSE
-
 /obj/structure/vampdoor/New()
 	..()
 
@@ -308,17 +306,14 @@
 		if(LOCKDIFFICULTY_1)
 			desc = "This door is really simple. Anyone could try to lockpick it."
 			lockpick_timer = LOCKTIMER_1
-			potence_punchable = TRUE
 
 		if(LOCKDIFFICULTY_2)
 			desc = "This door is mildly complicated. It wouldn't be hard to lockpick."
 			lockpick_timer = LOCKTIMER_2
-			potence_punchable = TRUE
 
 		if(LOCKDIFFICULTY_3)
 			desc = "This door looks complicated. It would be slightly difficult to lockpick."
 			lockpick_timer = LOCKTIMER_3
-			potence_punchable = TRUE
 
 		if(LOCKDIFFICULTY_4)
 			desc = "This door looks rather complicated. It would be difficult to lockpick."
@@ -347,8 +342,8 @@
 		else
 			if(ishuman(user))
 				var/mob/living/carbon/human/H = user
-				if(H.potential >= 3)
-					if(potence_punchable == TRUE)
+				if(H.potential > 0)
+					if((H.potential * 2) >= lockpick_difficulty)
 						playsound(get_turf(src), 'code/modules/wod13/sounds/get_bent.ogg', 100, FALSE)
 						var/obj/item/shield/door/D = new(get_turf(src))
 						D.icon_state = baseicon
@@ -359,7 +354,7 @@
 						pixel_z = pixel_z+rand(-1, 1)
 						pixel_w = pixel_w+rand(-1, 1)
 						playsound(get_turf(src), 'code/modules/wod13/sounds/get_bent.ogg', 50, TRUE)
-						to_chat(user, "<span class='warning'>[src] is locked!</span>")
+						to_chat(user, "<span class='warning'>[src] is locked, and you aren't strong enough to break it down!</span>")
 						spawn(2)
 							pixel_z = initial(pixel_z)
 							pixel_w = initial(pixel_w)
