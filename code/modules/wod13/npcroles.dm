@@ -1,3 +1,4 @@
+
 /datum/socialrole/bandit
 	s_tones = list("caucasian3",
 								"latino",
@@ -1090,8 +1091,7 @@
 	uniforms = list(/obj/item/clothing/under/vampire/police)
 	hats = list(/obj/item/clothing/head/vampire/police)
 	suits = list(/obj/item/clothing/suit/vampire/vest)
-	pockets = list(/obj/item/vamp/keys/police,
-					/obj/item/stack/dollar/rand)
+	pockets = list(/obj/item/stack/dollar/rand)
 
 	male_phrases = list("I see you.",
 											"Looking suspicious...",
@@ -1124,8 +1124,8 @@
 	..()
 	if(prob(66))
 		base_body_mod = "f"
-	if(prob(50))
-		my_weapon = new /obj/item/gun/ballistic/automatic/vampire/deagle(src)
+	if(prob(66))
+		my_weapon = new /obj/item/gun/ballistic/vampire/revolver(src)
 	else
 		my_weapon = new /obj/item/gun/ballistic/automatic/vampire/ar15(src)
 	AssignSocialRole(/datum/socialrole/police)
