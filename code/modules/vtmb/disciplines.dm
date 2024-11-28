@@ -253,9 +253,9 @@
 	caster.bloodpool = max(0, caster.bloodpool-(cost+plus))
 	caster.update_blood_hud()
 	if(ranged)
-		to_chat(caster, "<span class='notice'>You activate the [name] on [target].</span>")
+		to_chat(caster, "<span class='notice'>You activate [name] on [target].</span>")
 	else
-		to_chat(caster, "<span class='notice'>You activate the [name].</span>")
+		to_chat(caster, "<span class='notice'>You activate [name].</span>")
 	if(ranged)
 		if(isnpc(target) && !fearless)
 			var/mob/living/carbon/human/npc/NPC = target
@@ -284,12 +284,8 @@
 		next_fire_after = world.time+delay*level_casting
 	else
 		next_fire_after = world.time+delay
-//	if(!target)
-//		var/choice = input(caster, "Choose your target", "Available Targets") as mob in oviewers(4, caster)
-//		if(choice)
-//			target = choice
-//		else
-//			return
+
+	log_attack("[key_name(caster)] casted level [src.level_casting] of the Discipline [src.name][target == caster ? "." : " on [key_name(target)]"]")
 
 /datum/discipline/animalism
 	name = "Animalism"
@@ -1808,36 +1804,76 @@
 	. = ..()
 	switch(level_casting)
 		if(1)
-			var/new_say = input(caster, "What will your target hear?") as text|null
-			if(new_say)
-				new /datum/hallucination/chat(target, TRUE, FALSE, new_say)
-				to_chat(caster, "You throw \"[new_say]\" at [target]'s ears.")
-		if(2)
+			if (target.stat == DEAD)
+				//why? because of laziness, it sends messages to deadchat if you do that
+				to_chat(caster, "<span class='notice'>You can't use this on corpses.</span>")
+				return
 			var/new_say = input(caster, "What will your target say?") as text|null
 			if(new_say)
-				target.say("[new_say]")
+				if(CHAT_FILTER_CHECK(new_say))
+					to_chat(caster, "<span class='warning'>That message contained a word prohibited in IC chat! Consider reviewing the server rules.\n<span replaceRegex='show_filtered_ic_chat'>\"[new_say]\"</span></span>")
+					SSblackbox.record_feedback("tally", "ic_blocked_words", 1, lowertext(config.ic_filter_regex.match))
+					return
+				target.say("[new_say]", forced = "melpominee 2")
+
+				var/base_difficulty = 5
+				var/difficulty_malus = 0
+				var/masked = FALSE
+				if (ishuman(target)) //apply a malus and different text if victim's mouth isn't visible, and a malus if they're already typing
+					var/mob/living/carbon/human/victim = target
+					if ((victim.wear_mask?.flags_inv & HIDEFACE) || (victim.head?.flags_inv & HIDEFACE))
+						masked = TRUE
+						base_difficulty += 2
+					if (victim.overlays_standing[SAY_LAYER]) //ugly way to check for if the victim is currently typing
+						base_difficulty += 2
+
+				for (var/mob/living/hearer in (view(7, target) - caster - target))
+					if (!hearer.client)
+						continue
+					difficulty_malus = 0
+					if (get_dist(hearer, target) > 3)
+						difficulty_malus += 1
+					if (storyteller_roll(hearer.mentality + hearer.additional_mentality, base_difficulty + difficulty_malus) == ROLL_SUCCESS)
+						if (masked)
+							to_chat(hearer, "<span class='warning'>[target.name]'s jaw isn't moving to match [target.p_their()] words.</span>")
+						else
+							to_chat(hearer, "<span class='warning'>[target.name]'s lips aren't moving to match [target.p_their()] words.</span>")
+		if(2)
+			target = input(caster, "Who will you project your voice to?") as null|mob in (GLOB.player_list - caster)
+			if(target)
+				var/input_message = input(caster, "What message will you project to them?") as null|text
+				if (input_message)
+					if(CHAT_FILTER_CHECK(input_message))
+						to_chat(caster, "<span class='warning'>That message contained a word prohibited in IC chat! Consider reviewing the server rules.\n<span replaceRegex='show_filtered_ic_chat'>\"[input_message]\"</span></span>")
+						SSblackbox.record_feedback("tally", "ic_blocked_words", 1, lowertext(config.ic_filter_regex.match))
+						return
+					var/language = caster.get_selected_language()
+					var/message = caster.compose_message(caster, language, input_message, , list())
+					to_chat(target, "<span class='purple'><i>You hear someone's voice in your head...</i></span>")
+					target.Hear(message, target, language, input_message, , , )
+					to_chat(caster, "<span class='notice'>You project your voice to [target]'s ears.</span>")
 		if(3)
 			for(var/mob/living/carbon/human/HU in oviewers(7, caster))
 				if(HU)
 					HU.caster = caster
-					HU.create_walk_to(20)
+					HU.create_walk_to(2 SECONDS)
 					HU.remove_overlay(MUTATIONS_LAYER)
 					var/mutable_appearance/song_overlay = mutable_appearance('code/modules/wod13/icons.dmi', "song", -MUTATIONS_LAYER)
 					HU.overlays_standing[MUTATIONS_LAYER] = song_overlay
 					HU.apply_overlay(MUTATIONS_LAYER)
-					spawn(20)
+					spawn(2 SECONDS)
 						if(HU)
 							HU.remove_overlay(MUTATIONS_LAYER)
 		if(4)
 			playsound(caster.loc, 'code/modules/wod13/sounds/killscream.ogg', 100, FALSE)
 			for(var/mob/living/carbon/human/HU in oviewers(7, caster))
 				if(HU)
-					HU.Stun(20)
+					HU.Stun(2 SECONDS)
 					HU.remove_overlay(MUTATIONS_LAYER)
 					var/mutable_appearance/song_overlay = mutable_appearance('code/modules/wod13/icons.dmi', "song", -MUTATIONS_LAYER)
 					HU.overlays_standing[MUTATIONS_LAYER] = song_overlay
 					HU.apply_overlay(MUTATIONS_LAYER)
-					spawn(20)
+					spawn(2 SECONDS)
 						if(HU)
 							HU.remove_overlay(MUTATIONS_LAYER)
 		if(5)
