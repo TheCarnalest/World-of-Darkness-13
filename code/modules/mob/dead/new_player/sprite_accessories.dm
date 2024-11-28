@@ -555,14 +555,6 @@
 	name = "Fluffy (Short)"
 	icon_state = "hair_fluffy_short"
 
-/datum/sprite_accessory/hair/fortuneteller
-	name = "Fortune Teller"
-	icon_state = "hair_fortuneteller"
-
-/datum/sprite_accessory/hair/fortunetelleralt
-	name = "Fortune Teller (Alt)"
-	icon_state = "hair_fortuneteller_alt"
-
 /datum/sprite_accessory/hair/froofylong
 	name = "Froofy (Long)"
 	icon_state = "hair_froofylong"
@@ -727,10 +719,6 @@
 	name = "Lila"
 	icon_state = "hair_lila"
 
-/datum/sprite_accessory/hair/longdtails
-	name = "Long D-tails"
-	icon_state = "hair_longdtails"
-
 /datum/sprite_accessory/hair/long
 	name = "Long Hair 1"
 	icon_state = "hair_long"
@@ -778,6 +766,14 @@
 /datum/sprite_accessory/hair/looseslicked
 	name = "Loose Slicked"
 	icon_state = "hair_loose_slicked"
+
+/datum/sprite_accessory/hair/luxurious
+	name = "Luxurious"
+	icon_state = "hair_luxurious"
+
+/datum/sprite_accessory/hair/luxuriousalt
+	name = "Luxurious (Alt)"
+	icon_state = "hair_luxurious_alt"
 
 /datum/sprite_accessory/hair/mcsqueeb
 	name = "McSqueeb"
@@ -1026,10 +1022,6 @@
 /datum/sprite_accessory/hair/pyotr
 	name = "Pyotr"
 	icon_state = "hair_pyotr"
-
-/datum/sprite_accessory/hair/quadcurls
-	name = "Quad Curls"
-	icon_state = "hair_quadcurls"
 
 /datum/sprite_accessory/hair/quiff
 	name = "Quiff"
