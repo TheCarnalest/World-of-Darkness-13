@@ -45,7 +45,7 @@
 	admin_ticket_log(M, msg)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Subtle Message") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/cmd_admin_adjust_masquerade(mob/living/carbon/human/M in GLOB.mob_list)
+/client/proc/cmd_admin_adjust_masquerade(mob/living/carbon/human/M in GLOB.player_list)
 	set category = "Admin.Events"
 	set name = "Adjust Masquerade"
 	if(!ismob(M))
@@ -53,14 +53,11 @@
 	if(!check_rights(R_ADMIN))
 		return
 
-	var/value = input(usr, "Enter the masquerade adjustment value for [M.key]:", "Masquerade Adjustment", 0) as num|null
-	if(value == null)
+	var/value = input(usr, "Enter the Masquerade adjustment value for [key_name(M)]:", "Masquerade Adjustment", 0) as num|null
+	if(!value)
 		return
 
-	if(usr)
-		if(usr.client)
-			if(usr.client.holder)
-				M.AdminAdjustMasquerade(value)
+	M.AdjustMasquerade(value, TRUE)
 	var/msg = "<span class='adminnotice'><b>Masquerade Adjustment: [key_name_admin(usr)] adjusted [key_name_admin(M)]'s masquerade by [value] to [M.masquerade]</b></span>"
 	log_admin("MasqAdjust: [key_name(usr)] has adjusted [key_name(M)]'s masquerade by [value] to [M.masquerade]")
 	message_admins(msg)
@@ -79,10 +76,7 @@
 	if(value == null)
 		return
 
-	if(usr)
-		if(usr.client)
-			if(usr.client.holder)
-				M.AdminAdjustHumanity(value)
+	M.AdjustHumanity(value, 0, forced = TRUE)
 
 	var/msg = "<span class='adminnotice'><b>Humanity Adjustment: [key_name_admin(usr)] adjusted [key_name_admin(M)]'s humanity by [value] to [M.humanity]</b></span>"
 	log_admin("HumanityAdjust: [key_name(usr)] has adjusted [key_name(M)]'s humanity by [value] to [M.humanity]")
