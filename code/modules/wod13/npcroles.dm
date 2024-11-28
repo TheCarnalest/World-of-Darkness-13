@@ -80,24 +80,25 @@
 		"Whatchu staring at?",
 		"Tryina threaten me or sumthin'?",
 		"You need somethin'?",
-		"You've got some balls, thats for sure.",
+		"You've got some balls, that's for sure.",
 		"You know who I work for?",
-		"Get the hell outta here, for I get my gang on yo ass.",
+		"Get the hell outta here, 'fore I get my gang on yo ass.",
 		"you need sumn' punk?",
 		"Get lost, liberal.",
 		"Get outta this side of town.",
-		"Think you scare me? you know who I work for?",
+		"Think you scare me? You know who I work for?",
 		"Think you're hot shit?"
 	)
 	neutral_phrases = list(
 		"Why you starin' at me like that?",
-		"another dumbass tryin' to look threatening.",
-		"Halloweens over, whats with the costumes.",
-		"I think that whore gave me the clap",
-		"gotta get home soon, family to feed and all that.",
+		"Another dumbass tryin' to look threatening.",
+		"Halloween's over, what's with the costumes.",
+		"I think that whore gave me the clap.",
+		"Gotta get home soon, family to feed and all that.",
+		"Get lost, liberal.",
 		"I think.. I miss my wife.",
-		"What? you need somethin?",
-		"outta my way.",
+		"What? You need somethin?",
+		"Outta my way.",
 		"Piss off asshole, ain't in the mood for your shit.",
 		"Fuck off."
 	)
@@ -105,7 +106,8 @@
 		"Dumbass.",
 		"I miss my girl...",
 		"What's wrong bro?",
-		"evenin.",
+		"GOOD. FUCKING. EVENING.",
+		"Evenin.",
 		"Y'know I saw you sellin' dope, right?",
 		"We're fucking doomed...",
 		"It's over...",
@@ -115,18 +117,18 @@
 		"I've got it...",
 		"Fucking hellhole, this whole town.",
 		"Shit, man.",
-		"You don' look like I know you.. DO I know you?",
+		"You don' look like I know you.. Do I know you?",
 		"Right.",
 		"Uhmm... Cool I guess",
 		"Had some good food over at gummaguts, stomach hurts though..."
 	)
 	help_phrases = list(
-		"God , not again!",
+		"God, not again!",
 		"Fucking FREAK!",
 		"What the hell are you doing!?",
 		"You fucked up!",
-		"check yo self fool!",
-		"we got shit shit that'll shut you up for good!"
+		"Check yo self fool!",
+		"We got shit, shit that'll shut you up for good!"
 	)
 
 /datum/socialrole/usualmale
@@ -215,11 +217,11 @@
 	)
 
 	male_phrases = list(
-		"need something? orrr are you just trying to waste my time.",
-		"whats up?",
-		"what'd you say?",
+		"Need something? Or are you just trying to waste my time?",
+		"What's up?",
+		"What'd you say?",
 		"I'm late, my wife is gonna kill me.",
-		"You heard about th new place in town?...",
+		"You heard about the new place in town..?",
 		"Can't speak right now.",
 		"Good night I guess?",
 		"Guh...",
@@ -646,22 +648,23 @@
 					/obj/item/stack/dollar/hundred)
 
 	male_phrases = list("Did you ask something?",
-											"My stocks! my stocks! their Faalling....",
+											"My stocks! my stocks! They're falling...!",
 											"You know, eventually we'll have our money on the computer, and the computer will do our taxes for us!",
 											"I'm going somewhere important... unlike you.",
-											"Get lost, Filthy hobo...",
-											"ugh, work has me up so late, they better be paying me more...",
+											"Get lost, filthy hobo...",
+											"Ugh, work has me up so late, they better be paying me more...",
 											"Finally quit that stupid job... so glad I moved here.")
 	neutral_phrases = list("Did you say somethin..?",
 											"Excuse me?",
-											"hm? what is it.?",
+											"Hm? What is it?",
 											"I've got to get going, got somewhere important to be.",
 											"Get lost, jackass, get a job or something",
-											"huh..? sorry, the coffee hasn't kicked in.",
+											"Get lost, peasant...",
+											"Huh..? Sorry, the coffee hasn't kicked in.",
 											"it's the middle of the night, I don't wanna deal with your shit right now.")
 	help_phrases = list("What in the god damn?!",
-											"I'm Calling the cops!",
-											"oh HELL NO.",
+											"I'm calling the cops!",
+											"OH HELL NO.",
 											"That ain't gonna be happening to me!",
 											"Someone, call the cops!")
 
@@ -717,11 +720,12 @@
 					/obj/item/stack/dollar/fifty,
 					/obj/item/stack/dollar/hundred)
 
-	female_phrases = list("whaddya want, I'm busy!",
+	female_phrases = list("Whaddya want, I'm busy!",
 											"Excuse me, do you know the way to the pyramid?",
 											"...What?",
 											"I'm going somewhere important, not like you'd get it.",
 											"Get lost, filthy hobo...",
+											"Get lost, peasant...",
 											"Have you been to the bar tonight? people go there all the time and sit there for the entire night, it's crazy...",
 											"Stop doing that, imbecile.")
 	neutral_phrases = list("Did you ask something?",
@@ -731,7 +735,7 @@
 											"Get lost, peasant...",
 											"Whaa-aat...",
 											"Stop doing that, imbecile.")
-	help_phrases = list("!",
+	help_phrases = list("What in the god damn?!",
 											"Go away or I will call the cops!!",
 											"What is happening?!",
 											"Stop doing this!",
