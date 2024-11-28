@@ -284,12 +284,8 @@
 		next_fire_after = world.time+delay*level_casting
 	else
 		next_fire_after = world.time+delay
-//	if(!target)
-//		var/choice = input(caster, "Choose your target", "Available Targets") as mob in oviewers(4, caster)
-//		if(choice)
-//			target = choice
-//		else
-//			return
+
+	log_attack("[key_name(caster)] casted level [src.level_casting] of the Discipline [src.name][target == caster ? "." : " on [key_name(target)]"]")
 
 /datum/discipline/animalism
 	name = "Animalism"
