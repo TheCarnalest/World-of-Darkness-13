@@ -84,6 +84,7 @@
 		"You know who I work for?",
 		"Get the hell outta here, for I get my gang on yo ass.",
 		"you need sumn' punk?",
+		"Get lost, liberal.",
 		"Get outta this side of town.",
 		"Think you scare me? you know who I work for?",
 		"Think you're hot shit?"
