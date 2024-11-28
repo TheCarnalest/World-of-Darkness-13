@@ -1815,29 +1815,44 @@
 		if(2)
 			var/new_say = input(caster, "What will your target say?") as text|null
 			if(new_say)
-				target.say("[new_say]")
+				target.say("[new_say]", forced = "melpominee 2")
+
+				if (ishuman(target))
+					var/mob/living/carbon/human/victim = target
+					if ((victim.wear_mask?.flags_inv & HIDEFACE) || (victim.head?.flags_inv & HIDEFACE))
+						for (var/mob/living/carbon/hearer in (view(7, target) - caster - target))
+							if (!hearer.client?.prefs)
+								continue
+							if (storyteller_roll(hearer.mentality + hearer.additional_mentality, 8) == ROLL_SUCCESS)
+								to_chat(hearer, "<span class='warning'>[victim.name]'s jaw isn't moving to match [victim.p_their()] words.</span>")
+						return
+				for (var/mob/living/carbon/hearer in (view(7, target) - caster - target))
+					if (!hearer.client?.prefs)
+						continue
+					if (storyteller_roll(hearer.mentality + hearer.additional_mentality, 6) == ROLL_SUCCESS)
+						to_chat(hearer, "<span class='warning'>[target.name]'s lips aren't moving to match [target.p_their()] words.</span>")
 		if(3)
 			for(var/mob/living/carbon/human/HU in oviewers(7, caster))
 				if(HU)
 					HU.caster = caster
-					HU.create_walk_to(20)
+					HU.create_walk_to(2 SECONDS)
 					HU.remove_overlay(MUTATIONS_LAYER)
 					var/mutable_appearance/song_overlay = mutable_appearance('code/modules/wod13/icons.dmi', "song", -MUTATIONS_LAYER)
 					HU.overlays_standing[MUTATIONS_LAYER] = song_overlay
 					HU.apply_overlay(MUTATIONS_LAYER)
-					spawn(20)
+					spawn(2 SECONDS)
 						if(HU)
 							HU.remove_overlay(MUTATIONS_LAYER)
 		if(4)
 			playsound(caster.loc, 'code/modules/wod13/sounds/killscream.ogg', 100, FALSE)
 			for(var/mob/living/carbon/human/HU in oviewers(7, caster))
 				if(HU)
-					HU.Stun(20)
+					HU.Stun(2 SECONDS)
 					HU.remove_overlay(MUTATIONS_LAYER)
 					var/mutable_appearance/song_overlay = mutable_appearance('code/modules/wod13/icons.dmi', "song", -MUTATIONS_LAYER)
 					HU.overlays_standing[MUTATIONS_LAYER] = song_overlay
 					HU.apply_overlay(MUTATIONS_LAYER)
-					spawn(20)
+					spawn(2 SECONDS)
 						if(HU)
 							HU.remove_overlay(MUTATIONS_LAYER)
 		if(5)
