@@ -1194,7 +1194,7 @@
 	icon_state = "thaumaturgy"
 	cost = 1
 	ranged = TRUE
-	delay = 10
+	delay = 5 SECONDS
 	violates_masquerade = TRUE
 	activate_sound = 'code/modules/wod13/sounds/thaum.ogg'
 	clane_restricted = TRUE
@@ -1227,9 +1227,8 @@
 			H.fire(direct_target = target)
 		else
 			if(iscarbon(target))
-				target.Stun(30)
+				target.Stun(2.5 SECONDS)
 				target.visible_message("<span class='danger'>[target] throws up!</span>", "<span class='userdanger'>You throw up!</span>")
-				target.bloodpool -= round(level_casting * 0.5)
 				playsound(get_turf(target), 'code/modules/wod13/sounds/vomit.ogg', 75, TRUE)
 				target.add_splatter_floor(get_turf(target))
 				target.add_splatter_floor(get_turf(get_step(target, target.dir)))
