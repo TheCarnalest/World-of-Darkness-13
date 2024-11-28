@@ -281,7 +281,7 @@
 			GLOB.masquerade_breakers_list -= H
 */
 
-	if(H.key && H.stat <= 3)
+	if(H.key && H.stat <= HARD_CRIT)
 		var/datum/preferences/P = GLOB.preferences_datums[ckey(H.key)]
 		if(P)
 			if(P.humanity != H.humanity)
@@ -292,27 +292,10 @@
 				P.masquerade = H.masquerade
 				P.save_preferences()
 				P.save_character()
-//			if(H.last_experience+600 <= world.time)
-//				var/addd = 5
-//				if(!H.JOB && H.mind)
-//					H.JOB = SSjob.GetJob(H.mind.assigned_role)
-//					if(H.JOB)
-//						addd = H.JOB.experience_addition
-//				P.exper = min(calculate_mob_max_exper(H), P.exper+addd+H.experience_plus)
-//				if(P.exper == calculate_mob_max_exper(H))
-//					to_chat(H, "You've reached a new level! You can add new points in Character Setup (Lobby screen).")
-//				P.save_preferences()
-//				P.save_character()
-//				H.last_experience = world.time
-//			if(H.roundstart_vampire)
-//				if(P.generation != H.generation)
-//					P.generation = H.generation
-//					P.save_preferences()
-//					P.save_character()
 			if(!H.antifrenzy)
 				if(P.humanity < 1)
 					H.enter_frenzymod()
-//					reset_shit(H)
+					to_chat(H, "<span class='userdanger'>You have lost control of the Beast within you, and it has taken your body. Be more [H.client.prefs.enlightement ? "Enlightened" : "humane"] next time.</span>")
 					H.ghostize(FALSE)
 					P.reason_of_death = "Lost control to the Beast ([time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")])."
 
