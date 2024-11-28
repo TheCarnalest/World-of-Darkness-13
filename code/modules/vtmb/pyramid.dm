@@ -221,7 +221,8 @@
 	faction = list("Tremere")
 
 /obj/ritualrune/question/complete()
-	var/list/mob/dead/observer/candidates = pollCandidatesForMob("Do you wish to answer a question? (You are allowed to spread meta information)", null, null, null, 50, src)
+	visible_message("<span class='notice'>A call rings out to the dead...</span>")
+	var/list/mob/dead/observer/candidates = pollCandidatesForMob("Do you wish to answer a question? (You are allowed to spread meta information)", null, null, null, 10 SECONDS, src)
 	for(var/mob/dead/observer/G in GLOB.player_list)
 		if(G.key)
 			to_chat(G, "<span class='ghostalert'>Question rune has been triggered.</span>")
@@ -229,6 +230,7 @@
 		var/mob/dead/observer/C = pick(candidates)
 		var/mob/living/simple_animal/hostile/ghost/tremere/TR = new(loc)
 		TR.key = C.key
+		TR.name = C.name
 		playsound(loc, 'code/modules/wod13/sounds/thaum.ogg', 50, FALSE)
 		qdel(src)
 
