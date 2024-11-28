@@ -414,10 +414,6 @@
 					to_chat(user, "<span class='notice'>You pick the lock.</span>")
 					locked = FALSE
 					hacking = FALSE
-//					if(initial(lock_id) == "npc")
-//						if(ishuman(user))
-//							var/mob/living/carbon/human/H = user
-//							H.AdjustHumanity(-1, 6)
 					return
 
 				else
@@ -429,7 +425,11 @@
 				hacking = FALSE
 				return
 		else
-			return
+			if (closed) //yes, this is a thing you can extremely easily do in real life
+				to_chat(user, "<span class='notice'>You re-lock the door with your lockpick.</span>")
+				locked = TRUE
+				playsound(src, 'code/modules/wod13/sounds/hack.ogg', 100, TRUE)
+				return
 	else if(istype(W, /obj/item/vamp/keys))
 		var/obj/item/vamp/keys/KEY = W
 		if(KEY.roundstart_fix)
