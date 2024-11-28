@@ -1820,7 +1820,7 @@
 						for (var/mob/living/carbon/hearer in (view(7, target) - caster - target))
 							if (!hearer.client?.prefs)
 								continue
-							if (get_dist(hearer, target) >= 4)
+							if (get_dist(hearer, target) > 3)
 								difficulty_bonus++
 							if (storyteller_roll(hearer.mentality + hearer.additional_mentality, 8 + difficulty_bonus) == ROLL_SUCCESS)
 								to_chat(hearer, "<span class='warning'>[victim.name]'s jaw isn't moving to match [victim.p_their()] words.</span>")
@@ -1828,7 +1828,7 @@
 				for (var/mob/living/carbon/hearer in (view(7, target) - caster - target))
 					if (!hearer.client?.prefs)
 						continue
-					if (get_dist(hearer, target) >= 4)
+					if (get_dist(hearer, target) > 3)
 						difficulty_bonus++
 					if (storyteller_roll(hearer.mentality + hearer.additional_mentality, 6 + difficulty_bonus) == ROLL_SUCCESS)
 						to_chat(hearer, "<span class='warning'>[target.name]'s lips aren't moving to match [target.p_their()] words.</span>")
