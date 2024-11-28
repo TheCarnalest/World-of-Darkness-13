@@ -36,6 +36,8 @@
 	. = ..()
 	to_chat(usr, "<b>[SScity_time.timeofnight]</b>")
 
+var/datum/martial_art/cowalker/style
+
 /datum/action/temporis_step
 	name = "Cowalker"
 	desc = "Stop time for a moment in order to appear in two places at once."
@@ -45,6 +47,7 @@
 	var/spam_fix = 0
 
 /proc/tempstep(mob/living/M)
+	style = new
 	if(M.temporis_visual)
 		return
 	M.temporis_visual = TRUE
@@ -57,7 +60,9 @@
 	animate(M, transform = initial_matrix, time = 10, loop = 0)
 	animate(M, transform = secondary_matrix, time = 10, loop = 0, ANIMATION_PARALLEL)
 	animate(M, transform = tertiary_matrix, time = 10, loop = 0, ANIMATION_PARALLEL)
+	style.teach(M, make_temporary = TRUE)
 	spawn(10 SECONDS)
+		style.remove(M)
 		M.temporis_visual = FALSE
 		playsound(M.loc, 'code/modules/wod13/sounds/temporis end.ogg', 50, FALSE)
 
@@ -83,13 +88,16 @@
 	var/spam_fix = 0
 
 /proc/clothogift(mob/living/M)
+	style = new
 	if(M.temporis_blur)
 		return
 	M.temporis_blur = TRUE
 	M.add_movespeed_modifier(/datum/movespeed_modifier/temporis5)
 	M.next_move_modifier *= TEMPORIS_ATTACK_SPEED_MODIFIER
+	style.teach(M, make_temporary = TRUE)
 	spawn(10 SECONDS)
 		if(usr == M)
+			style.remove(M)
 			M.temporis_blur = FALSE
 			M.playsound_local(M.loc, 'code/modules/wod13/sounds/temporis end.ogg', 50, FALSE)
 			M.remove_movespeed_modifier(/datum/movespeed_modifier/temporis5)
@@ -97,7 +105,7 @@
 
 
 /datum/action/clotho/Trigger()
-	if(spam_fix + 20 SECONDS > world.time)
+	if(spam_fix + 15 SECONDS > world.time)
 		return
 	var/mob/living/carbon/human/H = owner
 	if(H.bloodpool < 3)
