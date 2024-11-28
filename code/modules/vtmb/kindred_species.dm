@@ -328,22 +328,28 @@
 
 					if((BLOODBONDED.respawntimeofdeath + 5 MINUTES) > world.time)
 						if (BLOODBONDED.auspice?.level) //here be Abominations
-							switch(storyteller_roll(BLOODBONDED.auspice.level))
-								if (ROLL_BOTCH)
-									to_chat(H, "<span class='danger'>Something terrible is happening.</span>")
-									to_chat(BLOODBONDED, "<span class='userdanger'>Gaia has forsaken you.</span>")
-									message_admins("[ADMIN_LOOKUPFLW(H)] has turned [ADMIN_LOOKUPFLW(BLOODBONDED)] into an Abomination.")
-									log_game("[key_name(H)] has turned [key_name(BLOODBONDED)] into an Abomination.")
-								if (ROLL_FAILURE)
-									BLOODBONDED.visible_message("<span class='warning'>[BLOODBONDED.name] convulses in sheer agony!</span>")
-									BLOODBONDED.Shake(15, 15, 5 SECONDS)
-									playsound(BLOODBONDED.loc, 'code/modules/wod13/sounds/vicissitude.ogg', 100, TRUE)
-									BLOODBONDED.can_be_embraced = FALSE
-									return
-								if (ROLL_SUCCESS)
-									to_chat(H, "<span class='notice'>[BLOODBONDED.name] does not respond to your Vitae...</span>")
-									BLOODBONDED.can_be_embraced = FALSE
-									return
+							if (BLOODBONDED.auspice.force_abomination)
+								to_chat(H, "<span class='danger'>Something terrible is happening.</span>")
+								to_chat(BLOODBONDED, "<span class='userdanger'>Gaia has forsaken you.</span>")
+								message_admins("[ADMIN_LOOKUPFLW(H)] has turned [ADMIN_LOOKUPFLW(BLOODBONDED)] into an Abomination through an admin setting the force_abomination var.")
+								log_game("[key_name(H)] has turned [key_name(BLOODBONDED)] into an Abomination through an admin setting the force_abomination var.")
+							else
+								switch(storyteller_roll(BLOODBONDED.auspice.level))
+									if (ROLL_BOTCH)
+										to_chat(H, "<span class='danger'>Something terrible is happening.</span>")
+										to_chat(BLOODBONDED, "<span class='userdanger'>Gaia has forsaken you.</span>")
+										message_admins("[ADMIN_LOOKUPFLW(H)] has turned [ADMIN_LOOKUPFLW(BLOODBONDED)] into an Abomination.")
+										log_game("[key_name(H)] has turned [key_name(BLOODBONDED)] into an Abomination.")
+									if (ROLL_FAILURE)
+										BLOODBONDED.visible_message("<span class='warning'>[BLOODBONDED.name] convulses in sheer agony!</span>")
+										BLOODBONDED.Shake(15, 15, 5 SECONDS)
+										playsound(BLOODBONDED.loc, 'code/modules/wod13/sounds/vicissitude.ogg', 100, TRUE)
+										BLOODBONDED.can_be_embraced = FALSE
+										return
+									if (ROLL_SUCCESS)
+										to_chat(H, "<span class='notice'>[BLOODBONDED.name] does not respond to your Vitae...</span>")
+										BLOODBONDED.can_be_embraced = FALSE
+										return
 
 						log_game("[key_name(H)] has Embraced [key_name(BLOODBONDED)].")
 						message_admins("[ADMIN_VERBOSEJMP(H)] has Embraced [ADMIN_VERBOSEJMP(BLOODBONDED)].")
