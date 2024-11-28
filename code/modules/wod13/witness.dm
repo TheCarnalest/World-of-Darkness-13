@@ -1,5 +1,5 @@
 /obj/item/police_radio
-	name = "police frequence radio"
+	name = "dispatch frequency radio"
 	desc = "911, I'm stuck in my dishwasher and stepbrother is coming in my room..."
 	icon_state = "radio"
 	icon = 'code/modules/wod13/items.dmi'
