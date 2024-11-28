@@ -1813,25 +1813,25 @@
 			if(new_say)
 				target.say("[new_say]", forced = "melpominee 2")
 
-				var/difficulty_bonus = 0
-				if (ishuman(target))
+				var/difficulty_malus = 0
+				var/masked = FALSE
+				if (ishuman(target)) //apply a malus and different text if victim's mouth isn't visible
 					var/mob/living/carbon/human/victim = target
 					if ((victim.wear_mask?.flags_inv & HIDEFACE) || (victim.head?.flags_inv & HIDEFACE))
-						for (var/mob/living/carbon/hearer in (view(7, target) - caster - target))
-							if (!hearer.client?.prefs)
-								continue
-							if (get_dist(hearer, target) > 3)
-								difficulty_bonus++
-							if (storyteller_roll(hearer.mentality + hearer.additional_mentality, 8 + difficulty_bonus) == ROLL_SUCCESS)
-								to_chat(hearer, "<span class='warning'>[victim.name]'s jaw isn't moving to match [victim.p_their()] words.</span>")
-						return
-				for (var/mob/living/carbon/hearer in (view(7, target) - caster - target))
-					if (!hearer.client?.prefs)
+						masked = TRUE
+				for (var/mob/living/hearer in (view(7, target) - caster - target))
+					if (!hearer.client)
 						continue
+					difficulty_malus = 0
+					if (masked)
+						difficulty_malus += 2
 					if (get_dist(hearer, target) > 3)
-						difficulty_bonus++
-					if (storyteller_roll(hearer.mentality + hearer.additional_mentality, 6 + difficulty_bonus) == ROLL_SUCCESS)
-						to_chat(hearer, "<span class='warning'>[target.name]'s lips aren't moving to match [target.p_their()] words.</span>")
+						difficulty_malus += 1
+					if (storyteller_roll(hearer.mentality + hearer.additional_mentality, 6 + difficulty_malus) == ROLL_SUCCESS)
+						if (masked)
+							to_chat(hearer, "<span class='warning'>[target.name]'s jaw isn't moving to match [target.p_their()] words.</span>")
+						else
+							to_chat(hearer, "<span class='warning'>[target.name]'s lips aren't moving to match [target.p_their()] words.</span>")
 		if(3)
 			for(var/mob/living/carbon/human/HU in oviewers(7, caster))
 				if(HU)
