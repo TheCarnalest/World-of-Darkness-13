@@ -1813,19 +1813,24 @@
 			if(new_say)
 				target.say("[new_say]", forced = "melpominee 2")
 
+				var/difficulty_bonus = 0
 				if (ishuman(target))
 					var/mob/living/carbon/human/victim = target
 					if ((victim.wear_mask?.flags_inv & HIDEFACE) || (victim.head?.flags_inv & HIDEFACE))
 						for (var/mob/living/carbon/hearer in (view(7, target) - caster - target))
 							if (!hearer.client?.prefs)
 								continue
-							if (storyteller_roll(hearer.mentality + hearer.additional_mentality, 8) == ROLL_SUCCESS)
+							if (get_dist(hearer, target) >= 4)
+								difficulty_bonus++
+							if (storyteller_roll(hearer.mentality + hearer.additional_mentality, 8 + difficulty_bonus) == ROLL_SUCCESS)
 								to_chat(hearer, "<span class='warning'>[victim.name]'s jaw isn't moving to match [victim.p_their()] words.</span>")
 						return
 				for (var/mob/living/carbon/hearer in (view(7, target) - caster - target))
 					if (!hearer.client?.prefs)
 						continue
-					if (storyteller_roll(hearer.mentality + hearer.additional_mentality, 6) == ROLL_SUCCESS)
+					if (get_dist(hearer, target) >= 4)
+						difficulty_bonus++
+					if (storyteller_roll(hearer.mentality + hearer.additional_mentality, 6 + difficulty_bonus) == ROLL_SUCCESS)
 						to_chat(hearer, "<span class='warning'>[target.name]'s lips aren't moving to match [target.p_their()] words.</span>")
 		if(3)
 			for(var/mob/living/carbon/human/HU in oviewers(7, caster))
