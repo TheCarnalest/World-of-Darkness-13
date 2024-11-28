@@ -253,9 +253,9 @@
 	caster.bloodpool = max(0, caster.bloodpool-(cost+plus))
 	caster.update_blood_hud()
 	if(ranged)
-		to_chat(caster, "<span class='notice'>You activate the [name] on [target].</span>")
+		to_chat(caster, "<span class='notice'>You activate [name] on [target].</span>")
 	else
-		to_chat(caster, "<span class='notice'>You activate the [name].</span>")
+		to_chat(caster, "<span class='notice'>You activate [name].</span>")
 	if(ranged)
 		if(isnpc(target) && !fearless)
 			var/mob/living/carbon/human/npc/NPC = target
@@ -1804,13 +1804,16 @@
 	. = ..()
 	switch(level_casting)
 		if(1)
-			var/new_say = input(caster, "What will your target hear?") as text|null
-			if(new_say)
-				new /datum/hallucination/chat(target, TRUE, FALSE, new_say)
-				to_chat(caster, "You throw \"[new_say]\" at [target]'s ears.")
-		if(2)
+			if (target.stat == DEAD)
+				//why? because of laziness, it sends messages to deadchat if you do that
+				to_chat(caster, "<span class='notice'>You can't use this on corpses.</span>")
+				return
 			var/new_say = input(caster, "What will your target say?") as text|null
 			if(new_say)
+				if(CHAT_FILTER_CHECK(new_say))
+					to_chat(caster, "<span class='warning'>That message contained a word prohibited in IC chat! Consider reviewing the server rules.\n<span replaceRegex='show_filtered_ic_chat'>\"[new_say]\"</span></span>")
+					SSblackbox.record_feedback("tally", "ic_blocked_words", 1, lowertext(config.ic_filter_regex.match))
+					return
 				target.say("[new_say]", forced = "melpominee 2")
 
 				var/base_difficulty = 5
@@ -1835,6 +1838,20 @@
 							to_chat(hearer, "<span class='warning'>[target.name]'s jaw isn't moving to match [target.p_their()] words.</span>")
 						else
 							to_chat(hearer, "<span class='warning'>[target.name]'s lips aren't moving to match [target.p_their()] words.</span>")
+		if(2)
+			target = input(caster, "Who will you project your voice to?") as null|mob in (GLOB.player_list - caster)
+			if(target)
+				var/input_message = input(caster, "What message will you project to them?") as null|text
+				if (input_message)
+					if(CHAT_FILTER_CHECK(input_message))
+						to_chat(caster, "<span class='warning'>That message contained a word prohibited in IC chat! Consider reviewing the server rules.\n<span replaceRegex='show_filtered_ic_chat'>\"[input_message]\"</span></span>")
+						SSblackbox.record_feedback("tally", "ic_blocked_words", 1, lowertext(config.ic_filter_regex.match))
+						return
+					var/language = caster.get_selected_language()
+					var/message = caster.compose_message(caster, language, input_message, , list())
+					to_chat(target, "<span class='purple'><i>You hear someone's voice in your head...</i></span>")
+					target.Hear(message, target, language, input_message, , , )
+					to_chat(caster, "<span class='notice'>You project your voice to [target]'s ears.</span>")
 		if(3)
 			for(var/mob/living/carbon/human/HU in oviewers(7, caster))
 				if(HU)

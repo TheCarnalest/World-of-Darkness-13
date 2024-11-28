@@ -352,7 +352,7 @@
 										return
 
 						log_game("[key_name(H)] has Embraced [key_name(BLOODBONDED)].")
-						message_admins("[ADMIN_VERBOSEJMP(H)] has Embraced [ADMIN_VERBOSEJMP(BLOODBONDED)].")
+						message_admins("[ADMIN_LOOKUPFLW(H)] has Embraced [ADMIN_LOOKUPFLW(BLOODBONDED)].")
 						giving = FALSE
 						if(BLOODBONDED.revive(full_heal = TRUE, admin_revive = TRUE))
 							BLOODBONDED.grab_ghost(force = TRUE)
