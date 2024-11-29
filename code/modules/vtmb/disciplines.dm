@@ -253,9 +253,9 @@
 	caster.bloodpool = max(0, caster.bloodpool-(cost+plus))
 	caster.update_blood_hud()
 	if(ranged)
-		to_chat(caster, "<span class='notice'>You activate the [name] on [target].</span>")
+		to_chat(caster, "<span class='notice'>You activate [name] on [target].</span>")
 	else
-		to_chat(caster, "<span class='notice'>You activate the [name].</span>")
+		to_chat(caster, "<span class='notice'>You activate [name].</span>")
 	if(ranged)
 		if(isnpc(target) && !fearless)
 			var/mob/living/carbon/human/npc/NPC = target
@@ -284,12 +284,8 @@
 		next_fire_after = world.time+delay*level_casting
 	else
 		next_fire_after = world.time+delay
-//	if(!target)
-//		var/choice = input(caster, "Choose your target", "Available Targets") as mob in oviewers(4, caster)
-//		if(choice)
-//			target = choice
-//		else
-//			return
+
+	log_attack("[key_name(caster)] casted level [src.level_casting] of the Discipline [src.name][target == caster ? "." : " on [key_name(target)]"]")
 
 /datum/discipline/animalism
 	name = "Animalism"
@@ -773,7 +769,7 @@
 	name = "Potence"
 	desc = "Boosts melee and unarmed damage."
 	icon_state = "potence"
-	cost = 1.0
+	cost = 1
 	ranged = FALSE
 	delay = 100
 	activate_sound = 'code/modules/wod13/sounds/potence_activate.ogg'
@@ -1153,24 +1149,34 @@
 		var/mob/living/carbon/human/VH = firer
 		if(isliving(target))
 			var/mob/living/VL = target
-			if(!iskindred(target))
+			if(isgarou(VL))
 				if(VL.bloodpool >= 1 && VL.stat != DEAD)
 					var/sucked = min(VL.bloodpool, 2)
 					VL.bloodpool = VL.bloodpool-sucked
-					VL.blood_volume = max(VL.blood_volume-50, 0)
+					VL.blood_volume = max(VL.blood_volume-50, 0) // average blood_volume of most carbons seems to be 560
+					VL.apply_damage(45, BURN)
+					VL.visible_message("<span class='danger'>[target]'s wounds spray boiling hot blood!</span>", "<span class='userdanger'>Your blood boils!</span>")
+					VL.add_splatter_floor(get_turf(target))
+					VL.add_splatter_floor(get_turf(get_step(target, target.dir)))
+				if(!iskindred(target))
+					if(VL.bloodpool >= 1 && VL.stat != DEAD)
+						var/sucked = min(VL.bloodpool, 2)
+						VL.bloodpool = VL.bloodpool-sucked
+						VL.blood_volume = max(VL.blood_volume-50, 0)
 					if(ishuman(VL))
-						var/mob/living/carbon/human/VHL = VL
-						VHL.blood_volume = max(VHL.blood_volume-10*sucked, 0)
-						if(VL.bloodpool == 0)
-							VHL.blood_volume = 0
-							VL.death()
+						if(VL.bloodpool >= 1 && VL.stat != DEAD)
+							var/mob/living/carbon/human/VHL = VL
+							VHL.blood_volume = max(VHL.blood_volume-25, 0)
+							if(VL.bloodpool == 0)
+								VHL.blood_volume = 0
+								VL.death()
 //							if(isnpc(VL))
 //								AdjustHumanity(VH, -1, 3)
 					else
 						if(VL.bloodpool == 0)
 							VL.death()
-					VH.bloodpool = VH.bloodpool+(sucked*max(1, VL.bloodquality-1))
-					VH.bloodpool = min(VH.maxbloodpool, VH.bloodpool)
+					//VH.bloodpool = VH.bloodpool+(sucked*max(1, VL.bloodquality-1))
+					//VH.bloodpool = min(VH.maxbloodpool, VH.bloodpool)
 			else
 				if(VL.bloodpool >= 1)
 					var/sucked = min(VL.bloodpool, 1*level)
@@ -1184,7 +1190,7 @@
 	icon_state = "thaumaturgy"
 	cost = 1
 	ranged = TRUE
-	delay = 10
+	delay = 5 SECONDS
 	violates_masquerade = TRUE
 	activate_sound = 'code/modules/wod13/sounds/thaum.ogg'
 	clane_restricted = TRUE
@@ -1217,9 +1223,8 @@
 			H.fire(direct_target = target)
 		else
 			if(iscarbon(target))
-				target.Stun(30)
+				target.Stun(2.5 SECONDS)
 				target.visible_message("<span class='danger'>[target] throws up!</span>", "<span class='userdanger'>You throw up!</span>")
-				target.bloodpool -= round(level_casting * 0.5)
 				playsound(get_turf(target), 'code/modules/wod13/sounds/vomit.ogg', 75, TRUE)
 				target.add_splatter_floor(get_turf(target))
 				target.add_splatter_floor(get_turf(get_step(target, target.dir)))
@@ -1319,10 +1324,16 @@
 
 /datum/discipline/vicissitude/activate(mob/living/target, mob/living/carbon/human/caster)
 	. = ..()
-	if(iswerewolf(target))
+	if(iswerewolf(target) || isgarou(target))
 		caster.playsound_local(caster.loc, 'code/modules/wod13/sounds/vicissitude.ogg', 50, TRUE)
-		caster.adjustFireLoss(50)		//abusers suffer
+		//caster.adjustFireLoss(35)		//abusers suffer no more
+		caster.Stun(20)
 		caster.emote("scream")
+		target.apply_damage(10*level_casting, BRUTE)
+		target.apply_damage(5*level_casting, CLONE)
+		target.visible_message("<span class='danger'>[target]'s skin writhes like worms, twisting and contorting!</span>", "<span class='userdanger'>Your flesh twists unnaturally!</span>")
+		target.Stun(30)
+		target.emote("scream")
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
 		caster.playsound_local(target.loc, 'code/modules/wod13/sounds/vicissitude.ogg', 50, TRUE)
@@ -1330,7 +1341,7 @@
 			if(istype(target, /mob/living/carbon/human/npc))
 				var/mob/living/carbon/human/npc/NPC = target
 				NPC.last_attacker = null
-			if(!iskindred(target))
+			if(!iskindred(target) || !isgarou(target))
 				if(H.stat != DEAD)
 					H.death()
 				switch(level_casting)
@@ -1411,8 +1422,8 @@
 				var/obj/item/bodypart/B = H.get_bodypart(pick(BODY_ZONE_R_ARM, BODY_ZONE_L_ARM, BODY_ZONE_R_LEG, BODY_ZONE_L_LEG))
 				if(B)
 					B.drop_limb()
-	else
-		target.death()
+	//else
+		//target.death() - Removed until a better solution is found to not have insta-kills on player mobs, unsure of side effects for normal vicissitude use but call death above already so should be fine?
 
 /turf
 	var/silented = FALSE
@@ -1793,36 +1804,76 @@
 	. = ..()
 	switch(level_casting)
 		if(1)
-			var/new_say = input(caster, "What will your target hear?") as text|null
-			if(new_say)
-				new /datum/hallucination/chat(target, TRUE, FALSE, new_say)
-				to_chat(caster, "You throw \"[new_say]\" at [target]'s ears.")
-		if(2)
+			if (target.stat == DEAD)
+				//why? because of laziness, it sends messages to deadchat if you do that
+				to_chat(caster, "<span class='notice'>You can't use this on corpses.</span>")
+				return
 			var/new_say = input(caster, "What will your target say?") as text|null
 			if(new_say)
-				target.say("[new_say]")
+				if(CHAT_FILTER_CHECK(new_say))
+					to_chat(caster, "<span class='warning'>That message contained a word prohibited in IC chat! Consider reviewing the server rules.\n<span replaceRegex='show_filtered_ic_chat'>\"[new_say]\"</span></span>")
+					SSblackbox.record_feedback("tally", "ic_blocked_words", 1, lowertext(config.ic_filter_regex.match))
+					return
+				target.say("[new_say]", forced = "melpominee 2")
+
+				var/base_difficulty = 5
+				var/difficulty_malus = 0
+				var/masked = FALSE
+				if (ishuman(target)) //apply a malus and different text if victim's mouth isn't visible, and a malus if they're already typing
+					var/mob/living/carbon/human/victim = target
+					if ((victim.wear_mask?.flags_inv & HIDEFACE) || (victim.head?.flags_inv & HIDEFACE))
+						masked = TRUE
+						base_difficulty += 2
+					if (victim.overlays_standing[SAY_LAYER]) //ugly way to check for if the victim is currently typing
+						base_difficulty += 2
+
+				for (var/mob/living/hearer in (view(7, target) - caster - target))
+					if (!hearer.client)
+						continue
+					difficulty_malus = 0
+					if (get_dist(hearer, target) > 3)
+						difficulty_malus += 1
+					if (storyteller_roll(hearer.mentality + hearer.additional_mentality, base_difficulty + difficulty_malus) == ROLL_SUCCESS)
+						if (masked)
+							to_chat(hearer, "<span class='warning'>[target.name]'s jaw isn't moving to match [target.p_their()] words.</span>")
+						else
+							to_chat(hearer, "<span class='warning'>[target.name]'s lips aren't moving to match [target.p_their()] words.</span>")
+		if(2)
+			target = input(caster, "Who will you project your voice to?") as null|mob in (GLOB.player_list - caster)
+			if(target)
+				var/input_message = input(caster, "What message will you project to them?") as null|text
+				if (input_message)
+					if(CHAT_FILTER_CHECK(input_message))
+						to_chat(caster, "<span class='warning'>That message contained a word prohibited in IC chat! Consider reviewing the server rules.\n<span replaceRegex='show_filtered_ic_chat'>\"[input_message]\"</span></span>")
+						SSblackbox.record_feedback("tally", "ic_blocked_words", 1, lowertext(config.ic_filter_regex.match))
+						return
+					var/language = caster.get_selected_language()
+					var/message = caster.compose_message(caster, language, input_message, , list())
+					to_chat(target, "<span class='purple'><i>You hear someone's voice in your head...</i></span>")
+					target.Hear(message, target, language, input_message, , , )
+					to_chat(caster, "<span class='notice'>You project your voice to [target]'s ears.</span>")
 		if(3)
 			for(var/mob/living/carbon/human/HU in oviewers(7, caster))
 				if(HU)
 					HU.caster = caster
-					HU.create_walk_to(20)
+					HU.create_walk_to(2 SECONDS)
 					HU.remove_overlay(MUTATIONS_LAYER)
 					var/mutable_appearance/song_overlay = mutable_appearance('code/modules/wod13/icons.dmi', "song", -MUTATIONS_LAYER)
 					HU.overlays_standing[MUTATIONS_LAYER] = song_overlay
 					HU.apply_overlay(MUTATIONS_LAYER)
-					spawn(20)
+					spawn(2 SECONDS)
 						if(HU)
 							HU.remove_overlay(MUTATIONS_LAYER)
 		if(4)
 			playsound(caster.loc, 'code/modules/wod13/sounds/killscream.ogg', 100, FALSE)
 			for(var/mob/living/carbon/human/HU in oviewers(7, caster))
 				if(HU)
-					HU.Stun(20)
+					HU.Stun(2 SECONDS)
 					HU.remove_overlay(MUTATIONS_LAYER)
 					var/mutable_appearance/song_overlay = mutable_appearance('code/modules/wod13/icons.dmi', "song", -MUTATIONS_LAYER)
 					HU.overlays_standing[MUTATIONS_LAYER] = song_overlay
 					HU.apply_overlay(MUTATIONS_LAYER)
-					spawn(20)
+					spawn(2 SECONDS)
 						if(HU)
 							HU.remove_overlay(MUTATIONS_LAYER)
 		if(5)

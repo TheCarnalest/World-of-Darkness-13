@@ -91,6 +91,10 @@ VENTORY!
 /obj/item/storage/backpack
 	component_type = /datum/component/storage/concrete/vtm/backpack
 
+/datum/component/storage/concrete/vtm/holster
+	screen_max_columns = 2
+	screen_max_rows = 2
+
 /datum/component/storage/concrete/vtm/car
 	screen_max_columns = 7
 	screen_max_rows = 9
@@ -906,6 +910,10 @@ VENTORY!
 
 /obj/item/melee/vampirearms/eguitar
 	grid_width = 7 GRID_BOXES
+	grid_height = 2 GRID_BOXES
+
+/obj/item/melee/classic_baton/vampire
+	grid_width = 1 GRID_BOXES
 	grid_height = 2 GRID_BOXES
 
 /obj/item/shield/door

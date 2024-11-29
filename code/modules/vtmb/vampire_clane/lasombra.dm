@@ -10,7 +10,7 @@
 	male_clothes = "/obj/item/clothing/under/vampire/emo"
 	female_clothes = "/obj/item/clothing/under/vampire/business"
 	enlightement = TRUE
-	whitelisted = FALSE
+	whitelisted = TRUE
 
 /datum/vampireclane/lasombra/post_gain(mob/living/carbon/human/H)
 	..()
@@ -84,7 +84,7 @@
 
 /datum/action/lasarmor/Trigger()
 	. = ..()
-	if(abuse_fix+100 > world.time)
+	if(abuse_fix+250 > world.time)
 		return
 	var/mob/living/carbon/human/H = owner
 	if(H.bloodpool < 2)

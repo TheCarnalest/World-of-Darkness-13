@@ -9,8 +9,7 @@
 	var/base_breed = "Homid"
 	var/tribe = "Wendigo"
 	var/list/gifts = list()
-//	var/list/gifts2 = list()
-//	var/list/gifts3 = list()
+	var/force_abomination = FALSE
 
 	var/list/wendigo = list(
 		/datum/action/gift/stoic_pose = 1,
