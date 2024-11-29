@@ -574,13 +574,15 @@
 //	minimal_generation = 11	//Uncomment when players get exp enough
 
 	my_contact_is_important = TRUE
-	known_contacts = list("Prince",
-												"Dealer")
+	known_contacts = list(
+		"Prince",
+		"Dealer"
+	)
 
 	v_duty = "You lead the Anarchs in the City. A Camarilla faction that values freedom and individuality. While not a fan of the traditions, you still respect the Masquerade."
 	minimal_masquerade = 3
 	allowed_species = list("Vampire")
-	allowed_bloodlines = list("Daughters of Cacophony", "True Brujah", "Brujah", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Tremere", "Banu Haqim", "Tzimisce", "Caitiff", "Ventrue", "Lasombra", "Gargoyle")
+	allowed_bloodlines = list("Daughters of Cacophony", "True Brujah", "Brujah", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Tzimisce", "Caitiff", "Ventrue", "Lasombra", "Gargoyle")
 	experience_addition = 20
 
 /datum/outfit/job/barkeeper
