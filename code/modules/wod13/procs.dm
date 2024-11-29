@@ -18,18 +18,27 @@
 			if(enlight)
 				if(value < 0)
 					if(humanity < 10)
-						humanity = max(limit, humanity-(value*mod))
+						if (forced)
+							humanity = max(0, humanity-(value * mod))
+						else
+							humanity = max(limit, humanity-(value*mod))
 						SEND_SOUND(src, sound('code/modules/wod13/sounds/humanity_gain.ogg', 0, 0, 75))
 						to_chat(src, "<span class='userhelp'><b>ENLIGHTENMENT INCREASED!</b></span>")
 				if(value > 0)
 					if(humanity > 0)
-						humanity = min(limit, humanity-(value*mod))
+						if (forced)
+							humanity = min(10, humanity-(value * mod))
+						else
+							humanity = min(limit, humanity-(value*mod))
 						SEND_SOUND(src, sound('code/modules/wod13/sounds/humanity_loss.ogg', 0, 0, 75))
 						to_chat(src, "<span class='userdanger'><b>ENLIGHTENMENT DECREASED!</b></span>")
 			else
 				if(value < 0)
-					if(humanity > limit)
-						humanity = max(limit, humanity+(value*mod))
+					if((humanity > limit) || forced)
+						if (forced)
+							humanity = max(0, humanity+(value * mod))
+						else
+							humanity = max(limit, humanity+(value*mod))
 						SEND_SOUND(src, sound('code/modules/wod13/sounds/humanity_loss.ogg', 0, 0, 75))
 						to_chat(src, "<span class='userdanger'><b>HUMANITY DECREASED!</b></span>")
 						if(humanity == limit)
@@ -38,8 +47,11 @@
 						var/msgShit = pick("<span class='userdanger'><b>I can barely control the Beast!</b></span>", "<span class='userdanger'><b>I SHOULD STOP.</b></span>", "<span class='userdanger'><b>I'm succumbing to the Beast!</b></span>")
 						to_chat(src, msgShit) // [ChillRaccoon] - I think we should make's players more scared
 				if(value > 0)				  // so please, do not say about that, they're in safety after they're humanity drops to limit
-					if(humanity < limit)
-						humanity = min(limit, humanity+(value*mod))
+					if((humanity < limit) || forced)
+						if (forced)
+							humanity = min(10, humanity+(value * mod))
+						else
+							humanity = min(limit, humanity+(value*mod))
 						SEND_SOUND(src, sound('code/modules/wod13/sounds/humanity_gain.ogg', 0, 0, 75))
 						to_chat(src, "<span class='userhelp'><b>HUMANITY INCREASED!</b></span>")
 

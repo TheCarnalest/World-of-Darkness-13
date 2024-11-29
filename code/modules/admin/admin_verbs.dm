@@ -452,6 +452,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 /client/proc/toggle_canon()
 	set name = "Toggle Canon"
 	set category = "Admin"
+
 	GLOB.canon_event = !GLOB.canon_event
 	SEND_SOUND(world, sound('code/modules/wod13/sounds/canon.ogg'))
 	if(GLOB.canon_event)
@@ -462,26 +463,52 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	log_admin("[key_name(usr)] toggled the round's canonicity. The round is [GLOB.canon_event ? "now canon." : "no longer canon."]")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Toggle Canon") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-//I dunno why this was here or what purpose it served
-/*
-/client/proc/encipher_word()
-	set name = "ENCRYPT WORD"
+/client/proc/cmd_admin_adjust_masquerade(mob/living/carbon/human/M in GLOB.player_list)
+	set name = "Adjust Masquerade"
 	set category = "Admin"
-	var/word = input("Word to encrypt:") as null|text
-	if(word)
-		var/pass = input("Letter shift:") as null|num
-		if(pass)
-			to_chat(src, "<b>[encipher(word, pass)]</b>")
 
-/client/proc/uncipher_word()
-	set name = "DECIPHER WORD"
+	if(!ismob(M))
+		return
+	if(!check_rights(R_ADMIN))
+		return
+
+	var/value = input(usr, "Enter the Masquerade adjustment value for [key_name(M)]:", "Masquerade Adjustment", 0) as num|null
+	if(!value)
+		return
+
+	M.AdjustMasquerade(value, TRUE)
+	var/msg = "<span class='adminnotice'><b>Masquerade Adjustment: [key_name_admin(usr)] adjusted [key_name_admin(M)]'s masquerade by [value] to [M.masquerade]</b></span>"
+	log_admin("MasqAdjust: [key_name(usr)] has adjusted [key_name(M)]'s masquerade by [value] to [M.masquerade]")
+	message_admins(msg)
+	admin_ticket_log(M, msg)
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Adjust Masquerade")
+
+/client/proc/cmd_admin_adjust_humanity(mob/living/carbon/human/M in GLOB.player_list)
+	set name = "Adjust Humanity"
 	set category = "Admin"
-	var/word = input("Word to decipher:") as null|text
-	if(word)
-		var/pass = input("Letter shift:") as null|num
-		if(pass)
-			to_chat(src, "<b>[uncipher(word, pass)]</b>")
-*/
+
+	if(!ismob(M))
+		return
+	if(!check_rights(R_ADMIN))
+		return
+
+	var/is_enlightenment = FALSE
+	if (M.client?.prefs?.enlightement)
+		is_enlightenment = TRUE
+
+	var/value = input(usr, "Enter the [is_enlightenment ? "Enlightenment" : "Humanity"] adjustment value for [M.key]:", "Humanity Adjustment", 0) as num|null
+	if(value == null)
+		return
+	if (is_enlightenment)
+		value = -value
+
+	M.AdjustHumanity(value, 0, forced = TRUE)
+
+	var/msg = "<span class='adminnotice'><b>Humanity Adjustment: [key_name_admin(usr)] adjusted [key_name(M)]'s [is_enlightenment ? "Enlightenment" : "Humanity"] by [is_enlightenment ? -value : value] to [M.humanity]</b></span>"
+	log_admin("HumanityAdjust: [key_name_admin(usr)] has adjusted [key_name(M)]'s [is_enlightenment ? "Enlightenment" : "Humanity"] by [is_enlightenment ? -value : value] to [M.humanity]")
+	message_admins(msg)
+	admin_ticket_log(M, msg)
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Adjust Humanity")
 
 /client/proc/reward_exp()
 	set name = "Reward Experience"

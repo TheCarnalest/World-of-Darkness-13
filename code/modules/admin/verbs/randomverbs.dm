@@ -45,45 +45,6 @@
 	admin_ticket_log(M, msg)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Subtle Message") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
-/client/proc/cmd_admin_adjust_masquerade(mob/living/carbon/human/M in GLOB.player_list)
-	set category = "Admin.Events"
-	set name = "Adjust Masquerade"
-	if(!ismob(M))
-		return
-	if(!check_rights(R_ADMIN))
-		return
-
-	var/value = input(usr, "Enter the Masquerade adjustment value for [key_name(M)]:", "Masquerade Adjustment", 0) as num|null
-	if(!value)
-		return
-
-	M.AdjustMasquerade(value, TRUE)
-	var/msg = "<span class='adminnotice'><b>Masquerade Adjustment: [key_name_admin(usr)] adjusted [key_name_admin(M)]'s masquerade by [value] to [M.masquerade]</b></span>"
-	log_admin("MasqAdjust: [key_name(usr)] has adjusted [key_name(M)]'s masquerade by [value] to [M.masquerade]")
-	message_admins(msg)
-	admin_ticket_log(M, msg)
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Adjust Masquerade")
-
-/client/proc/cmd_admin_adjust_humanity(mob/living/carbon/human/M in GLOB.mob_list)
-	set category = "Admin.Events"
-	set name = "Adjust Humanity"
-	if(!ismob(M))
-		return
-	if(!check_rights(R_ADMIN))
-		return
-
-	var/value = input(usr, "Enter the humanity adjustment value for [M.key]:", "Humanity Adjustment", 0) as num|null
-	if(value == null)
-		return
-
-	M.AdjustHumanity(value, 0, forced = TRUE)
-
-	var/msg = "<span class='adminnotice'><b>Humanity Adjustment: [key_name_admin(usr)] adjusted [key_name_admin(M)]'s humanity by [value] to [M.humanity]</b></span>"
-	log_admin("HumanityAdjust: [key_name(usr)] has adjusted [key_name(M)]'s humanity by [value] to [M.humanity]")
-	message_admins(msg)
-	admin_ticket_log(M, msg)
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Adjust Humanity")
-
 /client/proc/cmd_admin_headset_message(mob/M in GLOB.mob_list)
 	set category = "Admin.Events"
 	set name = "Headset Message"
