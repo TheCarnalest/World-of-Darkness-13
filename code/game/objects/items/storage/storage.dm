@@ -5,6 +5,13 @@
 	var/rummage_if_nodrop = TRUE
 	var/component_type = /datum/component/storage/concrete
 
+	//WoD13 vars start here :3
+
+	var/grid = TRUE /// Determines whether the container uses grid-based inventory.
+	var/storage_flags = NONE /// Flags determining how the storage can be accessed.
+
+	//WoD13 vars end here :3
+
 /obj/item/storage/get_dumping_location(obj/item/storage/source,mob/user)
 	return src
 

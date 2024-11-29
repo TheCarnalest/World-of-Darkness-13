@@ -40,6 +40,7 @@
 	internal_magazine = TRUE
 	bolt_type = BOLT_TYPE_NO_BOLT
 	tac_reloads = FALSE
+	cost = 25
 	var/spin_delay = 10
 	var/recent_spin = 0
 
@@ -113,6 +114,7 @@
 	initial_caliber = CALIBER_9MM
 	fire_sound_volume = 65
 	projectile_damage_multiplier = 1.2 //21.6 damage, slightly higher than the m1911, just so it is possible to kill NPCs within 6 bullets
+	cost = 20
 
 /obj/item/ammo_box/magazine/internal/cylinder/rev9mm
 	name = "revolver cylinder"
@@ -171,6 +173,7 @@
 	lock_back_sound = 'sound/weapons/gun/pistol/lock_small.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/drop_small.ogg'
 	fire_sound_volume = 75
+	cost = 75
 
 /obj/item/gun/ballistic/automatic/vampire/deagle/c50
 	name = "\improper McLusky .50 caliber "
@@ -217,6 +220,7 @@
 	lock_back_sound = 'sound/weapons/gun/pistol/lock_small.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/drop_small.ogg'
 	fire_sound_volume = 100
+	cost = 55
 
 /obj/item/ammo_box/magazine/glock9mm
 	name = "automatic pistol magazine (9mm)"
@@ -254,6 +258,7 @@
 	lock_back_sound = 'sound/weapons/gun/pistol/lock_small.ogg'
 	bolt_drop_sound = 'sound/weapons/gun/pistol/drop_small.ogg'
 	fire_sound_volume = 100
+	cost = 70
 
 /obj/item/ammo_box/magazine/vamp9mm
 	name = "uzi magazine (9mm)"
@@ -283,6 +288,7 @@
 	mag_display = TRUE
 	rack_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	fire_sound = 'code/modules/wod13/sounds/uzi.ogg'
+	cost = 175
 
 /obj/item/ammo_box/magazine/vamp9mp5
 	name = "mp5 magazine (9mm)"
@@ -312,6 +318,7 @@
 	mag_display = TRUE
 	rack_sound = 'sound/weapons/gun/pistol/slide_lock.ogg'
 	fire_sound = 'code/modules/wod13/sounds/mp5.ogg'
+	cost = 200
 
 /obj/item/ammo_box/magazine/vamp556
 	name = "carbine magazine (5.56mm)"
@@ -343,6 +350,7 @@
 	mag_display = TRUE
 	fire_sound = 'code/modules/wod13/sounds/rifle.ogg'
 	masquerade_violating = TRUE
+	cost = 250
 
 /obj/item/ammo_box/magazine/vamp545
 	name = "rifle magazine (5.45mm)"
@@ -375,6 +383,7 @@
 	mag_display = TRUE
 	fire_sound = 'code/modules/wod13/sounds/ak.ogg'
 	masquerade_violating = TRUE
+	cost = 225
 
 /obj/item/ammo_box/magazine/vampaug
 	name = "AUG magazine (5.56mm)"
@@ -406,6 +415,7 @@
 	mag_display = TRUE
 	fire_sound = 'code/modules/wod13/sounds/rifle.ogg'
 	masquerade_violating = TRUE
+	cost = 350
 
 /obj/item/ammo_box/magazine/vampthompson
 	name = "tommy gun magazine (.45 ACP)"
@@ -438,6 +448,7 @@
 	mag_display = TRUE
 	fire_sound = 'code/modules/wod13/sounds/thompson.ogg'
 	masquerade_violating = TRUE
+	cost = 250
 
 /obj/item/ammo_box/magazine/internal/vampire/sniper
 	name = "sniper rifle internal magazine"
@@ -476,6 +487,7 @@
 	projectile_damage_multiplier = 1.5
 	actions_types = list()
 	masquerade_violating = TRUE
+	cost = 250
 
 /obj/item/ammo_box/magazine/internal/vampshotgun
 	name = "shotgun internal magazine"

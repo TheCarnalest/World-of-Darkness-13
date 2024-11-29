@@ -4,6 +4,7 @@
 	worn_icon = 'code/modules/wod13/worn.dmi'
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
 	var/quieted = FALSE
+	cost = 25
 
 /obj/item
 	var/masquerade_violating = FALSE
@@ -85,6 +86,7 @@
 	pixel_w = -8
 	resistance_flags = FIRE_PROOF
 	masquerade_violating = FALSE
+	cost = 250
 
 /obj/item/melee/vampirearms/baseball
 	name = "baseball bat"
@@ -98,6 +100,7 @@
 	attack_verb_continuous = list("beats", "smacks")
 	attack_verb_simple = list("beat", "smack")
 	w_class = WEIGHT_CLASS_NORMAL
+	cost = 50
 
 /obj/item/melee/vampirearms/baseball/attack(mob/living/target, mob/living/user)
 	. = ..()
