@@ -2100,14 +2100,13 @@
 	uniform = /obj/item/clothing/under/vampire/police
 	shoes = /obj/item/clothing/shoes/vampire/jackboots
 	suit = /obj/item/clothing/suit/vampire/vest
-	belt = /obj/item/melee/classic_baton
+	belt = /obj/item/storage/belt/holster/detective/vampire/police
 	gloves = /obj/item/cockclock
 	id = /obj/item/card/id/police
 	l_pocket = /obj/item/vamp/phone
 	r_pocket = /obj/item/flashlight
-	l_hand = /obj/item/vamp/keys/police
 	r_hand = /obj/item/police_radio
-	backpack_contents = list(/obj/item/passport=1, /obj/item/implant/radio=1, /obj/item/vamp/creditcard=1, /obj/item/gun/ballistic/vampire/revolver/snub=1, /obj/item/ammo_box/vampire/c9mm/moonclip = 2, /obj/item/ammo_box/vampire/c9mm = 1, /obj/item/restraints/handcuffs = 1)
+	backpack_contents = list(/obj/item/passport=1, /obj/item/implant/radio=1, /obj/item/vamp/creditcard=1, /obj/item/ammo_box/vampire/c9mm = 1, /obj/item/restraints/handcuffs = 1,/obj/item/melee/classic_baton/vampire = 1,/obj/item/vamp/keys/police = 1)
 
 
 /datum/job/vamp/fbi

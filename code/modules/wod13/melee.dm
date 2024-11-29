@@ -461,3 +461,18 @@
 	attack_verb_simple = list("shove", "bash")
 	max_integrity = 999999
 	material_flags = MATERIAL_NO_EFFECTS
+
+/obj/item/melee/classic_baton/vampire
+	name = "police baton"
+	desc = "Blunt instrument of justice."
+	icon = 'code/modules/wod13/weapons.dmi'
+	icon_state = "baton"
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_SUITSTORE
+	w_class = WEIGHT_CLASS_NORMAL
+	attack_verb_continuous = list("bludgeons", "bashes", "beats")
+	attack_verb_simple = list("bludgeon", "bash", "beat")
+	force = 25
+	block_chance = 10
+	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_SUITSTORE
+	w_class = WEIGHT_CLASS_NORMAL
+

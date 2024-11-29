@@ -817,3 +817,18 @@
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	visor_flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
 	w_class = WEIGHT_CLASS_SMALL
+
+/obj/item/storage/belt/holster/detective/vampire
+	name = "holster"
+	desc = "a holster for your gun."
+	component_type = /datum/component/storage/concrete/vtm/holster
+
+/obj/item/storage/belt/holster/detective/vampire/police
+	desc = "standard issue holster for standard issue sidearms."
+
+/obj/item/storage/belt/holster/detective/vampire/police/PopulateContents()
+	new /obj/item/ammo_box/vampire/c9mm/moonclip(src)
+	new /obj/item/ammo_box/vampire/c9mm/moonclip(src)
+	new /obj/item/gun/ballistic/vampire/revolver/snub(src)
+
+
