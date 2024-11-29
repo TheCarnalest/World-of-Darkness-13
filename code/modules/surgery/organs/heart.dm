@@ -2,6 +2,8 @@
 	name = "heart"
 	desc = "I feel bad for the heartless bastard who lost this."
 	icon_state = "heart-on"
+	illegal = TRUE
+	cost = 1500
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_HEART
 

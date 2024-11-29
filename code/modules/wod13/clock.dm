@@ -11,6 +11,7 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	slot_flags = ITEM_SLOT_GLOVES | ITEM_SLOT_ID
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	cost = 50
 
 /obj/item/cockclock/examine(mob/user)
 	. = ..()
