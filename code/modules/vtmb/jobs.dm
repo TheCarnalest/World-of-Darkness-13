@@ -1505,7 +1505,7 @@
 
 	H.generation = generation_choice
 	H.maxbloodpool = 10+((13-min(13, H.generation))*3)
-	H.clane.enlightement = H.clane.enlightement
+	H.clane.enlightenment = H.clane.enlightenment
 	H.maxHealth = round((initial(H.maxHealth)-initial(H.maxHealth)/4)+(initial(H.maxHealth)/4)*(H.physique+13-H.generation))
 	H.health = round((initial(H.maxHealth)-initial(H.maxHealth)/4)+(initial(H.maxHealth)/4)*(H.physique+13-H.generation))
 

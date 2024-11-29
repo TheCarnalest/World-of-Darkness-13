@@ -151,7 +151,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	//Masquerade
 	var/masquerade = 5
 
-	var/enlightement = FALSE
+	var/enlightenment = FALSE
 	var/humanity = 7
 
 	//Legacy
@@ -169,7 +169,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/discipline4type
 
 	//Character sheet stats
-	var/true_experience = 10
+	var/true_experience = 50
 	var/torpor_count = 0
 
 	var/list/datum/discipline/disciplines = list()
@@ -267,12 +267,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			if(length(P.clane.clane_disciplines) >= 3)
 				P.discipline3type = P.clane.clane_disciplines[3]
 			P.discipline4type = null
-			P.enlightement = P.clane.enlightement
+			P.enlightenment = P.clane.enlightenment
 			P.humanity = P.clane.start_humanity
 //			P.random_species()
 //			P.random_character()
 			P.real_name = random_unique_name(P.gender)
-			P.true_experience = 10
+			P.true_experience = 50
 			P.save_character()
 			P.save_preferences()
 
@@ -329,7 +329,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if(length(clane.clane_disciplines) >= 3)
 		discipline3type = clane.clane_disciplines[3]
 	discipline4type = null
-	enlightement = clane.enlightement
+	enlightenment = clane.enlightenment
 	humanity = clane.start_humanity
 	true_experience = 50
 	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
@@ -464,6 +464,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "</tr></table>"
 
 			dat += "<h2>[make_font_cool("BODY")]</h2>"
+			/*
 			dat += "<BR>"
 			var/max_death = 6
 			if(pref_species.name == "Vampire")
@@ -490,20 +491,23 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						max_death = 1
 					if(3)
 						max_death = 1
+
 			dat += "<b>[pref_species.name == "Vampire" ? "Torpor" : "Clinical Death"] Count:</b> [torpor_count]/[max_death]"
 			if(true_experience >= 3*(14-generation) && torpor_count > 0)
 				dat += " <a href='?_src_=prefs;preference=torpor_restore;task=input'>Restore ([5*(14-generation)])</a><BR>"
 			dat += "<BR>"
+			*/
 			dat += "<a href='?_src_=prefs;preference=all;task=random'>Random Body</A> "
-//			dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_BODY]'>Always Random Body: [(randomise[RANDOM_BODY]) ? "Yes" : "No"]</A>"
-//			dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_BODY_ANTAG]'>When Antagonist: [(randomise[RANDOM_BODY_ANTAG]) ? "Yes" : "No"]</A><br>"
 
 			dat += "<table width='100%'><tr><td width='24%' valign='top'>"
 
 			dat += "<b>Species:</b><BR><a href='?_src_=prefs;preference=species;task=input'>[pref_species.name]</a><BR>"
 			if(pref_species.name == "Vampire")
-				dat += "<b>Path of [enlightement == FALSE ? "Humanity" : "Enlightement"]:</b> [humanity]/10<BR>"
+				dat += "<b>Path of [enlightenment ? "Enlightenment" : "Humanity"]:</b> [humanity]/10"
 				//if(SSwhitelists.is_whitelisted(parent.ckey, "enlightenment") && !slotlocked)
+				if ((true_experience >= (humanity * 2)) && (humanity < 10))
+					dat += " <a href='?_src_=prefs;preference=path;task=input'>Increase [enlightenment ? "Enlightenment" : "Humanity"] ([humanity * 2])</a>"
+				dat += "<br>"
 				if(!slotlocked)
 					dat += "<a href='?_src_=prefs;preference=pathof;task=input'>Switch Path</a><BR>"
 			if(pref_species.name == "Werewolf")
@@ -532,23 +536,23 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<a href='?_src_=prefs;preference=archetype;task=input'>[A.name]</a> [A.specialization]<BR>"
 
 			dat += "<b>Physique:</b> •[physique > 1 ? "•" : "o"][physique > 2 ? "•" : "o"][physique > 3 ? "•" : "o"][physique > 4 ? "•" : "o"]([physique])"
-			if(true_experience >= 3*physique && physique != 5)
-				dat += "<a href='?_src_=prefs;preference=physique;task=input'>Increase ([3*physique])</a>"
+			if(true_experience >= 4*physique && physique != 5)
+				dat += "<a href='?_src_=prefs;preference=physique;task=input'>Increase ([4*physique])</a>"
 			dat += "<BR>"
 
 			dat += "<b>Dexterity:</b> •[dexterity > 1 ? "•" : "o"][dexterity > 2 ? "•" : "o"][dexterity > 3 ? "•" : "o"][dexterity > 4 ? "•" : "o"]([dexterity])"
-			if(true_experience >= 3*dexterity && dexterity != 5)
-				dat += "<a href='?_src_=prefs;preference=dexterity;task=input'>Increase ([3*dexterity])</a>"
+			if(true_experience >= 4*dexterity && dexterity != 5)
+				dat += "<a href='?_src_=prefs;preference=dexterity;task=input'>Increase ([4*dexterity])</a>"
 			dat += "<BR>"
 
 			dat += "<b>Social:</b> •[social > 1 ? "•" : "o"][social > 2 ? "•" : "o"][social > 3 ? "•" : "o"][social > 4 ? "•" : "o"]([social])"
-			if(true_experience >= 3*social && social != 5)
-				dat += "<a href='?_src_=prefs;preference=social;task=input'>Increase ([3*social])</a>"
+			if(true_experience >= 4*social && social != 5)
+				dat += "<a href='?_src_=prefs;preference=social;task=input'>Increase ([4*social])</a>"
 			dat += "<BR>"
 
 			dat += "<b>Mentality:</b> •[mentality > 1 ? "•" : "o"][mentality > 2 ? "•" : "o"][mentality > 3 ? "•" : "o"][mentality > 4 ? "•" : "o"]([mentality])"
-			if(true_experience >= 3*mentality && mentality != 5)
-				dat += "<a href='?_src_=prefs;preference=mentality;task=input'>Increase ([3*mentality])</a>"
+			if(true_experience >= 4*mentality && mentality != 5)
+				dat += "<a href='?_src_=prefs;preference=mentality;task=input'>Increase ([4*mentality])</a>"
 			dat += "<BR>"
 
 			dat += "<b>Cruelty:</b> •[blood > 1 ? "•" : "o"][blood > 2 ? "•" : "o"][blood > 3 ? "•" : "o"][blood > 4 ? "•" : "o"]([blood])"
@@ -557,17 +561,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<BR>"
 
 			dat += "<b>Lockpicking:</b> [lockpicking > 0 ? "•" : "o"][lockpicking > 1 ? "•" : "o"][lockpicking > 2 ? "•" : "o"][lockpicking > 3 ? "•" : "o"][lockpicking > 4 ? "•" : "o"]([lockpicking])"
-			if(true_experience >= 2 && lockpicking == 0)
-				dat += "<a href='?_src_=prefs;preference=lockpicking;task=input'>Increase([2])</a>"
-			else if(true_experience >= 2*lockpicking && lockpicking != 5 || lockpicking == 0 && true_experience >=2)
-				dat += "<a href='?_src_=prefs;preference=lockpicking;task=input'>Increase([2*lockpicking])</a>"
+			if(((true_experience >= ((lockpicking > 0) ? (2 * lockpicking) : 3))) && (lockpicking < 5))
+				dat += "<a href='?_src_=prefs;preference=lockpicking;task=input'>Increase ([(lockpicking > 0) ? (2 * lockpicking) : 3])</a>"
 			dat += "<BR>"
 
 			dat += "<b>Athletics:</b> [athletics > 0 ? "•" : "o"][athletics > 1 ? "•" : "o"][athletics > 2 ? "•" : "o"][athletics > 3 ? "•" : "o"][athletics > 4 ? "•" : "o"]([athletics])"
-			if(true_experience >= 2 && athletics == 0)
-				dat += "<a href='?_src_=prefs;preference=athletics;task=input'>Increase([2])</a>"
-			else if(true_experience >= 2*athletics && athletics != 5 || athletics == 0 && true_experience >=2)
-				dat += "<a href='?_src_=prefs;preference=athletics;task=input'>Increase([2*athletics])</a>"
+			if(((true_experience >= ((athletics > 0) ? (2 * athletics) : 3))) && (athletics < 5))
+				dat += "<a href='?_src_=prefs;preference=athletics;task=input'>Increase ([(athletics > 0) ? (2 * athletics) : 3])</a>"
 			dat += "<BR>"
 
 			dat += "Experience rewarded: [true_experience]<BR>"
@@ -2202,7 +2202,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 //						if(length(Clan.clane_disciplines) >= 4)
 //							discipline4type = Clan.clane_disciplines[4]
 						humanity = clane.start_humanity
-						enlightement = clane.enlightement
+						enlightenment = clane.enlightenment
 						if(clane.no_hair)
 							hairstyle = "Bald"
 						if(clane.no_facial)
@@ -2216,40 +2216,34 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						auspice_level = min(3, auspice_level+1)
 
 				if("physique")
-					if(true_experience >= physique*3 && physique < 6)
-						true_experience = true_experience-physique*3
+					if(true_experience >= physique*4 && physique < 6)
+						true_experience = true_experience-physique*4
 						physique = min(5, physique+1)
 
 				if("dexterity")
-					if(true_experience >= dexterity*3 && dexterity < 6)
-						true_experience = true_experience-dexterity*3
+					if(true_experience >= dexterity*4 && dexterity < 6)
+						true_experience = true_experience-dexterity*4
 						dexterity = min(5, dexterity+1)
 
 				if("social")
-					if(true_experience >= social*3 && social < 6)
-						true_experience = true_experience-social*3
+					if(true_experience >= social*4 && social < 6)
+						true_experience = true_experience-social*4
 						social = min(5, social+1)
 
 				if("mentality")
-					if(true_experience >= mentality*3 && mentality < 6)
-						true_experience = true_experience-mentality*3
+					if(true_experience >= mentality*4 && mentality < 6)
+						true_experience = true_experience-mentality*4
 						mentality = min(5, mentality+1)
 
 				if("lockpicking")
-					if (lockpicking == 0)
-						true_experience = true_experience-2
-						lockpicking = min(5, lockpicking +1)
-					else if(true_experience >= lockpicking*2 && lockpicking < 6)
-						true_experience = true_experience - lockpicking*2
-						lockpicking = min(5, lockpicking+1)
+					if ((true_experience >= ((lockpicking > 0) ? (2 * lockpicking) : 3)) && (lockpicking <= 5))
+						true_experience -= (lockpicking > 0) ? (2 * lockpicking) : 3
+						lockpicking++
 
 				if("athletics")
-					if (athletics == 0)
-						true_experience = true_experience-2
-						athletics = min(5, athletics +1)
-					else if(true_experience >= athletics*2 && athletics < 6)
-						true_experience = true_experience - athletics*2
-						athletics = min(5, athletics+1)
+					if ((true_experience >= ((athletics > 0) ? (2 * athletics) : 3)) && (athletics <= 5))
+						true_experience -= (athletics > 0) ? (2 * athletics) : 3
+						athletics++
 
 				if("blood")
 					if(true_experience >= blood*6 && blood < 6)
@@ -2296,13 +2290,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(true_experience >= discipline1level*5 && discipline1level != 5)
 						true_experience = true_experience-discipline1level*5
 						discipline1level = min(5, discipline1level+1)
-//					if(exper_plus)
-//						if(exper_plus > calculate_max_exper())
-//							exper = calculate_max_exper()
-//							exper_plus = max(0, exper_plus-calculate_max_exper())
-//						else
-//							exper = max(0, exper+exper_plus)
-//							exper_plus = 0
 
 				if("discipline2")
 					if(true_experience >= discipline2level*5 && discipline2level != 5)
@@ -2319,21 +2306,21 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						true_experience = true_experience-discipline4level*5
 						discipline4level = min(5, discipline4level+1)
 
+				if("path")
+					if((true_experience >= (humanity * 2)) && (humanity < 10))
+						humanity++
+						true_experience -= humanity * 2
+
 				if("pathof")
 					if(!slotlocked)
-						enlightement = !enlightement
+						enlightenment = !enlightenment
 
+				/*
 				if("torpor_restore")
 					if(torpor_count != 0 && true_experience >= 3*(14-generation))
 						torpor_count = 0
 						true_experience = true_experience-(3*(14-generation))
-//					if(exper_plus)
-//						if(exper_plus > calculate_max_exper())
-//							exper = calculate_max_exper()
-//							exper_plus = max(0, exper_plus-calculate_max_exper())
-//						else
-//							exper = max(0, exper+exper_plus)
-//							exper_plus = 0
+				*/
 
 				if("generation")
 					if(clane)
@@ -2422,7 +2409,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 //						discipline3type = clane.clane_disciplines[3]
 //					discipline4type = null
 //					humanity = clane.start_humanity
-//					enlightement = clane.enlightement
+//					enlightenment = clane.enlightenment
 //					random_species()
 //					random_character()
 //					real_name = random_unique_name(gender)
@@ -2968,15 +2955,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						slotlocked = 1
 						save_preferences()
 						save_character()
-//				if("save_pref")
-//					save_preferences()
-//					save_character()
 
 				if("load")
 					load_preferences()
 					load_character()
 
 				if("reset_all")
+					if (alert("Are you sure you want to reset your character?", "Confirmation", "Yes", "No") != "Yes")
+						return
 					slotlocked = 0
 					diablerist = 0
 					torpor_count = 0
@@ -3010,7 +2996,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						discipline3type = clane.clane_disciplines[3]
 					discipline4type = null
 					humanity = clane.start_humanity
-					enlightement = clane.enlightement
+					enlightenment = clane.enlightenment
 					random_species()
 					random_character()
 					body_model = rand(1, 3)
@@ -3054,7 +3040,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							discipline3type = clane.clane_disciplines[3]
 						discipline4type = null
 						humanity = clane.start_humanity
-						enlightement = clane.enlightement
+						enlightenment = clane.enlightenment
 						random_species()
 						random_character()
 						body_model = rand(1, 3)
@@ -3129,7 +3115,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		character.maxbloodpool = 10+((13-generation)*3)
 		character.bloodpool = rand(2, character.maxbloodpool)
 		character.generation = generation
-		character.clane.enlightement = enlightement
+		character.clane.enlightenment = enlightenment
 //		if(generation < 13)
 //			character.maxHealth = initial(character.maxHealth)+50*(13-generation)
 //			character.health = initial(character.health)+50*(13-generation)

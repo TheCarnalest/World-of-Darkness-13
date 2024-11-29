@@ -13,7 +13,7 @@
 	violating_appearance = FALSE
 	male_clothes = "/obj/item/clothing/under/vampire/sport"
 	female_clothes = "/obj/item/clothing/under/vampire/red"
-	enlightement = TRUE
+	enlightenment = TRUE
 	var/obj/item/heirl
 	whitelisted = TRUE
 

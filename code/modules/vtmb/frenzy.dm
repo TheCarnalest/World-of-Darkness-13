@@ -295,7 +295,7 @@
 			if(!H.antifrenzy)
 				if(P.humanity < 1)
 					H.enter_frenzymod()
-					to_chat(H, "<span class='userdanger'>You have lost control of the Beast within you, and it has taken your body. Be more [H.client.prefs.enlightement ? "Enlightened" : "humane"] next time.</span>")
+					to_chat(H, "<span class='userdanger'>You have lost control of the Beast within you, and it has taken your body. Be more [H.client.prefs.enlightenment ? "Enlightened" : "humane"] next time.</span>")
 					H.ghostize(FALSE)
 					P.reason_of_death = "Lost control to the Beast ([time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")])."
 
@@ -304,7 +304,7 @@
 			if(H.mind)
 				if(H.mind.enslaved_to)
 					if(get_dist(H, H.mind.enslaved_to) > 10)
-						if(H.last_frenzy_check+400 <= world.time)
+						if((H.last_frenzy_check + 40 SECONDS) <= world.time)
 							to_chat(H, "<span class='warning'><b>As you are far from [H.mind.enslaved_to], you feel the desire to drink more vitae!<b></span>")
 							H.last_frenzy_check = world.time
 							H.rollfrenzy()
@@ -314,20 +314,11 @@
 			if(H.bloodpool > 1 || H.in_frenzy)
 				H.last_frenzy_check = world.time
 
-//	var/list/blood_fr = list()
-//	for(var/obj/effect/decal/cleanable/blood/B in range(7, src))
-//		if(B.bloodiness)
-//			blood_fr += B
 	if(!H.antifrenzy)
 		if(H.bloodpool <= 1 && !H.in_frenzy)
-			if(H.last_frenzy_check+400 <= world.time)
+			if((H.last_frenzy_check + 40 SECONDS) <= world.time)
 				H.last_frenzy_check = world.time
 				H.rollfrenzy()
-				if(H.clane)
-					if(H.clane.enlightement)
-						if(!H.CheckFrenzyMove())
-							H.AdjustHumanity(1, 10)
-//	if(length(blood_fr) >= 10 && !H.in_frenzy)
-//		if(H.last_frenzy_check+400 <= world.time)
-//			H.last_frenzy_check = world.time
-//			H.rollfrenzy()
+				if(H.clane?.enlightenment)
+					if(!H.CheckFrenzyMove())
+						H.AdjustHumanity(1, 10)
