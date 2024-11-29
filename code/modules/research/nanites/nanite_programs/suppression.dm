@@ -192,12 +192,9 @@
 		"Battle",
 		"Sound",
 		"Weird Sound",
-		"Station Message",
 		"Health",
-		"Alert",
 		"Fire",
 		"Shock",
-		"Plasma Flood",
 		"Random"
 	)
 	extra_settings[NES_HALLUCINATION_TYPE] = new /datum/nanite_extra_setting/type("Message", options)
@@ -231,8 +228,6 @@
 				new /datum/hallucination/sounds(C, TRUE, hal_details)
 			if("Weird Sound")
 				new /datum/hallucination/weird_sounds(C, TRUE, hal_details)
-			if("Station Message")
-				new /datum/hallucination/stationmessage(C, TRUE, hal_details)
 			if("Health")
 				switch(hal_details)
 					if("critical")
@@ -242,14 +237,10 @@
 					if("healthy")
 						hal_details = SCREWYHUD_HEALTHY
 				new /datum/hallucination/hudscrew(C, TRUE, hal_details)
-			if("Alert")
-				new /datum/hallucination/fake_alert(C, TRUE, hal_details)
 			if("Fire")
 				new /datum/hallucination/fire(C, TRUE)
 			if("Shock")
 				new /datum/hallucination/shock(C, TRUE)
-			if("Plasma Flood")
-				new /datum/hallucination/fake_flood(C, TRUE)
 
 /datum/nanite_program/comm/hallucination/set_extra_setting(setting, value)
 	. = ..()
