@@ -84,7 +84,7 @@
 		var/humanity = "I'm out of my mind."
 		var/enlight = FALSE
 		if(host.clane)
-			if(host.clane.enlightement)
+			if(host.clane.enlightenment)
 				enlight = TRUE
 
 		if(!enlight)
@@ -370,7 +370,7 @@
 								BLOODBONDED.update_body()
 							BLOODBONDED.create_disciplines(FALSE, H.client.prefs.discipline1type, H.client.prefs.discipline2type, H.client.prefs.discipline3type)
 							BLOODBONDED.maxbloodpool = 10+((13-min(13, BLOODBONDED.generation))*3)
-							BLOODBONDED.clane.enlightement = H.clane.enlightement
+							BLOODBONDED.clane.enlightenment = H.clane.enlightenment
 							if(BLOODBONDED.generation < 13)
 								BLOODBONDED.maxHealth = round((initial(BLOODBONDED.maxHealth)-initial(BLOODBONDED.maxHealth)/4)+(initial(BLOODBONDED.maxHealth)/4)*(BLOODBONDED.physique+13-BLOODBONDED.generation))
 								BLOODBONDED.health = round((initial(BLOODBONDED.maxHealth)-initial(BLOODBONDED.maxHealth)/4)+(initial(BLOODBONDED.maxHealth)/4)*(BLOODBONDED.physique+13-BLOODBONDED.generation))

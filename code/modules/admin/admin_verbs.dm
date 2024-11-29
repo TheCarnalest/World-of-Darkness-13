@@ -493,7 +493,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 		return
 
 	var/is_enlightenment = FALSE
-	if (M.client?.prefs?.enlightement)
+	if (M.client?.prefs?.enlightenment)
 		is_enlightenment = TRUE
 
 	var/value = input(usr, "Enter the [is_enlightenment ? "Enlightenment" : "Humanity"] adjustment value for [M.key]:", "Humanity Adjustment", 0) as num|null
