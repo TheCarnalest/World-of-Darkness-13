@@ -47,9 +47,9 @@
 /proc/tempstep(mob/living/M)
 	if(M.temporis_visual)
 		return
-	var/mob/living/carbon/human/human = M
-	if (human.celerity_visual)
-		human.gib()
+	var/mob/living/carbon/carbon = M
+	if (carbon.celerity_visual)
+		carbon.gib()
 		return
 	M.temporis_visual = TRUE
 	var/matrix/initial_matrix = matrix(M.transform)
@@ -89,9 +89,9 @@
 /proc/clothogift(mob/living/M)
 	if(M.temporis_blur)
 		return
-	var/mob/living/carbon/human/human = M
-	if (human.celerity_visual)
-		human.gib()
+	var/mob/living/carbon/carbon = M
+	if (carbon.celerity_visual)
+		carbon.gib()
 		return
 	M.temporis_blur = TRUE
 	M.add_movespeed_modifier(/datum/movespeed_modifier/temporis5)
