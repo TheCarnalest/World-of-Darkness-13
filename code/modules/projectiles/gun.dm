@@ -160,6 +160,7 @@
 //	if(recoil)
 //		shake_camera(user, recoil + 1, recoil)
 
+
 	if(suppressed)
 		playsound(user, suppressed_sound, suppressed_volume, vary_fire_sound, ignore_walls = FALSE, extrarange = SILENCED_SOUND_EXTRARANGE, falloff_distance = 0)
 	else
@@ -307,6 +308,10 @@
 	SEND_SIGNAL(src, COMSIG_GUN_FIRED, user, target, params, zone_override)
 
 	add_fingerprint(user)
+
+	if(user.alpha != 255)
+		user.playsound_local(user.loc, 'code/modules/wod13/sounds/obfuscate_deactivate.ogg', 50, FALSE)
+		user.alpha = 255
 
 	if(semicd)
 		return
