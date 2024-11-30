@@ -10,7 +10,7 @@
 	male_clothes = "/obj/item/clothing/under/vampire/malkavian"
 	female_clothes = "/obj/item/clothing/under/vampire/malkavian/female"
 
-/datum/vampireclane/malkavian/on_gain(mob/living/carbon/human/H)
+/datum/discipline/dementation/post_gain(mob/living/carbon/human/H)
 	..()
 	H.add_quirk(/datum/quirk/insanity)
 	var/datum/action/malk_hivemind/GH = new()
@@ -27,13 +27,14 @@
 
 /datum/action/malk_hivemind/Trigger()
 	. = ..()
-	if(abuse_fix+50 > world.time)
+	if((abuse_fix + 5 SECONDS) > world.time)
 		to_chat(owner, "<span class='warning'>Your mind feels a bit empty...</span>")
 		return
 	var/new_thought = input(owner, "Have any thought about this, buddy?") as text|null
 	if(new_thought)
 		abuse_fix = world.time
 		for(var/mob/living/carbon/human/H in GLOB.player_list)
-			if(H.clane)
-				if(H.clane.name == "Malkavian")
+			if (iskindred(H))
+				var/datum/species/kindred/species = H.dna.species
+				if (species.has_discipline("Dementation"))
 					to_chat(H, "<span class='ghostalert'>[sanitize_text(new_thought)]</span>")

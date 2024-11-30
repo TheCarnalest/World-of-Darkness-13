@@ -378,7 +378,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["werewolf_hair"], werewolf_hair)
 	READ_FILE(S["werewolf_hair_color"], werewolf_hair_color)
 	READ_FILE(S["werewolf_eye_color"], werewolf_eye_color)
-//	READ_FILE(S["werewolf_apparel"], werewolf_apparel)
 
 	//Character
 	READ_FILE(S["slotlocked"], slotlocked)
@@ -405,6 +404,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["discipline2type"], discipline2type)
 	READ_FILE(S["discipline3type"], discipline3type)
 	READ_FILE(S["discipline4type"], discipline4type)
+	READ_FILE(S["discipline_types"], discipline_types)
+	READ_FILE(S["discipline_levels"], discipline_levels)
 	READ_FILE(S["friend"], friend)
 	READ_FILE(S["enemy"], enemy)
 	READ_FILE(S["lover"], lover)
@@ -414,7 +415,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["enemy_text"], enemy_text)
 	READ_FILE(S["lover_text"], lover_text)
 	READ_FILE(S["reason_of_death"], reason_of_death)
-//	READ_FILE(S["clane"], clane)
 	READ_FILE(S["generation"], generation)
 	READ_FILE(S["generation_bonus"], generation_bonus)
 	READ_FILE(S["masquerade"], masquerade)
@@ -572,6 +572,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	discipline3type				= sanitize_discipline(discipline3type, subtypesof(/datum/discipline))
 	if(discipline4type)
 		discipline4type				= sanitize_discipline(discipline4type, subtypesof(/datum/discipline))
+	discipline_types = sanitize_islist(discipline_types, list())
+	discipline_levels = sanitize_islist(discipline_levels, list())
+	//TODO: custom sanitization for discipline_types and discipline_levels
 	friend				= sanitize_integer(friend, 0, 1, initial(friend))
 	enemy				= sanitize_integer(enemy, 0, 1, initial(enemy))
 	lover				= sanitize_integer(lover, 0, 1, initial(lover))
@@ -614,6 +617,29 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	all_quirks = SANITIZE_LIST(all_quirks)
 	validate_quirks()
+
+	//Convert jank old Discipline system to new Discipline system
+	if (istype(pref_species, /datum/species/kindred) && !discipline_types.len)
+		if (discipline1type && discipline1level)
+			discipline_types += discipline1type
+			discipline_levels += discipline1level
+			discipline1type = null
+			discipline1level = null
+		if (discipline2type && discipline2level)
+			discipline_types += discipline2type
+			discipline_levels += discipline2level
+			discipline2type = null
+			discipline2level = null
+		if (discipline3type && discipline3level)
+			discipline_types += discipline3type
+			discipline_levels += discipline3level
+			discipline3type = null
+			discipline3level = null
+		if (discipline4type && discipline4level)
+			discipline_types += discipline4type
+			discipline_levels += discipline4level
+			discipline4type = null
+			discipline4level = null
 
 	return TRUE
 
@@ -661,6 +687,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["discipline2type"]			, discipline2type)
 	WRITE_FILE(S["discipline3type"]			, discipline3type)
 	WRITE_FILE(S["discipline4type"]			, discipline4type)
+	WRITE_FILE(S["discipline_types"], discipline_types)
+	WRITE_FILE(S["discipline_levels"], discipline_levels)
 	WRITE_FILE(S["friend"]			, friend)
 	WRITE_FILE(S["enemy"]			, enemy)
 	WRITE_FILE(S["lover"]			, lover)

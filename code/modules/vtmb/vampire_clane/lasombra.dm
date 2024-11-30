@@ -17,12 +17,13 @@
 	var/obj/item/organ/eyes/night_vision/NV = new()
 	NV.Insert(H, TRUE, FALSE)
 	H.vis_flags |= VIS_HIDE
+	H.faction |= "Lasombra"
 
 /datum/discipline/obtenebration/post_gain(mob/living/carbon/human/H)
-	H.faction |= "Lasombra"
-	H.mysticism_knowledge = TRUE
-	var/datum/action/shadowcontrol/control = new()
-	control.Grant(H)
+	if(level >= 1)
+		var/datum/action/shadowcontrol/control = new()
+		control.Grant(H)
+		H.mysticism_knowledge = TRUE
 	if(level >= 3)
 		var/datum/action/lastentacles/tentacles = new()
 		tentacles.Grant(H)
@@ -113,7 +114,7 @@
 
 /datum/action/shadowcontrol/Trigger()
 	. = ..()
-	if(abuse_fix+100 > world.time)
+	if((abuse_fix + 10 SECONDS) > world.time)
 		return
 	var/mob/living/carbon/human/H = owner
 	if(H.bloodpool < 1)

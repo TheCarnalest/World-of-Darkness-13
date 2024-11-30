@@ -172,7 +172,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/true_experience = 50
 	var/torpor_count = 0
 
-	var/list/datum/discipline/disciplines = list()
+	//linked lists determining known Disciplines and their known ranks
+	///Datum types of the Disciplines this character knows.
+	var/list/discipline_types = list()
+	///Ranks of the Disciplines this character knows, corresponding to discipline_types.
+	var/list/discipline_levels = list()
 
 	var/physique = 1
 	var/dexterity = 1
@@ -220,16 +224,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if(amount)
 		true_experience = true_experience+amount
 
-/*
-/proc/calculate_mob_max_exper(var/mob/M)
-	if(M.key)
-		var/datum/preferences/P = GLOB.preferences_datums[ckey(M.key)]
-		if(P)
-			return 360*(P.discipline1level+P.discipline2level+P.discipline3level+P.discipline4level-4) + 1440*(max(1, 13-P.generation)*max(1, P.generation_bonus))
-
-/datum/preferences/proc/calculate_max_exper()
-	return 360*(discipline1level+discipline2level+discipline3level+discipline4level-4) + 1440*(max(1, 13-generation)*max(1, generation_bonus))
-*/
 /proc/reset_shit(var/mob/M)
 	if(M.key)
 		var/datum/preferences/P = GLOB.preferences_datums[ckey(M.key)]
@@ -251,26 +245,18 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			P.social = A.start_social
 			P.mentality = A.start_mentality
 			P.blood = A.start_blood
-			P.discipline1level = 1
-			P.discipline2level = 1
-			P.discipline3level = 1
-			P.discipline4level = 1
 			P.diablerist = 0
 			P.masquerade = initial(P.masquerade)
 			P.generation = initial(P.generation)
 			qdel(P.clane)
 			P.clane = new /datum/vampireclane/brujah()
-			if(length(P.clane.clane_disciplines) >= 1)
-				P.discipline1type = P.clane.clane_disciplines[1]
-			if(length(P.clane.clane_disciplines) >= 2)
-				P.discipline2type = P.clane.clane_disciplines[2]
-			if(length(P.clane.clane_disciplines) >= 3)
-				P.discipline3type = P.clane.clane_disciplines[3]
-			P.discipline4type = null
+			P.discipline_types = list()
+			P.discipline_levels = list()
+			for (var/i in 1 to P.clane.clane_disciplines.len)
+				P.discipline_types += P.clane.clane_disciplines[i]
+				P.discipline_levels += 1
 			P.enlightenment = P.clane.enlightenment
 			P.humanity = P.clane.start_humanity
-//			P.random_species()
-//			P.random_character()
 			P.real_name = random_unique_name(P.gender)
 			P.true_experience = 50
 			P.save_character()
@@ -306,10 +292,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	lockpicking = 0
 	athletics = 0
 	blood = 1
-	discipline1level = 1
-	discipline2level = 1
-	discipline3level = 1
-	discipline4level = 1
 	archetype = pick(subtypesof(/datum/archetype))
 	var/datum/archetype/A = new archetype()
 	physique = A.start_physique
@@ -322,13 +304,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	generation = initial(generation)
 	qdel(clane)
 	clane = new /datum/vampireclane/brujah()
-	if(length(clane.clane_disciplines) >= 1)
-		discipline1type = clane.clane_disciplines[1]
-	if(length(clane.clane_disciplines) >= 2)
-		discipline2type = clane.clane_disciplines[2]
-	if(length(clane.clane_disciplines) >= 3)
-		discipline3type = clane.clane_disciplines[3]
-	discipline4type = null
+	for (var/i in 1 to clane.clane_disciplines.len)
+		discipline_types += clane.clane_disciplines[i]
+		discipline_levels += 1
 	enlightenment = clane.enlightenment
 	humanity = clane.start_humanity
 	true_experience = 50
@@ -405,10 +383,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			if(is_banned_from(user.ckey, "Appearance"))
 				dat += "<b>You are banned from using custom names and appearances. You can continue to adjust your characters, but you will be randomised once you join the game.</b><br>"
 			dat += "<a href='?_src_=prefs;preference=name;task=random'>Random Name</A> "
-//			dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_NAME]'>Always Random Name: [(randomise[RANDOM_NAME]) ? "Yes" : "No"]</a>"
-//			dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_NAME_ANTAG]'>When Antagonist: [(randomise[RANDOM_NAME_ANTAG]) ? "Yes" : "No"]</a>"
-//			if(user.client.get_exp_living(TRUE) >= PLAYTIME_HARDCORE_RANDOM)
-//				dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_HARDCORE]'>Hardcore Random: [(randomise[RANDOM_HARDCORE]) ? "Yes" : "No"]</a>"
 			dat += "<br><b>Name:</b> "
 			dat += "<a href='?_src_=prefs;preference=name;task=input'>[real_name]</a><BR>"
 
@@ -435,31 +409,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 			dat += "<BR><b>Shape:</b> <a href='?_src_=prefs;preference=body_model'>[body_m]</a>"
 
-//				if(randomise[RANDOM_BODY] || randomise[RANDOM_BODY_ANTAG]) //doesn't work unless random body
-//					dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER]'>Always Random Gender: [(randomise[RANDOM_GENDER]) ? "Yes" : "No"]</A>"
-//					dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_GENDER_ANTAG]'>When Antagonist: [(randomise[RANDOM_GENDER_ANTAG]) ? "Yes" : "No"]</A>"
-
 			dat += "<br><b>Biological Age:</b> <a href='?_src_=prefs;preference=age;task=input'>[age]</a>"
 			dat += "<br><b>Actual Age:</b> <a href='?_src_=prefs;preference=total_age;task=input'>[max(age, total_age)]</a>"
-//			if(randomise[RANDOM_BODY] || randomise[RANDOM_BODY_ANTAG]) //doesn't work unless random body
-//				dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_AGE]'>Always Random Age: [(randomise[RANDOM_AGE]) ? "Yes" : "No"]</A>"
-//				dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_AGE_ANTAG]'>When Antagonist: [(randomise[RANDOM_AGE_ANTAG]) ? "Yes" : "No"]</A>"
-
-//			dat += "<br><br><b>Special Names:</b><BR>"
-//			var/old_group
-//			for(var/custom_name_id in GLOB.preferences_custom_names)
-//				var/namedata = GLOB.preferences_custom_names[custom_name_id]
-//				if(!old_group)
-//					old_group = namedata["group"]
-//				else if(old_group != namedata["group"])
-//					old_group = namedata["group"]
-//					dat += "<br>"
-//				dat += "<a href ='?_src_=prefs;preference=[custom_name_id];task=input'><b>[namedata["pref_name"]]:</b> [custom_names[custom_name_id]]</a> "
-//			dat += "<br><br>"
-
-//			dat += "<b>Custom Job Preferences:</b><BR>"
-//			dat += "<a href='?_src_=prefs;preference=ai_core_icon;task=input'><b>Preferred AI Core Display:</b> [preferred_ai_core_display]</a><br>"
-//			dat += "<a href='?_src_=prefs;preference=sec_dept;task=input'><b>Preferred Security Department:</b> [prefered_security_department]</a><BR></td>"
 
 			dat += "</tr></table>"
 
@@ -663,73 +614,50 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					clane_accessory = null
 				dat += "<h2>[make_font_cool("DISCIPLINES")]</h2>"
 
-//				else
-//					dat += "Experience rewarded: [exper]/[calculate_max_exper()]<BR>"
+				for (var/i in 1 to discipline_types.len)
+					var/discipline_type = discipline_types[i]
+					var/datum/discipline/discipline = new discipline_type
+					var/discipline_level = discipline_levels[i]
 
-				if(discipline1type)
-					var/datum/discipline/AD = new discipline1type()
-					dat += "<b>[AD.name]</b>: •[discipline1level > 1 ? "•" : "o"][discipline1level > 2 ? "•" : "o"][discipline1level > 3 ? "•" : "o"][discipline1level > 4 ? "•" : "o"]([discipline1level])"
-					if(true_experience >= discipline1level*5 && discipline1level != 5)
-						dat += "<a href='?_src_=prefs;preference=discipline1;task=input'>Learn ([discipline1level*5])</a><BR>"
+					var/cost
+					if (discipline_level <= 0)
+						cost = 10
+					else if (clane.name == "Caitiff")
+						cost = discipline_level * 6
+					else if (clane.clane_disciplines.Find(discipline_type))
+						cost = discipline_level * 5
 					else
-						dat += "<BR>"
-					dat += "-[AD.desc]<BR>"
-				if(discipline2type)
-					var/datum/discipline/AD = new discipline2type()
-					dat += "<b>[AD.name]</b>: •[discipline2level > 1 ? "•" : "o"][discipline2level > 2 ? "•" : "o"][discipline2level > 3 ? "•" : "o"][discipline2level > 4 ? "•" : "o"]([discipline2level])"
-					if(true_experience >= discipline2level*5 && discipline2level != 5)
-						dat += "<a href='?_src_=prefs;preference=discipline2;task=input'>Learn ([discipline2level*5])</a><BR>"
-					else
-						dat += "<BR>"
-					dat += "-[AD.desc]<BR>"
-				if(discipline3type)
-					var/datum/discipline/AD = new discipline3type()
-					dat += "<b>[AD.name]</b>: •[discipline3level > 1 ? "•" : "o"][discipline3level > 2 ? "•" : "o"][discipline3level > 3 ? "•" : "o"][discipline3level > 4 ? "•" : "o"]([discipline3level])"
-					if(true_experience >= discipline3level*5 && discipline3level != 5)
-						dat += "<a href='?_src_=prefs;preference=discipline3;task=input'>Learn ([discipline3level*5])</a><BR>"
-					else
-						dat += "<BR>"
-					dat += "-[AD.desc]<BR>"
-				if(discipline4type)
-					var/datum/discipline/AD = new discipline4type()
-					dat += "<b>[AD.name]</b>: •[discipline4level > 1 ? "•" : "o"][discipline4level > 2 ? "•" : "o"][discipline4level > 3 ? "•" : "o"][discipline4level > 4 ? "•" : "o"]([discipline4level])"
-					if(true_experience >= discipline4level*5 && discipline4level != 5)
-						dat += "<a href='?_src_=prefs;preference=discipline4;task=input'>Learn ([discipline4level*5])</a><BR>"
-					else
-						dat += "<BR>"
-					dat += "-[AD.desc]<BR>"
+						cost = discipline_level * 7
 
-				if(!discipline4type && !slotlocked)
-					dat += "<a href='?_src_=prefs;preference=disciplineplus;task=input'>Learn custom type of disciplines</a><BR>"
+					dat += "<b>[discipline.name]</b>: [discipline_level > 0 ? "•" : "o"][discipline_level > 1 ? "•" : "o"][discipline_level > 2 ? "•" : "o"][discipline_level > 3 ? "•" : "o"][discipline_level > 4 ? "•" : "o"]([discipline_level])"
+					if((true_experience >= cost) && (discipline_level != 5))
+						dat += "<a href='?_src_=prefs;preference=discipline;task=input;upgradediscipline=[i]'>Learn ([cost])</a><BR>"
+					else
+						dat += "<BR>"
+					dat += "-[discipline.desc]<BR>"
+					qdel(discipline)
+
+				if (clane.name == "Caitiff")
+					var/list/possible_new_disciplines = subtypesof(/datum/discipline) - discipline_types
+					for (var/discipline_type in possible_new_disciplines)
+						var/datum/discipline/discipline = new discipline_type
+						if (discipline.clane_restricted)
+							possible_new_disciplines -= discipline_type
+						qdel(discipline)
+					if (possible_new_disciplines.len && (true_experience >= 10))
+						dat += "<a href='?_src_=prefs;preference=newdiscipline;task=input'>Learn a new Discipline (10)</a><BR>"
 
 			if(pref_species.name == "Ghoul")
-				if(!discipline1type && true_experience >= 5)
-					dat += "<a href='?_src_=prefs;preference=discipline1ghoul;task=input'>Learn new type of discipline (5)</a><BR>"
-				if(discipline1type)
-					var/datum/discipline/AD = new discipline1type()
-					dat += "<b>[AD.name]</b>: •(1)<BR>"
-					dat += "-[AD.desc]<BR>"
-				if(discipline1type && !discipline2type && true_experience >= 5)
-					dat += "<a href='?_src_=prefs;preference=discipline2ghoul;task=input'>Learn new type of discipline (5)</a><BR>"
-				if(discipline2type)
-					var/datum/discipline/AD = new discipline2type()
-					dat += "<b>[AD.name]</b>: •(1)<BR>"
-					dat += "-[AD.desc]<BR>"
-				if(discipline1type && discipline2type && !discipline3type && true_experience >= 5)
-					dat += "<a href='?_src_=prefs;preference=discipline3ghoul;task=input'>Learn new type of discipline (5)</a><BR>"
-				if(discipline3type)
-					var/datum/discipline/AD = new discipline3type()
-					dat += "<b>[AD.name]</b>: •(1)<BR>"
-					dat += "-[AD.desc]<BR>"
-				if(discipline1type && discipline2type && discipline3type && !discipline4type && true_experience >= 5)
-					dat += "<a href='?_src_=prefs;preference=discipline4ghoul;task=input'>Learn new type of discipline (5)</a><BR>"
-				if(discipline4type)
-					var/datum/discipline/AD = new discipline4type()
-					dat += "<b>[AD.name]</b>: •(1)<BR>"
-					dat += "-[AD.desc]<BR>"
+				for (var/i in 1 to discipline_types.len)
+					var/discipline_type = discipline_types[i]
+					var/datum/discipline/discipline = new discipline_type
+					dat += "<b>[discipline.name]</b>: •(1)<BR>"
+					dat += "-[discipline.desc]<BR>"
+					qdel(discipline)
 
-//			dat += "<a href='?_src_=prefs;preference=species;task=random'>Random Species</A> "
-//			dat += "<a href='?_src_=prefs;preference=toggle_random;random_type=[RANDOM_SPECIES]'>Always Random Species: [(randomise[RANDOM_SPECIES]) ? "Yes" : "No"]</A><br>"
+				var/list/possible_new_disciplines = subtypesof(/datum/discipline) - discipline_types
+				if (possible_new_disciplines.len && (true_experience >= 15))
+					dat += "<a href='?_src_=prefs;preference=newghouldiscipline;task=input'>Learn a new Discipline (10)</a><BR>"
 
 			if(true_experience >= 3 && slotlocked)
 				dat += "<a href='?_src_=prefs;preference=change_appearance;task=input'>Change Appearance (3)</a><BR>"
@@ -1145,34 +1073,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						p_map += " (No longer exists)"
 				if(CONFIG_GET(flag/preference_map_voting))
 					dat += "<b>Preferred Map:</b> <a href='?_src_=prefs;preference=preferred_map;task=input'>[p_map]</a><br>"
-/*
-			dat += "</td><td width='300px' height='300px' valign='top'>"
 
-			dat += "<h2>[make_font_cool("SPECIAL ROLE")]</h2>"
-
-			if(is_banned_from(user.ckey, ROLE_SYNDICATE))
-				dat += "<font color=red><b>You are banned from antagonist roles.</b></font><br>"
-				src.be_special = list()
-
-
-			for (var/i in GLOB.special_roles)
-				if(is_banned_from(user.ckey, i))
-					dat += "<b>Be [capitalize(i)]:</b> <a href='?_src_=prefs;bancheck=[i]'>BANNED</a><br>"
-				else
-					var/days_remaining = null
-					if(ispath(GLOB.special_roles[i]) && CONFIG_GET(flag/use_age_restriction_for_jobs)) //If it's a game mode antag, check if the player meets the minimum age
-						var/mode_path = GLOB.special_roles[i]
-						var/datum/game_mode/temp_mode = new mode_path
-						days_remaining = temp_mode.get_remaining_days(user.client)
-
-					if(days_remaining)
-						dat += "<b>Be [capitalize(i)]:</b> <font color=red> \[IN [days_remaining] DAYS]</font><br>"
-					else
-						dat += "<b>Be [capitalize(i)]:</b> <a href='?_src_=prefs;preference=be_special;be_special_type=[i]'>[(i in be_special) ? "Enabled" : "Disabled"]</a><br>"
-			dat += "<br>"
-			dat += "<b>Midround Antagonist:</b> <a href='?_src_=prefs;preference=allow_midround_antag'>[(toggles & MIDROUND_ANTAG) ? "Enabled" : "Disabled"]</a><br>"
-			dat += "</td></tr></table>"
-*/
 		if(2) //OOC Preferences
 			dat += "<table><tr><td width='340px' height='300px' valign='top'>"
 			dat += "<h2>[make_font_cool("OOC")]</h2>"
@@ -2010,60 +1911,32 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(new_eyes)
 						eye_color = sanitize_hexcolor(new_eyes)
 
-				if("disciplineplus")
-					if(slotlocked)
+				if("newdiscipline")
+					if(true_experience < 10)
 						link_bug_fix = FALSE
 						return
-					var/list/disc4 = list()
-					for(var/i in subtypesof(/datum/discipline))
-						if(i != discipline1type && i != discipline2type && i != discipline3type)
-							var/datum/discipline/D = new i
-							if(!D.clane_restricted && !clane.restricted_disciplines.Find(i))
-								disc4 += i
-							qdel(D)
-					var/discipline4 = input(user, "Select fourth discipline", "Discipline Selection") as null|anything in disc4
-					if(discipline4)
-						discipline4type = discipline4
+					var/list/possible_new_disciplines = subtypesof(/datum/discipline) - discipline_types
+					for (var/discipline_type in possible_new_disciplines)
+						var/datum/discipline/discipline = new discipline_type
+						if (discipline.clane_restricted)
+							possible_new_disciplines -= discipline_type
+						qdel(discipline)
+					var/new_discipline = input(user, "Select your new Discipline", "Discipline Selection") as null|anything in possible_new_disciplines
+					if(new_discipline)
+						discipline_types += new_discipline
+						discipline_levels += 1
+						true_experience -= 10
 
-				if("discipline1ghoul")
-					var/discipline1 = input(user, "Select second discipline", "Discipline Selection") as null|anything in subtypesof(/datum/discipline)
-					if(discipline1)
-						if(true_experience >= 5 && pref_species.name == "Ghoul")
-							discipline1type = discipline1
-							true_experience = true_experience-5
-
-				if("discipline2ghoul")
-					var/list/disc2 = list()
-					for(var/i in subtypesof(/datum/discipline))
-						if(i != discipline1type)
-							disc2 += i
-					var/discipline2 = input(user, "Select second discipline", "Discipline Selection") as null|anything in disc2
-					if(discipline2)
-						if(true_experience >= 5 && pref_species.name == "Ghoul")
-							discipline2type = discipline2
-							true_experience = true_experience-5
-
-				if("discipline3ghoul")
-					var/list/disc3 = list()
-					for(var/i in subtypesof(/datum/discipline))
-						if(i != discipline1type && i != discipline2type)
-							disc3 += i
-					var/discipline3 = input(user, "Select second discipline", "Discipline Selection") as null|anything in disc3
-					if(discipline3)
-						if(true_experience >= 5 && pref_species.name == "Ghoul")
-							discipline3type = discipline3
-							true_experience = true_experience-5
-
-				if("discipline4ghoul")
-					var/list/disc4 = list()
-					for(var/i in subtypesof(/datum/discipline))
-						if(i != discipline1type && i != discipline2type && i != discipline3type)
-							disc4 += i
-					var/discipline4 = input(user, "Select second discipline", "Discipline Selection") as null|anything in disc4
-					if(discipline4)
-						if(true_experience >= 5 && pref_species.name == "Ghoul")
-							discipline4type = discipline4
-							true_experience = true_experience-5
+				if("newghouldiscipline")
+					if(true_experience < 10)
+						link_bug_fix = FALSE
+						return
+					var/list/possible_new_disciplines = subtypesof(/datum/discipline) - discipline_types
+					var/new_discipline = input(user, "Select your new Discipline", "Discipline Selection") as null|anything in possible_new_disciplines
+					if(new_discipline)
+						discipline_types += new_discipline
+						discipline_levels += 1
+						true_experience -= 10
 
 				if("werewolf_color")
 					if(slotlocked)
@@ -2158,49 +2031,24 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/result = input(user, "Select a clane", "Clane Selection") as null|anything in available_clans
 					if(result)
 						var/newtype = GLOB.clanes_list[result]
-						var/datum/vampireclane/Clan = new newtype()
+						clane = new newtype()
+						discipline_types = list()
+						discipline_levels = list()
 						if(result == "Caitiff")
 							generation = 13
-							var/list/disc1 = list()
-							for(var/i in subtypesof(/datum/discipline))
-								var/datum/discipline/D = new i
-								if(!D.clane_restricted)
-									disc1 += i
-								qdel(D)
-							var/discipline1 = input(user, "Select first start discipline", "Discipline Selection") as null|anything in disc1
-							if(discipline1)
-								Clan.clane_disciplines |= 1
-								Clan.clane_disciplines[1] = discipline1
-								var/list/disc2 = list()
-								for(var/i in subtypesof(/datum/discipline))
-									if( (i != discipline1) && (i in disc1) )
-										disc2 += i
-								var/discipline2 = input(user, "Select second start discipline", "Discipline Selection") as null|anything in disc2
-								if(discipline2)
-									var/list/disc3 = list()
-									for(var/i in subtypesof(/datum/discipline))
-										if( (i != discipline1) && (i != discipline2) && (i in disc1) )
-											disc3 += i
-									Clan.clane_disciplines |= 2
-									Clan.clane_disciplines[2] = discipline2
-									var/discipline3 = input(user, "Select third start discipline", "Discipline Selection") as null|anything in disc3
-									if(discipline3)
-										Clan.clane_disciplines |= 3
-										Clan.clane_disciplines[3] = discipline3
-						clane = Clan
-						if(length(Clan.clane_disciplines) >= 1)
-							discipline1type = Clan.clane_disciplines[1]
-						if(length(Clan.clane_disciplines) >= 2)
-							discipline2type = Clan.clane_disciplines[2]
-						if(length(Clan.clane_disciplines) >= 3)
-							discipline3type = Clan.clane_disciplines[3]
-						discipline4type = null
-						discipline1level = 1
-						discipline2level = 1
-						discipline3level = 1
-						discipline4level = 1
-//						if(length(Clan.clane_disciplines) >= 4)
-//							discipline4type = Clan.clane_disciplines[4]
+							while (clane.clane_disciplines.len < 3)
+								var/list/possible_new_disciplines = subtypesof(/datum/discipline) - clane.clane_disciplines
+								for (var/discipline_type in possible_new_disciplines)
+									var/datum/discipline/discipline = new discipline_type
+									if (discipline.clane_restricted)
+										possible_new_disciplines -= discipline_type
+									qdel(discipline)
+								var/new_discipline = input(user, "Select a Discipline", "Discipline Selection") as null|anything in possible_new_disciplines
+								if (new_discipline)
+									clane.clane_disciplines += new_discipline
+						for (var/i in 1 to clane.clane_disciplines.len)
+							discipline_types += clane.clane_disciplines[i]
+							discipline_levels += 1
 						humanity = clane.start_humanity
 						enlightenment = clane.enlightenment
 						if(clane.no_hair)
@@ -2209,7 +2057,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							facial_hairstyle = "Shaved"
 						if(length(clane.accessories))
 							clane_accessory = pick(clane.accessories)
-//						real_name = clane.random_name(gender)		//potom sdelat
 				if("auspice_level")
 					if(true_experience >= auspice_level*10 && auspice_level < 3)
 						true_experience = true_experience-auspice_level*10
@@ -2286,25 +2133,21 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						social = archetip.start_social
 						blood = archetip.start_blood
 
-				if("discipline1")
-					if(true_experience >= discipline1level*5 && discipline1level != 5)
-						true_experience = true_experience-discipline1level*5
-						discipline1level = min(5, discipline1level+1)
-
-				if("discipline2")
-					if(true_experience >= discipline2level*5 && discipline2level != 5)
-						true_experience = true_experience-discipline2level*5
-						discipline2level = min(5, discipline2level+1)
-
-				if("discipline3")
-					if(true_experience >= discipline3level*5 && discipline3level != 5)
-						true_experience = true_experience-discipline3level*5
-						discipline3level = min(5, discipline3level+1)
-
-				if("discipline4")
-					if(true_experience >= discipline4level*5 && discipline4level != 5)
-						true_experience = true_experience-discipline4level*5
-						discipline4level = min(5, discipline4level+1)
+				if("discipline")
+					var/i = text2num(href_list["upgradediscipline"])
+					var/discipline_level = discipline_levels[i]
+					var/cost
+					if (discipline_level <= 0)
+						cost = 10
+					else if (clane.name == "Caitiff")
+						cost = discipline_level * 6
+					else if (clane.clane_disciplines.Find(discipline_types[i]))
+						cost = discipline_level * 5
+					else
+						cost = discipline_level * 7
+					if ((true_experience >= cost) && (discipline_level != 5))
+						true_experience = true_experience - cost
+						discipline_levels[i] = min(5, discipline_levels[i] + 1)
 
 				if("path")
 					if((true_experience >= (humanity * 2)) && (humanity < 10))
@@ -2320,6 +2163,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(torpor_count != 0 && true_experience >= 3*(14-generation))
 						torpor_count = 0
 						true_experience = true_experience-(3*(14-generation))
+//					if(exper_plus)
+//						if(exper_plus > calculate_max_exper())
+//							exper = calculate_max_exper()
+//							exper_plus = max(0, exper_plus-calculate_max_exper())
+//						else
+//							exper = max(0, exper+exper_plus)
+//							exper_plus = 0
 				*/
 
 				if("generation")
@@ -2330,13 +2180,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(true_experience >= 20)
 						true_experience = true_experience-20
 						generation_bonus = min(generation_bonus+1, max(0, generation-7))
-//					if(exper_plus)
-//						if(exper_plus > calculate_max_exper())
-//							exper = calculate_max_exper()
-//							exper_plus = max(0, exper_plus-calculate_max_exper())
-//						else
-//							exper = max(0, exper+exper_plus)
-//							exper_plus = 0
 
 				if("friend_text")
 					var/new_text = input(user, "What a Friend knows about me:", "Character Preference") as text|null
@@ -2383,18 +2226,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							return
 					var/bonus = generation-generation_bonus
 					slotlocked = 0
-//					exper = 0
-//					if(exper_plus)
-//						if(exper_plus > calculate_max_exper())
-//							exper = calculate_max_exper()
-//							exper_plus = exper_plus-calculate_max_exper()
-//						else
-//							exper = exper+exper_plus
-//							exper_plus = 0
 					torpor_count = 0
-//					discipline1level = 1
-//					discipline2level = 1
-//					discipline3level = 1
 					masquerade = initial(masquerade)
 					generation = bonus
 					generation_bonus = 0
@@ -2436,20 +2268,16 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						var/newtype = GLOB.species_list[result]
 						pref_species = new newtype()
 						if(pref_species.id == "ghoul" || pref_species.id == "human")
-							discipline1type = null
-							discipline2type = null
-							discipline3type = null
-							discipline4type = null
+							discipline_types = list()
+							discipline_levels = list()
 						if(pref_species.id == "kindred")
 							qdel(clane)
 							clane = new /datum/vampireclane/brujah()
-							if(length(clane.clane_disciplines) >= 1)
-								discipline1type = clane.clane_disciplines[1]
-							if(length(clane.clane_disciplines) >= 2)
-								discipline2type = clane.clane_disciplines[2]
-							if(length(clane.clane_disciplines) >= 3)
-								discipline3type = clane.clane_disciplines[3]
-							discipline4type = null
+							discipline_types = list()
+							discipline_levels = list()
+							for (var/i in 1 to clane.clane_disciplines.len)
+								discipline_types += clane.clane_disciplines[i]
+								discipline_levels += 1
 						//Now that we changed our species, we must verify that the mutant colour is still allowed.
 						var/temp_hsv = RGBtoHSV(features["mcolor"])
 						if(features["mcolor"] == "#000" || (!(MUTCOLORS_PARTSONLY in pref_species.species_traits) && ReadHSV(temp_hsv)[3] < ReadHSV("#7F7F7F")[3]))
@@ -2967,10 +2795,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					diablerist = 0
 					torpor_count = 0
 					generation_bonus = 0
-					discipline1level = 1
-					discipline2level = 1
-					discipline3level = 1
-					discipline4level = 1
 					physique = 1
 					dexterity = 1
 					mentality = 1
@@ -2988,13 +2812,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					blood = A.start_blood
 					qdel(clane)
 					clane = new /datum/vampireclane/brujah()
-					if(length(clane.clane_disciplines) >= 1)
-						discipline1type = clane.clane_disciplines[1]
-					if(length(clane.clane_disciplines) >= 2)
-						discipline2type = clane.clane_disciplines[2]
-					if(length(clane.clane_disciplines) >= 3)
-						discipline3type = clane.clane_disciplines[3]
-					discipline4type = null
+					discipline_types = list()
+					discipline_levels = list()
+					for (var/i in 1 to clane.clane_disciplines.len)
+						discipline_types += clane.clane_disciplines[i]
+						discipline_levels += 1
 					humanity = clane.start_humanity
 					enlightenment = clane.enlightenment
 					random_species()
@@ -3011,10 +2833,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						diablerist = 0
 						torpor_count = 0
 						generation_bonus = 0
-						discipline1level = 1
-						discipline2level = 1
-						discipline3level = 1
-						discipline4level = 1
 						physique = 1
 						dexterity = 1
 						mentality = 1
@@ -3032,13 +2850,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						blood = A.start_blood
 						qdel(clane)
 						clane = new /datum/vampireclane/brujah()
-						if(length(clane.clane_disciplines) >= 1)
-							discipline1type = clane.clane_disciplines[1]
-						if(length(clane.clane_disciplines) >= 2)
-							discipline2type = clane.clane_disciplines[2]
-						if(length(clane.clane_disciplines) >= 3)
-							discipline3type = clane.clane_disciplines[3]
-						discipline4type = null
+						discipline_types = list()
+						discipline_levels = list()
+						for (var/i in 1 to clane.clane_disciplines.len)
+							discipline_types += clane.clane_disciplines[i]
+							discipline_levels += 1
 						humanity = clane.start_humanity
 						enlightenment = clane.enlightenment
 						random_species()
@@ -3270,115 +3086,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				character.AddElement(/datum/element/children, COMSIG_PARENT_PREQDELETED, src)
 		parent << browse(null, "window=preferences_window")
 		parent << browse(null, "window=preferences_browser")
-
-/mob/living/carbon/human/proc/create_disciplines(var/discipline_pref = TRUE, var/discipline1, var/discipline2, var/discipline3)	//EMBRACE BASIC
-	if(client)
-		client.prefs.slotlocked = 1
-		client.prefs.save_preferences()
-		client.prefs.save_character()
-//	if(dna.species.id == "ghoul")
-//		for(var/datum/action/blood_heal/BH in actions)
-//			BH.level = client.prefs.discipline1level
-	if(dna.species.id == "kindred" || dna.species.id == "ghoul")
-		var/datum/discipline/D1
-		var/datum/discipline/D2
-		var/datum/discipline/D3
-
-		if(discipline1)
-			D1 = discipline1
-		else if(discipline_pref && client.prefs.discipline1type)
-			D1 = client.prefs.discipline1type
-
-		if(discipline2)
-			D2 = discipline2
-		else if(discipline_pref && client.prefs.discipline2type)
-			D2 = client.prefs.discipline2type
-
-		if(discipline3)
-			D3 = discipline3
-		else if(discipline_pref && client.prefs.discipline3type)
-			D3 = client.prefs.discipline3type
-
-		if(D1)
-			D1 = new D1()
-			if(discipline_pref)
-				D1.level = client.prefs.discipline1level
-			var/datum/action/discipline/D = new ()
-			D.discipline = D1
-			D.Grant(src)
-			D.discipline.post_gain(src)
-		if(D2)
-			D2 = new D2()
-			if(discipline_pref)
-				D2.level = client.prefs.discipline2level
-			var/datum/action/discipline/D = new ()
-			D.discipline = D2
-			D.Grant(src)
-			D.discipline.post_gain(src)
-		if(D3)
-			D3 = new D3()
-			if(discipline_pref)
-				D3.level = client.prefs.discipline3level
-			var/datum/action/discipline/D = new ()
-			D.discipline = D3
-			D.Grant(src)
-			D.discipline.post_gain(src)
-		if(discipline_pref)
-			if(client.prefs.discipline4type)
-				var/datum/action/discipline/D = new ()
-				D.discipline = new client.prefs.discipline4type()
-				D.discipline.level = client.prefs.discipline4level
-				D.Grant(src)
-				D.discipline.post_gain(src)
-/*
-		if(D1)
-			hud_used.discipline1_icon.icon = 'code/modules/wod13/disciplines.dmi'
-			hud_used.discipline1_icon.dscpln = new D1()
-			if(discipline_pref && dna.species.id != "ghoul")
-				hud_used.discipline1_icon.dscpln.level = client.prefs.discipline1level
-			else
-				hud_used.discipline1_icon.dscpln.level = 1
-			hud_used.discipline1_icon.name = hud_used.discipline1_icon.dscpln.name
-			hud_used.discipline1_icon.desc = hud_used.discipline1_icon.dscpln.desc
-			hud_used.discipline1_icon.icon_state = hud_used.discipline1_icon.dscpln.icon_state
-			hud_used.discipline1_icon.main_state = hud_used.discipline1_icon.dscpln.icon_state
-		if(D2)
-			hud_used.discipline2_icon.icon = 'code/modules/wod13/disciplines.dmi'
-			hud_used.discipline2_icon.dscpln = new D2()
-			if(discipline_pref && dna.species.id != "ghoul")
-				hud_used.discipline2_icon.dscpln.level = client.prefs.discipline2level
-			else
-				hud_used.discipline1_icon.dscpln.level = 1
-			hud_used.discipline2_icon.name = hud_used.discipline2_icon.dscpln.name
-			hud_used.discipline2_icon.desc = hud_used.discipline2_icon.dscpln.desc
-			hud_used.discipline2_icon.icon_state = hud_used.discipline2_icon.dscpln.icon_state
-			hud_used.discipline2_icon.main_state = hud_used.discipline2_icon.dscpln.icon_state
-		if(D3)
-			hud_used.discipline3_icon.icon = 'code/modules/wod13/disciplines.dmi'
-			hud_used.discipline3_icon.dscpln = new D3()
-			if(discipline_pref && dna.species.id != "ghoul")
-				hud_used.discipline3_icon.dscpln.level = client.prefs.discipline3level
-			else
-				hud_used.discipline1_icon.dscpln.level = 1
-			hud_used.discipline3_icon.name = hud_used.discipline3_icon.dscpln.name
-			hud_used.discipline3_icon.desc = hud_used.discipline3_icon.dscpln.desc
-			hud_used.discipline3_icon.icon_state = hud_used.discipline3_icon.dscpln.icon_state
-			hud_used.discipline3_icon.main_state = hud_used.discipline3_icon.dscpln.icon_state
-		if(client.prefs.discipline4type && discipline_pref)
-			var/datum/discipline/D = client.prefs.discipline4type
-			hud_used.discipline4_icon.icon = 'code/modules/wod13/disciplines.dmi'
-			hud_used.discipline4_icon.dscpln = new D()
-			if(dna.species.id != "ghoul")
-				hud_used.discipline4_icon.dscpln.level = client.prefs.discipline4level
-			else
-				hud_used.discipline4_icon.dscpln.level = 1
-			hud_used.discipline4_icon.name = hud_used.discipline4_icon.dscpln.name
-			hud_used.discipline4_icon.desc = hud_used.discipline4_icon.dscpln.desc
-			hud_used.discipline4_icon.icon_state = hud_used.discipline4_icon.dscpln.icon_state
-			hud_used.discipline4_icon.main_state = hud_used.discipline4_icon.dscpln.icon_state
-*/
-	if(clane)
-		clane.post_gain(src)
 
 /datum/preferences/proc/can_be_random_hardcore()
 	if(parent.mob.mind.assigned_role in GLOB.command_positions) //No command staff
