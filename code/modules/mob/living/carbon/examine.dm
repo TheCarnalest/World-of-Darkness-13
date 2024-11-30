@@ -135,6 +135,55 @@
 	if (!isnull(trait_exam))
 		. += trait_exam
 
+		..()
+
+	if (isgarou(user) || iswerewolf(user))
+		if (get_dist(user, src) <= 2)
+			var/wyrm_taint = NONE
+			var/weaver_taint = NONE
+			var/wyld_taint = NONE
+
+			if (iskindred(src)) //vampires are static, and may be Wyrm-tainted depending on behaviour
+				var/mob/living/carbon/human/vampire = src
+				weaver_taint++
+
+				if ((humanity < 7) || client?.prefs?.enlightenment)
+					wyrm_taint++
+
+				if ((vampire.clane.name == "Baali") || ( (client?.prefs?.enlightenment && (humanity > 7)) || (!client?.prefs?.enlightenment && (humanity < 4)) ))
+					wyrm_taint++
+
+			if (isgarou(src) || iswerewolf(src)) //werewolves have the taint of whatever Triat member they venerate most
+				var/mob/living/carbon/wolf = src
+
+				switch(wolf.auspice.tribe)
+					if ("Wendigo")
+						wyld_taint++
+					if ("Glasswalkers")
+						weaver_taint++
+					if ("Black Spiral Dancers")
+						wyrm_taint = VERY_TAINTED
+
+			if (wyrm_taint == TAINTED)
+				msg += "<span class='purple'><i>[p_they(TRUE)] smell[p_s()] of corruption...</i></span><br>"
+			else if (wyrm_taint == VERY_TAINTED)
+				msg += "<span class='purple'><i>[p_they(TRUE)] REEK[uppertext(p_s())] of the Wyrm and its defilement.</i></span><br>"
+
+			if (weaver_taint == TAINTED)
+				msg += "<span class='purple'><i>[p_they(TRUE)] emanate[p_s()] stasis and order...</i></span><br>"
+			else if (weaver_taint == VERY_TAINTED)
+				msg += "<span class='purple'><i>[p_they(TRUE)] exude[p_s()] the Weaver's choking stasis and control.</i></span><br>"
+
+			if (wyld_taint == TAINTED)
+				msg += "<span class='purple'><i>[p_they(TRUE)] radiate[p_s()] chaos and creation...</i></span><br>"
+			else if (wyld_taint == VERY_TAINTED)
+				msg += "<span class='purple'><i>[p_they(TRUE)] [p_are()] infused with the Wyld's primal energies of creation.</i></span><br>"
+
+			if (!wyrm_taint && !weaver_taint && !wyld_taint)
+				msg += "<span class='purple'><i>You aren't sensing any supernatural taint on [p_them()]...</i></span><br>"
+		else
+			msg += "<span class='purple'><i>[p_they(TRUE)] [p_are()] too far away to sense any taint...</i></span><br>"
+
 	var/datum/component/mood/mood = src.GetComponent(/datum/component/mood)
 	if(mood)
 		switch(mood.shown_mood)
