@@ -14,7 +14,7 @@
 			var/enlight = FALSE
 			if(clane)
 				mod = clane.humanitymod
-				enlight = clane.enlightement
+				enlight = clane.enlightenment
 			if(enlight)
 				if(value < 0)
 					if(humanity < 10)
@@ -83,7 +83,7 @@
 					to_chat(src, "<span class='userdanger'><b>MASQUERADE VIOLATION!</b></span>")
 				SSbad_guys_party.next_fire = max(world.time, SSbad_guys_party.next_fire - 2 MINUTES)
 			if(value > 0)
-				if(clane?.enlightement && !forced)
+				if(clane?.enlightenment && !forced)
 					AdjustHumanity(1, 10)
 				for(var/mob/living/carbon/human/H in GLOB.player_list)
 					H.voted_for -= dna.real_name

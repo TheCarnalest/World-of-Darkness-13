@@ -9,7 +9,7 @@
 	)
 	male_clothes = "/obj/item/clothing/under/vampire/sexy"
 	female_clothes = "/obj/item/clothing/under/vampire/toreador/female"
-	enlightement = FALSE
+	enlightenment = FALSE
 	whitelisted = TRUE
 
 /datum/discipline/melpominee/post_gain(mob/living/carbon/human/H)

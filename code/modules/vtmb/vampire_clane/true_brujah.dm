@@ -8,7 +8,7 @@
 		/datum/discipline/temporis = 3
 	)
 	violating_appearance = FALSE
-	enlightement = TRUE
+	enlightenment = TRUE
 	male_clothes = "/obj/item/clothing/under/vampire/rich"
 	female_clothes = "/obj/item/clothing/under/vampire/business"
 	restricted_disciplines = list(/datum/discipline/celerity)

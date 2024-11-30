@@ -328,9 +328,14 @@
 				if(BD.clane)
 					var/special_clan = FALSE
 					if(BD.clane.name == "Salubri")
-						if(!PB.IsSleeping())
+						if(PB.client)
+							if(alert(PB, "Do you consent to being fed on by [BD.name]?", "Consent To Feeding", "Yes", "No") != "Yes")
+								to_chat(BD, "<span class='warning'>You cannot feed on people who do not consent.</span>")
+								return
+						else if(!PB.IsSleeping())
 							to_chat(BD, "<span class='warning'>You can't drink from aware targets!</span>")
 							return
+
 						special_clan = TRUE
 						PB.emote("moan")
 					if(BD.clane.name == "Giovanni")

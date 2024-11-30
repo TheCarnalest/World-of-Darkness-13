@@ -9,7 +9,7 @@
 	)
 	male_clothes = "/obj/item/clothing/under/vampire/emo"
 	female_clothes = "/obj/item/clothing/under/vampire/business"
-	enlightement = TRUE
+	enlightenment = TRUE
 	whitelisted = TRUE
 
 /datum/vampireclane/lasombra/post_gain(mob/living/carbon/human/H)
@@ -20,7 +20,7 @@
 
 /datum/discipline/obtenebration/post_gain(mob/living/carbon/human/H)
 	H.faction |= "Lasombra"
-	H.mysticism_knowledge = 1
+	H.mysticism_knowledge = TRUE
 	var/datum/action/shadowcontrol/control = new()
 	control.Grant(H)
 	if(level >= 3)

@@ -9,7 +9,7 @@
 	)
 	male_clothes = "/obj/item/clothing/under/vampire/baali"
 	female_clothes = "/obj/item/clothing/under/vampire/baali/female"
-	enlightement = TRUE
+	enlightenment = TRUE
 	whitelisted = TRUE
 
 /datum/vampireclane/baali/on_gain(mob/living/carbon/human/H)

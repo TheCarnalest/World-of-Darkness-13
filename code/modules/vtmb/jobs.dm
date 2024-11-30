@@ -396,6 +396,7 @@
 	l_hand = /obj/item/storage/firstaid/medical
 	l_pocket = /obj/item/vamp/phone
 	r_pocket = /obj/item/vamp/keys/clinic
+	r_hand = /obj/item/radio/clinic
 	backpack_contents = list(/obj/item/passport=1, /obj/item/cockclock=1, /obj/item/flashlight=1, /obj/item/vamp/creditcard=1)
 
 	backpack = /obj/item/storage/backpack
@@ -1505,7 +1506,7 @@
 
 	H.generation = generation_choice
 	H.maxbloodpool = 10+((13-min(13, H.generation))*3)
-	H.clane.enlightement = H.clane.enlightement
+	H.clane.enlightenment = H.clane.enlightenment
 	H.maxHealth = round((initial(H.maxHealth)-initial(H.maxHealth)/4)+(initial(H.maxHealth)/4)*(H.physique+13-H.generation))
 	H.health = round((initial(H.maxHealth)-initial(H.maxHealth)/4)+(initial(H.maxHealth)/4)*(H.physique+13-H.generation))
 
@@ -2104,7 +2105,8 @@
 	gloves = /obj/item/cockclock
 	id = /obj/item/card/id/police
 	l_pocket = /obj/item/vamp/phone
-	r_pocket = /obj/item/flashlight
+	r_pocket = /obj/item/radio/cop
+	l_hand = /obj/item/vamp/keys/police
 	r_hand = /obj/item/police_radio
 	backpack_contents = list(/obj/item/passport=1, /obj/item/implant/radio=1, /obj/item/vamp/creditcard=1, /obj/item/ammo_box/vampire/c9mm = 1, /obj/item/restraints/handcuffs = 1,/obj/item/melee/classic_baton/vampire = 1,/obj/item/vamp/keys/police = 1)
 
@@ -2146,7 +2148,7 @@
 	id = /obj/item/card/id/police
 	gloves = /obj/item/cockclock
 	l_pocket = /obj/item/vamp/phone
-	r_pocket = /obj/item/flashlight
+	r_pocket = /obj/item/radio/cop
 	l_hand = /obj/item/vamp/keys/police
 	r_hand = /obj/item/police_radio
 	backpack_contents = list(/obj/item/passport=1, /obj/item/implant/radio=1, /obj/item/gun/ballistic/automatic/vampire/m1911=1, /obj/item/camera/detective=1, /obj/item/camera_film=1, /obj/item/taperecorder=1, /obj/item/tape=1, /obj/item/vamp/creditcard=1)
