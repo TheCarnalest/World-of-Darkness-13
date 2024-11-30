@@ -1206,8 +1206,15 @@
 	neutral_phrases = list("No Loitering.",
 											"I'm kinda like a  cop, you know.",
 											"I could go for some bear claws right about now.",
+											"Like the uniform?"
+											)
+	neutral_phrases = list("No Loitering.",
+											"I'm kinda like a  cop, you know.",
+											"I could go for some bear claws right about now.",
+											"Like the uniform?"
 											)
 	random_phrases = list("Real quiet night tonight.",
+											"My brothers and father are security guards too."
 											)
 	answer_phrases = list("I need some coffee.")
 	help_phrases = list("It's go time!",

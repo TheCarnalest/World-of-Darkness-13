@@ -87,6 +87,9 @@
 /obj/projectile/beam/beam_rifle/vampire/vamp12g/pellet
 	name = "12g shotgun pellet"
 	damage = 9
+	bare_wound_bonus = 5
+	armour_penetration = 5
+	wound_bonus = 5
 	range = 22 //range of where you can see + one screen after
 
 /obj/projectile/beam/beam_rifle/vampire/vamp12g/on_hit(atom/target, blocked = FALSE)
