@@ -616,14 +616,18 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/discipline_type = discipline_types[i]
 					var/datum/discipline/discipline = new discipline_type
 					var/discipline_level = discipline_levels[i]
+
 					var/cost
-					if (clane.name == "Caitiff")
+					if (discipline_level <= 0)
+						cost = 10
+					else if (clane.name == "Caitiff")
 						cost = discipline_level * 6
 					else if (clane.clane_disciplines.Find(discipline_type))
 						cost = discipline_level * 5
 					else
 						cost = discipline_level * 7
-					dat += "<b>[discipline.name]</b>: •[discipline_level > 1 ? "•" : "o"][discipline_level > 2 ? "•" : "o"][discipline_level > 3 ? "•" : "o"][discipline_level > 4 ? "•" : "o"]([discipline_level])"
+
+					dat += "<b>[discipline.name]</b>: [discipline_level > 0 ? "•" : "o"][discipline_level > 1 ? "•" : "o"][discipline_level > 2 ? "•" : "o"][discipline_level > 3 ? "•" : "o"][discipline_level > 4 ? "•" : "o"]([discipline_level])"
 					if((true_experience >= cost) && (discipline_level != 5))
 						dat += "<a href='?_src_=prefs;preference=discipline;task=input;upgradediscipline=[i]'>Learn ([cost])</a><BR>"
 					else
@@ -2137,7 +2141,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/i = text2num(href_list["upgradediscipline"])
 					var/discipline_level = discipline_levels[i]
 					var/cost
-					if (clane.name == "Caitiff")
+					if (discipline_level <= 0)
+						cost = 10
+					else if (clane.name == "Caitiff")
 						cost = discipline_level * 6
 					else if (clane.clane_disciplines.Find(discipline_types[i]))
 						cost = discipline_level * 5
@@ -2164,13 +2170,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(true_experience >= 20)
 						true_experience = true_experience-20
 						generation_bonus = min(generation_bonus+1, max(0, generation-7))
-//					if(exper_plus)
-//						if(exper_plus > calculate_max_exper())
-//							exper = calculate_max_exper()
-//							exper_plus = max(0, exper_plus-calculate_max_exper())
-//						else
-//							exper = max(0, exper+exper_plus)
-//							exper_plus = 0
 
 				if("friend_text")
 					var/new_text = input(user, "What a Friend knows about me:", "Character Preference") as text|null
@@ -3063,38 +3062,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				character.AddElement(/datum/element/children, COMSIG_PARENT_PREQDELETED, src)
 		parent << browse(null, "window=preferences_window")
 		parent << browse(null, "window=preferences_browser")
-
-/mob/living/carbon/human/proc/create_disciplines(discipline_pref = TRUE, list/disciplines)	//EMBRACE BASIC
-	if(client)
-		client.prefs.slotlocked = 1
-		client.prefs.save_preferences()
-		client.prefs.save_character()
-
-	if(dna.species.id == "kindred" || dna.species.id == "ghoul")
-		var/list/datum/discipline/adding_disciplines = list()
-
-		if (discipline_pref)
-			for (var/i in 1 to client.prefs.discipline_types.len)
-				var/type_to_create = client.prefs.discipline_types[i]
-				var/datum/discipline/discipline = new type_to_create
-				discipline.level = client.prefs.discipline_levels[i]
-				adding_disciplines += discipline
-		else if (disciplines.len)
-			for (var/i in 1 to disciplines.len)
-				var/datum/discipline/discipline = new disciplines[i]
-				adding_disciplines += discipline
-
-		for (var/datum/discipline/discipline in adding_disciplines)
-			give_discipline(discipline)
-
-		if(clane)
-			clane.post_gain(src)
-
-/mob/living/carbon/human/proc/give_discipline(datum/discipline/discipline)
-	var/datum/action/discipline/action = new
-	action.discipline = discipline
-	action.Grant(src)
-	discipline.post_gain(src)
 
 /datum/preferences/proc/can_be_random_hardcore()
 	if(parent.mob.mind.assigned_role in GLOB.command_positions) //No command staff

@@ -17,9 +17,9 @@
 	H.faction |= "Baali"
 	var/datum/brain_trauma/mild/phobia/security/T = new()
 	H.gain_trauma(T, TRAUMA_RESILIENCE_ABSOLUTE)
+	H.put_in_r_hand(new /obj/item/vamp/keys/baali(H))
 
 /datum/discipline/daimonion/post_gain(mob/living/carbon/human/H)
-	H.put_in_r_hand(new /obj/item/vamp/keys/baali(H))
 	if(level >= 3)
 		var/obj/effect/proc_holder/spell/aimed/fireball/baali/S = new(H)
 		H.mind.AddSpell(S)

@@ -12,10 +12,11 @@
 
 /datum/discipline/thaumaturgy/post_gain(mob/living/carbon/human/H)
 	H.faction |= "Tremere"
-	var/datum/action/thaumaturgy/T = new()
-	T.Grant(H)
-	T.level = level
-	H.thaumaturgy_knowledge = TRUE
+	if(level >= 1)
+		var/datum/action/thaumaturgy/T = new()
+		T.Grant(H)
+		T.level = level
+		H.thaumaturgy_knowledge = TRUE
 	if(level >= 3)
 		var/datum/action/bloodshield/B = new()
 		B.Grant(H)

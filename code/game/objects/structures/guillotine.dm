@@ -169,7 +169,6 @@
 			kill_count += 1
 			var/blood_overlay = "bloody"
 			if(P)
-				//P.torpor_count = 0
 				P.reason_of_death = "Executed to sustain the Traditions ([time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")])."
 			if (kill_count == 2)
 				blood_overlay = "bloodier"
@@ -187,9 +186,6 @@
 			H.apply_damage(15 * blade_sharpness, BRUTE, head)
 			log_combat(user, H, "dropped the blade on", src, " non-fatally")
 			H.emote("scream")
-
-//		if (blade_sharpness > 1)
-//			blade_sharpness -= 1
 
 	blade_status = GUILLOTINE_BLADE_DROPPED
 	icon_state = "guillotine"

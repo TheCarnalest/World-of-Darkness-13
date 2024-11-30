@@ -12,5 +12,5 @@
 	enlightement = FALSE
 	whitelisted = FALSE
 
-/datum/discipline/melpominee/post_gain(mob/living/carbon/human/H)
+/datum/vampireclane/doc/post_gain(mob/living/carbon/human/H)
 	H.put_in_r_hand(new /obj/item/vamp/keys/daughters(H))
