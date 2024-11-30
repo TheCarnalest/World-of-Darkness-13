@@ -492,6 +492,12 @@
 
 /datum/discipline/celerity/activate(mob/living/target, mob/living/carbon/human/caster)
 	. = ..()
+	if (caster.temporis_visual || caster.temporis_blur) //sorry guys, no using two time powers at once
+		to_chat(caster, "<span class='userdanger'>Your active Temporis causes Celerity to wrench your body's temporal field apart!</span>")
+		caster.emote("scream")
+		spawn(3 SECONDS)
+			caster.gib()
+		return
 	switch(level_casting)
 		if(1)
 			caster.add_movespeed_modifier(/datum/movespeed_modifier/celerity)
@@ -1935,6 +1941,12 @@
 
 /datum/discipline/temporis/activate(mob/living/target, mob/living/carbon/human/caster)
 	. = ..()
+	if (caster.celerity_visual) //no using two time powers at once
+		to_chat(caster, "<span class='userdanger'>You try to manipulate your temporal field, but Celerity causes it to slip out of your grasp!</span>")
+		caster.emote("scream")
+		spawn(3 SECONDS)
+			caster.gib()
+		return
 	switch(level_casting)
 		if(1)
 			to_chat(caster, "<b>[SScity_time.timeofnight]</b>")

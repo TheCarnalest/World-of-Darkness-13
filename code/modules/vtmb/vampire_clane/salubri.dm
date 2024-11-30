@@ -12,8 +12,10 @@
 	enlightenment = FALSE
 	whitelisted = FALSE
 
-/datum/discipline/valeren/post_gain(mob/living/carbon/human/H)
+/datum/vampireclane/salubri/post_gain(mob/living/carbon/human/H)
 	H.put_in_r_hand(new /obj/item/vamp/keys/salubri(H))
+
+/datum/discipline/valeren/post_gain(mob/living/carbon/human/H)
 	if(level >= 4)
 		var/obj/effect/proc_holder/spell/targeted/forcewall/salubri/FW = new(H)
 		H.mind.AddSpell(FW)

@@ -197,8 +197,11 @@
 
 /datum/discipline/vicissitude/post_gain(mob/living/carbon/human/H)
 	H.faction |= "Tzimisce"
-	var/datum/action/vicissitude/U = new()
-	U.Grant(H)
+	if (level >= 1)
+		var/datum/action/vicissitude/U = new()
+		U.Grant(H)
+		var/obj/item/organ/cyberimp/arm/surgery/S = new()
+		S.Insert(H)
 	if(level >= 3)
 		var/datum/action/basic_vicissitude/BV = new()
 		BV.Grant(H)
@@ -209,9 +212,10 @@
 		var/datum/action/vicissitude_form/VF = new()
 		VF.Grant(H)
 	if(H.mind)
-		H.mind.teach_crafting_recipe(/datum/crafting_recipe/tzi_wall)
-		H.mind.teach_crafting_recipe(/datum/crafting_recipe/tzi_stool)
-		H.mind.teach_crafting_recipe(/datum/crafting_recipe/tzi_unicorn)
+		if(level >= 1)
+			H.mind.teach_crafting_recipe(/datum/crafting_recipe/tzi_wall)
+			H.mind.teach_crafting_recipe(/datum/crafting_recipe/tzi_stool)
+			H.mind.teach_crafting_recipe(/datum/crafting_recipe/tzi_unicorn)
 		if(level >= 2)
 			H.mind.teach_crafting_recipe(/datum/crafting_recipe/tzi_floor)
 			H.mind.teach_crafting_recipe(/datum/crafting_recipe/tzi_biter)
@@ -239,9 +243,6 @@
 	)
 	H.equip_in_one_of_slots(heirloom, slots, FALSE)
 	heirl = heirloom
-//	H.add_quirk(/datum/quirk/ground_heirloom)
-	var/obj/item/organ/cyberimp/arm/surgery/S = new()
-	S.Insert(H)
 
 /datum/crafting_recipe/stake
 	name = "Stake"
