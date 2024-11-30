@@ -46,7 +46,7 @@
 			if("Glasswalkers")
 				var/mutable_appearance/clothing_overlay = mutable_appearance(icon, "glasswalker[sprite_apparel][laid_down ? "_rest" : ""]")
 				add_overlay(clothing_overlay)
-			if("Black Spiral")
+			if("Black Spiral Dancers")
 				var/mutable_appearance/clothing_overlay = mutable_appearance(icon, "spiral[sprite_apparel][laid_down ? "_rest" : ""]")
 				add_overlay(clothing_overlay)
 

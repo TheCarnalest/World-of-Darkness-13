@@ -6,7 +6,7 @@
 /mob/living/carbon/Life()
 	. = ..()
 	if(isgarou(src) || iswerewolf(src))
-		if(key && stat <= 3)
+		if(key && stat <= HARD_CRIT)
 			var/datum/preferences/P = GLOB.preferences_datums[ckey(key)]
 			if(P)
 				if(P.masquerade != masquerade)
@@ -60,27 +60,34 @@
 
 			if(auspice.rage >= 9)
 				if(!in_frenzy)
-					if(last_frenzy_check+400 <= world.time)
+					if((last_frenzy_check + 40 SECONDS) <= world.time)
 						last_frenzy_check = world.time
 						rollfrenzy()
 
 			if(istype(get_area(src), /area/vtm/interior/penumbra))
-				if(last_veil_restore+400 < world.time)
+				if((last_veil_restore + 40 SECONDS) < world.time)
 					adjust_veil(1, src, TRUE)
 					last_veil_restore = world.time
 
-			switch(src.auspice.tribe)
+			switch(auspice.tribe)
 				if("Wendigo")
 					if(istype(get_area(src), /area/vtm/forest))
-						if(last_veil_restore+500 <= world.time)
+						if((last_veil_restore + 50 SECONDS) <= world.time)
 							adjust_veil(1, src, TRUE)
 							last_veil_restore = world.time
 
 				if("Glasswalkers")
 					if(istype(get_area(src), /area/vtm/interior/glasswalker))
-						if(last_veil_restore+500 <= world.time)
+						if((last_veil_restore + 50 SECONDS) <= world.time)
 							adjust_veil(1, src, TRUE)
 							last_veil_restore = world.time
+
+				if("Black Spiral Dancers")
+					if(istype(get_area(src), /area/vtm/interior/wyrm_corrupted))
+						if((last_veil_restore + 50 SECONDS) <= world.time)
+							adjust_veil(1, src, TRUE)
+							last_veil_restore = world.time
+
 
 /mob/living/carbon/werewolf/crinos/Life()
 	. = ..()

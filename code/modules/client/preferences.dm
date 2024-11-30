@@ -206,7 +206,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	var/archetype = /datum/archetype/average
 
 	var/breed = "Homid"
-	var/tribe = "Wendigo"	//Spiral are available only as antags
+	var/tribe = "Wendigo"
 	var/datum/auspice/auspice = new /datum/auspice/ahroun()
 	var/werewolf_color = "black"
 	var/werewolf_scar = 0
@@ -534,17 +534,17 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				dat += "<b>Initial Rage:</b> •[auspice.start_rage > 1 ? "•" : "o"][auspice.start_rage > 2 ? "•" : "o"][auspice.start_rage > 3 ? "•" : "o"][auspice.start_rage > 4 ? "•" : "o"]([auspice.start_rage])<BR>"
 				var/gifts_text = ""
 				var/num_of_gifts = 0
-				switch(tribe)
-					if("Glasswalkers")
-						for(var/i in 1 to auspice_level)
-							var/zalupa = auspice.glasswalker[i]
-							var/datum/action/T = new zalupa()
-							gifts_text += "[T.name], "
-					if("Wendigo")
-						for(var/i in 1 to auspice_level)
-							var/zalupa = auspice.wendigo[i]
-							var/datum/action/T = new zalupa()
-							gifts_text += "[T.name], "
+				for(var/i in 1 to auspice_level)
+					var/zalupa
+					switch (tribe)
+						if ("Glasswalkers")
+							zalupa = auspice.glasswalker[i]
+						if ("Wendigo")
+							zalupa = auspice.wendigo[i]
+						if ("Black Spiral Dancers")
+							zalupa = auspice.spiral[i]
+					var/datum/action/T = new zalupa()
+					gifts_text += "[T.name], "
 				for(var/i in auspice.gifts)
 					var/datum/action/ACT = new i()
 					num_of_gifts = min(num_of_gifts+1, length(auspice.gifts))
@@ -656,7 +656,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					qdel(discipline)
 
 				var/list/possible_new_disciplines = subtypesof(/datum/discipline) - discipline_types
-				if (possible_new_disciplines.len && (true_experience >= 15))
+				if (possible_new_disciplines.len && (true_experience >= 10))
 					dat += "<a href='?_src_=prefs;preference=newghouldiscipline;task=input'>Learn a new Discipline (10)</a><BR>"
 
 			if(true_experience >= 3 && slotlocked)
@@ -2083,12 +2083,12 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						mentality = min(5, mentality+1)
 
 				if("lockpicking")
-					if ((true_experience >= ((lockpicking > 0) ? (2 * lockpicking) : 3)) && (lockpicking <= 5))
+					if ((true_experience >= ((lockpicking > 0) ? (2 * lockpicking) : 3)) && (lockpicking < 5))
 						true_experience -= (lockpicking > 0) ? (2 * lockpicking) : 3
 						lockpicking++
 
 				if("athletics")
-					if ((true_experience >= ((athletics > 0) ? (2 * athletics) : 3)) && (athletics <= 5))
+					if ((true_experience >= ((athletics > 0) ? (2 * athletics) : 3)) && (athletics < 5))
 						true_experience -= (athletics > 0) ? (2 * athletics) : 3
 						athletics++
 
@@ -2104,6 +2104,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(tribe == "Wendigo")
 						tribe = "Glasswalkers"
 					else if(tribe == "Glasswalkers")
+						tribe = "Black Spiral Dancers"
+					else if(tribe == "Black Spiral Dancers")
 						tribe = "Wendigo"
 
 				if("breed")

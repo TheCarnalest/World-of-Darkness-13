@@ -533,7 +533,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	archetype 		= sanitize_inlist(archetype, subtypesof(/datum/archetype))
 
 	breed			= sanitize_inlist(breed, list("Homid", "Lupus", "Metis"))
-	tribe			= sanitize_inlist(tribe, list("Wendigo", "Glasswalkers"))
+	tribe			= sanitize_inlist(tribe, list("Wendigo", "Glasswalkers", "Black Spiral Dancers"))
 	werewolf_color	= sanitize_inlist(werewolf_color, list("black", "gray", "red", "white", "ginger", "brown"))
 	werewolf_scar	= sanitize_integer(werewolf_scar, 0, 7, initial(werewolf_scar))
 	werewolf_hair	= sanitize_integer(werewolf_hair, 0, 4, initial(werewolf_hair))
@@ -619,7 +619,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	validate_quirks()
 
 	//Convert jank old Discipline system to new Discipline system
-	if (istype(pref_species, /datum/species/kindred) && !discipline_types.len)
+	if ((istype(pref_species, /datum/species/kindred) || istype(pref_species, /datum/species/ghoul)) && !discipline_types.len)
 		if (discipline1type && discipline1level)
 			discipline_types += discipline1type
 			discipline_levels += discipline1level
