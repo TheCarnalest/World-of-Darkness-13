@@ -1725,20 +1725,16 @@
 			to_chat(caster, "<b>[target]</b> has <b>[target.bloodpool]/[target.maxbloodpool]</b> blood points.")
 			to_chat(caster, "<b>[target]</b> has a rating of <b>[target.humanity]</b> on their path.")
 		if(2)
-			if(caster.grab_state > GRAB_PASSIVE)
-				if(ishuman(caster.pulling))
-					var/mob/living/PB = caster.pulling
-					if(isgarou(PB))
-						return
-					if(iskindred(PB))
-						PB.add_confusion(2)
-						PB.drowsyness += 2
-					else if(ishuman(PB))
-						PB.SetSleeping(300)
-				else
+			if(get_dist(caster, target) <= 2)
+				if(isgarou(target))
 					return
+				if(iskindred(target))
+					target.add_confusion(5)
+					target.drowsyness += 4
+				else if(ishuman(target))
+					target.SetSleeping(300)
 			else
-				to_chat(caster, "You need to be grabbing someone to use this power.")
+				to_chat(caster, "You need to be close to use this power.")
 				return
 		if(3)
 			if(current_beam)
@@ -1754,7 +1750,6 @@
 			target.update_damage_overlays()
 			target.update_health_hud()
 		if(4)
-			ranged = FALSE
 			if(current_beam)
 				qdel(current_beam)
 			caster.Beam(target, icon_state="sm_arc", time = 50, maxdistance = 9, beam_type = /obj/effect/ebeam/medical)
