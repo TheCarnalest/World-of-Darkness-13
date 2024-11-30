@@ -516,17 +516,13 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			dat += "<BR>"
 
 			dat += "<b>Lockpicking:</b> [lockpicking > 0 ? "•" : "o"][lockpicking > 1 ? "•" : "o"][lockpicking > 2 ? "•" : "o"][lockpicking > 3 ? "•" : "o"][lockpicking > 4 ? "•" : "o"]([lockpicking])"
-			if(true_experience >= 2 && lockpicking == 0)
-				dat += "<a href='?_src_=prefs;preference=lockpicking;task=input'>Increase([2])</a>"
-			else if(true_experience >= 2*lockpicking && lockpicking != 5 || lockpicking == 0 && true_experience >=2)
-				dat += "<a href='?_src_=prefs;preference=lockpicking;task=input'>Increase([2*lockpicking])</a>"
+			if(((true_experience >= ((lockpicking > 0) ? (2 * lockpicking) : 3))) && (lockpicking < 5))
+				dat += "<a href='?_src_=prefs;preference=lockpicking;task=input'>Increase ([(lockpicking > 0) ? (2 * lockpicking) : 3])</a>"
 			dat += "<BR>"
 
 			dat += "<b>Athletics:</b> [athletics > 0 ? "•" : "o"][athletics > 1 ? "•" : "o"][athletics > 2 ? "•" : "o"][athletics > 3 ? "•" : "o"][athletics > 4 ? "•" : "o"]([athletics])"
-			if(true_experience >= 2 && athletics == 0)
-				dat += "<a href='?_src_=prefs;preference=athletics;task=input'>Increase([2])</a>"
-			else if(true_experience >= 2*athletics && athletics != 5 || athletics == 0 && true_experience >=2)
-				dat += "<a href='?_src_=prefs;preference=athletics;task=input'>Increase([2*athletics])</a>"
+			if(((true_experience >= ((athletics > 0) ? (2 * athletics) : 3))) && (athletics < 5))
+				dat += "<a href='?_src_=prefs;preference=athletics;task=input'>Increase ([(athletics > 0) ? (2 * athletics) : 3])</a>"
 			dat += "<BR>"
 
 			dat += "Experience rewarded: [true_experience]<BR>"

@@ -200,6 +200,8 @@
 	if (level >= 1)
 		var/datum/action/vicissitude/U = new()
 		U.Grant(H)
+		var/obj/item/organ/cyberimp/arm/surgery/S = new()
+		S.Insert(H)
 	if(level >= 3)
 		var/datum/action/basic_vicissitude/BV = new()
 		BV.Grant(H)
@@ -241,9 +243,6 @@
 	)
 	H.equip_in_one_of_slots(heirloom, slots, FALSE)
 	heirl = heirloom
-//	H.add_quirk(/datum/quirk/ground_heirloom)
-	var/obj/item/organ/cyberimp/arm/surgery/S = new()
-	S.Insert(H)
 
 /datum/crafting_recipe/stake
 	name = "Stake"
