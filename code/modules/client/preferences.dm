@@ -304,13 +304,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	generation = initial(generation)
 	qdel(clane)
 	clane = new /datum/vampireclane/brujah()
-	if(length(clane.clane_disciplines) >= 1)
-		discipline1type = clane.clane_disciplines[1]
-	if(length(clane.clane_disciplines) >= 2)
-		discipline2type = clane.clane_disciplines[2]
-	if(length(clane.clane_disciplines) >= 3)
-		discipline3type = clane.clane_disciplines[3]
-	discipline4type = null
+	for (var/i in 1 to clane.clane_disciplines.len)
+		discipline_types += clane.clane_disciplines[i]
+		discipline_levels += 1
 	enlightenment = clane.enlightenment
 	humanity = clane.start_humanity
 	true_experience = 50
@@ -2137,32 +2133,21 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						social = archetip.start_social
 						blood = archetip.start_blood
 
-				if("discipline1")
-					if(true_experience >= discipline1level*5 && discipline1level != 5)
-						true_experience = true_experience-discipline1level*5
-						discipline1level = min(5, discipline1level+1)
-//					if(exper_plus)
-//						if(exper_plus > calculate_max_exper())
-//							exper = calculate_max_exper()
-//							exper_plus = max(0, exper_plus-calculate_max_exper())
-//						else
-//							exper = max(0, exper+exper_plus)
-//							exper_plus = 0
-
-				if("discipline2")
-					if(true_experience >= discipline2level*5 && discipline2level != 5)
-						true_experience = true_experience-discipline2level*5
-						discipline2level = min(5, discipline2level+1)
-
-				if("discipline3")
-					if(true_experience >= discipline3level*5 && discipline3level != 5)
-						true_experience = true_experience-discipline3level*5
-						discipline3level = min(5, discipline3level+1)
-
-				if("discipline4")
-					if(true_experience >= discipline4level*5 && discipline4level != 5)
-						true_experience = true_experience-discipline4level*5
-						discipline4level = min(5, discipline4level+1)
+				if("discipline")
+					var/i = text2num(href_list["upgradediscipline"])
+					var/discipline_level = discipline_levels[i]
+					var/cost
+					if (discipline_level <= 0)
+						cost = 10
+					else if (clane.name == "Caitiff")
+						cost = discipline_level * 6
+					else if (clane.clane_disciplines.Find(discipline_types[i]))
+						cost = discipline_level * 5
+					else
+						cost = discipline_level * 7
+					if ((true_experience >= cost) && (discipline_level != 5))
+						true_experience = true_experience - cost
+						discipline_levels[i] = min(5, discipline_levels[i] + 1)
 
 				if("path")
 					if((true_experience >= (humanity * 2)) && (humanity < 10))
