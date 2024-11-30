@@ -196,7 +196,8 @@
 			H.update_body()
 
 /datum/discipline/vicissitude/post_gain(mob/living/carbon/human/H)
-	H.faction |= "Tzimisce"
+	if (H.faction == "Old Clan Tzimisce")
+		H.faction |= "Tzimisce"
 	if (level >= 1)
 		var/datum/action/vicissitude/U = new()
 		U.Grant(H)
