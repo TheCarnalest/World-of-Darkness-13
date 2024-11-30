@@ -49,7 +49,7 @@
 /datum/action/thousand_faces
 	name = "Mask of 1000 faces"
 	desc = "Change your appearance and mannerisms to mimic someone else."
-	button_icon_state = "clock2"
+	button_icon_state = "1000mask"
 	check_flags = AB_CHECK_CONSCIOUS
 	vampiric = TRUE
 	var/last_hair
@@ -102,7 +102,7 @@
 				original_realname = H.real_name
 				original_age = H.age
 				original_body_mode = H.base_body_mod
-				playsound(get_turf(H), 'code/modules/wod13/sounds/vicissitude.ogg', 100, TRUE, -6)
+				playsound(get_turf(H), 'sound/magic/mandswap.ogg', 100, TRUE, -6)
 				H.Stun(10)
 				H.do_jitter_animation(10)
 				H.clane.alt_sprite = FALSE
@@ -142,7 +142,7 @@
 				original_realname = H.real_name
 				original_age = H.age
 				original_body_mode = H.base_body_mod
-				playsound(get_turf(H), 'code/modules/wod13/sounds/vicissitude.ogg', 100, TRUE, -6)
+				playsound(get_turf(H), 'sound/magic/mandswap.ogg', 100, TRUE, -6)
 				H.Stun(10)
 				H.do_jitter_animation(10)
 				H.clane.alt_sprite = FALSE
@@ -186,7 +186,7 @@
 		return
 	else
 		H.switch_masquerade(H)
-		playsound(get_turf(H), 'code/modules/wod13/sounds/vicissitude.ogg', 100, TRUE, -6)
+		playsound(get_turf(H), 'sound/magic/mandswap.ogg', 100, TRUE, -6)
 		H.Stun(10)
 		H.do_jitter_animation(10)
 		H.hairstyle = original_hair
