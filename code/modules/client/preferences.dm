@@ -311,7 +311,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	if(length(clane.clane_disciplines) >= 3)
 		discipline3type = clane.clane_disciplines[3]
 	discipline4type = null
-	enlightement = clane.enlightement
+	enlightenment = clane.enlightenment
 	humanity = clane.start_humanity
 	true_experience = 50
 	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
@@ -2189,6 +2189,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 //						else
 //							exper = max(0, exper+exper_plus)
 //							exper_plus = 0
+				*/
 
 				if("generation")
 					if(clane)
@@ -2259,7 +2260,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 //						discipline3type = clane.clane_disciplines[3]
 //					discipline4type = null
 //					humanity = clane.start_humanity
-//					enlightement = clane.enlightement
+//					enlightenment = clane.enlightenment
 //					random_species()
 //					random_character()
 //					real_name = random_unique_name(gender)
