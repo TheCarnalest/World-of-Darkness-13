@@ -994,6 +994,10 @@ VENTORY!
 	grid_width = 6 GRID_BOXES
 	grid_height = 2 GRID_BOXES
 
+/obj/item/gun/ballistic/vampire/revolver/doublebarrel
+	grid_width = 8 GRID_BOXES
+	grid_height = 2 GRID_BOXES
+
 /obj/item/ammo_box/vampire/c12g
 	grid_width = 2 GRID_BOXES
 	grid_height = 2 GRID_BOXES

@@ -1203,27 +1203,18 @@
 	pockets = list(/obj/item/vamp/keys/npc,
 					/obj/item/stack/dollar/rand)
 
-	male_phrases = list("I see you.",
-											"Looking suspicious...",
-											"I got some bullets if you got some crime-ass ideas.",
-											"I'm the law.",
-											"Have you seen man in black coat with black hair?")
-	neutral_phrases = list("I see you.",
-											"Looking suspicious...",
-											"I got some bullets if you got some crime-ass ideas.",
-											"I'm the law.",
-											"Have you seen man in black coat with black hair?")
-	random_phrases = list("I see you.",
-											"Looking suspicious...",
-											"I got some bullets if you got some crime-ass ideas.",
-											"I'm the law.",
-											"Have you seen man in black coat with black hair?")
-	answer_phrases = list("I'm here to protect you.")
-	help_phrases = list("Lay down!",
+	neutral_phrases = list("No Loitering.",
+											"I'm kinda like a  cop, you know.",
+											"I could go for some bear claws right about now.",
+											)
+	random_phrases = list("Real quiet night tonight.",
+											)
+	answer_phrases = list("I need some coffee.")
+	help_phrases = list("It's go time!",
 											"Stop right there!!",
 											"Drop your weapon!",
-											"Stop there right now!!",
-											"This is SFPD, stay down!")
+											"Freeze!!",
+											"Not just a mall cop, you know!")
 
 /mob/living/carbon/human/npc/guard
 	vampire_faction = "City"
@@ -1235,7 +1226,7 @@
 	..()
 	if(prob(66))
 		base_body_mod = "f"
-	my_weapon = new /obj/item/gun/ballistic/automatic/vampire/deagle(src)
+	my_weapon = new /obj/item/gun/ballistic/automatic/vampire/m1911(src)
 	AssignSocialRole(/datum/socialrole/guard)
 
 /mob/living/carbon/human/npc/walkby/club/Life()
