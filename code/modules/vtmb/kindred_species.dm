@@ -99,7 +99,7 @@
 		var/humanity = "I'm out of my mind."
 		var/enlight = FALSE
 		if(host.clane)
-			if(host.clane.enlightement)
+			if(host.clane.enlightenment)
 				enlight = TRUE
 
 		if(!enlight)
@@ -309,14 +309,16 @@
 				if(!BLOODBONDED.key)
 					to_chat(owner, "<span class='warning'>You need [BLOODBONDED]'s mind to Embrace!</span>")
 					return
-				message_admins("[H]([H.key]) is embracing [BLOODBONDED]([BLOODBONDED.key])!")
+				message_admins("[ADMIN_LOOKUPFLW(H)] is Embracing [ADMIN_LOOKUPFLW(BLOODBONDED)]!")
 			if(giving)
 				return
 			giving = TRUE
 			owner.visible_message("<span class='warning'>[owner] tries to feed [BLOODBONDED] with their own blood!</span>", "<span class='notice'>You started to feed [BLOODBONDED] with your own blood.</span>")
 			if(do_mob(owner, BLOODBONDED, 10 SECONDS))
-				var/new_master = FALSE
+				H.bloodpool = max(0, H.bloodpool-2)
 				giving = FALSE
+
+				var/new_master = FALSE
 				BLOODBONDED.faction |= H.faction
 				if(!istype(BLOODBONDED, /mob/living/carbon/human/npc))
 					if(H.vampire_faction == "Camarilla" || H.vampire_faction == "Anarch" || H.vampire_faction == "Sabbat")
@@ -330,7 +332,37 @@
 							to_chat(BLOODBONDED, "<span class='notice'>You are now member of <b>[H.vampire_faction]</b></span>")
 				BLOODBONDED.drunked_of |= "[H.dna.real_name]"
 				if(BLOODBONDED.stat == DEAD && !iskindred(BLOODBONDED))
-					if(BLOODBONDED.respawntimeofdeath+6000 > world.time)
+					if (!BLOODBONDED.can_be_embraced)
+						to_chat(H, "<span class='notice'>[BLOODBONDED.name] doesn't respond to your Vitae.</span>")
+						return
+
+					if((BLOODBONDED.respawntimeofdeath + 5 MINUTES) > world.time)
+						if (BLOODBONDED.auspice?.level) //here be Abominations
+							if (BLOODBONDED.auspice.force_abomination)
+								to_chat(H, "<span class='danger'>Something terrible is happening.</span>")
+								to_chat(BLOODBONDED, "<span class='userdanger'>Gaia has forsaken you.</span>")
+								message_admins("[ADMIN_LOOKUPFLW(H)] has turned [ADMIN_LOOKUPFLW(BLOODBONDED)] into an Abomination through an admin setting the force_abomination var.")
+								log_game("[key_name(H)] has turned [key_name(BLOODBONDED)] into an Abomination through an admin setting the force_abomination var.")
+							else
+								switch(storyteller_roll(BLOODBONDED.auspice.level))
+									if (ROLL_BOTCH)
+										to_chat(H, "<span class='danger'>Something terrible is happening.</span>")
+										to_chat(BLOODBONDED, "<span class='userdanger'>Gaia has forsaken you.</span>")
+										message_admins("[ADMIN_LOOKUPFLW(H)] has turned [ADMIN_LOOKUPFLW(BLOODBONDED)] into an Abomination.")
+										log_game("[key_name(H)] has turned [key_name(BLOODBONDED)] into an Abomination.")
+									if (ROLL_FAILURE)
+										BLOODBONDED.visible_message("<span class='warning'>[BLOODBONDED.name] convulses in sheer agony!</span>")
+										BLOODBONDED.Shake(15, 15, 5 SECONDS)
+										playsound(BLOODBONDED.loc, 'code/modules/wod13/sounds/vicissitude.ogg', 100, TRUE)
+										BLOODBONDED.can_be_embraced = FALSE
+										return
+									if (ROLL_SUCCESS)
+										to_chat(H, "<span class='notice'>[BLOODBONDED.name] does not respond to your Vitae...</span>")
+										BLOODBONDED.can_be_embraced = FALSE
+										return
+
+						log_game("[key_name(H)] has Embraced [key_name(BLOODBONDED)].")
+						message_admins("[ADMIN_LOOKUPFLW(H)] has Embraced [ADMIN_LOOKUPFLW(BLOODBONDED)].")
 						giving = FALSE
 						if(BLOODBONDED.revive(full_heal = TRUE, admin_revive = TRUE))
 							BLOODBONDED.grab_ghost(force = TRUE)
@@ -352,18 +384,12 @@
 								disciplines_to_give += H.client.prefs.discipline_types[i]
 							BLOODBONDED.create_disciplines(FALSE, disciplines_to_give)
 							BLOODBONDED.maxbloodpool = 10+((13-min(13, BLOODBONDED.generation))*3)
-							BLOODBONDED.clane.enlightement = H.clane.enlightement
+							BLOODBONDED.clane.enlightenment = H.clane.enlightenment
 							if(BLOODBONDED.generation < 13)
 								BLOODBONDED.maxHealth = round((initial(BLOODBONDED.maxHealth)-initial(BLOODBONDED.maxHealth)/4)+(initial(BLOODBONDED.maxHealth)/4)*(BLOODBONDED.physique+13-BLOODBONDED.generation))
 								BLOODBONDED.health = round((initial(BLOODBONDED.maxHealth)-initial(BLOODBONDED.maxHealth)/4)+(initial(BLOODBONDED.maxHealth)/4)*(BLOODBONDED.physique+13-BLOODBONDED.generation))
 						else
 							BLOODBONDED.clane = new /datum/vampireclane/caitiff()
-//						BLOODBONDED.hud_used.drinkblood_icon.icon_state = "drink"
-//						BLOODBONDED.hud_used.healths.icon = 'code/modules/wod13/32x48.dmi'
-//						qdel(BLOODBONDED.hud_used)
-//						BLOODBONDED.hud_used = new BLOODBONDED.hud_type(BLOODBONDED)
-//						BLOODBONDED.update_sight()
-//						SEND_SIGNAL(BLOODBONDED, COMSIG_MOB_HUD_CREATED)
 					else
 						to_chat(owner, "<span class='notice'>[BLOODBONDED] is totally <b>DEAD</b>!</span>")
 						giving = FALSE
@@ -371,16 +397,7 @@
 				else
 					if(BLOODBONDED.has_status_effect(STATUS_EFFECT_INLOVE))
 						BLOODBONDED.remove_status_effect(STATUS_EFFECT_INLOVE)
-//					else
-//						var/datum/preferences/P = GLOB.preferences_datums[ckey(H.key)]
-//						if(P)
-//							P.exper = min(calculate_mob_max_exper(H), P.exper+250)
-//						if(BLOODBONDED.key)
-//							var/datum/preferences/P2 = GLOB.preferences_datums[ckey(BLOODBONDED.key)]
-//							if(P2)
-//								P2.exper = min(calculate_mob_max_exper(BLOODBONDED), P2.exper+250)
 					BLOODBONDED.apply_status_effect(STATUS_EFFECT_INLOVE, owner)
-					H.bloodpool = max(0, H.bloodpool-2)
 					to_chat(owner, "<span class='notice'>You successfuly fed [BLOODBONDED] with vitae.</span>")
 					to_chat(BLOODBONDED, "<span class='userlove'>You feel good when you drink this <b>BLOOD</b>...</span>")
 					if(H.reagents)

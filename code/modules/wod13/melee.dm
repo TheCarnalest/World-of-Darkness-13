@@ -4,6 +4,7 @@
 	worn_icon = 'code/modules/wod13/worn.dmi'
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
 	var/quieted = FALSE
+	cost = 25
 
 /obj/item
 	var/masquerade_violating = FALSE
@@ -85,6 +86,7 @@
 	pixel_w = -8
 	resistance_flags = FIRE_PROOF
 	masquerade_violating = FALSE
+	cost = 250
 
 /obj/item/melee/vampirearms/baseball
 	name = "baseball bat"
@@ -98,6 +100,7 @@
 	attack_verb_continuous = list("beats", "smacks")
 	attack_verb_simple = list("beat", "smack")
 	w_class = WEIGHT_CLASS_NORMAL
+	cost = 50
 
 /obj/item/melee/vampirearms/baseball/attack(mob/living/target, mob/living/user)
 	. = ..()
@@ -325,6 +328,8 @@
 	. = ..()
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
 		return
+	if(isgarou(target) || iswerewolf(target) || isanimal(target))
+		return
 	if(target.IsParalyzed() || target.IsKnockdown() || target.IsStun())
 		return
 	if(!target.IsParalyzed() && iskindred(target) && !target.stakeimmune)
@@ -459,3 +464,18 @@
 	attack_verb_simple = list("shove", "bash")
 	max_integrity = 999999
 	material_flags = MATERIAL_NO_EFFECTS
+
+/obj/item/melee/classic_baton/vampire
+	name = "police baton"
+	desc = "Blunt instrument of justice."
+	icon = 'code/modules/wod13/weapons.dmi'
+	icon_state = "baton"
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_SUITSTORE
+	w_class = WEIGHT_CLASS_NORMAL
+	attack_verb_continuous = list("bludgeons", "bashes", "beats")
+	attack_verb_simple = list("bludgeon", "bash", "beat")
+	force = 25
+	block_chance = 10
+	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_SUITSTORE
+	w_class = WEIGHT_CLASS_NORMAL
+

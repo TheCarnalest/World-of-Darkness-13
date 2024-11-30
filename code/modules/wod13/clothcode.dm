@@ -11,6 +11,7 @@
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
 	body_worn = TRUE
 	fitted = NO_FEMALE_UNIFORM
+	cost = 10
 
 /obj/item/clothing/under/vampire/brujah
 	desc = "Some punk clothes."
@@ -86,6 +87,10 @@
 /obj/item/clothing/under/vampire/nazi
 	desc = "Some historical clothes."
 	icon_state = "nazi"
+
+/obj/item/clothing/under/vampire/nazi/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_NODROP, ADMIN_TRAIT)
 
 //FOR NPC
 
@@ -324,6 +329,7 @@
 	can_be_tied = FALSE
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
 	body_worn = TRUE
+	cost = 5
 
 /obj/item/clothing/shoes/vampire/brown
 	icon_state = "shoes_brown"
@@ -383,6 +389,7 @@
 	resistance_flags = NONE
 	armor = list(MELEE = 10, BULLET = 0, LASER = 10, ENERGY = 10, BOMB = 10, BIO = 0, RAD = 0, FIRE = 0, ACID = 10, WOUND = 10)
 	body_worn = TRUE
+	cost = 15
 
 /obj/item/clothing/suit/hooded/heisenberg
 	name = "chemical costume"
@@ -567,6 +574,7 @@
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
 	armor = list(MELEE = 10, BULLET = 0, LASER = 10, ENERGY = 10, BOMB = 10, BIO = 0, RAD = 0, FIRE = 0, ACID = 10, WOUND = 10)
 	body_worn = TRUE
+	cost = 10
 
 /obj/item/clothing/head/vampire/bandana
 	name = "bandana"
@@ -619,6 +627,10 @@
 	desc = "\"Du wirst immer ein Schwein sein!\""
 	icon_state = "ss"
 	armor = list(MELEE = 20, BULLET = 20, LASER = 10, ENERGY = 10, BOMB = 10, BIO = 0, RAD = 0, FIRE = 0, ACID = 10, WOUND = 10)
+
+/obj/item/clothing/head/vampire/nazi/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_NODROP, ADMIN_TRAIT)
 
 /obj/item/clothing/head/vampire/top
 	name = "top hat"
@@ -809,3 +821,18 @@
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	visor_flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
 	w_class = WEIGHT_CLASS_SMALL
+
+/obj/item/storage/belt/holster/detective/vampire
+	name = "holster"
+	desc = "a holster for your gun."
+	component_type = /datum/component/storage/concrete/vtm/holster
+
+/obj/item/storage/belt/holster/detective/vampire/police
+	desc = "standard issue holster for standard issue sidearms."
+
+/obj/item/storage/belt/holster/detective/vampire/police/PopulateContents()
+	new /obj/item/ammo_box/vampire/c9mm/moonclip(src)
+	new /obj/item/ammo_box/vampire/c9mm/moonclip(src)
+	new /obj/item/gun/ballistic/vampire/revolver/snub(src)
+
+

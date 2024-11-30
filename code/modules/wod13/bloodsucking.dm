@@ -38,7 +38,7 @@
 //		NPC.last_attacker = src
 
 	if(iskindred(mob))
-		to_chat(src, "<span class='userlove'>You notice a pleasant feeling while siping [mob]'s BLOOD...</span>")
+		to_chat(src, "<span class='userlove'>[mob]'s blood tastes HEAVENLY...</span>")
 		adjustBruteLoss(-25, TRUE)
 		adjustFireLoss(-25, TRUE)
 	else
@@ -46,14 +46,13 @@
 		to_chat(src, "<span class='warning'>You sip some <b>BLOOD</b> from your victim. It feels good.</span>")
 
 	if(mob.bloodpool <= 1 && mob.maxbloodpool > 1)
-//		if(alert("This action will kill your victim. Are you sure?",,"Yes","No")!="Yes")
-//			return
 		to_chat(src, "<span class='warning'>You feel small amount of <b>BLOOD</b> in your victim.</span>")
 		if(iskindred(mob))
 			if(!mob.client)
 				to_chat(src, "<span class='warning'>You need [mob]'s attention to do that...</span>")
 				return
-			message_admins("[src]([key]) is trying to diablerie [mob]([mob.key])!")
+			message_admins("[ADMIN_LOOKUPFLW(src)] is attempting to Diablerize [ADMIN_LOOKUPFLW(mob)]")
+			log_attack("[key_name(src)] is attempting to Diablerize [key_name(mob)].")
 			if(mob.key)
 				var/vse_taki = FALSE
 				var/special_role_name
@@ -138,11 +137,11 @@
 				if(iskindred(mob))
 					var/datum/preferences/P = GLOB.preferences_datums[ckey(key)]
 					var/datum/preferences/P2 = GLOB.preferences_datums[ckey(mob.key)]
-					message_admins("[src]([key]) tries to diablerie [mob](mob.key])!")
 					AdjustHumanity(-1, 0)
 					AdjustMasquerade(-1)
 					if(K.generation >= generation)
-						message_admins("[src]([key]) successes in diablerie over [mob](mob.key])!")
+						message_admins("[ADMIN_LOOKUPFLW(src)] successfully Diablerized [ADMIN_LOOKUPFLW(mob)]")
+						log_attack("[key_name(src)] successfully Diablerized [key_name(mob)].")
 						if(K.client)
 							K.generation = 13
 							P2.generation = 13
@@ -163,7 +162,8 @@
 							start_prob = 30
 						if(prob(min(99, start_prob+((generation-K.generation)*10))))
 							to_chat(src, "<span class='userdanger'><b>[K]'s SOUL OVERCOMES YOURS AND GAIN CONTROL OF YOUR BODY.</b></span>")
-							message_admins("[src]([key]) failed to diablerie [mob](mob.key])!")
+							message_admins("[ADMIN_LOOKUPFLW(src)] tried to Diablerize [ADMIN_LOOKUPFLW(mob)] and was overtaken.")
+							log_attack("[key_name(src)] tried to Diablerize [key_name(mob)] and was overtaken.")
 							generation = 13
 							death()
 							if(P)
@@ -176,7 +176,8 @@
 //							health = initial(health)+100*(13-generation)
 //							mob.death()
 						else
-							message_admins("[src]([key]) successes in diablerie over [mob](mob.key])!")
+							message_admins("[ADMIN_LOOKUPFLW(src)] successfully Diablerized [ADMIN_LOOKUPFLW(mob)]")
+							log_attack("[key_name(src)] successfully Diablerized [key_name(mob)].")
 							if(P)
 								P.diablerist = 1
 								P.generation = K.generation

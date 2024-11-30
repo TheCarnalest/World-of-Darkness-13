@@ -301,7 +301,7 @@
 	belt = /obj/item/melee/classic_baton
 	id = /obj/item/cockclock
 	l_pocket = /obj/item/vamp/phone
-	r_pocket = /obj/item/flashlight
+	r_pocket = /obj/item/radio/cop
 	l_hand = /obj/item/vamp/keys/police
 	r_hand = /obj/item/police_radio
 	back = /obj/item/storage/backpack/satchel

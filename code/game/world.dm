@@ -289,19 +289,10 @@ GLOBAL_VAR(restart_counter)
 	if(config)
 		var/server_name = CONFIG_GET(string/servername)
 		if (server_name)
-			s += "<b>[server_name]</b> &#8212; "
-//		features += "[CONFIG_GET(flag/norespawn) ? "no " : ""]respawn"
-//		if(CONFIG_GET(flag/allow_vote_mode))
-//			features += "vote"
-//		if(CONFIG_GET(flag/allow_ai))
-//			features += "AI allowed"
+			s += "<a href=\"https://discord.gg/invite/WU92NG2Me8\"><b>[server_name] &#8212; Werewolf-Friendly</b></a>"
 		hostedby = CONFIG_GET(string/hostedby)
-	s += "Fresh roleplaying experience in World of Darkness universe!"
-	s += " ("
-	s += "<a href=\"https://discord.gg/invite/WU92NG2Me8\">" //Change this to wherever you want the hub to link to.
-	s += "Discord"  //Replace this with something else. Or ever better, delete it and uncomment the game version.
-	s += "</a>"
-	s += ")"
+	s += "<br>Persistent roleplaying server in the World of Darkness."
+	s += "<br>Active development, pretty art, and a gothic atmosphere."
 
 	var/players = GLOB.clients.len
 
@@ -309,10 +300,6 @@ GLOBAL_VAR(restart_counter)
 	var/popcap = max(CONFIG_GET(number/extreme_popcap), CONFIG_GET(number/hard_popcap), CONFIG_GET(number/soft_popcap))
 	if (popcap)
 		popcaptext = "/[popcap]"
-
-	features += "unique mechanics"
-	features += "gothic atmosphere"
-	features += "fresh gameplay"
 
 	if (players > 1)
 		features += "[players][popcaptext] players"

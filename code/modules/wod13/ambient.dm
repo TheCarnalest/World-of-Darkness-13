@@ -51,6 +51,12 @@
 	zone_owner = "Giovanni"
 	fire_controled = TRUE
 
+/area/vtm/interior/techshop
+	name = "Nightwolf Techshop"
+	icon_state = "shop"
+	upper = FALSE
+	fire_controled = TRUE
+
 /area/vtm/interior/bianchiBank
 	name = "Bianchi Bank"
 	icon_state = "giovanni"

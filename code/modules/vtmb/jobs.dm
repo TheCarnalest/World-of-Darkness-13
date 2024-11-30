@@ -396,6 +396,7 @@
 	l_hand = /obj/item/storage/firstaid/medical
 	l_pocket = /obj/item/vamp/phone
 	r_pocket = /obj/item/vamp/keys/clinic
+	r_hand = /obj/item/radio/clinic
 	backpack_contents = list(/obj/item/passport=1, /obj/item/cockclock=1, /obj/item/flashlight=1, /obj/item/vamp/creditcard=1)
 
 	backpack = /obj/item/storage/backpack
@@ -1204,6 +1205,14 @@
 	var/obj/effect/landmark/start/D = pick(landmarkslist)
 	H.forceMove(D.loc)
 
+	var/my_name = "Tyler"
+	if(H.gender == MALE)
+		my_name = pick(GLOB.first_names_male)
+	else
+		my_name = pick(GLOB.first_names_female)
+	var/my_surname = pick(GLOB.last_names)
+	H.fully_replace_character_name(null,"[my_name] [my_surname]")
+
 /obj/effect/landmark/start/caitiff
 	name = "Caitiff"
 	delete_after_roundstart = FALSE
@@ -1258,6 +1267,13 @@
 	H.generation = 13
 	H.maxHealth = round((initial(H.maxHealth)-initial(H.maxHealth)/4)+(initial(H.maxHealth)/4)*(H.physique+13-H.generation))
 	H.health = round((initial(H.health)-initial(H.health)/4)+(initial(H.health)/4)*(H.physique+13-H.generation))
+	var/my_name = "Tyler"
+	if(H.gender == MALE)
+		my_name = pick(GLOB.first_names_male)
+	else
+		my_name = pick(GLOB.first_names_female)
+	var/my_surname = pick(GLOB.last_names)
+	H.fully_replace_character_name(null,"[my_name] [my_surname]")
 //	for(var/atom/movable/screen/blood/B in H.hud_used.infodisplay)
 //		B.icon_state = null
 //	for(var/atom/movable/screen/healths/HE in H.hud_used.infodisplay)
@@ -1372,12 +1388,132 @@
 		H.mind.add_antag_datum(/datum/antagonist/sabbatist)
 	GLOB.sabbatites += H
 
+	var/my_name = "Tyler"
+	if(H.gender == MALE)
+		my_name = pick(GLOB.first_names_male)
+	else
+		my_name = pick(GLOB.first_names_female)
+	var/my_surname = pick(GLOB.last_names)
+	H.fully_replace_character_name(null,"[my_name] [my_surname]")
+//Commented out code for future sabbat character setup
+/*
+	H.generation = 13
+	H.clane = null
+
+	H.maxHealth = round((initial(H.maxHealth)-initial(H.maxHealth)/4)+(initial(H.maxHealth)/4)*(H.physique+13-H.generation))
+	H.health = round((initial(H.health)-initial(H.health)/4)+(initial(H.health)/4)*(H.physique+13-H.generation))
+	H.thaumaturgy_knowledge = FALSE
+	QDEL_NULL(H.clane)
+	var/obj/item/organ/eyes/NV = new()
+	NV.Insert(H, TRUE, FALSE)
+	add_verb(H, /datum/job/sabbatist/verb/setup_character)
+*/
+
 	var/list/landmarkslist = list()
 	for(var/obj/effect/landmark/start/S in GLOB.start_landmarks_list)
 		if(S.name == name)
 			landmarkslist += S
 	var/obj/effect/landmark/start/D = pick(landmarkslist)
 	H.forceMove(D.loc)
+
+//Commented out code for future sabbat character setup
+/*
+/datum/job/sabbatist/verb/setup_character()
+	set category = "Sabbat"
+	set name = "Set Up Character"
+	set desc = "Prepare your character."
+	var/list/clans = list("Tzimisce", "Lasombra", "Gangrel", "Brujah", "Toreador", "Ventrue")
+	var/list/generations = list(8, 9, 10, 11, 12, 13)
+	var/total_points = 10
+	var/points_spent = 0
+
+	var/clan_choice = input("Choose your clan:", "Clan Selection") in clans
+	var/generation_choice = input("Choose your generation:", "Generation Selection") in generations
+
+	var/discipline1
+	var/discipline2
+	var/discipline3
+	switch(clan_choice)
+		if("Tzimisce")
+			discipline1 = "Animalism"
+			discipline2 = "Auspex"
+			discipline3 = "Vicissitude"
+		if("Lasombra")
+			discipline1 = "Dominate"
+			discipline2 = "Obtenebration"
+			discipline3 = "Potence"
+		if("Gangrel")
+			discipline1 = "Animalism"
+			discipline2 = "Fortitude"
+			discipline3 = "Protean"
+		if("Brujah")
+			discipline1 = "Celerity"
+			discipline2 = "Potence"
+			discipline3 = "Presence"
+		if("Toreador")
+			discipline1 = "Auspex"
+			discipline2 = "Celerity"
+			discipline3 = "Presence"
+		if("Ventrue")
+			discipline1 = "Dominate"
+			discipline2 = "Fortitude"
+			discipline3 = "Presence"
+	var/discipline1_level = 0
+	var/discipline2_level = 0
+	var/discipline3_level = 0
+
+	var/list/generation_costs = list(8 = 5, 9 = 4, 10 = 3, 11 = 2, 12 = 1, 13 = 0)
+	generation_choice = 13
+
+	while(points_spent < total_points)
+		var/list/choices = list("Discipline 1: [discipline1] (Level: [discipline1_level])", "Discipline 2: [discipline2] (Level: [discipline2_level])", "Discipline 3: [discipline3] (Level: [discipline3_level])", "Finish")
+		var/choice = input("Allocate your points. Points remaining: [total_points - points_spent]", "Discipline Allocation") in choices
+
+		if(choice == "Finish")
+			break
+
+		if(choice == "Discipline 1: [discipline1] (Level: [discipline1_level])")
+			if(points_spent < total_points)
+				discipline1_level += 1
+				points_spent += 1
+		if(choice == "Discipline 2: [discipline2] (Level: [discipline2_level])")
+			if(points_spent < total_points)
+				discipline2_level += 1
+				points_spent += 1
+		if(choice == "Discipline 3: [discipline3] (Level: [discipline3_level])")
+			if(points_spent < total_points)
+				discipline3_level += 1
+				points_spent += 1
+		if(choice == "Choose Generation (Current: [generation_choice])")
+			var/new_generation = input("Choose your generation:", "Generation Selection") in generation_costs
+			var/cost = generation_costs[new_generation]
+			if(points_spent + cost <= total_points)
+				points_spent += cost
+				generation_choice = new_generation
+
+	H.skin_tone = get_vamp_skin_color(H.skin_tone)
+	H.update_body()
+	H.clane = new H.clane.type()
+	H.clane.on_gain(H)
+	if(H.clane.alt_sprite)
+		H.skin_tone = "albino"
+		H.update_body()
+	H.create_disciplines(FALSE, discipline1, discipline2, discipline3)
+
+//	H.discipline1 = discipline1_level
+//	H.discipline2 = discipline2_level
+//	H.discipline3 = discipline3_level
+
+	H.generation = generation_choice
+	H.maxbloodpool = 10+((13-min(13, H.generation))*3)
+	H.clane.enlightenment = H.clane.enlightenment
+	H.maxHealth = round((initial(H.maxHealth)-initial(H.maxHealth)/4)+(initial(H.maxHealth)/4)*(H.physique+13-H.generation))
+	H.health = round((initial(H.maxHealth)-initial(H.maxHealth)/4)+(initial(H.maxHealth)/4)*(H.physique+13-H.generation))
+
+	to_chat(H, "You have chosen [clan_choice] with generation [generation_choice]. Your disciplines are [discipline1] (Level: [discipline1_level]), [discipline2] (Level: [discipline2_level]) and [discipline3] (Level: [discipline3_level]).")
+	remove_verb(H, /datum/job/sabbatist/verb/setup_character)
+
+*/
 
 /obj/effect/landmark/start/sabbatist
 	name = "Sabbatist"
@@ -1397,7 +1533,7 @@
 	owner.special_role = src
 	var/datum/objective/custom/custom_objective = new
 	custom_objective.owner = owner
-	custom_objective.explanation_text = "Kill Camarilla's and Anarch's heads. They do not deserve to rule that land. You deserve."
+	custom_objective.explanation_text = "Sow chaos, maim, butcher and kill. When you're done The Ivory Tower should be but a distant memory."
 	objectives += custom_objective
 	var/datum/objective/survive/survive_objective = new
 	survive_objective.owner = owner
@@ -1965,14 +2101,14 @@
 	uniform = /obj/item/clothing/under/vampire/police
 	shoes = /obj/item/clothing/shoes/vampire/jackboots
 	suit = /obj/item/clothing/suit/vampire/vest
-	belt = /obj/item/melee/classic_baton
+	belt = /obj/item/storage/belt/holster/detective/vampire/police
 	gloves = /obj/item/cockclock
 	id = /obj/item/card/id/police
 	l_pocket = /obj/item/vamp/phone
-	r_pocket = /obj/item/flashlight
+	r_pocket = /obj/item/radio/cop
 	l_hand = /obj/item/vamp/keys/police
 	r_hand = /obj/item/police_radio
-	backpack_contents = list(/obj/item/passport=1, /obj/item/implant/radio=1, /obj/item/vamp/creditcard=1)
+	backpack_contents = list(/obj/item/passport=1, /obj/item/implant/radio=1, /obj/item/vamp/creditcard=1, /obj/item/ammo_box/vampire/c9mm = 1, /obj/item/restraints/handcuffs = 1,/obj/item/melee/classic_baton/vampire = 1,/obj/item/vamp/keys/police = 1)
 
 
 /datum/job/vamp/fbi
@@ -2012,7 +2148,7 @@
 	id = /obj/item/card/id/police
 	gloves = /obj/item/cockclock
 	l_pocket = /obj/item/vamp/phone
-	r_pocket = /obj/item/flashlight
+	r_pocket = /obj/item/radio/cop
 	l_hand = /obj/item/vamp/keys/police
 	r_hand = /obj/item/police_radio
 	backpack_contents = list(/obj/item/passport=1, /obj/item/implant/radio=1, /obj/item/gun/ballistic/automatic/vampire/m1911=1, /obj/item/camera/detective=1, /obj/item/camera_film=1, /obj/item/taperecorder=1, /obj/item/tape=1, /obj/item/vamp/creditcard=1)
@@ -2021,8 +2157,8 @@
 	title = "Priest"
 	department_head = list("Bishop")
 	faction = "Vampire"
-	total_positions = 1
-	spawn_positions = 1
+	total_positions = 2
+	spawn_positions = 2
 	supervisors = "God"
 	selection_color = "#7e7e7e"
 
@@ -2079,6 +2215,7 @@
 						H.mind.AddSpell(n_freeze)
 						H.mind.AddSpell(n_heal)
 					if("True Faith")
+						H.mind.holy_role = HOLY_ROLE_PRIEST
 						H.resistant_to_disciplines = TRUE
 						to_chat(H, "<span class='alertsyndie'>Your faith in God is made of iron. None could shake it, and even in the darkest moments it holds you up.</span>")
 

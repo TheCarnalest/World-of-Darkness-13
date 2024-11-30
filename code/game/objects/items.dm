@@ -192,6 +192,18 @@ GLOBAL_VAR_INIT(embedpocalypse, FALSE) // if true, all items will be able to emb
 
 	var/canMouseDown = FALSE
 
+	//WoD13 vars start here :3
+
+	//lombard.dm VARIABLES
+	var/cost = 0 /// Determines items sell price.
+	var/illegal = FALSE /// Determines whether an item can be sold in the black market.
+
+	//gridventory.dm VARIABLES
+	var/grid_width = 1 GRID_BOXES /// Width we occupy on the hud - Keep null to generate based on w_class
+	var/grid_height = 1 GRID_BOXES /// Height we occupy on the hud - Keep null to generate based on w_class
+
+	//WoD13 vars end here :3
+
 /obj/item/Initialize()
 
 	if(attack_verb_continuous)

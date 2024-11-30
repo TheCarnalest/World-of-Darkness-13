@@ -370,6 +370,13 @@ Dancer
 	var/last_added_humanity = 0
 
 /datum/action/dance/Trigger()
+	if(HAS_TRAIT(owner, TRAIT_INCAPACITATED))
+		to_chat(owner, "<span class='warning'>You're a little too close to being dead to get down!</span>")
+		return
+
+	if(HAS_TRAIT(owner, TRAIT_FLOORED))
+		to_chat(owner, "<span class='warning'>You got to get up before you get down!</span>")
+		return
 //	var/mob/living/carbon/H = owner
 	if(prob(50))
 		dancefirst(owner)
