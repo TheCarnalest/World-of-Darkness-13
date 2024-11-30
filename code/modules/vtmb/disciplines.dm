@@ -492,7 +492,7 @@
 
 /datum/discipline/celerity/activate(mob/living/target, mob/living/carbon/human/caster)
 	. = ..()
-	if (caster.temporis_visual) //sorry guys, no using two time powers at once
+	if (caster.temporis_visual || caster.temporis_blur) //sorry guys, no using two time powers at once
 		caster.gib()
 		return
 	switch(level_casting)
