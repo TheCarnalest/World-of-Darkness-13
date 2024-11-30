@@ -582,3 +582,6 @@
 			teacher_prefs.save_character()
 
 			to_chat(student, "<span class='nicegreen'>[src.name] has taught you the basics of [giving_discipline.name]. You may now spend experience points to learn its first level in the character menu.</span>")
+
+			message_admins("[ADMIN_LOOKUPFLW(src)] taught [ADMIN_LOOKUPFLW(student)] the Discipline [giving_discipline.name].")
+			log_game("[key_name(src)] taught [key_name(student)] the Discipline [giving_discipline.name].")
