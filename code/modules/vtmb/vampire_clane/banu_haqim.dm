@@ -26,7 +26,7 @@
 	var/last_silence = 0
 
 /datum/action/silence_radius/Trigger()
-	if(last_silence+300 >= world.time)
+	if((last_silence + 30 SECONDS) >= world.time)
 		return
 	if(istype(owner, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = owner

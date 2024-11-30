@@ -231,13 +231,17 @@
 			to_chat(owner, "<span class='warning'>You don't have enough <b>BLOOD</b> to do that!</span>")
 			SEND_SOUND(H, sound('code/modules/wod13/sounds/need_blood.ogg', 0, 0, 75))
 			return
-		if(last_heal+30 >= world.time)
+		if((last_heal + 30) >= world.time)
 			return
 		last_heal = world.time
 		H.bloodpool = max(0, H.bloodpool-1)
 		SEND_SOUND(H, sound('code/modules/wod13/sounds/bloodhealing.ogg', 0, 0, 50))
+		H.heal_overall_damage(15*min(4, level), 10*min(4, level), 20*min(4, level))
 		H.adjustBruteLoss(-15*min(4, level), TRUE)
 		H.adjustFireLoss(-10*min(4, level), TRUE)
+		H.adjustOxyLoss(-20*min(4, level), TRUE)
+		H.adjustToxLoss(-20*min(4, level), TRUE)
+		H.blood_volume = min(H.blood_volume + 56, 560)
 		button.color = "#970000"
 		animate(button, color = "#ffffff", time = 20, loop = 1)
 		if(length(H.all_wounds))
@@ -321,25 +325,11 @@
 	if(H.key && H.stat != DEAD)
 		var/datum/preferences/P = GLOB.preferences_datums[ckey(H.key)]
 		if(P)
-//			if(P.humanity != H.humanity)
-//				P.humanity = H.humanity
-//				P.save_preferences()
-//				P.save_character()
 			if(P.masquerade != H.masquerade)
 				P.masquerade = H.masquerade
 				P.save_preferences()
 				P.save_character()
-//			if(H.last_experience+600 <= world.time)
-//				var/addd = 5
-//				if(H.mind)
-//					if(!H.JOB)
-//						H.JOB = SSjob.GetJob(H.mind.assigned_role)
-//						if(H.JOB)
-//							addd = H.JOB.experience_addition
-//				P.exper = min(calculate_mob_max_exper(H), P.exper+addd+H.experience_plus)
-//				P.save_preferences()
-//				P.save_character()
-//				H.last_experience = world.time
+
 			if(H.humanity <= 2)
 				if(prob(5))
 					if(prob(50))
@@ -362,7 +352,7 @@
 			if(H.pulling)
 				if(ishuman(H.pulling))
 					var/mob/living/carbon/human/pull = H.pulling
-					if(pull.stat == 4)
+					if(pull.stat == DEAD)
 						var/obj/item/card/id/id_card = H.get_idcard(FALSE)
 						if(!istype(id_card, /obj/item/card/id/clinic) && !istype(id_card, /obj/item/card/id/police) && !istype(id_card, /obj/item/card/id/sheriff) && !istype(id_card, /obj/item/card/id/prince) && !istype(id_card, /obj/item/card/id/camarilla))
 							if(H.CheckEyewitness(H, H, 7, FALSE))
@@ -385,7 +375,7 @@
 							var/obj/item/card/id/id_card = H.get_idcard(FALSE)
 							if(!istype(id_card, /obj/item/card/id/police) && !istype(id_card, /obj/item/card/id/sheriff) && !istype(id_card, /obj/item/card/id/prince) && !istype(id_card, /obj/item/card/id/camarilla))
 								if(H.CheckEyewitness(H, H, 7, FALSE))
-									if(H.last_loot_check+50 <= world.time)
+									if((H.last_loot_check + 5 SECONDS) <= world.time)
 										H.last_loot_check = world.time
 										H.last_nonraid = world.time
 										H.killed_count = H.killed_count+1
@@ -397,33 +387,9 @@
 											else
 												SEND_SOUND(H, sound('code/modules/wod13/sounds/sus.ogg', 0, 0, 75))
 												to_chat(H, "<span class='userdanger'><b>SUSPICIOUS ACTION (equipment)</b></span>")
-	if(H.last_bloodpool_restore+600 <= world.time)
+	if((H.last_bloodpool_restore + 60 SECONDS) <= world.time)
 		H.last_bloodpool_restore = world.time
 		H.bloodpool = min(H.maxbloodpool, H.bloodpool+1)
-
-//	if(H.key && H.stat != DEAD)
-//		var/datum/preferences/P = GLOB.preferences_datums[ckey(H.key)]
-//		if(P)
-//			if(P.humanity != H.humanity)
-//				P.humanity = H.humanity
-//				P.save_preferences()
-//				P.save_character()
-//			if(H.last_experience+600 <= world.time)
-//				P.exper = min(calculate_mob_max_exper(H), P.exper+5+H.experience_plus)
-//				P.save_preferences()
-//				P.save_character()
-//				H.last_experience = world.time
-
-//			if(H.humanity <= 2)
-//				if(prob(5))
-//					if(prob(50))
-//						H.Stun(10)
-//						to_chat(H, "<span class='warning'>You stop in fear and remember your crimes against humanity...</span>")
-//						H.emote("cry")
-//					else
-//						to_chat(H, "<span class='warning'>You feel the rage rising as your last sins come to your head...</span>")
-//						H.drop_all_held_items()
-//						H.emote("scream")
 
 /datum/species/garou/spec_life(mob/living/carbon/human/H)
 	. = ..()
@@ -471,6 +437,6 @@
 											else
 												SEND_SOUND(H, sound('code/modules/wod13/sounds/sus.ogg', 0, 0, 75))
 												to_chat(H, "<span class='userdanger'><b>SUSPICIOUS ACTION (equipment)</b></span>")
-	if(H.last_bloodpool_restore+600 <= world.time)
+	if((H.last_bloodpool_restore + 60 SECONDS) <= world.time)
 		H.last_bloodpool_restore = world.time
 		H.bloodpool = min(H.maxbloodpool, H.bloodpool+1)
