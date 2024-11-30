@@ -284,6 +284,22 @@
 	ammo_type = /obj/item/ammo_casing/caseless/bolt
 	max_ammo = 30
 
+//obj/item/ammo_casing/vampire/c12g/buck/silver
+//	name = "silver 12g shell casing"
+//	desc = "A silver filled 12g shell casing."
+//	icon_state = "s12"
+
+//obj/item/ammo_casing/vampire/c12g/buck/silver/on_hit(atom/target, blocked = FALSE)
+//	. = ..()
+//	if(iswerewolf(target) || isgarou(target))
+//		var/mob/living/carbon/M = target
+//		if(M.auspice.gnosis)
+//			if(prob(40))
+//				adjust_gnosis(-1, M)
+//		else
+//			M.Stun(10)
+//			M.adjustBruteLoss(50, TRUE)
+
 /obj/projectile/beam/beam_rifle/vampire/vamp556mm/silver
 	name = "5.56mm silver bullet"
 	armour_penetration = 10
@@ -334,6 +350,7 @@
 	name = ".44 silver bullet"
 	damage = 40
 	armour_penetration = 15
+	icon_state = "s44"
 
 /obj/projectile/beam/beam_rifle/vampire/vamp44/silver/on_hit(atom/target, blocked = FALSE)
 	. = ..()
@@ -350,6 +367,8 @@
 	name = "9mm silver bullet casing"
 	desc = "A 9mm silver bullet casing."
 	projectile_type = /obj/projectile/beam/beam_rifle/vampire/vamp9mm/silver
+	icon_state = "s9"
+	base_iconstate = "s9"
 
 /obj/item/ammo_casing/vampire/c45acp/silver
 	name = ".45 ACP silver bullet casing"
@@ -360,11 +379,15 @@
 	name = ".44 silver bullet casing"
 	desc = "A .44 silver bullet casing."
 	projectile_type = /obj/projectile/beam/beam_rifle/vampire/vamp44/silver
+	icon_state = "s44"
+	base_iconstate = "s44"
 
 /obj/item/ammo_casing/vampire/c556mm/silver
 	name = "5.56mm silver bullet casing"
 	desc = "A 5.56mm silver bullet casing."
 	projectile_type = /obj/projectile/beam/beam_rifle/vampire/vamp556mm/silver
+	icon_state = "s556"
+	base_iconstate = "s556"
 
 /obj/item/ammo_box/vampire/c9mm/silver
 	name = "ammo box (9mm silver)"
@@ -389,3 +412,8 @@
 	icon_state = "556box-silver"
 	ammo_type = /obj/item/ammo_casing/vampire/c556mm/silver
 	max_ammo = 60
+
+//obj/item/ammo_box/vampire/c12g/buck/silver
+//	name = "ammo box (12g, 00 buck silver)"
+//	icon_state = "s12box_buck"
+//	ammo_type = /obj/item/ammo_casing/vampire/c12g/buck/silver
