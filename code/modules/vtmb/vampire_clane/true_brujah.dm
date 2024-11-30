@@ -49,7 +49,10 @@
 		return
 	var/mob/living/carbon/carbon = M
 	if (carbon.celerity_visual)
-		carbon.gib()
+		to_chat(M, "<span class='userdanger'>As you try to stop time to co-locate, your active Celerity makes time slip out of control!</span>")
+		carbon.emote("scream")
+		spawn(3 SECONDS)
+			carbon.gib()
 		return
 	M.temporis_visual = TRUE
 	var/matrix/initial_matrix = matrix(M.transform)
@@ -91,7 +94,10 @@
 		return
 	var/mob/living/carbon/carbon = M
 	if (carbon.celerity_visual)
-		carbon.gib()
+		to_chat(M, "<span class='userdanger'>As you try to accelerate yourself, your active Celerity makes time rebound back at you!</span>")
+		carbon.emote("scream")
+		spawn(3 SECONDS)
+			carbon.gib()
 		return
 	M.temporis_blur = TRUE
 	M.add_movespeed_modifier(/datum/movespeed_modifier/temporis5)
