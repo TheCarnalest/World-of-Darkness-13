@@ -1989,7 +1989,7 @@
 "aMY" = (/obj/structure/hydrant,/turf/open/floor/plating/sidewalk/rich,/area/vtm/financialdistrict)
 "aMZ" = (/obj/effect/turf_decal/siding/white{dir = 8; icon_state = "siding_line"},/obj/structure/vampdoor/wood/old{dir = 4; icon_state = "oldwood-1"},/turf/open/floor/plating/parquetry/old,/area/vtm/theatre)
 "aNa" = (/obj/manholedown,/turf/open/floor/plating/parquetry/old,/area/vtm/theatre)
-"aNb" = (/obj/structure/chair/office{dir = 4},/obj/effect/landmark/start/regent,/obj/item/organ/penicorn{desc = "You deserve nothing! Have a good day, sir!"},/turf/open/floor/carpet/lone,/area/vtm/theatre)
+"aNb" = (/obj/structure/chair/office{dir = 4},/obj/effect/landmark/start/regent,/turf/open/floor/carpet/lone,/area/vtm/theatre)
 "aNc" = (/obj/structure/table/wood/fancy/red,/obj/item/paper_bin{pixel_y = 6},/obj/item/pen,/obj/machinery/light/small{dir = 8; pixel_x = 16},/turf/open/floor/carpet/lone,/area/vtm/theatre)
 "aNd" = (/obj/structure/sink{pixel_y = 16},/obj/structure/mirror{pixel_y = 32},/obj/machinery/light/small{dir = 4; pixel_x = -16},/turf/open/floor/plating/toilet,/area/vtm/interior)
 "aNe" = (/obj/structure/lamppost/sidewalk,/turf/open/floor/plating/sidewalkalt,/area/vtm/fishermanswharf)

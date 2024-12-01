@@ -2173,13 +2173,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(torpor_count != 0 && true_experience >= 3*(14-generation))
 						torpor_count = 0
 						true_experience = true_experience-(3*(14-generation))
-//					if(exper_plus)
-//						if(exper_plus > calculate_max_exper())
-//							exper = calculate_max_exper()
-//							exper_plus = max(0, exper_plus-calculate_max_exper())
-//						else
-//							exper = max(0, exper+exper_plus)
-//							exper_plus = 0
 				*/
 
 				if("generation")
