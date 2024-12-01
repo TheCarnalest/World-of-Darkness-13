@@ -497,15 +497,19 @@
 	species.disciplines += discipline
 
 /**
- * Checks for if the given Kindred species has a certain Discipline.
+ * Accesses a certain Discipline that a Kindred has. Returns false if they don't.
  *
  * Arguments:
- * * searched_discipline - Name of the Discipline being searched for.
+ * * searched_discipline - Name or typepath of the Discipline being searched for.
  */
-/datum/species/kindred/proc/has_discipline(searched_discipline)
+/datum/species/kindred/proc/get_discipline(searched_discipline)
 	for(var/datum/discipline/discipline in disciplines)
-		if (discipline.name == searched_discipline)
-			return TRUE
+		if (ispath(searched_discipline, /datum/discipline))
+			if (istype(discipline, searched_discipline))
+				return discipline
+		else if (istext(searched_discipline))
+			if (discipline.name == searched_discipline)
+				return discipline
 
 	return FALSE
 
@@ -520,6 +524,7 @@
  * get kicked out of their bloodline and made into normal Brujah and Tzimisce respectively. Disciplines
  * are taught at the 0th level, unlocking them but not actually giving the Discipline to the student.
  * Teaching Disciplines takes 10 experience points, then the student can buy the 1st rank for another 10.
+ * The teacher must have the Discipline at the 5th level to teach it to others.
  *
  * Arguments:
  * * student - human who this Discipline is being taught to.
@@ -529,56 +534,68 @@
 	set category = "IC"
 	set desc ="Teach a Discipline to a Kindred who has recently drank your blood. Costs 10 experience points."
 
-	var/datum/preferences/teacher_prefs = src.client.prefs
+	var/mob/living/carbon/human/teacher = src
+	var/datum/preferences/teacher_prefs = teacher.client.prefs
+	var/datum/species/kindred/teacher_species = teacher.dna.species
+
 	if (!student.client)
-		to_chat(src, "<span class='warning'>Your student needs to be a player!</span>")
+		to_chat(teacher, "<span class='warning'>Your student needs to be a player!</span>")
 		return
 	var/datum/preferences/student_prefs = student.client.prefs
 
 	if (!iskindred(student))
-		to_chat(src, "<span class='warning'>Your student needs to be a vampire!</span>")
+		to_chat(teacher, "<span class='warning'>Your student needs to be a vampire!</span>")
 		return
 	if (student.stat >= SOFT_CRIT)
-		to_chat(src, "<span class='warning'>Your student needs to be conscious!</span>")
-		return
-	//checks that the teacher has blood bonded the student, this is something that needs to be reworked when blood bonds are made better
-	if (student.mind.enslaved_to != src)
-		to_chat(src, "<span class='warning'>You need to have fed your student your blood to teach them Disciplines!</span>")
+		to_chat(teacher, "<span class='warning'>Your student needs to be conscious!</span>")
 		return
 	if (teacher_prefs.true_experience < 10)
-		to_chat(src, "<span class='warning'>You don't have enough experience to teach them this Discipline!</span>")
+		to_chat(teacher, "<span class='warning'>You don't have enough experience to teach them this Discipline!</span>")
+		return
+	//checks that the teacher has blood bonded the student, this is something that needs to be reworked when blood bonds are made better
+	if (student.mind.enslaved_to != teacher)
+		to_chat(teacher, "<span class='warning'>You need to have fed your student your blood to teach them Disciplines!</span>")
 		return
 
 	var/possible_disciplines = teacher_prefs.discipline_types - student_prefs.discipline_types
-	var/teaching_discipline = input(src, "What Discipline do you want to teach [student.name]?", "Discipline Selection") as null|anything in possible_disciplines
+	var/teaching_discipline = input(teacher, "What Discipline do you want to teach [student.name]?", "Discipline Selection") as null|anything in possible_disciplines
 
 	if (teaching_discipline)
+		var/datum/discipline/teacher_discipline = teacher_species.get_discipline(teaching_discipline)
 		var/datum/discipline/giving_discipline = new teaching_discipline
 
-		if (giving_discipline.clane_restricted)
-			if (alert(src, "Are you sure you want to teach [student.name] [giving_discipline.name], one of your Clan's most tightly guarded secrets? This will cost 10 experience points.", "Confirmation", "Yes", "No") != "Yes")
+		if (teacher_discipline.level < 5)
+			to_chat(teacher, "<span class='warning'>You do not know this Discipline well enough to teach it. You need to master it to the 5th rank.</span>")
+			qdel(giving_discipline)
+			return
+
+		var/restricted = giving_discipline.clane_restricted
+		if (restricted)
+			if (alert(teacher, "Are you sure you want to teach [student.name] [giving_discipline.name], one of your Clan's most tightly guarded secrets? This will cost 10 experience points.", "Confirmation", "Yes", "No") != "Yes")
 				qdel(giving_discipline)
 				return
 		else
-			if (alert(src, "Are you sure you want to teach [student.name] [giving_discipline.name]? This will cost 10 experience points.", "Confirmation", "Yes", "No") != "Yes")
+			if (alert(teacher, "Are you sure you want to teach [student.name] [giving_discipline.name]? This will cost 10 experience points.", "Confirmation", "Yes", "No") != "Yes")
 				qdel(giving_discipline)
 				return
 
 		var/alienation = FALSE
 		if (student.clane.restricted_disciplines.Find(teaching_discipline))
 			if (alert(student, "Learning [giving_discipline.name] will alienate you from the rest of the [student.clane.name], making you just like the false Clan. Do you wish to continue?", "Confirmation", "Yes", "No") != "Yes")
-				visible_message("<span class='warning'>[student.name] refuses [src.name]'s mentoring!</span>")
+				visible_message("<span class='warning'>[student.name] refuses [teacher.name]'s mentoring!</span>")
+				qdel(giving_discipline)
 				return
 			else
 				alienation = TRUE
-				to_chat(src, "<span class='notice'>[student.name] accepts your mentoring!</span>")
+				to_chat(teacher, "<span class='notice'>[student.name] accepts your mentoring!</span>")
 
-		if (get_dist(student.loc, src.loc) > 1)
-			to_chat(src, "<span class='warning'>Your student needs to be next to you!</span>")
+		if (get_dist(student.loc, teacher.loc) > 1)
+			to_chat(teacher, "<span class='warning'>Your student needs to be next to you!</span>")
+			qdel(giving_discipline)
 			return
 
-		visible_message("<span class='notice'>[src.name] begins mentoring [student.name] in [giving_discipline.name].</span>")
-		if (do_after(src, 30 SECONDS, student))
+		visible_message("<span class='notice'>[teacher.name] begins mentoring [student.name] in [giving_discipline.name].</span>")
+		if (do_after(teacher, 30 SECONDS, student))
 			teacher_prefs.true_experience -= 10
 
 			student_prefs.discipline_types += teaching_discipline
@@ -598,7 +615,10 @@
 			student_prefs.save_character()
 			teacher_prefs.save_character()
 
-			to_chat(student, "<span class='nicegreen'>[src.name] has taught you the basics of [giving_discipline.name]. You may now spend experience points to learn its first level in the character menu.</span>")
+			to_chat(teacher, "<span class='notice'>You finish teaching [student.name] the basics of [giving_discipline.name]. They seem to have absorbed your mentoring. [restricted ? "May your Clanmates take mercy on your soul for spreading their secrets." : ""]</span>")
+			to_chat(student, "<span class='nicegreen'>[teacher.name] has taught you the basics of [giving_discipline.name]. You may now spend experience points to learn its first level in the character menu.</span>")
 
-			message_admins("[ADMIN_LOOKUPFLW(src)] taught [ADMIN_LOOKUPFLW(student)] the Discipline [giving_discipline.name].")
-			log_game("[key_name(src)] taught [key_name(student)] the Discipline [giving_discipline.name].")
+			message_admins("[ADMIN_LOOKUPFLW(teacher)] taught [ADMIN_LOOKUPFLW(student)] the Discipline [giving_discipline.name].")
+			log_game("[key_name(teacher)] taught [key_name(student)] the Discipline [giving_discipline.name].")
+
+		qdel(giving_discipline)

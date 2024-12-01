@@ -36,6 +36,8 @@ SUBSYSTEM_DEF(whitelists)
 	return ..()
 
 /datum/controller/subsystem/whitelists/proc/is_whitelisted(checked_ckey, checked_whitelist)
+	if (!initialized)
+		return FALSE
 	if (!whitelists_enabled)
 		return TRUE
 
