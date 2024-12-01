@@ -185,6 +185,12 @@
 	foodtype = GRAIN | ALCOHOL
 	custom_price = PAYCHECK_EASY
 
+/obj/item/reagent_containers/food/drinks/beer/vampire/blue_stripe
+	name = "blue stripe"
+	desc = "Blue stripe beer, brought to you by King Breweries and Distilleries!"
+	icon_state = "beer_blue"
+	list_reagents = list(/datum/reagent/consumable/ethanol/beer = 40, /datum/reagent/toxin/amatoxin = 10)
+
 /obj/item/reagent_containers/food/drinks/bottle/vampirecola
 	name = "two liter cola bottle"
 	desc = "Coca cola espuma..."
@@ -200,6 +206,19 @@
 	desc = "Pep Cola. Put some pep in your step"
 	list_reagents = list(/datum/reagent/consumable/space_up = 100)
 	icon_state = "colablue"
+
+/obj/item/reagent_containers/food/drinks/bottle/vampirecola/summer_thaw
+	name = "summer thaw"
+	desc = "A refreshing drink. Brought to you by King Breweries and Distilleries!"
+	icon_state = "soda"
+	list_reagents = list(/datum/reagent/consumable/space_cola = 75, /datum/reagent/medicine/muscle_stimulant = 15, /datum/reagent/toxin/amatoxin = 10)
+
+/obj/item/reagent_containers/food/drinks/bottle/vampirecola/thaw_club
+	name = "thaw club soda"
+	desc = "For your energy needs. Brought to you by King Breweries and Distilleries!"
+	icon_state = "soda"
+	list_reagents = list(/datum/reagent/consumable/monkey_energy = 50)
+	foodtype = SUGAR | JUNKFOOD
 
 /obj/item/reagent_containers/food/drinks/bottle/vampirewater
 	name = "water bottle"
@@ -271,7 +290,9 @@
 /obj/machinery/mineral/equipment_vendor/fastfood/sodavendor/blue
 	icon_state = "vend_c"
 	prize_list = list(new /datum/data/mining_equipment("cola",	/obj/item/reagent_containers/food/drinks/soda_cans/vampirecola/blue,10),
-		new /datum/data/mining_equipment("soda", /obj/item/reagent_containers/food/drinks/soda_cans/vampirecola/blue, 5)
+		new /datum/data/mining_equipment("soda", /obj/item/reagent_containers/food/drinks/soda_cans/vampirecola/blue, 5),
+		new /datum/data/mining_equipment("summer thaw", /obj/item/reagent_containers/food/drinks/bottle/vampirecola/summer_thaw, 5),
+		new /datum/data/mining_equipment("thaw club soda", /obj/item/reagent_containers/food/drinks/bottle/vampirecola/thaw_club, 7)
 	)
 /obj/machinery/mineral/equipment_vendor/fastfood/coffeevendor
 	name = "Coffee Vendor"
@@ -308,14 +329,17 @@
 		new /datum/data/mining_equipment("taco",	/obj/item/food/vampire/taco,	10),
 		new /datum/data/mining_equipment("burger",	/obj/item/food/vampire/burger,	20),
 		new /datum/data/mining_equipment("two liter cola bottle",	/obj/item/reagent_containers/food/drinks/bottle/vampirecola,	10),
-		new /datum/data/mining_equipment("cola can",	/obj/item/reagent_containers/food/drinks/soda_cans/vampirecola,	5)
+		new /datum/data/mining_equipment("cola can",	/obj/item/reagent_containers/food/drinks/soda_cans/vampirecola,	5),
+		new /datum/data/mining_equipment("summer thaw", /obj/item/reagent_containers/food/drinks/bottle/vampirecola/summer_thaw, 5),
+		new /datum/data/mining_equipment("thaw club soda", /obj/item/reagent_containers/food/drinks/bottle/vampirecola/thaw_club, 8),
 	)
 
 /obj/machinery/mineral/equipment_vendor/fastfood/bubway
 	prize_list = list(new /datum/data/mining_equipment("donut",	/obj/item/food/vampire/donut,	5),
 		new /datum/data/mining_equipment("burger",	/obj/item/food/vampire/burger,	10),
 		new /datum/data/mining_equipment("coffee",	/obj/item/reagent_containers/food/drinks/coffee/vampire,	5),
-		new /datum/data/mining_equipment("robust coffee",	/obj/item/reagent_containers/food/drinks/coffee/vampire/robust,	10)
+		new /datum/data/mining_equipment("robust coffee",	/obj/item/reagent_containers/food/drinks/coffee/vampire/robust,	10),
+		new /datum/data/mining_equipment("thaw club soda", /obj/item/reagent_containers/food/drinks/bottle/vampirecola/thaw_club, 8)
 	)
 
 /obj/machinery/mineral/equipment_vendor/fastfood/gummaguts
@@ -334,8 +358,10 @@
 		new /datum/data/mining_equipment("soda can",	/obj/item/reagent_containers/food/drinks/soda_cans/vampiresoda,	3),
 		new /datum/data/mining_equipment("two liter cola bottle",	/obj/item/reagent_containers/food/drinks/bottle/vampirecola,	7),
 		new /datum/data/mining_equipment("cola can",	/obj/item/reagent_containers/food/drinks/soda_cans/vampirecola,	5),
+		new /datum/data/mining_equipment("summer thaw", /obj/item/reagent_containers/food/drinks/bottle/vampirecola/summer_thaw, 5),
 		new /datum/data/mining_equipment("milk",	/obj/item/reagent_containers/food/condiment/vampiremilk,	5),
 		new /datum/data/mining_equipment("beer bottle",	/obj/item/reagent_containers/food/drinks/beer/vampire,	10),
+		new /datum/data/mining_equipment("blue stripe", /obj/item/reagent_containers/food/drinks/beer/vampire/blue_stripe, 8),
 		new /datum/data/mining_equipment("candle pack",	/obj/item/storage/fancy/candle_box,	12),
 		new /datum/data/mining_equipment("bruise pack", /obj/item/stack/medical/bruise_pack, 100),
 		new /datum/data/mining_equipment("respirator",	/obj/item/clothing/mask/vampire,	35)
