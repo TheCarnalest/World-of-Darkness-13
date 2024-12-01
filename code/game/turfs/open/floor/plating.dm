@@ -21,7 +21,7 @@
 	var/attachment_holes = TRUE
 
 /turf/open/floor/plating/setup_broken_states()
-	return list("platingdmg1", "platingdmg2", "platingdmg3")
+	return list("dirt")
 
 /turf/open/floor/plating/setup_burnt_states()
 	return list("panelscorched")
