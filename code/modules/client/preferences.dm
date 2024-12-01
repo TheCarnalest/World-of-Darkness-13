@@ -2018,6 +2018,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(slotlocked)
 						link_bug_fix = FALSE
 						return
+
+					if (alert("Are you sure you want to change your Clan? This will reset your Disciplines.", "Confirmation", "Yes", "No") != "Yes")
+						return
+
 					var/list/available_clans = list()
 					for(var/i in GLOB.clanes_list)
 						var/a = GLOB.clanes_list[i]
@@ -2123,6 +2127,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(slotlocked)
 						link_bug_fix = FALSE
 						return
+
+					if (alert("Are you sure you want to change Archetype? This will reset your attributes.", "Confirmation", "Yes", "No") != "Yes")
+						return
+
 					var/list/shitlist = list()
 					for(var/i in subtypesof(/datum/archetype))
 						shitlist += i
@@ -2254,6 +2262,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						link_bug_fix = FALSE
 						return
 
+					if (alert("Are you sure you want to change species? This will reset species-specific stats.", "Confirmation", "Yes", "No") != "Yes")
+						return
+
 					var/list/selectable_species = GLOB.selectable_races
 					for (var/key in selectable_species)
 						var/newtype = GLOB.species_list[key]
@@ -2261,6 +2272,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						if (new_species.whitelisted)
 							if (!SSwhitelists.is_whitelisted(parent.ckey, key))
 								selectable_species.Remove(key)
+						qdel(new_species)
 
 					var/result = input(user, "Select a species", "Species Selection") as null|anything in selectable_species
 
