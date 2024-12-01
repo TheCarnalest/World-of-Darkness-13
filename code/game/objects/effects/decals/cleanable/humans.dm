@@ -41,7 +41,7 @@
 	return ..()
 
 /obj/effect/decal/cleanable/blood/proc/get_timer()
-	drytime = world.time + 1 MINUTES
+	drytime = world.time + 15 SECONDS
 
 /obj/effect/decal/cleanable/blood/proc/start_drying()
 	get_timer()
