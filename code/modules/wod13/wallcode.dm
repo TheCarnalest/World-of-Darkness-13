@@ -992,6 +992,38 @@
 	..()
 	set_light(1, 0.5, "#a4b7ff")
 
+/turf/open/floor/plating/vampacid
+	gender = PLURAL
+	name = "goop"
+	icon = 'code/modules/wod13/tiles.dmi'
+	icon_state = "acid"
+	flags_1 = NONE
+	attachment_holes = FALSE
+	bullet_bounce_sound = null
+	footstep = FOOTSTEP_WATER
+	barefootstep = FOOTSTEP_WATER
+	clawfootstep = FOOTSTEP_HARD_CLAW
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
+	density = FALSE
+
+/turf/open/floor/plating/vampacid/Initialize()
+	..()
+	set_light(1, 0.5, "#1b7c4c")
+
+
+/turf/open/floor/plating/vampacid/Entered(atom/movable/AM)
+	if(acid_burn(AM))
+		START_PROCESSING(SSobj, src)
+
+/turf/open/floor/plating/vampacid/proc/acid_burn(mob/living/L)
+	if(isliving(L))
+		if(L.movement_type & FLYING)
+			return
+		L.apply_damage(30, TOX)
+		to_chat(L, "<span class='warning'>Your flesh burns!</span>")
+
+
+
 /obj/effect/decal/coastline
 	name = "water"
 	icon = 'code/modules/wod13/tiles.dmi'
