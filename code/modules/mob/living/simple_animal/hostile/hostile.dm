@@ -229,6 +229,8 @@
 					return FALSE
 				if(L.stat > stat_attack)
 					return FALSE
+				if ((stat_attack < DEAD) && HAS_TRAIT(the_target, TRAIT_DEATHCOMA))
+					return FALSE
 				if(L in friends)
 					return FALSE
 			else

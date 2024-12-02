@@ -363,7 +363,33 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 	if (length(last_whisper))
 		living_owner.say("#[last_whisper]")
 
-//	living_owner.succumb(whispered = length(last_whisper) > 0)
+	living_owner.succumb(whispered = length(last_whisper) > 0)
+
+/atom/movable/screen/alert/untorpor
+	name = "Awaken"
+	desc = "Free yourself of your Torpor."
+	icon_state = "awaken"
+
+/atom/movable/screen/alert/untorpor/Click()
+	if(isobserver(usr))
+		return
+	var/mob/living/living_owner = owner
+	if (!iskindred(living_owner))
+		return
+
+	var/mob/living/carbon/human/vampire = living_owner
+	var/datum/species/kindred/kindred_species = vampire.dna.species
+	if (COOLDOWN_FINISHED(kindred_species, torpor_timer) && (vampire.bloodpool > 0))
+		vampire.untorpor()
+		spawn()
+			vampire.clear_alert("succumb")
+	else
+		to_chat(usr, "<span class='purple'><i>You are in Torpor, the sleep of death that vampires go into when injured, starved, or exhausted.</i></span>")
+		if (vampire.bloodpool > 0)
+			to_chat(usr, "<span class='purple'><i>You will be able to awaken in <b>[DisplayTimeText(COOLDOWN_TIMELEFT(kindred_species, torpor_timer))]</b>.</i></span>")
+			to_chat(usr, "<span class='purple'><i>The time to re-awaken depends on your [(vampire.humanity > 5) ? "high" : "low"] [vampire.client.prefs.enlightenment ? "Enlightenment" : "Humanity"] rating of [vampire.humanity].</i></span>")
+		else
+			to_chat(usr, "<span class='danger'><i>You will not be able to re-awaken, because you have no blood available to do so.</i></span>")
 
 //ALIENS
 

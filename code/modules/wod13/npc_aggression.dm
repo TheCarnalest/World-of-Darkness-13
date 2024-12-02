@@ -7,7 +7,7 @@
 		var/mob/living/carbon/human/H = M
 		if(H.vampire_faction == vampire_faction && !H.client)
 			return
-	if(stat != DEAD)
+	if((stat != DEAD) && !HAS_TRAIT(M, TRAIT_DEATHCOMA))
 		danger_source = M
 		if(attacked)
 			last_attacker = M
@@ -16,7 +16,7 @@
 				last_damager = M
 	if(CheckMove())
 		return
-	if(last_danger_meet+50 < world.time)
+	if((last_danger_meet + 5 SECONDS) < world.time)
 		last_danger_meet = world.time
 		if(prob(50))
 			if(!my_weapon)
