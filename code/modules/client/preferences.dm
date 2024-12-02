@@ -1906,7 +1906,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						eye_color = sanitize_hexcolor(new_eyes)
 
 				if("newdiscipline")
-					if((true_experience < 10) || (!pref_species.id == "kindred") || (!clane.name == "Caitiff"))
+					if((true_experience < 10) || !(pref_species.id == "kindred") || !(clane.name == "Caitiff"))
 						return
 
 					var/list/possible_new_disciplines = subtypesof(/datum/discipline) - discipline_types
@@ -1922,7 +1922,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						true_experience -= 10
 
 				if("newghouldiscipline")
-					if((true_experience < 10) || (!pref_species.id == "ghoul"))
+					if((true_experience < 10) || !(pref_species.id == "ghoul"))
 						return
 
 					var/list/possible_new_disciplines = subtypesof(/datum/discipline) - discipline_types
@@ -1933,7 +1933,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						true_experience -= 10
 
 				if("werewolf_color")
-					if(slotlocked || (!pref_species.id == "garou"))
+					if(slotlocked || !(pref_species.id == "garou"))
 						return
 
 					var/list/colors = list("black", "gray", "red", "white", "ginger", "brown")
@@ -1942,7 +1942,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						werewolf_color = result
 
 				if("werewolf_scar")
-					if(slotlocked || (!pref_species.id == "garou"))
+					if(slotlocked || !(pref_species.id == "garou"))
 						return
 
 					if(tribe == "Glasswalkers")
@@ -1957,7 +1957,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							werewolf_scar = min(7, werewolf_scar+1)
 
 				if("werewolf_hair")
-					if(slotlocked || (!pref_species.id == "garou"))
+					if(slotlocked || !(pref_species.id == "garou"))
 						return
 
 					if(werewolf_hair == 4)
@@ -1966,7 +1966,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						werewolf_hair = min(4, werewolf_hair+1)
 
 				if("werewolf_hair_color")
-					if(slotlocked || (!pref_species.id == "garou"))
+					if(slotlocked || !(pref_species.id == "garou"))
 						return
 
 					var/new_hair = input(user, "Select hair color:", "Appearance Selection",werewolf_hair_color) as color|null
@@ -1974,7 +1974,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						werewolf_hair_color = sanitize_ooccolor(new_hair)
 
 				if("werewolf_eye_color")
-					if(slotlocked || (!pref_species.id == "garou"))
+					if(slotlocked || !(pref_species.id == "garou"))
 						return
 
 					var/new_eye = input(user, "Select eye color:", "Appearance Selection",werewolf_eye_color) as color|null
@@ -1982,7 +1982,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						werewolf_eye_color = sanitize_ooccolor(new_eye)
 
 				if("auspice")
-					if(slotlocked || (!pref_species.id == "garou"))
+					if(slotlocked || !(pref_species.id == "garou"))
 						return
 
 					var/list/auspice_choices = list()
@@ -1998,7 +1998,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						auspice = Auspic
 
 				if("clane_acc")
-					if(slotlocked || (!pref_species.id == "kindred"))
+					if(slotlocked || !(pref_species.id == "kindred"))
 						return
 
 					if(!length(clane.accessories))
@@ -2009,7 +2009,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						clane_accessory = result
 
 				if("clane")
-					if(slotlocked || (!pref_species.id == "kindred"))
+					if(slotlocked || !(pref_species.id == "kindred"))
 						return
 
 					if (alert("Are you sure you want to change your Clan? This will reset your Disciplines.", "Confirmation", "Yes", "No") != "Yes")
@@ -2120,7 +2120,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					athletics = max(1, athletics + 1)
 
 				if("tribe")
-					if(slotlocked || (!pref_species.id == "garou"))
+					if(slotlocked || !(pref_species.id == "garou"))
 						return
 
 					var/new_tribe = input("Choose your Tribe.", "Tribe") as null|anything in list("Wendigo", "Glasswalkers", "Black Spiral Dancers")
@@ -2128,7 +2128,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						tribe = new_tribe
 
 				if("breed")
-					if(slotlocked || (!pref_species.id == "garou"))
+					if(slotlocked || !(pref_species.id == "garou"))
 						return
 
 					var/new_breed = input("Choose your Breed.", "Breed") as null|anything in list("Homid", "Metis", "Lupus")
@@ -2166,7 +2166,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					else if (clane.clane_disciplines.Find(discipline_types[i]))
 						cost = discipline_level * 5
 
-					if ((true_experience < cost) || (discipline_level >= 5) || (!pref_species.id == "kindred"))
+					if ((true_experience < cost) || (discipline_level >= 5) || !(pref_species.id == "kindred"))
 						return
 
 					true_experience -= cost
@@ -2174,14 +2174,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("path")
 					var/cost = max(2, humanity * 2)
-					if ((true_experience < cost) || (humanity >= 10) || (!pref_species.id == "kindred"))
+					if ((true_experience < cost) || (humanity >= 10) || !(pref_species.id == "kindred"))
 						return
 
 					true_experience -= cost
 					humanity = max(1, humanity + 1)
 
 				if("pathof")
-					if (slotlocked || (!pref_species.id == "kindred"))
+					if (slotlocked || !(pref_species.id == "kindred"))
 						return
 
 					enlightenment = !enlightenment
@@ -2233,15 +2233,14 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							flavor_text = sanitize_text(new_flavor)
 
 				if("change_appearance")
-					if(true_experience < 3)
+					if((true_experience < 3) || !slotlocked)
 						return
 
-					if(slotlocked)
-						slotlocked = 0
-						true_experience = true_experience-3
+					slotlocked = FALSE
+					true_experience -= 3
 
 				if("reset_with_bonus")
-					if((clane?.name == "Caitiff") || (!generation_bonus))
+					if((clane?.name == "Caitiff") || !generation_bonus)
 						return
 
 					var/bonus = generation-generation_bonus
