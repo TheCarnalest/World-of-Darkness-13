@@ -2061,7 +2061,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						return
 
 					true_experience -= cost
-					auspice_level = max(1, auspice_level++)
+					auspice_level = max(1, auspice_level + 1)
 
 				if("physique")
 					var/cost = max(4, physique * 4)
@@ -2069,7 +2069,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						return
 
 					true_experience -= cost
-					physique = max(1, physique++)
+					physique = max(1, physique + 1)
 
 				if("dexterity")
 					var/cost = max(4, dexterity * 4)
@@ -2077,7 +2077,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						return
 
 					true_experience -= cost
-					dexterity = max(1, dexterity++)
+					dexterity = max(1, dexterity + 1)
 
 				if("social")
 					var/cost = max(4, social * 4)
@@ -2085,7 +2085,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						return
 
 					true_experience -= cost
-					social = max(1, social++)
+					social = max(1, social + 1)
 
 				if("mentality")
 					var/cost = max(4, mentality * 4)
@@ -2093,7 +2093,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						return
 
 					true_experience -= cost
-					mentality = max(1, mentality++)
+					mentality = max(1, mentality + 1)
 
 				if("blood")
 					var/cost = max(6, blood * 6)
@@ -2101,7 +2101,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						return
 
 					true_experience -= cost
-					blood = max(1, blood++)
+					blood = max(1, blood + 1)
 
 				if("lockpicking")
 					var/cost = (lockpicking > 0) ? max(2, lockpicking * 2) : 3
@@ -2109,7 +2109,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						return
 
 					true_experience -= cost
-					lockpicking = max(1, lockpicking++)
+					lockpicking = max(1, lockpicking + 1)
 
 				if("athletics")
 					var/cost = (athletics > 0) ? max(2, athletics * 2) : 3
@@ -2117,7 +2117,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						return
 
 					true_experience -= cost
-					athletics = max(1, athletics++)
+					athletics = max(1, athletics + 1)
 
 				if("tribe")
 					if(slotlocked || (!pref_species.id == "garou"))
@@ -2178,7 +2178,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						return
 
 					true_experience -= cost
-					humanity = max(1, humanity++)
+					humanity = max(1, humanity + 1)
 
 				if("pathof")
 					if (slotlocked || (!pref_species.id == "kindred"))
