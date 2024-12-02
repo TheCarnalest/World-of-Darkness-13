@@ -100,6 +100,14 @@
 		if(CheckEyewitness(src, src, 7, FALSE))
 			AdjustMasquerade(-1)
 	if(do_after(src, 30, target = mob, timed_action_flags = NONE, progress = FALSE))
+		//prevent drinking True Faith hunters
+		if (mob.mind?.holy_role == 2)
+			src.apply_damage(20, BURN)
+			to_chat(src, "<span class='danger'>ITS BLOOD BURNS!</span>")
+			if(client)
+				client.images -= suckbar
+			qdel(suckbar)
+			return
 		mob.bloodpool = max(0, mob.bloodpool-1)
 		suckbar.icon_state = "[round(14*(mob.bloodpool/mob.maxbloodpool))]"
 		if(ishuman(mob))

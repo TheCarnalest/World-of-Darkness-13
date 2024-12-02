@@ -908,62 +908,9 @@
 /obj/item/card/id/police/AltClick(mob/user)
 	return
 
-/obj/item/card/id/hunter
-	var/last_detonated = 0
-
-/obj/item/card/id/hunter/attack_self(mob/user)
+/obj/item/card/id/hunter/Initialize(mapload)
 	. = ..()
-	if(last_detonated+300 > world.time)
-		return
-	if(!user.mind)
-		return
-	if(user.mind.holy_role != HOLY_ROLE_PRIEST)
-		return
-	last_detonated = world.time
-	do_sparks(rand(5, 9), FALSE, user)
-	playsound(user.loc, 'code/modules/wod13/sounds/cross.ogg', 100, FALSE, 8, 0.9)
-	for(var/mob/living/M in get_hearers_in_view(4, user.loc))
-		bang(get_turf(M), M, user)
-
-/obj/item/card/id/hunter/proc/bang(turf/T, mob/living/M, var/mob/living/user)
-	if(M.stat == DEAD)	//They're dead!
-		return
-	var/mob/living/carbon/human/H
-	if(ishuman(M))
-		H = M
-	if(H)
-		for(var/obj/item/card/id/hunter/HUNT in H.contents)
-			if(HUNT)
-				if(H.mind)
-					if(H.mind.holy_role == HOLY_ROLE_PRIEST)
-						return
-		if(iskindred(H))
-			if(H.clane)
-				if(H.clane.name == "Baali")
-					H.emote("scream")
-					H.pointed(user)
-	M.show_message("<span class='warning'><b>GOD SEES YOU!</b></span>", MSG_AUDIBLE)
-	var/distance = max(0,get_dist(get_turf(src),T))
-
-	if(M.flash_act(affect_silicon = 1))
-		M.Immobilize(max(10/max(1,distance), 5))
-
-/obj/item/card/id/hunter/attack(mob/living/target, mob/living/user)
-	. = ..()
-	if(HAS_TRAIT(user, TRAIT_PACIFISM))
-		return
-	if(last_detonated+300 > world.time)
-		return
-	if(iskindred(target))
-		var/mob/living/carbon/human/H = target
-		if(H.clane)
-			if(H.clane.name == "Baali")
-				last_detonated = world.time
-				var/turf/lightning_source = get_step(get_step(H, NORTH), NORTH)
-				lightning_source.Beam(H, icon_state="lightning[rand(1,12)]", time = 5)
-				H.adjustFireLoss(100)
-				H.electrocution_animation(50)
-				to_chat(H, "<span class='userdanger'>The God has punished you for your sins!</span>", confidential = TRUE)
+	AddComponent(/datum/component/faith_focus)
 
 /obj/item/card/id/prince
 	name = "leader badge"
@@ -1290,6 +1237,7 @@
 		if(A.vampiric)
 			A.Remove(H)
 	H.thaumaturgy_knowledge = FALSE
+	H.mind.holy_role = HOLY_ROLE_PRIEST //Gives all hunters the basic level of True Faith to use their cross with
 	QDEL_NULL(H.clane)
 	var/obj/item/organ/eyes/NV = new()
 	NV.Insert(H, TRUE, FALSE)
@@ -1303,7 +1251,7 @@
 	var/obj/effect/landmark/start/D = pick(landmarkslist)
 	H.forceMove(D.loc)
 
-	var/list/loadouts = list("Fire Fighter", "EOD Suit", "Holy Presence")
+	var/list/loadouts = list("Fire Fighter", "EOD Suit", "True Faith")
 	spawn()
 		var/loadout_type = input(H, "Choose the Lord's gift for you:", "Loadout") as anything in loadouts
 		switch(loadout_type)
@@ -1317,11 +1265,15 @@
 				H.equip_to_slot_or_del(new /obj/item/clothing/head/vampire/eod(H), ITEM_SLOT_HEAD)
 				H.put_in_r_hand(new /obj/item/gun/ballistic/shotgun/vampire(H))
 				H.put_in_l_hand(new /obj/item/ammo_box/vampire/c12g(H))
-			if("Holy Presence")
+			if("True Faith")
+				//You've only got your cross and your faith.
+				/*
 				H.equip_to_slot_or_del(new /obj/item/clothing/suit/vampire/vest/army(H), ITEM_SLOT_OCLOTHING)
 				H.put_in_r_hand(new /obj/item/melee/vampirearms/chainsaw(H))
+				*/
 				H.resistant_to_disciplines = TRUE
-				to_chat(H, "<b>You are no longer vulnerable to vampire blood powers...</b>")
+				H.mind.holy_role = HOLY_ROLE_HIGHPRIEST
+				to_chat(H, "<b>Your ardent Faith protects you from unholy powers...</b>")
 
 /obj/effect/landmark/start/hunter
 	name = "Hunter"

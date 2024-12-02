@@ -745,6 +745,11 @@
 			return buckled.Move(newloc, direct, glide_size)
 		else
 			return FALSE
+	if (approach_blocked.len) //prevents approaching certain atoms
+		for (var/atom/blocked in approach_blocked)
+			if ((blocked.loc.z == newloc.z) && (get_dist(blocked.loc, newloc) < get_dist(blocked.loc, loc)) && (get_dist(blocked.loc, newloc) <= 5))
+				to_chat(src, "<span class='notice'>You can't bring yourself to move towards [blocked.name]!</span>")
+				return FALSE
 
 	var/old_direction = dir
 	var/turf/T = loc
@@ -1952,3 +1957,23 @@
 			if (INTENT_HELP)
 				attack_result = style.help_act(src, target)
 	return attack_result
+
+/mob/living/proc/block_approach(atom/blocked, duration)
+	if (!approach_blocked.Find(blocked))
+		approach_blocked.Add(blocked)
+		to_chat(src, "<span class='warning'>You feel unable to move towards [blocked.name]!</span>")
+		if (duration)
+			spawn(duration)
+				unblock_approach(blocked)
+		return TRUE
+	else
+		return FALSE
+
+
+/mob/living/proc/unblock_approach(atom/blocked)
+	if (approach_blocked.Find(blocked))
+		approach_blocked.Remove(blocked)
+		to_chat(src, "<span class='warning'>[blocked.name]'s presence becomes less hostile towards you.</span>")
+		return TRUE
+	else
+		return FALSE
