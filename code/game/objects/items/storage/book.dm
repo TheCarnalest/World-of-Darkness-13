@@ -31,8 +31,8 @@ GLOBAL_LIST_INIT(bibleitemstates, list("bible", "koran", "scrapbook", "burning",
 	return 0
 
 /obj/item/storage/book/bible
-	name = "Bible"
-	desc = "For we do not wrestle against flesh and blood, but against the rulers, against the authorities, against the powers of this dark world and against the spiritual forces of evil in the heavenly realms."
+	name = "bible"
+	desc = "Apply to head repeatedly."
 	icon = 'icons/obj/storage.dmi'
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
 	icon_state = "bible"
@@ -46,19 +46,13 @@ GLOBAL_LIST_INIT(bibleitemstates, list("bible", "koran", "scrapbook", "burning",
 
 /obj/item/storage/book/bible/Initialize()
 	. = ..()
-	//AddComponent(/datum/component/anti_magic, FALSE, TRUE)
-	AddComponent(/datum/component/faith_focus)
+	AddComponent(/datum/component/anti_magic, FALSE, TRUE)
 
 /obj/item/storage/book/bible/suicide_act(mob/user)
 	user.visible_message("<span class='suicide'>[user] is offering [user.p_them()]self to [deity_name]! It looks like [user.p_theyre()] trying to commit suicide!</span>")
 	return (BRUTELOSS)
 
-
 /obj/item/storage/book/bible/attack_self(mob/living/carbon/human/user)
-	if(SEND_SIGNAL(src, COMSIG_ITEM_ATTACK_SELF, user) & COMPONENT_CANCEL_ATTACK_CHAIN)
-		return TRUE
-
-	/*
 	if(GLOB.bible_icon_state)
 		return FALSE
 	if(user?.mind?.holy_role != HOLY_ROLE_HIGHPRIEST)
@@ -141,10 +135,9 @@ GLOBAL_LIST_INIT(bibleitemstates, list("bible", "koran", "scrapbook", "burning",
 		playsound(src.loc, "punch", 25, TRUE, -1)
 		SEND_SIGNAL(H, COMSIG_ADD_MOOD_EVENT, "blessing", /datum/mood_event/blessing)
 	return 1
-*/
 
-/*
-/obj/item/storage/book/bible/attack(mob/living/M, mob/living/carbon/human/user)
+/obj/item/storage/book/bible/attack(mob/living/M, mob/living/carbon/human/user, heal_mode = TRUE)
+
 	if (!ISADVANCEDTOOLUSER(user))
 		to_chat(user, "<span class='warning'>You don't have the dexterity to do this!</span>")
 		return
@@ -155,14 +148,13 @@ GLOBAL_LIST_INIT(bibleitemstates, list("bible", "koran", "scrapbook", "burning",
 		user.Unconscious(400)
 		return
 
-	var/chaplain = FALSE
-	//Everyone with holy_role is treated as having some level of True Faith
-	if(user.mind && ((user.mind.holy_role)))
-		chaplain = TRUE
+	var/chaplain = 0
+	if(user.mind && (user.mind.holy_role))
+		chaplain = 1
 
 	if(!chaplain)
-
 		to_chat(user, "<span class='danger'>The book sizzles in your hands.</span>")
+		user.take_bodypart_damage(0,10)
 		return
 
 	if (!heal_mode)
@@ -192,9 +184,7 @@ GLOBAL_LIST_INIT(bibleitemstates, list("bible", "koran", "scrapbook", "burning",
 	else
 		M.visible_message("<span class='danger'>[user] smacks [M]'s lifeless corpse with [src].</span>")
 		playsound(src.loc, "punch", 25, TRUE, -1)
-*/
 
-/*
 /obj/item/storage/book/bible/afterattack(atom/A, mob/user, proximity)
 	. = ..()
 	if(!proximity)
@@ -272,7 +262,6 @@ GLOBAL_LIST_INIT(bibleitemstates, list("bible", "koran", "scrapbook", "burning",
 			REMOVE_TRAIT(sword, TRAIT_NODROP, HAND_REPLACEMENT_TRAIT) //in case the "sword" is a possessed dummy
 			user.visible_message("<span class='notice'>[user] exorcises [sword]!</span>", \
 								"<span class='notice'>You successfully exorcise [sword]!</span>")
-*/
 
 /obj/item/storage/book/bible/booze
 	desc = "To be applied to the head repeatedly."
@@ -280,7 +269,6 @@ GLOBAL_LIST_INIT(bibleitemstates, list("bible", "koran", "scrapbook", "burning",
 /obj/item/storage/book/bible/booze/PopulateContents()
 	new /obj/item/reagent_containers/food/drinks/bottle/whiskey(src)
 
-/*
 /obj/item/storage/book/bible/syndicate
 	icon_state ="ebook"
 	deity_name = "The Syndicate"
@@ -314,4 +302,3 @@ GLOBAL_LIST_INIT(bibleitemstates, list("bible", "koran", "scrapbook", "burning",
 
 /obj/item/storage/book/bible/syndicate/add_blood_DNA(list/blood_dna)
 	return FALSE
-*/

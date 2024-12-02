@@ -209,6 +209,9 @@
 
 	var/dancing = FALSE
 
+	var/temporis_visual = FALSE
+	var/temporis_blur = FALSE
+
 	var/vampire_faction
 
 	var/frenzy_chance_boost = 10
@@ -271,5 +274,8 @@
 
 	var/total_contracted = 0
 
-	///List of atoms this mob is incapable of approaching. Blocks movement towards the atom within 5 tiles.
-	var/list/atom/approach_blocked = list()
+	///Whether the mob currently has the JUMP button selected
+	var/prepared_to_jump = FALSE
+
+	///Allows Gargoyles to move through solid objects using Visceratika 5.
+	var/gargoyle_pass = FALSE

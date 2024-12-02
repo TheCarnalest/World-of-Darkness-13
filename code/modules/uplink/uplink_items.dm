@@ -1559,7 +1559,6 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 	surplus = 75
 	restricted = TRUE
 
-/*
 /datum/uplink_item/device_tools/syndietome
 	name = "Syndicate Tome"
 	desc = "Using rare artifacts acquired at great cost, the Syndicate has reverse engineered \
@@ -1568,7 +1567,6 @@ GLOBAL_LIST_INIT(uplink_items, subtypesof(/datum/uplink_item))
 			both weal and woe on the battlefield, even if they do occasionally bite off a finger."
 	item = /obj/item/storage/book/bible/syndicate
 	cost = 5
-*/
 
 /datum/uplink_item/device_tools/thermal
 	name = "Thermal Imaging Glasses"
