@@ -341,3 +341,41 @@
 	l_hand = /obj/item/vamp/keys/church
 	r_hand = /obj/item/gun/ballistic/shotgun/vampire
 	back = /obj/item/storage/backpack/satchel
+
+//guard
+
+/obj/effect/mob_spawn/human/chunkguard
+	name = "Millenium Tower Security Guard"
+	desc = "A humming sleeper with a silhouetted occupant inside. Its stasis function is broken and it's likely being used as a bed."
+	mob_name = "a Millenium Tower Security Guard"
+	icon = 'icons/obj/lavaland/spawners.dmi'
+	icon_state = "cryostasis_sleeper"
+	outfit = /datum/outfit/chunk
+	roundstart = FALSE
+	death = FALSE
+	random = FALSE
+	mob_species = /datum/species/human
+	short_desc = "You are working the night shift on Millenium Towers, just like any other night...."
+	flavour_text = "You are up late protecting Millenium Towers on behalf of your pasty-faced, but filthy rich, boss. Come to think of it, you only ever see him at night..."
+	assignedrole = "Secuity Guard"
+
+/obj/effect/mob_spawn/human/chunkguard/special(mob/living/new_spawn)
+	var/my_name = "Tyler"
+	if(new_spawn.gender == MALE)
+		my_name = pick(GLOB.first_names_male)
+	else
+		my_name = pick(GLOB.first_names_female)
+	var/my_surname = pick(GLOB.last_names)
+	new_spawn.fully_replace_character_name(null,"[my_name] [my_surname]")
+
+/datum/outfit/chunk
+	name = "Security Guard Chunk"
+	uniform = /obj/item/clothing/under/vampire/guard
+	shoes = /obj/item/clothing/shoes/vampire
+//	suit = /obj/item/clothing/suit/vampire/vest
+//	belt = /obj/item/melee/classic_baton
+	l_pocket = /obj/item/vamp/phone
+	r_pocket = /obj/item/flashlight
+	l_hand = /obj/item/vamp/keys/camarilla
+	r_hand = /obj/item/gun/ballistic/automatic/vampire/m1911
+	back = /obj/item/storage/backpack/satchel
