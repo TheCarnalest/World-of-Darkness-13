@@ -121,13 +121,15 @@
 /datum/action/gift/burning_scars/Trigger()
 	. = ..()
 	if(allowed_to_proceed)
-		for(var/mob/living/L in orange(5, owner))
-			if(L)
-				L.adjustFireLoss(40)
-		for(var/turf/T in orange(4, get_turf(owner)))
-			var/obj/effect/fire/F = new(T)
-			spawn(5)
-				qdel(F)
+		owner.visible_message("<span class='danger'>[owner.name] crackles with heat!</span>", "<span class='danger'>You crackle with heat, charging up your Gift!</span>")
+		if(do_after(owner, 3 SECONDS))
+			for(var/mob/living/L in orange(5, owner))
+				if(L)
+					L.adjustFireLoss(40)
+			for(var/turf/T in orange(4, get_turf(owner)))
+				var/obj/effect/fire/F = new(T)
+				spawn(5)
+					qdel(F)
 
 /datum/action/gift/smooth_move
 	name = "Smooth Move"
@@ -155,11 +157,13 @@
 /datum/action/gift/digital_feelings/Trigger()
 	. = ..()
 	if(allowed_to_proceed)
-		playsound(src, 'sound/magic/lightningshock.ogg', 100, TRUE, extrarange = 5)
-		tesla_zap(owner, 3, 30, ZAP_MOB_DAMAGE | ZAP_OBJ_DAMAGE | ZAP_MOB_STUN | ZAP_ALLOW_DUPLICATES)
-		for(var/mob/living/L in orange(6, owner))
-			if(L)
-				L.electrocute_act(30, owner, siemens_coeff = 1, flags = NONE)
+		owner.visible_message("<span class='danger'>[owner.name] crackles with static electricity!</span>", "<span class='danger'>You crackle with static electricity, charging up your Gift!</span>")
+		if(do_after(owner, 3 SECONDS))
+			playsound(src, 'sound/magic/lightningshock.ogg', 100, TRUE, extrarange = 5)
+			tesla_zap(owner, 3, 30, ZAP_MOB_DAMAGE | ZAP_OBJ_DAMAGE | ZAP_MOB_STUN | ZAP_ALLOW_DUPLICATES)
+			for(var/mob/living/L in orange(6, owner))
+				if(L)
+					L.electrocute_act(30, owner, siemens_coeff = 1, flags = NONE)
 
 /datum/action/gift/elemental_improvement
 	name = "Elemental Improvement"

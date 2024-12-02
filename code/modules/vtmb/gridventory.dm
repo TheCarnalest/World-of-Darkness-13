@@ -1,13 +1,3 @@
-///datum/action/innate/drink_blood
-//	name = "Drink Blood"
-//	desc = "When activated, drink the blood of the nearest victim."
-//datum/action/innate/drinkblood/Activate()
-//	. = ..()
-//	var/choice = tgui_input_list(owner, "Choose a victim", "SOSALKS", oviewers(1, owner))
-//	choice.Paralyze(200)
-
-//Ancient unused code removal
-
 //Meet the...
 
 //...
@@ -28,22 +18,6 @@ VENTORY!
 #define STORAGE_NO_EQUIPPED_ACCESS (1<<1)
 /// jimmy joger variable
 #define CHECK_BITFIELD(variable, flag) (variable & (flag))
-// ~storage component
-///from base of datum/component/storage/can_user_take(): (mob/user)
-#define COMSIG_STORAGE_BLOCK_USER_TAKE "storage_block_user_take"
-///Length of one inventory grid box in pixels.
-#define GRID_BOXES *32
-
-/obj/item
-	// ~Grid INVENTORY VARIABLES
-	/// Width we occupy on the hud - Keep null to generate based on w_class
-	var/grid_width = 1 GRID_BOXES
-	/// Height we occupy on the hud - Keep null to generate based on w_class
-	var/grid_height = 1 GRID_BOXES
-
-/obj/item/storage
-	var/grid = TRUE
-	var/storage_flags = NONE
 
 /obj/item/storage/Initialize()
 	. = ..()
@@ -90,6 +64,10 @@ VENTORY!
 
 /obj/item/storage/backpack
 	component_type = /datum/component/storage/concrete/vtm/backpack
+
+/datum/component/storage/concrete/vtm/holster
+	screen_max_columns = 2
+	screen_max_rows = 2
 
 /datum/component/storage/concrete/vtm/car
 	screen_max_columns = 7
@@ -908,6 +886,10 @@ VENTORY!
 	grid_width = 7 GRID_BOXES
 	grid_height = 2 GRID_BOXES
 
+/obj/item/melee/classic_baton/vampire
+	grid_width = 1 GRID_BOXES
+	grid_height = 2 GRID_BOXES
+
 /obj/item/shield/door
 	grid_width = 7 GRID_BOXES
 	grid_height = 9 GRID_BOXES
@@ -924,7 +906,19 @@ VENTORY!
 	grid_width = 2 GRID_BOXES
 	grid_height = 1 GRID_BOXES
 
+/obj/item/ammo_box/vampire
+	grid_width = 2 GRID_BOXES
+	grid_height = 2 GRID_BOXES
+
 /obj/item/ammo_box/magazine/vamp9mm
+	grid_width = 1 GRID_BOXES
+	grid_height = 1 GRID_BOXES
+
+/obj/item/ammo_box/vampire/c9mm/moonclip
+	grid_width = 1 GRID_BOXES
+	grid_height = 1 GRID_BOXES
+
+/obj/item/gun/ballistic/vampire/revolver/snub
 	grid_width = 1 GRID_BOXES
 	grid_height = 1 GRID_BOXES
 

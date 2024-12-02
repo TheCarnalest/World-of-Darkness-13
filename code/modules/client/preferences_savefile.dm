@@ -378,14 +378,13 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["werewolf_hair"], werewolf_hair)
 	READ_FILE(S["werewolf_hair_color"], werewolf_hair_color)
 	READ_FILE(S["werewolf_eye_color"], werewolf_eye_color)
-//	READ_FILE(S["werewolf_apparel"], werewolf_apparel)
 
 	//Character
 	READ_FILE(S["slotlocked"], slotlocked)
 	READ_FILE(S["diablerist"], diablerist)
 	READ_FILE(S["auspice_level"], auspice_level)
 	READ_FILE(S["humanity"], humanity)
-	READ_FILE(S["enlightement"], enlightement)
+	READ_FILE(S["enlightement"], enlightenment)
 	READ_FILE(S["exper"], exper)
 	READ_FILE(S["exper_plus"], exper_plus)
 	READ_FILE(S["true_experience"], true_experience)
@@ -405,6 +404,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["discipline2type"], discipline2type)
 	READ_FILE(S["discipline3type"], discipline3type)
 	READ_FILE(S["discipline4type"], discipline4type)
+	READ_FILE(S["discipline_types"], discipline_types)
+	READ_FILE(S["discipline_levels"], discipline_levels)
 	READ_FILE(S["friend"], friend)
 	READ_FILE(S["enemy"], enemy)
 	READ_FILE(S["lover"], lover)
@@ -414,7 +415,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	READ_FILE(S["enemy_text"], enemy_text)
 	READ_FILE(S["lover_text"], lover_text)
 	READ_FILE(S["reason_of_death"], reason_of_death)
-//	READ_FILE(S["clane"], clane)
 	READ_FILE(S["generation"], generation)
 	READ_FILE(S["generation_bonus"], generation_bonus)
 	READ_FILE(S["masquerade"], masquerade)
@@ -533,7 +533,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	archetype 		= sanitize_inlist(archetype, subtypesof(/datum/archetype))
 
 	breed			= sanitize_inlist(breed, list("Homid", "Lupus", "Metis"))
-	tribe			= sanitize_inlist(tribe, list("Wendigo", "Glasswalkers"))
+	tribe			= sanitize_inlist(tribe, list("Wendigo", "Glasswalkers", "Black Spiral Dancers"))
 	werewolf_color	= sanitize_inlist(werewolf_color, list("black", "gray", "red", "white", "ginger", "brown"))
 	werewolf_scar	= sanitize_integer(werewolf_scar, 0, 7, initial(werewolf_scar))
 	werewolf_hair	= sanitize_integer(werewolf_hair, 0, 4, initial(werewolf_hair))
@@ -551,7 +551,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	total_age		= sanitize_integer(total_age, 18, 1120, initial(total_age))
 	slotlocked			= sanitize_integer(slotlocked, 0, 1, initial(slotlocked))
 	humanity				= sanitize_integer(humanity, 0, 10, initial(humanity))
-	enlightement				= sanitize_integer(enlightement, 0, 1, initial(enlightement))
+	enlightenment				= sanitize_integer(enlightenment, 0, 1, initial(enlightenment))
 	exper				= sanitize_integer(exper, 0, 99999999, initial(exper))
 	exper_plus				= sanitize_integer(exper_plus, 0, 99999999, initial(exper_plus))
 	true_experience				= sanitize_integer(true_experience, 0, 99999999, initial(true_experience))
@@ -572,6 +572,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	discipline3type				= sanitize_discipline(discipline3type, subtypesof(/datum/discipline))
 	if(discipline4type)
 		discipline4type				= sanitize_discipline(discipline4type, subtypesof(/datum/discipline))
+	discipline_types = sanitize_islist(discipline_types, list())
+	discipline_levels = sanitize_islist(discipline_levels, list())
+	//TODO: custom sanitization for discipline_types and discipline_levels
 	friend				= sanitize_integer(friend, 0, 1, initial(friend))
 	enemy				= sanitize_integer(enemy, 0, 1, initial(enemy))
 	lover				= sanitize_integer(lover, 0, 1, initial(lover))
@@ -615,6 +618,29 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	all_quirks = SANITIZE_LIST(all_quirks)
 	validate_quirks()
 
+	//Convert jank old Discipline system to new Discipline system
+	if ((istype(pref_species, /datum/species/kindred) || istype(pref_species, /datum/species/ghoul)) && !discipline_types.len)
+		if (discipline1type && discipline1level)
+			discipline_types += discipline1type
+			discipline_levels += discipline1level
+			discipline1type = null
+			discipline1level = null
+		if (discipline2type && discipline2level)
+			discipline_types += discipline2type
+			discipline_levels += discipline2level
+			discipline2type = null
+			discipline2level = null
+		if (discipline3type && discipline3level)
+			discipline_types += discipline3type
+			discipline_levels += discipline3level
+			discipline3type = null
+			discipline3level = null
+		if (discipline4type && discipline4level)
+			discipline_types += discipline4type
+			discipline_levels += discipline4level
+			discipline4type = null
+			discipline4level = null
+
 	return TRUE
 
 /datum/preferences/proc/save_character()
@@ -640,7 +666,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["slotlocked"]			, slotlocked)
 	WRITE_FILE(S["diablerist"]			, diablerist)
 	WRITE_FILE(S["humanity"]			, humanity)
-	WRITE_FILE(S["enlightement"]			, enlightement)
+	WRITE_FILE(S["enlightement"]			, enlightenment)
 	WRITE_FILE(S["exper"]			, exper)
 	WRITE_FILE(S["exper_plus"]			, exper_plus)
 	WRITE_FILE(S["true_experience"]			, true_experience)
@@ -661,6 +687,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	WRITE_FILE(S["discipline2type"]			, discipline2type)
 	WRITE_FILE(S["discipline3type"]			, discipline3type)
 	WRITE_FILE(S["discipline4type"]			, discipline4type)
+	WRITE_FILE(S["discipline_types"], discipline_types)
+	WRITE_FILE(S["discipline_levels"], discipline_levels)
 	WRITE_FILE(S["friend"]			, friend)
 	WRITE_FILE(S["enemy"]			, enemy)
 	WRITE_FILE(S["lover"]			, lover)

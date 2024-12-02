@@ -203,7 +203,9 @@
 	var/mob/living/carbon/H = src
 	var/physique = H.physique
 
-	if(HAS_TRAIT(H, TRAIT_IMMOBILIZED))
+	if(HAS_TRAIT(H, TRAIT_IMMOBILIZED) || H.legcuffed)
+		return
+	if(pulledby && H.pulledby.grab_state >= GRAB_PASSIVE)
 		return
 
 	var/current_time = world.time

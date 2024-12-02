@@ -1,3 +1,17 @@
+/**
+ * This is the splat (supernatural type, game line in the World of Darkness) container
+ * for all vampire-related code. I think this is stupid and I don't want any of this to
+ * be the way it is, but if we're going to work with the code that's been written then
+ * my advice is to centralise all stuff directly relating to vampires to here if it isn't
+ * already in another organisational structure.
+ *
+ * The same applies to other splats, like /datum/species/garou or /datum/species/ghoul.
+ * Halfsplats like ghouls are going to share some code with their fullsplats (vampires).
+ * I dunno what to do about this except a reorganisation to make this stuff actually good.
+ * The plan right now is to create a /datum/splat parent type and then have everything branch
+ * from there, but that's for the future.
+ */
+
 /datum/species/kindred
 	name = "Vampire"
 	id = "kindred"
@@ -17,6 +31,7 @@
 	punchdamagehigh = 20
 	dust_anim = "dust-h"
 	var/datum/vampireclane/clane
+	var/list/datum/discipline/disciplines = list()
 	selectable = TRUE
 	COOLDOWN_DECLARE(torpor_timer)
 
@@ -85,7 +100,7 @@
 		var/humanity = "I'm out of my mind."
 		var/enlight = FALSE
 		if(host.clane)
-			if(host.clane.enlightement)
+			if(host.clane.enlightenment)
 				enlight = TRUE
 
 		if(!enlight)
@@ -132,12 +147,6 @@
 				if(D)
 					if(D.discipline)
 						dat += "[D.discipline.name] [D.discipline.level] - [D.discipline.desc]<BR>"
-//			if(host.hud_used.discipline1_icon.dscpln)
-//				dat += "[host.hud_used.discipline1_icon.dscpln.name] [host.hud_used.discipline1_icon.dscpln.level] - [host.hud_used.discipline1_icon.dscpln.desc]<BR>"
-//			if(host.hud_used.discipline2_icon.dscpln)
-//				dat += "[host.hud_used.discipline2_icon.dscpln.name] [host.hud_used.discipline2_icon.dscpln.level] - [host.hud_used.discipline2_icon.dscpln.desc]<BR>"
-//			if(host.hud_used.discipline3_icon.dscpln)
-//				dat += "[host.hud_used.discipline3_icon.dscpln.name] [host.hud_used.discipline3_icon.dscpln.level] - [host.hud_used.discipline3_icon.dscpln.desc]<BR>"
 		if(host.Myself)
 			if(host.Myself.Friend)
 				if(host.Myself.Friend.owner)
@@ -193,6 +202,7 @@
 	bloodheal.Grant(C)
 	var/datum/action/blood_power/bloodpower = new()
 	bloodpower.Grant(C)
+	add_verb(C, /mob/living/carbon/human/verb/teach_discipline)
 
 	//vampires go to -200 damage before dying
 	for (var/obj/item/bodypart/bodypart in C.bodyparts)
@@ -311,14 +321,16 @@
 				if(!BLOODBONDED.key)
 					to_chat(owner, "<span class='warning'>You need [BLOODBONDED]'s mind to Embrace!</span>")
 					return
-				message_admins("[H]([H.key]) is embracing [BLOODBONDED]([BLOODBONDED.key])!")
+				message_admins("[ADMIN_LOOKUPFLW(H)] is Embracing [ADMIN_LOOKUPFLW(BLOODBONDED)]!")
 			if(giving)
 				return
 			giving = TRUE
 			owner.visible_message("<span class='warning'>[owner] tries to feed [BLOODBONDED] with their own blood!</span>", "<span class='notice'>You started to feed [BLOODBONDED] with your own blood.</span>")
 			if(do_mob(owner, BLOODBONDED, 10 SECONDS))
-				var/new_master = FALSE
+				H.bloodpool = max(0, H.bloodpool-2)
 				giving = FALSE
+
+				var/new_master = FALSE
 				BLOODBONDED.faction |= H.faction
 				if(!istype(BLOODBONDED, /mob/living/carbon/human/npc))
 					if(H.vampire_faction == "Camarilla" || H.vampire_faction == "Anarch" || H.vampire_faction == "Sabbat")
@@ -333,7 +345,37 @@
 				BLOODBONDED.drunked_of |= "[H.dna.real_name]"
 
 				if(BLOODBONDED.stat == DEAD && !iskindred(BLOODBONDED))
-					if((BLOODBONDED.respawntimeofdeath + 10 MINUTES) > world.time)
+					if (!BLOODBONDED.can_be_embraced)
+						to_chat(H, "<span class='notice'>[BLOODBONDED.name] doesn't respond to your Vitae.</span>")
+						return
+
+					if((BLOODBONDED.respawntimeofdeath + 5 MINUTES) > world.time)
+						if (BLOODBONDED.auspice?.level) //here be Abominations
+							if (BLOODBONDED.auspice.force_abomination)
+								to_chat(H, "<span class='danger'>Something terrible is happening.</span>")
+								to_chat(BLOODBONDED, "<span class='userdanger'>Gaia has forsaken you.</span>")
+								message_admins("[ADMIN_LOOKUPFLW(H)] has turned [ADMIN_LOOKUPFLW(BLOODBONDED)] into an Abomination through an admin setting the force_abomination var.")
+								log_game("[key_name(H)] has turned [key_name(BLOODBONDED)] into an Abomination through an admin setting the force_abomination var.")
+							else
+								switch(storyteller_roll(BLOODBONDED.auspice.level))
+									if (ROLL_BOTCH)
+										to_chat(H, "<span class='danger'>Something terrible is happening.</span>")
+										to_chat(BLOODBONDED, "<span class='userdanger'>Gaia has forsaken you.</span>")
+										message_admins("[ADMIN_LOOKUPFLW(H)] has turned [ADMIN_LOOKUPFLW(BLOODBONDED)] into an Abomination.")
+										log_game("[key_name(H)] has turned [key_name(BLOODBONDED)] into an Abomination.")
+									if (ROLL_FAILURE)
+										BLOODBONDED.visible_message("<span class='warning'>[BLOODBONDED.name] convulses in sheer agony!</span>")
+										BLOODBONDED.Shake(15, 15, 5 SECONDS)
+										playsound(BLOODBONDED.loc, 'code/modules/wod13/sounds/vicissitude.ogg', 100, TRUE)
+										BLOODBONDED.can_be_embraced = FALSE
+										return
+									if (ROLL_SUCCESS)
+										to_chat(H, "<span class='notice'>[BLOODBONDED.name] does not respond to your Vitae...</span>")
+										BLOODBONDED.can_be_embraced = FALSE
+										return
+
+						log_game("[key_name(H)] has Embraced [key_name(BLOODBONDED)].")
+						message_admins("[ADMIN_LOOKUPFLW(H)] has Embraced [ADMIN_LOOKUPFLW(BLOODBONDED)].")
 						giving = FALSE
 						if(BLOODBONDED.revive(full_heal = TRUE, admin_revive = TRUE))
 							BLOODBONDED.grab_ghost(force = TRUE)
@@ -349,20 +391,18 @@
 							if(BLOODBONDED.clane.alt_sprite)
 								BLOODBONDED.skin_tone = "albino"
 								BLOODBONDED.update_body()
-							BLOODBONDED.create_disciplines(FALSE, H.client.prefs.discipline1type, H.client.prefs.discipline2type, H.client.prefs.discipline3type)
+							//Gives the Childe the Sire's first three Disciplines
+							var/list/disciplines_to_give = list()
+							for (var/i in 1 to min(3, H.client.prefs.discipline_types.len))
+								disciplines_to_give += H.client.prefs.discipline_types[i]
+							BLOODBONDED.create_disciplines(FALSE, disciplines_to_give)
 							BLOODBONDED.maxbloodpool = 10+((13-min(13, BLOODBONDED.generation))*3)
-							BLOODBONDED.clane.enlightement = H.clane.enlightement
+							BLOODBONDED.clane.enlightenment = H.clane.enlightenment
 							if(BLOODBONDED.generation < 13)
 								BLOODBONDED.maxHealth = round((initial(BLOODBONDED.maxHealth)-initial(BLOODBONDED.maxHealth)/4)+(initial(BLOODBONDED.maxHealth)/4)*(BLOODBONDED.physique+13-BLOODBONDED.generation))
 								BLOODBONDED.health = round((initial(BLOODBONDED.maxHealth)-initial(BLOODBONDED.maxHealth)/4)+(initial(BLOODBONDED.maxHealth)/4)*(BLOODBONDED.physique+13-BLOODBONDED.generation))
 						else
 							BLOODBONDED.clane = new /datum/vampireclane/caitiff()
-//						BLOODBONDED.hud_used.drinkblood_icon.icon_state = "drink"
-//						BLOODBONDED.hud_used.healths.icon = 'code/modules/wod13/32x48.dmi'
-//						qdel(BLOODBONDED.hud_used)
-//						BLOODBONDED.hud_used = new BLOODBONDED.hud_type(BLOODBONDED)
-//						BLOODBONDED.update_sight()
-//						SEND_SIGNAL(BLOODBONDED, COMSIG_MOB_HUD_CREATED)
 					else
 						to_chat(owner, "<span class='notice'>[BLOODBONDED] is totally <b>DEAD</b>!</span>")
 						giving = FALSE
@@ -370,16 +410,7 @@
 				else
 					if(BLOODBONDED.has_status_effect(STATUS_EFFECT_INLOVE))
 						BLOODBONDED.remove_status_effect(STATUS_EFFECT_INLOVE)
-//					else
-//						var/datum/preferences/P = GLOB.preferences_datums[ckey(H.key)]
-//						if(P)
-//							P.exper = min(calculate_mob_max_exper(H), P.exper+250)
-//						if(BLOODBONDED.key)
-//							var/datum/preferences/P2 = GLOB.preferences_datums[ckey(BLOODBONDED.key)]
-//							if(P2)
-//								P2.exper = min(calculate_mob_max_exper(BLOODBONDED), P2.exper+250)
 					BLOODBONDED.apply_status_effect(STATUS_EFFECT_INLOVE, owner)
-					H.bloodpool = max(0, H.bloodpool-2)
 					to_chat(owner, "<span class='notice'>You successfuly fed [BLOODBONDED] with vitae.</span>")
 					to_chat(BLOODBONDED, "<span class='userlove'>You feel good when you drink this <b>BLOOD</b>...</span>")
 
@@ -432,6 +463,76 @@
 			else
 				giving = FALSE
 
+/**
+ * Initialises Disciplines for new vampire mobs, applying effects and creating action buttons.
+ *
+ * If discipline_pref is true, it grabs all of the source's Disciplines from their preferences
+ * and applies those using the give_discipline() proc. If false, it instead grabs a given list
+ * of Discipline typepaths and initialises those for the character. Only works for ghouls and
+ * vampires, and it also applies the Clan's post_gain() effects
+ *
+ * Arguments:
+ * * discipline_pref - Whether Disciplines will be taken from preferences. True by default.
+ * * disciplines - list of Discipline typepaths to grant if discipline_pref is false.
+ */
+/mob/living/carbon/human/proc/create_disciplines(discipline_pref = TRUE, list/disciplines)	//EMBRACE BASIC
+	if(client)
+		client.prefs.slotlocked = 1
+		client.prefs.save_preferences()
+		client.prefs.save_character()
+
+	if((dna.species.id == "kindred") || (dna.species.id == "ghoul")) //only splats that have Disciplines qualify
+		var/list/datum/discipline/adding_disciplines = list()
+
+		if (discipline_pref) //initialise character's own disciplines
+			for (var/i in 1 to client.prefs.discipline_types.len)
+				var/type_to_create = client.prefs.discipline_types[i]
+				var/datum/discipline/discipline = new type_to_create
+				discipline.level = client.prefs.discipline_levels[i]
+				adding_disciplines += discipline
+		else if (disciplines.len) //initialise given disciplines
+			for (var/i in 1 to disciplines.len)
+				var/datum/discipline/discipline = new disciplines[i]
+				adding_disciplines += discipline
+
+		for (var/datum/discipline/discipline in adding_disciplines)
+			give_discipline(discipline)
+
+		if(clane)
+			clane.post_gain(src)
+
+/**
+ * Creates an action button and applies post_gain effects of the given Discipline.
+ *
+ * Arguments:
+ * * discipline - Discipline datum that is being given to this mob.
+ */
+/mob/living/carbon/human/proc/give_discipline(datum/discipline/discipline)
+	if (discipline.level > 0)
+		var/datum/action/discipline/action = new
+		action.discipline = discipline
+		action.Grant(src)
+	discipline.post_gain(src)
+	var/datum/species/kindred/species = dna.species
+	species.disciplines += discipline
+
+/**
+ * Accesses a certain Discipline that a Kindred has. Returns false if they don't.
+ *
+ * Arguments:
+ * * searched_discipline - Name or typepath of the Discipline being searched for.
+ */
+/datum/species/kindred/proc/get_discipline(searched_discipline)
+	for(var/datum/discipline/discipline in disciplines)
+		if (ispath(searched_discipline, /datum/discipline))
+			if (istype(discipline, searched_discipline))
+				return discipline
+		else if (istext(searched_discipline))
+			if (discipline.name == searched_discipline)
+				return discipline
+
+	return FALSE
+
 /datum/species/kindred/check_roundstart_eligible()
 	return TRUE
 
@@ -457,3 +558,110 @@
 	spawn(2 MINUTES)
 		if (source.stat >= SOFT_CRIT)
 			source.torpor("damage")
+
+/**
+ * Verb to teach your Disciplines to vampires who have drank your blood by spending 10 experience points.
+ *
+ * Disciplines can be taught to any willing vampires who have drank your blood in the last round and do
+ * not already have that Discipline. True Brujah learning Celerity or Old Clan Tzimisce learning Vicissitude
+ * get kicked out of their bloodline and made into normal Brujah and Tzimisce respectively. Disciplines
+ * are taught at the 0th level, unlocking them but not actually giving the Discipline to the student.
+ * Teaching Disciplines takes 10 experience points, then the student can buy the 1st rank for another 10.
+ * The teacher must have the Discipline at the 5th level to teach it to others.
+ *
+ * Arguments:
+ * * student - human who this Discipline is being taught to.
+ */
+/mob/living/carbon/human/verb/teach_discipline(mob/living/carbon/human/student in (range(1, src) - src))
+	set name = "Teach Discipline"
+	set category = "IC"
+	set desc ="Teach a Discipline to a Kindred who has recently drank your blood. Costs 10 experience points."
+
+	var/mob/living/carbon/human/teacher = src
+	var/datum/preferences/teacher_prefs = teacher.client.prefs
+	var/datum/species/kindred/teacher_species = teacher.dna.species
+
+	if (!student.client)
+		to_chat(teacher, "<span class='warning'>Your student needs to be a player!</span>")
+		return
+	var/datum/preferences/student_prefs = student.client.prefs
+
+	if (!iskindred(student))
+		to_chat(teacher, "<span class='warning'>Your student needs to be a vampire!</span>")
+		return
+	if (student.stat >= SOFT_CRIT)
+		to_chat(teacher, "<span class='warning'>Your student needs to be conscious!</span>")
+		return
+	if (teacher_prefs.true_experience < 10)
+		to_chat(teacher, "<span class='warning'>You don't have enough experience to teach them this Discipline!</span>")
+		return
+	//checks that the teacher has blood bonded the student, this is something that needs to be reworked when blood bonds are made better
+	if (student.mind.enslaved_to != teacher)
+		to_chat(teacher, "<span class='warning'>You need to have fed your student your blood to teach them Disciplines!</span>")
+		return
+
+	var/possible_disciplines = teacher_prefs.discipline_types - student_prefs.discipline_types
+	var/teaching_discipline = input(teacher, "What Discipline do you want to teach [student.name]?", "Discipline Selection") as null|anything in possible_disciplines
+
+	if (teaching_discipline)
+		var/datum/discipline/teacher_discipline = teacher_species.get_discipline(teaching_discipline)
+		var/datum/discipline/giving_discipline = new teaching_discipline
+
+		if (teacher_discipline.level < 5)
+			to_chat(teacher, "<span class='warning'>You do not know this Discipline well enough to teach it. You need to master it to the 5th rank.</span>")
+			qdel(giving_discipline)
+			return
+
+		var/restricted = giving_discipline.clane_restricted
+		if (restricted)
+			if (alert(teacher, "Are you sure you want to teach [student.name] [giving_discipline.name], one of your Clan's most tightly guarded secrets? This will cost 10 experience points.", "Confirmation", "Yes", "No") != "Yes")
+				qdel(giving_discipline)
+				return
+		else
+			if (alert(teacher, "Are you sure you want to teach [student.name] [giving_discipline.name]? This will cost 10 experience points.", "Confirmation", "Yes", "No") != "Yes")
+				qdel(giving_discipline)
+				return
+
+		var/alienation = FALSE
+		if (student.clane.restricted_disciplines.Find(teaching_discipline))
+			if (alert(student, "Learning [giving_discipline.name] will alienate you from the rest of the [student.clane.name], making you just like the false Clan. Do you wish to continue?", "Confirmation", "Yes", "No") != "Yes")
+				visible_message("<span class='warning'>[student.name] refuses [teacher.name]'s mentoring!</span>")
+				qdel(giving_discipline)
+				return
+			else
+				alienation = TRUE
+				to_chat(teacher, "<span class='notice'>[student.name] accepts your mentoring!</span>")
+
+		if (get_dist(student.loc, teacher.loc) > 1)
+			to_chat(teacher, "<span class='warning'>Your student needs to be next to you!</span>")
+			qdel(giving_discipline)
+			return
+
+		visible_message("<span class='notice'>[teacher.name] begins mentoring [student.name] in [giving_discipline.name].</span>")
+		if (do_after(teacher, 30 SECONDS, student))
+			teacher_prefs.true_experience -= 10
+
+			student_prefs.discipline_types += teaching_discipline
+			student_prefs.discipline_levels += 0
+
+			if (alienation)
+				var/datum/vampireclane/main_clan
+				switch(student.clane.name)
+					if ("True Brujah")
+						main_clan = new /datum/vampireclane/brujah
+					if ("Old Clan Tzimisce")
+						main_clan = new /datum/vampireclane/tzimisce
+
+				student_prefs.clane = main_clan
+				student.clane = main_clan
+
+			student_prefs.save_character()
+			teacher_prefs.save_character()
+
+			to_chat(teacher, "<span class='notice'>You finish teaching [student.name] the basics of [giving_discipline.name]. They seem to have absorbed your mentoring. [restricted ? "May your Clanmates take mercy on your soul for spreading their secrets." : ""]</span>")
+			to_chat(student, "<span class='nicegreen'>[teacher.name] has taught you the basics of [giving_discipline.name]. You may now spend experience points to learn its first level in the character menu.</span>")
+
+			message_admins("[ADMIN_LOOKUPFLW(teacher)] taught [ADMIN_LOOKUPFLW(student)] the Discipline [giving_discipline.name].")
+			log_game("[key_name(teacher)] taught [key_name(student)] the Discipline [giving_discipline.name].")
+
+		qdel(giving_discipline)

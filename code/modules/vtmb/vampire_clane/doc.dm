@@ -9,8 +9,8 @@
 	)
 	male_clothes = "/obj/item/clothing/under/vampire/sexy"
 	female_clothes = "/obj/item/clothing/under/vampire/toreador/female"
-	enlightement = FALSE
-	whitelisted = FALSE
+	enlightenment = FALSE
+	whitelisted = TRUE
 
-/datum/discipline/melpominee/post_gain(mob/living/carbon/human/H)
+/datum/vampireclane/doc/post_gain(mob/living/carbon/human/H)
 	H.put_in_r_hand(new /obj/item/vamp/keys/daughters(H))

@@ -101,11 +101,9 @@ SUBSYSTEM_DEF(carpool)
 	icon_state = "2"
 	icon = 'code/modules/wod13/cars.dmi'
 	anchored = TRUE
-	density = TRUE
 	plane = GAME_PLANE
 	layer = CAR_LAYER
-//	pixel_w = -32
-//	pixel_z = -32
+	density = TRUE
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF
 	throwforce = 150
 

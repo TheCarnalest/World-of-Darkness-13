@@ -349,6 +349,7 @@
 
 /turf/open/floor/Exited(atom/movable/Obj, atom/newloc)
 	. = ..()
+	/*
 	if(GLOB.winter)
 		if(istype(get_area(src), /area/vtm))
 			var/area/vtm/V = get_area(src)
@@ -375,3 +376,4 @@
 					if(car.on)
 						var/obj/effect/decal/cleanable/car_trail/trail = new(src)
 						trail.dir = Obj.dir
+	*/

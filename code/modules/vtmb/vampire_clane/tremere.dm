@@ -12,10 +12,11 @@
 
 /datum/discipline/thaumaturgy/post_gain(mob/living/carbon/human/H)
 	H.faction |= "Tremere"
-	var/datum/action/thaumaturgy/T = new()
-	T.Grant(H)
-	T.level = level
-	H.thaumaturgy_knowledge = TRUE
+	if(level >= 1)
+		var/datum/action/thaumaturgy/T = new()
+		T.Grant(H)
+		T.level = level
+		H.thaumaturgy_knowledge = TRUE
 	if(level >= 3)
 		var/datum/action/bloodshield/B = new()
 		B.Grant(H)
@@ -87,7 +88,7 @@
 
 /datum/action/bloodshield/Trigger()
 	. = ..()
-	if(abuse_fix+100 > world.time)
+	if(abuse_fix+250 > world.time)
 		return
 	var/mob/living/carbon/human/H = owner
 	if(H.bloodpool < 2)

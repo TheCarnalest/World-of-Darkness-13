@@ -8,6 +8,7 @@ And it also helps for the character set panel
 	var/name = "Caitiff"
 	var/desc = "The clanless. The rabble. Of no importance."
 	var/list/clane_disciplines = list() //discipline datums
+	var/list/restricted_disciplines = list()
 	var/datum/outfit/clane_outfit
 	var/curse = "None."
 	var/list/allowed_jobs = list()
@@ -23,13 +24,11 @@ And it also helps for the character set panel
 	var/violating_appearance
 	var/male_clothes
 	var/female_clothes
-	var/enlightement = FALSE
+	var/enlightenment = FALSE
 	var/whitelisted = FALSE
 	var/accessories = list()
 	var/accessories_layers = list()
 	var/current_accessory
-
-//var/datum/action/innate/drink_blood/sosalka = new
 
 /datum/vampireclane/proc/on_gain(var/mob/living/carbon/human/H)
 	if(length(accessories))
@@ -44,10 +43,6 @@ And it also helps for the character set panel
 		H.update_body_parts()
 		H.update_body()
 		H.update_icon()
-//	if(no_hair)
-//		H.facial_hairstyle = "Shaved"
-//		H.hairstyle = "Bald"
-//		H.update_hair()
 
 /mob/living/carbon
 	var/datum/relationship/Myself

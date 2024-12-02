@@ -9,8 +9,7 @@
 	var/base_breed = "Homid"
 	var/tribe = "Wendigo"
 	var/list/gifts = list()
-//	var/list/gifts2 = list()
-//	var/list/gifts3 = list()
+	var/force_abomination = FALSE
 
 	var/list/wendigo = list(
 		/datum/action/gift/stoic_pose = 1,
@@ -65,7 +64,7 @@
 				A1.Grant(C.transformator.lupus_form)
 				var/datum/action/A2 = new zalupa()
 				A2.Grant(C.transformator.crinos_form)
-		if("Black Spiral")
+		if("Black Spiral Dancers")
 			for(var/i in 1 to level)
 				var/zalupa = spiral[i]
 				var/datum/action/A = new zalupa()

@@ -203,8 +203,8 @@
 		var/mob/living/carbon/human/H = target
 		var/pathof = "Humanity"
 		if(H.clane)
-			if(H.clane.enlightement)
-				pathof = "Enlightement"
+			if(H.clane.enlightenment)
+				pathof = "Enlightenment"
 		to_chat(user, "<b>[pathof]: [H.humanity]</b>")
 
 /obj/item/quran/testuser

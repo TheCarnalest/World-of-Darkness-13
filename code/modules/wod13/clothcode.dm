@@ -11,8 +11,10 @@
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
 	body_worn = TRUE
 	fitted = NO_FEMALE_UNIFORM
+	cost = 10
 
 /obj/item/clothing/under/vampire/brujah
+	name = "Punk attire"
 	desc = "Some punk clothes."
 	icon_state = "brujah_m"
 
@@ -20,6 +22,7 @@
 	icon_state = "brujah_f"
 
 /obj/item/clothing/under/vampire/gangrel
+	name = "Rugged attire"
 	desc = "Some hobo clothes."
 	icon_state = "gangrel_m"
 
@@ -27,20 +30,25 @@
 	icon_state = "gangrel_f"
 
 /obj/item/clothing/under/vampire/malkavian
-	desc = "Some psycho clothes."
+	name = "Grimey pants"
+	desc = "Some macho-man pants."
 	icon_state = "malkavian_m"
 
 /obj/item/clothing/under/vampire/malkavian/female
+	name = "Odd Goth schoolgirl attire"
 	icon_state = "malkavian_f"
 
 /obj/item/clothing/under/vampire/nosferatu
+	name = "Gimp outfit"
 	desc = "Some leather clothes."
 	icon_state = "nosferatu_m"
 
 /obj/item/clothing/under/vampire/nosferatu/female
+	name = "Gimp outfit"
 	icon_state = "nosferatu_f"
 
 /obj/item/clothing/under/vampire/toreador
+	name = "flamboiant outfit"
 	desc = "Some sexy clothes."
 	icon_state = "toreador_m"
 
@@ -48,28 +56,34 @@
 	icon_state = "toreador_f"
 
 /obj/item/clothing/under/vampire/tremere
-	desc = "Some weird clothes."
+	name = "Burgundy suit"
+	desc = "Some weirdly tidy clothing."
 	icon_state = "tremere_m"
 
 /obj/item/clothing/under/vampire/tremere/female
+	name = "Burgundy suit skirt"
 	icon_state = "tremere_f"
 
 /obj/item/clothing/under/vampire/ventrue
+	name = "Black luxury suit"
 	desc = "Some rich clothes."
 	icon_state = "ventrue_m"
 
 /obj/item/clothing/under/vampire/ventrue/female
+	name = "Black luxury suit skirt"
 	icon_state = "ventrue_f"
 
 /obj/item/clothing/under/vampire/baali
-	desc = "Some satanic clothes."
+	name = "Odd outfit"
+	desc = "Some oddly un-orthodox clothes."
 	icon_state = "baali_m"
 
 /obj/item/clothing/under/vampire/baali/female
 	icon_state = "baali_f"
 
 /obj/item/clothing/under/vampire/salubri
-	desc = "Some conspiracy clothes."
+	name = "Grey attire"
+	desc = "Some very neutral clothes without much bright colors."
 	icon_state = "salubri_m"
 
 /obj/item/clothing/under/vampire/salubri/female
@@ -80,44 +94,56 @@
 	icon_state = "dirty"
 
 /obj/item/clothing/under/vampire/napoleon
-	desc = "Some historical clothes."
+	name = "French Admiral suit"
+	desc = "Some oddly historical clothes."
 	icon_state = "napoleon"
 
 /obj/item/clothing/under/vampire/nazi
 	desc = "Some historical clothes."
 	icon_state = "nazi"
 
+/obj/item/clothing/under/vampire/nazi/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_NODROP, ADMIN_TRAIT)
+
 //FOR NPC
 
 //GANGSTERS AND BANDITS
 
 /obj/item/clothing/under/vampire/larry
-	desc = "Some gangster clothes."
+	name = "White tanktop"
+	desc = "Some loosefitting undershirt."
 	icon_state = "larry"
 
 /obj/item/clothing/under/vampire/bandit
-	desc = "Some gangster clothes."
+	name = "Tan tanktop"
+	desc = "An oddly wornout tanktop."
 	icon_state = "bandit"
 
 /obj/item/clothing/under/vampire/biker
-	desc = "Some gangster clothes."
+	name = "Biker attire"
+	desc = "Some dirty clothes."
 	icon_state = "biker"
 
 //USUAL
 
 /obj/item/clothing/under/vampire/mechanic
+	name = "Blue overalls"
 	desc = "Some usual clothes."
 	icon_state = "mechanic"
 
 /obj/item/clothing/under/vampire/sport
+	name = "Red track suit"
 	desc = "Some usual clothes."
 	icon_state = "sport"
 
 /obj/item/clothing/under/vampire/office
+	name = "Dark suit"
 	desc = "Some usual clothes."
 	icon_state = "office"
 
 /obj/item/clothing/under/vampire/sexy
+	name = "purple outfit"
 	desc = "Some usual clothes."
 	icon_state = "sexy"
 
@@ -129,7 +155,12 @@
 	desc = "Some whore clothes."
 	icon_state = "whore"
 
+/obj/item/clothing/under/vampire/whore/daisyd
+	desc = "Some short shorts."
+	icon_state = "daisyd"
+
 /obj/item/clothing/under/vampire/emo
+	name = "Uncolorful attire"
 	desc = "Some usual clothes."
 	icon_state = "emo"
 
@@ -160,6 +191,7 @@
 //Homeless
 
 /obj/item/clothing/under/vampire/homeless
+	name = "Old dirty attire"
 	desc = "Some hobo clothes."
 	icon_state = "homeless_m"
 
@@ -169,24 +201,24 @@
 //Police and Guards
 
 /obj/item/clothing/under/vampire/police
-	name = "uniform"
+	name = "Police officer uniform"
 	desc = "Some law clothes."
 	icon_state = "police"
 
 /obj/item/clothing/under/vampire/guard
-	name = "uniform"
-	desc = "Some law clothes."
+	name = "Security guard uniform"
+	desc = "Some guard clothes."
 	icon_state = "guard"
 
 //JOBS
 
 /obj/item/clothing/under/vampire/janitor
-	name = "uniform"
+	name = "janitorial uniform"
 	desc = "Some work clothes."
 	icon_state = "janitor"
 
 /obj/item/clothing/under/vampire/nurse
-	name = "scrubs"
+	name = "nurse scrubs"
 	desc = "Some sterile clothes."
 	icon_state = "nurse"
 
@@ -295,8 +327,8 @@
 	icon_state = "toreador_male"
 
 /obj/item/clothing/under/vampire/primogen_toreador/female
-	name = "suitskirt"
-	desc = "Some sexy rich clothes."
+	name = "Crimson red dress"
+	desc = "Some sexy rich lady clothes."
 	icon_state = "toreador_female"
 
 /obj/item/clothing/suit/vampire/trench/malkav
@@ -324,6 +356,7 @@
 	can_be_tied = FALSE
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
 	body_worn = TRUE
+	cost = 5
 
 /obj/item/clothing/shoes/vampire/brown
 	icon_state = "shoes_brown"
@@ -383,6 +416,7 @@
 	resistance_flags = NONE
 	armor = list(MELEE = 10, BULLET = 0, LASER = 10, ENERGY = 10, BOMB = 10, BIO = 0, RAD = 0, FIRE = 0, ACID = 10, WOUND = 10)
 	body_worn = TRUE
+	cost = 15
 
 /obj/item/clothing/suit/hooded/heisenberg
 	name = "chemical costume"
@@ -567,6 +601,7 @@
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
 	armor = list(MELEE = 10, BULLET = 0, LASER = 10, ENERGY = 10, BOMB = 10, BIO = 0, RAD = 0, FIRE = 0, ACID = 10, WOUND = 10)
 	body_worn = TRUE
+	cost = 10
 
 /obj/item/clothing/head/vampire/bandana
 	name = "bandana"
@@ -619,6 +654,10 @@
 	desc = "\"Du wirst immer ein Schwein sein!\""
 	icon_state = "ss"
 	armor = list(MELEE = 20, BULLET = 20, LASER = 10, ENERGY = 10, BOMB = 10, BIO = 0, RAD = 0, FIRE = 0, ACID = 10, WOUND = 10)
+
+/obj/item/clothing/head/vampire/nazi/Initialize()
+	. = ..()
+	ADD_TRAIT(src, TRAIT_NODROP, ADMIN_TRAIT)
 
 /obj/item/clothing/head/vampire/top
 	name = "top hat"
@@ -809,3 +848,18 @@
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	visor_flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
 	w_class = WEIGHT_CLASS_SMALL
+
+/obj/item/storage/belt/holster/detective/vampire
+	name = "holster"
+	desc = "a holster for your gun."
+	component_type = /datum/component/storage/concrete/vtm/holster
+
+/obj/item/storage/belt/holster/detective/vampire/police
+	desc = "standard issue holster for standard issue sidearms."
+
+/obj/item/storage/belt/holster/detective/vampire/police/PopulateContents()
+	new /obj/item/ammo_box/vampire/c9mm/moonclip(src)
+	new /obj/item/ammo_box/vampire/c9mm/moonclip(src)
+	new /obj/item/gun/ballistic/vampire/revolver/snub(src)
+
+

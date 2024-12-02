@@ -17,8 +17,9 @@
 */
 
 /datum/discipline/dominate/post_gain(mob/living/carbon/human/H)
-	var/obj/effect/proc_holder/spell/voice_of_god/S = new(H)
-	H.mind.AddSpell(S)
+	if(level >= 1)
+		var/obj/effect/proc_holder/spell/voice_of_god/S = new(H)
+		H.mind.AddSpell(S)
 
 /datum/action/dominate
 	name = "Dominate"
@@ -30,7 +31,7 @@
 
 /datum/action/dominate/Trigger()
 	. = ..()
-	if(cool_down+50 >= world.time)
+	if((cool_down + 5 SECONDS) >= world.time)
 		return
 	var/mob/living/carbon/human/A = owner
 	if(HAS_TRAIT(A, TRAIT_MUTE))

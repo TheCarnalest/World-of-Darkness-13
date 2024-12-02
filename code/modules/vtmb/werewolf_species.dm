@@ -155,6 +155,4 @@
 			if(sound)
 				SEND_SOUND(C, sound('code/modules/wod13/sounds/rage_decrease.ogg', 0, 0, 75))
 			to_chat(C, "<span class='boldnotice'><b>GNOSIS DECREASES</b></span>")
-//		if(C.auspice.gnosis == 0)
-//			C.transformator.trans_gender(C, C.auspice.base_breed)
 	C.update_rage_hud()

@@ -82,7 +82,7 @@
 
 	var/last_repainted_mark
 
-	var/given_penis = FALSE
+	//var/given_penis = FALSE
 
 	///Performs CPR on the target after a delay. //[Lucia] what does this mean?
 	var/last_cpr_exp = 0
@@ -120,4 +120,4 @@
 
 	var/soul_state = SOUL_PRESENT
 
-//	var/atom/movable/screen/disciplines/toggled
+	var/can_be_embraced = TRUE

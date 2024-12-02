@@ -51,6 +51,12 @@
 	zone_owner = "Giovanni"
 	fire_controled = TRUE
 
+/area/vtm/interior/techshop
+	name = "Nightwolf Techshop"
+	icon_state = "shop"
+	upper = FALSE
+	fire_controled = TRUE
+
 /area/vtm/interior/bianchiBank
 	name = "Bianchi Bank"
 	icon_state = "giovanni"
@@ -407,19 +413,10 @@
 	if(istype(get_area(T), /area/vtm))
 		var/area/vtm/VTM = get_area(T)
 		if(VTM)
-//			if(VTM.upper)
-//				if(SScityweather.raining)
-//					SEND_SOUND(src, sound('code/modules/wod13/sounds/rain.ogg', 0, 0, CHANNEL_RAIN, 25))
-//					overlay_fullscreen("rain", /atom/movable/screen/fullscreen/rain, 1)
-//					wash(CLEAN_WASH)
-//				if(!SScityweather.raining)
-//					clear_fullscreen("rain")
-//			else
-//				clear_fullscreen("rain")
-//					clear_fullscreen("rain")
-//					overlay_fullscreen("rain", /atom/movable/screen/fullscreen/rain, 1)
-//				else
-//					clear_fullscreen("rain")
+			if(VTM.upper)
+				if(SScityweather.raining)
+					SEND_SOUND(src, sound('code/modules/wod13/sounds/rain.ogg', 0, 0, CHANNEL_RAIN, 25))
+					wash(CLEAN_WASH)
 
 			var/cacophony = FALSE
 

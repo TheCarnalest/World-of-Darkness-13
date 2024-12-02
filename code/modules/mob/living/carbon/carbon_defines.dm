@@ -115,7 +115,7 @@
 	var/jump_range = 1
 
 	var/last_gnosis_buff = 0
-	var/last_rage_penis = 0
+	var/last_rage_gain = 0
 	var/last_veil_restore = 0
 
 	var/list/overlays_standing[TOTAL_LAYERS]
