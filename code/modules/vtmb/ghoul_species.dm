@@ -16,6 +16,7 @@
 	var/mob/living/carbon/human/master
 	var/changed_master = FALSE
 	var/last_vitae = 0
+	var/list/datum/discipline/disciplines = list()
 	selectable = TRUE
 
 /datum/action/ghoulinfo
@@ -440,3 +441,20 @@
 	if((H.last_bloodpool_restore + 60 SECONDS) <= world.time)
 		H.last_bloodpool_restore = world.time
 		H.bloodpool = min(H.maxbloodpool, H.bloodpool+1)
+
+/**
+ * Accesses a certain Discipline that a Ghoul has. Returns false if they don't.
+ *
+ * Arguments:
+ * * searched_discipline - Name or typepath of the Discipline being searched for.
+ */
+/datum/species/ghoul/proc/get_discipline(searched_discipline)
+	for(var/datum/discipline/discipline in disciplines)
+		if (ispath(searched_discipline, /datum/discipline))
+			if (istype(discipline, searched_discipline))
+				return discipline
+		else if (istext(searched_discipline))
+			if (discipline.name == searched_discipline)
+				return discipline
+
+	return FALSE
