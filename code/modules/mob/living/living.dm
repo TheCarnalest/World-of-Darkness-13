@@ -386,7 +386,6 @@
 	visible_message("<span class='name'>[src]</span> points at [A].", "<span class='notice'>You point at [A].</span>")
 	return TRUE
 
-
 /mob/living/verb/succumb(whispered as null)
 	set hidden = TRUE
 	if (!CAN_SUCCUMB(src))
@@ -407,10 +406,12 @@
 /mob/living/verb/untorpor()
 	set hidden = TRUE
 	if(HAS_TRAIT(src, TRAIT_TORPOR))
-		cure_torpor()
-		to_chat(src, "<span class='notice'>You have awoken from your torpor.</span>")
-
-//	death()
+		if (bloodpool > 0)
+			bloodpool -= 1
+			cure_torpor()
+			to_chat(src, "<span class='notice'>You have awoken from your Torpor.</span>")
+		else
+			to_chat(src, "<span class='warning'>You have no blood to re-awaken with...</span>")
 
 /mob/living/incapacitated(ignore_restraints = FALSE, ignore_grab = FALSE, ignore_stasis = FALSE)
 	if(HAS_TRAIT(src, TRAIT_INCAPACITATED) || (!ignore_restraints && (HAS_TRAIT(src, TRAIT_RESTRAINED) || (!ignore_grab && pulledby && pulledby.grab_state >= GRAB_AGGRESSIVE))) || (!ignore_stasis && IS_IN_STASIS(src)))

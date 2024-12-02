@@ -178,7 +178,6 @@
 	SIGNAL_HANDLER
 	REMOVE_TRAIT(src, TRAIT_HANDS_BLOCKED, TRAIT_RESTRAINED)
 
-
 /**
  * Called when traits that alter succumbing are added/removed.
  *
@@ -193,7 +192,7 @@
 
 /mob/living/proc/update_torpor_action()
 	SIGNAL_HANDLER
-	if (CAN_UNTORPOR(src))
+	if (HAS_TRAIT(src, TRAIT_TORPOR))
 		throw_alert("untorpor", /atom/movable/screen/alert/untorpor)
 	else
 		clear_alert("untorpor")

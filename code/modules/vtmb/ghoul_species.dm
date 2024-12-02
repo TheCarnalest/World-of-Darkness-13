@@ -221,6 +221,8 @@
 
 /datum/action/blood_heal/Trigger()
 	if(istype(owner, /mob/living/carbon/human))
+		if (HAS_TRAIT(owner, TRAIT_TORPOR))
+			return
 		var/mob/living/carbon/human/H = owner
 		level = max(1, 13-H.generation)
 		if(HAS_TRAIT(H, TRAIT_COFFIN_THERAPY))

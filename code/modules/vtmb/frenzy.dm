@@ -174,22 +174,21 @@
 
 /datum/species/kindred/spec_life(mob/living/carbon/human/H)
 	. = ..()
-	if(H.clane)
-		if(H.clane.name == "Baali")
-			if(istype(get_area(H), /area/vtm/church))
-				if(prob(25))
-					to_chat(H, "<span class='warning'>You don't belong here!</span>")
-					H.adjustFireLoss(20)
-					H.adjust_fire_stacks(6)
-					H.IgniteMob()
+	if(H.clane?.name == "Baali")
+		if(istype(get_area(H), /area/vtm/church))
+			if(prob(25))
+				to_chat(H, "<span class='warning'>You don't belong here!</span>")
+				H.adjustFireLoss(20)
+				H.adjust_fire_stacks(6)
+				H.IgniteMob()
 	//FIRE FEAR
-	if(!H.antifrenzy)
+	if(!H.antifrenzy && !HAS_TRAIT(H, TRAIT_KNOCKEDOUT))
 		var/fearstack = 0
 		for(var/obj/effect/fire/F in GLOB.fires_list)
 			if(F)
 				if(get_dist(F, H) < 8 && F.z == H.z)
 					fearstack += F.stage
-		for(var/mob/living/carbon/human/U in viewers(7, src))
+		for(var/mob/living/carbon/human/U in viewers(7, H))
 			if(U.on_fire)
 				fearstack += 1
 
@@ -263,16 +262,15 @@
 		H.bloodpool = max(0, H.bloodpool-1)
 		to_chat(H, "<span class='warning'>Necromancy Vision reduces your blood points too sustain itself.</span>")
 
-	if(H.clane)
-		if(H.clane.name == "Tzimisce" || H.clane.name == "Old Clan Tzimisce")
-			var/datum/vampireclane/tzimisce/TZ = H.clane
-			if(TZ.heirl)
-				if(!(TZ.heirl in H.GetAllContents()))
-					if(prob(5))
-						to_chat(H, "<span class='warning'>You are missing your home soil...</span>")
-						H.bloodpool = max(0, H.bloodpool-1)
+	if(H.clane?.name == "Tzimisce" || H.clane?.name == "Old Clan Tzimisce")
+		var/datum/vampireclane/tzimisce/TZ = H.clane
+		if(TZ.heirl)
+			if(!(TZ.heirl in H.GetAllContents()))
+				if(prob(5))
+					to_chat(H, "<span class='warning'>You are missing your home soil...</span>")
+					H.bloodpool = max(0, H.bloodpool-1)
 
-	if(H.key && H.stat <= UNCONSCIOUS)
+	if(H.key && (H.stat <= UNCONSCIOUS) && !HAS_TRAIT(H, TRAIT_KNOCKEDOUT))
 		var/datum/preferences/P = GLOB.preferences_datums[ckey(H.key)]
 		if(P)
 			if(P.humanity != H.humanity)
@@ -291,12 +289,12 @@
 					H.ghostize(FALSE)
 					P.reason_of_death = "Lost control to the Beast ([time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss")])."
 
-	if(H.clane && !H.antifrenzy)
+	if(H.clane && !H.antifrenzy && !HAS_TRAIT(H, TRAIT_KNOCKEDOUT))
 		if(H.clane.name == "Banu Haqim")
 			if(H.mind)
 				if(H.mind.enslaved_to)
 					if(get_dist(H, H.mind.enslaved_to) > 10)
-						if(H.last_frenzy_check+400 <= world.time)
+						if((H.last_frenzy_check + 40 SECONDS) <= world.time)
 							to_chat(H, "<span class='warning'><b>As you are far from [H.mind.enslaved_to], you feel the desire to drink more vitae!<b></span>")
 							H.last_frenzy_check = world.time
 							H.rollfrenzy()
@@ -306,9 +304,9 @@
 			if(H.bloodpool > 1 || H.in_frenzy)
 				H.last_frenzy_check = world.time
 
-	if(!H.antifrenzy)
+	if(!H.antifrenzy && !HAS_TRAIT(H, TRAIT_KNOCKEDOUT))
 		if(H.bloodpool <= 1 && !H.in_frenzy)
-			if(H.last_frenzy_check+400 <= world.time)
+			if((H.last_frenzy_check + 40 SECONDS) <= world.time)
 				H.last_frenzy_check = world.time
 				H.rollfrenzy()
 				if(H.clane)

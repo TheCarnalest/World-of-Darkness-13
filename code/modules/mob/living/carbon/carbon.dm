@@ -897,9 +897,6 @@
 		else if(health > HEALTH_THRESHOLD_NEARDEATH)
 			REMOVE_TRAIT(src, TRAIT_SIXTHSENSE, "near-death")
 
-/mob/living/carbon
-	var/torpor_timer = 0
-
 /mob/living/carbon/update_stat()
 	if(status_flags & GODMODE)
 		return

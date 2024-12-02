@@ -382,9 +382,9 @@
 	SEND_SOUND(usr, sound('code/modules/wod13/sounds/highlight.ogg', 0, 0, 50))
 	if(ishuman(usr))
 		var/mob/living/carbon/human/BD = usr
-		if(world.time < BD.last_bloodheal_use+30)
+		if(world.time < (BD.last_bloodheal_use + 3 SECONDS))
 			return
-		if(world.time < BD.last_bloodheal_click+10)
+		if(world.time < (BD.last_bloodheal_click + 1 SECONDS))
 			return
 		BD.last_bloodheal_click = world.time
 		var/plus = 0
