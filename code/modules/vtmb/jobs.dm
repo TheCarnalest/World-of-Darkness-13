@@ -457,7 +457,7 @@
 	faction = "Vampire"
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "the Traditions"
+	supervisors = "the Pyramid"
 	selection_color = "#ab2508"
 
 	outfit = /datum/outfit/job/regent
@@ -469,9 +469,9 @@
 	exp_type_department = EXP_TYPE_INDEPENDENT
 
 	display_order = JOB_DISPLAY_ORDER_REGENT
-
-	v_duty = "Keep a census of events and provide information to archivists. Lead the Chantry. You report to the Tremere Lord of this region first, Prince second."
+	v_duty = "Lead the Chantry. You serve as both the Regent and Tremere Primogen. You report to the Tremere Lord of this region first, Prince second."
 	minimal_masquerade = 4
+	minimal_generation = 7
 	allowed_species = list("Vampire")
 	allowed_bloodlines = list("Tremere")
 	experience_addition = 20
