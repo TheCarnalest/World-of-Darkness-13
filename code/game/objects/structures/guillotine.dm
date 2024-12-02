@@ -126,7 +126,7 @@
 		playsound(src, 'sound/weapons/guillotine.ogg', 100, TRUE)
 		if (blade_sharpness >= GUILLOTINE_DECAP_MIN_SHARP || head.brute_dam >= 100)
 			for(var/mob/living/carbon/human/M in viewers(src, 7))
-				if(M.stat == 0)
+				if(M.stat == CONSCIOUS)
 					var/loved = TRUE
 					var/datum/preferences/P1 = GLOB.preferences_datums[ckey(M.key)]
 					if(H in GLOB.masquerade_breakers_list)

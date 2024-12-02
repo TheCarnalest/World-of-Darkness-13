@@ -106,7 +106,7 @@
 		var/mob/living/action_user = owner
 		if(action_user.body_position == LYING_DOWN)
 			return FALSE
-	if((check_flags & AB_CHECK_CONSCIOUS) && owner.stat != CONSCIOUS)
+	if((check_flags & AB_CHECK_CONSCIOUS) && ((owner.stat != CONSCIOUS) || HAS_TRAIT(owner, TRAIT_TORPOR)))
 		return FALSE
 	return TRUE
 

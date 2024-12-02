@@ -523,6 +523,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	set category = "Admin"
 	if (!check_rights(R_ADMIN))
 		return
+
 	var/list/explist = list()
 	for(var/client/C in GLOB.clients)
 		explist |= "[C.ckey]"
@@ -586,8 +587,8 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 		var/giving_discipline = input("What Discipline do you want to give [player]?") as null|anything in (subtypesof(/datum/discipline) - preferences.discipline_types)
 		if (giving_discipline)
 			var/giving_discipline_level = input("What rank of this Discipline do you want to give [player]?") as null|anything in list(0, 1, 2, 3, 4, 5)
-			if (giving_discipline_level)
-				if ((giving_discipline_level > 0) && (preferences.pref_species.id == "ghoul"))
+			if (!isnull(giving_discipline_level))
+				if ((giving_discipline_level > 1) && (preferences.pref_species.id == "ghoul"))
 					to_chat(usr, "<span class='warning'>Giving Discipline at level 1 because ghouls cannot have Disciplines higher.</span>")
 					giving_discipline_level = 1
 				var/reason = input("Why are you giving [player] this Discipline?") as null|text

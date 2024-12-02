@@ -33,7 +33,7 @@
 			if(!M.client)
 				to_chat(user, "You need [M] attention to do that.")
 				return
-			if(M.stat >= 2)
+			if(M.stat >= HARD_CRIT)
 				var/datum/preferences/P = GLOB.preferences_datums[ckey(M.key)]
 //				var/extra = FALSE
 //				if(D.diablerist)
@@ -55,7 +55,7 @@
 			if(!M.client)
 				to_chat(user, "You need [M] attention to do that.")
 				return
-			if(M.stat >= 2)
+			if(M.stat >= HARD_CRIT)
 				var/datum/preferences/P = GLOB.preferences_datums[ckey(M.key)]
 //				var/extra = FALSE
 //				if(D.diablerist)

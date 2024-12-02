@@ -197,7 +197,7 @@
 				else
 					return pick(north_steps, south_steps, west_steps)
 /mob/living/carbon/human/npc/proc/CheckMove()
-	if(stat >= 2)
+	if(stat >= HARD_CRIT)
 		return TRUE
 	if(last_grab+15 > world.time)
 		return TRUE

@@ -899,14 +899,23 @@
 		else if(health > HEALTH_THRESHOLD_NEARDEATH)
 			REMOVE_TRAIT(src, TRAIT_SIXTHSENSE, "near-death")
 
-
 /mob/living/carbon/update_stat()
 	if(status_flags & GODMODE)
 		return
 	if(stat != DEAD)
-		if(health <= HEALTH_THRESHOLD_DEAD && !HAS_TRAIT(src, TRAIT_NODEATH))
-			death()
-			return
+		//special death handling for vampires, who don't die until -200 health
+		if (iskindred(src))
+			if(health <= HEALTH_THRESHOLD_VAMPIRE_DEAD && !HAS_TRAIT(src, TRAIT_NODEATH))
+				death()
+				return
+			if((health <= HEALTH_THRESHOLD_VAMPIRE_TORPOR) && !HAS_TRAIT(src, TRAIT_TORPOR))
+				spawn()
+					torpor("damage")
+		else
+			if(health <= HEALTH_THRESHOLD_DEAD && !HAS_TRAIT(src, TRAIT_NODEATH))
+				death()
+				return
+
 		if(health <= hardcrit_threshold && !HAS_TRAIT(src, TRAIT_NOHARDCRIT))
 			set_stat(HARD_CRIT)
 		else if(HAS_TRAIT(src, TRAIT_KNOCKEDOUT))

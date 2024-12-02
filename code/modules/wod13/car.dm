@@ -836,7 +836,7 @@ SUBSYSTEM_DEF(carpool)
 		return
 	if(istype(mob, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = mob
-		if(H.stat >= 2)
+		if(H.stat >= HARD_CRIT)
 			return
 		if(H.IsSleeping())
 			return

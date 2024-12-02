@@ -33,6 +33,7 @@
 	var/datum/vampireclane/clane
 	var/list/datum/discipline/disciplines = list()
 	selectable = TRUE
+	COOLDOWN_DECLARE(torpor_timer)
 
 /datum/action/vampireinfo
 	name = "About Me"
@@ -190,7 +191,6 @@
 
 /datum/species/kindred/on_species_gain(mob/living/carbon/human/C)
 	. = ..()
-//	ADD_TRAIT(C, TRAIT_NOBLEED, HIGHLANDER)
 	C.update_body(0)
 	C.last_experience = world.time+3000
 	var/datum/action/vampireinfo/infor = new()
@@ -203,6 +203,16 @@
 	var/datum/action/blood_power/bloodpower = new()
 	bloodpower.Grant(C)
 	add_verb(C, /mob/living/carbon/human/verb/teach_discipline)
+
+	//vampires go to -200 damage before dying
+	for (var/obj/item/bodypart/bodypart in C.bodyparts)
+		bodypart.max_damage *= 1.5
+
+	//vampires die instantly upon having their heart removed
+	RegisterSignal(C, COMSIG_CARBON_LOSE_ORGAN, PROC_REF(lose_organ))
+
+	//vampires don't die while in crit, they just slip into torpor after 2 minutes of being critted
+	RegisterSignal(C, SIGNAL_ADDTRAIT(TRAIT_CRITICAL_CONDITION), PROC_REF(slip_into_torpor))
 
 /datum/species/kindred/on_species_loss(mob/living/carbon/human/C, datum/species/new_species, pref_load)
 	. = ..()
@@ -238,6 +248,8 @@
 
 /datum/action/blood_power/Trigger()
 	if(istype(owner, /mob/living/carbon/human))
+		if (HAS_TRAIT(owner, TRAIT_TORPOR))
+			return
 		var/mob/living/carbon/human/BD = usr
 		if(world.time < BD.last_bloodpower_use+110)
 			return
@@ -331,6 +343,7 @@
 							SSfactionwar.adjust_members()
 							to_chat(BLOODBONDED, "<span class='notice'>You are now member of <b>[H.vampire_faction]</b></span>")
 				BLOODBONDED.drunked_of |= "[H.dna.real_name]"
+
 				if(BLOODBONDED.stat == DEAD && !iskindred(BLOODBONDED))
 					if (!BLOODBONDED.can_be_embraced)
 						to_chat(H, "<span class='notice'>[BLOODBONDED.name] doesn't respond to your Vitae.</span>")
@@ -400,6 +413,7 @@
 					BLOODBONDED.apply_status_effect(STATUS_EFFECT_INLOVE, owner)
 					to_chat(owner, "<span class='notice'>You successfuly fed [BLOODBONDED] with vitae.</span>")
 					to_chat(BLOODBONDED, "<span class='userlove'>You feel good when you drink this <b>BLOOD</b>...</span>")
+
 					if(H.reagents)
 						if(length(H.reagents.reagent_list))
 							H.reagents.trans_to(BLOODBONDED, min(10, H.reagents.total_volume), transfered_by = H, methods = VAMPIRE)
@@ -410,6 +424,12 @@
 					BLOODBONDED.adjustFireLoss(-25, TRUE)
 					BLOODBONDED.bloodpool = min(BLOODBONDED.maxbloodpool, BLOODBONDED.bloodpool+2)
 					giving = FALSE
+
+					if (iskindred(BLOODBONDED))
+						var/datum/species/kindred/species = BLOODBONDED.dna.species
+						if (HAS_TRAIT(BLOODBONDED, TRAIT_TORPOR) && COOLDOWN_FINISHED(species, torpor_timer))
+							BLOODBONDED.untorpor()
+
 					if(!isghoul(H.pulling) && istype(H.pulling, /mob/living/carbon/human/npc))
 						var/mob/living/carbon/human/npc/NPC = H.pulling
 						if(NPC.ghoulificate(owner))
@@ -515,6 +535,29 @@
 
 /datum/species/kindred/check_roundstart_eligible()
 	return TRUE
+
+/**
+ * Signal handler for lose_organ to near-instantly kill Kindred whose hearts have been removed.
+ *
+ * Arguments:
+ * * source - The Kindred whose organ has been removed.
+ * * organ - The organ which has been removed.
+ */
+/datum/species/kindred/proc/lose_organ(var/mob/living/carbon/human/source, var/obj/item/organ/organ)
+	SIGNAL_HANDLER
+
+	if (istype(organ, /obj/item/organ/heart))
+		spawn()
+			if (!source.getorganslot(ORGAN_SLOT_HEART))
+				source.death()
+
+/datum/species/kindred/proc/slip_into_torpor(var/mob/living/carbon/human/source)
+	SIGNAL_HANDLER
+
+	to_chat(source, "<span class='warning'>You can feel yourself slipping into Torpor. You can use succumb to immediately sleep...</span>")
+	spawn(2 MINUTES)
+		if (source.stat >= SOFT_CRIT)
+			source.torpor("damage")
 
 /**
  * Verb to teach your Disciplines to vampires who have drank your blood by spending 10 experience points.
