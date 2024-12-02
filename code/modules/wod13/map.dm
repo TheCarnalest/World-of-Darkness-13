@@ -372,10 +372,14 @@
 	name = "Security Guard Chunk"
 	uniform = /obj/item/clothing/under/vampire/guard
 	shoes = /obj/item/clothing/shoes/vampire
+	belt = /obj/item/gun/ballistic/automatic/vampire/m1911
 //	suit = /obj/item/clothing/suit/vampire/vest
 //	belt = /obj/item/melee/classic_baton
+	id = /obj/item/card/id/chunk/
 	l_pocket = /obj/item/vamp/phone
-	r_pocket = /obj/item/flashlight
-	l_hand = /obj/item/vamp/keys/camarilla
-	r_hand = /obj/item/gun/ballistic/automatic/vampire/m1911
+	r_pocket = /obj/item/vamp/keys/camarilla1
 	back = /obj/item/storage/backpack/satchel
+	backpack_contents = list(/obj/item/flashlight-1, /obj/item/vamp/creditcard=1,
+
+/obj/item/card/id/chunk/AltClick(mob/user)
+	return

@@ -1235,7 +1235,7 @@
 	..()
 	if(prob(66))
 		base_body_mod = "f"
-	my_weapon = new /obj/item/gun/ballistic/automatic/vampire/deagle(src)
+	my_weapon = new /obj/item/gun/ballistic/automatic/vampire/m1911(src)
 	AssignSocialRole(/datum/socialrole/guard)
 
 /mob/living/carbon/human/npc/walkby/club/Life()
