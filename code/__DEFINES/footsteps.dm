@@ -94,8 +94,7 @@ GLOBAL_LIST_INIT(footstep, list(
 		'code/modules/wod13/sounds/asphalt1.ogg',
 		'code/modules/wod13/sounds/asphalt2.ogg'), 75, 1),
 	FOOTSTEP_SNOW = list(list(
-		'code/modules/wod13/sounds/snow1.ogg',
-		'code/modules/wod13/sounds/snow2.ogg'), 75, 1),
+		'code/modules/wod13/sounds/snow2.ogg'), 10, 1),
 	FOOTSTEP_TRAVA = list(list(
 		'code/modules/wod13/sounds/trava1.ogg',
 		'code/modules/wod13/sounds/trava2.ogg',

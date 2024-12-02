@@ -478,6 +478,21 @@ GLOBAL_LIST_EMPTY(teleportlocs)
 			if(F)
 				qdel(F)
 
+/area/proc/fog_setup()
+	for(var/turf/open/O in src)
+		var/obj/effect/realistic_fog/F = new(O)
+		GLOB.fog_suka += F
+
+/area/proc/rain_setup()
+	for(var/turf/open/O in src)
+		var/obj/effect/new_rain/R = new(O)
+		GLOB.rain_suka += R
+
+/area/proc/snow_setup()
+	for(var/turf/open/O in src)
+		var/obj/effect/new_snow/S = new(O)
+		GLOB.snow_suka += S
+
 /area/proc/set_fire_alarm_effect()
 	fire = TRUE
 	if(!triggered_firealarms) //If there aren't any fires/breaches

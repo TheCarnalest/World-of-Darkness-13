@@ -36,8 +36,15 @@ SUBSYSTEM_DEF(whitelists)
 	return ..()
 
 /datum/controller/subsystem/whitelists/proc/is_whitelisted(checked_ckey, checked_whitelist)
+	if (!initialized)
+		return FALSE
 	if (!whitelists_enabled)
 		return TRUE
+
+	//enable all whitelists for admins
+	for (var/client/admin in GLOB.admins)
+		if (admin.ckey == checked_ckey)
+			return TRUE
 
 	for (var/datum/whitelist/current_whitelist in whitelist_entries)
 		if ((current_whitelist.ckey == checked_ckey) && (current_whitelist.whitelist == checked_whitelist))
