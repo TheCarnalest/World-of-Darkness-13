@@ -357,7 +357,7 @@
 	mob_species = /datum/species/human
 	short_desc = "You are working the night shift on Millenium Towers, just like any other night...."
 	flavour_text = "You are up late protecting Millenium Towers on behalf of your pasty-faced, but filthy rich, boss. Come to think of it, you only ever see him at night..."
-	assignedrole = "Secuity Guard"
+	assignedrole = "Millenium Tower Secuity Guard"
 
 /obj/effect/mob_spawn/human/chunkguard/special(mob/living/new_spawn)
 	var/my_name = "Tyler"
@@ -373,13 +373,11 @@
 	uniform = /obj/item/clothing/under/vampire/guard
 	shoes = /obj/item/clothing/shoes/vampire
 	belt = /obj/item/gun/ballistic/automatic/vampire/m1911
-//	suit = /obj/item/clothing/suit/vampire/vest
-//	belt = /obj/item/melee/classic_baton
-	id = /obj/item/card/id/chunk/
+	id = /obj/item/card/id/chunk
 	l_pocket = /obj/item/vamp/phone
-	r_pocket = /obj/item/vamp/keys/camarilla1
+	r_pocket = /obj/item/vamp/keys/camarilla
 	back = /obj/item/storage/backpack/satchel
-	backpack_contents = list(/obj/item/flashlight-1, /obj/item/vamp/creditcard=1,
+	backpack_contents = list(/obj/item/flashlight=1, /obj/item/vamp/creditcard=1,/obj/item/food/vampire/donut=5)
 
 /obj/item/card/id/chunk/AltClick(mob/user)
 	return
