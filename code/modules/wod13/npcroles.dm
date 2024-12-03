@@ -1207,11 +1207,13 @@
 											"I'm kinda like a  cop, you know.",
 											"I could go for some bear claws right about now.",
 											"Like the uniform?"
+											Hey, catch me later, I'll buy you a beer.
 											)
 	neutral_phrases = list("No Loitering.",
 											"I'm kinda like a  cop, you know.",
 											"I could go for some bear claws right about now.",
-											"Like the uniform?"
+											"Like the uniform?",
+											Hey, catch me later, I'll buy you a beer.
 											)
 	random_phrases = list("Real quiet night tonight.",
 											"My brothers and father are security guards too."
@@ -1221,7 +1223,7 @@
 											"Stop right there!!",
 											"Drop your weapon!",
 											"Freeze!!",
-											"Not just a mall cop, you know!"))
+											"Not just a mall cop, you know!")
 
 /mob/living/carbon/human/npc/guard
 	vampire_faction = "City"
