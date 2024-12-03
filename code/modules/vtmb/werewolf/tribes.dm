@@ -96,22 +96,22 @@
 			playsound(get_turf(owner), 'code/modules/wod13/sounds/venom_claws.ogg', 75, FALSE)
 			var/mob/living/carbon/human/H = owner
 			H.tox_damage_plus = 15
-			to_chat(owner, "<span class='notice'>You feel your claws filling with pure venom...</span>")
+			to_chat(owner, "<span class='notice'>You feel your claws seeping with pure venom...</span>")
 			spawn(12 SECONDS)
 				H.tox_damage_plus = 0
-				to_chat(owner, "<span class='warning'>Your claws are not poison anymore...</span>")
+				to_chat(owner, "<span class='warning'>Your claws dry of their venom coating...</span>")
 		else
 			playsound(get_turf(owner), 'code/modules/wod13/sounds/venom_claws.ogg', 75, FALSE)
 			var/mob/living/carbon/H = owner
 			H.melee_damage_lower = initial(H.melee_damage_lower)+10
 			H.melee_damage_upper = initial(H.melee_damage_upper)+10
 			H.tox_damage_plus = 15
-			to_chat(owner, "<span class='notice'>You feel your claws filling with pure venom...</span>")
+			to_chat(owner, "<span class='notice'>You feel your claws seeping with pure venom...</span>")
 			spawn(12 SECONDS)
 				H.tox_damage_plus = 0
 				H.melee_damage_lower = initial(H.melee_damage_lower)
 				H.melee_damage_upper = initial(H.melee_damage_upper)
-				to_chat(owner, "<span class='warning'>Your claws are not poison anymore...</span>")
+				to_chat(owner, "<span class='warning'>Your claws dry of their venom coating...</span>")
 
 /datum/action/gift/burning_scars
 	name = "Burning Scars"
