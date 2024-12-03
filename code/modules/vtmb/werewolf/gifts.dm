@@ -200,8 +200,8 @@
 		if(ishuman(owner))
 			playsound(get_turf(owner), 'code/modules/wod13/sounds/resist_pain.ogg', 75, FALSE)
 			var/mob/living/carbon/human/H = owner
-			H.physiology.armor.melee = 45
-			H.physiology.armor.bullet = 45
+			H.physiology.armor.melee = 35
+			H.physiology.armor.bullet = 20
 			to_chat(owner, "<span class='notice'>You feel your skin thickering...</span>")
 			spawn(12 SECONDS)
 				H.physiology.armor.melee = initial(H.physiology.armor.melee)
@@ -210,7 +210,7 @@
 		else
 			playsound(get_turf(owner), 'code/modules/wod13/sounds/resist_pain.ogg', 75, FALSE)
 			var/mob/living/carbon/werewolf/H = owner
-			H.werewolf_armor = 45
+			H.werewolf_armor = 35
 			to_chat(owner, "<span class='notice'>You feel your skin thickering...</span>")
 			spawn(12 SECONDS)
 				H.werewolf_armor = initial(H.werewolf_armor)
@@ -349,8 +349,8 @@
 		var/mob/living/carbon/C = owner
 		if(C.stat != DEAD)
 			SEND_SOUND(owner, sound('code/modules/wod13/sounds/rage_heal.ogg', 0, 0, 75))
-			C.adjustBruteLoss(-45*C.auspice.level, TRUE)
-			C.adjustFireLoss(-35*C.auspice.level, TRUE)
+			C.adjustBruteLoss(-40*C.auspice.level, TRUE)
+			C.adjustFireLoss(-30*C.auspice.level, TRUE)
 			C.adjustCloneLoss(-15*C.auspice.level, TRUE)
 			C.adjustOxyLoss(-20*C.auspice.level, TRUE)
 			C.adjustToxLoss(-5*C.auspice.level, TRUE)

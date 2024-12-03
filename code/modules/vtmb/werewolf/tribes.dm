@@ -97,7 +97,7 @@
 			var/mob/living/carbon/human/H = owner
 			H.tox_damage_plus = 15
 			to_chat(owner, "<span class='notice'>You feel your claws filling with pure venom...</span>")
-			spawn(15 SECONDS)
+			spawn(12 SECONDS)
 				H.tox_damage_plus = 0
 				to_chat(owner, "<span class='warning'>Your claws are not poison anymore...</span>")
 		else
@@ -107,7 +107,7 @@
 			H.melee_damage_upper = initial(H.melee_damage_upper)+10
 			H.tox_damage_plus = 15
 			to_chat(owner, "<span class='notice'>You feel your claws filling with pure venom...</span>")
-			spawn(15 SECONDS)
+			spawn(12 SECONDS)
 				H.tox_damage_plus = 0
 				H.melee_damage_lower = initial(H.melee_damage_lower)
 				H.melee_damage_upper = initial(H.melee_damage_upper)
@@ -177,8 +177,8 @@
 		if(ishuman(owner))
 			playsound(get_turf(owner), 'code/modules/wod13/sounds/electro_cast.ogg', 75, FALSE)
 			var/mob/living/carbon/human/H = owner
-			H.physiology.armor.melee = 50
-			H.physiology.armor.bullet = 50
+			H.physiology.armor.melee = 25
+			H.physiology.armor.bullet = 35
 			to_chat(owner, "<span class='notice'>You feel your skin replaced with the machine...</span>")
 			spawn(100)
 				H.physiology.armor.melee = initial(H.physiology.armor.melee)
@@ -188,7 +188,7 @@
 		else
 			playsound(get_turf(owner), 'code/modules/wod13/sounds/electro_cast.ogg', 75, FALSE)
 			var/mob/living/carbon/werewolf/H = owner
-			H.werewolf_armor = 55
+			H.werewolf_armor = 40
 			to_chat(owner, "<span class='notice'>You feel your skin replaced with the machine...</span>")
 			spawn(100)
 				H.werewolf_armor = initial(H.werewolf_armor)
