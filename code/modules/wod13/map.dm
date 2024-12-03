@@ -342,8 +342,7 @@
 	r_hand = /obj/item/gun/ballistic/shotgun/vampire
 	back = /obj/item/storage/backpack/satchel
 
-//guard
-
+//Officer Chunk ghostspawn role
 /obj/effect/mob_spawn/human/chunkguard
 	name = "Millenium Tower Security Guard"
 	desc = "A humming sleeper with a silhouetted occupant inside. Its stasis function is broken and it's likely being used as a bed."

@@ -71,7 +71,7 @@
 		"milleniumCommon",
 		"clerk",
 		"camarilla"
-		)
+	)
 
 /obj/item/vamp/keys/graveyard
 	name = "Graveyard keys"
