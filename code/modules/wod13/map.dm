@@ -372,11 +372,10 @@
 	uniform = /obj/item/clothing/under/vampire/guard
 	shoes = /obj/item/clothing/shoes/vampire
 	belt = /obj/item/gun/ballistic/automatic/vampire/m1911
-	id = /obj/item/card/id/chunk
 	l_pocket = /obj/item/vamp/phone
 	r_pocket = /obj/item/vamp/keys/camarilla
 	back = /obj/item/storage/backpack/satchel
-	backpack_contents = list(/obj/item/flashlight=1, /obj/item/vamp/creditcard=1,/obj/item/food/vampire/donut=5)
+	backpack_contents = list(/obj/item/flashlight=1, /obj/item/vamp/creditcard=1,/obj/item/food/vampire/donut=5,/obj/item/card/id/chunk=1)
 
 /obj/item/card/id/chunk
 	name = "Millenium Tower Security ID"
