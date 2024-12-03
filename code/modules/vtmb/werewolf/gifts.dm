@@ -59,7 +59,7 @@
 	. = ..()
 	if(inspired)
 		if(stat != DEAD)
-			adjustBruteLoss(-4, TRUE)
+			adjustBruteLoss(-10, TRUE)
 			var/obj/effect/celerity/C = new(get_turf(src))
 			C.appearance = appearance
 			C.dir = dir
@@ -114,8 +114,8 @@
 		else
 			playsound(get_turf(owner), 'code/modules/wod13/sounds/razor_claws.ogg', 75, FALSE)
 			var/mob/living/carbon/H = owner
-			H.melee_damage_lower = H.melee_damage_lower+20
-			H.melee_damage_upper = H.melee_damage_upper+20
+			H.melee_damage_lower = H.melee_damage_lower+15
+			H.melee_damage_upper = H.melee_damage_upper+15
 			H.agg_damage_plus = 2.5
 			to_chat(owner, "<span class='notice'>You feel your claws sharpening...</span>")
 			spawn(10 SECONDS)

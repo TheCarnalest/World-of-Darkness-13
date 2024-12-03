@@ -345,12 +345,13 @@
 	footstep_type = FOOTSTEP_MOB_CLAW
 	bloodpool = 1
 	maxbloodpool = 1
-	maxHealth = 30
-	health = 30
+	maxHealth = 40
+	health = 40
 	harm_intent_damage = 20
 	melee_damage_lower = 15
 	melee_damage_upper = 30
 	speed = -0.1
+	dodging = TRUE
 
 /mob/living/simple_animal/hostile/beastmaster/cat/Initialize()
 	. = ..()

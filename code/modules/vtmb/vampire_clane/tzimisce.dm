@@ -635,10 +635,10 @@
 /mob/living/simple_animal/hostile/biter/lasombra/better
 	icon_state = "shadow2"
 	icon_living = "shadow2"
-	maxHealth = 200
-	health = 200
-	melee_damage_lower = 50
-	melee_damage_upper = 50
+	maxHealth = 150
+	health = 150
+	melee_damage_lower = 30
+	melee_damage_upper = 30
 
 /mob/living/simple_animal/hostile/fister
 	name = "fister"
@@ -807,13 +807,13 @@
 	pixel_z = -16
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	speak_chance = 0
-	speed = -1
+	speed = -0.6
 	maxHealth = 575
 	health = 575
 	butcher_results = list(/obj/item/stack/human_flesh = 20)
 	harm_intent_damage = 5
-	melee_damage_lower = 70
-	melee_damage_upper = 70
+	melee_damage_lower = 45
+	melee_damage_upper = 60
 	attack_verb_continuous = "slashes"
 	attack_verb_simple = "slash"
 	attack_sound = 'sound/weapons/slash.ogg'
@@ -837,8 +837,8 @@
 	health = 100
 	butcher_results = list(/obj/item/stack/human_flesh = 20)
 	harm_intent_damage = 5
-	melee_damage_lower = 1
-	melee_damage_upper = 1
+	melee_damage_lower = 10
+	melee_damage_upper = 10
 	attack_verb_continuous = "slashes"
 	attack_verb_simple = "slash"
 	attack_sound = 'sound/weapons/slash.ogg'

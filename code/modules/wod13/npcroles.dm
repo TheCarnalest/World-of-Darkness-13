@@ -871,6 +871,7 @@
 	melee_damage_lower = 10
 	melee_damage_upper = 10
 	speed = 0
+	dodging = TRUE
 
 /mob/living/simple_animal/hostile/beastmaster/rat/Initialize()
 	. = ..()
@@ -892,7 +893,7 @@
 	if(ishuman(A))
 		var/mob/living/carbon/human/H = A
 		if(H.bloodpool)
-			if(prob(25))
+			if(prob(15))
 				H.bloodpool = max(0, H.bloodpool-1)
 				beastmaster.bloodpool = min(beastmaster.maxbloodpool, beastmaster.bloodpool+1)
 
