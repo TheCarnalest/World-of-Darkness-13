@@ -104,7 +104,7 @@
 			H.dna.species.punchdamagelow = 25
 			H.dna.species.punchdamagehigh = 25
 			to_chat(owner, "<span class='notice'>You feel your claws sharpening...</span>")
-			spawn(150)
+			spawn(10 SECONDS)
 				H.dna.species.attack_verb = initial(H.dna.species.attack_verb)
 				H.dna.species.attack_sound = initial(H.dna.species.attack_sound)
 				H.dna.species.miss_sound = initial(H.dna.species.miss_sound)
@@ -116,8 +116,10 @@
 			var/mob/living/carbon/H = owner
 			H.melee_damage_lower = H.melee_damage_lower+20
 			H.melee_damage_upper = H.melee_damage_upper+20
+			H.agg_damage_plus = 2.5
 			to_chat(owner, "<span class='notice'>You feel your claws sharpening...</span>")
-			spawn(150)
+			spawn(10 SECONDS)
+				H.agg_damage_plus = 0
 				H.melee_damage_lower = initial(H.melee_damage_lower)
 				H.melee_damage_upper = initial(H.melee_damage_upper)
 				to_chat(owner, "<span class='warning'>Your claws are not sharp anymore...</span>")
@@ -198,19 +200,19 @@
 		if(ishuman(owner))
 			playsound(get_turf(owner), 'code/modules/wod13/sounds/resist_pain.ogg', 75, FALSE)
 			var/mob/living/carbon/human/H = owner
-			H.physiology.armor.melee = 50
-			H.physiology.armor.bullet = 50
+			H.physiology.armor.melee = 45
+			H.physiology.armor.bullet = 45
 			to_chat(owner, "<span class='notice'>You feel your skin thickering...</span>")
-			spawn(200)
+			spawn(12 SECONDS)
 				H.physiology.armor.melee = initial(H.physiology.armor.melee)
 				H.physiology.armor.bullet = initial(H.physiology.armor.bullet)
 				to_chat(owner, "<span class='warning'>Your skin is thin again...</span>")
 		else
 			playsound(get_turf(owner), 'code/modules/wod13/sounds/resist_pain.ogg', 75, FALSE)
 			var/mob/living/carbon/werewolf/H = owner
-			H.werewolf_armor = 50
+			H.werewolf_armor = 45
 			to_chat(owner, "<span class='notice'>You feel your skin thickering...</span>")
-			spawn(200)
+			spawn(12 SECONDS)
 				H.werewolf_armor = initial(H.werewolf_armor)
 				to_chat(owner, "<span class='warning'>Your skin is thin again...</span>")
 
@@ -347,10 +349,11 @@
 		var/mob/living/carbon/C = owner
 		if(C.stat != DEAD)
 			SEND_SOUND(owner, sound('code/modules/wod13/sounds/rage_heal.ogg', 0, 0, 75))
-			C.adjustBruteLoss(-50*C.auspice.level, TRUE)
+			C.adjustBruteLoss(-45*C.auspice.level, TRUE)
 			C.adjustFireLoss(-35*C.auspice.level, TRUE)
-			C.adjustCloneLoss(-25*C.auspice.level, TRUE)
-			C.adjustOxyLoss(-25*C.auspice.level, TRUE)
+			C.adjustCloneLoss(-15*C.auspice.level, TRUE)
+			C.adjustOxyLoss(-20*C.auspice.level, TRUE)
+			C.adjustToxLoss(-5*C.auspice.level, TRUE)
 			C.bloodpool = min(C.bloodpool + C.auspice.level, C.maxbloodpool)
 			C.blood_volume = min(C.blood_volume + 56 * C.auspice.level, BLOOD_VOLUME_NORMAL)
 			if(ishuman(owner))
