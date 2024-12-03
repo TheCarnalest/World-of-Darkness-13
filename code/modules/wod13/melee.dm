@@ -148,7 +148,7 @@
 	armour_penetration = 20
 	block_chance = 3
 	sharpness = SHARP_EDGED
-	w_class = WEIGHT_CLASS_SMALL
+	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = ITEM_SLOT_BELT
 	resistance_flags = FIRE_PROOF
 
@@ -478,4 +478,48 @@
 	block_chance = 10
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_SUITSTORE
 	w_class = WEIGHT_CLASS_NORMAL
+
+
+/obj/item/melee/vampirearms/knife/switchblade
+	name = "switchblade"
+	desc = "A spring-loaded knife. Perfect for stabbing sharks and jets."
+	flags_1 = CONDUCT_1
+	force = 3
+	icon_state = "switchblade"
+	w_class = WEIGHT_CLASS_NORMAL
+	throwforce = 5
+	throw_speed = 3
+	throw_range = 6
+	custom_materials = list(/datum/material/iron=12000)
+	hitsound = 'sound/weapons/genhit.ogg'
+	attack_verb_continuous = list("stubs", "pokes")
+	attack_verb_simple = list("stub", "poke")
+	resistance_flags = FIRE_PROOF
+	var/extended = 0
+
+/obj/item/melee/vampirearms/knife/switchblade/attack_self(mob/user)
+	extended = !extended
+	playsound(src.loc, 'sound/weapons/batonextend.ogg', 50, TRUE)
+	if(extended)
+		force = 28
+		w_class = WEIGHT_CLASS_NORMAL
+		throwforce = 23
+		icon_state = "switchblade1"
+		attack_verb_continuous = list("slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "cuts")
+		attack_verb_simple = list("slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
+		hitsound = 'sound/weapons/bladeslice.ogg'
+		sharpness = SHARP_EDGED
+		grid_width = 1 GRID_BOXES
+		grid_height = 2 GRID_BOXES
+	else
+		force = 6
+		w_class = WEIGHT_CLASS_TINY
+		throwforce = 5
+		icon_state = "switchblade0"
+		attack_verb_continuous = list("stubs", "pokes")
+		attack_verb_simple = list("stub", "poke")
+		hitsound = 'sound/weapons/genhit.ogg'
+		sharpness = SHARP_NONE
+		grid_width = 1 GRID_BOXES
+		grid_height = 1 GRID_BOXES
 
