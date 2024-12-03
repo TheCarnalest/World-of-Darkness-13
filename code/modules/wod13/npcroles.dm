@@ -815,8 +815,8 @@
 	anchored = FALSE
 	footstep_type = FOOTSTEP_MOB_CLAW
 	bloodquality = BLOOD_QUALITY_LOW
-	bloodpool = 2
-	maxbloodpool = 2
+	bloodpool = 1
+	maxbloodpool = 1
 	del_on_death = 1
 	maxHealth = 5
 	health = 5
