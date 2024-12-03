@@ -378,5 +378,18 @@
 	back = /obj/item/storage/backpack/satchel
 	backpack_contents = list(/obj/item/flashlight=1, /obj/item/vamp/creditcard=1,/obj/item/food/vampire/donut=5)
 
+/obj/item/card/id/chunk
+	name = "Millenium Tower Security ID"
+	id_type_name = "Security ID"
+	desc = "An ID showing propensity for donuts"
+	icon = 'code/modules/wod13/items.dmi'
+	icon_state = "id2"
+	inhand_icon_state = "card-id"
+	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
+	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	worn_icon = 'code/modules/wod13/worn.dmi'
+	worn_icon_state = "id2"
+
 /obj/item/card/id/chunk/AltClick(mob/user)
 	return
