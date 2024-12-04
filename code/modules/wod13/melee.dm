@@ -146,7 +146,7 @@
 	attack_verb_simple = list("slash", "cut")
 	hitsound = 'sound/weapons/slash.ogg'
 	armour_penetration = 20
-	block_chance = 3
+	block_chance = 5
 	sharpness = SHARP_EDGED
 	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = ITEM_SLOT_BELT
@@ -487,6 +487,7 @@
 	force = 3
 	icon_state = "switchblade"
 	w_class = WEIGHT_CLASS_NORMAL
+	block_chance = 3
 	throwforce = 5
 	throw_speed = 3
 	throw_range = 6
@@ -500,9 +501,11 @@
 	extended = !extended
 	playsound(src.loc, 'sound/weapons/batonextend.ogg', 50, TRUE)
 	if(extended)
-		force = 28
+		force = 27
 		w_class = WEIGHT_CLASS_NORMAL
-		throwforce = 23
+		throwforce = 15
+		armour_penetration = 25
+		bare_wound_bonus = 0
 		icon_state = "switchblade1"
 		attack_verb_continuous = list("slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "cuts")
 		attack_verb_simple = list("slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
@@ -513,6 +516,7 @@
 	else
 		force = 6
 		w_class = WEIGHT_CLASS_TINY
+		armour_penetration = 0
 		throwforce = 5
 		icon_state = "switchblade0"
 		attack_verb_continuous = list("stubs", "pokes")
