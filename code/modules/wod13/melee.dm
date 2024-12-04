@@ -146,9 +146,9 @@
 	attack_verb_simple = list("slash", "cut")
 	hitsound = 'sound/weapons/slash.ogg'
 	armour_penetration = 20
-	block_chance = 3
+	block_chance = 5
 	sharpness = SHARP_EDGED
-	w_class = WEIGHT_CLASS_SMALL
+	w_class = WEIGHT_CLASS_NORMAL
 	slot_flags = ITEM_SLOT_BELT
 	resistance_flags = FIRE_PROOF
 
@@ -470,7 +470,6 @@
 	desc = "Blunt instrument of justice."
 	icon = 'code/modules/wod13/weapons.dmi'
 	icon_state = "baton"
-	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_SUITSTORE
 	w_class = WEIGHT_CLASS_NORMAL
 	attack_verb_continuous = list("bludgeons", "bashes", "beats")
 	attack_verb_simple = list("bludgeon", "bash", "beat")
@@ -478,4 +477,51 @@
 	block_chance = 10
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_SUITSTORE
 	w_class = WEIGHT_CLASS_NORMAL
+
+
+/obj/item/melee/vampirearms/knife/switchblade
+	name = "switchblade"
+	desc = "A spring-loaded knife. Perfect for stabbing sharks and jets."
+	flags_1 = CONDUCT_1
+	force = 5
+	icon_state = "switchblade" //sprite by Spefo
+	w_class = WEIGHT_CLASS_NORMAL
+	block_chance = 3
+	throwforce = 5
+	throw_speed = 3
+	throw_range = 6
+	hitsound = 'sound/weapons/genhit.ogg'
+	attack_verb_continuous = list("stubs", "pokes")
+	attack_verb_simple = list("stub", "poke")
+	resistance_flags = FIRE_PROOF
+	var/extended = TRUE
+
+/obj/item/melee/vampirearms/knife/switchblade/attack_self(mob/user)
+	extended = !extended
+	playsound(src.loc, 'sound/weapons/batonextend.ogg', 50, TRUE)
+	if(extended)
+		force = 27
+		w_class = WEIGHT_CLASS_NORMAL
+		throwforce = 15
+		armour_penetration = 25
+		bare_wound_bonus = 0
+		icon_state = "switchblade1"
+		attack_verb_continuous = list("slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "cuts")
+		attack_verb_simple = list("slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
+		hitsound = 'sound/weapons/bladeslice.ogg'
+		sharpness = SHARP_EDGED
+		grid_width = 1 GRID_BOXES
+		grid_height = 2 GRID_BOXES
+	else
+		force = 5
+		w_class = WEIGHT_CLASS_TINY
+		armour_penetration = 0
+		throwforce = 5
+		icon_state = "switchblade0"
+		attack_verb_continuous = list("stubs", "pokes")
+		attack_verb_simple = list("stub", "poke")
+		hitsound = 'sound/weapons/genhit.ogg'
+		sharpness = SHARP_NONE
+		grid_width = 1 GRID_BOXES
+		grid_height = 1 GRID_BOXES
 
