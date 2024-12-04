@@ -489,7 +489,8 @@
 	)
 
 /obj/machinery/mineral/equipment_vendor/fastfood/illegal
-	prize_list = list(new /datum/data/mining_equipment("morphine syringe",	/obj/item/reagent_containers/syringe/contraband/morphine,	100),
+	prize_list = list(
+		new /datum/data/mining_equipment("morphine syringe",	/obj/item/reagent_containers/syringe/contraband/morphine,	100),
 		new	/datum/data/mining_equipment("meth package",	/obj/item/reagent_containers/food/drinks/meth,	300),
 		new	/datum/data/mining_equipment("cocaine package",	/obj/item/reagent_containers/food/drinks/meth/cocaine,	700),
 		new /datum/data/mining_equipment("LSD pill bottle",		/obj/item/storage/pill_bottle/lsd,	50),
@@ -512,8 +513,9 @@
 		new /datum/data/mining_equipment("zippo lighter",	/obj/item/lighter,	20),
 		new /datum/data/mining_equipment("Surgery dufflebag", /obj/item/storage/backpack/duffelbag/med/surgery, 100),
 		new /datum/data/mining_equipment("lighter",		/obj/item/lighter/greyscale,	10),
-		new /datum/data/mining_equipment("knife",	/obj/item/melee/vampirearms/knife,	85)
-		)
+		new /datum/data/mining_equipment("knife",	/obj/item/melee/vampirearms/knife,	85),
+		new /datum/data/mining_equipment("switchblade",	/obj/item/melee/vampirearms/knife/switchblade, 85)
+	)
 
 /obj/machinery/mineral/equipment_vendor/fastfood/pharmacy
 	prize_list = list(
@@ -523,7 +525,7 @@
 		new /datum/data/mining_equipment("bruise pack", /obj/item/stack/medical/bruise_pack, 100),
 		new /datum/data/mining_equipment("burn ointment", /obj/item/stack/medical/ointment, 100),
 		new /datum/data/mining_equipment("latex gloves", /obj/item/clothing/gloves/vampire/latex, 150)
-		)
+	)
 
 /obj/machinery/mineral/equipment_vendor/fastfood/hospital // we should probably swap from a vendor system and work on a sort of gameplay loop - tzula
 	prize_list = list(
@@ -540,7 +542,7 @@
 		new /datum/data/mining_equipment("surgical apron", /obj/item/clothing/suit/apron/surgical, 100),
 		new /datum/data/mining_equipment("latex gloves", /obj/item/clothing/gloves/vampire/latex, 100),
 		new /datum/data/mining_equipment("burn ointment", /obj/item/stack/medical/ointment, 100)
-		)
+	)
 
 /obj/machinery/mineral/equipment_vendor/fastfood/smoking
 	prize_list = list(new /datum/data/mining_equipment("malboro",	/obj/item/storage/fancy/cigarettes/cigpack_robust,	50),
@@ -548,9 +550,9 @@
 		new /datum/data/mining_equipment("camel",	/obj/item/storage/fancy/cigarettes/dromedaryco,	30),
 		new /datum/data/mining_equipment("zippo lighter",	/obj/item/lighter,	20),
 		new /datum/data/mining_equipment("lighter",		/obj/item/lighter/greyscale,	10)
-		)
+	)
 
 /obj/machinery/mineral/equipment_vendor/fastfood/gas
 	prize_list = list(new /datum/data/mining_equipment("full gas can",	/obj/item/gas_can/full,	250),
 		new /datum/data/mining_equipment("tire iron",		/obj/item/melee/vampirearms/tire,	50)
-		)
+	)
