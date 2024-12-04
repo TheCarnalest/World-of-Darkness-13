@@ -242,8 +242,6 @@
 	mentality = rand(1, max_stat)
 	lockpicking = rand(1, max_stat)
 	blood = rand(1, 2)
-	maxHealth = round(initial(maxHealth)+(initial(maxHealth)/3)*(physique))
-	health = round(initial(health)+(initial(health)/3)*(physique))
 	last_health = health
 	socialrole = new S()
 	if(GLOB.winter && !length(socialrole.suits))
@@ -356,7 +354,7 @@
 		return
 	if(is_talking)
 		return
-	if(stat >= HARD_CRIT)
+	if(stat >= UNCONSCIOUS)
 		return
 	is_talking = TRUE
 	var/delay = round(length_char(message)/2)
@@ -379,7 +377,7 @@
 		return
 	if(danger_source)
 		return
-	if(stat >= HARD_CRIT)
+	if(stat >= UNCONSCIOUS)
 		return
 	if(world.time <= last_annoy+50)
 		return

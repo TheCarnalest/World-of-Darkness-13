@@ -2930,29 +2930,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	A.special_skill(character)
 
 	if(pref_species.name == "Vampire")
-		var/datum/vampireclane/CLN = new clane.type()
-		character.clane = CLN
-		character.clane.current_accessory = clane_accessory
-		character.maxbloodpool = 10+((13-generation)*3)
-		character.bloodpool = rand(2, character.maxbloodpool)
-		character.generation = generation
-		character.clane.enlightenment = enlightenment
-//		if(generation < 13)
-//			character.maxHealth = initial(character.maxHealth)+50*(13-generation)
-//			character.health = initial(character.health)+50*(13-generation)
-	else
-//		character.clane.current_accessory = null
-		character.clane = null
-		character.generation = 13
-		character.bloodpool = character.maxbloodpool
-
-	if(pref_species.name == "Werewolf")
-		character.maxHealth = round((initial(character.maxHealth)+(initial(character.maxHealth)/4)*character.physique))
-		character.health = round((initial(character.maxHealth)+(initial(character.maxHealth)/4)*character.physique))
-	else
-		character.maxHealth = round((initial(character.maxHealth)-initial(character.maxHealth)/4)+(initial(character.maxHealth)/4)*(character.physique+13-generation))
-		character.health = round((initial(character.health)-initial(character.health)/4)+(initial(character.health)/4)*(character.physique+13-generation))
-	if(pref_species.name == "Vampire")
 		character.humanity = humanity
 	character.masquerade = masquerade
 	if(!character_setup)
@@ -3017,6 +2994,20 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	character.dna.real_name = character.real_name
 	if(character.clane)
 		character.clane.on_gain(character)
+
+	if(pref_species.name == "Vampire")
+		var/datum/vampireclane/CLN = new clane.type()
+		var/datum/species/kindred/kindred_species = character.dna.species
+		character.clane = CLN
+		character.clane.current_accessory = clane_accessory
+		character.set_blood_points(round(rand(2, character.maxbloodpool)))
+		character.generation = generation
+		kindred_species.initialize_generation(character)
+		character.clane.enlightenment = enlightenment
+	else
+		character.clane = null
+		character.generation = 13
+		character.set_blood_points(character.maxbloodpool)
 
 	if(pref_species.name == "Werewolf")
 		var/datum/auspice/CLN = new auspice.type()

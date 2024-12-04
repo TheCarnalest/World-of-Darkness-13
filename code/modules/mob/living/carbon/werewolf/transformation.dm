@@ -73,7 +73,7 @@
 				for(var/mob/living/simple_animal/hostile/beastmaster/B in trans.beastmaster)
 					if(B)
 						qdel(B)
-				spawn(30)
+				spawn(3 SECONDS)
 					if(trans.stat == DEAD || !trans.client) // [ChillRaccoon] - preventing non-player transform issues
 						animate(trans, transform = null, color = "#FFFFFF")
 						return
@@ -89,11 +89,10 @@
 					animate(lupus_form, color = "#FFFFFF", time = 10)
 					lupus_form.key = trans.key
 					forceMove(lupus_form)
-					lupus_form.bloodpool = trans.bloodpool
+					lupus_form.set_blood_points(trans.bloodpool)
 					lupus_form.masquerade = trans.masquerade
 					lupus_form.nutrition = trans.nutrition
 					lupus_form.mind = trans.mind
-					lupus_form.update_blood_hud()
 					transfer_damage(trans, lupus_form)
 					lupus_form.add_movespeed_modifier(/datum/movespeed_modifier/lupusform)
 					trans.forceMove(src)
@@ -111,7 +110,7 @@
 				for(var/mob/living/simple_animal/hostile/beastmaster/B in trans.beastmaster)
 					if(B)
 						qdel(B)
-				spawn(30)
+				spawn(3 SECONDS)
 					if(trans.stat == DEAD || !trans.client) // [ChillRaccoon] - preventing non-player transform issues
 						animate(trans, transform = null, color = "#FFFFFF")
 						return
@@ -127,11 +126,10 @@
 					animate(crinos_form, color = "#FFFFFF", time = 10)
 					crinos_form.key = trans.key
 					forceMove(crinos_form)
-					crinos_form.bloodpool = trans.bloodpool
+					crinos_form.set_blood_points(trans.bloodpool)
 					crinos_form.masquerade = trans.masquerade
 					crinos_form.nutrition = trans.nutrition
 					crinos_form.mind = trans.mind
-					crinos_form.update_blood_hud()
 					transfer_damage(trans, crinos_form)
 					crinos_form.add_movespeed_modifier(/datum/movespeed_modifier/crinosform)
 					trans.forceMove(src)
@@ -149,7 +147,7 @@
 				for(var/mob/living/simple_animal/hostile/beastmaster/B in trans.beastmaster)
 					if(B)
 						qdel(B)
-				spawn(30)
+				spawn(3 SECONDS)
 					if(trans.stat == DEAD || !trans.client) // [ChillRaccoon] - preventing non-player transform issues
 						animate(trans, transform = null, color = "#FFFFFF")
 						return
@@ -165,11 +163,10 @@
 					animate(human_form, color = "#FFFFFF", time = 10)
 					human_form.key = trans.key
 					forceMove(human_form)
-					human_form.bloodpool = trans.bloodpool
+					human_form.set_blood_points(trans.bloodpool)
 					human_form.masquerade = trans.masquerade
 					human_form.nutrition = trans.nutrition
 					human_form.mind = trans.mind
-					human_form.update_blood_hud()
 					transfer_damage(trans, human_form)
 					human_form.remove_movespeed_modifier(/datum/movespeed_modifier/crinosform)
 					human_form.remove_movespeed_modifier(/datum/movespeed_modifier/lupusform)

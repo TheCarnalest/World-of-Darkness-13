@@ -52,7 +52,7 @@
 			if(do_after(H, 30*max(1, 5-H.mentality), H))
 				drawing = FALSE
 				new ritual(H.loc)
-				H.bloodpool = max(0, H.bloodpool-2)
+				H.adjust_blood_points(-2)
 				if(H.CheckEyewitness(H, H, 7, FALSE))
 					H.AdjustMasquerade(-1)
 			else
@@ -72,7 +72,7 @@
 //				var/list/runes = subtypesof(/obj/ritualrune)
 				var/rune = pick(shit)
 				new rune(H.loc)
-				H.bloodpool = max(0, H.bloodpool-2)
+				H.adjust_blood_points(-2)
 				if(H.CheckEyewitness(H, H, 7, FALSE))
 					H.AdjustMasquerade(-1)
 			else
@@ -94,7 +94,7 @@
 	if(H.bloodpool < 2)
 		to_chat(owner, "<span class='warning'>You don't have enough <b>BLOOD</b> to do that!</span>")
 		return
-	H.bloodpool = max(0, H.bloodpool-2)
+	H.adjust_blood_points(-2)
 	playsound(H.loc, 'code/modules/wod13/sounds/thaum.ogg', 50, FALSE)
 	abuse_fix = world.time
 	H.physiology.damage_resistance += 60
