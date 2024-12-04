@@ -222,9 +222,9 @@
 	if(iscarbon(usr))
 		var/mob/living/carbon/human/BD = usr
 		if(BD.bloodpool > 0)
-			to_chat(BD, "<span class='notice'>You've got [truncate(num2text(BD.bloodpool), 1)]/[BD.maxbloodpool] blood points.</span>")
+			to_chat(BD, "<span class='notice'>You've got [num2text(BD.bloodpool)]/[BD.maxbloodpool] blood points.</span>")
 		else
-			to_chat(BD, "<span class='warning'>You've got [truncate(num2text(BD.bloodpool), 1)]/[BD.maxbloodpool] blood points.</span>")
+			to_chat(BD, "<span class='warning'>You've got [num2text(BD.bloodpool)]/[BD.maxbloodpool] blood points.</span>")
 	..()
 
 /atom/movable/screen/drinkblood
