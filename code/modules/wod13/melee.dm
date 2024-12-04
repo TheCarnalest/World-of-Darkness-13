@@ -494,7 +494,7 @@
 	attack_verb_continuous = list("stubs", "pokes")
 	attack_verb_simple = list("stub", "poke")
 	resistance_flags = FIRE_PROOF
-	var/extended = 0
+	var/extended = TRUE
 
 /obj/item/melee/vampirearms/knife/switchblade/attack_self(mob/user)
 	extended = !extended
