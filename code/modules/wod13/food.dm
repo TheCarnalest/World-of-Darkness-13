@@ -513,6 +513,7 @@
 		new /datum/data/mining_equipment("Surgery dufflebag", /obj/item/storage/backpack/duffelbag/med/surgery, 100),
 		new /datum/data/mining_equipment("lighter",		/obj/item/lighter/greyscale,	10),
 		new /datum/data/mining_equipment("knife",	/obj/item/melee/vampirearms/knife,	85)
+		new /datum/data/mining_equipment("switchblade",	/obj/item/melee/vampirearms/knife/switchblade, 85)
 		)
 
 /obj/machinery/mineral/equipment_vendor/fastfood/pharmacy
