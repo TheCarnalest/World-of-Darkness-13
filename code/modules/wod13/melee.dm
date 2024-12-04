@@ -470,7 +470,6 @@
 	desc = "Blunt instrument of justice."
 	icon = 'code/modules/wod13/weapons.dmi'
 	icon_state = "baton"
-	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_SUITSTORE
 	w_class = WEIGHT_CLASS_NORMAL
 	attack_verb_continuous = list("bludgeons", "bashes", "beats")
 	attack_verb_simple = list("bludgeon", "bash", "beat")
@@ -484,8 +483,8 @@
 	name = "switchblade"
 	desc = "A spring-loaded knife. Perfect for stabbing sharks and jets."
 	flags_1 = CONDUCT_1
-	force = 3
-	icon_state = "switchblade"
+	force = 5
+	icon_state = "switchblade" //sprite by Spefo
 	w_class = WEIGHT_CLASS_NORMAL
 	block_chance = 3
 	throwforce = 5
@@ -514,7 +513,7 @@
 		grid_width = 1 GRID_BOXES
 		grid_height = 2 GRID_BOXES
 	else
-		force = 6
+		force = 5
 		w_class = WEIGHT_CLASS_TINY
 		armour_penetration = 0
 		throwforce = 5
