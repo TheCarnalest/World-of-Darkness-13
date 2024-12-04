@@ -1711,7 +1711,7 @@
 			healthscan(caster, target, 1, FALSE)
 			chemscan(caster, target)
 //			woundscan(caster, target, src)
-			to_chat(caster, "<b>[target]</b> has <b>[trunc(target.bloodpool)]/[target.maxbloodpool]</b> blood points.")
+			to_chat(caster, "<b>[target]</b> has <b>[truncate(num2text(target.bloodpool), 1)]/[target.maxbloodpool]</b> blood points.")
 			to_chat(caster, "<b>[target]</b> has a rating of <b>[target.humanity]</b> on their path.")
 		if(2)
 			if(get_dist(caster, target) <= 2)
