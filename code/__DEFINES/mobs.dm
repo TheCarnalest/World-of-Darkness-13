@@ -29,7 +29,7 @@
 #define BLOOD_VOLUME_SURVIVE (BLOOD_VOLUME_NORMAL * 0.20)
 
 //WoD blood constants
-#define HUMAN_BLOOD_POTENCY 56
+#define BLOOD_POINT_NORMAL 56
 
 //Sizes of mobs, used by mob/living/var/mob_size
 #define MOB_SIZE_TINY 0

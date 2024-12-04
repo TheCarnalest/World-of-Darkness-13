@@ -381,17 +381,18 @@
 /datum/action/give_vitae/Trigger()
 	if(istype(owner, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = owner
-		if(H.bloodpool < 2)
+		var/blood_points = clamp(H.blood_points_per_units(BLOOD_POINT_NORMAL), 1, H.bloodpool)
+		if(!H.can_adjust_blood_points(-blood_points))
 			to_chat(owner, "<span class='warning'>You don't have enough <b>BLOOD</b> to do that!</span>")
 			return
 
 		//give blood to simplemob
 		if(istype(H.pulling, /mob/living/simple_animal))
 			var/mob/living/L = H.pulling
-			L.adjust_blood_points(2)
-			H.adjust_blood_points(-2)
-			L.adjustBruteLoss(-25)
-			L.adjustFireLoss(-25)
+			L.adjust_blood_points(blood_points)
+			H.adjust_blood_points(-blood_points)
+			L.adjustBruteLoss(-25 * blood_points)
+			L.adjustFireLoss(-25 * blood_points)
 
 		//give blood to human
 		if(istype(H.pulling, /mob/living/carbon/human))
@@ -415,7 +416,7 @@
 			//main giving blood action
 			owner.visible_message("<span class='warning'>[owner] tries to feed [BLOODBONDED] with their own blood!</span>", "<span class='notice'>You begin to feed [BLOODBONDED] with your own blood.</span>")
 			if(do_mob(owner, BLOODBONDED, 10 SECONDS))
-				H.adjust_blood_points(-2)
+				H.adjust_blood_points(-blood_points)
 				giving = FALSE
 
 				//update the faction war faction of whoever's been fed this vitae
@@ -474,7 +475,7 @@
 						giving = FALSE
 						if(BLOODBONDED.revive(full_heal = TRUE, admin_revive = TRUE))
 							BLOODBONDED.grab_ghost(force = TRUE)
-							to_chat(BLOODBONDED, "<span class='userdanger'>You rise with a start, you're alive! Or not... You feel your soul going somewhere, as you realize you are embraced by a vampire...</span>")
+							to_chat(BLOODBONDED, "<span class='userdanger'>You're awake again. What just happened? Why is your heart not beating?</span>")
 						BLOODBONDED.roundstart_vampire = FALSE
 						BLOODBONDED.set_species(/datum/species/kindred)
 						BLOODBONDED.generation = H.generation + 1
@@ -516,12 +517,12 @@
 							H.reagents.trans_to(BLOODBONDED, min(10, H.reagents.total_volume), transfered_by = H, methods = VAMPIRE)
 
 					//heal the bloodbonded and increase their bloodpool
-					BLOODBONDED.adjustBruteLoss(-25, TRUE)
+					BLOODBONDED.adjustBruteLoss(-25 * blood_points, TRUE)
 					if(length(BLOODBONDED.all_wounds))
 						var/datum/wound/W = pick(BLOODBONDED.all_wounds)
 						W.remove_wound()
-					BLOODBONDED.adjustFireLoss(-25, TRUE)
-					BLOODBONDED.adjust_blood_points(2)
+					BLOODBONDED.adjustFireLoss(-25 * blood_points, TRUE)
+					BLOODBONDED.adjust_blood_points(blood_points)
 					giving = FALSE
 
 					//cancel Torpor of a vampire who's able to wake up from Torpor
@@ -745,7 +746,7 @@
 			return
 
 		visible_message("<span class='notice'>[teacher.name] begins mentoring [student.name] in [giving_discipline.name].</span>")
-		if (do_after(teacher, 30 SECONDS, student))
+		if (do_mob(teacher, student, 30 SECONDS))
 			teacher_prefs.true_experience -= 10
 
 			student_prefs.discipline_types += teaching_discipline
@@ -775,6 +776,7 @@
 
 /datum/species/kindred/proc/initialize_generation(mob/living/carbon/human/vampire)
 	if (iskindred(vampire) && vampire.generation)
+		var/old_max_bloodpool = vampire.maxbloodpool
 		switch(vampire.generation)
 			if (1)
 				vampire.maxbloodpool = 1000
@@ -809,3 +811,7 @@
 				vampire.maxbloodpool = 12
 			if (12)
 				vampire.maxbloodpool = 11
+
+		//forces blood_volume into line with new blood potency
+		if (old_max_bloodpool != vampire.maxbloodpool)
+			vampire.set_blood_points(vampire.bloodpool)

@@ -213,7 +213,7 @@
 /mob/living/proc/adjust_blood_volume(gain)
 	blood_per_point = initial(blood_volume) / maxbloodpool
 
-	var/factor = blood_per_point / HUMAN_BLOOD_POTENCY
+	var/factor = blood_per_point / BLOOD_POINT_NORMAL
 	gain *= factor
 	blood_volume = clamp(blood_volume + gain, 0, initial(blood_volume))
 

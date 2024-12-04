@@ -28,28 +28,21 @@
 	if(client)
 		client.images += suckbar
 	var/sound/heartbeat = sound('code/modules/wod13/sounds/drinkblood2.ogg', repeat = TRUE)
-	if(HAS_TRAIT(src, TRAIT_BLOODY_SUCKER))
-		src.emote("moan")
-		Immobilize(30, TRUE)
+
 	playsound_local(src, heartbeat, 75, 0, channel = CHANNEL_BLOOD, use_reverb = FALSE)
 	if(isnpc(mob))
 		var/mob/living/carbon/human/npc/NPC = mob
 		NPC.danger_source = null
 //		NPC.last_attacker = src
 
-	if(iskindred(mob))
-		to_chat(src, "<span class='userlove'>[mob]'s blood tastes HEAVENLY...</span>")
-		adjustBruteLoss(-25, TRUE)
-		adjustFireLoss(-25, TRUE)
-	else
-		mob.Stun(30)
-		to_chat(src, "<span class='warning'>You sip some <b>BLOOD</b> from your victim. It feels good.</span>")
-
 	if((mob.bloodpool <= 1) && (mob.maxbloodpool > 1))
 		to_chat(src, "<span class='warning'>You feel small amount of <b>BLOOD</b> in your victim.</span>")
 		if(iskindred(mob))
 			if(!mob.client)
 				to_chat(src, "<span class='warning'>You need [mob]'s attention to do that...</span>")
+				if (client)
+					client.images -= suckbar
+				qdel(suckbar)
 				return
 			message_admins("[ADMIN_LOOKUPFLW(src)] is attempting to Diablerize [ADMIN_LOOKUPFLW(mob)]")
 			log_attack("[key_name(src)] is attempting to Diablerize [key_name(mob)].")
@@ -85,15 +78,24 @@
 
 				if(!GLOB.canon_event)
 					to_chat(src, "<span class='warning'>It's not a canon event!</span>")
+					if(client)
+						client.images -= suckbar
+					qdel(suckbar)
 					return
 
 				if(vse_taki)
 					to_chat(src, "<span class='userdanger'><b>YOU TRY TO COMMIT DIABLERIE OVER [mob].</b></span>")
 				else
 					to_chat(src, "<span class='warning'>You find the idea of drinking your own <b>KIND</b> disgusting!</span>")
+					if(client)
+						client.images -= suckbar
+					qdel(suckbar)
 					return
 			else
 				to_chat(src, "<span class='warning'>You need [mob]'s attention to do that...</span>")
+				if(client)
+					client.images -= suckbar
+				qdel(suckbar)
 				return
 
 	if(!HAS_TRAIT(src, TRAIT_BLOODY_LOVER))
@@ -106,9 +108,30 @@
 		suck_delay = 1 SECONDS
 
 	if(do_after(src, suck_delay, target = mob, timed_action_flags = NONE, progress = FALSE))
-		var/sucked_blood = mob.maxbloodpool * 0.1
+		var/sucked_blood = clamp(mob.blood_points_per_units(BLOOD_POINT_NORMAL), 1, mob.bloodpool)
 		mob.adjust_blood_points(-sucked_blood)
 		suckbar.icon_state = "[round(14*(mob.bloodpool/mob.maxbloodpool))]"
+
+		//displays flavour text and prevents the vampire from cancelling the feeding depending on the blood potency of the victim
+		switch(sucked_blood)
+			if (1 to 1.5) //normal mobs, humans, and 9th gen vampires and above
+				if (iskindred(mob))
+					to_chat(src, "<span class='userlove'>You drink some <b>HEAVENLY</b> blood.</span>")
+				else
+					to_chat(src, "<span class='userlove'>You drink some DELICIOUS blood.</span>")
+				if(HAS_TRAIT(src, TRAIT_BLOODY_SUCKER))
+					Immobilize(3 SECONDS, TRUE)
+			if (1.5 to 2) //8th generation vampires
+				to_chat(src, "<span class=userlove'>You drink some <b>ENTHRALLING</b> blood... You can't stop drinking...")
+				Immobilize(3 SECONDS, TRUE)
+			if (2 to 3) //werewolves and 7th generation vampires
+				to_chat(src, "<span class='userlove'><h1>Your mind is washed away by sheer <b>ECSTASY</b> as you drink this blood.</h1></span>")
+				Immobilize(3 SECONDS, TRUE)
+			if (3 to INFINITY) //6th generation vampires and below
+				to_chat(src, "<span class='userlove'><h1><b>Blood.</b></h1></span>")
+				Immobilize(3 SECONDS, TRUE)
+
+		//transfer reagents from victim to vampire through their blood
 		if(ishuman(mob))
 			var/mob/living/carbon/human/H = mob
 			drunked_of |= "[H.dna.real_name]"
@@ -116,9 +139,11 @@
 				if(length(H.reagents.reagent_list))
 					if(prob(50))
 						H.reagents.trans_to(src, min(10, H.reagents.total_volume), transfered_by = mob, methods = VAMPIRE)
+
+		//clan-specific behaviours for feeding
 		if(clane)
 			if(clane.name == "Giovanni")
-				mob.adjustBruteLoss(20, TRUE)
+				mob.apply_damage(15, BRUTE)
 			if((clane.name == "Ventrue") && (mob.bloodquality < BLOOD_QUALITY_NORMAL))	//Ventrue can suck on normal people, but not homeless people and animals. BLOOD_QUALITY_LOV - 1, BLOOD_QUALITY_NORMAL - 2, BLOOD_QUALITY_HIGH - 3. Blue blood gives +1 to suction
 				to_chat(src, "<span class='warning'>You are too privileged to drink that awful <b>BLOOD</b>. Go get something better.</span>")
 				visible_message("<span class='danger'>[src] throws up!</span>", "<span class='userdanger'>You throw up!</span>")
@@ -130,6 +155,7 @@
 					client.images -= suckbar
 				qdel(suckbar)
 				return
+
 		adjust_blood_points(sucked_blood)
 		if(mob.bloodpool <= 0)
 			if(ishuman(mob))

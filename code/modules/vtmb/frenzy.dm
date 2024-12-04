@@ -108,7 +108,7 @@
 			if(get_dist(frenzy_target, src) <= 1)
 				if(isliving(frenzy_target))
 					var/mob/living/L = frenzy_target
-					if(L.bloodpool && L.stat != DEAD && last_drinkblood_use+95 <= world.time)
+					if(L.bloodpool && (L.stat != DEAD) && ((last_drinkblood_use + 9.5 SECONDS) <= world.time))
 						L.grabbedby(src)
 						if(ishuman(L))
 							L.emote("scream")
