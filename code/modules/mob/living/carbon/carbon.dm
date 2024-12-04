@@ -201,7 +201,7 @@
 		return
 
 	var/mob/living/carbon/H = src
-	var/physique = H.physique
+	var/physique = H.physique + H.additional_physique 
 
 	if(HAS_TRAIT(H, TRAIT_IMMOBILIZED) || H.legcuffed)
 		return
