@@ -411,11 +411,11 @@
 
 /datum/job/vamp/vjanitor
 	title = "Street Janitor"
-	department_head = list("Baron")
+	department_head = list("Prince")
 	faction = "Vampire"
 	total_positions = 6
 	spawn_positions = 6
-	supervisors = "the Camarilla or the Anarchs"
+	supervisors = "the Camarilla."
 	selection_color = "#e3e3e3"
 
 	outfit = /datum/outfit/job/vjanitor
@@ -431,7 +431,7 @@
 	allowed_bloodlines = list("True Brujah", "Daughters of Cacophony", "Salubri", "Baali", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Tzimisce", "Lasombra", "Caitiff")
 
 	v_duty = "Clean up all traces of Masquerade violations as the Camarilla has instructed you to."
-	duty = "Keep the streets clean. The government does pay you much to keep your mouth shut about the things you see."
+	duty = "Keep the streets clean. You are paid to keep your mouth shut and keep questions to yourselves."
 	minimal_masquerade = 0
 	experience_addition = 15
 
