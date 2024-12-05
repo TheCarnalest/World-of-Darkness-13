@@ -7,6 +7,7 @@
 		/datum/discipline/obtenebration = 2,
 		/datum/discipline/mytherceria = 3
 	)
+	alt_sprite = "kiadyd"
 	male_clothes = "/obj/item/clothing/under/vampire/malkavian"
 	female_clothes = "/obj/item/clothing/under/vampire/malkavian"
 	whitelisted = TRUE
@@ -19,6 +20,9 @@
 	if(!H.istower)
 		H.AddElement(/datum/element/giantism, COMSIG_PARENT_PREQDELETED, src)
 		H.istower = TRUE
+	if(H.base_body_mod == "f")
+		H.base_body_mod = ""
+		H.update_body()
 
 /datum/vampireclane/kiasyd/post_gain(mob/living/carbon/human/H)
 	..()
@@ -47,7 +51,7 @@
 	var/myth_steal = FALSE
 
 /mob/living
-	var/datum/riddle
+	var/datum/riddle/riddle
 	var/bad_answers = 0
 	var/list/stored_riddles = list()
 
@@ -67,7 +71,7 @@
 		if(M.riddle)
 			M.riddle.try_answer(M)
 
-/datum/riddle/try_answer(var/mob/living/answerer)
+/datum/riddle/proc/try_answer(var/mob/living/answerer)
 	var/try_answer = input(answerer, riddle_text, "Riddle") as null|anything in riddle_options
 	if(try_answer)
 		answer_riddle(answerer, try_answer)
@@ -107,8 +111,8 @@
 
 /datum/riddle/proc/answer_riddle(var/mob/living/answerer, var/the_answer)
 	if(the_answer != riddle_answer)
-		bad_answers = bad_answers+1
-		if(bad_answers >= round(length(riddle_options)/2))
+		answerer.bad_answers = answerer.bad_answers+1
+		if(answerer.bad_answers >= round(length(riddle_options)/2))
 			if(iscarbon(answerer))
 				var/mob/living/carbon/C = answerer
 				var/obj/item/organ/tongue/tongue = locate(/obj/item/organ/tongue) in C.internal_organs
@@ -121,6 +125,7 @@
 		answerer.say(the_answer)
 
 /mob/living/Topic(href, href_list)
+	var/mob/user = usr
 	if(user != src)
 		if(href_list["item"] && user.myth_steal)
 			var/slot = text2num(href_list["item"])
@@ -177,7 +182,7 @@
 			K.throw_at(target, 7, 4, caster)
 		if(4)
 			var/list/screens = list(target.hud_used.plane_masters["[FLOOR_PLANE]"], target.hud_used.plane_masters["[GAME_PLANE]"], target.hud_used.plane_masters["[LIGHTING_PLANE]"])
-			var/rotation = min(round(current_cycle/20), 89) // By this point the player is probably puking and quitting anyway
+			var/rotation = 50
 			for(var/whole_screen in screens)
 				animate(whole_screen, transform = matrix(rotation, MATRIX_ROTATE), time = 5, easing = QUAD_EASING, loop = -1)
 				animate(transform = matrix(-rotation, MATRIX_ROTATE), time = 5, easing = QUAD_EASING)
@@ -189,8 +194,8 @@
 				var/try_riddle = input(caster, "Select a Riddle:", "Riddle") as null|anything in caster.stored_riddles
 				if(try_riddle)
 					target.riddle = try_riddle
-					try_riddle.ask(target)
-					caster.say(try_riddle.riddle_text)
+					target.riddle.ask(target)
+					caster.say(target.riddle.riddle_text)
 			else
 				var/datum/riddle/R = new ()
 				if(R.create_riddle(caster))
