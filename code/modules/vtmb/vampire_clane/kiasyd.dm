@@ -83,28 +83,28 @@
 		answer_riddle(answerer, try_answer)
 
 /datum/riddle/proc/ask(var/mob/living/asking)
-	asking.throw_alert("riddle", /atom/movable/screen/alert/embeddedobject)
+	asking.throw_alert("riddle", /atom/movable/screen/alert/riddle)
 
 /datum/riddle/proc/create_riddle(var/mob/living/riddler)
 	var/proceed = FALSE
-	var/text_riddle = input(riddler, "Create a riddle:", "Riddle", 50) as text|null
+	var/text_riddle = input(riddler, "Create a riddle:", "Riddle", "Is it something?") as text|null
 	if(text_riddle)
 		riddle_text = text_riddle
-		var/right_answer = input(riddler, "Create a right answer:", "Riddle", 50) as text|null
+		var/right_answer = input(riddler, "Create a right answer:", "Riddle", "Something") as text|null
 		if(right_answer)
 			riddle_answer = right_answer
 			riddle_options += right_answer
 			proceed = TRUE
-			var/answer1 = input(riddler, "Create another answer:", "Riddle", 50) as text|null
+			var/answer1 = input(riddler, "Create another answer:", "Riddle", "Anything") as text|null
 			if(answer1)
 				riddle_options += answer1
-				var/answer2 = input(riddler, "Create another answer:", "Riddle", 50) as text|null
+				var/answer2 = input(riddler, "Create another answer:", "Riddle", "Anything") as text|null
 				if(answer2)
 					riddle_options += answer2
-					var/answer3 = input(riddler, "Create another answer:", "Riddle", 50) as text|null
+					var/answer3 = input(riddler, "Create another answer:", "Riddle", "Anything") as text|null
 					if(answer3)
 						riddle_options += answer3
-						var/answer4 = input(riddler, "Create another answer:", "Riddle", 50) as text|null
+						var/answer4 = input(riddler, "Create another answer:", "Riddle", "Anything") as text|null
 						if(answer4)
 							riddle_options += answer4
 	if(proceed)
@@ -186,8 +186,8 @@
 			spawn(delay+caster.discipline_time_plus)
 				caster.myth_steal = FALSE
 		if(3)
-			var/obj/item/clothing/mask/facehugger/kiasyd/K = new (caster.loc)
-			K.throw_at(target, 7, 4, caster)
+			var/obj/item/clothing/mask/facehugger/kiasyd/K = new (get_turf(caster))
+			K.throw_at(target, 10, 14, caster)
 		if(4)
 			var/list/screens = list(target.hud_used.plane_masters["[FLOOR_PLANE]"], target.hud_used.plane_masters["[GAME_PLANE]"], target.hud_used.plane_masters["[LIGHTING_PLANE]"])
 			var/rotation = 50
@@ -221,7 +221,7 @@
 	name = "goblin"
 	desc = "A green changeling creature."
 	worn_icon = 'code/modules/wod13/worn.dmi'
-	worn_icon = 'code/modules/wod13/icons.dmi'
+	icon = 'code/modules/wod13/icons.dmi'
 	icon_state = "goblin"
 	sterile = 1
 

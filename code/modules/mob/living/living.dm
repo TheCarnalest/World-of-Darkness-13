@@ -1128,7 +1128,7 @@
 	if(!(mobility_flags & MOBILITY_UI) && !floor_okay)
 		to_chat(src, "<span class='warning'>You can't do that right now!</span>")
 		return FALSE
-	if(be_close && !Adjacent(M) && (M.loc != src))
+	if(be_close && !Adjacent(M) && (M.loc != src) && !myth_steal)
 		if(no_tk)
 			to_chat(src, "<span class='warning'>You are too far away!</span>")
 			return FALSE
