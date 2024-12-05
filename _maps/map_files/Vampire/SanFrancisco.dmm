@@ -8236,7 +8236,7 @@
 "rIR" = (/obj/machinery/computer/slot_machine,/turf/open/floor/plating/rough,/area/vtm/sewer/nosferatu_town)
 "rIV" = (/obj/effect/decal/bordur,/turf/open/floor/plating/sidewalk/old,/area/vtm/pacificheights)
 "rJO" = (/obj/machinery/light{dir = 1},/obj/effect/decal/pallet,/obj/structure/closet/crate,/turf/open/floor/plating/concrete,/area/vtm/supply)
-"rJT" = (/obj/structure/closet/cardboard,/obj/item/clothing/under/costume/kilt/highlander,/obj/item/clothing/under/costume/kilt/highlander,/turf/open/floor/plating/concrete,/area/vtm/theatre)
+"rJT" = (/obj/structure/closet/cardboard,/obj/item/clothing/under/costume/mummy,/obj/item/clothing/under/costume/yakuza,/obj/item/clothing/under/costume/gladiator,/turf/open/floor/plating/concrete,/area/vtm/theatre)
 "rJU" = (/obj/manholedown,/turf/open/floor/plating/vampgrass,/area/vtm/graveyard)
 "rKb" = (/obj/structure/chair/comfy/beige,/obj/effect/decal/pallet,/obj/effect/landmark/start/citizen{name = "Primogen Malkavian"},/turf/open/floor/carpet/lone,/area/vtm/interior)
 "rKi" = (/obj/structure/chair/sofa,/obj/structure/coclock,/obj/effect/decal/graffiti,/turf/open/floor/plating/parquetry/old,/area/vtm/interior)
