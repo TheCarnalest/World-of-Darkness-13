@@ -608,7 +608,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(clane_accessory in clane.accessories)
 						dat += "<b>Marks:</b> <a href='?_src_=prefs;preference=clane_acc;task=input'>[clane_accessory]</a><BR>"
 					else
-						clane_accessory = pick(clane.accessories)
+						if("none" in clane_accessory)
+							clane_accessory = "none"
+						else
+							clane_accessory = pick(clane.accessories)
 						dat += "<b>Marks:</b> <a href='?_src_=prefs;preference=clane_acc;task=input'>[clane_accessory]</a><BR>"
 				else
 					clane_accessory = null
@@ -2056,7 +2059,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						if(clane.no_facial)
 							facial_hairstyle = "Shaved"
 						if(length(clane.accessories))
-							clane_accessory = pick(clane.accessories)
+							if("none" in clane.accessories)
+								clane_accessory = "none"
+							else
+								clane_accessory = pick(clane.accessories)
 				if("auspice_level")
 					if(true_experience >= auspice_level*10 && auspice_level < 3)
 						true_experience = true_experience-auspice_level*10

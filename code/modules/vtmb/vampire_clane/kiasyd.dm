@@ -8,9 +8,13 @@
 		/datum/discipline/mytherceria = 3
 	)
 	alt_sprite = "kiasyd"
+	no_facial = TRUE
 	male_clothes = "/obj/item/clothing/under/vampire/emo"
 	female_clothes = "/obj/item/clothing/under/vampire/business"
 	whitelisted = TRUE
+	current_accessory = "none"
+	accessories = list("fae_ears", "none")
+	accessories_layers = list("fae_ears" = UNICORN_LAYER, "none" = UNICORN_LAYER)
 
 /datum/vampireclane/kiasyd/on_gain(mob/living/carbon/human/H)
 	..()
@@ -40,7 +44,7 @@
 	cost = 1
 	ranged = TRUE
 	delay = 10 SECONDS
-	activate_sound = 'code/modules/wod13/sounds/visceratika.ogg'
+	activate_sound = 'code/modules/wod13/sounds/kiasyd.ogg'
 	leveldelay = FALSE
 	fearless = TRUE
 	clane_restricted = TRUE
@@ -120,10 +124,12 @@
 				var/obj/item/organ/tongue/tongue = locate(/obj/item/organ/tongue) in C.internal_organs
 				if(tongue)
 					tongue.Remove(C)
+			answerer.remove_movespeed_modifier(/datum/movespeed_modifier/riddle)
 			answerer.bad_answers = 0
 			answerer.riddle = null
 	else
 		answerer.riddle = null
+		answerer.remove_movespeed_modifier(/datum/movespeed_modifier/riddle)
 		answerer.say(the_answer)
 
 /mob/living/Topic(href, href_list)
@@ -195,6 +201,8 @@
 			if(length(caster.stored_riddles))
 				var/try_riddle = input(caster, "Select a Riddle:", "Riddle") as null|anything in caster.stored_riddles
 				if(try_riddle)
+					if(!target.riddle)
+						target.add_movespeed_modifier(/datum/movespeed_modifier/riddle)
 					target.riddle = try_riddle
 					target.riddle.ask(target)
 					caster.say(target.riddle.riddle_text)
@@ -206,6 +214,9 @@
 					R.ask(target)
 					caster.say(R.riddle_text)
 
+/datum/movespeed_modifier/riddle
+	multiplicative_slowdown = 5
+
 /obj/item/clothing/mask/facehugger/kiasyd
 	name = "goblin"
 	desc = "A green changeling creature."
@@ -213,6 +224,14 @@
 	worn_icon = 'code/modules/wod13/icons.dmi'
 	icon_state = "goblin"
 	sterile = 1
+
+/obj/item/clothing/mask/facehugger/kiasyd/attack_hand(mob/user)
+	if(iscarbon(user))
+		var/mob/living/carbon/C = user
+		C.adjustBruteLoss(5)
+		to_chat(user, "<span class='warning'>[src] bites!</span>")
+		return
+	. = ..()
 
 /obj/item/clothing/mask/facehugger/kiasyd/Die()
 	qdel(src)
@@ -238,3 +257,72 @@
 									"<span class='userdanger'>[src] tears [W] off of your face!</span>")
 		target.equip_to_slot_if_possible(src, ITEM_SLOT_MASK, 0, 1, 1)
 	return TRUE
+
+/obj/item/gun/ballistic
+	is_iron = TRUE
+
+/obj/item/melee/vampirearms/fireaxe
+	is_iron = TRUE
+
+/obj/item/melee/vampirearms/tire
+	is_iron = TRUE
+
+/obj/item/melee/vampirearms/knife
+	is_iron = TRUE
+
+/obj/item/melee/vampirearms/knife/gangrel
+	is_iron = FALSE
+
+/obj/item/melee/vampirearms/chainsaw
+	is_iron = TRUE
+
+/obj/item/melee/vampirearms/shovel
+	is_iron = TRUE
+
+/obj/item/melee/vampirearms/katana
+	is_iron = TRUE
+
+/obj/item/flashlight
+	is_iron = TRUE
+
+/datum/discipline/mytherceria/post_gain(mob/living/carbon/human/H)
+	if (level >= 3)
+		var/datum/action/mytherceria/U = new()
+		U.Grant(H)
+
+/datum/action/mytherceria
+	name = "Mytherceria Traps"
+	desc = "Create a trap."
+	button_icon_state = "mytherceria"
+	check_flags = AB_CHECK_HANDS_BLOCKED|AB_CHECK_IMMOBILE|AB_CHECK_LYING|AB_CHECK_CONSCIOUS
+	vampiric = TRUE
+
+/datum/action/mytherceria/Trigger()
+	. = ..()
+	var/mob/living/carbon/human/NG = owner
+	if(NG.stat > 1 || NG.IsSleeping() || NG.IsUnconscious() || NG.IsParalyzed() || NG.IsKnockdown() || NG.IsStun() || HAS_TRAIT(NG, TRAIT_RESTRAINED) || !isturf(NG.loc))
+		return
+	var/mob/living/carbon/human/H = owner
+	if(H.bloodpool < 1)
+		to_chat(owner, "<span class='warning'>You don't have enough <b>BLOOD</b> to do that!</span>")
+		return
+	H.bloodpool = max(0, H.bloodpool-1)
+	var/obj/mytherceria_trap/trap = new (owner.loc)
+	trap.owner = owner
+
+/obj/mytherceria_trap
+	name = "mytherceria_trap"
+	desc = "Creates the Blood Trap to protect tremere or his domain."
+	anchored = TRUE
+	density = FALSE
+	alpha = 0
+	var/mob/owner
+
+/obj/mytherceria_trap/Crossed(atom/movable/AM)
+	..()
+	if(isliving(AM) && owner)
+		if(AM != owner)
+			var/mob/living/L = AM
+			var/atom/throw_target = get_edge_target_turf(AM, get_dir(src, AM))
+			L.adjustBruteLoss(30)
+			AM.throw_at(throw_target, rand(8,10), 14, owner)
