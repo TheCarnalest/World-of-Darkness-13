@@ -325,6 +325,7 @@
 		return
 	H.bloodpool = max(0, H.bloodpool-1)
 	var/obj/mytherceria_trap/trap = new (owner.loc)
+	to_chat(user, "<span class='notice'>You've created a trap!</span>")
 	trap.owner = owner
 
 /obj/mytherceria_trap
@@ -343,3 +344,4 @@
 			var/atom/throw_target = get_edge_target_turf(AM, get_dir(src, AM))
 			L.adjustBruteLoss(30)
 			AM.throw_at(throw_target, rand(8,10), 14, owner)
+			qdel(src)
