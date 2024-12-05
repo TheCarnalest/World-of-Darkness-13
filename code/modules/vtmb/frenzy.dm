@@ -273,7 +273,7 @@
 		for(var/obj/item/I in H.contents)
 			if(I)
 				if(I.is_iron)
-					H.adjustCloneLoss(I.w_class)
+					H.adjustCloneLoss(max(5, I.w_class))
 					to_chat(H, "<span class='warning'>[I] burns your flesh with <b>COLD IRON</b>!")
 
 /*
