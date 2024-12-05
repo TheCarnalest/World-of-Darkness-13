@@ -7,7 +7,7 @@
 		/datum/discipline/obtenebration = 2,
 		/datum/discipline/mytherceria = 3
 	)
-	alt_sprite = "kiadyd"
+	alt_sprite = "kiasyd"
 	male_clothes = "/obj/item/clothing/under/vampire/emo"
 	female_clothes = "/obj/item/clothing/under/vampire/business"
 	whitelisted = TRUE
@@ -22,8 +22,6 @@
 		H.istower = TRUE
 	var/obj/item/organ/eyes/night_vision/kiasyd/NV = new()
 	NV.Insert(H, TRUE, FALSE)
-	H.eye_color = "#000000"
-	NV.old_eye_color = "#000000"
 	if(H.base_body_mod == "f")
 		H.base_body_mod = ""
 	H.update_body()
