@@ -199,11 +199,28 @@
 					animate(whole_screen, transform = matrix(), time = 5, easing = QUAD_EASING)
 		if(5)
 			if(length(caster.stored_riddles))
-				var/try_riddle = input(caster, "Select a Riddle:", "Riddle") as null|anything in caster.stored_riddles
+				var/list/riddle_list = list("Create a new riddle...")
+				for(var/datum/riddle/R in caster.stored_riddles)
+					if(R)
+						riddle_list += R.riddle_text
+				var/try_riddle = input(caster, "Select a Riddle:", "Riddle") as null|anything in riddle_list
 				if(try_riddle)
+					if(try_riddle == "Create a new riddle...")
+						var/datum/riddle/R = new ()
+						if(R.create_riddle(caster))
+							caster.stored_riddles += R
+							target.riddle = R
+							R.ask(target)
+							caster.say(R.riddle_text)
+						return
+					var/datum/riddle/actual_riddle
+					for(var/datum/riddle/RIDDLE in caster.stored_riddles)
+						if(RIDDLE)
+							if(RIDDLE.riddle_text == try_riddle)
+								actual_riddle = RIDDLE
 					if(!target.riddle)
 						target.add_movespeed_modifier(/datum/movespeed_modifier/riddle)
-					target.riddle = try_riddle
+					target.riddle = actual_riddle
 					target.riddle.ask(target)
 					caster.say(target.riddle.riddle_text)
 			else
