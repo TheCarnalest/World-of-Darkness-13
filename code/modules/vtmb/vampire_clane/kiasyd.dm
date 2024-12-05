@@ -284,9 +284,6 @@
 /obj/item/gun/ballistic/shotgun/toy/crossbow/vampire
 	is_iron = FALSE
 
-/obj/item/melee/vampirearms/fireaxe
-	is_iron = TRUE
-
 /obj/item/melee/vampirearms/tire
 	is_iron = TRUE
 
