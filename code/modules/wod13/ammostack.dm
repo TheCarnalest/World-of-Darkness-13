@@ -46,6 +46,11 @@
 	damage = 18
 	bare_wound_bonus = 10
 
+/obj/projectile/beam/beam_rifle/vampire/vamp9mm/plus
+	name = "9mm HV bullet"
+	damage = 22
+	armour_penetration = 10
+
 /obj/projectile/beam/beam_rifle/vampire/vamp45acp
 	name = ".45 ACP bullet"
 	damage = 20
@@ -62,6 +67,8 @@
 	name = ".50 bullet"
 	damage = 70
 	armour_penetration = 20
+	bare_wound_bonus = 5
+	wound_bonus = 5
 
 /obj/projectile/beam/beam_rifle/vampire/vamp556mm
 	name = "5.56mm bullet"
@@ -125,6 +132,11 @@
 	projectile_type = /obj/projectile/beam/beam_rifle/vampire/vamp9mm
 	icon_state = "9"
 	base_iconstate = "9"
+
+/obj/item/ammo_casing/vampire/c9mm/plus
+	name = "9mm HV bullet casing"
+	projectile_type = /obj/projectile/beam/beam_rifle/vampire/vamp9mm/plus
+	caliber = CALIBER_9MM
 
 /obj/item/ammo_casing/vampire/c45acp
 	name = ".45 ACP bullet casing"
@@ -221,6 +233,7 @@
 	icon = 'code/modules/wod13/ammo.dmi'
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
+	multiple_sprites = AMMO_BOX_FULL_EMPTY
 ///9mm/////////////
 
 /obj/item/ammo_box/vampire/c9mm
@@ -228,6 +241,11 @@
 	icon_state = "9box"
 	ammo_type = /obj/item/ammo_casing/vampire/c9mm
 	max_ammo = 100
+
+/obj/item/ammo_box/vampire/c9mm/plus
+	name = "ammo box (9mm, +P)"
+	desc = "a box of High Velocity (HV) ammo."
+	ammo_type = /obj/item/ammo_casing/vampire/c9mm/plus
 
 /obj/item/ammo_box/vampire/c9mm/moonclip
 	name = "ammo clip (9mm)"
