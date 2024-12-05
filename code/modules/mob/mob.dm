@@ -713,7 +713,7 @@
 //		else
 //			return
 
-	if(respawntimeofdeath+12000 > world.time)
+	if((respawntimeofdeath + 20 MINUTES) > world.time)
 		if(istype(usr.client.mob, /mob/dead/observer))
 			var/mob/dead/observer/obs = usr.client.mob
 			if(obs.auspex_ghosted)

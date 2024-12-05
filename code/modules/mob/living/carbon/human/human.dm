@@ -295,7 +295,7 @@
 			var/reason = input(usr, "Write a description of violation:", "Spot a Masquerade violation") as text|null
 			if(reason)
 				masquerade_votes = masquerade_votes+1
-				message_admins("[H]([H.key]) spotted [src]'s([key]) masqureade violation. Description: [reason]")
+				message_admins("[ADMIN_LOOKUPFLW(H)] spotted [ADMIN_LOOKUPFLW(src)]'s Masquerade violation. Description: [reason]")
 				H.voted_for |= dna.real_name
 				if(masquerade_votes > 1)
 					masquerade_votes = 0

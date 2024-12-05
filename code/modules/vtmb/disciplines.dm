@@ -228,7 +228,7 @@
 			return
 
 /datum/discipline/proc/check_activated(var/mob/living/target, var/mob/living/carbon/human/caster)
-	if(caster.stat >= 2 || caster.IsSleeping() || caster.IsUnconscious() || caster.IsParalyzed() || caster.IsStun() || HAS_TRAIT(caster, TRAIT_RESTRAINED) || !isturf(caster.loc))
+	if(caster.stat >= HARD_CRIT || caster.IsSleeping() || caster.IsUnconscious() || caster.IsParalyzed() || caster.IsStun() || HAS_TRAIT(caster, TRAIT_RESTRAINED) || !isturf(caster.loc))
 		return FALSE
 	var/plus = 0
 	if(HAS_TRAIT(caster, TRAIT_HUNGRY))
@@ -755,7 +755,7 @@
 			new /datum/hallucination/oh_yeah(H, TRUE)
 		if(3)
 			H.Immobilize(20)
-			if(H.stat <= 2 && !H.IsSleeping() && !H.IsUnconscious() && !H.IsParalyzed() && !H.IsKnockdown() && !HAS_TRAIT(H, TRAIT_RESTRAINED))
+			if(H.stat <= HARD_CRIT && !H.IsSleeping() && !H.IsUnconscious() && !H.IsParalyzed() && !H.IsKnockdown() && !HAS_TRAIT(H, TRAIT_RESTRAINED))
 				if(prob(50))
 					dancefirst(H)
 				else
@@ -1343,7 +1343,7 @@
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
 		caster.playsound_local(target.loc, 'code/modules/wod13/sounds/vicissitude.ogg', 50, TRUE)
-		if(target.stat >= 2)
+		if(target.stat >= HARD_CRIT)
 			if(istype(target, /mob/living/carbon/human/npc))
 				var/mob/living/carbon/human/npc/NPC = target
 				NPC.last_attacker = null

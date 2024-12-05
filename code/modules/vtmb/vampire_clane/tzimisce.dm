@@ -219,7 +219,6 @@
 		if(level >= 1)
 			H.mind.teach_crafting_recipe(/datum/crafting_recipe/tzi_wall)
 			H.mind.teach_crafting_recipe(/datum/crafting_recipe/tzi_stool)
-			H.mind.teach_crafting_recipe(/datum/crafting_recipe/tzi_unicorn)
 		if(level >= 2)
 			H.mind.teach_crafting_recipe(/datum/crafting_recipe/tzi_floor)
 			H.mind.teach_crafting_recipe(/datum/crafting_recipe/tzi_biter)
@@ -233,7 +232,7 @@
 			H.mind.teach_crafting_recipe(/datum/crafting_recipe/tzi_heart)
 			H.mind.teach_crafting_recipe(/datum/crafting_recipe/tzi_koldun)
 		if(level >= 5)
-			H.mind.teach_crafting_recipe(/datum/crafting_recipe/tzi_stealth)
+//			H.mind.teach_crafting_recipe(/datum/crafting_recipe/tzi_stealth)
 			H.mind.teach_crafting_recipe(/datum/crafting_recipe/tzi_trench)
 
 /datum/vampireclane/tzimisce/post_gain(mob/living/carbon/human/H)
@@ -272,14 +271,6 @@
 	always_available = FALSE
 	category = CAT_TZIMISCE
 
-/datum/crafting_recipe/tzi_unicorn
-	name = "Unicorn (Decoration)"
-	time = 50
-	reqs = list(/obj/item/organ/penis = 1)
-	result = /obj/item/organ/penicorn
-	always_available = FALSE
-	category = CAT_TZIMISCE
-
 /datum/crafting_recipe/tzi_med
 	name = "Medical Hand (Healing)"
 	time = 50
@@ -304,7 +295,7 @@
 	result = /obj/item/organ/eyes/night_vision/nightmare
 	always_available = FALSE
 	category = CAT_TZIMISCE
-
+/*
 /datum/crafting_recipe/tzi_stealth
 	name = "Stealth Skin (Invisibility)"
 	time = 50
@@ -312,7 +303,7 @@
 	result = /obj/item/dnainjector/chameleonmut
 	always_available = FALSE
 	category = CAT_TZIMISCE
-
+*/
 /datum/crafting_recipe/tzi_koldun
 	name = "Koldun Sorcery (Firebreath)"
 	time = 50

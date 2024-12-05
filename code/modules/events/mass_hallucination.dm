@@ -22,18 +22,9 @@
 				if(C.z in SSmapping.levels_by_trait(ZTRAIT_CENTCOM))//not for admin/ooc stuff
 					continue
 				new /datum/hallucination/weird_sounds(C, TRUE, weirdsound)
-		if(3)
-			var/stationmessage = pick("ratvar","shuttle_dock","blob_alert","malf_ai","meteors","supermatter")
-			for(var/mob/living/carbon/C in GLOB.alive_mob_list)
-				if(C.z in SSmapping.levels_by_trait(ZTRAIT_CENTCOM))//not for admin/ooc stuff
-					continue
-				new /datum/hallucination/stationmessage(C, TRUE, stationmessage)
-		if(4 to 6)
-			var/picked_hallucination = pick(	/datum/hallucination/bolts,
-												/datum/hallucination/chat,
+		if(3 to 5)
+			var/picked_hallucination = pick(	/datum/hallucination/chat,
 												/datum/hallucination/message,
-												/datum/hallucination/bolts,
-												/datum/hallucination/fake_flood,
 												/datum/hallucination/battle,
 												/datum/hallucination/fire,
 												/datum/hallucination/self_delusion,

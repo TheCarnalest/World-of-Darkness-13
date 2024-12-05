@@ -3,6 +3,7 @@ Cars use gasoline - you can buy more at a Gas Station. This can be used in the p
 If you ever find yourself lost, the bus stations usually have a map of the city near them.
 Less humane clans and the Sabbat have access to the Paths of Enlightenment. They are various and diverse, each a method to co-exist with your beast.
 Discipline levels can be changed with Right-Click.
+Human players can use the "REPORT MASQUERADE VIOLATION" button in people's examine text to report any weird supernatural stuff they shouldn't be seeing, like vampires feeding or punching people across a room.
 You can parry melee attacks my clicking directly on the opponent with Grab intent. Successful parry will stun your enemy and force them to drop their weapon if it matches yours by size.
 You can block melee attacks by pressing C or BLOCK interface button. While blocking attacks you are getting Stun damage instead of Brute. Bare hands are weaker in blocking than any other weapon, and big items block extremely better.
 You can restore Humanity by dancing near an active jukebox. You will need special Quirk to dance.

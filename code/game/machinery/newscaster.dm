@@ -884,11 +884,10 @@ GLOBAL_LIST_EMPTY(allCasters)
 
 	return(TOXLOSS)
 
-/*
 /obj/item/newspaper/examine(mob/user)
 	. = ..()
 	to_chat(user, "<B>Weather Forecast:</B>")
-*/
+
 
 /*
 /obj/item/newspaper/attack_self(mob/user)

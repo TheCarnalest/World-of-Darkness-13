@@ -36,5 +36,5 @@
 		for(var/mob/living/carbon/human/H in GLOB.player_list)
 			if (iskindred(H))
 				var/datum/species/kindred/species = H.dna.species
-				if (species.has_discipline("Dementation"))
+				if (species.get_discipline("Dementation"))
 					to_chat(H, "<span class='ghostalert'>[sanitize_text(new_thought)]</span>")

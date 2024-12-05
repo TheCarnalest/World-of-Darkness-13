@@ -65,6 +65,14 @@
 	)
 	color = "#bd3327"
 
+/obj/item/vamp/keys/camarilla
+	name = "Millenium Tower keys"
+	accesslocks = list(
+		"milleniumCommon",
+		"clerk",
+		"camarilla"
+	)
+
 /obj/item/vamp/keys/graveyard
 	name = "Graveyard keys"
 	accesslocks = list(

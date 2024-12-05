@@ -193,8 +193,8 @@
 	obj_integrity = 100
 
 /obj/ritualrune/identification
-	name = "Occult Items Identification"
-	desc = "Identificates single occult item"
+	name = "Identification Rune"
+	desc = "Identifies a single occult item."
 	icon_state = "rune4"
 	word = "IN'DAR"
 
@@ -207,8 +207,8 @@
 			return
 
 /obj/ritualrune/question
-	name = "Question to Ancestors"
-	desc = "Summon souls from the dead. Ask a question and get answers."
+	name = "Question to Ancestors Rune"
+	desc = "Summon souls from the dead. Ask a question and get answers. Requires a bloodpack."
 	icon_state = "rune5"
 	word = "TE-ME'LL"
 	thaumlevel = 3
@@ -239,7 +239,7 @@
 
 /obj/ritualrune/teleport
 	name = "Teleportation Rune"
-	desc = "Move your body among the city streets."
+	desc = "Move your body among the city streets. Requires a bloodpack."
 	icon_state = "rune6"
 	word = "POR'TALE"
 	thaumlevel = 5
@@ -279,11 +279,11 @@
 
 /obj/ritualrune/curse
 	name = "Curse Rune"
-	desc = "Curse your enemies in distance."
+	desc = "Curse your enemies in distance. Requires a heart."
 	icon_state = "rune7"
 	word = "CUS-RE'S"
 	thaumlevel = 5
-	sacrifice = /obj/item/organ/penis
+	sacrifice = /obj/item/organ/heart
 
 /obj/ritualrune/curse/complete()
 	if(!activated)
