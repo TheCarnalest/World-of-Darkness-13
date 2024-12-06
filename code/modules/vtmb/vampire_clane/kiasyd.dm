@@ -275,6 +275,15 @@
 		target.equip_to_slot_if_possible(src, ITEM_SLOT_MASK, 0, 1, 1)
 	return TRUE
 
+/obj/item/afterattack(atom/target, mob/living/carbon/user, proximity)
+	if(!proximity)
+		return
+	if(iskindred(target))
+		var/mob/living/carbon/human/L = target
+		if(L.clane?.name == "Kiasyd")
+			L.apply_damage(w_class*3, CLONE)
+	..()
+
 /obj/item/gun/ballistic
 	is_iron = TRUE
 
@@ -323,28 +332,85 @@
 	if(NG.stat > 1 || NG.IsSleeping() || NG.IsUnconscious() || NG.IsParalyzed() || NG.IsKnockdown() || NG.IsStun() || HAS_TRAIT(NG, TRAIT_RESTRAINED) || !isturf(NG.loc))
 		return
 	var/mob/living/carbon/human/H = owner
-	if(H.bloodpool < 1)
-		to_chat(owner, "<span class='warning'>You don't have enough <b>BLOOD</b> to do that!</span>")
-		return
-	H.bloodpool = max(0, H.bloodpool-1)
-	var/obj/mytherceria_trap/trap = new (owner.loc)
-	to_chat(user, "<span class='notice'>You've created a trap!</span>")
-	trap.owner = owner
+	var/try_trap = input(caster, "Select a Trap:", "Trap") as null|anything in list("Brutal", "Spin", "Drop")
+	if(try_trap)
+		if(H.bloodpool < 1)
+			to_chat(owner, "<span class='warning'>You don't have enough <b>BLOOD</b> to do that!</span>")
+			return
+		H.bloodpool = max(0, H.bloodpool-1)
+		switch(try_trap)
+			if("Brutal")
+				var/obj/mytherceria_trap/trap = new (get_turf(owner))
+				trap.owner = owner
+			if("Spin")
+				var/obj/mytherceria_trap/disorient/trap = new (get_turf(owner))
+				trap.owner = owner
+			if("Drop")
+				var/obj/mytherceria_trap/drop/trap = new (get_turf(owner))
+				trap.owner = owner
+		to_chat(user, "<span class='notice'>You've created a trap!</span>")
 
 /obj/mytherceria_trap
-	name = "mytherceria_trap"
-	desc = "Creates the Blood Trap to protect tremere or his domain."
+	name = "mytherceria trap"
+	desc = "Creates the Changeling Trap to protect kiasyd or his domain."
 	anchored = TRUE
 	density = FALSE
-	alpha = 0
+	alpha = 64
+	icon = 'code/modules/wod13/icons.dmi'
+	icon_state = "rune1"
+	color = "#4182ad"
+	var/unique = FALSE
 	var/mob/owner
 
 /obj/mytherceria_trap/Crossed(atom/movable/AM)
 	..()
 	if(isliving(AM) && owner)
 		if(AM != owner)
+			playsound(get_turf(src), 'code/modules/wod13/sounds/kiasyd.ogg', 100, FALSE)
+			if(!unique)
+				var/mob/living/L = AM
+				var/atom/throw_target = get_edge_target_turf(AM, get_dir(src, AM))
+				L.apply_damage(30, BRUTE)
+				AM.throw_at(throw_target, rand(8,10), 14, owner)
+				qdel(src)
+
+/obj/mytherceria_trap/disorient
+	name = "mytherceria trap"
+	desc = "Creates the Changeling Trap to protect kiasyd or his domain."
+	anchored = TRUE
+	density = FALSE
+	unique = TRUE
+	icon_state = "rune2"
+
+/obj/mytherceria_trap/disorient/Crossed(atom/movable/AM)
+	..()
+	if(isliving(AM) && owner)
+		if(AM != owner)
 			var/mob/living/L = AM
-			var/atom/throw_target = get_edge_target_turf(AM, get_dir(src, AM))
-			L.adjustBruteLoss(30)
-			AM.throw_at(throw_target, rand(8,10), 14, owner)
+			var/list/screens = list(L.hud_used.plane_masters["[FLOOR_PLANE]"], L.hud_used.plane_masters["[GAME_PLANE]"], L.hud_used.plane_masters["[LIGHTING_PLANE]"])
+			var/rotation = 50
+			for(var/whole_screen in screens)
+				animate(whole_screen, transform = matrix(rotation, MATRIX_ROTATE), time = 5, easing = QUAD_EASING, loop = -1)
+				animate(transform = matrix(-rotation, MATRIX_ROTATE), time = 5, easing = QUAD_EASING)
+			spawn(15 SECONDS)
+				for(var/whole_screen in screens)
+					animate(whole_screen, transform = matrix(), time = 5, easing = QUAD_EASING)
+			qdel(src)
+
+/obj/mytherceria_trap/drop
+	name = "mytherceria trap"
+	desc = "Creates the Changeling Trap to protect kiasyd or his domain."
+	anchored = TRUE
+	density = FALSE
+	unique = TRUE
+	icon_state = "rune3"
+
+/obj/mytherceria_trap/drop/Crossed(atom/movable/AM)
+	..()
+	if(iscarbon(AM) && owner)
+		if(AM != owner)
+			var/mob/living/carbon/L = AM
+			for(var/obj/item/I in L.get_equipped_items(include_pockets = TRUE))
+				if(I)
+					L.dropItemToGround(I, TRUE)
 			qdel(src)
