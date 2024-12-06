@@ -269,27 +269,28 @@
 				set_glide_size(DELAY_TO_GLIDE_SIZE(total_multiplicative_slowdown()))
 				walk_away(src, danger_source, reqsteps, total_multiplicative_slowdown())
 			if(my_weapon || fights_anyway)
-				if(!spawned_weapon && my_weapon)
-					my_weapon.forceMove(loc)
-					drop_all_held_items()
-					put_in_active_hand(my_weapon)
-					spawned_weapon = TRUE
-				if(spawned_weapon && get_active_held_item() != my_weapon)
-					my_weapon = null
-
-				if(danger_source)
-					if(danger_source == src)
-						danger_source = null
-					else
-						ClickOn(danger_source)
-						face_atom(danger_source)
+				var/obj/item/card/id/id_card = danger_source.get_idcard(FALSE)
+				if(!istype(id_card, /obj/item/card/id/police))
+					if(!spawned_weapon && my_weapon)
+						my_weapon.forceMove(loc)
+						drop_all_held_items()
+						put_in_active_hand(my_weapon)
+						spawned_weapon = TRUE
+					if(spawned_weapon && get_active_held_item() != my_weapon)
+						my_weapon = null
+					if(danger_source)
+						if(danger_source == src)
+							danger_source = null
+						else
+							ClickOn(danger_source)
+							face_atom(danger_source)
 //				if(last_walkin+5 < world.time)
-						var/reqsteps = round((SShumannpcpool.next_fire-world.time)/total_multiplicative_slowdown())
-						set_glide_size(DELAY_TO_GLIDE_SIZE(total_multiplicative_slowdown()))
+							var/reqsteps = round((SShumannpcpool.next_fire-world.time)/total_multiplicative_slowdown())
+							set_glide_size(DELAY_TO_GLIDE_SIZE(total_multiplicative_slowdown()))
 //						var/plus_turfs = 0
 //						if(istype(my_weapon, /obj/item/gun))
 //							plus_turfs = 3
-						walk_to(src, danger_source, reqsteps, total_multiplicative_slowdown())
+							walk_to(src, danger_source, reqsteps, total_multiplicative_slowdown())
 
 			if(isliving(danger_source))
 				var/mob/living/L = danger_source
