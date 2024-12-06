@@ -332,7 +332,7 @@
 	if(NG.stat > 1 || NG.IsSleeping() || NG.IsUnconscious() || NG.IsParalyzed() || NG.IsKnockdown() || NG.IsStun() || HAS_TRAIT(NG, TRAIT_RESTRAINED) || !isturf(NG.loc))
 		return
 	var/mob/living/carbon/human/H = owner
-	var/try_trap = input(caster, "Select a Trap:", "Trap") as null|anything in list("Brutal", "Spin", "Drop")
+	var/try_trap = input(H, "Select a Trap:", "Trap") as null|anything in list("Brutal", "Spin", "Drop")
 	if(try_trap)
 		if(H.bloodpool < 1)
 			to_chat(owner, "<span class='warning'>You don't have enough <b>BLOOD</b> to do that!</span>")
@@ -348,7 +348,7 @@
 			if("Drop")
 				var/obj/mytherceria_trap/drop/trap = new (get_turf(owner))
 				trap.owner = owner
-		to_chat(user, "<span class='notice'>You've created a trap!</span>")
+		to_chat(owner, "<span class='notice'>You've created a trap!</span>")
 
 /obj/mytherceria_trap
 	name = "mytherceria trap"
