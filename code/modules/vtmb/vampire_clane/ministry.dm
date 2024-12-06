@@ -97,6 +97,7 @@
 						heart.Insert(H)
 			urn.own = null
 			qdel(urn)
+			urn = null
 
 /datum/action/mummyfy
 	name = "Mummyfy"
