@@ -165,11 +165,10 @@ GLOBAL_LIST_EMPTY(vampire_computers)
 			return TRUE
 		if("news_send_message")
 			if(params["message"] != "" && params["message"])
-				var/announcement = html_encode(params["message"])
 				for(var/obj/vampire_computer/C in GLOB.vampire_computers)
 					var/datum/app/news/news = C.apps[4]
-					news.text = announcement
-					message_admins("[key_name(usr)] sent an announcement:\"- [announcement]\"")
+					news.text = params["message"]
+					message_admins("[key_name(usr)] send an announcement:\"- [html_encode(params["message"])]\"")
 					if(!C.main)
 						C.say("New announcement from Prince!")
 						C.icon_state = "computermessage"
