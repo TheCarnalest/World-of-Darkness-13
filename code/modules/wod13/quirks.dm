@@ -514,7 +514,7 @@ Dancer
 /datum/quirk/espanol
 	name = "Espanol"
 	desc = "You know the Spanish language."
-	value = 1
+	value = 0
 
 /datum/quirk/espanol/add()
 	var/mob/living/carbon/H = quirk_holder
@@ -523,7 +523,7 @@ Dancer
 /datum/quirk/chinese
 	name = "Chinese"
 	desc = "You know the Chinese language."
-	value = 1
+	value = 0
 
 /datum/quirk/chinese/add()
 	var/mob/living/carbon/H = quirk_holder
@@ -532,7 +532,7 @@ Dancer
 /datum/quirk/russian
 	name = "Russian"
 	desc = "You know the Russian language."
-	value = 1
+	value = 0
 
 /datum/quirk/russian/add()
 	var/mob/living/carbon/H = quirk_holder
@@ -541,7 +541,7 @@ Dancer
 /datum/quirk/japanese
 	name = "Japanese"
 	desc = "You know the Japanese language."
-	value = 1
+	value = 0
 
 /datum/quirk/japanese/add()
 	var/mob/living/carbon/H = quirk_holder
@@ -550,7 +550,7 @@ Dancer
 /datum/quirk/italian
 	name = "Italian"
 	desc = "You know the Italian language."
-	value = 1
+	value = 0
 
 /datum/quirk/italian/add()
 	var/mob/living/carbon/H = quirk_holder
@@ -559,7 +559,7 @@ Dancer
 /datum/quirk/german
 	name = "German"
 	desc = "You know the German language, FUR DAR FATERLAND!"
-	value = 1
+	value = 0
 
 /datum/quirk/german/add()
 	var/mob/living/carbon/H = quirk_holder
@@ -586,7 +586,7 @@ Dancer
 /datum/quirk/french
 	name = "French"
 	desc = "You know the romantic language of the French."
-	value = 1
+	value = 0
 
 /datum/quirk/french/add()
 	var/mob/living/carbon/H = quirk_holder
@@ -595,7 +595,7 @@ Dancer
 /datum/quirk/arabic
 	name = "Arabic"
 	desc = "You know the melodic language of the Middle East."
-	value = 1
+	value = 0
 
 /datum/quirk/arabic/add()
 	var/mob/living/carbon/H = quirk_holder
