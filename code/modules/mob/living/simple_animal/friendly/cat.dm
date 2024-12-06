@@ -286,8 +286,8 @@
 
 /mob/living/simple_animal/pet/cat/vampire
 	icon = 'code/modules/wod13/mobs.dmi'
-	bloodpool = 1
-	maxbloodpool = 1
+	bloodpool = 2
+	maxbloodpool = 2
 
 /mob/living/simple_animal/pet/cat/vampire/Initialize()
 	. = ..()
