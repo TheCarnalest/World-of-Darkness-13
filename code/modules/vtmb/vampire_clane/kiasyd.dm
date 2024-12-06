@@ -9,8 +9,8 @@
 	)
 	alt_sprite = "kiasyd"
 	no_facial = TRUE
-	male_clothes = "/obj/item/clothing/under/vampire/emo"
-	female_clothes = "/obj/item/clothing/under/vampire/business"
+	male_clothes = "/obj/item/clothing/under/vampire/archivist"
+	female_clothes = "/obj/item/clothing/under/vampire/archivist"
 	whitelisted = TRUE
 	current_accessory = "none"
 	accessories = list("fae_ears", "none")
@@ -265,15 +265,26 @@
 
 		if(target.head)
 			var/obj/item/clothing/W = H.head
-			target.dropItemToGround(W)
+			target.dropItemToGround(W, TRUE)
 
 		if(target.wear_mask)
 			var/obj/item/clothing/W = target.wear_mask
-			if(target.dropItemToGround(W))
+			if(target.dropItemToGround(W, TRUE))
 				target.visible_message("<span class='danger'>[src] tears [W] off of [target]'s face!</span>", \
 									"<span class='userdanger'>[src] tears [W] off of your face!</span>")
 		target.equip_to_slot_if_possible(src, ITEM_SLOT_MASK, 0, 1, 1)
+		var/datum/cb = CALLBACK(src,/obj/item/clothing/mask/facehugger/kiasyd/proc/eat_head)
+		for(var/i in 1 to 20)
+			addtimer(cb, (i - 1)*15)
+		spawn(31 SECONDS)
+			qdel(src)
 	return TRUE
+
+/obj/item/clothing/mask/facehugger/kiasyd/proc/eat_head()
+	if(iscarbon(loc))
+		var/mob/living/carbon/C = loc
+		to_chat(C, "<span class='warning'>[src] is eating your face!</span>")
+		C.apply_damage(10, BRUTE)
 
 /obj/item/afterattack(atom/target, mob/living/carbon/user, proximity)
 	if(!proximity)
