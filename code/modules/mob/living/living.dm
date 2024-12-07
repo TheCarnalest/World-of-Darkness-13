@@ -1002,7 +1002,10 @@
 	who.log_message("[key_name(who)] is being stripped of [what] by [key_name(src)]", LOG_ATTACK, color="red")
 	log_message("[key_name(who)] is being stripped of [what] by [key_name(src)]", LOG_ATTACK, color="red", log_globally=FALSE)
 	what.add_fingerprint(src)
-	if(do_mob(src, who, what.strip_delay, interaction_key = what))
+	var/strip_delayed = what.strip_delay
+	if(myth_steal)
+		strip_delayed = 1
+	if(do_mob(src, who, min(strip_delayed, what.strip_delay), interaction_key = what))
 		if(what && Adjacent(who))
 			if(ishuman(src) && isnpc(who))
 				var/mob/living/carbon/human/H = src

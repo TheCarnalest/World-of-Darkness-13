@@ -87,26 +87,26 @@
 
 /datum/riddle/proc/create_riddle(var/mob/living/riddler)
 	var/proceed = FALSE
-	var/text_riddle = input(riddler, "Create a riddle:", "Riddle", "Is it something?") as text|null
+	var/text_riddle = input(riddler, "Create a riddle:", "Riddle", "Is it something?") as null|text
 	if(text_riddle)
-		riddle_text = text_riddle
-		var/right_answer = input(riddler, "Create a right answer:", "Riddle", "Something") as text|null
+		riddle_text = trim(copytext_char(sanitize(text_riddle), 1, MAX_MESSAGE_LEN))
+		var/right_answer = input(riddler, "Create a right answer:", "Riddle", "Something") as null|text
 		if(right_answer)
-			riddle_answer = right_answer
-			riddle_options += right_answer
+			riddle_answer = trim(copytext_char(sanitize(right_answer), 1, MAX_MESSAGE_LEN))
+			riddle_options += trim(copytext_char(sanitize(right_answer), 1, MAX_MESSAGE_LEN))
 			proceed = TRUE
-			var/answer1 = input(riddler, "Create another answer:", "Riddle", "Anything") as text|null
+			var/answer1 = input(riddler, "Create another answer:", "Riddle", "Anything") as null|text
 			if(answer1)
-				riddle_options += answer1
-				var/answer2 = input(riddler, "Create another answer:", "Riddle", "Anything") as text|null
+				riddle_options += trim(copytext_char(sanitize(answer1), 1, MAX_MESSAGE_LEN))
+				var/answer2 = input(riddler, "Create another answer:", "Riddle", "Anything") as null|text
 				if(answer2)
-					riddle_options += answer2
-					var/answer3 = input(riddler, "Create another answer:", "Riddle", "Anything") as text|null
+					riddle_options += trim(copytext_char(sanitize(answer2), 1, MAX_MESSAGE_LEN))
+					var/answer3 = input(riddler, "Create another answer:", "Riddle", "Anything") as null|text
 					if(answer3)
-						riddle_options += answer3
-						var/answer4 = input(riddler, "Create another answer:", "Riddle", "Anything") as text|null
+						riddle_options += trim(copytext_char(sanitize(answer3), 1, MAX_MESSAGE_LEN))
+						var/answer4 = input(riddler, "Create another answer:", "Riddle", "Anything") as null|text
 						if(answer4)
-							riddle_options += answer4
+							riddle_options += trim(copytext_char(sanitize(answer4), 1, MAX_MESSAGE_LEN))
 	if(proceed)
 		riddler.stored_riddles += src
 		to_chat(riddler, "New riddle created.")
