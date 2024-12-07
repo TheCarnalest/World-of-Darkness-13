@@ -129,6 +129,9 @@
 	if(!user || !user.can_speak() || user.stat)
 		return 0 //no cooldown
 
+	//patch up an RCE exploit by sanitizing input
+	message = trim(copytext_char(sanitize(message), 1, MAX_MESSAGE_LEN))
+
 	var/log_message = uppertext(message)
 	if(!span_list || !span_list.len)
 		if(iscultist(user))
