@@ -378,7 +378,7 @@
 			spawn(20 SECONDS + caster.discipline_time_plus)
 				if(caster && caster.stat != DEAD)
 					AN.Restore(AN.myshape)
-					caster.Stun(15)
+					caster.Stun(1.5 SECONDS)
 
 /datum/discipline/auspex
 	name = "Auspex"
@@ -386,7 +386,7 @@
 	icon_state = "auspex"
 	cost = 1
 	ranged = FALSE
-	delay = 50
+	delay = 5 SECONDS
 	leveldelay = TRUE
 
 /datum/discipline/auspex/activate(mob/living/target, mob/living/carbon/human/caster)
@@ -437,7 +437,7 @@
 	icon_state = "celerity"
 	cost = 1
 	ranged = FALSE
-	delay = 75
+	delay = 7.5 SECONDS
 	violates_masquerade = FALSE
 	activate_sound = 'code/modules/wod13/sounds/celerity_activate.ogg'
 	leveldelay = TRUE
@@ -449,7 +449,7 @@
 
 /obj/effect/celerity/Initialize()
 	. = ..()
-	spawn(5)
+	spawn(0.5 SECONDS)
 		qdel(src)
 
 /mob/living/carbon/human/Move(atom/newloc, direct, glide_size_override)
@@ -546,7 +546,7 @@
 	icon_state = "dominate"
 	cost = 1
 	ranged = TRUE
-	delay = 150
+	delay = 15 SECONDS
 	activate_sound = 'code/modules/wod13/sounds/dominate.ogg'
 	fearless = TRUE
 
@@ -614,7 +614,7 @@
 				var/datum/cb = CALLBACK(TRGT,/mob/living/carbon/human/proc/attack_myself_command)
 				for(var/i in 1 to 20)
 					addtimer(cb, (i - 1)*15)
-	spawn(20)
+	spawn(2 SECONDS)
 		if(TRGT)
 			TRGT.remove_overlay(MUTATIONS_LAYER)
 
@@ -624,7 +624,7 @@
 	icon_state = "dementation"
 	cost = 2
 	ranged = TRUE
-	delay = 100
+	delay = 10 SECONDS
 	activate_sound = 'code/modules/wod13/sounds/insanity.ogg'
 	clane_restricted = TRUE
 
@@ -675,7 +675,7 @@
 				initial_matrix = matrix(M.transform)
 				initial_matrix.Translate(-3,0)
 				animate(M, transform = initial_matrix, time = 1, loop = 0)
-		sleep(1)
+		sleep(0.1 SECONDS)
 	M.lying_fix()
 	M.dancing = FALSE
 
@@ -714,7 +714,7 @@
 				initial_matrix = matrix(M.transform)
 				initial_matrix.Translate(-3,0)
 				animate(M, transform = initial_matrix, time = 1, loop = 0)
-		sleep(1)
+		sleep(0.1 SECONDS)
 	M.lying_fix()
 	M.dancing = FALSE
 
@@ -777,7 +777,7 @@
 	icon_state = "potence"
 	cost = 1
 	ranged = FALSE
-	delay = 100
+	delay = 10 SECONDS
 	activate_sound = 'code/modules/wod13/sounds/potence_activate.ogg'
 	var/datum/component/tackler
 
@@ -814,7 +814,7 @@
 	icon_state = "fortitude"
 	cost = 1
 	ranged = FALSE
-	delay = 75
+	delay = 7.5 SECONDS
 	activate_sound = 'code/modules/wod13/sounds/fortitude_activate.ogg'
 
 /datum/discipline/fortitude/activate(mob/living/target, mob/living/carbon/human/caster)
@@ -840,7 +840,7 @@
 	icon_state = "obfuscate"
 	cost = 1
 	ranged = FALSE
-	delay = 100
+	delay = 10 SECONDS
 	activate_sound = 'code/modules/wod13/sounds/obfuscate_activate.ogg'
 	leveldelay = TRUE
 
@@ -864,7 +864,7 @@
 	icon_state = "presence"
 	cost = 1
 	ranged = TRUE
-	delay = 50
+	delay = 5 SECONDS
 	activate_sound = 'code/modules/wod13/sounds/presence_activate.ogg'
 	leveldelay = FALSE
 	fearless = TRUE
@@ -964,7 +964,7 @@
 	icon_state = "protean"
 	cost = 1
 	ranged = FALSE
-	delay = 200
+	delay = 20 SECONDS
 	violates_masquerade = TRUE
 	activate_sound = 'code/modules/wod13/sounds/protean_activate.ogg'
 	clane_restricted = TRUE
@@ -1086,8 +1086,8 @@
 			spawn(delay+caster.discipline_time_plus)
 				if(caster && caster.stat != DEAD)
 					GA.Restore(GA.myshape)
-					caster.Stun(10)
-					caster.do_jitter_animation(15)
+					caster.Stun(1 SECONDS)
+					caster.do_jitter_animation(1.5 SECONDS)
 //					if(caster.dna)
 					caster.playsound_local(caster, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
 //						caster.dna.species.attack_verb = initial(caster.dna.species.attack_verb)
@@ -1101,11 +1101,11 @@
 //						caster.remove_overlay(PROTEAN_LAYER)
 
 /mob/living/proc/tremere_gib()
-	Stun(50)
+	Stun(5 SECONDS)
 	new /obj/effect/temp_visual/tremere(loc, "gib")
 	animate(src, pixel_y = 16, color = "#ff0000", time = 50, loop = 1)
 
-	spawn(50)
+	spawn(5 SECONDS)
 		if(stat != DEAD)
 			death()
 		var/list/items = list()
@@ -1845,10 +1845,13 @@
 			if(target)
 				var/input_message = input(caster, "What message will you project to them?") as null|text
 				if (input_message)
+					//sanitisation!
+					input_message = trim(copytext_char(sanitize(input_message), 1, MAX_MESSAGE_LEN))
 					if(CHAT_FILTER_CHECK(input_message))
 						to_chat(caster, "<span class='warning'>That message contained a word prohibited in IC chat! Consider reviewing the server rules.\n<span replaceRegex='show_filtered_ic_chat'>\"[input_message]\"</span></span>")
 						SSblackbox.record_feedback("tally", "ic_blocked_words", 1, lowertext(config.ic_filter_regex.match))
 						return
+
 					var/language = caster.get_selected_language()
 					var/message = caster.compose_message(caster, language, input_message, , list())
 					to_chat(target, "<span class='purple'><i>You hear someone's voice in your head...</i></span>")

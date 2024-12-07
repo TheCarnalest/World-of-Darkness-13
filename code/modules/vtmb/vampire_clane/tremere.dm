@@ -88,7 +88,7 @@
 
 /datum/action/bloodshield/Trigger()
 	. = ..()
-	if(abuse_fix+250 > world.time)
+	if((abuse_fix + 25 SECONDS) > world.time)
 		return
 	var/mob/living/carbon/human/H = owner
 	if(H.bloodpool < 2)
@@ -98,7 +98,7 @@
 	playsound(H.loc, 'code/modules/wod13/sounds/thaum.ogg', 50, FALSE)
 	abuse_fix = world.time
 	H.physiology.damage_resistance += 60
-	animate(H, color = "#ff0000", time = 10, loop = 1)
+	animate(H, color = "#ff0000", time = 1 SECONDS, loop = 1)
 	if(H.CheckEyewitness(H, H, 7, FALSE))
 		H.AdjustMasquerade(-1)
 	spawn(15 SECONDS)
