@@ -258,8 +258,9 @@
 					if (!islist(GLOB.published_number_names))
 						GLOB.published_number_names = list()
 
-					var/name = input(usr, "Input name", "Publish Number") as text|null
+					var/name = input(usr, "Input name", "Publish Number") as null|text
 					if(name && src.number)
+						name = trim(copytext_char(sanitize(name), 1, MAX_MESSAGE_LEN))
 						if(src.number in GLOB.published_numbers)
 							to_chat(usr, "<span class ='notice'>This number is already published.</span>")
 						else
@@ -281,13 +282,15 @@
 						var/name = GLOB.published_number_names[i]
 						to_chat(usr, "- [name]: [split_number]")
 				if("Add")
-					var/new_contact = input(usr, "Input phone number", "Add Contact")  as text|null
+					var/new_contact = input(usr, "Input phone number", "Add Contact")  as null|text
 					if(new_contact)
+						new_contact = trim(copytext_char(sanitize(new_contact), 1, MAX_MESSAGE_LEN))
 						var/datum/phonecontact/NEWC = new()
 						new_contact = replacetext(new_contact, " ", "") //Removes spaces
 						NEWC.number = "[new_contact]"
 						contacts += NEWC
-						var/new_contact_name = input(usr, "Input name", "Add Contact")  as text|null
+						var/new_contact_name = input(usr, "Input name", "Add Contact")  as null|text
+						new_contact_name = trim(copytext_char(sanitize(new_contact_name), 1, MAX_MESSAGE_LEN))
 						if(new_contact_name)
 							NEWC.name = "[new_contact_name]"
 						else
