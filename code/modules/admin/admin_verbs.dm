@@ -531,6 +531,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	if(exper)
 		var/amount = input("Amount:") as null|num
 		if(amount)
+			amount = clamp(amount, -C.prefs.true_experience, 500)
 			var/reason = input("Reason:") as null|text
 			if(reason)
 				for(var/client/C in GLOB.clients)
