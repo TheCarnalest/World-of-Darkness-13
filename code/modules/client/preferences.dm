@@ -2203,34 +2203,20 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("friend_text")
 					var/new_text = input(user, "What a Friend knows about me:", "Character Preference") as text|null
 					if(new_text)
-						friend_text = sanitize_text(new_text)
+						friend_text = trim(copytext_char(sanitize(new_text), 1, 512))
 				if("enemy_text")
 					var/new_text = input(user, "What an Enemy knows about me:", "Character Preference") as text|null
 					if(new_text)
-						enemy_text = sanitize_text(new_text)
+						enemy_text = trim(copytext_char(sanitize(new_text), 1, 512))
 				if("lover_text")
 					var/new_text = input(user, "What a Lover knows about me:", "Character Preference") as text|null
 					if(new_text)
-						lover_text = sanitize_text(new_text)
+						lover_text = trim(copytext_char(sanitize(new_text), 1, 512))
 
 				if("flavor_text")
 					var/new_flavor = input(user, "Choose your character's flavor text:", "Character Preference")  as text|null
 					if(new_flavor)
-						//[Lucia] TODO: fix jank made in haste
-						var/pattern = "<img"
-						var/pos = findtext(new_flavor, pattern)
-						if(pos)
-							to_chat(src, "Embedding images is not allowed.")
-							return
-						pattern = "<picture"
-						pos = findtext(new_flavor, pattern)
-						if(pos)
-							to_chat(src, "Embedding images is not allowed.")
-							return
-						if(length(new_flavor) > 3 * 512)
-							to_chat(user, "Too long...")
-						else
-							flavor_text = sanitize_text(new_flavor)
+						flavor_text = trim(copytext_char(sanitize(new_flavor), 1, 512))
 
 				if("change_appearance")
 					if((true_experience < 3) || !slotlocked)
