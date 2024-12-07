@@ -8,6 +8,11 @@
 
 	var/allowed_to_proceed = FALSE
 
+/datum/action/gift/ApplyIcon(atom/movable/screen/movable/action_button/current_button, force = FALSE)
+	icon_icon = 'code/modules/wod13/werewolf_abilities.dmi'
+	button_icon = 'code/modules/wod13/werewolf_abilities.dmi'
+	. = ..()
+
 /datum/action/gift/Trigger()
 	. = ..()
 	if(istype(owner, /mob/living/carbon))
