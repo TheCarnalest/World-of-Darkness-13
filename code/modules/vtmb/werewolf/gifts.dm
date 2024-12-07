@@ -389,14 +389,14 @@
 			C.sprite_apparel = min(4, C.sprite_apparel+1)
 
 /datum/action/gift/hispo
-	name = "Hispo Form
+	name = "Hispo Form"
 	desc = "Change your Lupus form into Hispo and backwards."
 	button_icon_state = "hispo"
 
 /datum/action/gift/hispo/Trigger()
 	. = ..()
 	if(allowed_to_proceed)
-		var/mob/living/carbon/werewolf/H = owner
+		var/mob/living/carbon/werewolf/lupus/H = owner
 		playsound(get_turf(owner), 'code/modules/wod13/sounds/transform.ogg', 50, FALSE)
 		if(H.hispo)
 			H.icon = 'code/modules/wod13/werewolf_lupus.dmi'
@@ -416,7 +416,7 @@
 			H.update_icons()
 
 /datum/action/gift/glabro
-	name = "Glabro Form
+	name = "Glabro Form"
 	desc = "Change your Homid form into Glabro and backwards."
 	button_icon_state = "glabro"
 
@@ -427,14 +427,27 @@
 		var/datum/species/garou/G = H.dna.species
 		playsound(get_turf(owner), 'code/modules/wod13/sounds/transform.ogg', 50, FALSE)
 		if(G.glabro)
-			H.icon = 'code/modules/wod13/werewolf_lupus.dmi'
-			H.melee_damage_lower = initial(H.melee_damage_lower)
-			H.melee_damage_upper = initial(H.melee_damage_upper)
+			H.remove_overlay(PROTEAN_LAYER)
+			G.punchdamagelow = G.punchdamagelow-15
+			G.punchdamagehigh = G.punchdamagehigh-15
+			H.physiology.armor.melee = H.physiology.armor.melee-15
+			H.physiology.armor.bullet = H.physiology.armor.bullet-15
+			var/matrix/M = matrix()
+			M.Scale(1/1.3, 1/1.3)
+			animate(H, transform = M, time = 1 SECONDS)
 			G.glabro = FALSE
 			H.update_icons()
 		else
-			H.icon = 'code/modules/wod13/hispo.dmi'
-			H.melee_damage_lower = 25
-			H.melee_damage_upper = 65
+			H.remove_overlay(PROTEAN_LAYER)
+			var/mutable_appearance/glabro_overlay = mutable_appearance('code/modules/wod13/werewolf_abilities.dmi', H.transformator.crinos_form?.sprite_color, -PROTEAN_LAYER)
+			H.overlays_standing[PROTEAN_LAYER] = glabro_overlay
+			H.apply_overlay(PROTEAN_LAYER)
+			G.punchdamagelow = G.punchdamagelow+15
+			G.punchdamagehigh = G.punchdamagehigh+15
+			H.physiology.armor.melee = H.physiology.armor.melee+15
+			H.physiology.armor.bullet = H.physiology.armor.bullet+15
+			var/matrix/M = matrix()
+			M.Scale(1.3, 1.3)
+			animate(H, transform = M, time = 1 SECONDS)
 			G.glabro = TRUE
 			H.update_icons()
