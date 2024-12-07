@@ -15,6 +15,7 @@
 	dust_anim = "dust-h"
 	whitelisted = TRUE
 	selectable = TRUE
+	var/glabro = FALSE
 
 /datum/action/garouinfo
 	name = "About Me"

@@ -428,16 +428,12 @@
 		playsound(get_turf(owner), 'code/modules/wod13/sounds/transform.ogg', 50, FALSE)
 		if(G.glabro)
 			H.icon = 'code/modules/wod13/werewolf_lupus.dmi'
-			H.pixel_w = 0
-			H.pixel_z = 0
 			H.melee_damage_lower = initial(H.melee_damage_lower)
 			H.melee_damage_upper = initial(H.melee_damage_upper)
 			G.glabro = FALSE
 			H.update_icons()
 		else
 			H.icon = 'code/modules/wod13/hispo.dmi'
-			H.pixel_w = -8
-			H.pixel_z = -8
 			H.melee_damage_lower = 25
 			H.melee_damage_upper = 65
 			G.glabro = TRUE
