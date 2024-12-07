@@ -1804,13 +1804,19 @@
 				//why? because of laziness, it sends messages to deadchat if you do that
 				to_chat(caster, "<span class='notice'>You can't use this on corpses.</span>")
 				return
-			var/new_say = input(caster, "What will your target say?") as text|null
+			var/new_say = input(caster, "What will your target say?") as null|text
 			if(new_say)
+				//prevent forceful emoting and whatnot
+				new_say = trim(copytext_char(sanitize(new_say), 1, MAX_MESSAGE_LEN))
+				if (findtext(new_say, "*"))
+					to_chat(caster, "<span class='danger'>You can't force others to perform emotes!</span>")
+					return
+
 				if(CHAT_FILTER_CHECK(new_say))
 					to_chat(caster, "<span class='warning'>That message contained a word prohibited in IC chat! Consider reviewing the server rules.\n<span replaceRegex='show_filtered_ic_chat'>\"[new_say]\"</span></span>")
 					SSblackbox.record_feedback("tally", "ic_blocked_words", 1, lowertext(config.ic_filter_regex.match))
 					return
-				target.say("[new_say]", forced = "melpominee 2")
+				target.say("[new_say]", forced = "melpominee 1")
 
 				var/base_difficulty = 5
 				var/difficulty_malus = 0
