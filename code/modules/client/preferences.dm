@@ -2937,11 +2937,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		character.bloodpool = character.maxbloodpool
 
 	if(pref_species.name == "Werewolf")
-		character.maxHealth = round((initial(character.maxHealth)+(initial(character.maxHealth)/4)*character.physique))
-		character.health = round((initial(character.maxHealth)+(initial(character.maxHealth)/4)*character.physique))
+		character.maxHealth = round((initial(character.maxHealth)+(initial(character.maxHealth)/4)*(character.physique + character.additional_physique)))
+		character.health = round((initial(character.maxHealth)+(initial(character.maxHealth)/4)*(character.physique + character.additional_physique )))
 	else
-		character.maxHealth = round((initial(character.maxHealth)-initial(character.maxHealth)/4)+(initial(character.maxHealth)/4)*(character.physique+13-generation))
-		character.health = round((initial(character.health)-initial(character.health)/4)+(initial(character.health)/4)*(character.physique+13-generation))
+		character.maxHealth = round((initial(character.maxHealth)-initial(character.maxHealth)/4)+(initial(character.maxHealth)/4)*((character.physique+character.additional_physique )+13-generation))
+		character.health = round((initial(character.health)-initial(character.health)/4)+(initial(character.health)/4)*((character.physique+character.additional_physique )+13-generation))
 	if(pref_species.name == "Vampire")
 		character.humanity = humanity
 	character.masquerade = masquerade
@@ -3056,9 +3056,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				character.transformator.lupus_form.social = social
 				character.transformator.lupus_form.blood = blood
 
-				character.transformator.lupus_form.maxHealth = round((initial(character.transformator.lupus_form.maxHealth)+(initial(character.maxHealth)/4)*character.physique))+(character.auspice.level-1)*50
+				character.transformator.lupus_form.maxHealth = round((initial(character.transformator.lupus_form.maxHealth)+(initial(character.maxHealth)/4)*(character.physique + character.additional_physique )))+(character.auspice.level-1)*50
 				character.transformator.lupus_form.health = character.transformator.lupus_form.maxHealth
-				character.transformator.crinos_form.maxHealth = round((initial(character.transformator.crinos_form.maxHealth)+(initial(character.maxHealth)/4)*character.physique))+(character.auspice.level-1)*50
+				character.transformator.crinos_form.maxHealth = round((initial(character.transformator.crinos_form.maxHealth)+(initial(character.maxHealth)/4)*(character.physique + character.additional_physique )))+(character.auspice.level-1)*50
 				character.transformator.crinos_form.health = character.transformator.crinos_form.maxHealth
 //		character.transformator.crinos_form.update_icons()
 //		character.transformator.lupus_form.update_icons()
