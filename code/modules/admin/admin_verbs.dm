@@ -531,13 +531,12 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	if(exper)
 		var/amount = input("Amount:") as null|num
 		if(amount)
-			amount = clamp(amount, -C.prefs.true_experience, 500)
 			var/reason = input("Reason:") as null|text
 			if(reason)
 				for(var/client/C in GLOB.clients)
 					if("[C.ckey]" == "[exper]")
 						to_chat(C, "<b>You've been rewarded with [amount] experience points. Reason: \"[reason]\"</b>")
-						C.prefs.true_experience = max(0, C.prefs.true_experience+amount)
+						C.prefs.true_experience = max(0, C.prefs.true_experience + amount)
 						message_admins("[key_name_admin(usr)] rewarded [key_name_admin(exper)] with [amount] experience points. Reason: [reason]")
 						log_admin("[key_name(usr)] rewarded [key_name(exper)] with [amount] experience points. Reason: [reason]")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Reward Experience") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
