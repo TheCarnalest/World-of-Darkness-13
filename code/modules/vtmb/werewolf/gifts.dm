@@ -408,8 +408,8 @@
 			H.update_icons()
 		else
 			H.icon = 'code/modules/wod13/hispo.dmi'
-			H.pixel_w = -8
-			H.pixel_z = -8
+			H.pixel_w = -16
+			H.pixel_z = -16
 			H.melee_damage_lower = 25
 			H.melee_damage_upper = 65
 			H.hispo = TRUE
