@@ -52,9 +52,11 @@
 	allowed_bloodlines = list("Tremere", "Ventrue", "Nosferatu", "Toreador", "Malkavian", "Brujah", "Lasombra", "Gangrel", "True Brujah")
 
 	my_contact_is_important = TRUE
-	known_contacts = list("Sheriff",
-												"Seneschal",
-												"Baron")
+	known_contacts = list(
+		"Sheriff",
+		"Seneschal",
+		"Baron"
+	)
 
 	v_duty = "You are the top dog of this city. You hold Praxis over San Francisco, and your word is law. Make sure the Masquerade is upheld, and your status is respected."
 	experience_addition = 25
@@ -584,7 +586,7 @@
 	v_duty = "You lead the Anarchs in the City. A Camarilla faction that values freedom and individuality. While not a fan of the traditions, you still respect the Masquerade."
 	minimal_masquerade = 3
 	allowed_species = list("Vampire")
-	allowed_bloodlines = list("Daughters of Cacophony", "True Brujah", "Brujah", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Tzimisce", "Caitiff", "Ventrue", "Lasombra", "Gargoyle")
+	allowed_bloodlines = list("Daughters of Cacophony", "True Brujah", "Brujah", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Ventrue", "Lasombra", "Gargoyle")
 	experience_addition = 20
 
 /datum/outfit/job/barkeeper

@@ -1266,6 +1266,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		//The job before the current job. I only use this to get the previous jobs color when I'm filling in blank rows.
 		var/datum/job/lastJob
 
+		var/bypass = FALSE
+		if (check_rights_for(user.client, R_ADMIN))
+			bypass = TRUE
+
 		for(var/datum/job/job in sortList(SSjob.occupations, GLOBAL_PROC_REF(cmp_job_display_asc)))
 
 			index += 1
@@ -1287,20 +1291,20 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				continue
 			var/required_playtime_remaining = job.required_playtime_remaining(user.client)
 			//<font color=red>text</font> (Zamenil potomu chto slishkom rezhet glaza
-			if(required_playtime_remaining)
+			if(required_playtime_remaining && !bypass)
 				HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[ [get_exp_format(required_playtime_remaining)] as [job.get_exp_req_type()] \]</font></td></tr>"
 				continue
-			if(!job.player_old_enough(user.client))
+			if(!job.player_old_enough(user.client) && !bypass)
 				var/available_in_days = job.available_in_days(user.client)
 				HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[IN [(available_in_days)] DAYS\]</font></td></tr>"
 				continue
-			if(generation > job.minimal_generation)
+			if((generation > job.minimal_generation) && !bypass)
 				HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[FROM [job.minimal_generation] GENERATION AND OLDER\]</font></td></tr>"
 				continue
-			if(masquerade < job.minimal_masquerade)
+			if((masquerade < job.minimal_masquerade) && !bypass)
 				HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[[job.minimal_masquerade] MASQUERADE POINTS REQUIRED\]</font></td></tr>"
 				continue
-			if(!job.allowed_species.Find(pref_species.name))
+			if(!job.allowed_species.Find(pref_species.name) && !bypass)
 				HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[[pref_species.name] RESTRICTED\]</font></td></tr>"
 				continue
 			if(pref_species.name == "Vampire")
@@ -1309,7 +1313,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					for(var/i in job.allowed_bloodlines)
 						if(i == clane.name)
 							alloww = TRUE
-					if(!alloww)
+					if(!alloww && !bypass)
 						HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[[clane.name] RESTRICTED\]</font></td></tr>"
 						continue
 			if((job_preferences[SSjob.overflow_role] == JP_LOW) && (rank != SSjob.overflow_role) && !is_banned_from(user.ckey, SSjob.overflow_role))
