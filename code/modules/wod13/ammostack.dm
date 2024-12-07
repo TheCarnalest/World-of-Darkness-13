@@ -291,14 +291,9 @@
 
 //obj/item/ammo_casing/vampire/c12g/buck/silver/on_hit(atom/target, blocked = FALSE)
 //	. = ..()
-//	if(iswerewolf(target) || isgarou(target))
-//		var/mob/living/carbon/M = target
-//		if(M.auspice.gnosis)
-//			if(prob(40))
-//				adjust_gnosis(-1, M)
-//		else
-//			M.Stun(10)
-//			M.adjustBruteLoss(50, TRUE)
+//	if(iswerewolf(target))
+//		var/mob/living/carbon/werewolf/M = target
+//		M.deal_silver_damage(damage)
 
 /obj/projectile/beam/beam_rifle/vampire/vamp556mm/silver
 	name = "5.56mm silver bullet"
@@ -306,45 +301,33 @@
 	damage = 35
 
 /obj/projectile/beam/beam_rifle/vampire/vamp556mm/silver/on_hit(atom/target, blocked = FALSE)
-	. = ..()
-	if(iswerewolf(target) || isgarou(target))
-		var/mob/living/carbon/M = target
-		if(M.auspice.gnosis)
-			if(prob(40))
-				adjust_gnosis(-1, M)
-		else
-			M.Stun(10)
-			M.adjustBruteLoss(50, TRUE)
+	if(iswerewolf(target))
+		var/mob/living/carbon/werewolf/M = target
+		M.adjustCloneLoss(damage)
+		damage = 0
+	..()
 
 /obj/projectile/beam/beam_rifle/vampire/vamp9mm/silver
 	name = "9mm silver bullet"
 	damage = 23
 
 /obj/projectile/beam/beam_rifle/vampire/vamp9mm/silver/on_hit(atom/target, blocked = FALSE)
-	. = ..()
-	if(iswerewolf(target) || isgarou(target))
-		var/mob/living/carbon/M = target
-		if(M.auspice.gnosis)
-			if(prob(40))
-				adjust_gnosis(-1, M)
-		else
-			M.Stun(10)
-			M.adjustBruteLoss(50, TRUE)
+	if(iswerewolf(target))
+		var/mob/living/carbon/werewolf/M = target
+		M.adjustCloneLoss(damage)
+		damage = 0
+	..()
 
 /obj/projectile/beam/beam_rifle/vampire/vamp45acp/silver
 	name = ".45 ACP silver bullet"
 	damage = 25
 
 /obj/projectile/beam/beam_rifle/vampire/vamp45acp/silver/on_hit(atom/target, blocked = FALSE)
-	. = ..()
-	if(iswerewolf(target) || isgarou(target))
-		var/mob/living/carbon/M = target
-		if(M.auspice.gnosis)
-			if(prob(40))
-				adjust_gnosis(-1, M)
-		else
-			M.Stun(10)
-			M.adjustBruteLoss(50, TRUE)
+	if(iswerewolf(target))
+		var/mob/living/carbon/werewolf/M = target
+		M.adjustCloneLoss(damage)
+		damage = 0
+	..()
 
 /obj/projectile/beam/beam_rifle/vampire/vamp44/silver
 	name = ".44 silver bullet"
@@ -353,15 +336,11 @@
 	icon_state = "s44"
 
 /obj/projectile/beam/beam_rifle/vampire/vamp44/silver/on_hit(atom/target, blocked = FALSE)
-	. = ..()
-	if(iswerewolf(target) || isgarou(target))
-		var/mob/living/carbon/M = target
-		if(M.auspice.gnosis)
-			if(prob(40))
-				adjust_gnosis(-1, M)
-		else
-			M.Stun(10)
-			M.adjustBruteLoss(50, TRUE)
+	if(iswerewolf(target))
+		var/mob/living/carbon/werewolf/M = target
+		M.adjustCloneLoss(damage)
+		damage = 0
+	..()
 
 /obj/item/ammo_casing/vampire/c9mm/silver
 	name = "9mm silver bullet casing"

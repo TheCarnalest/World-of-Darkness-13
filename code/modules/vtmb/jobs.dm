@@ -1270,8 +1270,6 @@
 		qdel(H.clane)
 	H.set_species(/datum/species/human)
 	H.generation = 13
-	H.maxHealth = round((initial(H.maxHealth)-initial(H.maxHealth)/4)+(initial(H.maxHealth)/4)*(H.physique+13-H.generation))
-	H.health = round((initial(H.health)-initial(H.health)/4)+(initial(H.health)/4)*(H.physique+13-H.generation))
 	var/my_name = "Tyler"
 	if(H.gender == MALE)
 		my_name = pick(GLOB.first_names_male)
@@ -1405,8 +1403,6 @@
 	H.generation = 13
 	H.clane = null
 
-	H.maxHealth = round((initial(H.maxHealth)-initial(H.maxHealth)/4)+(initial(H.maxHealth)/4)*(H.physique+13-H.generation))
-	H.health = round((initial(H.health)-initial(H.health)/4)+(initial(H.health)/4)*(H.physique+13-H.generation))
 	H.thaumaturgy_knowledge = FALSE
 	QDEL_NULL(H.clane)
 	var/obj/item/organ/eyes/NV = new()
@@ -1510,10 +1506,9 @@
 //	H.discipline3 = discipline3_level
 
 	H.generation = generation_choice
-	H.maxbloodpool = 10+((13-min(13, H.generation))*3)
+	var/datum/species/kindred/species = H.dna.species
+	species.initialize_generation(H)
 	H.clane.enlightenment = H.clane.enlightenment
-	H.maxHealth = round((initial(H.maxHealth)-initial(H.maxHealth)/4)+(initial(H.maxHealth)/4)*(H.physique+13-H.generation))
-	H.health = round((initial(H.maxHealth)-initial(H.maxHealth)/4)+(initial(H.maxHealth)/4)*(H.physique+13-H.generation))
 
 	to_chat(H, "You have chosen [clan_choice] with generation [generation_choice]. Your disciplines are [discipline1] (Level: [discipline1_level]), [discipline2] (Level: [discipline2_level]) and [discipline3] (Level: [discipline3_level]).")
 	remove_verb(H, /datum/job/sabbatist/verb/setup_character)

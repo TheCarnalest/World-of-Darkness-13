@@ -71,7 +71,7 @@
 			to_chat(owner, "<span class='warning'>You don't have enough <b>BLOOD</b> to do that!</span>")
 			return
 		to_chat(owner, "<span class='notice'>You activate the Serpentis Urn.</span>")
-		H.bloodpool = max(0, H.bloodpool-1)
+		H.adjust_blood_points(-1)
 		if(!urn)
 			if(H.dna)
 				if(H.dna.species)
@@ -145,13 +145,13 @@
 		return
 	if(!BC)
 		BC = new(owner)
-	H.bloodpool = max(0, H.bloodpool-2)
+	H.adjust_blood_points(-2)
 	BC.Shapeshift(H)
-	spawn(150)
+	spawn(15 SECONDS)
 		if(BC)
 			BC.Restore(BC.myshape)
-			NG.Stun(15)
-			NG.do_jitter_animation(30)
+			NG.Stun(1.5 SECONDS)
+			NG.do_jitter_animation(3 SECONDS)
 
 /mob/living/simple_animal/hostile/cobra
 	name = "Cobra Form"

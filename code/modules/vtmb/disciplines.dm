@@ -228,7 +228,7 @@
 			return
 
 /datum/discipline/proc/check_activated(var/mob/living/target, var/mob/living/carbon/human/caster)
-	if(caster.stat >= HARD_CRIT || caster.IsSleeping() || caster.IsUnconscious() || caster.IsParalyzed() || caster.IsStun() || HAS_TRAIT(caster, TRAIT_RESTRAINED) || !isturf(caster.loc))
+	if(caster.stat >= UNCONSCIOUS || caster.IsSleeping() || caster.IsUnconscious() || caster.IsParalyzed() || caster.IsStun() || HAS_TRAIT(caster, TRAIT_RESTRAINED) || !isturf(caster.loc))
 		return FALSE
 	var/plus = 0
 	if(HAS_TRAIT(caster, TRAIT_HUNGRY))
@@ -250,8 +250,7 @@
 	if(target.resistant_to_disciplines || target.spell_immunity)
 		to_chat(caster, "<span class='danger'>[target] resists your powers!</span>")
 		return FALSE
-	caster.bloodpool = max(0, caster.bloodpool-(cost+plus))
-	caster.update_blood_hud()
+	caster.adjust_blood_points(-(cost + plus))
 	if(ranged)
 		to_chat(caster, "<span class='notice'>You activate [name] on [target].</span>")
 	else
@@ -755,7 +754,7 @@
 			new /datum/hallucination/oh_yeah(H, TRUE)
 		if(3)
 			H.Immobilize(20)
-			if(H.stat <= HARD_CRIT && !H.IsSleeping() && !H.IsUnconscious() && !H.IsParalyzed() && !H.IsKnockdown() && !HAS_TRAIT(H, TRAIT_RESTRAINED))
+			if(H.stat <= UNCONSCIOUS && !H.IsSleeping() && !H.IsUnconscious() && !H.IsParalyzed() && !H.IsKnockdown() && !HAS_TRAIT(H, TRAIT_RESTRAINED))
 				if(prob(50))
 					dancefirst(H)
 				else
@@ -1158,8 +1157,7 @@
 			if(isgarou(VL))
 				if(VL.bloodpool >= 1 && VL.stat != DEAD)
 					var/sucked = min(VL.bloodpool, 2)
-					VL.bloodpool = VL.bloodpool-sucked
-					VL.blood_volume = max(VL.blood_volume-50, 0) // average blood_volume of most carbons seems to be 560
+					VL.adjust_blood_points(-sucked)
 					VL.apply_damage(45, BURN)
 					VL.visible_message("<span class='danger'>[target]'s wounds spray boiling hot blood!</span>", "<span class='userdanger'>Your blood boils!</span>")
 					VL.add_splatter_floor(get_turf(target))
@@ -1167,28 +1165,19 @@
 				if(!iskindred(target))
 					if(VL.bloodpool >= 1 && VL.stat != DEAD)
 						var/sucked = min(VL.bloodpool, 2)
-						VL.bloodpool = VL.bloodpool-sucked
-						VL.blood_volume = max(VL.blood_volume-50, 0)
+						VL.adjust_blood_points(-sucked)
 					if(ishuman(VL))
 						if(VL.bloodpool >= 1 && VL.stat != DEAD)
 							var/mob/living/carbon/human/VHL = VL
-							VHL.blood_volume = max(VHL.blood_volume-25, 0)
-							if(VL.bloodpool == 0)
-								VHL.blood_volume = 0
-								VL.death()
+							VHL.adjust_blood_points(-1)
 //							if(isnpc(VL))
 //								AdjustHumanity(VH, -1, 3)
-					else
-						if(VL.bloodpool == 0)
-							VL.death()
-					//VH.bloodpool = VH.bloodpool+(sucked*max(1, VL.bloodquality-1))
-					//VH.bloodpool = min(VH.maxbloodpool, VH.bloodpool)
+					//VH.adjust_blood_points(sucked)
 			else
 				if(VL.bloodpool >= 1)
-					var/sucked = min(VL.bloodpool, 1*level)
-					VL.bloodpool = VL.bloodpool-sucked
-					VH.bloodpool = VH.bloodpool+sucked
-					VH.bloodpool = min(VH.maxbloodpool, VH.bloodpool)
+					var/sucked = min(VL.bloodpool, level)
+					VL.adjust_blood_points(-sucked)
+					VH.adjust_blood_points(sucked)
 
 /datum/discipline/thaumaturgy
 	name = "Thaumaturgy"
@@ -1235,7 +1224,7 @@
 				target.add_splatter_floor(get_turf(target))
 				target.add_splatter_floor(get_turf(get_step(target, target.dir)))
 			else
-				caster.bloodpool = min(caster.maxbloodpool, caster.bloodpool + target.bloodpool)
+				caster.adjust_blood_points(target.bloodpool)
 				if(!istype(target, /mob/living/simple_animal/hostile/megafauna))
 //				if(isnpc(target))
 //					AdjustHumanity(caster, -1, 0)
@@ -1308,8 +1297,8 @@
 //		H.hitsound = 'code/modules/wod13/sounds/tongue.ogg'
 		var/bloodpoints_to_suck = max(0, min(target.bloodpool, level_casting-1))
 		if(bloodpoints_to_suck)
-			caster.bloodpool = min(caster.maxbloodpool, caster.bloodpool+bloodpoints_to_suck)
-			target.bloodpool = max(0, target.bloodpool-bloodpoints_to_suck)
+			caster.adjust_blood_points(bloodpoints_to_suck)
+			target.adjust_blood_points(-bloodpoints_to_suck)
 		var/obj/item/ammo_casing/magic/tentacle/casing = new (caster.loc)
 		playsound(caster.loc, 'code/modules/wod13/sounds/tongue.ogg', 100, TRUE)
 		casing.fire_casing(target, caster, null, null, null, ran_zone(), 0,  caster)
@@ -1343,7 +1332,7 @@
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
 		caster.playsound_local(target.loc, 'code/modules/wod13/sounds/vicissitude.ogg', 50, TRUE)
-		if(target.stat >= HARD_CRIT)
+		if(target.stat >= UNCONSCIOUS)
 			if(istype(target, /mob/living/carbon/human/npc))
 				var/mob/living/carbon/human/npc/NPC = target
 				NPC.last_attacker = null
@@ -1529,8 +1518,8 @@
 	if(level_casting >= 3)
 		if(target.bloodpool > 1)
 			var/transfered = max(1, target.bloodpool-3)
-			caster.bloodpool = min(caster.maxbloodpool, caster.bloodpool+transfered)
-			target.bloodpool = transfered
+			caster.adjust_blood_points(transfered)
+			target.adjust_blood_points(-transfered)
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
 		H.remove_overlay(MUTATIONS_LAYER)
@@ -1722,7 +1711,7 @@
 			healthscan(caster, target, 1, FALSE)
 			chemscan(caster, target)
 //			woundscan(caster, target, src)
-			to_chat(caster, "<b>[target]</b> has <b>[target.bloodpool]/[target.maxbloodpool]</b> blood points.")
+			to_chat(caster, "<b>[target]</b> has <b>[num2text(target.bloodpool)]/[target.maxbloodpool]</b> blood points.")
 			to_chat(caster, "<b>[target]</b> has a rating of <b>[target.humanity]</b> on their path.")
 		if(2)
 			if(get_dist(caster, target) <= 2)
@@ -1732,7 +1721,7 @@
 					target.add_confusion(5)
 					target.drowsyness += 4
 				else if(ishuman(target))
-					target.SetSleeping(300)
+					target.SetSleeping(30 SECONDS)
 			else
 				to_chat(caster, "You need to be close to use this power.")
 				return
@@ -1954,7 +1943,7 @@
 	switch(level_casting)
 		if(1)
 			to_chat(caster, "<b>[SScity_time.timeofnight]</b>")
-			caster.bloodpool = caster.bloodpool+1
+			caster.adjust_blood_points(1)
 		if(2)
 			target.AddComponent(/datum/component/dejavu, rewinds = 4, interval = 2 SECONDS)
 		if(3)
@@ -1965,7 +1954,7 @@
 					target.remove_movespeed_modifier(/datum/movespeed_modifier/temporis)
 		if(4)
 			to_chat(caster, "<b>Use the second Temporis button at the bottom of the screen to cast this level of Temporis.</b>")
-			caster.bloodpool = caster.bloodpool+1
+			caster.adjust_blood_points(1)
 		if(5)
 			to_chat(caster, "<b>Use the third Temporis button at the bottom of the screen to cast this level of Temporis.</b>")
-			caster.bloodpool = caster.bloodpool+1
+			caster.adjust_blood_points(1)

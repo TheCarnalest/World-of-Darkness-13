@@ -349,10 +349,9 @@
 			SEND_SOUND(owner, sound('code/modules/wod13/sounds/rage_heal.ogg', 0, 0, 75))
 			C.adjustBruteLoss(-50*C.auspice.level, TRUE)
 			C.adjustFireLoss(-35*C.auspice.level, TRUE)
-			C.adjustCloneLoss(-25*C.auspice.level, TRUE)
+			C.adjustCloneLoss(-5*C.auspice.level, TRUE)
 			C.adjustOxyLoss(-25*C.auspice.level, TRUE)
-			C.bloodpool = min(C.bloodpool + C.auspice.level, C.maxbloodpool)
-			C.blood_volume = min(C.blood_volume + 56 * C.auspice.level, BLOOD_VOLUME_NORMAL)
+			C.adjust_blood_points(C.auspice.level)
 			if(ishuman(owner))
 				var/mob/living/carbon/human/BD = owner
 				if(length(BD.all_wounds))

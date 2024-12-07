@@ -80,7 +80,7 @@ var/datum/martial_art/cowalker/style
 	if(H.bloodpool < 1)
 		to_chat(owner, "<span class='warning'>You don't have enough <b>BLOOD</b> to do that!</span>")
 		return
-	H.bloodpool = max(0, H.bloodpool-1)
+	H.adjust_blood_points(-1)
 	playsound(H.loc, 'code/modules/wod13/sounds/temporis.ogg', 50, FALSE)
 	spam_fix = world.time
 	var/mob/living/carbon/human/M = usr
@@ -119,13 +119,13 @@ var/datum/martial_art/cowalker/style
 
 
 /datum/action/clotho/Trigger()
-	if(spam_fix + 15 SECONDS > world.time)
+	if((spam_fix + 15 SECONDS) > world.time)
 		return
 	var/mob/living/carbon/human/H = owner
 	if(H.bloodpool < 3)
 		to_chat(owner, "<span class='warning'>You don't have enough <b>BLOOD</b> to do that!</span>")
 		return
-	H.bloodpool = max(0, H.bloodpool-3)
+	H.adjust_blood_points(-3)
 	playsound(H.loc, 'code/modules/wod13/sounds/temporis.ogg', 50, FALSE)
 	spam_fix = world.time
 	var/mob/living/carbon/human/M = usr
