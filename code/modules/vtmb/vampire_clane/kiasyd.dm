@@ -132,23 +132,6 @@
 		answerer.remove_movespeed_modifier(/datum/movespeed_modifier/riddle)
 		answerer.say(the_answer)
 
-/mob/living/Topic(href, href_list)
-	var/mob/user = usr
-	if(user != src)
-		if(href_list["item"] && user.myth_steal)
-			var/slot = text2num(href_list["item"])
-			var/hand_index = text2num(href_list["hand_index"])
-			var/obj/item/what
-			if(hand_index)
-				what = get_item_for_held_index(hand_index)
-				slot = list(slot,hand_index)
-			else
-				what = get_item_by_slot(slot)
-			if(what)
-				if(!(what.item_flags & ABSTRACT))
-					user.stripPanelUnequip(what,src,slot)
-	. = ..()
-
 /datum/discipline/mytherceria/activate(mob/living/target, mob/living/carbon/human/caster)
 	. = ..()
 	switch(level_casting)
@@ -264,7 +247,7 @@
 		var/mob/living/carbon/target = M
 
 		if(target.head)
-			var/obj/item/clothing/W = H.head
+			var/obj/item/clothing/W = target.head
 			target.dropItemToGround(W, TRUE)
 
 		if(target.wear_mask)
