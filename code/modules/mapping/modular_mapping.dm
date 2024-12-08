@@ -20,7 +20,7 @@
 	template_width = 14
 	template_height = 17
 
-/datum/map_template/modular/sanfrancisco/sewersdrugden
+/datum/map_template/modular/sanfrancisco/sewersthunderdome
 	name = "Sewers Thunderdome"
 	mappath = "_maps/modularmaps/sanfrancisco/sewersthunderdome.dmm"
 	modular_id = "sewersnortheast1"
