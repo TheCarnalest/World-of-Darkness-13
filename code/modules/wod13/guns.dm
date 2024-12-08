@@ -270,11 +270,11 @@
 	icon_state = "uzi"
 	ammo_type = /obj/item/ammo_casing/vampire/c9mm
 	caliber = CALIBER_9MM
-	max_ammo = 25
+	max_ammo = 32
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/gun/ballistic/automatic/vampire/uzi
-	name = "\improper Type U3 Uzi"
+	name = "\improper Killamatic Uzi"
 	desc = "A lightweight, burst-fire submachine gun, for when you really want someone dead. Uses 9mm rounds."
 	icon_state = "uzi"
 	inhand_icon_state = "uzi"
@@ -300,7 +300,7 @@
 	icon_state = "mp5"
 	ammo_type = /obj/item/ammo_casing/vampire/c9mm
 	caliber = CALIBER_9MM
-	max_ammo = 25
+	max_ammo = 30
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 
 /obj/item/gun/ballistic/automatic/vampire/mp5
