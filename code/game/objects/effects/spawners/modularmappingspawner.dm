@@ -12,7 +12,10 @@
 
 /obj/effect/spawner/modularmap/Initialize(mapload)
 	. = ..()
-	Initialize(mapload)
+	SSmodularmapping.markers += src
+
+///Actually loads the modularmap: called by SSmodularmapping
+/obj/effect/spawner/modularmap/proc/load_modularmap()
 	var/datum/map_template/modular/template
 	template = pick(SSmapping.modular_templates[mapid])
 	var/errored = FALSE
@@ -32,8 +35,9 @@
 		message_admins("Warning, modular mapping error, please report this to coders and get it fixed ASAP")
 		qdel(src)
 		return
-	template.load(get_turf(src), centered = template.keepcentered)
+	var/turf/loadloc = get_turf(src)
 	qdel(src)
+	template.load(loadloc, template.keepcentered)
 
 ////	Types:
 //	San Francisco
