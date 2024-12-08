@@ -45,6 +45,20 @@
 		to_chat(trans, "You can't transform while in frenzy.")
 		return
 	trans.inspired = FALSE
+	if(ishuman(trans))
+		var/datum/species/garou/G = trans.dna.species
+		var/mob/living/carbon/human/H = trans
+		if(G.glabro)
+			H.remove_overlay(PROTEAN_LAYER)
+			G.punchdamagelow = G.punchdamagelow-15
+			G.punchdamagehigh = G.punchdamagehigh-15
+			H.physiology.armor.melee = H.physiology.armor.melee-15
+			H.physiology.armor.bullet = H.physiology.armor.bullet-15
+			var/matrix/M = matrix()
+			M.Scale(1/1.3, 1/1.3)
+			H.transform = M
+			G.glabro = FALSE
+			H.update_icons()
 	switch(form)
 		if("Lupus")
 			if(iscrinos(trans))

@@ -15,6 +15,7 @@
 	dust_anim = "dust-h"
 	whitelisted = TRUE
 	selectable = TRUE
+	var/glabro = FALSE
 
 /datum/action/garouinfo
 	name = "About Me"
@@ -101,6 +102,8 @@
 	var/datum/action/garouinfo/infor = new()
 	infor.host = C
 	infor.Grant(C)
+	var/datum/action/gift/glabro/glabro = new()
+	glabro.Grant(C)
 	var/datum/action/gift/rage_heal/GH = new()
 	GH.Grant(C)
 	C.transformator = new(C)
@@ -109,7 +112,11 @@
 /datum/species/garou/on_species_loss(mob/living/carbon/human/C, datum/species/new_species, pref_load)
 	. = ..()
 	for(var/datum/action/garouinfo/VI in C.actions)
-		qdel(VI)
+		if(VI)
+			VI.Remove(C)
+	for(var/datum/action/gift/G in C.actions)
+		if(G)
+			G.Remove(C)
 
 /datum/species/garou/check_roundstart_eligible()
 	return FALSE
