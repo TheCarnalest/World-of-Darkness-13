@@ -281,7 +281,7 @@
 		if(!ishuman(usr))
 			return
 		var/mob/living/carbon/human/H = usr
-		if(H.stat > 2)
+		if(H.stat > UNCONSCIOUS)
 			return
 		if(usr == src)
 			return

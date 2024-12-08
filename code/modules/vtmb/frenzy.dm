@@ -269,6 +269,11 @@
 				if(prob(5))
 					to_chat(H, "<span class='warning'>You are missing your home soil...</span>")
 					H.bloodpool = max(0, H.bloodpool-1)
+	if(H.clane?.name == "Kiasyd")
+		for(var/obj/item/I in H.contents)
+			if(I?.is_iron)
+				H.adjustCloneLoss(max(5, I.w_class))
+				to_chat(H, "<span class='warning'>[I] burns your flesh with <b>COLD IRON</b>!")
 
 /*
 	if(!H in GLOB.masquerade_breakers_list)
@@ -279,7 +284,7 @@
 			GLOB.masquerade_breakers_list -= H
 */
 
-	if(H.key && H.stat <= 3)
+	if(H.key && H.stat <= HARD_CRIT)
 		var/datum/preferences/P = GLOB.preferences_datums[ckey(H.key)]
 		if(P)
 			if(P.humanity != H.humanity)
