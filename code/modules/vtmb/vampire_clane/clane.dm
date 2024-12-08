@@ -21,7 +21,7 @@ And it also helps for the character set panel
 	var/frenzymod = 1
 	var/start_humanity = 7
 	var/haircuts
-	var/violating_appearance
+	var/violating_appearance = FALSE
 	var/male_clothes
 	var/female_clothes
 	var/enlightenment = FALSE

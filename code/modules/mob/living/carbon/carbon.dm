@@ -165,6 +165,10 @@
 	else
 		thrown_thing = I.on_thrown(src, target)
 
+	if(src.alpha != 255)
+		src.playsound_local(src.loc, 'code/modules/wod13/sounds/obfuscate_deactivate.ogg', 50, FALSE)
+		src.alpha = 255
+
 	if(thrown_thing)
 
 		if(isliving(thrown_thing))
