@@ -40,7 +40,7 @@
 	template.load(loadloc, template.keepcentered)
 
 ////	Types:
-//	San Francisco
+//	San Francisco sewers
 /obj/effect/spawner/modularmap/sanfrancisco/sewernortheast1
 	mapid = "sewersnortheast1"
 	spawner_width = 14
