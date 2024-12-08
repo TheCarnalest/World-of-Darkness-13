@@ -15,14 +15,14 @@
 
 /datum/map_template/modular/sanfrancisco/sewersdrugden
 	name = "Sewers Drug Den"
-	mappath = "_maps/modularmaps/prison/sewersdrugden.dmm"
+	mappath = "_maps/modularmaps/sanfrancisco/sewersdrugden.dmm"
 	modular_id = "sewersnortheast1"
 	template_width = 14
 	template_height = 17
 
 /datum/map_template/modular/sanfrancisco/sewersdrugden
 	name = "Sewers Thunderdome"
-	mappath = "_maps/modularmaps/prison/sewersthunderdome.dmm"
+	mappath = "_maps/modularmaps/sanfrancisco/sewersthunderdome.dmm"
 	modular_id = "sewersnortheast1"
 	template_width = 14
 	template_height = 17
