@@ -30,13 +30,6 @@
 		H.base_body_mod = ""
 	H.update_body()
 
-/datum/vampireclane/kiasyd/post_gain(mob/living/carbon/human/H)
-	..()
-
-//datum/discipline/visceratika/post_gain(mob/living/carbon/human/H)
-//	var/obj/effect/proc_holder/spell/voice_of_god/S = new(H)
-//	H.mind.AddSpell(S)
-
 /datum/discipline/mytherceria
 	name = "Mytherceria"
 	desc = "Mytherceria is a Discipline that manifests in faerie-blooded vampires such as the Kiasyd and Maeghar. It grants the vampire mystical senses, the ability to steal knowledge, and other powers attributed to fae."
@@ -49,17 +42,7 @@
 	fearless = TRUE
 	clane_restricted = TRUE
 
-/obj/item
-	var/is_iron = FALSE
-	var/is_magic = FALSE
-
-/mob
-	var/myth_steal = FALSE
-
-/mob/living
-	var/datum/riddle/riddle
-	var/bad_answers = 0
-	var/list/stored_riddles = list()
+	var/stored_riddles = list()
 
 /datum/riddle
 	var/riddle_text
@@ -71,21 +54,25 @@
 	desc = "You have a riddle to solve!"
 	icon_state = "riddle"
 
-/atom/movable/screen/alert/riddle/Click()
-	if(iscarbon(usr) && usr == owner)
-		var/mob/living/carbon/M = usr
-		if(M.riddle)
-			M.riddle.try_answer(M)
+	var/datum/riddle/riddle
+	var/bad_answers = 0
 
-/datum/riddle/proc/try_answer(var/mob/living/answerer)
+/atom/movable/screen/alert/riddle/Click()
+	if(iscarbon(usr) && (usr == owner))
+		var/mob/living/carbon/M = usr
+		if(riddle)
+			riddle.try_answer(M, src)
+
+/datum/riddle/proc/try_answer(mob/living/answerer, var/atom/movable/screen/alert/riddle/new_alert)
 	var/try_answer = input(answerer, riddle_text, "Riddle") as null|anything in riddle_options
 	if(try_answer)
-		answer_riddle(answerer, try_answer)
+		answer_riddle(answerer, try_answer, new_alert)
 
-/datum/riddle/proc/ask(var/mob/living/asking)
-	asking.throw_alert("riddle", /atom/movable/screen/alert/riddle)
+/datum/riddle/proc/ask(mob/living/asking)
+	var/atom/movable/screen/alert/riddle/alert = asking.throw_alert("riddle", /atom/movable/screen/alert/riddle)
+	alert.riddle = src
 
-/datum/riddle/proc/create_riddle(var/mob/living/riddler)
+/datum/riddle/proc/create_riddle(mob/living/carbon/human/riddler)
 	var/proceed = FALSE
 	var/text_riddle = input(riddler, "Create a riddle:", "Riddle", "Is it something?") as null|text
 	if(text_riddle)
@@ -108,29 +95,36 @@
 						if(answer4)
 							riddle_options += trim(copytext_char(sanitize(answer4), 1, MAX_MESSAGE_LEN))
 	if(proceed)
-		riddler.stored_riddles += src
 		to_chat(riddler, "New riddle created.")
 		return src
 	else
 		to_chat(riddler, "<span class='danger'>Your riddle is too complicated.</span>")
 		return FALSE
 
-/datum/riddle/proc/answer_riddle(var/mob/living/answerer, var/the_answer)
+/datum/riddle/proc/answer_riddle(mob/living/answerer, the_answer, var/atom/movable/screen/alert/riddle/alert)
 	if(the_answer != riddle_answer)
-		answerer.bad_answers = answerer.bad_answers+1
-		if(answerer.bad_answers >= round(length(riddle_options)/2))
+		alert.bad_answers++
+		to_chat(answerer,
+			"<span class='danger'>WRONG ANSWER.</span>")
+		if(alert.bad_answers >= round(length(riddle_options)/2))
 			if(iscarbon(answerer))
 				var/mob/living/carbon/C = answerer
 				var/obj/item/organ/tongue/tongue = locate(/obj/item/organ/tongue) in C.internal_organs
 				if(tongue)
 					tongue.Remove(C)
+			to_chat(answerer,
+				"<span class='danger'>THE RIDDLE REMOVES YOUR LYING TONGUE AS IT FLEES.</span>")
 			answerer.remove_movespeed_modifier(/datum/movespeed_modifier/riddle)
-			answerer.bad_answers = 0
-			answerer.riddle = null
+			alert.bad_answers = 0
+			alert.riddle = null
+			answerer.clear_alert("riddle")
 	else
-		answerer.riddle = null
+		to_chat(answerer,
+			"<span class='nicegreen'>You feel the riddle's hold over you vanish.</span>")
+		alert.riddle = null
 		answerer.remove_movespeed_modifier(/datum/movespeed_modifier/riddle)
 		answerer.say(the_answer)
+		answerer.clear_alert("riddle")
 
 /datum/discipline/mytherceria/activate(mob/living/target, mob/living/carbon/human/caster)
 	. = ..()
@@ -142,32 +136,20 @@
 					if(istype(I, /obj/item/storage))
 						total_list |= I.contents
 					total_list |= I
-			var/text_started = FALSE
+			to_chat(caster, "<span class='purple'>Your fae senses reach out to detect what they're carrying...</span>")
 			for(var/obj/item/A in total_list)
 				if(A)
 					if(A.is_magic)
-						if(!text_started)
-							text_started = TRUE
-							to_chat(caster, "<span class='nicegreen'>[A.name]</span>")
-						else
-							to_chat(caster, ", <span class='nicegreen'>[A.name]</span>")
+						to_chat(caster, "- <span class='nicegreen'>[A.name]</span>")
 					else if(A.is_iron)
-						if(!text_started)
-							text_started = TRUE
-							to_chat(caster, "<span class='danger'>[A.name]</span>")
-						else
-							to_chat(caster, ", <span class='danger'>[A.name]</span>")
+						to_chat(caster, "- <span class='danger'>[A.name]</span>")
 					else
-						if(!text_started)
-							text_started = TRUE
-							to_chat(caster, "[A.name]")
-						else
-							to_chat(caster, ", [A.name]")
+						to_chat(caster, "- [A.name]")
 		if(2)
-			caster.myth_steal = TRUE
+			caster.enhanced_strip = TRUE
 			target.show_inv(caster)
-			spawn(delay+caster.discipline_time_plus)
-				caster.myth_steal = FALSE
+			spawn(delay + caster.discipline_time_plus)
+				caster.enhanced_strip = FALSE
 		if(3)
 			var/obj/item/clothing/mask/facehugger/kiasyd/K = new (get_turf(caster))
 			K.throw_at(target, 10, 14, caster)
@@ -175,15 +157,15 @@
 			var/list/screens = list(target.hud_used.plane_masters["[FLOOR_PLANE]"], target.hud_used.plane_masters["[GAME_PLANE]"], target.hud_used.plane_masters["[LIGHTING_PLANE]"])
 			var/rotation = 50
 			for(var/whole_screen in screens)
-				animate(whole_screen, transform = matrix(rotation, MATRIX_ROTATE), time = 5, easing = QUAD_EASING, loop = -1)
-				animate(transform = matrix(-rotation, MATRIX_ROTATE), time = 5, easing = QUAD_EASING)
+				animate(whole_screen, transform = matrix(rotation, MATRIX_ROTATE), time = 0.5 SECONDS, easing = QUAD_EASING, loop = -1)
+				animate(transform = matrix(-rotation, MATRIX_ROTATE), time = 0.5 SECONDS, easing = QUAD_EASING)
 			spawn(delay+caster.discipline_time_plus)
 				for(var/whole_screen in screens)
-					animate(whole_screen, transform = matrix(), time = 5, easing = QUAD_EASING)
+					animate(whole_screen, transform = matrix(), time = 0.5 SECONDS, easing = QUAD_EASING)
 		if(5)
-			if(length(caster.stored_riddles))
+			if(length(stored_riddles))
 				var/list/riddle_list = list("Create a new riddle...")
-				for(var/datum/riddle/R in caster.stored_riddles)
+				for(var/datum/riddle/R in stored_riddles)
 					if(R)
 						riddle_list += R.riddle_text
 				var/try_riddle = input(caster, "Select a Riddle:", "Riddle") as null|anything in riddle_list
@@ -191,28 +173,26 @@
 					if(try_riddle == "Create a new riddle...")
 						var/datum/riddle/R = new ()
 						if(R.create_riddle(caster))
-							caster.stored_riddles += R
-							target.riddle = R
+							stored_riddles += R
 							R.ask(target)
 							caster.say(R.riddle_text)
 						return
 					var/datum/riddle/actual_riddle
-					for(var/datum/riddle/RIDDLE in caster.stored_riddles)
+					for(var/datum/riddle/RIDDLE in stored_riddles)
 						if(RIDDLE)
 							if(RIDDLE.riddle_text == try_riddle)
 								actual_riddle = RIDDLE
-					if(!target.riddle)
-						target.add_movespeed_modifier(/datum/movespeed_modifier/riddle)
-					target.riddle = actual_riddle
-					target.riddle.ask(target)
-					caster.say(target.riddle.riddle_text)
+					target.add_movespeed_modifier(/datum/movespeed_modifier/riddle)
+					actual_riddle.ask(target)
+					caster.say(actual_riddle.riddle_text)
 			else
 				var/datum/riddle/R = new ()
 				if(R.create_riddle(caster))
-					caster.stored_riddles += R
-					target.riddle = R
+					stored_riddles += R
 					R.ask(target)
 					caster.say(R.riddle_text)
+				else
+					qdel(R)
 
 /datum/movespeed_modifier/riddle
 	multiplicative_slowdown = 5
@@ -223,7 +203,7 @@
 	worn_icon = 'code/modules/wod13/worn.dmi'
 	icon = 'code/modules/wod13/icons.dmi'
 	icon_state = "goblin"
-	sterile = 1
+	sterile = TRUE
 
 /obj/item/clothing/mask/facehugger/kiasyd/attack_hand(mob/user)
 	if(iscarbon(user))
@@ -242,7 +222,7 @@
 		if(target.wear_mask && istype(target.wear_mask, /obj/item/clothing/mask/facehugger/kiasyd))
 			return FALSE
 	M.visible_message("<span class='danger'>[src] leaps at [M]'s face!</span>", \
-							"<span class='userdanger'>[src] leaps at your face!</span>")
+		"<span class='userdanger'>[src] leaps at your face!</span>")
 	if(iscarbon(M))
 		var/mob/living/carbon/target = M
 
@@ -253,13 +233,14 @@
 		if(target.wear_mask)
 			var/obj/item/clothing/W = target.wear_mask
 			if(target.dropItemToGround(W, TRUE))
-				target.visible_message("<span class='danger'>[src] tears [W] off of [target]'s face!</span>", \
-									"<span class='userdanger'>[src] tears [W] off of your face!</span>")
+				target.visible_message(
+					"<span class='danger'>[src] tears [W] off of [target]'s face!</span>", \
+					"<span class='userdanger'>[src] tears [W] off of your face!</span>")
 		target.equip_to_slot_if_possible(src, ITEM_SLOT_MASK, 0, 1, 1)
 		var/datum/cb = CALLBACK(src,/obj/item/clothing/mask/facehugger/kiasyd/proc/eat_head)
-		for(var/i in 1 to 20)
-			addtimer(cb, (i - 1)*15)
-		spawn(31 SECONDS)
+		for(var/i in 1 to 10)
+			addtimer(cb, (i - 1) * 1.5 SECONDS)
+		spawn(16 SECONDS)
 			qdel(src)
 	return TRUE
 
@@ -272,41 +253,11 @@
 /obj/item/afterattack(atom/target, mob/living/carbon/user, proximity)
 	if(!proximity)
 		return
-	if(iskindred(target))
+	if(iskindred(target) && is_iron)
 		var/mob/living/carbon/human/L = target
 		if(L.clane?.name == "Kiasyd")
 			L.apply_damage(w_class*3, CLONE)
 	..()
-
-/obj/item/gun/ballistic
-	is_iron = TRUE
-
-/obj/item/gun/ballistic/automatic/vampire/aug
-	is_iron = FALSE
-
-/obj/item/gun/ballistic/shotgun/toy/crossbow/vampire
-	is_iron = FALSE
-
-/obj/item/melee/vampirearms/tire
-	is_iron = TRUE
-
-/obj/item/melee/vampirearms/knife
-	is_iron = TRUE
-
-/obj/item/melee/vampirearms/knife/gangrel
-	is_iron = FALSE
-
-/obj/item/melee/vampirearms/chainsaw
-	is_iron = TRUE
-
-/obj/item/melee/vampirearms/shovel
-	is_iron = TRUE
-
-/obj/item/melee/vampirearms/katana
-	is_iron = TRUE
-
-/obj/item/flashlight
-	is_iron = TRUE
 
 /datum/discipline/mytherceria/post_gain(mob/living/carbon/human/H)
 	if (level >= 3)
@@ -322,16 +273,13 @@
 
 /datum/action/mytherceria/Trigger()
 	. = ..()
-	var/mob/living/carbon/human/NG = owner
-	if(NG.stat > 1 || NG.IsSleeping() || NG.IsUnconscious() || NG.IsParalyzed() || NG.IsKnockdown() || NG.IsStun() || HAS_TRAIT(NG, TRAIT_RESTRAINED) || !isturf(NG.loc))
-		return
 	var/mob/living/carbon/human/H = owner
 	var/try_trap = input(H, "Select a Trap:", "Trap") as null|anything in list("Brutal", "Spin", "Drop")
 	if(try_trap)
 		if(H.bloodpool < 1)
 			to_chat(owner, "<span class='warning'>You don't have enough <b>BLOOD</b> to do that!</span>")
 			return
-		H.bloodpool = max(0, H.bloodpool-1)
+		H.bloodpool = max(0, H.bloodpool - 1)
 		switch(try_trap)
 			if("Brutal")
 				var/obj/mytherceria_trap/trap = new (get_turf(owner))
@@ -384,11 +332,11 @@
 			var/list/screens = list(L.hud_used.plane_masters["[FLOOR_PLANE]"], L.hud_used.plane_masters["[GAME_PLANE]"], L.hud_used.plane_masters["[LIGHTING_PLANE]"])
 			var/rotation = 50
 			for(var/whole_screen in screens)
-				animate(whole_screen, transform = matrix(rotation, MATRIX_ROTATE), time = 5, easing = QUAD_EASING, loop = -1)
-				animate(transform = matrix(-rotation, MATRIX_ROTATE), time = 5, easing = QUAD_EASING)
+				animate(whole_screen, transform = matrix(rotation, MATRIX_ROTATE), time = 0.5 SECONDS, easing = QUAD_EASING, loop = -1)
+				animate(transform = matrix(-rotation, MATRIX_ROTATE), time = 0.5 SECONDS, easing = QUAD_EASING)
 			spawn(15 SECONDS)
 				for(var/whole_screen in screens)
-					animate(whole_screen, transform = matrix(), time = 5, easing = QUAD_EASING)
+					animate(whole_screen, transform = matrix(), time = 0.5 SECONDS, easing = QUAD_EASING)
 			qdel(src)
 
 /obj/mytherceria_trap/drop
