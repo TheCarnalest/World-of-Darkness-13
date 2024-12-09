@@ -30,11 +30,15 @@
 	if((abuse_fix + 5 SECONDS) > world.time)
 		to_chat(owner, "<span class='warning'>Your mind feels a bit empty...</span>")
 		return
-	var/new_thought = input(owner, "Have any thought about this, buddy?") as text|null
+	var/new_thought = input(owner, "Have any thought about this, buddy?") as null|text
 	if(new_thought)
+		new_thought = trim(copytext_char(sanitize(new_thought), 1, MAX_MESSAGE_LEN))
 		abuse_fix = world.time
 		for(var/mob/living/carbon/human/H in GLOB.player_list)
 			if (iskindred(H))
 				var/datum/species/kindred/species = H.dna.species
 				if (species.get_discipline("Dementation"))
-					to_chat(H, "<span class='ghostalert'>[sanitize_text(new_thought)]</span>")
+					to_chat(H, "<span class='ghostalert'>[new_thought]</span>")
+
+		message_admins("[ADMIN_LOOKUPFLW(usr)] said \"[new_thought]\" through the Madness Network.")
+		log_game("[key_name(usr)] said \"[new_thought]\" through the Madness Network.")

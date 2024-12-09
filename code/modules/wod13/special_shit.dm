@@ -155,6 +155,7 @@
 	. = ..()
 	var/chosen_name = input(user, "Write the hunted or forgiven character name:", "Blood Hunt")  as text|null
 	if(chosen_name)
+		chosen_name = sanitize_name(chosen_name)
 		var/name_in_list = FALSE
 		for(var/mob/living/carbon/human/H in GLOB.player_list)
 			if(H)

@@ -297,6 +297,9 @@
 	return "Error: Unknown job availability."
 
 /mob/dead/new_player/proc/IsJobUnavailable(rank, latejoin = FALSE)
+	var/bypass = FALSE
+	if (check_rights_for(client, R_ADMIN))
+		bypass = TRUE
 	var/datum/job/job = SSjob.GetJob(rank)
 	if(!job)
 		return JOB_UNAVAILABLE_GENERIC
@@ -308,21 +311,21 @@
 		return JOB_UNAVAILABLE_BANNED
 	if(QDELETED(src))
 		return JOB_UNAVAILABLE_GENERIC
-	if(!job.player_old_enough(client))
+	if(!job.player_old_enough(client) && !bypass)
 		return JOB_UNAVAILABLE_ACCOUNTAGE
-	if(job.required_playtime_remaining(client))
+	if(job.required_playtime_remaining(client) && !bypass)
 		return JOB_UNAVAILABLE_PLAYTIME
 	if(latejoin && !job.special_check_latejoin(client))
 		return JOB_UNAVAILABLE_GENERIC
-	if(client.prefs.generation > job.minimal_generation)
+	if((client.prefs.generation > job.minimal_generation) && !bypass)
 		return JOB_UNAVAILABLE_GENERATION
-	if(client.prefs.masquerade < job.minimal_masquerade)
+	if((client.prefs.masquerade < job.minimal_masquerade) && !bypass)
 		return JOB_UNAVAILABLE_MASQUERADE
-	if(!job.allowed_species.Find(client.prefs.pref_species.name))
+	if(!job.allowed_species.Find(client.prefs.pref_species.name) && !bypass)
 		return JOB_UNAVAILABLE_SPECIES
-	if (job.species_slots[client.prefs.pref_species.name] == 0)
+	if ((job.species_slots[client.prefs.pref_species.name] == 0) && !bypass)
 		return JOB_UNAVAILABLE_SPECIES_LIMITED
-	if(client.prefs.pref_species.name == "Vampire")
+	if((client.prefs.pref_species.name == "Vampire") && !bypass)
 		if(client.prefs.clane)
 			for(var/i in job.allowed_bloodlines)
 				if(i == client.prefs.clane.name)

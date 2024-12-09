@@ -912,7 +912,7 @@ VENTORY!
 
 /obj/item/ammo_box/magazine/vamp9mm
 	grid_width = 1 GRID_BOXES
-	grid_height = 1 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/ammo_box/vampire/c9mm/moonclip
 	grid_width = 1 GRID_BOXES
@@ -928,7 +928,7 @@ VENTORY!
 
 /obj/item/ammo_box/magazine/vamp9mp5
 	grid_width = 1 GRID_BOXES
-	grid_height = 1 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/gun/ballistic/automatic/vampire/mp5
 	grid_width = 2 GRID_BOXES
