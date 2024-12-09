@@ -387,7 +387,7 @@
 /datum/action/change_apparel/Trigger()
 	. = ..()
 	var/mob/living/carbon/werewolf/crinos/C = owner
-	if(C.stat < 1)
+	if(C.stat == CONSCIOUS)
 		if(C.sprite_apparel == 4)
 			C.sprite_apparel = 0
 		else
@@ -433,12 +433,12 @@
 		playsound(get_turf(owner), 'code/modules/wod13/sounds/transform.ogg', 50, FALSE)
 		if(G.glabro)
 			H.remove_overlay(PROTEAN_LAYER)
-			G.punchdamagelow = G.punchdamagelow-15
-			G.punchdamagehigh = G.punchdamagehigh-15
-			H.physiology.armor.melee = H.physiology.armor.melee-15
-			H.physiology.armor.bullet = H.physiology.armor.bullet-15
+			G.punchdamagelow -= 15
+			G.punchdamagehigh -= 15
+			H.physiology.armor.melee -= 15
+			H.physiology.armor.bullet -= 15
 			var/matrix/M = matrix()
-			M.Scale(1/1.3, 1/1.3)
+			M.Scale(1)
 			animate(H, transform = M, time = 1 SECONDS)
 			G.glabro = FALSE
 			H.update_icons()
@@ -447,12 +447,12 @@
 			var/mutable_appearance/glabro_overlay = mutable_appearance('code/modules/wod13/werewolf_abilities.dmi', H.transformator.crinos_form?.sprite_color, -PROTEAN_LAYER)
 			H.overlays_standing[PROTEAN_LAYER] = glabro_overlay
 			H.apply_overlay(PROTEAN_LAYER)
-			G.punchdamagelow = G.punchdamagelow+15
-			G.punchdamagehigh = G.punchdamagehigh+15
-			H.physiology.armor.melee = H.physiology.armor.melee+15
-			H.physiology.armor.bullet = H.physiology.armor.bullet+15
+			G.punchdamagelow += 15
+			G.punchdamagehigh += 15
+			H.physiology.armor.melee += 15
+			H.physiology.armor.bullet += 15
 			var/matrix/M = matrix()
-			M.Scale(1.3, 1.3)
+			M.Scale(1.3)
 			animate(H, transform = M, time = 1 SECONDS)
 			G.glabro = TRUE
 			H.update_icons()
