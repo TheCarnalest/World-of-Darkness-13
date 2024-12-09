@@ -1208,8 +1208,6 @@
 //					discipliner = TRUE
 	if(examine_cursor_icon && client.keys_held["Shift"]) //mouse shit is hardcoded, make this non hard-coded once we make mouse modifiers bindable
 		client.mouse_pointer_icon = examine_cursor_icon
-	else if(discipliner)
-		client.mouse_pointer_icon = discipline_cursor_icon
 	else if(shootahell)
 		client.mouse_pointer_icon = pvp_cursor_icon
 	else if (ismecha(loc))

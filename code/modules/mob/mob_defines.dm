@@ -45,7 +45,6 @@
 	///Cursor icon used when holding shift over things
 	var/examine_cursor_icon = 'icons/effects/mouse_pointers/examine_pointer.dmi'
 	var/pvp_cursor_icon = 'icons/effects/mouse_pointers/pvp.dmi'
-	var/discipline_cursor_icon = 'icons/effects/mouse_pointers/discipline.dmi'
 
 	/// Whether a mob is alive or dead. TODO: Move this to living - Nodrak (2019, still here)
 	var/stat = CONSCIOUS
