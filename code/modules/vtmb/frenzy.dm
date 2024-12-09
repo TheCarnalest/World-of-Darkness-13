@@ -272,8 +272,8 @@
 	if(H.clane?.name == "Kiasyd")
 		for(var/obj/item/I in H.contents)
 			if(I?.is_iron)
-				H.adjustCloneLoss(max(5, I.w_class))
-				to_chat(H, "<span class='warning'>[I] burns your flesh with <b>COLD IRON</b>!")
+				H.rollfrenzy()
+				to_chat(H, "<span class='warning'>[I] is <b>COLD IRON</b>!")
 
 /*
 	if(!H in GLOB.masquerade_breakers_list)

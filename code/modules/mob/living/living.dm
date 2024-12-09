@@ -1006,7 +1006,7 @@
 	if(enhanced_strip)
 		strip_delayed = 0.1 SECONDS
 	if(do_mob(src, who, min(strip_delayed, what.strip_delay), interaction_key = what))
-		if(what && (Adjacent(who) || enhanced_strip))
+		if(what && (Adjacent(who) || (enhanced_strip && (range(src, who) <= 6))))
 			enhanced_strip = FALSE
 			if(ishuman(src) && isnpc(who))
 				var/mob/living/carbon/human/H = src

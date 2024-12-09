@@ -159,7 +159,7 @@
 			for(var/whole_screen in screens)
 				animate(whole_screen, transform = matrix(rotation, MATRIX_ROTATE), time = 0.5 SECONDS, easing = QUAD_EASING, loop = -1)
 				animate(transform = matrix(-rotation, MATRIX_ROTATE), time = 0.5 SECONDS, easing = QUAD_EASING)
-			spawn(delay+caster.discipline_time_plus)
+			spawn(delay/2+caster.discipline_time_plus)
 				for(var/whole_screen in screens)
 					animate(whole_screen, transform = matrix(), time = 0.5 SECONDS, easing = QUAD_EASING)
 		if(5)
@@ -248,7 +248,7 @@
 	if(iscarbon(loc))
 		var/mob/living/carbon/C = loc
 		to_chat(C, "<span class='warning'>[src] is eating your face!</span>")
-		C.apply_damage(10, BRUTE)
+		C.apply_damage(5, BRUTE)
 
 /obj/item/afterattack(atom/target, mob/living/carbon/user, proximity)
 	if(!proximity)
@@ -256,7 +256,7 @@
 	if(iskindred(target) && is_iron)
 		var/mob/living/carbon/human/L = target
 		if(L.clane?.name == "Kiasyd")
-			L.apply_damage(w_class*3, CLONE)
+			L.rollfrenzy()
 	..()
 
 /datum/discipline/mytherceria/post_gain(mob/living/carbon/human/H)
