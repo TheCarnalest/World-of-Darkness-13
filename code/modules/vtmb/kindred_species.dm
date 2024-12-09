@@ -29,10 +29,12 @@
 	burnmod = 2
 	punchdamagelow = 10
 	punchdamagehigh = 20
+	dust_anim = "dust-h"
 
 	//splat variables
-	dust_anim = "dust-h"
 	var/spend_blood_per_turn = 1
+	var/spent_blood_turn = 0
+	COOLDOWN_DECLARE(spend_blood_timer)
 	var/datum/vampireclane/clane
 	var/list/datum/discipline/disciplines = list()
 	COOLDOWN_DECLARE(torpor_timer)
@@ -349,7 +351,7 @@
 			BD.dna.species.punchdamagehigh = BD.dna.species.punchdamagehigh+5
 			BD.physiology.armor.melee = BD.physiology.armor.melee+15
 			BD.physiology.armor.bullet = BD.physiology.armor.bullet+15
-			BD.dexterity = BD.dexterity + 2
+			BD.dexterity += 2
 			if(!HAS_TRAIT(BD, TRAIT_IGNORESLOWDOWN))
 				ADD_TRAIT(BD, TRAIT_IGNORESLOWDOWN, SPECIES_TRAIT)
 			spawn(10 SECONDS + BD.discipline_time_plus + BD.bloodpower_time_plus)
@@ -591,16 +593,16 @@
 	if((dna.species.id == "kindred") || (dna.species.id == "ghoul")) //only splats that have Disciplines qualify
 		var/list/datum/discipline/adding_disciplines = list()
 
-		if (discipline_pref) //initialise character's own disciplines
+		if (discipline_pref) //initialise player's own disciplines
 			for (var/i in 1 to client.prefs.discipline_types.len)
 				var/type_to_create = client.prefs.discipline_types[i]
-				var/datum/discipline/discipline = new type_to_create
-				discipline.level = client.prefs.discipline_levels[i]
+				var/level = client.prefs.discipline_levels[i]
+				var/datum/discipline/discipline = new type_to_create(level, src)
 				adding_disciplines += discipline
 		else if (disciplines.len) //initialise given disciplines
 			for (var/i in 1 to disciplines.len)
 				var/type_to_create = disciplines[i]
-				var/datum/discipline/discipline = new type_to_create
+				var/datum/discipline/discipline = new type_to_create(1, src)
 				adding_disciplines += discipline
 
 		for (var/datum/discipline/discipline in adding_disciplines)
@@ -617,10 +619,8 @@
  */
 /mob/living/carbon/human/proc/give_discipline(datum/discipline/discipline)
 	if (discipline.level > 0)
-		var/datum/action/discipline/action = new
-		action.discipline = discipline
+		var/datum/action/discipline/action = new(discipline)
 		action.Grant(src)
-	discipline.post_gain(src)
 	var/datum/species/kindred/species = dna.species
 	species.disciplines += discipline
 
@@ -720,7 +720,7 @@
 			qdel(giving_discipline)
 			return
 
-		var/restricted = giving_discipline.clane_restricted
+		var/restricted = giving_discipline.clan_restricted
 		if (restricted)
 			if (alert(teacher, "Are you sure you want to teach [student.name] [giving_discipline.name], one of your Clan's most tightly guarded secrets? This will cost 10 experience points.", "Confirmation", "Yes", "No") != "Yes")
 				qdel(giving_discipline)
@@ -815,3 +815,23 @@
 		//forces blood_volume into line with new blood potency
 		if (old_max_bloodpool != vampire.maxbloodpool)
 			vampire.set_blood_points(vampire.bloodpool)
+
+/datum/species/kindred/proc/can_spend_blood(mob/living/carbon/human/vampire, amount)
+	if ((spent_blood_turn + amount) > spend_blood_per_turn)
+		return FALSE
+	if (!vampire.can_adjust_blood_points(-amount))
+		return FALSE
+	if (!COOLDOWN_FINISHED(src, spend_blood_timer))
+		return FALSE
+	return TRUE
+
+/datum/species/kindred/proc/spend_blood(mob/living/carbon/human/vampire, amount)
+	spent_blood_turn += amount
+	vampire.adjust_blood_points(-amount)
+	COOLDOWN_START(src, spend_blood_timer, DURATION_TURN / spend_blood_per_turn)
+
+/datum/species/kindred/proc/try_spend_blood(mob/living/carbon/human/vampire, amount)
+	if (can_spend_blood(vampire, amount))
+		spend_blood(vampire, amount)
+		return TRUE
+	return FALSE

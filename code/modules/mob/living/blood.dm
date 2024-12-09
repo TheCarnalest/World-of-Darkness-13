@@ -179,60 +179,6 @@
 		var/obj/item/bodypart/BP = i
 		BP.generic_bleedstacks = 0
 
-/mob/living/proc/can_adjust_blood_points(amount)
-	blood_per_point = initial(blood_volume) / maxbloodpool
-
-	if (amount >= 0)
-		if ((blood_volume + blood_per_point * amount) > initial(blood_volume))
-			return FALSE
-		if ((bloodpool + amount) > maxbloodpool)
-			return FALSE
-	else
-		if ((blood_volume - blood_per_point * amount) < 0)
-			return FALSE
-		if ((bloodpool - amount) < 0)
-			return FALSE
-	return TRUE
-
-/mob/living/proc/try_adjust_blood_points(amount)
-	if (can_adjust_blood_points(amount))
-		adjust_blood_points(amount)
-		return TRUE
-	else
-		return FALSE
-
-/mob/living/proc/adjust_blood_points(points)
-	blood_per_point = initial(blood_volume) / maxbloodpool
-	blood_volume = clamp(blood_volume + points * blood_per_point, 0, initial(blood_volume))
-
-	update_blood_values()
-
-/mob/living/proc/set_blood_points(points)
-	adjust_blood_points(points - bloodpool)
-
-/mob/living/proc/adjust_blood_volume(gain)
-	blood_per_point = initial(blood_volume) / maxbloodpool
-
-	var/factor = blood_per_point / BLOOD_POINT_NORMAL
-	gain *= factor
-	blood_volume = clamp(blood_volume + gain, 0, initial(blood_volume))
-
-	update_blood_values()
-
-/mob/living/proc/update_blood_values()
-	blood_per_point = initial(blood_volume) / maxbloodpool
-
-	blood_volume = clamp(blood_volume, 0, initial(blood_volume))
-	bloodpool = clamp(blood_volume / blood_per_point, 0, maxbloodpool)
-
-	update_blood_hud()
-
-/mob/living/proc/set_blood_volume(volume)
-	adjust_blood_volume(volume - blood_volume)
-
-/mob/living/proc/blood_points_per_units(units)
-	return (units / blood_per_point)
-
 /****************************************************
 				BLOOD TRANSFERS
 ****************************************************/
@@ -420,3 +366,61 @@
 	var/obj/effect/decal/cleanable/oil/B = locate() in T.contents
 	if(!B)
 		B = new(T)
+
+/****************************************************
+	VAMPIRE: THE MASQUERADE BLOOD POOL HANDLING
+****************************************************/
+
+/mob/living/proc/can_adjust_blood_points(amount)
+	blood_per_point = initial(blood_volume) / maxbloodpool
+
+	if (amount >= 0)
+		if ((blood_volume + blood_per_point * amount) > initial(blood_volume))
+			return FALSE
+		if ((bloodpool + amount) > maxbloodpool)
+			return FALSE
+	else
+		if ((blood_volume - blood_per_point * amount) < 0)
+			return FALSE
+		if ((bloodpool - amount) < 0)
+			return FALSE
+	return TRUE
+
+/mob/living/proc/try_adjust_blood_points(amount)
+	if (can_adjust_blood_points(amount))
+		adjust_blood_points(amount)
+		return TRUE
+	else
+		return FALSE
+
+/mob/living/proc/adjust_blood_points(points)
+	blood_per_point = initial(blood_volume) / maxbloodpool
+	blood_volume = clamp(blood_volume + points * blood_per_point, 0, initial(blood_volume))
+
+	update_blood_values()
+
+/mob/living/proc/set_blood_points(points)
+	adjust_blood_points(points - bloodpool)
+
+/mob/living/proc/adjust_blood_volume(gain)
+	blood_per_point = initial(blood_volume) / maxbloodpool
+
+	var/factor = blood_per_point / BLOOD_POINT_NORMAL
+	gain *= factor
+	blood_volume = clamp(blood_volume + gain, 0, initial(blood_volume))
+
+	update_blood_values()
+
+/mob/living/proc/update_blood_values()
+	blood_per_point = initial(blood_volume) / maxbloodpool
+
+	blood_volume = clamp(blood_volume, 0, initial(blood_volume))
+	bloodpool = clamp(blood_volume / blood_per_point, 0, maxbloodpool)
+
+	update_blood_hud()
+
+/mob/living/proc/set_blood_volume(volume)
+	adjust_blood_volume(volume - blood_volume)
+
+/mob/living/proc/blood_points_per_units(units)
+	return (units / blood_per_point)

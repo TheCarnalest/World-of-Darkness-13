@@ -5,10 +5,6 @@
 //			var/obj/effect/dummy/chameleon/C = loc
 //			C.say("[message]")
 //			return
-		if(length(GLOB.auspex_list))
-			for(var/mob/living/carbon/human/H in GLOB.auspex_list)
-				if(H)
-					to_chat(H, "<span class='scream_away'><b>[name]</b> says, \"[sanitize_text(message)]\"</span>")
 		if(prob(25))
 			if(iskindred(src))
 				if(clane)

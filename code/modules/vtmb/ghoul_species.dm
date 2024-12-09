@@ -13,7 +13,12 @@
 	punchdamagelow = 10
 	punchdamagehigh = 20
 	dust_anim = "dust-h"
+
+	//splat variables
 	var/mob/living/carbon/human/master
+	var/spend_blood_per_turn = 1
+	var/spent_blood_turn = 0
+	COOLDOWN_DECLARE(spend_blood_timer)
 	var/changed_master = FALSE
 	var/last_vitae = 0
 	var/list/datum/discipline/disciplines = list()
@@ -368,4 +373,27 @@
 			if (discipline.name == searched_discipline)
 				return discipline
 
+	return FALSE
+
+/datum/species/ghoul/proc/can_spend_blood(mob/living/carbon/human/ghoul, amount)
+	if ((spent_blood_turn + amount) > spend_blood_per_turn)
+		return FALSE
+	if (!ghoul.can_adjust_blood_points(-amount))
+		return FALSE
+	if (!COOLDOWN_FINISHED(src, spend_blood_timer))
+		return FALSE
+	return TRUE
+
+/datum/species/ghoul/proc/reset_blood_spending()
+	spent_blood_turn = 0
+
+/datum/species/ghoul/proc/spend_blood(mob/living/carbon/human/ghoul, amount)
+	spent_blood_turn += amount
+	ghoul.adjust_blood_points(-amount)
+	COOLDOWN_START(src, spend_blood_timer, DURATION_TURN / spend_blood_per_turn)
+
+/datum/species/ghoul/proc/try_spend_blood(mob/living/carbon/human/ghoul, amount)
+	if (can_spend_blood(ghoul, amount))
+		spend_blood(ghoul, amount)
+		return TRUE
 	return FALSE

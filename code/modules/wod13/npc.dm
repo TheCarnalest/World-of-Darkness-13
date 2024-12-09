@@ -358,7 +358,7 @@
 		return
 	is_talking = TRUE
 	var/delay = round(length_char(message)/2)
-	spawn(5)
+	spawn(0.5 SECONDS)
 		remove_overlay(SAY_LAYER)
 		var/mutable_appearance/say_overlay = mutable_appearance('icons/mob/talk.dmi', "default0", -SAY_LAYER)
 		overlays_standing[SAY_LAYER] = say_overlay
