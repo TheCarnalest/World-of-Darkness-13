@@ -192,7 +192,7 @@
 /datum/species/kindred/on_species_gain(mob/living/carbon/human/C)
 	. = ..()
 	C.update_body(0)
-	C.last_experience = world.time+3000
+	C.last_experience = world.time + 5 MINUTES
 	var/datum/action/vampireinfo/infor = new()
 	infor.host = C
 	infor.Grant(C)
@@ -414,6 +414,9 @@
 					to_chat(owner, "<span class='notice'>You successfuly fed [BLOODBONDED] with vitae.</span>")
 					to_chat(BLOODBONDED, "<span class='userlove'>You feel good when you drink this <b>BLOOD</b>...</span>")
 
+					message_admins("[ADMIN_LOOKUPFLW(H)] has bloodbonded [ADMIN_LOOKUPFLW(BLOODBONDED)].")
+					log_game("[key_name(H)] has bloodbonded [key_name(BLOODBONDED)].")
+
 					if(H.reagents)
 						if(length(H.reagents.reagent_list))
 							H.reagents.trans_to(BLOODBONDED, min(10, H.reagents.total_volume), transfered_by = H, methods = VAMPIRE)
@@ -477,7 +480,7 @@
  */
 /mob/living/carbon/human/proc/create_disciplines(discipline_pref = TRUE, list/disciplines)	//EMBRACE BASIC
 	if(client)
-		client.prefs.slotlocked = 1
+		client.prefs.slotlocked = TRUE
 		client.prefs.save_preferences()
 		client.prefs.save_character()
 
