@@ -160,6 +160,9 @@ Temporary Items
 
 #Visual studio stuff
 *.vscode/*
+!/.vscode/extensions.json
+!/.vscode/launch.json
+!/.vscode/tasks.json
 /tools/MapAtmosFixer/MapAtmosFixer/obj/*
 /tools/MapAtmosFixer/MapAtmosFixer/bin/*
 /tools/CreditsTool/bin/*
@@ -190,3 +193,6 @@ Temporary Items
 imgui.ini
 config/config.txt
 config/dbconfig.txt
+
+#tgs_test @ tools/tgs_test
+/tools/tgs_test*
