@@ -269,6 +269,22 @@
 		/obj/item/storage/pill_bottle/penacid = 1)
 	generate_items_inside(items_inside,src)
 
+/obj/item/storage/firstaid/ifak
+	name = "IFAK"
+	desc = "An Indivual First Aid Kit. Standard issue to duty belts."
+	icon_state = "bezerk"
+	damagetype_healed = "all"
+
+/obj/item/storage/firstaid/ifak/PopulateContents()
+	if(empty)
+		return
+	var/static/items_inside = list(
+		/obj/item/reagent_containers/hypospray/medipen/ifak = 3,
+		/obj/item/stack/medical/gauze = 1,
+		/obj/item/healthanalyzer = 1)
+	generate_items_inside(items_inside,src)
+
+
 /obj/item/storage/firstaid/tactical
 	name = "combat medical kit"
 	desc = "I hope you've got insurance."
