@@ -233,7 +233,7 @@
 	icon = 'code/modules/wod13/ammo.dmi'
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
 	w_class = WEIGHT_CLASS_NORMAL
-	multiple_sprites = AMMO_BOX_FULL_EMPTY
+
 ///9mm/////////////
 
 /obj/item/ammo_box/vampire/c9mm
