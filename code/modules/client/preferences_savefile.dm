@@ -500,10 +500,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	if(humanity <= 0)
 		humanity = 1
 
-	if (true_experience > 1000)
-		message_admins("[ADMIN_LOOKUPFLW(parent)] loaded a character slot with [true_experience] experience.")
-		log_game("[key_name(parent)] loaded a character slot with [true_experience] experience.")
-
 	for(var/custom_name_id in GLOB.preferences_custom_names)
 		var/namedata = GLOB.preferences_custom_names[custom_name_id]
 		custom_names[custom_name_id] = reject_bad_name(custom_names[custom_name_id],namedata["allow_numbers"])
@@ -644,6 +640,13 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 			discipline_levels += discipline4level
 			discipline4type = null
 			discipline4level = null
+
+	//repair some damage done by an exploit by resetting
+	if ((true_experience > 1000) && !check_rights_for(parent, R_ADMIN))
+		message_admins("[ADMIN_LOOKUPFLW(parent)] loaded a character slot with [true_experience] experience. The slot has been reset.")
+		log_game("[key_name(parent)] loaded a character slot with [true_experience] experience. The slot has been reset.")
+		to_chat(parent, "<span class='userdanger'>You tried to load a character slot with [true_experience] experience. It has been reset.</span>")
+		reset_character()
 
 	return TRUE
 

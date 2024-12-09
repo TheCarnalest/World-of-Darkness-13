@@ -220,47 +220,50 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	var/clane_accessory
 
-/datum/preferences/proc/add_experience(var/amount)
-	if(amount)
-		true_experience = true_experience+amount
+/datum/preferences/proc/add_experience(amount)
+	true_experience = clamp(true_experience + amount, 0, 1000)
+
+/datum/preferences/proc/reset_character()
+	slotlocked = 0
+	diablerist = 0
+	torpor_count = 0
+	generation_bonus = 0
+	physique = 1
+	dexterity = 1
+	mentality = 1
+	social = 1
+	lockpicking = 0
+	athletics = 0
+	blood = 1
+	masquerade = initial(masquerade)
+	generation = initial(generation)
+	archetype = pick(subtypesof(/datum/archetype))
+	var/datum/archetype/A = new archetype()
+	physique = A.start_physique
+	mentality = A.start_mentality
+	social = A.start_social
+	blood = A.start_blood
+	qdel(clane)
+	clane = new /datum/vampireclane/brujah()
+	discipline_types = list()
+	discipline_levels = list()
+	for (var/i in 1 to clane.clane_disciplines.len)
+		discipline_types += clane.clane_disciplines[i]
+		discipline_levels += 1
+	humanity = clane.start_humanity
+	enlightenment = clane.enlightenment
+	random_species()
+	random_character()
+	body_model = rand(1, 3)
+	true_experience = 50
+	real_name = random_unique_name(gender)
+	save_character()
 
 /proc/reset_shit(var/mob/M)
 	if(M.key)
 		var/datum/preferences/P = GLOB.preferences_datums[ckey(M.key)]
 		if(P)
-			P.slotlocked = 0
-			P.torpor_count = 0
-			P.generation_bonus = 0
-			P.physique = 1
-			P.dexterity = 1
-			P.social = 1
-			P.mentality = 1
-			P.blood = 1
-			P.lockpicking = 0
-			P.athletics = 0
-			P.archetype = pick(subtypesof(/datum/archetype))
-			var/datum/archetype/A = new P.archetype()
-			P.physique = A.start_physique
-//			P.dexterity = A.start_dexterity
-			P.social = A.start_social
-			P.mentality = A.start_mentality
-			P.blood = A.start_blood
-			P.diablerist = 0
-			P.masquerade = initial(P.masquerade)
-			P.generation = initial(P.generation)
-			qdel(P.clane)
-			P.clane = new /datum/vampireclane/brujah()
-			P.discipline_types = list()
-			P.discipline_levels = list()
-			for (var/i in 1 to P.clane.clane_disciplines.len)
-				P.discipline_types += P.clane.clane_disciplines[i]
-				P.discipline_levels += 1
-			P.enlightenment = P.clane.enlightenment
-			P.humanity = P.clane.start_humanity
-			P.real_name = random_unique_name(P.gender)
-			P.true_experience = 50
-			P.save_character()
-			P.save_preferences()
+			P.reset_character()
 
 /datum/preferences/New(client/C)
 	parent = C
@@ -282,34 +285,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	//we couldn't load character data so just randomize the character appearance + name
 	random_species()
 	random_character()		//let's create a random character then - rather than a fat, bald and naked man.
-	slotlocked = 0
-	torpor_count = 0
-	generation_bonus = 0
-	physique = 1
-	dexterity = 1
-	social = 1
-	mentality = 1
-	lockpicking = 0
-	athletics = 0
-	blood = 1
-	archetype = pick(subtypesof(/datum/archetype))
-	var/datum/archetype/A = new archetype()
-	physique = A.start_physique
-//	dexterity = A.start_dexterity
-	social = A.start_social
-	mentality = A.start_mentality
-	blood = A.start_blood
-	diablerist = 0
-	masquerade = initial(masquerade)
-	generation = initial(generation)
-	qdel(clane)
-	clane = new /datum/vampireclane/brujah()
-	for (var/i in 1 to clane.clane_disciplines.len)
-		discipline_types += clane.clane_disciplines[i]
-		discipline_levels += 1
-	enlightenment = clane.enlightenment
-	humanity = clane.start_humanity
-	true_experience = 50
+	reset_shit()
 	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	C?.set_macros()
 //	pref_species = new /datum/species/kindred()
@@ -2786,78 +2762,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("reset_all")
 					if (alert("Are you sure you want to reset your character?", "Confirmation", "Yes", "No") != "Yes")
 						return
-					slotlocked = 0
-					diablerist = 0
-					torpor_count = 0
-					generation_bonus = 0
-					physique = 1
-					dexterity = 1
-					mentality = 1
-					social = 1
-					lockpicking = 0
-					athletics = 0
-					blood = 1
-					masquerade = initial(masquerade)
-					generation = initial(generation)
-					archetype = pick(subtypesof(/datum/archetype))
-					var/datum/archetype/A = new archetype()
-					physique = A.start_physique
-					mentality = A.start_mentality
-					social = A.start_social
-					blood = A.start_blood
-					qdel(clane)
-					clane = new /datum/vampireclane/brujah()
-					discipline_types = list()
-					discipline_levels = list()
-					for (var/i in 1 to clane.clane_disciplines.len)
-						discipline_types += clane.clane_disciplines[i]
-						discipline_levels += 1
-					humanity = clane.start_humanity
-					enlightenment = clane.enlightenment
-					random_species()
-					random_character()
-					body_model = rand(1, 3)
-					true_experience = 50
-					real_name = random_unique_name(gender)
-					save_character()
+					reset_character()
 
 				if("changeslot")
 					if(!load_character(text2num(href_list["num"])))
-						//"Reset all" code is copied here to ensure new characters do not copy stats from slot 1
-						slotlocked = 0
-						diablerist = 0
-						torpor_count = 0
-						generation_bonus = 0
-						physique = 1
-						dexterity = 1
-						mentality = 1
-						social = 1
-						lockpicking = 0
-						athletics = 0
-						blood = 1
-						masquerade = initial(masquerade)
-						generation = initial(generation)
-						archetype = pick(subtypesof(/datum/archetype))
-						var/datum/archetype/A = new archetype()
-						physique = A.start_physique
-						mentality = A.start_mentality
-						social = A.start_social
-						blood = A.start_blood
-						qdel(clane)
-						clane = new /datum/vampireclane/brujah()
-						discipline_types = list()
-						discipline_levels = list()
-						for (var/i in 1 to clane.clane_disciplines.len)
-							discipline_types += clane.clane_disciplines[i]
-							discipline_levels += 1
-						humanity = clane.start_humanity
-						enlightenment = clane.enlightenment
-						random_species()
-						random_character()
-						body_model = rand(1, 3)
-						true_experience = 50
-						real_name = random_unique_name(gender)
-						save_character()
+						reset_character()
 
 				if("tab")
 					if (href_list["tab"])
@@ -2872,7 +2781,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	save_preferences()
 	save_character()
 	ShowChoices(user)
-	return 1
+	return TRUE
 
 /datum/preferences/proc/copy_to(mob/living/carbon/human/character, icon_updates = 1, roundstart_checks = TRUE, character_setup = FALSE, antagonist = FALSE, is_latejoiner = TRUE)
 
