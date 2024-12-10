@@ -854,6 +854,11 @@ VENTORY!
 	grid_width = 2 GRID_BOXES
 	grid_height = 2 GRID_BOXES
 
+/obj/item/storage/firstaid/ifak
+	grid_width = 1 GRID_BOXES
+	grid_height = 2 GRID_BOXES
+
+
 /obj/item/melee/vampirearms/fireaxe
 	grid_width = 7 GRID_BOXES
 	grid_height = 2 GRID_BOXES

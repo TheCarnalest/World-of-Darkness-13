@@ -266,7 +266,7 @@
 //	righthand_file = 'code/modules/wod13/lefthand.dmi'
 	worn_icon = 'code/modules/wod13/worn.dmi'
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
-	icon_state = "glock19"
+	icon_state = "glock21"
 	ammo_type = /obj/item/ammo_casing/vampire/c9mm
 	caliber = CALIBER_45
 	max_ammo = 12
