@@ -22261,7 +22261,8 @@
 	},
 /obj/item/kirbyplants/random,
 /obj/elevator_button{
-	pixel_y = 24
+	pixel_y = 24;
+	anchored = 1
 	},
 /turf/open/floor/plating/granite,
 /area/vtm/prince)
@@ -29067,7 +29068,8 @@
 "dFf" = (
 /obj/elevator_button{
 	id = 7;
-	pixel_y = 24
+	pixel_y = 24;
+	anchored = 1
 	},
 /turf/open/floor/plating/parquetry,
 /area/vtm/cabinet)
@@ -33154,7 +33156,8 @@
 "ggd" = (
 /obj/elevator_button{
 	id = 7;
-	pixel_y = 24
+	pixel_y = 24;
+	anchored = 1
 	},
 /obj/structure/railing{
 	dir = 8
@@ -47029,6 +47032,14 @@
 /obj/fusebox,
 /turf/open/floor/plating/toilet,
 /area/vtm/anarch)
+"oEb" = (
+/obj/elevator_button{
+	id = 3;
+	pixel_y = 24;
+	anchored = 1
+	},
+/turf/open/floor/plating/parquetry,
+/area/vtm/cabinet)
 "oEc" = (
 /obj/graffiti/camarilla,
 /turf/open/floor/plating/sidewalk,
@@ -56171,6 +56182,8 @@
 	},
 /obj/item/gun/ballistic/shotgun/vampire,
 /obj/item/gun/ballistic/shotgun/vampire,
+/obj/item/ammo_box/vampire/c12g/buck,
+/obj/item/ammo_box/vampire/c12g/buck,
 /turf/open/floor/plating/vampplating,
 /area/vtm/interior/police)
 "ugF" = (
@@ -265650,7 +265663,7 @@ bxl
 bxl
 bxl
 bwm
-jtz
+oEb
 buK
 bxl
 acJ
