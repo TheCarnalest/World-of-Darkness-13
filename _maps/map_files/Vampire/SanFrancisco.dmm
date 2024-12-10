@@ -22112,7 +22112,8 @@
 /area/vtm/cabinet)
 "bxv" = (
 /obj/elevator_button{
-	pixel_y = 24
+	pixel_y = 24;
+	anchored = 1
 	},
 /turf/open/floor/plating/parquetry,
 /area/vtm/cabinet)
@@ -27939,7 +27940,8 @@
 "cUL" = (
 /obj/elevator_button{
 	id = 2;
-	pixel_y = 26
+	pixel_y = 26;
+	anchored = 1
 	},
 /obj/machinery/light{
 	pixel_y = 32
@@ -30255,7 +30257,8 @@
 "eqX" = (
 /obj/elevator_button{
 	id = 8;
-	pixel_y = 24
+	pixel_y = 24;
+	anchored = 1
 	},
 /turf/open/floor/plating/vampplating,
 /area/vtm/cabinet)
@@ -38968,7 +38971,8 @@
 "jtz" = (
 /obj/elevator_button{
 	id = 3;
-	pixel_y = 24
+	pixel_y = 24;
+	anchored = 1
 	},
 /turf/open/floor/plating/parquetry,
 /area/vtm/cabinet)
@@ -41253,14 +41257,6 @@
 /obj/structure/bed/roller,
 /turf/open/floor/plating/asphalt,
 /area/vtm/clinic)
-"kQy" = (
-/obj/elevator_button{
-	id = 3;
-	pixel_y = 24;
-	anchored = 1
-	},
-/turf/open/floor/plating/parquetry,
-/area/vtm/cabinet)
 "kQJ" = (
 /obj/machinery/light/small{
 	pixel_y = 32
@@ -48826,7 +48822,8 @@
 "pDh" = (
 /obj/elevator_button{
 	id = 8;
-	pixel_y = 24
+	pixel_y = 24;
+	anchored = 1
 	},
 /turf/open/floor/plating/parquetry,
 /area/vtm/camarilla)
@@ -51191,7 +51188,8 @@
 "qXJ" = (
 /obj/elevator_button{
 	id = 2;
-	pixel_y = 24
+	pixel_y = 24;
+	anchored = 1
 	},
 /obj/machinery/light{
 	pixel_y = 32
@@ -265663,7 +265661,7 @@ bxl
 bxl
 bxl
 bwm
-kQy
+jtz
 buK
 bxl
 acJ
