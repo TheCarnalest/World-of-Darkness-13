@@ -55,7 +55,7 @@
 			H.physiology.armor.melee = H.physiology.armor.melee-15
 			H.physiology.armor.bullet = H.physiology.armor.bullet-15
 			var/matrix/M = matrix()
-			M.Scale(1/1.3, 1/1.3)
+			M.Scale(1)
 			H.transform = M
 			G.glabro = FALSE
 			H.update_icons()
