@@ -62,7 +62,7 @@ VENTORY!
 	screen_max_columns = 4
 	screen_max_rows = 4
 
-/datum/component/storage/concrete/vtm/firstaid/ifak
+/datum/component/storage/concrete/vtm/ifak
 	screen_max_columns = 3
 	screen_max_rows = 2
 
@@ -74,8 +74,8 @@ VENTORY!
 	screen_max_rows = 2
 
 /datum/component/storage/concrete/vtm/hardcase
-	screen_max_columns = 4
-	screen_max_rows = 2
+	screen_max_columns = 2
+	screen_max_rows = 4
 
 /datum/component/storage/concrete/vtm/car
 	screen_max_columns = 7
@@ -854,7 +854,7 @@ VENTORY!
 	grid_width = 2 GRID_BOXES
 	grid_height = 2 GRID_BOXES
 
-/obj/item/storage/firstaid/ifak
+/obj/item/storage/ifak
 	grid_width = 1 GRID_BOXES
 	grid_height = 2 GRID_BOXES
 

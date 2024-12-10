@@ -467,7 +467,7 @@
 	desc = "A small metal hardcase specifically designed to carry 5.56 magazines."
 	icon = 'icons/obj/storage.dmi'
 	icon_state = "hardcase"
-	icon_type = "carbine magazine (5.56mm)"
+	icon_type = "hardcase"
 	inhand_icon_state = "syringe_kit"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
@@ -485,7 +485,7 @@
 	desc = "A small metal hardcase specifically designed to carry Mp5 magazines."
 	icon_state = "hardcase"
 	inhand_icon_state = "syringe_kit"
-	icon_type = "automatic pistol magazine (.45 ACP)"
+	icon_type = "hardcase"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/medical_righthand.dmi'
 	spawn_type = /obj/item/ammo_box/magazine/vamp9mp5
