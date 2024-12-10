@@ -20722,8 +20722,8 @@
 /obj/structure/closet/crate,
 /obj/item/clothing/head/vampire/helmet,
 /obj/item/clothing/head/vampire/helmet,
-/obj/item/clothing/suit/vampire/vest,
-/obj/item/clothing/suit/vampire/vest,
+/obj/item/clothing/suit/vampire/vest/police,
+/obj/item/clothing/suit/vampire/vest/police,
 /turf/open/floor/plating/vampplating,
 /area/vtm/interior/police)
 "bsE" = (
