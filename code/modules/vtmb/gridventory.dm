@@ -62,9 +62,9 @@ VENTORY!
 	screen_max_columns = 4
 	screen_max_rows = 4
 
-/datum/component/storage/concrete/vtm/ifak
+/datum/component/storage/concrete/vtm/firstaid/ifak
 	screen_max_columns = 3
-	screen_max_rows = 2
+	screen_max_rows = 3
 
 /obj/item/storage/backpack
 	component_type = /datum/component/storage/concrete/vtm/backpack
@@ -74,7 +74,7 @@ VENTORY!
 	screen_max_rows = 2
 
 /datum/component/storage/concrete/vtm/hardcase
-	screen_max_columns = 2
+	screen_max_columns = 4
 	screen_max_rows = 4
 
 /datum/component/storage/concrete/vtm/car
@@ -854,10 +854,13 @@ VENTORY!
 	grid_width = 2 GRID_BOXES
 	grid_height = 2 GRID_BOXES
 
-/obj/item/storage/ifak
+/obj/item/storage/firstaid/ifak
 	grid_width = 1 GRID_BOXES
 	grid_height = 2 GRID_BOXES
 
+/obj/item/storage/fancy/hardcase
+	grid_width = 3 GRID_BOXES
+	grid_height = 2 GRID_BOXES
 
 /obj/item/melee/vampirearms/fireaxe
 	grid_width = 7 GRID_BOXES

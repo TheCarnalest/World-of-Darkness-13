@@ -295,8 +295,7 @@
 /obj/item/storage/firstaid/ifak
 	name = "IFAK"
 	desc = "An Individual First Aid Kit. Standard issue to duty belts."
-	icon_state = "bezerk"
-	var/empty = FALSE
+	icon_state = "ifak"
 	component_type = /datum/component/storage/concrete/vtm/firstaid/ifak
 
 /obj/item/storage/firstaid/ifak/PopulateContents()
