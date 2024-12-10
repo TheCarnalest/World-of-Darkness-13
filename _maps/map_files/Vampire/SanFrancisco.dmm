@@ -22431,7 +22431,7 @@
 	name = "SFPD Riot helmet"
 	},
 /turf/open/floor/plating/toilet,
-/area/vtm)
+/area/vtm/interior/police)
 "byt" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 5
@@ -41253,6 +41253,14 @@
 /obj/structure/bed/roller,
 /turf/open/floor/plating/asphalt,
 /area/vtm/clinic)
+"kQy" = (
+/obj/elevator_button{
+	id = 3;
+	pixel_y = 24;
+	anchored = 1
+	},
+/turf/open/floor/plating/parquetry,
+/area/vtm/cabinet)
 "kQJ" = (
 /obj/machinery/light/small{
 	pixel_y = 32
@@ -47032,14 +47040,6 @@
 /obj/fusebox,
 /turf/open/floor/plating/toilet,
 /area/vtm/anarch)
-"oEb" = (
-/obj/elevator_button{
-	id = 3;
-	pixel_y = 24;
-	anchored = 1
-	},
-/turf/open/floor/plating/parquetry,
-/area/vtm/cabinet)
 "oEc" = (
 /obj/graffiti/camarilla,
 /turf/open/floor/plating/sidewalk,
@@ -49023,7 +49023,7 @@
 /obj/item/ammo_box/magazine/glock9mm,
 /obj/item/ammo_box/magazine/glock9mm,
 /turf/open/floor/plating/toilet,
-/area/vtm)
+/area/vtm/interior/police)
 "pHN" = (
 /obj/structure/vampfence/corner/rich{
 	dir = 1;
@@ -245926,7 +245926,7 @@ laj
 nIk
 laj
 pHL
-aiF
+azv
 aiA
 aiA
 aiA
@@ -246183,7 +246183,7 @@ laj
 ouO
 laj
 bys
-aiF
+azv
 aiA
 aiA
 aiA
@@ -246440,7 +246440,7 @@ cyz
 bsb
 mxS
 azv
-aiF
+azv
 aiA
 aiA
 aiA
@@ -265663,7 +265663,7 @@ bxl
 bxl
 bxl
 bwm
-oEb
+kQy
 buK
 bxl
 acJ
