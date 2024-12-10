@@ -292,13 +292,14 @@
 	new /obj/item/reagent_containers/pill/patch/aiuri(src)
 	new /obj/item/clothing/glasses/hud/health/night(src)
 
-/obj/item/storage/ifak
+/obj/item/storage/firstaid/ifak
 	name = "IFAK"
 	desc = "An Individual First Aid Kit. Standard issue to duty belts."
 	icon_state = "bezerk"
-	damagetype_healed = "all"
+	var/empty = FALSE
+	component_type = /datum/component/storage/concrete/vtm/firstaid/ifak
 
-/obj/item/storage/ifak/PopulateContents()
+/obj/item/storage/firstaid/ifak/PopulateContents()
 	if(empty)
 		return
 	var/static/items_inside = list(
