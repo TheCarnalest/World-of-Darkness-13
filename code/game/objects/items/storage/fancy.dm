@@ -466,7 +466,7 @@
 	name = "5.56 magazine hardcase"
 	desc = "A small metal hardcase specifically designed to carry 5.56 magazines."
 	icon = 'icons/obj/storage.dmi'
-	icon_state = "hardcase"
+	icon_state = "hardcasbox"
 	icon_type = "hardcase"
 	inhand_icon_state = "syringe_kit"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
@@ -483,7 +483,7 @@
 /obj/item/storage/fancy/hardcase/mp5
 	name = "Mp5 magazine hardcase"
 	desc = "A small metal hardcase specifically designed to carry Mp5 magazines."
-	icon_state = "hardcase"
+	icon_state = "hardcasebox"
 	inhand_icon_state = "syringe_kit"
 	icon_type = "hardcase"
 	lefthand_file = 'icons/mob/inhands/equipment/medical_lefthand.dmi'
