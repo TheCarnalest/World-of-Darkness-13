@@ -16,6 +16,8 @@
 	accessories = list("fae_ears", "none")
 	accessories_layers = list("fae_ears" = UNICORN_LAYER, "none" = UNICORN_LAYER)
 
+	COOLDOWN_DECLARE(cold_iron_frenzy)
+
 /datum/vampireclane/kiasyd/on_gain(mob/living/carbon/human/H)
 	..()
 	if(H.isdwarfy)
@@ -256,7 +258,11 @@
 	if(iskindred(target) && is_iron)
 		var/mob/living/carbon/human/L = target
 		if(L.clane?.name == "Kiasyd")
-			L.rollfrenzy()
+			var/datum/vampireclane/kiasyd/kiasyd = L.clane
+			if (COOLDOWN_FINISHED(kiasyd, cold_iron_frenzy))
+				COOLDOWN_START(kiasyd, cold_iron_frenzy, 10 SECONDS)
+				to_chat(L, "<span class='danger'><b>COLD IRON!</b></span>")
+				L.rollfrenzy()
 	..()
 
 /datum/discipline/mytherceria/post_gain(mob/living/carbon/human/H)
