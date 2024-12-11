@@ -11,6 +11,8 @@
 	name = "Animalism power name"
 	desc = "Animalism power description"
 
+	check_flags = DISC_CHECK_IMMOBILE|DISC_CHECK_CAPABLE|DISC_CHECK_LYING
+
 	effect_sound = 'code/modules/wod13/sounds/wolves.ogg'
 	violates_masquerade = TRUE
 

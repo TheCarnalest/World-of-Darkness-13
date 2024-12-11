@@ -383,7 +383,7 @@ Dancer
 	else
 		dancesecond(owner)
 
-	if(last_added_humanity+6000 < world.time)
+	if((last_added_humanity + 10 MINUTES) < world.time)
 		for(var/obj/machinery/jukebox/J in range(7, owner))
 			if(J)
 				if(J.active)

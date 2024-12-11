@@ -556,6 +556,7 @@
 #include "code\datums\discipline\discipline_power.dm"
 #include "code\datums\discipline\dominate.dm"
 #include "code\datums\discipline\fortitude.dm"
+#include "code\datums\discipline\obfuscate.dm"
 #include "code\datums\discipline\potence.dm"
 #include "code\datums\diseases\_disease.dm"
 #include "code\datums\diseases\_MobProcs.dm"
