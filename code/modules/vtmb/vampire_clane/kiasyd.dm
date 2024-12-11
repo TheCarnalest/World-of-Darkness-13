@@ -20,6 +20,9 @@
 
 /datum/vampireclane/kiasyd/on_gain(mob/living/carbon/human/H)
 	..()
+	//This was messing with the visualiser in the character setup menu somehow
+	if (H.clane?.type != /datum/vampireclane/kiasyd)
+		return
 	if(H.isdwarfy)
 		H.RemoveElement(/datum/element/dwarfism, COMSIG_PARENT_PREQDELETED, src)
 		H.isdwarfy = FALSE
