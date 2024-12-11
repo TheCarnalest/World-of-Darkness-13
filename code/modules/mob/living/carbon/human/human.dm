@@ -217,7 +217,7 @@
 			return
 
 	var/mob/living/L = usr
-	if(href_list["pockets"] && (usr.canUseTopic(src, BE_CLOSE, NO_DEXTERITY) || (L.enhanced_strip && (get_dist(usr, src) <= 6)))) //TODO: Make it match (or intergrate it into) strippanel so you get 'item cannot fit here' warnings if mob_can_equip fails
+	if(href_list["pockets"] && (usr.canUseTopic(src, BE_CLOSE, NO_DEXTERITY) || (L.enhanced_strip && (get_dist(usr, src) <= 3)))) //TODO: Make it match (or intergrate it into) strippanel so you get 'item cannot fit here' warnings if mob_can_equip fails
 		if(isnpc(src))
 			var/mob/living/carbon/human/npc/N = src
 			if(N.fights_anyway)
