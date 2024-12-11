@@ -187,32 +187,6 @@
 	M.lying_fix()
 	M.dancing = FALSE
 
-/datum/discipline/fortitude
-	name = "Fortitude"
-	desc = "Boosts armor."
-	icon_state = "fortitude"
-	cost = 1
-	ranged = FALSE
-	delay = 75
-	activate_sound = 'code/modules/wod13/sounds/fortitude_activate.ogg'
-
-/datum/discipline/fortitude/activate(mob/living/target, mob/living/carbon/human/owner)
-	. = ..()
-	var/mod = min(3, level_casting)
-	var/armah = 15*mod
-//	owner.remove_overlay(FORTITUDE_LAYER)
-//	var/mutable_appearance/fortitude_overlay = mutable_appearance('code/modules/wod13/icons.dmi', "fortitude", -FORTITUDE_LAYER)
-//	owner.overlays_standing[FORTITUDE_LAYER] = fortitude_overlay
-//	owner.apply_overlay(FORTITUDE_LAYER)
-	owner.physiology.armor.melee += armah
-	owner.physiology.armor.bullet += armah
-	spawn(delay+owner.discipline_time_plus)
-		if(owner)
-			owner.playsound_local(owner.loc, 'code/modules/wod13/sounds/fortitude_deactivate.ogg', 50, FALSE)
-			owner.physiology.armor.melee -= armah
-			owner.physiology.armor.bullet -= armah
-//			owner.remove_overlay(FORTITUDE_LAYER)
-
 /datum/discipline/obfuscate
 	name = "Obfuscate"
 	desc = "Makes you less noticable for living and un-living beings."
