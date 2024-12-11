@@ -56,9 +56,15 @@
 	return FALSE
 
 /obj/attackby(obj/item/I, mob/living/user, params)
+	if(user.alpha != 255)
+		user.playsound_local(user.loc, 'code/modules/wod13/sounds/obfuscate_deactivate.ogg', 50, FALSE)
+		user.alpha = 255
 	return ..() || ((obj_flags & CAN_BE_HIT) && I.attack_obj(src, user))
 
 /mob/living/attackby(obj/item/I, mob/living/user, params)
+	if(user.alpha != 255)
+		user.playsound_local(user.loc, 'code/modules/wod13/sounds/obfuscate_deactivate.ogg', 50, FALSE)
+		user.alpha = 255
 	if(..())
 		return TRUE
 	user.changeNext_move(CLICK_CD_MELEE)

@@ -1340,6 +1340,9 @@ GLOBAL_LIST_EMPTY(selectable_races)
 
 
 /datum/species/proc/grab(mob/living/carbon/human/user, mob/living/carbon/human/target, datum/martial_art/attacker_style)
+	if(user.alpha != 255)
+		user.playsound_local(user.loc, 'code/modules/wod13/sounds/obfuscate_deactivate.ogg', 50, FALSE)
+		user.alpha = 255
 	if(target.check_block())
 		target.visible_message("<span class='warning'>[target] blocks [user]'s grab!</span>", \
 						"<span class='userdanger'>You block [user]'s grab!</span>", "<span class='hear'>You hear a swoosh!</span>", COMBAT_MESSAGE_RANGE, user)
@@ -1356,6 +1359,9 @@ GLOBAL_LIST_EMPTY(selectable_races)
 	if(HAS_TRAIT(user, TRAIT_PACIFISM))
 		to_chat(user, "<span class='warning'>You don't want to harm [target]!</span>")
 		return FALSE
+	if(user.alpha != 255)
+		user.playsound_local(user.loc, 'code/modules/wod13/sounds/obfuscate_deactivate.ogg', 50, FALSE)
+		user.alpha = 255
 	if(target.check_block())
 		target.visible_message("<span class='warning'>[target] blocks [user]'s attack!</span>", \
 						"<span class='userdanger'>You block [user]'s attack!</span>", "<span class='hear'>You hear a swoosh!</span>", COMBAT_MESSAGE_RANGE, user)
@@ -1450,6 +1456,9 @@ GLOBAL_LIST_EMPTY(selectable_races)
 						"<span class='danger'>You block [user]'s shove!</span>", "<span class='hear'>You hear a swoosh!</span>", COMBAT_MESSAGE_RANGE, user)
 		to_chat(user, "<span class='warning'>Your shove at [target] was blocked!</span>")
 		return FALSE
+	if(user.alpha != 255)
+		user.playsound_local(user.loc, 'code/modules/wod13/sounds/obfuscate_deactivate.ogg', 50, FALSE)
+		user.alpha = 255
 	if(attacker_style?.disarm_act(user,target))
 		return TRUE
 	if(user.body_position != STANDING_UP)
@@ -1663,6 +1672,9 @@ GLOBAL_LIST_EMPTY(selectable_races)
 
 /datum/species/proc/on_hit(obj/projectile/P, mob/living/carbon/human/H)
 	// called when hit by a projectile
+	if(H.alpha != 255)
+		H.playsound_local(H.loc, 'code/modules/wod13/sounds/obfuscate_deactivate.ogg', 50, FALSE)
+		H.alpha = 255
 	switch(P.type)
 		if(/obj/projectile/energy/floramut) // overwritten by plants/pods
 			H.show_message("<span class='notice'>The radiation beam dissipates harmlessly through your body.</span>")
@@ -1987,6 +1999,9 @@ GLOBAL_LIST_EMPTY(selectable_races)
 	if(!CanIgniteMob(H))
 		return TRUE
 	if(H.on_fire)
+		if(H.alpha != 255)
+			H.playsound_local(H.loc, 'code/modules/wod13/sounds/obfuscate_deactivate.ogg', 50, FALSE)
+			H.alpha = 255
 		//the fire tries to damage the exposed clothes and items
 		var/list/burning_items = list()
 		var/obscured = H.check_obscured_slots(TRUE)
