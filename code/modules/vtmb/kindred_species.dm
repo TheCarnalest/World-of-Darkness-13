@@ -349,7 +349,7 @@
 						to_chat(H, "<span class='notice'>[BLOODBONDED.name] doesn't respond to your Vitae.</span>")
 						return
 
-					if((BLOODBONDED.respawntimeofdeath + 5 MINUTES) > world.time)
+					if((BLOODBONDED.timeofdeath + 5 MINUTES) > world.time)
 						if (BLOODBONDED.auspice?.level) //here be Abominations
 							if (BLOODBONDED.auspice.force_abomination)
 								to_chat(H, "<span class='danger'>Something terrible is happening.</span>")

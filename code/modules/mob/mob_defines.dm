@@ -239,5 +239,4 @@
 	var/sound_environment_override = SOUND_ENVIRONMENT_NONE
 
 	//imported variables from all around the code
-	var/respawntimeofdeath = 0
 	var/taxist = FALSE
