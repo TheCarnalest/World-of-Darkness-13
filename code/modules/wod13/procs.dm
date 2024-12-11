@@ -141,6 +141,13 @@
 		return TRUE
 	return FALSE
 
+/mob/proc/can_respawn()
+	if (client?.ckey)
+		if (GLOB.respawn_timers[client.ckey])
+			if ((GLOB.respawn_timers[client.ckey] + 10 MINUTES) > world.time)
+				return FALSE
+	return TRUE
+
 /**
  * Rolls a number of dice according to Storyteller system rules to find
  * success or number of successes.

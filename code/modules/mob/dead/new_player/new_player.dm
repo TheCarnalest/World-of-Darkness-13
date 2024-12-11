@@ -158,6 +158,10 @@
 		new_player_panel()
 
 	if(href_list["late_party"])
+		if (!can_respawn())
+			to_chat(src, "<span class='boldwarning'>You cannot respawn yet.</span>")
+			return
+
 		ready = PLAYER_NOT_READY
 		if(late_ready)
 			late_ready = FALSE
@@ -167,6 +171,10 @@
 			SSbad_guys_party.candidates += src
 
 	if(href_list["late_join"])
+		if (!can_respawn())
+			to_chat(usr, "<span class='boldwarning'>You cannot respawn yet.</span>")
+			return
+
 		SSbad_guys_party.candidates -= src
 		late_ready = FALSE
 		if(!SSticker?.IsRoundInProgress())
