@@ -39,6 +39,15 @@
 
 	post_gain()
 
+/datum/discipline/proc/get_power(power)
+	for (var/datum/discipline_power/found_power in known_powers)
+		if (istext(power))
+			if (found_power.name == power)
+				return found_power
+		else if (ispath(power))
+			if (found_power.type == power)
+				return found_power
+
 /datum/discipline/proc/can_activate(atom/target)
 	return current_power.can_activate(target)
 

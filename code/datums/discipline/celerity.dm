@@ -17,7 +17,7 @@
 	deactivate_sound = 'code/modules/wod13/sounds/celerity_deactivate.ogg'
 
 	toggled = TRUE
-	duration_length = 5 SECONDS
+	duration_length = DURATION_TURN
 
 /datum/discipline_power/celerity/celerity_visual(datum/discipline_power/celerity/source, atom/newloc, dir)
 	if(owner.celerity_visual) //this check and variable should be removed, but some stuff depends on it, so rework that some time
@@ -64,6 +64,13 @@
 	name = "Celerity 1"
 	desc = "Enhances your speed to make everything a little bit easier."
 
+	mutually_exclusive = list(
+		/datum/discipline_power/celerity/two,
+		/datum/discipline_power/celerity/three,
+		/datum/discipline_power/celerity/four,
+		/datum/discipline_power/celerity/five
+	)
+
 /datum/discipline_power/celerity/one/activate()
 	. = ..()
 	owner.add_movespeed_modifier(/datum/movespeed_modifier/celerity)
@@ -79,6 +86,13 @@
 /datum/discipline_power/celerity/two
 	name = "Celerity 2"
 	desc = "Significantly improves your speed and reaction time."
+
+	mutually_exclusive = list(
+		/datum/discipline_power/celerity/one,
+		/datum/discipline_power/celerity/three,
+		/datum/discipline_power/celerity/four,
+		/datum/discipline_power/celerity/five
+	)
 
 /datum/discipline_power/celerity/two/activate()
 	. = ..()
@@ -96,6 +110,13 @@
 	name = "Celerity 3"
 	desc = "Move faster. React in less time. Your body is under perfect control."
 
+	mutually_exclusive = list(
+		/datum/discipline_power/celerity/one,
+		/datum/discipline_power/celerity/two,
+		/datum/discipline_power/celerity/four,
+		/datum/discipline_power/celerity/five
+	)
+
 /datum/discipline_power/celerity/three/activate()
 	. = ..()
 	owner.add_movespeed_modifier(/datum/movespeed_modifier/celerity3)
@@ -112,6 +133,13 @@
 	name = "Celerity 4"
 	desc = "Breach the limits of what is humanly possible. Move like a lightning bolt."
 
+	mutually_exclusive = list(
+		/datum/discipline_power/celerity/one,
+		/datum/discipline_power/celerity/two,
+		/datum/discipline_power/celerity/three,
+		/datum/discipline_power/celerity/five
+	)
+
 /datum/discipline_power/celerity/four/activate()
 	. = ..()
 	owner.add_movespeed_modifier(/datum/movespeed_modifier/celerity4)
@@ -127,6 +155,13 @@
 /datum/discipline_power/celerity/five
 	name = "Celerity 5"
 	desc = "You are like light. Blaze your way through the world."
+
+	mutually_exclusive = list(
+		/datum/discipline_power/celerity/one,
+		/datum/discipline_power/celerity/two,
+		/datum/discipline_power/celerity/three,
+		/datum/discipline_power/celerity/four
+	)
 
 /datum/discipline_power/celerity/five/activate()
 	. = ..()

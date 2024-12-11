@@ -42,6 +42,8 @@
 	var/cooldown_length = 0
 	///Timer tracking the cooldown of the power.
 	COOLDOWN_DECLARE(cooldown)
+	///List of Discipline power types that cannot be activated alongside this power.
+	var/list/mutually_exclusive = list()
 
 	///If this Discipline is currently in use.
 	var/active = FALSE

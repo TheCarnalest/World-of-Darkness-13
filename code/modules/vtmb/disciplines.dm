@@ -97,16 +97,6 @@
 /datum/movespeed_modifier/temporis
 	multiplicative_slowdown = 7.5
 
-/datum/discipline/dementation
-	name = "Dementation"
-	desc = "Makes all humans in radius mentally ill for a moment, supressing their defending ability."
-	icon_state = "dementation"
-	cost = 2
-	ranged = TRUE
-	delay = 10 SECONDS
-	activate_sound = 'code/modules/wod13/sounds/insanity.ogg'
-	clan_restricted = TRUE
-
 /proc/dancefirst(mob/living/M)
 	if(M.dancing)
 		return
@@ -197,41 +187,6 @@
 	M.lying_fix()
 	M.dancing = FALSE
 
-/datum/discipline/potence
-	name = "Potence"
-	desc = "Boosts melee and unarmed damage."
-	icon_state = "potence"
-	cost = 1
-	ranged = FALSE
-	delay = 10 SECONDS
-	activate_sound = 'code/modules/wod13/sounds/potence_activate.ogg'
-	var/datum/component/tackler
-
-/datum/discipline/potence/activate(mob/living/target, mob/living/carbon/human/owner)
-	. = ..()
-	var/mod = 8*level_casting
-	var/armah = 0.4*level_casting
-	owner.remove_overlay(POTENCE_LAYER)
-	var/mutable_appearance/potence_overlay = mutable_appearance('code/modules/wod13/icons.dmi', "potence", -POTENCE_LAYER)
-	owner.overlays_standing[POTENCE_LAYER] = potence_overlay
-	owner.apply_overlay(POTENCE_LAYER)
-	owner.dna.species.punchdamagelow += mod
-	owner.dna.species.punchdamagehigh += mod
-	owner.dna.species.meleemod += armah
-	owner.dna.species.attack_sound = 'code/modules/wod13/sounds/heavypunch.ogg'
-	tackler = owner.AddComponent(/datum/component/tackler, stamina_cost=0, base_knockdown = 1 SECONDS, range = 2 + level_casting, speed = 1, skill_mod = 0, min_distance = 0)
-	owner.potential = level_casting
-	spawn(delay+owner.discipline_time_plus)
-		if(owner?.dna?.species)
-			owner.playsound_local(owner.loc, 'code/modules/wod13/sounds/potence_deactivate.ogg', 50, FALSE)
-			owner.dna.species.punchdamagelow -= mod
-			owner.dna.species.punchdamagehigh -= mod
-			owner.dna.species.meleemod -= armah
-			owner.dna.species.attack_sound = initial(owner.dna.species.attack_sound)
-			owner.remove_overlay(POTENCE_LAYER)
-			owner.potential = 0
-			qdel(tackler)
-
 /datum/discipline/fortitude
 	name = "Fortitude"
 	desc = "Boosts armor."
@@ -264,7 +219,7 @@
 	icon_state = "obfuscate"
 	cost = 1
 	ranged = FALSE
-	delay = 100
+	delay = 10 SECONDS
 	activate_sound = 'code/modules/wod13/sounds/obfuscate_activate.ogg'
 	leveldelay = TRUE
 
