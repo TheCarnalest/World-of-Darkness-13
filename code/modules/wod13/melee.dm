@@ -164,6 +164,7 @@
 	block_chance = 20
 	item_flags = DROPDEL
 	masquerade_violating = TRUE
+	is_iron = FALSE
 
 /obj/item/melee/vampirearms/knife/gangrel/afterattack(atom/target, mob/living/carbon/user, proximity)
 	if(!proximity)
