@@ -209,7 +209,7 @@
 		/obj/item/clothing/under/vampire/sport,
 		/obj/item/clothing/under/vampire/office,
 		/obj/item/clothing/under/vampire/sexy,
-		/obj/item/clothing/under/vampire/slickback,
+		/obj/item/clothing/under/vampire/pimp,
 		/obj/item/clothing/under/vampire/emo
 	)
 	pockets = list(
@@ -1342,7 +1342,7 @@
 										"Volaju")
 
 	shoes = list(/obj/item/clothing/shoes/vampire/heels)
-	uniforms = list(/obj/item/clothing/under/vampire/burlesque)
+	uniforms = list(/obj/item/clothing/under/vampire/whore)
 	backpacks = list()
 
 	female_phrases = list("Wanna touch this boobies?",
