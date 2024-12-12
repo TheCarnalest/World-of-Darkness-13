@@ -17,13 +17,6 @@
 
 	var/atm_balance = 0
 	var/obj/item/vamp/creditcard/current_card = null
-	light_system = STATIC_LIGHT
-	light_color = COLOR_GREEN
-	light_range = 2
-	light_power = 1
-	light_on = TRUE
-
-
 
 /datum/bank_account
 	var/account_owner = ""
