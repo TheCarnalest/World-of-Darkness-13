@@ -136,7 +136,7 @@
 	minimal_generation = 12	//Uncomment when players get exp enough
 	minimal_masquerade = 5
 	allowed_species = list("Vampire")
-	allowed_bloodlines = list("True Brujah", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Lasombra")
+	allowed_bloodlines = list("True Brujah", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry")
 
 	my_contact_is_important = TRUE
 	known_contacts = list("Prince")
@@ -863,10 +863,10 @@
 	..()
 	if(H.gender == MALE)
 		shoes = /obj/item/clothing/shoes/vampire/white
-		uniform = /obj/item/clothing/under/vampire/pimp
+		uniform = /obj/item/clothing/under/vampire/slickback
 	else
 		shoes = /obj/item/clothing/shoes/vampire/heels
-		uniform = /obj/item/clothing/under/vampire/whore
+		uniform = /obj/item/clothing/under/vampire/burlesque
 
 /obj/effect/landmark/start/strip
 	name = "Strip"
