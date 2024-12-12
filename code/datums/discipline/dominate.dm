@@ -17,7 +17,7 @@
 	activate_sound = 'code/modules/wod13/sounds/dominate.ogg'
 
 	multi_activation = TRUE
-	cooldown = 15 SECONDS
+	cooldown_length = 15 SECONDS
 	duration_length = 3 SECONDS
 
 /datum/discipline_power/dominate/activate(mob/living/target)

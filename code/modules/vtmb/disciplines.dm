@@ -187,17 +187,6 @@
 	M.lying_fix()
 	M.dancing = FALSE
 
-/datum/discipline/presence
-	name = "Presence"
-	desc = "Makes targets in radius more vulnerable to damages."
-	icon_state = "presence"
-	cost = 1
-	ranged = TRUE
-	delay = 50
-	activate_sound = 'code/modules/wod13/sounds/presence_activate.ogg'
-	leveldelay = FALSE
-	fearless = TRUE
-
 /mob/living/carbon/human/proc/walk_to_caster()
 	walk(src, 0)
 	if(!CheckFrenzyMove())
@@ -225,75 +214,13 @@
 		else
 			ClickOn(src)
 
-/datum/discipline/presence/activate(mob/living/target, mob/living/carbon/human/owner)
-	. = ..()
-	var/mypower = owner.social + owner.additional_social
-	var/theirpower = target.mentality + target.additional_mentality
-	if((theirpower >= mypower) || ((owner.generation - 3) >= target.generation))
-		to_chat(owner, "<span class='warning'>[target]'s mind is too powerful to sway!</span>")
-		return
-	if(ishuman(target))
-		var/mob/living/carbon/human/H = target
-		H.remove_overlay(MUTATIONS_LAYER)
-		var/mutable_appearance/presence_overlay = mutable_appearance('code/modules/wod13/icons.dmi', "presence", -MUTATIONS_LAYER)
-		presence_overlay.pixel_z = 1
-		H.overlays_standing[MUTATIONS_LAYER] = presence_overlay
-		H.apply_overlay(MUTATIONS_LAYER)
-		H.owner = owner
-		switch(level_casting)
-			if(1)
-				var/datum/cb = CALLBACK(H,/mob/living/carbon/human/proc/walk_to_caster)
-				for(var/i in 1 to 30)
-					addtimer(cb, (i - 1)*H.total_multiplicative_slowdown())
-				to_chat(target, "<span class='userlove'><b>COME HERE</b></span>")
-				owner.say("COME HERE!!")
-			if(2)
-				target.Stun(10)
-				to_chat(target, "<span class='userlove'><b>REST</b></span>")
-				owner.say("REST!!")
-				if(target.body_position == STANDING_UP)
-					target.toggle_resting()
-			if(3)
-				var/obj/item/I1 = H.get_active_held_item()
-				var/obj/item/I2 = H.get_inactive_held_item()
-				to_chat(target, "<span class='userlove'><b>PLEASE ME</b></span>")
-				owner.say("PLEASE ME!!")
-				target.face_atom(owner)
-				target.do_jitter_animation(30)
-				target.Immobilize(10)
-				target.drop_all_held_items()
-				if(I1)
-					I1.throw_at(get_turf(owner), 3, 1, target)
-				if(I2)
-					I2.throw_at(get_turf(owner), 3, 1, target)
-			if(4)
-				to_chat(target, "<span class='userlove'><b>FEAR ME</b></span>")
-				owner.say("FEAR ME!!")
-				var/datum/cb = CALLBACK(H,/mob/living/carbon/human/proc/step_away_caster)
-				for(var/i in 1 to 30)
-					addtimer(cb, (i - 1)*H.total_multiplicative_slowdown())
-				target.emote("scream")
-				target.do_jitter_animation(30)
-			if(5)
-				to_chat(target, "<span class='userlove'><b>UNDRESS YOURSELF</b></span>")
-				owner.say("UNDRESS YOURSELF!!")
-				target.Immobilize(10)
-				for(var/obj/item/clothing/W in H.contents)
-					if(W)
-						H.dropItemToGround(W, TRUE)
-		spawn(delay + owner.discipline_time_plus)
-			if(H)
-				H.remove_overlay(MUTATIONS_LAYER)
-				if(owner)
-					owner.playsound_local(owner.loc, 'code/modules/wod13/sounds/presence_deactivate.ogg', 50, FALSE)
-
 /datum/discipline/protean
 	name = "Protean"
 	desc = "Lets your beast out, making you stronger and faster. Violates Masquerade."
 	icon_state = "protean"
 	cost = 1
 	ranged = FALSE
-	delay = 200
+	delay = 20 SECONDS
 	violates_masquerade = TRUE
 	activate_sound = 'code/modules/wod13/sounds/protean_activate.ogg'
 	clan_restricted = TRUE
@@ -323,77 +250,36 @@
 			owner.put_in_r_hand(new /obj/item/melee/vampirearms/knife/gangrel(owner))
 			owner.put_in_l_hand(new /obj/item/melee/vampirearms/knife/gangrel(owner))
 			owner.add_client_colour(/datum/client_colour/glass_colour/red)
-//			owner.dna.species.attack_verb = "slash"
-//			owner.dna.species.attack_sound = 'sound/weapons/slash.ogg'
-//			owner.dna.species.punchdamagelow = owner.dna.species.punchdamagelow+10
-//			owner.dna.species.punchdamagehigh = owner.dna.species.punchdamagehigh+10
-//			owner.remove_overlay(PROTEAN_LAYER)
-//			owner.overlays_standing[PROTEAN_LAYER] = protean_overlay
-//			owner.apply_overlay(PROTEAN_LAYER)
 			spawn(delay+owner.discipline_time_plus)
 				if(owner)
 					for(var/obj/item/melee/vampirearms/knife/gangrel/G in owner.contents)
 						if(G)
 							qdel(G)
 					owner.remove_client_colour(/datum/client_colour/glass_colour/red)
-//					if(owner.dna)
 					owner.playsound_local(owner.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
-//						owner.dna.species.attack_verb = initial(owner.dna.species.attack_verb)
-//						owner.dna.species.attack_sound = initial(owner.dna.species.attack_sound)
-//						owner.dna.species.punchdamagelow = owner.dna.species.punchdamagelow-10
-//						owner.dna.species.punchdamagehigh = owner.dna.species.punchdamagehigh-10
-//						owner.remove_overlay(PROTEAN_LAYER)
 		if(2)
 			owner.drop_all_held_items()
 			owner.put_in_r_hand(new /obj/item/melee/vampirearms/knife/gangrel(owner))
 			owner.put_in_l_hand(new /obj/item/melee/vampirearms/knife/gangrel(owner))
 			owner.add_client_colour(/datum/client_colour/glass_colour/red)
-//			owner.dna.species.attack_verb = "slash"
-//			owner.dna.species.attack_sound = 'sound/weapons/slash.ogg'
-//			owner.dna.species.punchdamagelow = owner.dna.species.punchdamagelow+15
-//			owner.dna.species.punchdamagehigh = owner.dna.species.punchdamagehigh+15
 			owner.add_movespeed_modifier(/datum/movespeed_modifier/protean2)
-//			owner.remove_overlay(PROTEAN_LAYER)
-//			owner.overlays_standing[PROTEAN_LAYER] = protean_overlay
-//			owner.apply_overlay(PROTEAN_LAYER)
 			spawn(delay+owner.discipline_time_plus)
 				if(owner)
 					for(var/obj/item/melee/vampirearms/knife/gangrel/G in owner.contents)
 						if(G)
 							qdel(G)
 					owner.remove_client_colour(/datum/client_colour/glass_colour/red)
-//					if(owner.dna)
 					owner.playsound_local(owner.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
-//						owner.dna.species.attack_verb = initial(owner.dna.species.attack_verb)
-//						owner.dna.species.attack_sound = initial(owner.dna.species.attack_sound)
-//						owner.dna.species.punchdamagelow = owner.dna.species.punchdamagelow-15
-//						owner.dna.species.punchdamagehigh = owner.dna.species.punchdamagehigh-15
 					owner.remove_movespeed_modifier(/datum/movespeed_modifier/protean2)
-//						owner.remove_overlay(PROTEAN_LAYER)
 		if(3)
 			owner.drop_all_held_items()
 			GA.Shapeshift(owner)
-//			owner.dna.species.attack_verb = "slash"
-//			owner.dna.species.attack_sound = 'sound/weapons/slash.ogg'
-//			owner.dna.species.punchdamagelow = owner.dna.species.punchdamagelow+20
-//			owner.dna.species.punchdamagehigh = owner.dna.species.punchdamagehigh+20
-//			owner.add_movespeed_modifier(/datum/movespeed_modifier/protean3)
-//			owner.remove_overlay(PROTEAN_LAYER)
-//			owner.overlays_standing[PROTEAN_LAYER] = protean_overlay
-//			owner.apply_overlay(PROTEAN_LAYER)
 			spawn(delay+owner.discipline_time_plus)
 				if(owner && owner.stat != DEAD)
 					GA.Restore(GA.myshape)
 					owner.Stun(15)
 					owner.do_jitter_animation(30)
-//					if(owner.dna)
 					owner.playsound_local(owner, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
-//						owner.dna.species.attack_verb = initial(owner.dna.species.attack_verb)
-//						owner.dna.species.attack_sound = initial(owner.dna.species.attack_sound)
-//						owner.dna.species.punchdamagelow = owner.dna.species.punchdamagelow-20
-//						owner.dna.species.punchdamagehigh = owner.dna.species.punchdamagehigh-20
-//						owner.remove_movespeed_modifier(/datum/movespeed_modifier/protean3)
-//						owner.remove_overlay(PROTEAN_LAYER)
 		if(4 to 5)
 			owner.drop_all_held_items()
 			if(level_casting == 4)
@@ -401,33 +287,12 @@
 			if(level_casting == 5)
 				GA.shapeshift_type = /mob/living/simple_animal/hostile/gangrel/best
 			GA.Shapeshift(owner)
-//			owner.dna.species.attack_verb = "slash"
-//			owner.dna.species.attack_sound = 'sound/weapons/slash.ogg'
-//			owner.dna.species.punchdamagelow = owner.dna.species.punchdamagelow+25
-//			owner.dna.species.punchdamagehigh = owner.dna.species.punchdamagelow+25
-//			if(level_casting == 5)
-//				owner.add_movespeed_modifier(/datum/movespeed_modifier/protean5)
-//			else
-//				owner.add_movespeed_modifier(/datum/movespeed_modifier/protean4)
-//			owner.remove_overlay(PROTEAN_LAYER)
-//			owner.overlays_standing[PROTEAN_LAYER] = protean_overlay
-//			owner.apply_overlay(PROTEAN_LAYER)
 			spawn(delay+owner.discipline_time_plus)
 				if(owner && owner.stat != DEAD)
 					GA.Restore(GA.myshape)
 					owner.Stun(10)
 					owner.do_jitter_animation(15)
-//					if(owner.dna)
 					owner.playsound_local(owner, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
-//						owner.dna.species.attack_verb = initial(owner.dna.species.attack_verb)
-//						owner.dna.species.attack_sound = initial(owner.dna.species.attack_sound)
-//						owner.dna.species.punchdamagelow = owner.dna.species.punchdamagelow-25
-//						owner.dna.species.punchdamagehigh = owner.dna.species.punchdamagehigh-25
-//						if(level_casting == 5)
-//							owner.remove_movespeed_modifier(/datum/movespeed_modifier/protean5)
-//						else
-//							owner.remove_movespeed_modifier(/datum/movespeed_modifier/protean4)
-//						owner.remove_overlay(PROTEAN_LAYER)
 
 /mob/living/proc/tremere_gib()
 	Stun(50)
