@@ -147,15 +147,15 @@
 	desc = "Some usual clothes."
 	icon_state = "sexy"
 
-/obj/item/clothing/under/vampire/slickback
-	desc = "Some slick-looking clothes."
-	icon_state = "slickback"
+/obj/item/clothing/under/vampire/pimp
+	desc = "Some pimp clothes."
+	icon_state = "pimp"
 
-/obj/item/clothing/under/vampire/burlesque
-	desc = "Some burlesque clothes."
-	icon_state = "burlesque"
+/obj/item/clothing/under/vampire/whore
+	desc = "Some whore clothes."
+	icon_state = "whore"
 
-/obj/item/clothing/under/vampire/burlesque/daisyd
+/obj/item/clothing/under/vampire/whore/daisyd
 	desc = "Some short shorts."
 	icon_state = "daisyd"
 
