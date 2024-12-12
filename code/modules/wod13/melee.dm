@@ -530,3 +530,52 @@
 		grid_width = 1 GRID_BOXES
 		grid_height = 1 GRID_BOXES
 
+
+/obj/item/melee/vampirearms/brick
+	name = "Brick"
+	desc = "Killer of gods and men alike, builder of worlds vast."
+	icon = 'code/modules/wod13/weapons.dmi'
+	icon_state = "red_brick"
+	lefthand_file = 'code/modules/wod13/lefthand.dmi'
+	righthand_file = 'code/modules/wod13/righthand.dmi'
+	w_class = WEIGHT_CLASS_NORMAL
+	armour_penetration = 0
+	throwforce = 30
+	attack_verb_continuous = list("bludgeons", "bashes", "beats")
+	attack_verb_simple = list("bludgeon", "bash", "beat", "smacks")
+	hitsound = 'sound/weapons/genhit3.ogg'
+	sharpness = SHARP_NONE
+	force = 18
+	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_SUITSTORE
+	w_class = WEIGHT_CLASS_NORMAL
+	grid_width = 2 GRID_BOXES
+	grid_height = 1 GRID_BOXES
+	var/broken = FALSE
+
+/obj/item/melee/vampirearms/brick/after_throw(datum/callback/callback)
+	broken = !broken
+	if(broken)
+		force = 14
+		w_class = WEIGHT_CLASS_SMALL
+		throwforce = 14
+		armour_penetration = 0
+		icon_state = "red_brick2"
+		attack_verb_continuous = list("bludgeons", "bashes", "beats")
+		attack_verb_simple = list("bludgeon", "bash", "beat", "smacks", "whacks")
+		hitsound = 'sound/weapons/genhit1.ogg'
+		sharpness = SHARP_NONE
+		grid_width = 1 GRID_BOXES
+		grid_height = 1 GRID_BOXES
+	else
+		force = 18
+		w_class = WEIGHT_CLASS_NORMAL
+		throwforce = 30
+		armour_penetration = 0
+		attack_verb_continuous = list("bludgeons", "bashes", "beats")
+		attack_verb_simple = list("bludgeon", "bash", "beat", "smacks")
+		hitsound = 'sound/weapons/genhit3.ogg'
+		sharpness = SHARP_NONE
+		grid_width = 2 GRID_BOXES
+		grid_height = 1 GRID_BOXES
+
+
