@@ -565,6 +565,8 @@
 	contacts += CLERK
 	var/datum/phonecontact/barkeeper/BARKEEPER = new()
 	contacts += BARKEEPER
+	var/datum/phonecontact/tremere/REGENT = new()
+	contacts += REGENT
 	var/datum/phonecontact/malkavian/M = new()
 	contacts += M
 	var/datum/phonecontact/nosferatu/N = new()
@@ -593,6 +595,20 @@
 	GLOB.clerknumber = number
 	var/datum/phonecontact/prince/PRINCE = new()
 	contacts += PRINCE
+	var/datum/phonecontact/sheriff/SHERIFF = new()
+	contacts += SHERIFF
+	var/datum/phonecontact/tremere/REGENT = new()
+	contacts += REGENT
+	var/datum/phonecontact/malkavian/M = new()
+	contacts += M
+	var/datum/phonecontact/nosferatu/N = new()
+	contacts += N
+	var/datum/phonecontact/toreador/T = new()
+	contacts += T
+	var/datum/phonecontact/ventrue/V = new()
+	contacts += V
+	var/datum/phonecontact/brujah/B = new()
+	contacts += B
 
 /obj/item/vamp/phone/barkeeper
 	exchange_num = 485
@@ -622,6 +638,8 @@
 //	GLOB.dealernumber = number
 	var/datum/phonecontact/prince/PRINCE = new()
 	contacts += PRINCE
+	var/datum/phonecontact/clerk/CLERK = new()
+	contacts += CLERK
 
 /obj/item/vamp/phone/anarch
 	exchange_num = 485
@@ -637,27 +655,95 @@
 	GLOB.malkaviannumber = number
 	var/datum/phonecontact/prince/PRINCE = new()
 	contacts += PRINCE
+	var/datum/phonecontact/tremere/REGENT = new()
+	contacts += REGENT
+	var/datum/phonecontact/nosferatu/N = new()
+	contacts += N
+	var/datum/phonecontact/toreador/T = new()
+	contacts += T
+	var/datum/phonecontact/ventrue/V = new()
+	contacts += V
+	var/datum/phonecontact/brujah/B = new()
+	contacts += B
 
 /obj/item/vamp/phone/nosferatu/Initialize()
 	..()
 	GLOB.nosferatunumber = number
 	var/datum/phonecontact/prince/PRINCE = new()
 	contacts += PRINCE
+	var/datum/phonecontact/tremere/REGENT = new()
+	contacts += REGENT
+	var/datum/phonecontact/malkavian/M = new()
+	contacts += M
+	var/datum/phonecontact/toreador/T = new()
+	contacts += T
+	var/datum/phonecontact/ventrue/V = new()
+	contacts += V
+	var/datum/phonecontact/brujah/B = new()
+	contacts += B
 
 /obj/item/vamp/phone/toreador/Initialize()
 	..()
 	GLOB.toreadornumber = number
 	var/datum/phonecontact/prince/PRINCE = new()
 	contacts += PRINCE
+	var/datum/phonecontact/tremere/REGENT = new()
+	contacts += REGENT
+	var/datum/phonecontact/malkavian/M = new()
+	contacts += M
+	var/datum/phonecontact/nosferatu/N = new()
+	contacts += N
+	var/datum/phonecontact/ventrue/V = new()
+	contacts += V
+	var/datum/phonecontact/brujah/B = new()
+	contacts += B
 
 /obj/item/vamp/phone/brujah/Initialize()
 	..()
 	GLOB.brujahnumber = number
 	var/datum/phonecontact/prince/PRINCE = new()
 	contacts += PRINCE
+	var/datum/phonecontact/tremere/REGENT = new()
+	contacts += REGENT
+	var/datum/phonecontact/malkavian/M = new()
+	contacts += M
+	var/datum/phonecontact/nosferatu/N = new()
+	contacts += N
+	var/datum/phonecontact/toreador/T = new()
+	contacts += T
+	var/datum/phonecontact/ventrue/V = new()
+	contacts += V
 
 /obj/item/vamp/phone/ventrue/Initialize()
 	..()
 	GLOB.ventruenumber = number
 	var/datum/phonecontact/prince/PRINCE = new()
 	contacts += PRINCE
+	var/datum/phonecontact/tremere/REGENT = new()
+	contacts += REGENT
+	var/datum/phonecontact/malkavian/M = new()
+	contacts += M
+	var/datum/phonecontact/nosferatu/N = new()
+	contacts += N
+	var/datum/phonecontact/toreador/T = new()
+	contacts += T
+	var/datum/phonecontact/brujah/B = new()
+	contacts += B
+
+/obj/item/vamp/phone/tremere/Initialize()
+	..()
+	GLOB.tremerenumber = number
+	var/datum/phonecontact/prince/PRINCE = new()
+	contacts += PRINCE
+	var/datum/phonecontact/malkavian/M = new()
+	contacts += M
+	var/datum/phonecontact/nosferatu/N = new()
+	contacts += N
+	var/datum/phonecontact/toreador/T = new()
+	contacts += T
+	var/datum/phonecontact/ventrue/V = new()
+	contacts += V
+	var/datum/phonecontact/brujah/B = new()
+	contacts += B
+
+
