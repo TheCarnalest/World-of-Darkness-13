@@ -179,6 +179,7 @@
 	block_chance = 0
 	icon_state = "lasombra"
 	masquerade_violating = TRUE
+	is_iron = FALSE
 
 /obj/item/melee/vampirearms/knife/gangrel/lasombra/afterattack(atom/target, mob/living/carbon/user, proximity)
 	if(!proximity)
