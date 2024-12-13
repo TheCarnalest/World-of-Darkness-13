@@ -11,9 +11,7 @@
 	female_clothes = "/obj/item/clothing/under/vampire/salubri/female"
 	enlightenment = FALSE
 	whitelisted = FALSE
-
-/datum/vampireclane/salubri/post_gain(mob/living/carbon/human/H)
-	H.put_in_r_hand(new /obj/item/vamp/keys/salubri(H))
+	clan_keys = /obj/item/vamp/keys/salubri
 
 /datum/discipline/valeren/post_gain(mob/living/carbon/human/H)
 	if(level >= 4)
