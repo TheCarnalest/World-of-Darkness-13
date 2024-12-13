@@ -941,12 +941,7 @@
 		var/mob/living/G = pulledby
 		var/grabber_physique = (G.physique + G.additional_physique) * 10 // The one who is grabbing physique
 		var/resist_physique = (physique + additional_physique) * 10 /// The one who is  resisting physique
-		if(grabber_physique > resist_physique)
-			resist_chance = ((resist_chance - (grabber_physique - resist_physique))/altered_grab_state) ///Resist chance divided by the value imparted by your grab state. It isn't until you reach neckgrab that you gain a penalty to escaping a grab.
-		else if(grabber_physique < resist_physique)
-			resist_chance = ((resist_chance + (resist_physique - grabber_physique))/altered_grab_state) // WoD Calculations for resist chance based on the players or npcs Physique Stat.
-		else
-			resist_chance = (resist_chance/altered_grab_state)
+        resist_chance = (resist_chance + (resist_physique - grabber_physique))/altered_grab_state
 		if(prob(resist_chance))
 			visible_message("<span class='danger'>[src] breaks free of [pulledby]'s grip!</span>", \
 							"<span class='danger'>You break free of [pulledby]'s grip!</span>", null, null, pulledby)
