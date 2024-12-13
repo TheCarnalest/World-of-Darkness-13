@@ -3406,6 +3406,7 @@
 #include "code\modules\wod13\ammostack.dm"
 #include "code\modules\wod13\blackout.dm"
 #include "code\modules\wod13\bloodsucking.dm"
+#include "code\modules\wod13\books.dm"
 #include "code\modules\wod13\car.dm"
 #include "code\modules\wod13\cargo.dm"
 #include "code\modules\wod13\clock.dm"
