@@ -14,7 +14,7 @@
 	whitelisted = TRUE
 	current_accessory = "none"
 	accessories = list("fae_ears", "none")
-	accessories_layers = list("fae_ears" = UNICORN_LAYER, "none" = UNICORN_LAYER)
+	accessories_layers = list("fae_ears" = UPPER_EARS_LAYER, "none" = UPPER_EARS_LAYER)
 
 	COOLDOWN_DECLARE(cold_iron_frenzy)
 
