@@ -443,6 +443,9 @@
 	if((H.last_bloodpool_restore + 60 SECONDS) <= world.time)
 		H.last_bloodpool_restore = world.time
 		H.bloodpool = min(H.maxbloodpool, H.bloodpool+1)
+	if(glabro)
+		if(H.CheckEyewitness(H, H, 7, FALSE))
+			H.adjust_veil(-1)
 
 /**
  * Accesses a certain Discipline that a Ghoul has. Returns false if they don't.

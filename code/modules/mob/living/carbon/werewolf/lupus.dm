@@ -23,6 +23,7 @@
 //		/obj/item/bodypart/r_leg,
 //		/obj/item/bodypart/l_leg,
 //		)
+	var/hispo = FALSE
 
 /datum/movespeed_modifier/lupusform
 	multiplicative_slowdown = -0.85
@@ -63,3 +64,8 @@
 /mob/living/carbon/werewolf/lupus/update_transform() //The old method of updating lying/standing was update_icons(). Aliens still expect that.
 	. = ..()
 	update_icons()
+
+/mob/living/carbon/werewolf/lupus/Life()
+	if(hispo)
+		CheckEyewitness(src, src, 7, FALSE)
+	..()
