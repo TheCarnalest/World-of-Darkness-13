@@ -453,6 +453,7 @@
 	fire_sound = 'code/modules/wod13/sounds/rifle.ogg'
 	masquerade_violating = TRUE
 	cost = 350
+	is_iron = FALSE
 
 /obj/item/ammo_box/magazine/vampthompson
 	name = "tommy gun magazine (.45 ACP)"
@@ -571,6 +572,7 @@
 	inhand_x_dimension = 32
 	inhand_y_dimension = 32
 	masquerade_violating = TRUE
+	is_iron = FALSE
 
 /obj/item/ammo_box/magazine/internal/vampcrossbow
 	ammo_type = /obj/item/ammo_casing/caseless/bolt
