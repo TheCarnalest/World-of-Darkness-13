@@ -4,8 +4,8 @@
 	icon_state = "dominate"
 
 /datum/discipline/dominate/New(level)
-	. = ..()
 	all_powers = subtypesof(/datum/discipline_power/dominate)
+	..()
 
 /datum/discipline_power/dominate
 	name = "Dominate power name"

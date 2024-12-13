@@ -187,19 +187,19 @@
 	M.lying_fix()
 	M.dancing = FALSE
 
-/mob/living/carbon/human/proc/walk_to_caster()
+/mob/living/carbon/human/proc/walk_to_caster(mob/living/step_to)
 	walk(src, 0)
 	if(!CheckFrenzyMove())
 		set_glide_size(DELAY_TO_GLIDE_SIZE(total_multiplicative_slowdown()))
-		step_to(src,owner,0)
-		face_atom(owner)
+		step_to(src, step_to, 0)
+		face_atom(step_to)
 
-/mob/living/carbon/human/proc/step_away_caster()
+/mob/living/carbon/human/proc/step_away_caster(mob/living/step_from)
 	walk(src, 0)
 	if(!CheckFrenzyMove())
 		set_glide_size(DELAY_TO_GLIDE_SIZE(total_multiplicative_slowdown()))
-		step_away(src,owner,99)
-		face_atom(owner)
+		step_away(src, step_from, 99)
+		face_atom(step_from)
 
 /mob/living/carbon/human/proc/attack_myself_command()
 	if(!CheckFrenzyMove())
@@ -218,12 +218,14 @@
 	name = "Protean"
 	desc = "Lets your beast out, making you stronger and faster. Violates Masquerade."
 	icon_state = "protean"
+	/*
 	cost = 1
 	ranged = FALSE
 	delay = 20 SECONDS
 	violates_masquerade = TRUE
 	activate_sound = 'code/modules/wod13/sounds/protean_activate.ogg'
 	clan_restricted = TRUE
+	*/
 	var/obj/effect/proc_holder/spell/targeted/shapeshift/gangrel/GA
 
 /datum/movespeed_modifier/protean2
@@ -240,6 +242,7 @@
 
 /datum/discipline/protean/activate(mob/living/target, mob/living/carbon/human/owner)
 	. = ..()
+	/*
 	var/mod = min(4, level_casting)
 //	var/mutable_appearance/protean_overlay = mutable_appearance('code/modules/wod13/icons.dmi', "protean[mod]", -PROTEAN_LAYER)
 	if(!GA)
@@ -293,6 +296,7 @@
 					owner.Stun(10)
 					owner.do_jitter_animation(15)
 					owner.playsound_local(owner, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
+	*/
 
 /mob/living/proc/tremere_gib()
 	Stun(50)
@@ -378,6 +382,7 @@
 	name = "Thaumaturgy"
 	desc = "Opens the secrets of blood magic and how you use it, allows to steal other's blood. Violates Masquerade."
 	icon_state = "thaumaturgy"
+	/*
 	cost = 1
 	ranged = TRUE
 	delay = 5 SECONDS
@@ -385,6 +390,7 @@
 	activate_sound = 'code/modules/wod13/sounds/thaum.ogg'
 	clan_restricted = TRUE
 	dead_restricted = FALSE
+	*/
 
 /datum/discipline/thaumaturgy/activate(mob/living/target, mob/living/carbon/human/owner)
 	. = ..()
@@ -453,6 +459,7 @@
 	name = "Serpentis"
 	desc = "Act like a cobra, get the powers to stun targets with your gaze and your tongue, praise the mummy traditions and spread them to your childe. Violates Masquerade."
 	icon_state = "serpentis"
+	/*
 	cost = 1
 	ranged = TRUE
 	delay = 5
@@ -460,6 +467,7 @@
 	violates_masquerade = TRUE
 	clan_restricted = TRUE
 	dead_restricted = FALSE
+	*/
 
 /datum/discipline/serpentis/activate(mob/living/target, mob/living/carbon/human/owner)
 	. = ..()
@@ -504,6 +512,7 @@
 	name = "Vicissitude"
 	desc = "It is widely known as Tzimisce art of flesh and bone shaping. Violates Masquerade."
 	icon_state = "vicissitude"
+	/*
 	cost = 1
 	ranged = TRUE
 	delay = 100
@@ -511,6 +520,7 @@
 	violates_masquerade = TRUE
 	clan_restricted = TRUE
 	dead_restricted = FALSE
+	*/
 
 /datum/discipline/vicissitude/activate(mob/living/target, mob/living/carbon/human/owner)
 	. = ..()
@@ -633,12 +643,14 @@
 	name = "Quietus"
 	desc = "Make a poison out of nowhere and forces all beings in range to mute, poison your touch, poison your weapon, poison your spit and make it acid. Violates Masquerade."
 	icon_state = "quietus"
+	/*
 	cost = 1
 	ranged = FALSE
 	delay = 50
 //	range = 2
 	violates_masquerade = TRUE
 	clan_restricted = TRUE
+	*/
 
 /datum/discipline/quietus/activate(mob/living/target, mob/living/carbon/human/owner)
 	. = ..()
@@ -728,6 +740,7 @@
 	name = "Necromancy"
 	desc = "Offers control over another, undead reality."
 	icon_state = "necromancy"
+	/*
 	cost = 1
 	ranged = TRUE
 	range_sh = 2
@@ -735,6 +748,7 @@
 	violates_masquerade = TRUE
 	clan_restricted = TRUE
 	dead_restricted = FALSE
+	*/
 
 /datum/discipline/necromancy/activate(mob/living/target, mob/living/carbon/human/owner)
 	. = ..()
@@ -813,15 +827,18 @@
 	name = "Obtenebration"
 	desc = "Controls the darkness around you."
 	icon_state = "obtenebration"
+	/*
 	cost = 1
 	ranged = TRUE
 	delay = 100
 	violates_masquerade = TRUE
 	clan_restricted = TRUE
 	activate_sound = 'sound/magic/voidblink.ogg'
+	*/
 
 /datum/discipline/obtenebration/activate(mob/living/target, mob/living/carbon/human/owner)
 	. = ..()
+	/*
 	if(level_casting == 1)
 		var/atom/movable/AM = new(target)
 		AM.set_light(3, -7)
@@ -831,11 +848,13 @@
 		target.Stun(10*(level_casting-1))
 		var/obj/item/ammo_casing/magic/tentacle/lasombra/casing = new (owner.loc)
 		casing.fire_casing(target, owner, null, null, null, ran_zone(), 0,  owner)
+	*/
 
 /datum/discipline/daimonion
 	name = "Daimonion"
 	desc = "Get a help from the Hell creatures, resist THE FIRE, transform into an imp. Violates Masquerade."
 	icon_state = "daimonion"
+	/*
 	cost = 1
 	ranged = FALSE
 	delay = 150
@@ -843,9 +862,11 @@
 	activate_sound = 'code/modules/wod13/sounds/protean_activate.ogg'
 	clan_restricted = TRUE
 	var/obj/effect/proc_holder/spell/targeted/shapeshift/bat/BAT
+	*/
 
 /datum/discipline/daimonion/activate(mob/living/target, mob/living/carbon/human/owner)
 	. = ..()
+	/*
 	var/mod = min(4, level_casting)
 //	var/mutable_appearance/protean_overlay = mutable_appearance('code/modules/wod13/icons.dmi', "protean[mod]", -PROTEAN_LAYER)
 	if(!BAT)
@@ -884,11 +905,13 @@
 					owner.Stun(15)
 					owner.do_jitter_animation(30)
 					owner.playsound_local(owner.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
+	*/
 
 /datum/discipline/valeren
 	name = "Valeren"
 	desc = "Use your third eye in healing or protecting needs."
 	icon_state = "valeren"
+	/*
 	cost = 1
 	ranged = TRUE
 	delay = 50
@@ -898,9 +921,11 @@
 	dead_restricted = FALSE
 	var/datum/beam/current_beam
 	var/humanity_restored = 0
+	*/
 
 /datum/discipline/valeren/activate(mob/living/target, mob/living/carbon/human/owner)
 	. = ..()
+	/*
 	switch(level_casting)
 		if(1)
 			healthscan(owner, target, 1, FALSE)
@@ -962,11 +987,13 @@
 			else
 				to_chat(owner, "<span class='warning'>You need to hold your patient properly to heal their soul.</span>")
 				return
+	*/
 
 /datum/discipline/melpominee
 	name = "Melpominee"
 	desc = "Named for the Greek Muse of Tragedy, Melpominee is a unique discipline of the Daughters of Cacophony. It explores the power of the voice, shaking the very soul of those nearby and allowing the vampire to perform sonic feats otherwise impossible."
 	icon_state = "melpominee"
+	/*
 	cost = 1
 	ranged = TRUE
 	delay = 75
@@ -974,7 +1001,9 @@
 	activate_sound = 'code/modules/wod13/sounds/melpominee.ogg'
 	clan_restricted = TRUE
 	dead_restricted = FALSE
+	*/
 
+/*
 /mob/living/carbon/human/proc/create_walk_to(var/max)
 	var/datum/cb = CALLBACK(src,/mob/living/carbon/human/proc/walk_to_caster)
 	for(var/i in 1 to max)
@@ -1069,13 +1098,14 @@
 					spawn(20)
 						if(HU)
 							HU.remove_overlay(MUTATIONS_LAYER)
-
+	*/
 
 
 /datum/discipline/temporis
 	name = "Temporis"
 	desc = "Temporis is a Discipline unique to the True Brujah. Supposedly a refinement of Celerity, Temporis grants the Cainite the ability to manipulate the flow of time itself."
 	icon_state = "temporis"
+	/*
 	cost = 1
 	ranged = TRUE
 	delay = 50
@@ -1085,6 +1115,7 @@
 	dead_restricted = FALSE
 	var/current_cycle = 0
 	var/datum/component/temporis_target
+
 
 #define TEMPORIS_ATTACK_SPEED_MODIFIER 0.25
 
@@ -1144,3 +1175,4 @@
 		if(5)
 			to_chat(owner, "<b>Use the third Temporis button at the bottom of the screen to cast this level of Temporis.</b>")
 			owner.adjust_blood_points(1)
+	*/

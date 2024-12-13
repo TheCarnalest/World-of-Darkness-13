@@ -4,8 +4,8 @@
 	icon_state = "potence"
 
 /datum/discipline/potence/New(level)
-	. = ..()
 	all_powers = subtypesof(/datum/discipline_power/potence)
+	..()
 
 /datum/discipline_power/potence
 	name = "Potence power name"
@@ -17,7 +17,7 @@
 	deactivate_sound = 'code/modules/wod13/sounds/potence_deactivate.ogg'
 
 	toggled = TRUE
-	duration_length = DURATION_TURN
+	duration_length = DURATION_TURN_PLUS
 
 	var/datum/component/tackler
 
@@ -112,7 +112,7 @@
 	owner.dna.species.meleemod += 1.2
 	owner.dna.species.attack_sound = 'code/modules/wod13/sounds/heavypunch.ogg'
 	tackler = owner.AddComponent(/datum/component/tackler, stamina_cost=0, base_knockdown = 1 SECONDS, range = 5, speed = 1, skill_mod = 0, min_distance = 0)
-	owner.potential = 2
+	owner.potential = 3
 
 /datum/discipline_power/potence/three/deactivate()
 	. = ..()
@@ -147,7 +147,7 @@
 	owner.dna.species.meleemod += 1.6
 	owner.dna.species.attack_sound = 'code/modules/wod13/sounds/heavypunch.ogg'
 	tackler = owner.AddComponent(/datum/component/tackler, stamina_cost=0, base_knockdown = 1 SECONDS, range = 6, speed = 1, skill_mod = 0, min_distance = 0)
-	owner.potential = 2
+	owner.potential = 4
 
 /datum/discipline_power/potence/four/deactivate()
 	. = ..()
@@ -182,7 +182,7 @@
 	owner.dna.species.meleemod += 2
 	owner.dna.species.attack_sound = 'code/modules/wod13/sounds/heavypunch.ogg'
 	tackler = owner.AddComponent(/datum/component/tackler, stamina_cost=0, base_knockdown = 1 SECONDS, range = 7, speed = 1, skill_mod = 0, min_distance = 0)
-	owner.potential = 2
+	owner.potential = 5
 
 /datum/discipline_power/potence/five/deactivate()
 	. = ..()

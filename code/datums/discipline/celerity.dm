@@ -4,8 +4,8 @@
 	icon_state = "celerity"
 
 /datum/discipline/celerity/New(level)
-	. = ..()
 	all_powers = subtypesof(/datum/discipline_power/celerity)
+	..()
 
 /datum/discipline_power/celerity
 	name = "Celerity power name"
@@ -17,16 +17,16 @@
 	deactivate_sound = 'code/modules/wod13/sounds/celerity_deactivate.ogg'
 
 	toggled = TRUE
-	duration_length = DURATION_TURN
+	duration_length = DURATION_TURN_PLUS
 
-/datum/discipline_power/celerity/celerity_visual(datum/discipline_power/celerity/source, atom/newloc, dir)
+/datum/discipline_power/celerity/proc/celerity_visual(datum/discipline_power/celerity/source, atom/newloc, dir)
 	if(owner.celerity_visual) //this check and variable should be removed, but some stuff depends on it, so rework that some time
 		var/obj/effect/celerity/C = new(owner.loc)
 		C.name = owner.name
 		C.appearance = owner.appearance
 		C.dir = owner.dir
 		animate(C, pixel_x = rand(-16, 16), pixel_y = rand(-16, 16), alpha = 0, time = 0.5 SECONDS)
-		if(owner.CheckEyewitness(src, src, 7, FALSE))
+		if(owner.CheckEyewitness(owner, owner, 7, FALSE))
 			owner.AdjustMasquerade(-1)
 
 /datum/discipline_power/celerity/activate()
@@ -45,6 +45,7 @@
 	. = ..()
 	owner.celerity_visual = FALSE
 	UnregisterSignal(owner, COMSIG_MOVABLE_MOVED)
+	return .
 
 /obj/effect/celerity
 	name = "Damn"

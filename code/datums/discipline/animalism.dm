@@ -4,8 +4,8 @@
 	icon_state = "animalism"
 
 /datum/discipline/animalism/New(level)
-	. = ..()
 	all_powers = subtypesof(/datum/discipline_power/animalism)
+	..()
 
 /datum/discipline_power/animalism
 	name = "Animalism power name"

@@ -34,7 +34,6 @@
 	//splat variables
 	var/spend_blood_per_turn = 1
 	var/spent_blood_turn = 0
-	COOLDOWN_DECLARE(spend_blood_timer)
 	var/datum/vampireclane/clane
 	var/list/datum/discipline/disciplines = list()
 	COOLDOWN_DECLARE(torpor_timer)
@@ -597,12 +596,12 @@
 			for (var/i in 1 to client.prefs.discipline_types.len)
 				var/type_to_create = client.prefs.discipline_types[i]
 				var/level = client.prefs.discipline_levels[i]
-				var/datum/discipline/discipline = new type_to_create(level, src)
+				var/datum/discipline/discipline = new type_to_create(level)
 				adding_disciplines += discipline
 		else if (disciplines.len) //initialise given disciplines
 			for (var/i in 1 to disciplines.len)
 				var/type_to_create = disciplines[i]
-				var/datum/discipline/discipline = new type_to_create(1, src)
+				var/datum/discipline/discipline = new type_to_create(1)
 				adding_disciplines += discipline
 
 		for (var/datum/discipline/discipline in adding_disciplines)
@@ -821,17 +820,18 @@
 		return FALSE
 	if (!vampire.can_adjust_blood_points(-amount))
 		return FALSE
-	if (!COOLDOWN_FINISHED(src, spend_blood_timer))
-		return FALSE
 	return TRUE
 
 /datum/species/kindred/proc/spend_blood(mob/living/carbon/human/vampire, amount)
 	spent_blood_turn += amount
 	vampire.adjust_blood_points(-amount)
-	COOLDOWN_START(src, spend_blood_timer, DURATION_TURN / spend_blood_per_turn)
+	addtimer(CALLBACK(src, PROC_REF(refresh_spent_blood), amount), DURATION_TURN)
 
 /datum/species/kindred/proc/try_spend_blood(mob/living/carbon/human/vampire, amount)
 	if (can_spend_blood(vampire, amount))
 		spend_blood(vampire, amount)
 		return TRUE
 	return FALSE
+
+/datum/species/kindred/proc/refresh_spent_blood(amount)
+	spent_blood_turn -= amount

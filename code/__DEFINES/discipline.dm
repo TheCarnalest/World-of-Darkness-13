@@ -1,6 +1,8 @@
 //normal duration defines
 ///Duration of one "turn" as defined in tabletop: 3 seconds
 #define DURATION_TURN 30
+
+#define DURATION_TURN_PLUS 31
 ///Duration of one "scene" as defined in tabletop: 5 minutes
 #define DURATION_SCENE 3000
 

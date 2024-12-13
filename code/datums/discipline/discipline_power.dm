@@ -112,6 +112,32 @@
 /datum/discipline_power/proc/can_activate_untargeted(alert = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
 
+	//can't be casted without an actual caster
+	if (!owner)
+		return FALSE
+
+	//can always be deactivated if that's an option
+	if (active && (toggled || cancelable))
+		return TRUE
+
+	//the power is currently active
+	if (active)
+		if (alert)
+			to_chat(owner, "<span class='warning'>[name] is already active!</span>")
+		return FALSE
+
+	//the user cannot afford the power's vitae expenditure
+	if (!can_afford())
+		if (alert)
+			to_chat(owner, "<span class='warning'>You do not have enough blood to cast [name]!</span>")
+		return FALSE
+
+	//the power's cooldown has not elapsed
+	if (get_cooldown())
+		if (alert)
+			to_chat(owner, "<span class='warning'>[name] is on cooldown!</span>")
+		return FALSE
+
 	//status checks
 	if ((check_flags & DISC_CHECK_TORPORED) && HAS_TRAIT(owner, TRAIT_TORPOR))
 		if (alert)
@@ -159,29 +185,11 @@
 			to_chat(owner, "<span class='warning'>You cannot cast [name] as a pacifist!</span>")
 		return FALSE
 
-	//the power is currently active
-	if (active && (!cancelable || !multi_activation || !toggled))
-		if (alert)
-			to_chat(owner, "<span class='warning'>[name] is already active!</span>")
-		return FALSE
-
-	//the power's cooldown has not elapsed
-	if (get_cooldown())
-		if (alert)
-			to_chat(owner, "<span class='warning'>[name] is on cooldown!</span>")
-		return FALSE
-
-	//the user cannot afford the power's vitae expenditure
-	if (!can_afford())
-		if (alert)
-			to_chat(owner, "<span class='warning'>You do not have enough blood to cast [name]!</span>")
-		return FALSE
-
 	//TODO: separate this from being a human????
 	if (ishuman(owner))
 		var/mob/living/carbon/human/human = owner
 		var/datum/species/kindred/species = human.dna.species
-		if (!species.can_spend_blood(vitae_cost))
+		if (!species.can_spend_blood(owner, vitae_cost))
 			return FALSE
 
 	//nothing found, it can be casted
@@ -195,11 +203,13 @@
 		return
 	if(!discipline?.owner)
 		return
-	active = TRUE
 
 	//toggle the Discipline power off
-	if(get_duration() && (cancelable || toggled))
+	if(active && (cancelable || toggled))
 		deactivate(target)
+		return
+
+	active = TRUE
 
 	//start the cooldown if there is one, instead triggers on deactivate() if toggled
 	if (cooldown_length && !cancelable)
@@ -208,7 +218,7 @@
 	//handle Discipline power duration, start duration timer if it can't have multiple effects running at once
 	if (duration_length)
 		if (!multi_activation)
-			TIMER_COOLDOWN_START(src, duration, duration_length)
+			COOLDOWN_START(src, duration, duration_length)
 		if (toggled)
 			addtimer(CALLBACK(src, PROC_REF(refresh), target), duration_length)
 		else
@@ -241,7 +251,7 @@
 	if (ishuman(owner))
 		var/mob/living/carbon/human/human = owner
 		var/datum/species/kindred/species = human.dna.species
-		species.spend_blood(vitae_cost)
+		species.spend_blood(human, vitae_cost)
 	else
 		owner.adjust_blood_points(-vitae_cost)
 
@@ -258,9 +268,13 @@
 /datum/discipline_power/proc/deactivate(atom/target)
 	SHOULD_CALL_PARENT(TRUE)
 
-	active = FALSE
 	if (!owner)
 		return FALSE
+
+	active = FALSE
+
+	if (duration_length)
+		COOLDOWN_RESET(src, duration)
 	if (cancelable)
 		COOLDOWN_START(src, cooldown, cooldown_length)
 	if (deactivate_sound)
@@ -276,15 +290,16 @@
 		if (ishuman(owner))
 			var/mob/living/carbon/human/human = owner
 			var/datum/species/kindred/species = human.dna.species
-			if (species.try_spend_blood(vitae_cost))
+			if (species.try_spend_blood(human, vitae_cost))
 				repeat = TRUE
 		else
 			if (owner.try_adjust_blood_points(-vitae_cost))
 				repeat = TRUE
 
 		if (repeat)
+			if (!multi_activation)
+				COOLDOWN_START(src, duration, duration_length)
 			addtimer(CALLBACK(src, PROC_REF(refresh), target), duration_length)
-		else
-			deactivate(target)
+			return
 
-
+		deactivate(target)

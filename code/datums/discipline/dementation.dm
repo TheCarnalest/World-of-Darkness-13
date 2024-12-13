@@ -5,8 +5,8 @@
 	clan_restricted = TRUE
 
 /datum/discipline/dementation/New(level)
-	. = ..()
 	all_powers = subtypesof(/datum/discipline_power/dementation)
+	..()
 
 /datum/discipline_power/dementation
 	name = "Dementation power name"

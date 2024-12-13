@@ -374,15 +374,17 @@
 /mob/living/proc/can_adjust_blood_points(amount)
 	blood_per_point = initial(blood_volume) / maxbloodpool
 
-	if (amount >= 0)
+	if (amount == 0)
+		return TRUE
+	else if (amount > 0)
 		if ((blood_volume + blood_per_point * amount) > initial(blood_volume))
 			return FALSE
 		if ((bloodpool + amount) > maxbloodpool)
 			return FALSE
 	else
-		if ((blood_volume - blood_per_point * amount) < 0)
+		if ((blood_volume + blood_per_point * amount) < 0)
 			return FALSE
-		if ((bloodpool - amount) < 0)
+		if ((bloodpool + amount) < 0)
 			return FALSE
 	return TRUE
 

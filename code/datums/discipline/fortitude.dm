@@ -4,8 +4,8 @@
 	icon_state = "fortitude"
 
 /datum/discipline/fortitude/New(level)
-	. = ..()
 	all_powers = subtypesof(/datum/discipline_power/fortitude)
+	..()
 
 /datum/discipline_power/fortitude
 	name = "Fortitude power name"
@@ -17,7 +17,7 @@
 	deactivate_sound = 'code/modules/wod13/sounds/fortitude_deactivate.ogg'
 
 	toggled = TRUE
-	duration_length = DURATION_TURN
+	duration_length = DURATION_TURN_PLUS
 
 //FORTITUDE 1
 /datum/discipline_power/fortitude/one

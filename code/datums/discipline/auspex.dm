@@ -4,8 +4,8 @@
 	icon_state = "auspex"
 
 /datum/discipline/auspex/New(level)
-	. = ..()
 	all_powers = subtypesof(/datum/discipline_power/auspex)
+	..()
 
 /datum/discipline_power/auspex
 	name = "Auspex power name"

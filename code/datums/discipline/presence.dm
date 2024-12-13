@@ -4,8 +4,8 @@
 	icon_state = "presence"
 
 /datum/discipline/presence/New(level)
-	. = ..()
 	all_powers = subtypesof(/datum/discipline_power/presence)
+	..()
 
 /datum/discipline_power/presence
 	name = "Presence power name"
@@ -13,6 +13,7 @@
 
 	check_flags = DISC_CHECK_CAPABLE|DISC_CHECK_SPEAK
 	target_type = TARGET_LIVING
+	range = 7
 
 	activate_sound = 'code/modules/wod13/sounds/presence_activate.ogg'
 	deactivate_sound = 'code/modules/wod13/sounds/presence_deactivate.ogg'
@@ -58,7 +59,7 @@
 
 /datum/discipline_power/presence/awe/activate(mob/living/carbon/human/target)
 	. = ..()
-	var/datum/cb = CALLBACK(H, /mob/living/carbon/human/proc/walk_to_caster)
+	var/datum/cb = CALLBACK(H, /mob/living/carbon/human/proc/walk_to_caster, owner)
 	for(var/i in 1 to 30)
 		addtimer(cb, (i - 1) * H.total_multiplicative_slowdown())
 	to_chat(target, "<span class='userlove'><b>COME HERE</b></span>")
@@ -112,7 +113,7 @@
 	. = ..()
 	to_chat(target, "<span class='userlove'><b>FEAR ME</b></span>")
 	owner.say("FEAR ME!!")
-	var/datum/cb = CALLBACK(target, /mob/living/carbon/human/proc/step_away_caster)
+	var/datum/cb = CALLBACK(target, /mob/living/carbon/human/proc/step_away_caster, owner)
 	for(var/i in 1 to 30)
 		addtimer(cb, (i - 1) * target.total_multiplicative_slowdown())
 	target.emote("scream")

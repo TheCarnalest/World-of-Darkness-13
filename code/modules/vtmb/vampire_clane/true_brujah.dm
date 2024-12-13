@@ -13,7 +13,7 @@
 	female_clothes = "/obj/item/clothing/under/vampire/business"
 	restricted_disciplines = list(/datum/discipline/celerity)
 	whitelisted = TRUE
-
+/*
 /datum/discipline/temporis/post_gain(mob/living/carbon/human/H)
 	if(level >= 1)
 		var/datum/action/clock/clocke = new()
@@ -24,6 +24,7 @@
 	if(level >= 5)
 		var/datum/action/clotho/clot = new()
 		clot.Grant(H)
+
 
 /datum/action/clock
 	name = "Check Time"
@@ -130,3 +131,4 @@ var/datum/martial_art/cowalker/style
 	spam_fix = world.time
 	var/mob/living/carbon/human/M = usr
 	clothogift(M)
+*/

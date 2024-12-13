@@ -1197,7 +1197,6 @@
 		return
 	client.mouse_pointer_icon = initial(client.mouse_pointer_icon)
 	var/shootahell = FALSE
-	var/discipliner = FALSE
 	if(ishuman(src))
 		var/mob/living/carbon/human/H = src
 		if(istype(H.get_active_held_item(), /obj/item/gun))

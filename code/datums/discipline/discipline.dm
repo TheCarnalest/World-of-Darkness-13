@@ -24,6 +24,9 @@
 
 //TODO: rework this to use proper loadouts instead of a default set every time
 /datum/discipline/New(level)
+	if (!level)
+		return
+
 	src.level = level
 	for (var/i in 1 to level)
 		var/type_to_create = all_powers[i]

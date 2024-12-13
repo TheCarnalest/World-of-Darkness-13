@@ -4,8 +4,8 @@
 	icon_state = "obfuscate"
 
 /datum/discipline/obfuscate/New(level)
-	. = ..()
 	all_powers = subtypesof(/datum/discipline_power/obfuscate)
+	..()
 
 /datum/discipline_power/obfuscate
 	name = "Obfuscate power name"
