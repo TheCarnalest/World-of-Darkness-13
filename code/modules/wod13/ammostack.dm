@@ -343,10 +343,10 @@
 	if(iswerewolf(target) || isgarou(target))
 		var/mob/living/carbon/M = target
 		if(M.auspice.gnosis)
-			if(prob(40))
+			if(prob(75))
 				adjust_gnosis(-1, M)
 		else
-			M.Stun(10)
+			M.Stun(20)
 			M.adjustBruteLoss(50, TRUE)
 
 /obj/projectile/beam/beam_rifle/vampire/vamp45acp/silver
@@ -358,10 +358,10 @@
 	if(iswerewolf(target) || isgarou(target))
 		var/mob/living/carbon/M = target
 		if(M.auspice.gnosis)
-			if(prob(40))
+			if(prob(75))
 				adjust_gnosis(-1, M)
 		else
-			M.Stun(10)
+			M.Stun(20)
 			M.adjustBruteLoss(50, TRUE)
 
 /obj/projectile/beam/beam_rifle/vampire/vamp44/silver
@@ -375,10 +375,10 @@
 	if(iswerewolf(target) || isgarou(target))
 		var/mob/living/carbon/M = target
 		if(M.auspice.gnosis)
-			if(prob(40))
+			if(prob(75))
 				adjust_gnosis(-1, M)
 		else
-			M.Stun(10)
+			M.Stun(20)
 			M.adjustBruteLoss(50, TRUE)
 
 /obj/item/ammo_casing/vampire/c9mm/silver
