@@ -9,6 +9,7 @@
 	)
 	male_clothes = "/obj/item/clothing/under/vampire/malkavian"
 	female_clothes = "/obj/item/clothing/under/vampire/malkavian/female"
+	clan_keys = /obj/item/vamp/keys/malkav
 
 /datum/discipline/dementation/post_gain(mob/living/carbon/human/H)
 	..()

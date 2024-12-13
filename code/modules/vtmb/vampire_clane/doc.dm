@@ -11,6 +11,4 @@
 	female_clothes = "/obj/item/clothing/under/vampire/toreador/female"
 	enlightenment = FALSE
 	whitelisted = TRUE
-
-/datum/vampireclane/doc/post_gain(mob/living/carbon/human/H)
-	H.put_in_r_hand(new /obj/item/vamp/keys/daughters(H))
+	clan_keys = /obj/item/vamp/keys/daughters
