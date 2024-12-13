@@ -2676,9 +2676,17 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					chat_toggles ^= CHAT_GHOSTSIGHT
 
 				if("ghost_whispers")
-					chat_toggles ^= CHAT_GHOSTWHISPER
+					if(istype(user.client.mob, /mob/dead/observer))
+						var/mob/dead/observer/obs = user.client.mob
+						if(obs.auspex_ghosted)
+							return
+						else
+							chat_toggles ^= CHAT_GHOSTWHISPER
+					else
+						chat_toggles ^= CHAT_GHOSTWHISPER
 
 				if("ghost_radio")
+
 					chat_toggles ^= CHAT_GHOSTRADIO
 
 				if("ghost_pda")
