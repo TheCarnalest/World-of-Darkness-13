@@ -1021,20 +1021,20 @@ GLOBAL_LIST_EMPTY(possible_items_special)
 /datum/objective/protect_niga/check_completion()
 	return !target || !considered_alive(target)
 
-/datum/objective/become_member
-	name = "become member of"
-	var/faction
+// /datum/objective/become_member
+// 	name = "become member of"
+// 	var/faction
 
-/datum/objective/become_member/update_explanation_text()
-	..()
-	explanation_text = "Become a member of [faction]. Help your faction by claiming at least one mark on the map."
+// /datum/objective/become_member/update_explanation_text()
+// 	..()
+// 	explanation_text = "Become a member of [faction]. Help your faction by claiming at least one mark on the map."
 
-/datum/objective/become_member/check_completion()
-	var/list/datum/mind/owners = get_owners()
-	for(var/datum/mind/M in owners)
-		if(!ishuman(M.current))
-			continue
-		var/mob/living/carbon/human/L = M.current
-		if(L.last_repainted_mark == faction && L.vampire_faction == faction)
-			return TRUE
-	return FALSE
+// /datum/objective/become_member/check_completion()
+// 	var/list/datum/mind/owners = get_owners()
+// 	for(var/datum/mind/M in owners)
+// 		if(!ishuman(M.current))
+// 			continue
+// 		var/mob/living/carbon/human/L = M.current
+// 		if(L.last_repainted_mark == faction && L.vampire_faction == faction)
+// 			return TRUE
+// 	return FALSE

@@ -1857,17 +1857,17 @@
 				money_objective.amount = rand(300, 1000)
 				objectives += money_objective
 				money_objective.update_explanation_text()
-		if(4)
-			var/list/available_factions = list("Camarilla", "Anarch", "Sabbat")
-			if(ishuman(owner))
-				var/mob/living/carbon/human/H = owner
-				if(H.vampire_faction == "Camarilla" || H.vampire_faction == "Anarch" || H.vampire_faction == "Sabbat")
-					available_factions -= H.vampire_faction
-			var/datum/objective/become_member/member_objective = new
-			member_objective.owner = owner
-			member_objective.faction = pick(available_factions)
-			objectives += member_objective
-			member_objective.update_explanation_text()
+		// if(4)
+		// 	var/list/available_factions = list("Camarilla", "Anarch", "Sabbat")
+		// 	if(ishuman(owner))
+		// 		var/mob/living/carbon/human/H = owner
+		// 		if(H.vampire_faction == "Camarilla" || H.vampire_faction == "Anarch" || H.vampire_faction == "Sabbat")
+		// 			available_factions -= H.vampire_faction
+		// 	var/datum/objective/become_member/member_objective = new
+		// 	member_objective.owner = owner
+		// 	member_objective.faction = pick(available_factions)
+		// 	objectives += member_objective
+		// 	member_objective.update_explanation_text()
 	return ..()
 
 /datum/antagonist/ambitious/on_removal()
