@@ -678,9 +678,6 @@
 	name = "police hat"
 	desc = "Can look dangerous or sexy despite the circumstances. Provides some kind of protection."
 	icon_state = "law"
-	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEHAIR
-	dynamic_hair_suffix = ""
-	dynamic_fhair_suffix = ""
 	armor = list(MELEE = 20, BULLET = 20, LASER = 10, ENERGY = 10, BOMB = 10, BIO = 0, RAD = 0, FIRE = 0, ACID = 10, WOUND = 10)
 
 /obj/item/clothing/head/vampire/cowboy
@@ -749,9 +746,7 @@
 	name = "spain helmet"
 	desc = "Concistador! Provides good protection."
 	icon_state = "spain"
-	flags_inv = HIDEMASK|HIDEEARS|HIDEHAIR
-	dynamic_hair_suffix = ""
-	dynamic_fhair_suffix = ""
+	flags_inv = HIDEEARS
 	armor = list(MELEE = 40, BULLET = 40, LASER = 40, ENERGY = 40, BOMB = 20, BIO = 0, RAD = 0, FIRE = 20, ACID = 40, WOUND = 25)
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
 	masquerade_violating = FALSE
@@ -760,7 +755,7 @@
 	name = "army helmet"
 	desc = "Looks dangerous. Provides great protection against blunt force."
 	icon_state = "helmet"
-	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEHAIR
+	flags_inv = HIDEEARS|HIDEHAIR
 	dynamic_hair_suffix = ""
 	dynamic_fhair_suffix = ""
 	armor = list(MELEE = 60, BULLET = 60, LASER = 60, ENERGY = 60, BOMB = 40, BIO = 0, RAD = 0, FIRE = 20, ACID = 40, WOUND = 25)
