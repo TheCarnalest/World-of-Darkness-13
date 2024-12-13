@@ -99,7 +99,7 @@
 	throwforce = 10
 	block_chance = 45
 	armour_penetration = 30
-	sharpness = SHARP_EDGED
+	sharpness = SHARP_POINTY
 	attack_verb_continuous = list("stabs", "pokes")
 	attack_verb_simple = list("stab", "poke")
 	hitsound = 'sound/weapons/rapierhit.ogg'
