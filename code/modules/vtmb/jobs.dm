@@ -1190,6 +1190,34 @@
 	worn_icon = 'code/modules/wod13/worn.dmi'
 	worn_icon_state = "id12"
 
+
+/obj/item/card/id/bahari
+	name = "cultist badge"
+	id_type_name = "cultist badge"
+	desc = "This shows your devotion to the dark mother."
+	icon = 'code/modules/wod13/items.dmi'
+	icon_state = "id14"
+	inhand_icon_state = "card-id"
+	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
+	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	worn_icon = 'code/modules/wod13/worn.dmi'
+	worn_icon_state = "id14"
+
+/obj/item/card/id/noddist
+	name = "cultist badge"
+	id_type_name = "cultist badge"
+	desc = "This shows your devotion to the dark father."
+	icon = 'code/modules/wod13/items.dmi'
+	icon_state = "id15"
+	inhand_icon_state = "card-id"
+	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
+	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	worn_icon = 'code/modules/wod13/worn.dmi'
+	worn_icon_state = "id15"
+
+
 /datum/outfit/job/caitiff
 	name = "Caitiff"
 	l_pocket = /obj/item/vamp/phone

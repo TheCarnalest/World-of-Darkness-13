@@ -521,7 +521,7 @@
 	icon_state = "medieval"
 	armor = list(MELEE = 55, BULLET = 55, LASER = 10, ENERGY = 10, BOMB = 55, BIO = 0, RAD = 0, FIRE = 45, ACID = 10, WOUND = 25)
 
-//Police + Army 
+//Police + Army
 /obj/item/clothing/suit/vampire/vest/police
 	name = "police duty vest"
 	icon_state = "pdvest"
@@ -567,6 +567,37 @@
 	desc = "For medicine and research purposes."
 	icon_state = "labcoat"
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 90, WOUND = 10)
+
+/obj/item/clothing/suit/vampire/bahari
+	name = "Dark mother's suit"
+	desc = "When I first tasted the fruit of the Trees,\
+			felt the seeds of Life and Knowledge, burn within me, I swore that day I would not turn back..."
+	icon_state = "bahari"
+	armor = list(MELEE = 10, BULLET = 0, LASER = 10, ENERGY = 10, BOMB = 10, BIO = 0, RAD = 0, FIRE = 0, ACID = 10, WOUND = 10)
+
+/obj/item/clothing/suit/vampire/kasaya
+	name = "Kasaya"
+	desc = "A traditional robe worn by monks and nuns of the Buddhist faith."
+	icon_state = "kasaya"
+	armor = list(MELEE = 10, BULLET = 0, LASER = 10, ENERGY = 10, BOMB = 10, BIO = 0, RAD = 0, FIRE = 0, ACID = 10, WOUND = 10)
+
+/obj/item/clothing/suit/vampire/imam
+	name = "Imam robe"
+	desc = "A traditional robe worn by imams of the Islamic faith."
+	icon_state = "imam"
+	armor = list(MELEE = 10, BULLET = 0, LASER = 10, ENERGY = 10, BOMB = 10, BIO = 0, RAD = 0, FIRE = 0, ACID = 10, WOUND = 10)
+
+/obj/item/clothing/suit/vampire/noddist
+	name = "Noddist robe"
+	desc = "Shine black the sun! Shine blood the moon! Gehenna is coming soon."
+	icon_state = "noddist"
+	armor = list(MELEE = 10, BULLET = 0, LASER = 10, ENERGY = 10, BOMB = 10, BIO = 0, RAD = 0, FIRE = 0, ACID = 10, WOUND = 10)
+
+/obj/item/clothing/suit/vampire/orthodox
+	name = "Orthodox robe"
+	desc = "A traditional robe worn by priests of the Orthodox faith."
+	icon_state = "vestments"
+	armor = list(MELEE = 10, BULLET = 0, LASER = 10, ENERGY = 10, BOMB = 10, BIO = 0, RAD = 0, FIRE = 0, ACID = 10, WOUND = 10)
 
 //GLASSES
 
@@ -647,6 +678,9 @@
 	name = "police hat"
 	desc = "Can look dangerous or sexy despite the circumstances. Provides some kind of protection."
 	icon_state = "law"
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEHAIR
+	dynamic_hair_suffix = ""
+	dynamic_fhair_suffix = ""
 	armor = list(MELEE = 20, BULLET = 20, LASER = 10, ENERGY = 10, BOMB = 10, BIO = 0, RAD = 0, FIRE = 0, ACID = 10, WOUND = 10)
 
 /obj/item/clothing/head/vampire/cowboy
@@ -693,6 +727,9 @@
 	name = "police helmet"
 	desc = "Looks dangerous. Provides good protection."
 	icon_state = "helmet"
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEHAIR
+	dynamic_hair_suffix = ""
+	dynamic_fhair_suffix = ""
 	armor = list(MELEE = 40, BULLET = 40, LASER = 40, ENERGY = 40, BOMB = 20, BIO = 0, RAD = 0, FIRE = 20, ACID = 40, WOUND = 25)
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
 //	clothing_traits = list(TRAIT_UNMASQUERADE)
@@ -712,6 +749,9 @@
 	name = "spain helmet"
 	desc = "Concistador! Provides good protection."
 	icon_state = "spain"
+	flags_inv = HIDEMASK|HIDEEARS|HIDEHAIR
+	dynamic_hair_suffix = ""
+	dynamic_fhair_suffix = ""
 	armor = list(MELEE = 40, BULLET = 40, LASER = 40, ENERGY = 40, BOMB = 20, BIO = 0, RAD = 0, FIRE = 20, ACID = 40, WOUND = 25)
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
 	masquerade_violating = FALSE
@@ -720,6 +760,9 @@
 	name = "army helmet"
 	desc = "Looks dangerous. Provides great protection against blunt force."
 	icon_state = "helmet"
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEHAIR
+	dynamic_hair_suffix = ""
+	dynamic_fhair_suffix = ""
 	armor = list(MELEE = 60, BULLET = 60, LASER = 60, ENERGY = 60, BOMB = 40, BIO = 0, RAD = 0, FIRE = 20, ACID = 40, WOUND = 25)
 //	clothing_traits = list(TRAIT_UNMASQUERADE)
 	masquerade_violating = TRUE
@@ -729,13 +772,63 @@
 	desc = "Looks dangerous. Provides best protection against nearly everything."
 	icon_state = "bomb"
 	armor = list(MELEE = 70, BULLET = 70, LASER = 90, ENERGY = 90, BOMB = 100, BIO = 0, RAD = 0, FIRE = 50, ACID = 90, WOUND = 40)
-	flags_inv = HIDEEARS|HIDEFACE|HIDESNOUT
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEHAIR
+	dynamic_hair_suffix = ""
+	dynamic_fhair_suffix = ""
 	visor_flags_inv = HIDEFACE|HIDESNOUT
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
 	visor_flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
 	w_class = WEIGHT_CLASS_BULKY
 //	clothing_traits = list(TRAIT_UNMASQUERADE)
 	masquerade_violating = TRUE
+
+
+/obj/item/clothing/head/vampire/bahari_mask
+	name = "Dark mother's mask"
+	desc = "When I first tasted the fruit of the Trees,\
+			felt the seeds of Life and Knowledge, burn within me, I swore that day I would not turn back..."
+	icon_state = "bahari_mask"
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR
+	dynamic_hair_suffix = ""
+	dynamic_fhair_suffix = ""
+	armor = list(MELEE = 10, BULLET = 0, LASER = 10, ENERGY = 10, BOMB = 10, BIO = 0, RAD = 0, FIRE = 0, ACID = 10, WOUND = 10)
+
+/obj/item/clothing/head/vampire/straw_hat
+	name = "straw hat"
+	desc = "A straw hat."
+	icon_state = "strawhat"
+
+/obj/item/clothing/head/vampire/hijab
+	name = "hijab"
+	desc = "A traditional headscarf worn by Muslim women."
+	icon_state = "hijab"
+	flags_inv = HIDEEARS|HIDEHAIR
+	dynamic_hair_suffix = ""
+	dynamic_fhair_suffix = ""
+
+/obj/item/clothing/head/vampire/taqiyah
+	name = "taqiyah"
+	desc = "A traditional hat worn by Muslim men."
+	icon_state = "taqiyah"
+
+/obj/item/clothing/head/vampire/noddist_mask
+	name = "Noddist mask"
+	desc = "Shine black the sun! Shine blood the moon! Gehenna is coming soon."
+	icon_state = "noddist_mask"
+	armor = list(MELEE = 10, BULLET = 0, LASER = 10, ENERGY = 10, BOMB = 10, BIO = 0, RAD = 0, FIRE = 0, ACID = 10, WOUND = 10)
+
+/obj/item/clothing/head/vampire/kalimavkion
+	name = "Kalimavkion"
+	desc = "A traditional hat worn by Orthodox priests."
+	icon_state = "kalimavkion"
+
+/obj/item/clothing/head/vampire/prayer_veil
+	name = "Prayer veil"
+	desc = "A traditional veil."
+	icon_state = "prayer_veil"
+	flags_inv = HIDEEARS|HIDEHAIR
+	dynamic_hair_suffix = ""
+	dynamic_fhair_suffix = ""
 
 //GLOVES
 
@@ -831,6 +924,11 @@
 /obj/item/clothing/neck/vampire/scarf/white
 	name = "white scarf"
 	icon_state = "scarf_white"
+
+/obj/item/clothing/neck/vampire/prayerbeads
+	name = "prayer beads"
+	desc = "These beads are used for prayer."
+	icon_state = "beads"
 
 /obj/item/clothing/under/vampire/bacotell
 	desc = "Some BacoTell clothes."
