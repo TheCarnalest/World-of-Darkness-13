@@ -1061,10 +1061,12 @@
 	clawfootstep = FOOTSTEP_WATER
 	heavyfootstep = FOOTSTEP_WATER
 
+/*
 /turf/open/floor/plating/shit/Initialize()
 	. = ..()
 	if(prob(50))
 		new /obj/effect/realistic_fog(src)
+*/
 
 /turf/open/floor/plating/shit/border
 	icon_state = "shit_border"
