@@ -117,5 +117,4 @@ And it also helps for the character set panel
 			if(LM)
 				H.forceMove(LM.loc)
 	if(clan_keys)
-		var/obj/item/vamp/keys/starting_keys = new clan_keys
-		H.put_in_r_hand(new starting_keys(H))
+		H.put_in_r_hand(new clan_keys(H))
