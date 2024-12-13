@@ -74,7 +74,7 @@
 
 	var/step_variable = 0
 
-	var/werewolf_armor = 5
+	var/werewolf_armor = 0
 
 	var/assigned_quirks = FALSE
 
@@ -188,8 +188,8 @@
 	hud_type = /datum/hud/werewolf
 	melee_damage_lower = 25
 	melee_damage_upper = 65
-	health = 300
-	maxHealth = 300
+	health = 200
+	maxHealth = 200
 //	speed = -1  doesn't work on carbons
 	var/obj/item/r_store = null
 	var/obj/item/l_store = null
@@ -206,10 +206,10 @@
 		/obj/item/bodypart/l_leg,
 		)
 
-	werewolf_armor = 35
+	werewolf_armor = 25
 
 /datum/movespeed_modifier/crinosform
-	multiplicative_slowdown = -0.25
+	multiplicative_slowdown = -0.2
 
 /datum/movespeed_modifier/silver_slowdown
 	multiplicative_slowdown = 0.3
