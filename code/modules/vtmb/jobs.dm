@@ -863,10 +863,10 @@
 	..()
 	if(H.gender == MALE)
 		shoes = /obj/item/clothing/shoes/vampire/white
-		uniform = /obj/item/clothing/under/vampire/pimp
+		uniform = /obj/item/clothing/under/vampire/slickback
 	else
 		shoes = /obj/item/clothing/shoes/vampire/heels
-		uniform = /obj/item/clothing/under/vampire/whore
+		uniform = /obj/item/clothing/under/vampire/burlesque
 
 /obj/effect/landmark/start/strip
 	name = "Strip"
