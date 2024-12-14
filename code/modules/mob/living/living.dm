@@ -942,7 +942,8 @@
 		var/grabber_physique = (G.physique + G.additional_physique) * 10 // The one who is grabbing physique
 		var/resist_physique = (physique + additional_physique) * 10 /// The one who is  resisting physique
         resist_chance = (resist_chance + (resist_physique - grabber_physique))/altered_grab_state
-		if(prob(resist_chance))
+		var/resist_physique = (physique + additional_physique) * 10 // The one who is  resisting physique
+		resist_chance = ((resist_chance + (resist_physique - grabber_physique))/altered_grab_state)
 			visible_message("<span class='danger'>[src] breaks free of [pulledby]'s grip!</span>", \
 							"<span class='danger'>You break free of [pulledby]'s grip!</span>", null, null, pulledby)
 			to_chat(pulledby, "<span class='warning'>[src] breaks free of your grip!</span>")
