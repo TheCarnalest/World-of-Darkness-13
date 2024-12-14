@@ -230,13 +230,13 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 /datum/controller/master/proc/SetRunLevel(new_runlevel)
 	if(new_runlevel == RUNLEVEL_POSTGAME)
 		GLOB.canon_event = FALSE
-		var/won
-		if(length(SSfactionwar.marks_camarilla) > length(SSfactionwar.marks_anarch) && length(SSfactionwar.marks_camarilla) > length(SSfactionwar.marks_sabbat))
-			won = "camarilla"
-		if(length(SSfactionwar.marks_anarch) > length(SSfactionwar.marks_camarilla) && length(SSfactionwar.marks_anarch) > length(SSfactionwar.marks_sabbat))
-			won = "anarch"
-		if(length(SSfactionwar.marks_sabbat) > length(SSfactionwar.marks_anarch) && length(SSfactionwar.marks_sabbat) > length(SSfactionwar.marks_camarilla))
-			won = "sabbat"
+		// var/won
+		// if(length(SSfactionwar.marks_camarilla) > length(SSfactionwar.marks_anarch) && length(SSfactionwar.marks_camarilla) > length(SSfactionwar.marks_sabbat))
+		// 	won = "camarilla"
+		// if(length(SSfactionwar.marks_anarch) > length(SSfactionwar.marks_camarilla) && length(SSfactionwar.marks_anarch) > length(SSfactionwar.marks_sabbat))
+		// 	won = "anarch"
+		// if(length(SSfactionwar.marks_sabbat) > length(SSfactionwar.marks_anarch) && length(SSfactionwar.marks_sabbat) > length(SSfactionwar.marks_camarilla))
+		// 	won = "sabbat"
 		for(var/mob/living/carbon/werewolf/W in GLOB.player_list)
 			if(W)
 				if(W.stat != DEAD)
@@ -250,13 +250,13 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 					if(H.key)
 						var/datum/preferences/P = GLOB.preferences_datums[ckey(H.key)]
 						if(P)
-							P.add_experience(1)
+							P.add_experience(2)
 							if(H.mind)
 								if("[H.mind.assigned_role]" == "Prince" || "[H.mind.assigned_role]" == "Sheriff" || "[H.mind.assigned_role]" == "Scourge" ||  "[H.mind.assigned_role]" == "Seneschal" || "[H.mind.assigned_role]" == "Chantry Regent" || "[H.mind.assigned_role]" == "Baron" || "[H.mind.assigned_role]" == "Dealer")
 									P.add_experience(3)
-							if(won)
-								if(H.vampire_faction == won)
-									P.add_experience(1)
+							// if(won)
+							// 	if(H.vampire_faction == won)
+							// 		P.add_experience(1)
 //							if(H.total_contracted > 1)
 //								P.add_experience(1)
 							var/toreador_bonus = 0
