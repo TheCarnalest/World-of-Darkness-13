@@ -7,7 +7,7 @@
 
 /datum/supply_pack/vampire/fixing
 	name = "Fixing kit (wirecutters, lamps)"
-	desc = "Contains a wirecutters, lamps and other stuff to restore light in the area."
+	desc = "Contains wirecutters, lamps and other stuff to restore light in the area."
 	cost = 50
 	contains = list(/obj/item/wire_cutters, /obj/item/storage/box/lights/mixed)
 	crate_name = "weapon crate"
