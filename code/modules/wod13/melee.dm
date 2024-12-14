@@ -167,6 +167,7 @@
 	righthand_file = 'code/modules/wod13/lefthand.dmi'
 	worn_icon = 'code/modules/wod13/worn.dmi'
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	component_type = /datum/component/storage/concrete/vtm/sheathe
 
 /obj/item/storage/belt/vampire/sheathe/longsword
 	desc = "An ornate sheath designed to hold a knight's blade."
@@ -215,7 +216,9 @@
 		var/obj/item/I = contents[1]
 		user.visible_message("<span class='notice'>[user] takes [I] out of [src].</span>", "<span class='notice'>You take [I] out of [src].</span>")
 		user.put_in_hands(I)
-		I.underlays = null
+		var/datum/component/storage/STR = GetComponent(/datum/component/storage)
+		if(STR)
+			STR.grid_remove_item(I)
 		update_icon()
 	else
 		to_chat(user, "<span class='warning'>[src] is empty!</span>")
