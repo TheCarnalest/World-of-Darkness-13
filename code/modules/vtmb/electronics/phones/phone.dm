@@ -36,7 +36,10 @@
 
 	var/exchange_num = 513
 	var/list/contacts = list()
+	var/blocked = FALSE
+	var/list/blocked_contacts = list()
 	var/closed = TRUE
+	var/owner = ""
 	var/number
 	var/obj/item/vamp/phone/online
 	var/talking = FALSE
@@ -62,6 +65,7 @@
 			var/mob/living/carbon/human/H = loc
 			if(H.Myself)
 				H.Myself.phone_number = number
+				owner = H.true_real_name
 
 /obj/item/vamp/phone/Destroy()
 	GLOB.phone_numbers_list -= number
@@ -221,15 +225,30 @@
 //			else
 			choosed_number = replacetext(choosed_number, " ", "")
 			for(var/obj/item/vamp/phone/PHN in GLOB.phones_list)
+			//Loop through the Phone Global List
 				if(PHN.number == choosed_number)
-					if(!PHN.online && !PHN.talking)
-						last_call = world.time
-						online = PHN
-						PHN.online = src
-						Recall(online, usr)
-					else
-						to_chat(usr, "<span class='notice'>Abonent is busy.</span>")
-			if(!online)
+				// Verify if number wrote actually meets another PHN(Phone number) in the list
+					blocked = FALSE // Not blocked YET.
+					for(var/datum/phonecontact/BlockC in PHN.blocked_contacts)
+					// Loop through the blocked numbers in the PHN Blocked LIST
+						if(BlockC.number == number)
+							// Verify if the caller has their number blocked by the PHN
+							blocked = TRUE
+							// If he is, Blocked is TRUE.
+							to_chat(usr, "<span class='notice'>You have been blocked by this number.</span>")
+							break
+							// Stop loops once it is found
+					if(!blocked)
+					// If the Caller is not blocked and the PHN is flipped and they are not talking, then the call goes through.
+						if(!PHN.online && !PHN.talking)
+							last_call = world.time
+							online = PHN
+							PHN.online = src
+							Recall(online, usr)
+						else
+							to_chat(usr, "<span class='notice'>Abonent is busy.</span>")
+			if(!online && !blocked)
+			// If the phone is not flipped or the phone user has left the city and they are not blocked.
 				if(choosed_number == "#111")
 					call_sound = 'code/modules/wod13/sounds/call.ogg'
 					to_chat(usr, "<span class='notice'>Settings are now reset to default.</span>")
@@ -248,7 +267,7 @@
 					to_chat(usr, "<span class='notice'>Invalid number.</span>")
 			.= TRUE
 		if("contacts")
-			var/list/options = list("Add", "Choose", "My Number", "Publish Number", "Published Numbers")
+			var/list/options = list("Add","Remove","Choose","Block", "Unblock", "My Number", "Publish Number", "Published Numbers")
 			var/option =  input(usr, "Select an option", "Option Selection") as null|anything in options
 			var/result
 			switch(option)
@@ -296,6 +315,17 @@
 						else
 							var/numbrr = length(contacts)+1
 							NEWC.name = "Contact [numbrr]"
+				if("Remove")
+					var/list/removing = list()
+					for(var/datum/phonecontact/CNT_REMOVE in contacts)
+						if(CNT_REMOVE)
+							removing += CNT_REMOVE.name
+					if(length(removing) >= 1)
+						result = input(usr, "Select a contact", "Contact Selection") as null|anything in removing
+						if(result)
+							for(var/datum/phonecontact/CNT_REMOVE in contacts)
+								if(CNT_REMOVE.name == result)
+									contacts -= CNT_REMOVE
 				if("Choose")
 					var/list/shit = list()
 					for(var/datum/phonecontact/CNTCT in contacts)
@@ -311,6 +341,30 @@
 										if(CNTCT.number == "")
 											to_chat(usr, "<span class='notice'>Sorry, [CNTCT.name] does not have a number.</span>")
 									choosed_number = CNTCT.number
+				if("Block")
+					var/block_number = input(usr, "Input phone number", "Block Number")  as text|null
+					if(block_number)
+						var/datum/phonecontact/BlockC = new()
+						block_number = replacetext(block_number, " ", "") //Removes spaces
+						BlockC.number = "[block_number]"
+						blocked_contacts += BlockC
+						var/block_contact_name = input(usr, "Input name", "Add name of the Blocked number")  as text|null
+						if(block_contact_name)
+							BlockC.name = "[block_contact_name]"
+						else
+							var/number = length(blocked_contacts)+1
+							BlockC.name = "Blocked [number]"
+				if("Unblock")
+					var/list/unblocking = list()
+					for(var/datum/phonecontact/CNT_UNBLOCK in blocked_contacts)
+						if(CNT_UNBLOCK)
+							unblocking += CNT_UNBLOCK.name
+					if(length(unblocking) >= 1)
+						result = input(usr, "Select a blocked number", "Blocked Selection") as null|anything in unblocking
+						if(result)
+							for(var/datum/phonecontact/CNT_UNBLOCK in blocked_contacts)
+								if(CNT_UNBLOCK.name == result)
+									blocked_contacts -= CNT_UNBLOCK
 				if("My Number")
 					var/number_first_part = copytext(number, 1, 4)
 					var/number_second_part = copytext(number, 4, 8)
@@ -559,6 +613,7 @@
 /obj/item/vamp/phone/prince/Initialize()
 	..()
 	GLOB.princenumber = number
+	GLOB.princename = owner
 	var/datum/phonecontact/sheriff/SHERIFF = new()
 	contacts += SHERIFF
 	var/datum/phonecontact/clerk/CLERK = new()
@@ -584,6 +639,7 @@
 /obj/item/vamp/phone/sheriff/Initialize()
 	..()
 	GLOB.sheriffnumber = number
+	GLOB.sheriffname = owner
 	var/datum/phonecontact/prince/PRINCE = new()
 	contacts += PRINCE
 
@@ -593,6 +649,7 @@
 /obj/item/vamp/phone/clerk/Initialize()
 	..()
 	GLOB.clerknumber = number
+	GLOB.clerkname = owner
 	var/datum/phonecontact/prince/PRINCE = new()
 	contacts += PRINCE
 	var/datum/phonecontact/sheriff/SHERIFF = new()
@@ -616,6 +673,7 @@
 /obj/item/vamp/phone/barkeeper/Initialize()
 	..()
 	GLOB.barkeepernumber = number
+	GLOB.barkeepername = owner
 	var/datum/phonecontact/prince/PRINCE = new()
 	contacts += PRINCE
 	var/datum/phonecontact/dealer/DEALER = new()
@@ -627,6 +685,7 @@
 /obj/item/vamp/phone/dealer/Initialize()
 	..()
 	GLOB.dealernumber = number
+	GLOB.dealername = owner
 	var/datum/phonecontact/barkeeper/BARKEEPER = new()
 	contacts += BARKEEPER
 
@@ -653,6 +712,7 @@
 /obj/item/vamp/phone/malkavian/Initialize()
 	..()
 	GLOB.malkaviannumber = number
+	GLOB.malkavianname = owner
 	var/datum/phonecontact/prince/PRINCE = new()
 	contacts += PRINCE
 	var/datum/phonecontact/tremere/REGENT = new()
@@ -669,6 +729,7 @@
 /obj/item/vamp/phone/nosferatu/Initialize()
 	..()
 	GLOB.nosferatunumber = number
+	GLOB.nosferatuname = owner
 	var/datum/phonecontact/prince/PRINCE = new()
 	contacts += PRINCE
 	var/datum/phonecontact/tremere/REGENT = new()
@@ -685,6 +746,7 @@
 /obj/item/vamp/phone/toreador/Initialize()
 	..()
 	GLOB.toreadornumber = number
+	GLOB.toreadorname = owner
 	var/datum/phonecontact/prince/PRINCE = new()
 	contacts += PRINCE
 	var/datum/phonecontact/tremere/REGENT = new()
@@ -701,6 +763,7 @@
 /obj/item/vamp/phone/brujah/Initialize()
 	..()
 	GLOB.brujahnumber = number
+	GLOB.brujahname = owner
 	var/datum/phonecontact/prince/PRINCE = new()
 	contacts += PRINCE
 	var/datum/phonecontact/tremere/REGENT = new()
@@ -717,6 +780,7 @@
 /obj/item/vamp/phone/ventrue/Initialize()
 	..()
 	GLOB.ventruenumber = number
+	GLOB.ventruename = owner
 	var/datum/phonecontact/prince/PRINCE = new()
 	contacts += PRINCE
 	var/datum/phonecontact/tremere/REGENT = new()
@@ -733,6 +797,7 @@
 /obj/item/vamp/phone/tremere/Initialize()
 	..()
 	GLOB.tremerenumber = number
+	GLOB.tremerename = owner
 	var/datum/phonecontact/prince/PRINCE = new()
 	contacts += PRINCE
 	var/datum/phonecontact/malkavian/M = new()
