@@ -188,8 +188,8 @@
 	hud_type = /datum/hud/werewolf
 	melee_damage_lower = 25
 	melee_damage_upper = 65
-	health = 200
-	maxHealth = 200
+	health = 225
+	maxHealth = 225
 //	speed = -1  doesn't work on carbons
 	var/obj/item/r_store = null
 	var/obj/item/l_store = null
