@@ -7425,7 +7425,7 @@
 "oCy" = (/obj/structure/table,/obj/item/food/vampire/pizza,/turf/open/floor/plating/sidewalk/poor,/area/vtm/interior/police)
 "oDl" = (/obj/structure/weightmachine/stacklifter,/obj/effect/turf_decal/stripes/white/line{dir = 10},/obj/effect/turf_decal/stripes/white/line{dir = 5},/obj/machinery/light{pixel_y = 32},/turf/open/floor/plating/rough,/area/vtm/interior)
 "oDs" = (/obj/structure/table,/obj/item/food/vampire/burger,/obj/machinery/light/small{pixel_y = 32},/turf/open/floor/plating/sidewalk/poor,/area/vtm/interior)
-"oDy" = (/obj/effect/decal/painting{pixel_y = 32},/obj/structure/chair/comfy/teal,/obj/effect/landmark/start{name = "Police Officer"},/turf/open/floor/plating/parquetry/rich,/area/vtm/interior/police)
+"oDy" = (/obj/effect/decal/painting{pixel_y = 32},/obj/structure/chair/comfy/teal,/obj/effect/landmark/start{name = "Police Chief"},/turf/open/floor/plating/parquetry/rich,/area/vtm/interior/police)
 "oDK" = (/obj/effect/decal/litter,/obj/effect/decal/cardboard,/turf/open/floor/plating/vampcanal,/area/vtm/sewer)
 "oDR" = (/obj/structure/railing{dir = 8; layer = 4; pixel_y = -15},/turf/closed/wall/vampwall/rich/old,/area/vtm/interior/mansion)
 "oDY" = (/obj/fusebox,/turf/open/floor/plating/toilet,/area/vtm/anarch)
