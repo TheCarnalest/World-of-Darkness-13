@@ -613,6 +613,7 @@
 /obj/item/vamp/phone/prince/Initialize()
 	..()
 	GLOB.princenumber = number
+	GLOB.princename = owner
 	var/datum/phonecontact/sheriff/SHERIFF = new()
 	contacts += SHERIFF
 	var/datum/phonecontact/clerk/CLERK = new()
@@ -638,6 +639,7 @@
 /obj/item/vamp/phone/sheriff/Initialize()
 	..()
 	GLOB.sheriffnumber = number
+	GLOB.sheriffname = owner
 	var/datum/phonecontact/prince/PRINCE = new()
 	contacts += PRINCE
 
@@ -647,6 +649,7 @@
 /obj/item/vamp/phone/clerk/Initialize()
 	..()
 	GLOB.clerknumber = number
+	GLOB.clerkname = owner
 	var/datum/phonecontact/prince/PRINCE = new()
 	contacts += PRINCE
 	var/datum/phonecontact/sheriff/SHERIFF = new()
@@ -670,6 +673,7 @@
 /obj/item/vamp/phone/barkeeper/Initialize()
 	..()
 	GLOB.barkeepernumber = number
+	GLOB.barkeepername = owner
 	var/datum/phonecontact/prince/PRINCE = new()
 	contacts += PRINCE
 	var/datum/phonecontact/dealer/DEALER = new()
@@ -681,6 +685,7 @@
 /obj/item/vamp/phone/dealer/Initialize()
 	..()
 	GLOB.dealernumber = number
+	GLOB.dealername = owner
 	var/datum/phonecontact/barkeeper/BARKEEPER = new()
 	contacts += BARKEEPER
 
@@ -707,6 +712,7 @@
 /obj/item/vamp/phone/malkavian/Initialize()
 	..()
 	GLOB.malkaviannumber = number
+	GLOB.malkavianname = owner
 	var/datum/phonecontact/prince/PRINCE = new()
 	contacts += PRINCE
 	var/datum/phonecontact/tremere/REGENT = new()
@@ -723,6 +729,7 @@
 /obj/item/vamp/phone/nosferatu/Initialize()
 	..()
 	GLOB.nosferatunumber = number
+	GLOB.nosferatuname = owner
 	var/datum/phonecontact/prince/PRINCE = new()
 	contacts += PRINCE
 	var/datum/phonecontact/tremere/REGENT = new()
@@ -739,6 +746,7 @@
 /obj/item/vamp/phone/toreador/Initialize()
 	..()
 	GLOB.toreadornumber = number
+	GLOB.toreadorname = owner
 	var/datum/phonecontact/prince/PRINCE = new()
 	contacts += PRINCE
 	var/datum/phonecontact/tremere/REGENT = new()
@@ -755,6 +763,7 @@
 /obj/item/vamp/phone/brujah/Initialize()
 	..()
 	GLOB.brujahnumber = number
+	GLOB.brujahname = owner
 	var/datum/phonecontact/prince/PRINCE = new()
 	contacts += PRINCE
 	var/datum/phonecontact/tremere/REGENT = new()
@@ -771,6 +780,7 @@
 /obj/item/vamp/phone/ventrue/Initialize()
 	..()
 	GLOB.ventruenumber = number
+	GLOB.ventruename = owner
 	var/datum/phonecontact/prince/PRINCE = new()
 	contacts += PRINCE
 	var/datum/phonecontact/tremere/REGENT = new()
@@ -787,6 +797,7 @@
 /obj/item/vamp/phone/tremere/Initialize()
 	..()
 	GLOB.tremerenumber = number
+	GLOB.tremerename = owner
 	var/datum/phonecontact/prince/PRINCE = new()
 	contacts += PRINCE
 	var/datum/phonecontact/malkavian/M = new()
