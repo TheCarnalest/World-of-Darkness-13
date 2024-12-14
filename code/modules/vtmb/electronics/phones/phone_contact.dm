@@ -99,3 +99,14 @@
 		number = GLOB.dealernumber
 		return TRUE
 	..()
+
+/datum/phonecontact/tremere
+	name = "Tremere Regent"
+
+/datum/phonecontact/tremere/check_global_contacts()
+	if(number != GLOB.tremerenumber)
+		number = GLOB.tremerenumber
+		return TRUE
+	..()
+
+
