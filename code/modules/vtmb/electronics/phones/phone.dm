@@ -48,6 +48,9 @@
 	var/call_sound = 'code/modules/wod13/sounds/call.ogg'
 	var/can_fold = 1
 	var/interface = "Telephone"
+	var/silence = FALSE
+	var/toggle_published_contacts = FALSE
+	var/list/published_numbers_contacts = list()
 
 	/// Phone icon states
 	var/open_state = "phone2"
@@ -201,7 +204,8 @@
 				if(online)
 					online.talking = FALSE
 			if(online)
-				playsound(online, 'code/modules/wod13/sounds/phonestop.ogg', 25, FALSE)
+				if(!silence)
+					playsound(online, 'code/modules/wod13/sounds/phonestop.ogg', 25, FALSE)
 				online.online = null
 				online = null
 			.= TRUE
@@ -214,7 +218,8 @@
 		if("decline")
 			talking = FALSE
 			if(online)
-				playsound(online, 'code/modules/wod13/sounds/phonestop.ogg', 25, FALSE)
+				if(!silence)
+					playsound(online, 'code/modules/wod13/sounds/phonestop.ogg', 25, FALSE)
 				online.online = null
 				online.talking = FALSE
 				online = null
@@ -286,6 +291,15 @@
 							GLOB.published_numbers += src.number
 							GLOB.published_number_names += name
 							to_chat(usr, "<span class='notice'>Your number is now published.</span>")
+							for(var/obj/item/vamp/phone/PHN in GLOB.phones_list)
+							//Gather all the Phones in the game to check if they got the toggle for published contacts
+								if(PHN.toggle_published_contacts == TRUE)
+							//If they got it, their published number will be added to those phones
+									var/datum/phonecontact/NEWC = new()
+									var/p_number = src.number
+									NEWC.number = "[p_number]"
+									NEWC.name = "[name]"
+									PHN.contacts += NEWC
        					//to_chat(usr, "<span class='notice'>Published numbers: [GLOB.published_numbers]</span>")
        					//to_chat(usr, "<span class='notice'>Published names: [GLOB.published_number_names]</span>")
 					else
@@ -370,8 +384,44 @@
 					var/number_second_part = copytext(number, 4, 8)
 					to_chat(usr, number_first_part + " " + number_second_part)
 			.= TRUE
+		if("settings")
+			var/list/options = list("Notifications and Sounds Toggle", "Toggle Published Numbers")
+			var/option =  input(usr, "Select a  setting", "Settings Selection") as null|anything in options
+			switch(option)
+				if("Notifications and Sounds Toggle")
+					if(!silence)
+						silence = TRUE
+						to_chat(usr, "<span class='notice'>Notifications and Sounds toggled off.</span>")
+					else 
+						silence = FALSE
+						to_chat(usr, "<span class='notice'>Notifications and Sounds toggled on.</span>")
+				if ("Toggle Published Numbers")
+					if(!toggle_published_contacts)
+						var/contacts_added_lenght = published_numbers_contacts.len
+						var/list_length = min(length(GLOB.published_numbers), length(GLOB.published_number_names))
+						log_admin(contacts_added_lenght)
+						log_admin(list_length)
+						if(contacts_added_lenght < list_length)
+							to_chat(usr, "<span class='notice'>New contacts are being added to your contact list.</span>")
+							for(var/i = 1 to list_length)
+								var/number = GLOB.published_numbers[i]
+								var/name = GLOB.published_number_names[i]
+								var/datum/phonecontact/NEWC = new()
+								NEWC.number = "[number]"
+								NEWC.name = "[name]"
+								contacts += NEWC
+								published_numbers_contacts += NEWC
+						else
+							to_chat(usr, "<span class='notice'>You have all the contacts in the published list already.</span>")
+						toggle_published_contacts = TRUE
+						to_chat(usr, "<span class='notice'>The toggle of the published numbers in contacts is active.</span>")
+					else
+						toggle_published_contacts = FALSE
+						to_chat(usr, "<span class='notice'>The toggle of the published numbers in contacts is desactive.</span>")
+			.= TRUE
 		if("keypad")
-			playsound(loc, 'sound/machines/terminal_select.ogg', 15, TRUE)
+			if(!silence)
+				playsound(loc, 'sound/machines/terminal_select.ogg', 15, TRUE)
 			switch(params["value"])
 				if("C")
 					choosed_number = ""
@@ -412,12 +462,14 @@
 	if(last_call+100 <= world.time && !talking)
 		last_call = 0
 		if(online)
-			playsound(src, 'code/modules/wod13/sounds/phonestop.ogg', 25, FALSE)
+			if(!silence)
+				playsound(src, 'code/modules/wod13/sounds/phonestop.ogg', 25, FALSE)
 			online.online = null
 			online = null
 	if(!talking && online)
-		playsound(src, 'code/modules/wod13/sounds/phone.ogg', 10, FALSE)
-		playsound(online, online.call_sound, 25, FALSE)
+		if(!silence)
+			playsound(src, 'code/modules/wod13/sounds/phone.ogg', 10, FALSE)
+			playsound(online, online.call_sound, 25, FALSE)
 		addtimer(CALLBACK(src, PROC_REF(Recall), online, usar), 20)
 //	usar << browse(null, "window=phone")
 //	OpenMenu(usar)
