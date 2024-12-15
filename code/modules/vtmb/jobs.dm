@@ -2285,7 +2285,7 @@
 	supervisors = " the Prince"
 	selection_color = "#7e7e7e"
 
-	outfit = /datum/outfit/job/police_officer
+	outfit = /datum/outfit/job/chunk
 
 	access = list(ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_MORGUE, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE)
 	minimal_access = list(ACCESS_BAR, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE)
