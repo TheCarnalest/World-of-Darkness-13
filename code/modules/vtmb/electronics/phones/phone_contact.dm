@@ -124,8 +124,20 @@
 
 /datum/phonecontact/camarillaoffice
 	name = "Millenium Tower Penthouse"
-	number = "000 0001"
+
+/datum/phonecontact/camarillaoffice/check_global_contacts()
+	if(number != GLOB.officenumber)
+		number = GLOB.officenumber
+		name = GLOB.officename + " - " + "Millenium Tower Penthouse"
+		return TRUE
+	..()
 
 /datum/phonecontact/camarillareception
 	name = "Millenium Tower Reception"
-	number = "867 5309"
+
+/datum/phonecontact/camarillareception/check_global_contacts()
+	if(number != GLOB.receptionnumber)
+		number = GLOB.receptionnumber
+		name = GLOB.receptionname + " - " + "Millenium Tower Reception"
+		return TRUE
+	..()

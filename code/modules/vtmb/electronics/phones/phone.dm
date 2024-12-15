@@ -610,6 +610,7 @@
 	icon = 'code/modules/wod13/onfloor.dmi'
 	icon_state = "redphone"
 	anchored = TRUE
+	exchange_num = 867
 	number = "867 5309"
 	can_fold = 0
 
@@ -619,6 +620,8 @@
 
 /obj/item/vamp/phone/camarillareception/Initialize()
 	..()
+	GLOB.receptionnumber = number
+	GLOB.receptionname = owner
 	var/datum/phonecontact/camarillaoffice/OFFICE = new()
 	contacts += OFFICE
 
@@ -627,7 +630,8 @@
 	icon = 'code/modules/wod13/onfloor.dmi'
 	icon_state = "redphone"
 	anchored = TRUE
-	number = "000 0001"
+	exchange_num = 111
+	number = "111 1111"
 	can_fold = 0
 
 	open_state = "redphone"
@@ -636,7 +640,9 @@
 
 /obj/item/vamp/phone/camarillaoffice/Initialize()
 	..()
-	var/datum/phonecontact/prince/RECEPTION = new()
+	GLOB.officenumber = number
+	GLOB.officename = owner
+	var/datum/phonecontact/camarillareception/RECEPTION = new()
 	contacts += RECEPTION
 
 /// Phone Types
