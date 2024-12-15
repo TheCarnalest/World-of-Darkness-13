@@ -462,8 +462,8 @@
 	icon_state = "winter2"
 
 /obj/item/clothing/suit/vampire/slickbackcoat
-   name = "purple fur coat"
-   desc = "Lavish, luxurious, and deeply purple. Slickback Clothing Co. It exudes immense energy".
+   name = "opulent coat"
+   desc = "Lavish, luxurious, and deeply purple. Slickback Clothing Co. It exudes immense energy."
    icon_state = "slickbackcoat"
    armor = list(MELEE = 5, BULLET = 5, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 0, ACID = 0, WOUND = 5)
 
