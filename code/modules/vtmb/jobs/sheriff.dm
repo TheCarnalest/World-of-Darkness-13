@@ -50,7 +50,7 @@
 
 	id = /obj/item/card/id/sheriff
 	uniform = /obj/item/clothing/under/vampire/sheriff
-	belt = /obj/item/melee/vampirearms/katana
+	belt = /obj/item/storage/belt/vampire/sheathe/rapier
 	shoes = /obj/item/clothing/shoes/vampire/jackboots
 	suit = /obj/item/clothing/suit/vampire/vest
 	gloves = /obj/item/clothing/gloves/vampire/leather
