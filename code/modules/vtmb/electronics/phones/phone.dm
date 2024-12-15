@@ -605,6 +605,40 @@
 	GLOB.phone_numbers_list += number
 	GLOB.phones_list += src
 
+/obj/item/vamp/phone/camarillareception
+	desc = "A phone with the boss on speed dial"
+	icon = 'code/modules/wod13/onfloor.dmi'
+	icon_state = "redphone"
+	anchored = TRUE
+	number = "867 5309"
+	can_fold = 0
+
+	open_state = "redphone"
+	closed_state = "redphone"
+	folded_state = "redphone"
+
+/obj/item/vamp/phone/camarillareception/Initialize()
+	..()
+	var/datum/phonecontact/camarillaoffice/OFFICE = new()
+	contacts += OFFICE
+
+/obj/item/vamp/phone/camarillaoffice
+	desc = "The boss's phone"
+	icon = 'code/modules/wod13/onfloor.dmi'
+	icon_state = "redphone"
+	anchored = TRUE
+	number = "000 0001"
+	can_fold = 0
+
+	open_state = "redphone"
+	closed_state = "redphone"
+	folded_state = "redphone"
+
+/obj/item/vamp/phone/camarillaoffice/Initialize()
+	..()
+	var/datum/phonecontact/prince/RECEPTION = new()
+	contacts += RECEPTION
+
 /// Phone Types
 
 /obj/item/vamp/phone/prince

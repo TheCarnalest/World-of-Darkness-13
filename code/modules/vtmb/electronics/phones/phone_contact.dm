@@ -122,4 +122,10 @@
 		return TRUE
 	..()
 
+/datum/phonecontact/camarillaoffice
+	name = "Millenium Tower Penthouse"
+	number = "000 0001"
 
+/datum/phonecontact/camarillareception
+	name = "Millenium Tower Reception"
+	number = "867 5309"
