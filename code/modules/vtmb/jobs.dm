@@ -2117,8 +2117,8 @@
 	title = "Police Officer"
 	department_head = list("Police Department")
 	faction = "Vampire"
-	total_positions = 5
-	spawn_positions = 5
+	total_positions = 6
+	spawn_positions = 6
 	supervisors = " the SFPD Chief and your Sergeant."
 	selection_color = "#7e7e7e"
 
@@ -2131,8 +2131,8 @@
 	display_order = JOB_DISPLAY_ORDER_POLICE
 	exp_type_department = EXP_TYPE_INDEPENDENT
 
-	allowed_species = list("Ghoul", "Human")
-	species_slots = list("Ghoul" = 1)
+	allowed_species = list("Ghoul", "Human", "Werewolf")
+	species_slots = list("Ghoul", "Werewolf" = 2)
 
 	duty = "Enforce the Law."
 	minimal_masquerade = 0
@@ -2173,7 +2173,8 @@
 	display_order = JOB_DISPLAY_ORDER_POLICE_SERGEANT
 	exp_type_department = EXP_TYPE_INDEPENDENT
 
-	allowed_species = list("Human")
+	allowed_species = list("Human", "Ghoul", "Werewolf")
+	species_slots = list("Ghoul", "Werewolf" = 1)
 
 	duty = "Enforce the law. Keep the officers in line. Follow what the Chief says."
 	minimal_masquerade = 0
