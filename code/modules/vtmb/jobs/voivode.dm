@@ -36,6 +36,7 @@
 	uniform = /obj/item/clothing/under/vampire/voivode
 	suit = /obj/item/clothing/suit/vampire/trench/voivode
 	shoes = /obj/item/clothing/shoes/vampire/jackboots
+	belt = /obj/item/storage/belt/vampire/sheathe/longsword
 	l_pocket = /obj/item/vamp/phone
 	//r_pocket =
 	backpack_contents = list(/obj/item/vamp/keys/old_clan_tzimisce=1, /obj/item/melee/vampirearms/eguitar=1, /obj/item/passport=1, /obj/item/flashlight=1, /obj/item/vamp/creditcard/elder=1)

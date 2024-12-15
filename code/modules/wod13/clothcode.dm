@@ -562,6 +562,20 @@
 //	clothing_traits = list(TRAIT_UNMASQUERADE)
 	masquerade_violating = TRUE
 
+/obj/item/clothing/suit/vampire/bogatyr
+	name = "Bogatyr armor"
+	desc = "A regal set of armor made of unknown materials."
+	icon_state = "bogatyr_armor"
+	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
+	flags_inv = HIDEJUMPSUIT
+	clothing_flags = THICKMATERIAL
+	cold_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
+	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
+	slowdown = 1
+	w_class = WEIGHT_CLASS_BULKY
+	armor = list(MELEE = 75, BULLET = 75, LASER = 15, ENERGY = 15, BOMB = 20, BIO = 0, RAD = 0, FIRE = 55, ACID = 70, WOUND = 35)
+//	clothing_traits = list(TRAIT_UNMASQUERADE)
+
 /obj/item/clothing/suit/vampire/labcoat
 	name = "labcoat"
 	desc = "For medicine and research purposes."
@@ -782,6 +796,19 @@
 //	clothing_traits = list(TRAIT_UNMASQUERADE)
 	masquerade_violating = TRUE
 
+/obj/item/clothing/head/vampire/bogatyr
+	name = "Bogatyr helmet"
+	desc = "A regal helmet made of unknown materials."
+	icon_state = "bogatyr_helmet"
+	armor = list(MELEE = 55, BULLET = 50, LASER = 60, ENERGY = 60, BOMB = 20, BIO = 0, RAD = 0, FIRE = 40, ACID = 70, WOUND = 30)
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEHAIR
+	dynamic_hair_suffix = ""
+	dynamic_fhair_suffix = ""
+	visor_flags_inv = HIDEFACE|HIDESNOUT
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
+	visor_flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
+	w_class = WEIGHT_CLASS_BULKY
+//	clothing_traits = list(TRAIT_UNMASQUERADE)
 
 /obj/item/clothing/head/vampire/bahari_mask
 	name = "Dark mother's mask"
