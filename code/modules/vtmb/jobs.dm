@@ -2132,7 +2132,8 @@
 	exp_type_department = EXP_TYPE_INDEPENDENT
 
 	allowed_species = list("Ghoul", "Human", "Werewolf")
-	species_slots = list("Ghoul", "Werewolf" = 2)
+	species_slots = list("Ghoul" = 1)
+	species_slots = list("Werewolf" = 1)
 
 	duty = "Enforce the Law."
 	minimal_masquerade = 0
@@ -2173,8 +2174,8 @@
 	display_order = JOB_DISPLAY_ORDER_POLICE_SERGEANT
 	exp_type_department = EXP_TYPE_INDEPENDENT
 
-	allowed_species = list("Human", "Ghoul", "Werewolf")
-	species_slots = list("Ghoul", "Werewolf" = 1)
+	allowed_species = list("Human", "Ghoul")
+	species_slots = list("Ghoul" = 1)
 
 	duty = "Enforce the law. Keep the officers in line. Follow what the Chief says."
 	minimal_masquerade = 0
