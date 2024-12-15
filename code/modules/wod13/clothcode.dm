@@ -677,6 +677,11 @@
 /obj/item/clothing/head/vampire/bandana/black
 	icon_state = "bandana_black"
 
+/obj/item/clothing/head/vampire/baseballcap
+    name = "baseball cap"
+    desc = "A soft hat with a rounded crown and a stiff bill projecting in front. Giants baseball, there's nothing like it!"
+    icon_state = "baseballcap"
+
 /obj/item/clothing/head/vampire/ushanka
     name = "ushanka"
     desc = "A heavy fur cap with ear-covering flaps."
