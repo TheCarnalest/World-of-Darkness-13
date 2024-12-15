@@ -594,7 +594,7 @@
 	icon_state = "redphone"
 	call_sound = 'code/modules/wod13/sounds/phoneold.ogg'
 	anchored = TRUE
-	number = "700 4424"
+	number = "7004424"
 	can_fold = 0
 
 	open_state = "redphone"
