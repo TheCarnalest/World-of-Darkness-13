@@ -412,6 +412,7 @@
 		new /datum/data/mining_equipment("bandana",	/obj/item/clothing/head/vampire/bandana,	10),
 		new /datum/data/mining_equipment("red bandana",	/obj/item/clothing/head/vampire/bandana/red,	10),
 		new /datum/data/mining_equipment("black bandana",	/obj/item/clothing/head/vampire/bandana/black,	10),
+		new /datum/data/mining_equipment("ushanka",	/obj/item/clothing/head/vampire/ushanka, 20),
 		new /datum/data/mining_equipment("beanie",	/obj/item/clothing/head/vampire/beanie,	10),
 		new /datum/data/mining_equipment("black beanie",	/obj/item/clothing/head/vampire/beanie/black,	10),
 		new /datum/data/mining_equipment("rough beanie",	/obj/item/clothing/head/vampire/beanie/homeless,	10),
