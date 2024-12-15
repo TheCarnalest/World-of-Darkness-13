@@ -158,7 +158,7 @@
 		chosen_name = sanitize_name(chosen_name)
 		var/reason = input(user, "Write the reason of the Blood Hunt:", "Blood Hunt Reason")  as text|null
 		if(reason)
-			reason = sanitize_name(reason)
+			reason = sanitize(reason)
 		else
 			reason = "No reason provided"
 		var/name_in_list = FALSE
