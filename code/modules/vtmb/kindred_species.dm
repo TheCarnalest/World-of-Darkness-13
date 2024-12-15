@@ -137,19 +137,19 @@
 
 		if(host.clane.name == "Brujah")
 			if(GLOB.brujahname != "")
-				dat += " My primogen is:  [GLOB.brujahname] .<BR>"
+				dat += " My primogen is:  [GLOB.brujahname].<BR>"
 		if(host.clane.name == "Malkavian")
 			if(GLOB.malkavianname != "")
-				dat += " My primogen is:  [GLOB.malkavianname] .<BR>"
+				dat += " My primogen is:  [GLOB.malkavianname].<BR>"
 		if(host.clane.name == "Nosferatu")
 			if(GLOB.nosferatuname != "")
-				dat += " My primogen is:  [GLOB.nosferatuname] .<BR>"
+				dat += " My primogen is:  [GLOB.nosferatuname].<BR>"
 		if(host.clane.name == "Toreador")
 			if(GLOB.toreadorname != "")
-				dat += " My primogen is:  [GLOB.toreadorname] .<BR>"
+				dat += " My primogen is:  [GLOB.toreadorname].<BR>"
 		if(host.clane.name == "Ventrue")
 			if(GLOB.ventruename != "")
-				dat += " My primogen is:  [GLOB.ventruename] .<BR>"
+				dat += " My primogen is:  [GLOB.ventruename].<BR>"
 
 		dat += "<b>Physique</b>: [host.physique]<BR>"
 		dat += "<b>Dexterity</b>: [host.dexterity]<BR>"
