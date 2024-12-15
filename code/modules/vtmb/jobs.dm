@@ -433,7 +433,7 @@
 	allowed_bloodlines = list("True Brujah", "Daughters of Cacophony", "Salubri", "Baali", "Brujah", "Tremere", "Ventrue", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Giovanni", "Ministry", "Tzimisce", "Lasombra", "Caitiff")
 
 	v_duty = "Clean up all traces of Masquerade violations as the Camarilla has instructed you to."
-	duty = "Keep the streets clean. You are paid to keep your mouth shut about the things you see."
+	duty = "Keep the streets clean. You are paid to keep your mouth shut and keep questions to yourselves."
 	minimal_masquerade = 0
 	experience_addition = 15
 
@@ -1140,8 +1140,8 @@
 	worn_icon_state = "id12"
 
 /obj/item/card/id/police
-	name = "police department badge"
-	id_type_name = "police department badge"
+	name = "law department badge"
+	id_type_name = "law department badge"
 	desc = "Sponsored by the Government."
 	icon = 'code/modules/wod13/items.dmi'
 	icon_state = "id13"
@@ -1151,18 +1151,6 @@
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
 	worn_icon = 'code/modules/wod13/worn.dmi'
 	worn_icon_state = "id13"
-
-/obj/item/card/id/police/sergeant
-	name = "police department badge"
-	desc = "Sponsored by the Government. This one seems slightly more worn down than all the others."
-
-/obj/item/card/id/police/chief
-	name = "police department badge"
-	desc = "Sponsored by the Government. This one has a chrome plated finish."
-
-/obj/item/card/id/police/fbi
-	name = "fbi agent badge"
-	desc = "Sponsored by the Government. This one has all the bells and whistles."
 
 /obj/item/card/id/voivode
 	name = "ancient badge"
@@ -1189,34 +1177,6 @@
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
 	worn_icon = 'code/modules/wod13/worn.dmi'
 	worn_icon_state = "id12"
-
-
-/obj/item/card/id/bahari
-	name = "cultist badge"
-	id_type_name = "cultist badge"
-	desc = "This shows your devotion to the dark mother."
-	icon = 'code/modules/wod13/items.dmi'
-	icon_state = "id14"
-	inhand_icon_state = "card-id"
-	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
-	onflooricon = 'code/modules/wod13/onfloor.dmi'
-	worn_icon = 'code/modules/wod13/worn.dmi'
-	worn_icon_state = "id14"
-
-/obj/item/card/id/noddist
-	name = "cultist badge"
-	id_type_name = "cultist badge"
-	desc = "This shows your devotion to the dark father."
-	icon = 'code/modules/wod13/items.dmi'
-	icon_state = "id15"
-	inhand_icon_state = "card-id"
-	lefthand_file = 'icons/mob/inhands/equipment/idcards_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/equipment/idcards_righthand.dmi'
-	onflooricon = 'code/modules/wod13/onfloor.dmi'
-	worn_icon = 'code/modules/wod13/worn.dmi'
-	worn_icon_state = "id15"
-
 
 /datum/outfit/job/caitiff
 	name = "Caitiff"
@@ -2119,7 +2079,7 @@
 	faction = "Vampire"
 	total_positions = 5
 	spawn_positions = 5
-	supervisors = " the SFPD Chief and your Sergeant."
+	supervisors = " the SFPD"
 	selection_color = "#7e7e7e"
 
 	outfit = /datum/outfit/job/police_officer
@@ -2137,7 +2097,7 @@
 	duty = "Enforce the Law."
 	minimal_masquerade = 0
 	my_contact_is_important = FALSE
-	known_contacts = list("Police Chief")
+//	known_contacts = list("Investigator")
 
 /datum/outfit/job/police_officer
 	name = "Police Officer"
@@ -2145,7 +2105,7 @@
 
 	uniform = /obj/item/clothing/under/vampire/police
 	shoes = /obj/item/clothing/shoes/vampire/jackboots
-	suit = /obj/item/clothing/suit/vampire/vest/police
+	suit = /obj/item/clothing/suit/vampire/vest
 	belt = /obj/item/storage/belt/holster/detective/vampire/police
 	gloves = /obj/item/cockclock
 	id = /obj/item/card/id/police
@@ -2153,89 +2113,7 @@
 	r_pocket = /obj/item/radio/cop
 	l_hand = /obj/item/vamp/keys/police
 	r_hand = /obj/item/police_radio
-	backpack_contents = list(/obj/item/passport=1, /obj/item/implant/radio=1, /obj/item/vamp/creditcard=1, /obj/item/ammo_box/vampire/c9mm = 1, /obj/item/restraints/handcuffs = 1,/obj/item/melee/classic_baton/vampire = 1, /obj/item/storage/firstaid/ifak = 1)
-
-/datum/job/vamp/police_sergeant
-	title = "Police Sergeant"
-	department_head = list("Police Department")
-	faction = "Vampire"
-	total_positions = 2
-	spawn_positions = 2
-	supervisors = " the SFPD Chief"
-	selection_color = "#7e7e7e"
-
-	outfit = /datum/outfit/job/police_sergeant
-
-	access = list(ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_MORGUE, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE)
-	minimal_access = list(ACCESS_BAR, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE)
-	paycheck = PAYCHECK_HARD
-	paycheck_department = ACCOUNT_SRV
-	display_order = JOB_DISPLAY_ORDER_POLICE_SERGEANT
-	exp_type_department = EXP_TYPE_INDEPENDENT
-
-	allowed_species = list("Human")
-
-	duty = "Enforce the law. Keep the officers in line. Follow what the Chief says."
-	minimal_masquerade = 0
-	my_contact_is_important = FALSE
-	known_contacts = list("Police Chief")
-
-/datum/outfit/job/police_sergeant
-	name = "Police Sergeant"
-	jobtype = /datum/job/vamp/police_sergeant
-
-	uniform = /obj/item/clothing/under/vampire/police
-	shoes = /obj/item/clothing/shoes/vampire/jackboots
-	suit = /obj/item/clothing/suit/vampire/vest/police/sergeant
-	belt = /obj/item/storage/belt/holster/detective/vampire/officer
-	gloves = /obj/item/cockclock
-	id = /obj/item/card/id/police/sergeant
-	l_pocket = /obj/item/vamp/phone
-	r_pocket = /obj/item/radio/cop
-	l_hand = /obj/item/vamp/keys/police/secure
-	r_hand = /obj/item/police_radio
-	backpack_contents = list(/obj/item/passport=1, /obj/item/implant/radio=1, /obj/item/vamp/creditcard=1, /obj/item/ammo_box/vampire/c9mm = 1, /obj/item/restraints/handcuffs = 1,/obj/item/melee/classic_baton/vampire = 1, /obj/item/storage/firstaid/ifak = 1)
-
-/datum/job/vamp/police_chief
-	title = "Police Chief"
-	department_head = list("Police Department")
-	faction = "Vampire"
-	total_positions = 1
-	spawn_positions = 1
-	supervisors = " the SFPD"
-	selection_color = "#7e7e7e"
-
-	outfit = /datum/outfit/job/police_chief
-
-	access = list(ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_MORGUE, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE)
-	minimal_access = list(ACCESS_BAR, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE)
-	paycheck = PAYCHECK_COMMAND
-	paycheck_department = ACCOUNT_SRV
-	display_order = JOB_DISPLAY_ORDER_POLICE_CHIEF
-	exp_type_department = EXP_TYPE_INDEPENDENT
-
-	allowed_species = list("Human")
-
-	duty = "Underpaid, overworked, and understrength. Do your best to keep the order in San Francisco. Keep the officers in line."
-	minimal_masquerade = 0
-	my_contact_is_important = FALSE
-//	known_contacts = list("Investigator")
-
-/datum/outfit/job/police_chief
-	name = "Police Chief"
-	jobtype = /datum/job/vamp/police_chief
-
-	uniform = /obj/item/clothing/under/vampire/police
-	shoes = /obj/item/clothing/shoes/vampire/jackboots
-	suit = /obj/item/clothing/suit/vampire/vest/police/chief
-	belt = /obj/item/storage/belt/holster/detective/vampire/officer
-	gloves = /obj/item/cockclock
-	id = /obj/item/card/id/police/chief
-	l_pocket = /obj/item/vamp/phone
-	r_pocket = /obj/item/radio/cop
-	l_hand = /obj/item/vamp/keys/police/secure/chief
-	r_hand = /obj/item/police_radio
-	backpack_contents = list(/obj/item/passport=1, /obj/item/implant/radio=1, /obj/item/vamp/creditcard=1, /obj/item/ammo_box/vampire/c9mm = 1, /obj/item/restraints/handcuffs = 1,/obj/item/melee/classic_baton/vampire = 1, /obj/item/storage/firstaid/ifak = 1)
+	backpack_contents = list(/obj/item/passport=1, /obj/item/implant/radio=1, /obj/item/vamp/creditcard=1, /obj/item/ammo_box/vampire/c9mm = 1, /obj/item/restraints/handcuffs = 1,/obj/item/melee/classic_baton/vampire = 1,/obj/item/vamp/keys/police = 1)
 
 
 /datum/job/vamp/fbi
@@ -2251,7 +2129,7 @@
 
 	access = list(ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_MORGUE, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE)
 	minimal_access = list(ACCESS_BAR, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE)
-	paycheck = PAYCHECK_MEDIUM
+	paycheck = PAYCHECK_EASY
 	paycheck_department = ACCOUNT_SRV
 	display_order = JOB_DISPLAY_ORDER_FBI
 	exp_type_department = EXP_TYPE_INDEPENDENT
@@ -2262,7 +2140,7 @@
 	duty = "Enforce the Law."
 	minimal_masquerade = 0
 	my_contact_is_important = FALSE
-	known_contacts = list("Police Chief")
+//	known_contacts = list("Investigator")
 
 /datum/outfit/job/fbi
 	name = "Federal Investigator"
@@ -2271,14 +2149,14 @@
 	uniform = /obj/item/clothing/under/vampire/office
 	shoes = /obj/item/clothing/shoes/vampire
 	suit = /obj/item/clothing/suit/vampire/jacket/fbi
-	belt = /obj/item/storage/belt/holster/detective/vampire/fbi
-	id = /obj/item/card/id/police/fbi
-	gloves = /obj/item/clothing/gloves/vampire/investigator
+//	belt = /obj/item/melee/classic_baton
+	id = /obj/item/card/id/police
+	gloves = /obj/item/cockclock
 	l_pocket = /obj/item/vamp/phone
 	r_pocket = /obj/item/radio/cop
 	l_hand = /obj/item/vamp/keys/police
 	r_hand = /obj/item/police_radio
-	backpack_contents = list(/obj/item/card/id/police/sergeant=1, /obj/item/passport=1, /obj/item/implant/radio=1, /obj/item/camera/detective=1, /obj/item/camera_film=1, /obj/item/taperecorder=1, /obj/item/tape=1, /obj/item/vamp/creditcard=1, /obj/item/ammo_box/vampire/c45acp=1, /obj/item/storage/firstaid/ifak=1)
+	backpack_contents = list(/obj/item/passport=1, /obj/item/implant/radio=1, /obj/item/gun/ballistic/automatic/vampire/m1911=1, /obj/item/camera/detective=1, /obj/item/camera_film=1, /obj/item/taperecorder=1, /obj/item/tape=1, /obj/item/vamp/creditcard=1)
 
 /datum/job/vamp/priest
 	title = "Priest"
@@ -2397,6 +2275,49 @@
 	l_hand = /obj/item/vamp/keys/triads
 //	r_hand = /obj/item/police_radio
 	backpack_contents = list(/obj/item/passport=1, /obj/item/vamp/creditcard=1, /obj/item/clothing/mask/vampire/balaclava =1, /obj/item/gun/ballistic/automatic/vampire/glock19, /obj/item/melee/vampirearms/knife)
+
+/datum/job/vamp/chunk
+	title = "Millenium Tower Security"
+	department_head = list("Millenium Tower Administration")
+	faction = "Vampire"
+	total_positions = 1
+	spawn_positions = 1
+	supervisors = " the Prince"
+	selection_color = "#7e7e7e"
+
+	outfit = /datum/outfit/job/police_officer
+
+	access = list(ACCESS_HYDROPONICS, ACCESS_BAR, ACCESS_KITCHEN, ACCESS_MORGUE, ACCESS_WEAPONS, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE)
+	minimal_access = list(ACCESS_BAR, ACCESS_MINERAL_STOREROOM, ACCESS_THEATRE)
+	paycheck = PAYCHECK_EASY
+	paycheck_department = ACCOUNT_SRV
+	display_order = JOB_DISPLAY_ORDER_POLICE
+	exp_type_department = EXP_TYPE_INDEPENDENT
+
+	allowed_species = list("Human")
+
+	duty = "Make sure no one sees your unusually pale boss without an appointment. Keep the tower premises safe and clean for it's occupants."
+	minimal_masquerade = 0
+	my_contact_is_important = FALSE
+//	known_contacts = list("Investigator")
+
+/datum/outfit/job/chunk
+	name = "Millenium Tower Security"
+	jobtype = /datum/job/vamp/police_officer
+
+	gloves = /obj/item/cockclock
+	uniform = /obj/item/clothing/under/vampire/guard
+	shoes = /obj/item/clothing/shoes/vampire
+	belt = /obj/item/gun/ballistic/automatic/vampire/m1911
+	l_pocket = /obj/item/vamp/phone
+	id = /obj/item/card/id/chunk
+	r_pocket = /obj/item/vamp/keys/camarilla
+	back = /obj/item/storage/backpack/satchel
+	backpack_contents = list(/obj/item/flashlight=1, /obj/item/vamp/creditcard=1,/obj/item/food/vampire/donut=5)
+
+/obj/effect/landmark/start/chunk
+	name = "chunk"
+	icon_state = "Security Officer"
 
 //TZIMISCE ROLES
 /datum/job/vamp/voivode

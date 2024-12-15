@@ -1446,3 +1446,9 @@
 	icon = 'code/modules/wod13/werewolf.dmi'
 	icon_state = "ice"
 	pixel_w = -8
+
+/obj/item/radio/intercom/vampire
+	name = "Millenium Tower intercom"
+	desc = "A direct line to the Boss's office."
+	anonymize = TRUE
+	frequency = 1490
