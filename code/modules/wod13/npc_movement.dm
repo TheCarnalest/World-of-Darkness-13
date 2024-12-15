@@ -32,6 +32,7 @@
 /mob/living/carbon/human/npc/Initialize()
 	..()
 	GLOB.npc_list += src
+	add_movespeed_modifier(/datum/movespeed_modifier/npc)
 
 /mob/living/carbon/human/npc/death()
 	walk(src,0)
