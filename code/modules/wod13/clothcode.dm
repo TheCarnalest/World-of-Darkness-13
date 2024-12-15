@@ -663,6 +663,11 @@
 /obj/item/clothing/head/vampire/bandana/black
 	icon_state = "bandana_black"
 
+/obj/item/clothing/head/vampire/ushanka
+    name = "ushanka"
+    desc = "A heavy fur cap with ear-covering flaps."
+    icon_state = "ushanka"
+
 /obj/item/clothing/head/vampire/beanie
 	name = "beanie"
 	desc = "A stylish beanie."
