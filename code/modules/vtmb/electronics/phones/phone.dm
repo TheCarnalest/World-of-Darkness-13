@@ -592,6 +592,7 @@
 	desc = "The usual phone of a cleaning company used to communicate with employees"
 	icon = 'code/modules/wod13/onfloor.dmi'
 	icon_state = "redphone"
+	call_sound = 'code/modules/wod13/sounds/phoneold.ogg'
 	anchored = TRUE
 	number = "700 4424"
 	can_fold = 0
@@ -608,6 +609,7 @@
 /obj/item/vamp/phone/camarillareception
 	desc = "A phone with the boss on speed dial"
 	icon = 'code/modules/wod13/onfloor.dmi'
+	call_sound = 'code/modules/wod13/sounds/phoneold.ogg'
 	icon_state = "redphone"
 	anchored = TRUE
 	exchange_num = 867
@@ -627,6 +629,7 @@
 /obj/item/vamp/phone/camarillaoffice
 	desc = "The boss's phone"
 	icon = 'code/modules/wod13/onfloor.dmi'
+	call_sound = 'code/modules/wod13/sounds/phoneold.ogg'
 	icon_state = "redphone"
 	anchored = TRUE
 	exchange_num = 111
