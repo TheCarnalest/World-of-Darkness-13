@@ -278,9 +278,10 @@
 				NEWH_caller.time = "[SScity_time.timeofnight]"
 				NEWH_caller.call_type = "They declined the call"
 				online.phone_history_list += NEWH_caller
-				
-				online = null
+
 				online.online = null
+				online = null
+				
 			.= TRUE
 		if("call")
 //			if((iskindred(V) && V.clane.name == "Lasombra"))
@@ -339,7 +340,7 @@
 									break
 							NEWH_being_called.number = number
 							NEWH_being_called.time = "[SScity_time.timeofnight]"
-							NEWH_being_called.call_type = "They called"
+							NEWH_being_called.call_type = "They called me"
 							PHN.phone_history_list += NEWH_being_called
 						else
 							to_chat(usr, "<span class='notice'>Abonent is busy.</span>")
