@@ -365,7 +365,7 @@
 			.= TRUE
 		if("contacts")
 			var/list/options = list("Add","Remove","Choose","Block", "Unblock", "My Number", "Publish Number", "Published Numbers", "Call History", "Delete Call History")
-			var/option =  input(usr, "Select an option", "Option Selection") as null|anything in options
+			var/option =  input(usr, "Select an option", "Contacts Option") as null|anything in options
 			var/result
 			switch(option)
 				if("Publish Number")
