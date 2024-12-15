@@ -611,7 +611,6 @@
 	icon_state = "redphone"
 	anchored = TRUE
 	exchange_num = 867
-	number = "867 5309"
 	can_fold = 0
 
 	open_state = "redphone"
@@ -631,7 +630,6 @@
 	icon_state = "redphone"
 	anchored = TRUE
 	exchange_num = 111
-	number = "111 1111"
 	can_fold = 0
 
 	open_state = "redphone"
