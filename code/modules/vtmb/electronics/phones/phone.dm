@@ -299,7 +299,9 @@
 									var/p_number = src.number
 									NEWC.number = "[p_number]"
 									NEWC.name = "[name]"
-									PHN.contacts += NEWC
+									if(NEWC.number != PHN.number)
+										//Check if it is not your own number that you are adding to contacts
+										PHN.contacts += NEWC
        					//to_chat(usr, "<span class='notice'>Published numbers: [GLOB.published_numbers]</span>")
        					//to_chat(usr, "<span class='notice'>Published names: [GLOB.published_number_names]</span>")
 					else
@@ -404,13 +406,15 @@
 						if(contacts_added_lenght < list_length)
 							to_chat(usr, "<span class='notice'>New contacts are being added to your contact list.</span>")
 							for(var/i = 1 to list_length)
-								var/number = GLOB.published_numbers[i]
-								var/name = GLOB.published_number_names[i]
+								var/number_v = GLOB.published_numbers[i]
+								var/name_v = GLOB.published_number_names[i]
 								var/datum/phonecontact/NEWC = new()
-								NEWC.number = "[number]"
-								NEWC.name = "[name]"
-								contacts += NEWC
-								published_numbers_contacts += NEWC
+								NEWC.number = "[number_v]"
+								NEWC.name = "[name_v]"
+								if(NEWC.number != number)
+									//Check if it is not your own number that you are adding to contacts
+									contacts += NEWC
+									published_numbers_contacts += NEWC
 						else
 							to_chat(usr, "<span class='notice'>You have all the contacts in the published list already.</span>")
 						toggle_published_contacts = TRUE
