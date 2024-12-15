@@ -301,7 +301,14 @@
 									NEWC.name = "[name]"
 									if(NEWC.number != PHN.number)
 										//Check if it is not your own number that you are adding to contacts
-										PHN.contacts += NEWC
+										var/GOT_CONTACT = FALSE
+										for(var/datum/phonecontact/Contact in PHN.contacts)
+											if(Contact.number == NEWC.number)
+												//Check if the number is not already in your contact list
+												GOT_CONTACT = TRUE
+												break
+										if(!GOT_CONTACT)
+											PHN.contacts += NEWC
        					//to_chat(usr, "<span class='notice'>Published numbers: [GLOB.published_numbers]</span>")
        					//to_chat(usr, "<span class='notice'>Published names: [GLOB.published_number_names]</span>")
 					else
@@ -387,23 +394,26 @@
 					to_chat(usr, number_first_part + " " + number_second_part)
 			.= TRUE
 		if("settings")
-			var/list/options = list("Notifications and Sounds Toggle", "Toggle Published Numbers")
-			var/option =  input(usr, "Select a  setting", "Settings Selection") as null|anything in options
+			//Wrench Icon, more focused on toggles or later more complex options.
+			var/list/options = list("Notifications and Sounds Toggle", "Published Numbers as Contacts Toggle")
+			var/option =  input(usr, "Select a setting", "Settings Selection") as null|anything in options
 			switch(option)
 				if("Notifications and Sounds Toggle")
 					if(!silence)
+						//If it is true, it will check all the other sounds for phone and disable them
 						silence = TRUE
 						to_chat(usr, "<span class='notice'>Notifications and Sounds toggled off.</span>")
 					else 
 						silence = FALSE
 						to_chat(usr, "<span class='notice'>Notifications and Sounds toggled on.</span>")
-				if ("Toggle Published Numbers")
+				if ("Published Numbers as Contacts Toggle")
 					if(!toggle_published_contacts)
 						var/contacts_added_lenght = published_numbers_contacts.len
 						var/list_length = min(length(GLOB.published_numbers), length(GLOB.published_number_names))
 						log_admin(contacts_added_lenght)
 						log_admin(list_length)
 						if(contacts_added_lenght < list_length)
+						// checks the size difference between the GLOB published list and the phone published list
 							to_chat(usr, "<span class='notice'>New contacts are being added to your contact list.</span>")
 							for(var/i = 1 to list_length)
 								var/number_v = GLOB.published_numbers[i]
@@ -413,9 +423,19 @@
 								NEWC.name = "[name_v]"
 								if(NEWC.number != number)
 									//Check if it is not your own number that you are adding to contacts
-									contacts += NEWC
-									published_numbers_contacts += NEWC
-						else
+									var/GOT_CONTACT = FALSE
+									for(var/datum/phonecontact/Contact in contacts)
+									//Check if the number is not already in your contact list
+										if(Contact.number == NEWC.number)
+											GOT_CONTACT = TRUE
+											break
+									if(!GOT_CONTACT)
+										contacts += NEWC
+										published_numbers_contacts += NEWC
+										ADDED_CONTACTS +=1
+							if(ADDED_CONTACTS > 1)
+								to_chat(usr, "<span class='notice'>New contacts are added to your contact list.</span>")
+						else if((contacts_added_lenght < list_length) && (list_length>1))
 							to_chat(usr, "<span class='notice'>You have all the contacts in the published list already.</span>")
 						toggle_published_contacts = TRUE
 						to_chat(usr, "<span class='notice'>The toggle of the published numbers in contacts is active.</span>")
