@@ -44,7 +44,7 @@
 					HS.my_creator.AdjustHumanity(-1, 0)
 					HS.my_creator.last_nonraid = world.time
 					HS.my_creator.killed_count = HS.my_creator.killed_count+1
-					if(!HS.my_creator.warrant)
+					if(!HS.my_creator.warrant && !HS.my_creator.ignores_warrant)
 						if(HS.my_creator.killed_count >= 5)
 //							GLOB.fuckers |= HS.my_creator
 							HS.my_creator.warrant = TRUE
@@ -59,7 +59,7 @@
 					HM.AdjustHumanity(-1, 0)
 					HM.last_nonraid = world.time
 					HM.killed_count = HM.killed_count+1
-					if(!HM.warrant)
+					if(!HM.warrant && !HM.ignores_warrant)
 						if(HM.killed_count >= 5)
 //							GLOB.fuckers |= HM
 							HM.warrant = TRUE

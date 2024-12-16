@@ -64,6 +64,13 @@
 			to_chat(usr, "<span class='danger'>Not until the round starts!</span>", confidential = TRUE)
 			return
 		switch(href_list["makeAntag"])
+			if("army")
+				if(src.makeArmy())
+					message_admins("[key_name(usr)] created army squad.")
+					log_admin("[key_name(usr)] created army squad.")
+				else
+					message_admins("[key_name_admin(usr)] tried to create army squad. Unfortunately, there were no candidates available.")
+					log_admin("[key_name(usr)] failed to create army squad.")
 			if("traitors")
 				if(src.makeTraitors())
 					message_admins("[key_name_admin(usr)] created traitors.")

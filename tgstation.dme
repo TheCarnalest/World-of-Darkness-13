@@ -3375,6 +3375,7 @@
 #include "code\modules\vtmb\gamemodes\sarcophagus.dm"
 #include "code\modules\vtmb\gamemodes\subsystem.dm"
 #include "code\modules\vtmb\jobs\archivist.dm"
+#include "code\modules\vtmb\jobs\army.dm"
 #include "code\modules\vtmb\jobs\baron.dm"
 #include "code\modules\vtmb\jobs\bogatyr.dm"
 #include "code\modules\vtmb\jobs\bouncer.dm"
