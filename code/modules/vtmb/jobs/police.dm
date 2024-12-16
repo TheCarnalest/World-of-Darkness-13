@@ -17,7 +17,7 @@
 	display_order = JOB_DISPLAY_ORDER_POLICE
 	exp_type_department = EXP_TYPE_INDEPENDENT
 
-	allowed_species = list("Ghoul", "Human")
+	allowed_species = list("Ghoul", "Human", "Werewolf")
 	species_slots = list("Ghoul" = 1)
 
 	duty = "Enforce the Law."
