@@ -3,8 +3,8 @@
 	title = "Triad Soldier"
 	department_head = list("Triad Leadership")
 	faction = "Vampire"
-	total_positions = 8
-	spawn_positions = 8
+	total_positions = 10
+	spawn_positions = 10
 	supervisors = " the Triads"
 	selection_color = "#bb9d3d"
 
@@ -18,7 +18,8 @@
 	exp_type_department = EXP_TYPE_INDEPENDENT
 
 	allowed_species = list("Human", "Vampire", "Werewolf")
-	minimal_generation = 13
+	species_slots = list("Vampire" = 1)
+ 	minimal_generation = 13
 
 	duty = "Make money, do drugs, fight law. Your hideout is the laundromat in Chinatown."
 	experience_addition = 10
