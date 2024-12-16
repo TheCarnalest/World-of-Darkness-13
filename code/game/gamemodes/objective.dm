@@ -533,8 +533,8 @@ GLOBAL_LIST(admin_objective_list) //Prefilled admin assignable objective list
 	explanation_text = "Destroy the station with a nuclear device."
 	martyr_compatible = TRUE
 
-/datum/objective/army
-	name = "army"
+/datum/objective/national_guard
+	name = "national_guard"
 	explanation_text = "Follow the orders of your sergeant."
 	martyr_compatible = TRUE
 

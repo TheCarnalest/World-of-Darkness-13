@@ -124,7 +124,7 @@ GLOBAL_VAR(command_name)
 
 	return name
 
-/proc/army_name()
+/proc/national_guard_name()
 	var/name = ""
 
 	// Prefix

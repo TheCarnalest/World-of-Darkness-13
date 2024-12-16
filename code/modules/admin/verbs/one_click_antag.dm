@@ -11,7 +11,7 @@
 /datum/admins/proc/one_click_antag()
 
 	var/dat = {"
-		<a href='?src=[REF(src)];[HrefToken()];makeAntag=army'>Make Army Team (Requires Ghosts)</a><br>
+		<a href='?src=[REF(src)];[HrefToken()];makeAntag=nationalguard'>Make National Guard Team (Requires Ghosts)</a><br>
 		"}
 
 /*	THESE WERE THE OPTIONS IN one_click_antag() previously. I kept them here only just in case...
@@ -179,8 +179,8 @@
 
 	return FALSE
 
-/datum/admins/proc/makeArmy()
-	var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you wish to be considered for a squad of Army soldiers?", ROLE_ARMY, null)
+/datum/admins/proc/makeNationalGuard()
+	var/list/mob/dead/observer/candidates = pollGhostCandidates("Do you wish to be considered for a squad of National Guard soldiers?", ROLE_NATIONAL_GUARD, null)
 	var/list/mob/dead/observer/chosen = list()
 	var/mob/dead/observer/theghost = null
 
@@ -200,21 +200,21 @@
 				chosen += theghost
 				agentcount++
 				break
-		//Making sure we have atleast 3 Army agents, because less than that is kinda bad
+		//Making sure we have atleast 3 National Guard agents, because less than that is kinda bad
 		if(agentcount < 1)
 			return FALSE
 
 		//Let's find the spawn locations
 		var/leader_chosen = FALSE
-		var/datum/team/army/army_team
+		var/datum/team/national_guard/national_guard_team
 		for(var/mob/c in chosen)
 			var/mob/living/carbon/human/new_character=makeBody(c)
 			if(!leader_chosen)
 				leader_chosen = TRUE
-				var/datum/antagonist/army/A = new_character.mind.add_antag_datum(/datum/antagonist/army/sergeant)
-				army_team = A.army_team
+				var/datum/antagonist/national_guard/A = new_character.mind.add_antag_datum(/datum/antagonist/national_guard/sergeant)
+				national_guard_team = A.national_guard_team
 			else
-				new_character.mind.add_antag_datum(/datum/antagonist/army,army_team)
+				new_character.mind.add_antag_datum(/datum/antagonist/national_guard,national_guard_team)
 		return TRUE
 	else
 		return FALSE

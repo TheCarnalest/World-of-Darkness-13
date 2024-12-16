@@ -1,5 +1,5 @@
-/datum/outfit/job/army
-	name = "Army Soldier"
+/datum/outfit/job/national_guard
+	name = "National Guard Soldier"
 	uniform = /obj/item/clothing/under/vampire/graveyard
 	r_pocket = /obj/item/flashlight
 	l_pocket = /obj/item/ammo_box/magazine/vampaug
@@ -12,11 +12,11 @@
 		/obj/item/radio/military = 1
 		)
 
-/datum/antagonist/army/proc/equip_army()
+/datum/antagonist/national_guard/proc/equip_national_guard()
 	var/mob/living/carbon/human/H = owner.current
 	if(!ishuman(owner.current))
 		return
-	H.equipOutfit(army_outfit)
+	H.equipOutfit(national_guard_outfit)
 	if(H.clane)
 		H.remove_overlay(H.clane.accessories_layers[H.clane.current_accessory])
 		qdel(H.clane)
@@ -47,7 +47,7 @@
 	var/obj/effect/landmark/start/D = pick(landmarkslist)
 	H.forceMove(D.loc)
 
-/datum/antagonist/army/proc/offer_loadout()
+/datum/antagonist/national_guard/proc/offer_loadout()
 	var/list/loadouts = list(
 		"Flamethrower",
 		"EOD",
@@ -73,92 +73,91 @@
 			owner.current.put_in_r_hand(new /obj/item/ammo_box/vampire/c556/incendiary(owner.current))
 			owner.current.put_in_l_hand(new /obj/item/ammo_box/vampire/c556/incendiary(owner.current))
 	to_chat(owner.current, "DEBUG: After loadout selection input. You chose: [loadout_type]")
-/obj/effect/landmark/start/army
-	name = "Army"
+/obj/effect/landmark/start/national_guard
+	name = "National Guard"
 	delete_after_roundstart = FALSE
 
-/datum/antagonist/army
-	name = "Army"
-	roundend_category = "army"
-	antagpanel_category = "Army"
-	job_rank = ROLE_ARMY
+/datum/antagonist/national_guard
+	name = "National Guard"
+	roundend_category = "national_guard"
+	antagpanel_category = "National Guard"
+	job_rank = ROLE_NATIONAL_GUARD
 	antag_hud_type = ANTAG_HUD_OPS
 	antag_hud_name = "synd"
 	antag_moodlet = /datum/mood_event/focused
 	show_to_ghosts = TRUE
 	var/always_new_team = FALSE
-	var/datum/team/army/army_team
-	var/army_outfit = /datum/outfit/job/army
+	var/datum/team/national_guard/national_guard_team
+	var/national_guard_outfit = /datum/outfit/job/national_guard
 	var/custom_objective
 
-/datum/antagonist/army/sergeant
-	name = "Army Sergeant"
-	roundend_category = "army"
-	antagpanel_category = "Army"
-	job_rank = ROLE_ARMY
+/datum/antagonist/national_guard/sergeant
+	name = "National Guard Sergeant"
+	roundend_category = "national_guard"
+	antagpanel_category = "National Guard"
+	job_rank = ROLE_NATIONAL_GUARD
 	antag_hud_type = ANTAG_HUD_OPS
 	antag_hud_name = "synd"
 	antag_moodlet = /datum/mood_event/focused
 	show_to_ghosts = TRUE
 	var/title
 
-/datum/antagonist/army/on_gain()
+/datum/antagonist/national_guard/on_gain()
 	give_alias()
 	add_antag_hud(ANTAG_HUD_OPS, "synd", owner.current)
 	owner.special_role = src
-	equip_army()
+	equip_national_guard()
 	offer_loadout()
 	return ..()
 
-/datum/antagonist/army/on_removal()
+/datum/antagonist/national_guard/on_removal()
 	..()
-	to_chat(owner.current,"<span class='userdanger'>You are no longer in the Army now!</span>")
+	to_chat(owner.current,"<span class='userdanger'>You are no longer in the National Guard!</span>")
 	owner.special_role = null
 
-/datum/antagonist/army/greet()
-	to_chat(owner.current, "<span class='alertsyndie'>You're in the army now.</span>")
+/datum/antagonist/national_guard/greet()
+	to_chat(owner.current, "<span class='alertsyndie'>You're in the national guard.</span>")
 	owner.announce_objectives()
 
 
-/datum/antagonist/army/proc/give_alias()
-	if(army_team?.army_name)
+/datum/antagonist/national_guard/proc/give_alias()
+	if(national_guard_team?.national_guard_name)
 		var/mob/living/carbon/human/H = owner.current
 		if(istype(H)) // Reinforcements get a real name
-			var/chosen_name = H.dna.species.random_name(H.gender,0,army_team.army_name)
+			var/chosen_name = H.dna.species.random_name(H.gender,0,national_guard_team.national_guard_name)
 			H.fully_replace_character_name(H.real_name,chosen_name)
 		else
 			var/number = 1
-			number = army_team.members.Find(owner)
-			owner.current.real_name = "[army_team.army_name] Operative #[number]"
+			number = national_guard_team.members.Find(owner)
+			owner.current.real_name = "[national_guard_team.national_guard_name] Operative #[number]"
 
-/datum/antagonist/army/proc/forge_objectives()
-	if(army_team)
-		objectives |= army_team.objectives
+/datum/antagonist/national_guard/proc/forge_objectives()
+	if(national_guard_team)
+		objectives |= national_guard_team.objectives
 
-/datum/antagonist/army/sergeant/give_alias()
+/datum/antagonist/national_guard/sergeant/give_alias()
 	title = pick("Sergeant", "Commander")
-	if(army_team?.army_name)
-		owner.current.real_name = "[army_team.army_name] [title]"
+	if(national_guard_team?.national_guard_name)
+		owner.current.real_name = "[national_guard_team.national_guard_name] [title]"
 	else
-		owner.current.real_name = "Army [title]"
+		owner.current.real_name = "National Guard [title]"
 
-/datum/team/army/antag_listing_name()
-	if(army_name)
-		return "[army_name] Soldiers"
+/datum/team/national_guard/antag_listing_name()
+	if(national_guard_name)
+		return "[national_guard_name] Soldiers"
 	else
 		return "Soldiers"
 
 
-/datum/antagonist/army/sergeant/greet()
-	owner.current.playsound_local(get_turf(owner.current), 'sound/ambience/antag/ops.ogg',100,0, use_reverb = FALSE)
+/datum/antagonist/national_guard/sergeant/greet()
 	to_chat(owner, "<B>You are the leading [title] for this mission. You are responsible for guiding your team's operation.</B>")
 	to_chat(owner, "<B>If you feel you are not up to this task, give your command to another soldier.</B>")
 	owner.announce_objectives()
-	addtimer(CALLBACK(src, PROC_REF(armyteam_name_assign)), 1)
+	addtimer(CALLBACK(src, PROC_REF(national_guardteam_name_assign)), 1)
 
-/datum/antagonist/army/sergeant/proc/ask_name()
+/datum/antagonist/national_guard/sergeant/proc/ask_name()
 	var/randomname = pick(GLOB.last_names)
-	var/newname = stripped_input(owner.current,"You are the army operative [title]. Please choose a last name for your family.", "Name change",randomname)
+	var/newname = stripped_input(owner.current,"You are the national guard operative [title]. Please choose a last name for your family.", "Name change",randomname)
 	if (!newname)
 		newname = randomname
 	else
@@ -166,56 +165,56 @@
 		if(!newname)
 			newname = randomname
 
-/datum/antagonist/army/sergeant/proc/armyteam_name_assign()
-	if(!army_team)
+/datum/antagonist/national_guard/sergeant/proc/national_guardteam_name_assign()
+	if(!national_guard_team)
 		return
-	army_team.rename_team(ask_name())
+	national_guard_team.rename_team(ask_name())
 
-/datum/antagonist/army/create_team(datum/team/army/new_team)
+/datum/antagonist/national_guard/create_team(datum/team/national_guard/new_team)
 	if(!new_team)
 		if(!always_new_team)
-			for(var/datum/antagonist/army/N in GLOB.antagonists)
+			for(var/datum/antagonist/national_guard/N in GLOB.antagonists)
 				if(!N.owner)
 					stack_trace("Antagonist datum without owner in GLOB.antagonists: [N]")
 					continue
-		army_team = new /datum/team/army
-		army_team.update_objectives()
+		national_guard_team = new /datum/team/national_guard
+		national_guard_team.update_objectives()
 		return
-	if(!istype(army_team))
+	if(!istype(national_guard_team))
 		stack_trace("Wrong team type passed to [type] initialization.")
-	army_team = new_team
+	national_guard_team = new_team
 
-/datum/antagonist/army/admin_add(datum/mind/new_owner,mob/admin)
-	new_owner.assigned_role = ROLE_ARMY
+/datum/antagonist/national_guard/admin_add(datum/mind/new_owner,mob/admin)
+	new_owner.assigned_role = ROLE_NATIONAL_GUARD
 	new_owner.add_antag_datum(src)
-	message_admins("[key_name_admin(admin)] has army'd [key_name_admin(new_owner)].")
-	log_admin("[key_name(admin)] has army'd [key_name(new_owner)].")
+	message_admins("[key_name_admin(admin)] has national guard'd [key_name_admin(new_owner)].")
+	log_admin("[key_name(admin)] has national guard'd [key_name(new_owner)].")
 
 
-/datum/team/army/proc/rename_team(new_name)
-	army_name = new_name
-	name = "[army_name] Team"
+/datum/team/national_guard/proc/rename_team(new_name)
+	national_guard_name = new_name
+	name = "[national_guard_name] Team"
 	for(var/I in members)
-		var/datum/mind/army_mind = I
-		var/mob/living/carbon/human/H = army_mind.current
+		var/datum/mind/national_guard_mind = I
+		var/mob/living/carbon/human/H = national_guard_mind.current
 		if(!istype(H))
 			continue
-		var/chosen_name = H.dna.species.random_name(H.gender,0,army_name)
+		var/chosen_name = H.dna.species.random_name(H.gender,0,national_guard_name)
 		H.fully_replace_character_name(H.real_name,chosen_name)
 
 
-/datum/team/army
-	var/army_name
-	var/core_objective = /datum/objective/army
+/datum/team/national_guard
+	var/national_guard_name
+	var/core_objective = /datum/objective/national_guard
 	var/memorized_code
 	var/list/team_discounts
 	var/obj/item/nuclear_challenge/war_button
 
-/datum/team/army/New()
+/datum/team/national_guard/New()
 	..()
-	army_name = army_name()
+	national_guard_name = national_guard_name()
 
-/datum/team/army/proc/update_objectives()
+/datum/team/national_guard/proc/update_objectives()
 	if(core_objective)
 		var/datum/objective/O = new core_objective
 		O.team = src
@@ -223,38 +222,38 @@
 
 //////////////////////////////////////////////
 //                                          //
-//          ARMY SQUAD (MIDROUND)   //
+//       NATIONAL GUARD SQUAD (MIDROUND)    //
 //                                          //
 //////////////////////////////////////////////
 
-/datum/dynamic_ruleset/midround/from_ghosts/army
-	name = "Army Squad"
-	antag_flag = ROLE_ARMY
-	antag_datum = /datum/antagonist/army
+/datum/dynamic_ruleset/midround/from_ghosts/national_guard
+	name = "National Guard Squad"
+	antag_flag = ROLE_NATIONAL_GUARD
+	antag_datum = /datum/antagonist/national_guard
 	required_candidates = 1
 	weight = 5
 	cost = 35
 	requirements = list(90,90,90,80,60,40,30,20,10,10)
 	var/list/operative_cap = list(2,2,3,3,4,5,5,5,5,5)
-	var/datum/team/army/army_team
+	var/datum/team/national_guard/national_guard_team
 	flags = HIGHLANDER_RULESET
 
-/datum/dynamic_ruleset/midround/from_ghosts/army/acceptable(population=0, threat=0)
+/datum/dynamic_ruleset/midround/from_ghosts/national_guard/acceptable(population=0, threat=0)
 	indice_pop = min(operative_cap.len, round(living_players.len/5)+1)
 	required_candidates = max(5, operative_cap[indice_pop])
 	return ..()
 
-/datum/dynamic_ruleset/midround/from_ghosts/army/ready(forced = FALSE)
+/datum/dynamic_ruleset/midround/from_ghosts/national_guard/ready(forced = FALSE)
 	if (required_candidates > (dead_players.len + list_observers.len))
 		return FALSE
 	return ..()
 
-/datum/dynamic_ruleset/midround/from_ghosts/army/finish_setup(mob/new_character, index)
-	new_character.mind.special_role = "Army"
-	new_character.mind.assigned_role = "Army"
+/datum/dynamic_ruleset/midround/from_ghosts/national_guard/finish_setup(mob/new_character, index)
+	new_character.mind.special_role = "National Guard"
+	new_character.mind.assigned_role = "National Guard"
 	if (index == 1) // Our first guy is the leader
-		var/datum/antagonist/army/sergeant/new_role = new
-		army_team = new_role.army_team
+		var/datum/antagonist/national_guard/sergeant/new_role = new
+		national_guard_team = new_role.national_guard_team
 		new_character.mind.add_antag_datum(new_role)
 	else
 		return ..()
