@@ -25,13 +25,13 @@
 	H.ignores_warrant = TRUE
 	H.maxHealth = round((initial(H.maxHealth)-initial(H.maxHealth)/4)+(initial(H.maxHealth)/4)*(H.physique+13-H.generation))
 	H.health = round((initial(H.health)-initial(H.health)/4)+(initial(H.health)/4)*(H.physique+13-H.generation))
-	var/my_name = "Tyler"
+/*	var/my_name = "Tyler"
 	if(H.gender == MALE)
 		my_name = pick(GLOB.first_names_male)
 	else
 		my_name = pick(GLOB.first_names_female)
 	var/my_surname = pick(GLOB.last_names)
-	H.fully_replace_character_name(null,"[my_name] [my_surname]")
+	H.fully_replace_character_name(null,"[my_name] [my_surname]")*/
 	for(var/datum/action/A in H.actions)
 		if(A.vampiric)
 			A.Remove(H)
@@ -56,7 +56,6 @@
 		"Ammo Carrier"
 	)
 	var/loadout_type = input(owner.current, "Choose your loadout:", "Loadout Selection") in loadouts
-	to_chat(owner.current, "DEBUG: Before loadout selection input.")
 	switch(loadout_type)
 		if("Flamethrower")
 			owner.current.put_in_r_hand(new /obj/item/vampire_flamethrower(owner.current))
@@ -72,14 +71,14 @@
 		if("Ammo Carrier")
 			owner.current.put_in_r_hand(new /obj/item/ammo_box/vampire/c556/incendiary(owner.current))
 			owner.current.put_in_l_hand(new /obj/item/ammo_box/vampire/c556/incendiary(owner.current))
-	to_chat(owner.current, "DEBUG: After loadout selection input. You chose: [loadout_type]")
+
 /obj/effect/landmark/start/national_guard
 	name = "National Guard"
 	delete_after_roundstart = FALSE
 
 /datum/antagonist/national_guard
 	name = "National Guard"
-	roundend_category = "national_guard"
+	roundend_category = "national guard"
 	antagpanel_category = "National Guard"
 	job_rank = ROLE_NATIONAL_GUARD
 	antag_hud_type = ANTAG_HUD_OPS
@@ -93,13 +92,7 @@
 
 /datum/antagonist/national_guard/sergeant
 	name = "National Guard Sergeant"
-	roundend_category = "national_guard"
-	antagpanel_category = "National Guard"
-	job_rank = ROLE_NATIONAL_GUARD
-	antag_hud_type = ANTAG_HUD_OPS
-	antag_hud_name = "synd"
-	antag_moodlet = /datum/mood_event/focused
-	show_to_ghosts = TRUE
+	always_new_team = TRUE
 	var/title
 
 /datum/antagonist/national_guard/on_gain()
@@ -117,6 +110,7 @@
 
 /datum/antagonist/national_guard/greet()
 	to_chat(owner.current, "<span class='alertsyndie'>You're in the national guard.</span>")
+	to_chat(owner, "<span class='notice'>You are a [national_guard_team ? national_guard_team.national_guard_name : "national guard"] soldier!</span>")
 	owner.announce_objectives()
 
 
@@ -164,6 +158,7 @@
 		newname = reject_bad_name(newname)
 		if(!newname)
 			newname = randomname
+	return capitalize(newname)
 
 /datum/antagonist/national_guard/sergeant/proc/national_guardteam_name_assign()
 	if(!national_guard_team)
@@ -206,6 +201,7 @@
 /datum/team/national_guard
 	var/national_guard_name
 	var/core_objective = /datum/objective/national_guard
+	member_name = "National Guard Operative"
 	var/memorized_code
 	var/list/team_discounts
 	var/obj/item/nuclear_challenge/war_button
@@ -219,6 +215,18 @@
 		var/datum/objective/O = new core_objective
 		O.team = src
 		objectives += O
+
+
+/datum/team/national_guard/roundend_report()
+	var/list/parts = list()
+	parts += "<span class='header'>[national_guard_name] Operatives:</span>"
+
+	var/text = "<br><span class='header'>The national guard were:</span>"
+	text += printplayerlist(members)
+	parts += text
+
+	return "<div class='panel redborder'>[parts.Join("<br>")]</div>"
+
 
 //////////////////////////////////////////////
 //                                          //
@@ -257,3 +265,4 @@
 		new_character.mind.add_antag_datum(new_role)
 	else
 		return ..()
+
