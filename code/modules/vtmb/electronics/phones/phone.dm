@@ -309,39 +309,39 @@
 							online = PHN
 							PHN.online = src
 							Recall(online, usr)
-						var/datum/phonehistory/NEWH_caller = new()
-						var/datum/phonehistory/NEWH_being_called = new()
-						if(PHN.number == number)
-							//Verify if you are calling yourself
-							NEWH_caller.name = owner
-							NEWH_caller.call_type = "I called myself"
-							NEWH_caller.time = "[SScity_time.timeofnight]"
-							NEWH_caller.number = number
-							phone_history_list += NEWH_caller
-						else
-							//Caller History
-							NEWH_caller.name = "Unknown"
-							for(var/datum/phonecontact/Contact in contacts)
-								if(Contact.number == PHN.number)
-									//Verify if they have a contact with the number if so, save their name
-									NEWH_caller.name = Contact.name
-									break
-							NEWH_caller.number = PHN.number
-							NEWH_caller.time = "[SScity_time.timeofnight]"
-							NEWH_caller.call_type = "I called"
-							phone_history_list += NEWH_caller
-							
-							//Being Called History
-							NEWH_being_called.name = "Unknown"
-							for(var/datum/phonecontact/Contact in PHN.contacts)
-								if(Contact.number == number)
-									//Verify if they have a contact with the number if so, save their name
-									NEWH_being_called.name = Contact.name
-									break
-							NEWH_being_called.number = number
-							NEWH_being_called.time = "[SScity_time.timeofnight]"
-							NEWH_being_called.call_type = "They called me"
-							PHN.phone_history_list += NEWH_being_called
+							var/datum/phonehistory/NEWH_caller = new()
+							var/datum/phonehistory/NEWH_being_called = new()
+							if(PHN.number == number)
+								//Verify if you are calling yourself
+								NEWH_caller.name = owner
+								NEWH_caller.call_type = "I called myself"
+								NEWH_caller.time = "[SScity_time.timeofnight]"
+								NEWH_caller.number = number
+								phone_history_list += NEWH_caller
+							else
+								//Caller History
+								NEWH_caller.name = "Unknown"
+								for(var/datum/phonecontact/Contact in contacts)
+									if(Contact.number == PHN.number)
+										//Verify if they have a contact with the number if so, save their name
+										NEWH_caller.name = Contact.name
+										break
+								NEWH_caller.number = PHN.number
+								NEWH_caller.time = "[SScity_time.timeofnight]"
+								NEWH_caller.call_type = "I called"
+								phone_history_list += NEWH_caller
+								
+								//Being Called History
+								NEWH_being_called.name = "Unknown"
+								for(var/datum/phonecontact/Contact in PHN.contacts)
+									if(Contact.number == number)
+										//Verify if they have a contact with the number if so, save their name
+										NEWH_being_called.name = Contact.name
+										break
+								NEWH_being_called.number = number
+								NEWH_being_called.time = "[SScity_time.timeofnight]"
+								NEWH_being_called.call_type = "They called me"
+								PHN.phone_history_list += NEWH_being_called
 						else
 							to_chat(usr, "<span class='notice'>Abonent is busy.</span>")
 			if(!online && !blocked)
@@ -537,6 +537,7 @@
 						log_admin(list_length)
 						if(contacts_added_lenght < list_length)
 						// checks the size difference between the GLOB published list and the phone published list
+							var/ADDED_CONTACTS = 0
 							to_chat(usr, "<span class='notice'>New contacts are being added to your contact list.</span>")
 							for(var/i = 1 to list_length)
 								var/number_v = GLOB.published_numbers[i]
