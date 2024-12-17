@@ -484,15 +484,10 @@
 					if(phone_history_list.len > 0)
 						for(var/datum/phonehistory/PH in phone_history_list)
 							//loop through the phone_history_list searching for a phonehistory datums and display them.
-							var/PH_name = PH.name
-							var/PH_number = PH.number
-							var/PH_time = PH.time
-							var/PH_call_type = PH.call_type
-							
-							var/display_number_first = copytext(PH_number, 1, 4)
-							var/display_number_second = copytext(PH_number, 4, 8)
+							var/display_number_first = copytext(PH.number, 1, 4)
+							var/display_number_second = copytext(PH.number, 4, 8)
 							var/split_number = display_number_first + " " + display_number_second
-							to_chat(usr, "# [PH_call_type]: [PH_name] , [split_number] at [PH_time]")
+							to_chat(usr, "# [PH.call_type]: [PH.name] , [split_number] at [PH.time]")
 					else
 						to_chat(usr, "Your don't got a call history")
 				if("Delete Call History")
