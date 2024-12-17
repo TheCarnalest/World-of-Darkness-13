@@ -102,6 +102,11 @@
 	desc = "Some historical clothes."
 	icon_state = "nazi"
 
+/obj/item/clothing/under/vampire/military_fatigues
+	name = "Military fatigues"
+	desc = "Some military clothes."
+	icon_state = "milfatigues"
+
 /obj/item/clothing/under/vampire/nazi/Initialize()
 	. = ..()
 	ADD_TRAIT(src, TRAIT_NODROP, ADMIN_TRAIT)
