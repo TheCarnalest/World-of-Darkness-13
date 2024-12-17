@@ -482,12 +482,13 @@
 									blocked_contacts -= CNT_UNBLOCK
 				if("Call History")
 					if(phone_history_list.len > 0)
-						for(var/i = 1 to phone_history_list.len)
-							//loop through the phone_history_list until it's end and display everything inside
-							var/PH_name = phone_history_list[i].name
-							var/PH_number = phone_history_list[i].number
-							var/PH_time = phone_history_list[i].time
-							var/PH_call_type = phone_history_list[i].call_type
+						for(var/datum/phonehistory/PH in phone_history_list)
+							//loop through the phone_history_list searching for a phonehistory datums and display them.
+							var/PH_name = PH.name
+							var/PH_number = PH.number
+							var/PH_time = PH.time
+							var/PH_call_type = PH.call_type
+							
 							var/display_number_first = copytext(PH_number, 1, 4)
 							var/display_number_second = copytext(PH_number, 4, 8)
 							var/split_number = display_number_first + " " + display_number_second
