@@ -3388,6 +3388,7 @@
 #include "code\modules\vtmb\jobs\hunter.dm"
 #include "code\modules\vtmb\jobs\janitor.dm"
 #include "code\modules\vtmb\jobs\jobs.dm"
+#include "code\modules\vtmb\jobs\national_guard.dm"
 #include "code\modules\vtmb\jobs\police.dm"
 #include "code\modules\vtmb\jobs\priest.dm"
 #include "code\modules\vtmb\jobs\primogen.dm"

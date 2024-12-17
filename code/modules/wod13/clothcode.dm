@@ -789,7 +789,7 @@
 /obj/item/clothing/head/vampire/army
 	name = "army helmet"
 	desc = "Looks dangerous. Provides great protection against blunt force."
-	icon_state = "helmet"
+	icon_state = "viet"
 	flags_inv = HIDEEARS|HIDEHAIR
 	dynamic_hair_suffix = ""
 	dynamic_fhair_suffix = ""
