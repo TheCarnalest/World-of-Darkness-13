@@ -1,6 +1,7 @@
 /datum/outfit/job/national_guard
 	name = "National Guard Soldier"
 	uniform = /obj/item/clothing/under/vampire/military_fatigues
+	mask = /obj/item/clothing/mask/vampire/balaclava
 	r_pocket = /obj/item/flashlight
 	l_pocket = /obj/item/ammo_box/magazine/vampaug
 	shoes = /obj/item/clothing/shoes/vampire/jackboots
@@ -96,10 +97,11 @@
 	var/title
 
 /datum/antagonist/national_guard/on_gain()
-	give_alias()
+	randomize_appearance()
 	add_antag_hud(ANTAG_HUD_OPS, "synd", owner.current)
 	owner.special_role = src
 	equip_national_guard()
+	give_alias()
 	offer_loadout()
 	return ..()
 
@@ -115,26 +117,28 @@
 
 
 /datum/antagonist/national_guard/proc/give_alias()
-	if(national_guard_team?.national_guard_name)
-		var/mob/living/carbon/human/H = owner.current
-		if(istype(H)) // Reinforcements get a real name
-			var/chosen_name = H.dna.species.random_name(H.gender,0,national_guard_team.national_guard_name)
-			H.fully_replace_character_name(H.real_name,chosen_name)
-		else
-			var/number = 1
-			number = national_guard_team.members.Find(owner)
-			owner.current.real_name = "[national_guard_team.national_guard_name] Operative #[number]"
+	var/my_name = "Tyler"
+	var/list/military_ranks = list("Private", "Private First Class", "Specialist", "Corporal")
+	var/selected_rank = pick(military_ranks)
+	if(owner.current.gender == MALE)
+		my_name = pick(GLOB.first_names_male)
+	else
+		my_name = pick(GLOB.first_names_female)
+	var/my_surname = pick(GLOB.last_names)
+	owner.current.fully_replace_character_name(null,"[selected_rank] [my_name] [my_surname]")
 
 /datum/antagonist/national_guard/proc/forge_objectives()
 	if(national_guard_team)
 		objectives |= national_guard_team.objectives
 
 /datum/antagonist/national_guard/sergeant/give_alias()
-	title = pick("Sergeant", "Commander")
-	if(national_guard_team?.national_guard_name)
-		owner.current.real_name = "[national_guard_team.national_guard_name] [title]"
+	var/my_name = "Tyler"
+	if(owner.current.gender == MALE)
+		my_name = pick(GLOB.first_names_male)
 	else
-		owner.current.real_name = "National Guard [title]"
+		my_name = pick(GLOB.first_names_female)
+	var/my_surname = pick(GLOB.last_names)
+	owner.current.fully_replace_character_name(null,"Sergeant [my_name] [my_surname]")
 
 /datum/team/national_guard/antag_listing_name()
 	if(national_guard_name)
@@ -144,26 +148,25 @@
 
 
 /datum/antagonist/national_guard/sergeant/greet()
-	to_chat(owner, "<B>You are the leading [title] for this mission. You are responsible for guiding your team's operation.</B>")
+	to_chat(owner, "<B>You are the leading sergeant for this mission. You are responsible for guiding your team's operation.</B>")
 	to_chat(owner, "<B>If you feel you are not up to this task, give your command to another soldier.</B>")
 	owner.announce_objectives()
 	addtimer(CALLBACK(src, PROC_REF(national_guardteam_name_assign)), 1)
 
+/datum/antagonist/national_guard/sergeant/proc/national_guardteam_name_assign()
+	if(!national_guard_team)
+		return
+	national_guard_team.rename_team(ask_name())
+
 /datum/antagonist/national_guard/sergeant/proc/ask_name()
 	var/randomname = pick(GLOB.last_names)
-	var/newname = stripped_input(owner.current,"You are the national guard operative [title]. Please choose a last name for your family.", "Name change",randomname)
+	var/newname = stripped_input(owner.current,"You are the sergeant. Please choose a name for your team.", "Name change",randomname)
 	if (!newname)
 		newname = randomname
 	else
 		newname = reject_bad_name(newname)
 		if(!newname)
 			newname = randomname
-	return capitalize(newname)
-
-/datum/antagonist/national_guard/sergeant/proc/national_guardteam_name_assign()
-	if(!national_guard_team)
-		return
-	national_guard_team.rename_team(ask_name())
 
 /datum/antagonist/national_guard/create_team(datum/team/national_guard/new_team)
 	if(!new_team)
@@ -185,18 +188,141 @@
 	message_admins("[key_name_admin(admin)] has national guard'd [key_name_admin(new_owner)].")
 	log_admin("[key_name(admin)] has national guard'd [key_name(new_owner)].")
 
+/datum/random_gen/national_guard
+	var/hair_colors = list("040404",	//Black
+										"120b05",	//Dark Brown
+										"342414",	//Brown
+										"554433",	//Light Brown
+										"695c3b",	//Dark Blond
+										"ad924e",	//Blond
+										"dac07f",	//Light Blond
+										"802400",	//Ginger
+										"a5380e",	//Ginger alt
+										"ffeace",	//Albino
+										"650b0b",	//Punk Red
+										"14350e",	//Punk Green
+										"080918")	//Punk Blue
+
+	var/male_hair = list("Balding Hair",
+										"Bedhead",
+										"Bedhead 2",
+										"Bedhead 3",
+										"Boddicker",
+										"Business Hair",
+										"Business Hair 2",
+										"Business Hair 3",
+										"Business Hair 4",
+										"Coffee House",
+										"Combover",
+										"Crewcut",
+										"Father",
+										"Flat Top",
+										"Gelled Back",
+										"Joestar",
+										"Keanu Hair",
+										"Oxton",
+										"Volaju")
+
+	var/male_facial = list("Beard (Abraham Lincoln)",
+											"Beard (Chinstrap)",
+											"Beard (Full)",
+											"Beard (Cropped Fullbeard)",
+											"Beard (Hipster)",
+											"Beard (Neckbeard)",
+											"Beard (Three o Clock Shadow)",
+											"Beard (Five o Clock Shadow)",
+											"Beard (Seven o Clock Shadow)",
+											"Moustache (Hulk Hogan)",
+											"Moustache (Watson)",
+											"Sideburns (Elvis)",
+											"Sideburns")
+
+	var/female_hair = list("Ahoge",
+										"Long Bedhead",
+										"Beehive",
+										"Beehive 2",
+										"Bob Hair",
+										"Bob Hair 2",
+										"Bob Hair 3",
+										"Bob Hair 4",
+										"Bobcurl",
+										"Braided",
+										"Braided Front",
+										"Braid (Short)",
+										"Braid (Low)",
+										"Bun Head",
+										"Bun Head 2",
+										"Bun Head 3",
+										"Bun (Large)",
+										"Bun (Tight)",
+										"Double Bun",
+										"Emo",
+										"Emo Fringe",
+										"Feather",
+										"Gentle",
+										"Long Hair 1",
+										"Long Hair 2",
+										"Long Hair 3",
+										"Long Over Eye",
+										"Long Emo",
+										"Long Fringe",
+										"Ponytail",
+										"Ponytail 2",
+										"Ponytail 3",
+										"Ponytail 4",
+										"Ponytail 5",
+										"Ponytail 6",
+										"Ponytail 7",
+										"Ponytail (High)",
+										"Ponytail (Short)",
+										"Ponytail (Long)",
+										"Ponytail (Country)",
+										"Ponytail (Fringe)",
+										"Poofy",
+										"Short Hair Rosa",
+										"Shoulder-length Hair",
+										"Volaju")
+
+/datum/antagonist/national_guard/proc/randomize_appearance()
+	var/datum/random_gen/national_guard/h_gen = new
+	var/mob/living/carbon/human/H = owner.current
+	H.gender = pick(MALE, FEMALE)
+	H.body_type = H.gender
+	H.age = rand(18, 36)
+//	if(age >= 55)
+//		hair_color = "a2a2a2"
+//		facial_hair_color = hair_color
+//	else
+	H.hair_color = pick(h_gen.hair_colors)
+	H.facial_hair_color = H.hair_color
+	if(H.gender == MALE)
+		H.hairstyle = pick(h_gen.male_hair)
+		if(prob(25) || H.age >= 25)
+			H.facial_hairstyle = pick(h_gen.male_facial)
+		else
+			H.facial_hairstyle = "Shaved"
+	else
+		H.hairstyle = pick(h_gen.female_hair)
+		H.facial_hairstyle = "Shaved"
+	H.name = H.real_name
+	H.dna.real_name = H.real_name
+	var/obj/item/organ/eyes/organ_eyes = H.getorgan(/obj/item/organ/eyes)
+	if(organ_eyes)
+		organ_eyes.eye_color = random_eye_color()
+	H.underwear = random_underwear(H.gender)
+	if(prob(50))
+		H.underwear_color = organ_eyes.eye_color
+	if(prob(50) || H.gender == FEMALE)
+		H.undershirt = random_undershirt(H.gender)
+	if(prob(25))
+		H.socks = random_socks()
+	H.update_body()
+	H.update_hair()
+	H.update_body_parts()
 
 /datum/team/national_guard/proc/rename_team(new_name)
 	national_guard_name = new_name
 	name = "[national_guard_name] Team"
-	for(var/I in members)
-		var/datum/mind/national_guard_mind = I
-		var/mob/living/carbon/human/H = national_guard_mind.current
-		if(!istype(H))
-			continue
-		var/chosen_name = H.dna.species.random_name(H.gender,0,national_guard_name)
-		H.fully_replace_character_name(H.real_name,chosen_name)
-
 
 /datum/team/national_guard
 	var/national_guard_name
@@ -226,6 +352,8 @@
 	parts += text
 
 	return "<div class='panel redborder'>[parts.Join("<br>")]</div>"
+
+
 
 
 //////////////////////////////////////////////
