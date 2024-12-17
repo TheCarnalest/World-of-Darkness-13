@@ -561,7 +561,7 @@
 						to_chat(usr, "<span class='notice'>The toggle of the published numbers in contacts is active.</span>")
 					else
 						toggle_published_contacts = FALSE
-						to_chat(usr, "<span class='notice'>The toggle of the published numbers in contacts is desactive.</span>")
+						to_chat(usr, "<span class='notice'>The toggle of the published numbers in contacts is disabled.</span>")
 			.= TRUE
 		if("keypad")
 			if(!silence)
