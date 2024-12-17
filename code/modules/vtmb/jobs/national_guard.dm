@@ -1,6 +1,6 @@
 /datum/outfit/job/national_guard
 	name = "National Guard Soldier"
-	uniform = /obj/item/clothing/under/vampire/graveyard
+	uniform = /obj/item/clothing/under/vampire/military_fatigues
 	r_pocket = /obj/item/flashlight
 	l_pocket = /obj/item/ammo_box/magazine/vampaug
 	shoes = /obj/item/clothing/shoes/vampire/jackboots
