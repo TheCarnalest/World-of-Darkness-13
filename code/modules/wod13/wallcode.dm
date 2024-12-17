@@ -290,6 +290,31 @@
 	icon_state = "city-window"
 	window = /obj/structure/window/fulltile
 
+/turf/closed/wall/vampwall/metal
+	name = "metal wall"
+	desc = "A huge chunk of metal used to separate rooms."
+	icon_state = "metal-0"
+	base_icon_state = "metal"
+
+/turf/closed/wall/vampwall/metal/reinforced
+	name = "reinforced metal wall"
+	desc = "A huge chunk of reinforced metal used to separate rooms."
+	icon_state = "metalreinforced-0"
+	base_icon_state = "metalreinforced"
+
+/turf/closed/wall/vampwall/metal/alt
+	name = "metal wall"
+	desc = "A huge chunk of metal used to separate rooms."
+	icon_state = "metalalt-0"
+	base_icon_state = "metalalt"
+
+/turf/closed/wall/vampwall/metal/glass
+	name = "metal wall"
+	desc = "A huge chunk of metal used to separate rooms."
+	icon_state = "metalglass-0"
+	base_icon_state = "metalglass"
+	opacity = FALSE
+
 /turf/closed/wall/vampwall/bar
 	name = "dark brick wall"
 	desc = "A huge chunk of bricks used to separate rooms."
