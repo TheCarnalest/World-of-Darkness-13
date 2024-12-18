@@ -11,7 +11,7 @@
 	outfit = /datum/outfit/job/strip
 	antag_rep = 7
 	paycheck = PAYCHECK_ASSISTANT // Get a job. Job reassignment changes your paycheck now. Get over it.
-	exp_type_department = EXP_TYPE_NEUTRALS
+	exp_type_department = EXP_TYPE_SERVICES
 
 	paycheck_department = ACCOUNT_CIV
 	display_order = JOB_DISPLAY_ORDER_STRIP
