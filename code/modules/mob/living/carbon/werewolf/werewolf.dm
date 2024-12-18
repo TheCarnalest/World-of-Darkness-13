@@ -206,7 +206,7 @@
 		/obj/item/bodypart/l_leg,
 		)
 
-	werewolf_armor = 25
+	werewolf_armor = 30
 
 /datum/movespeed_modifier/crinosform
 	multiplicative_slowdown = -0.2
