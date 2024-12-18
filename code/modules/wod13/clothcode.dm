@@ -455,7 +455,7 @@
 	desc = "An advanced aluminum suit for protection against radiant heat, molten metal, and high temperatures."
 	icon_state = "firesuit"
 	icon = 'code/modules/wod13/clothing.dmi'
-	worn_icon = 'code/modules/wod/worn.dmi'
+	worn_icon = 'code/modules/wod13/worn.dmi'
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
 	body_parts_covered = CHEST|GROIN|ARMS|LEGS|FEET|HANDS
 	flags_inv = HIDEJUMPSUIT
@@ -467,7 +467,7 @@
 	desc = "An aluminized hood for protection against radiant heat, molten metal, and high temperatures."
 	icon_state = "firesuithood"
 	icon = 'code/modules/wod13/clothing.dmi'
-	worn_icon = 'code/modules/wod/worn.dmi'
+	worn_icon = 'code/modules/wod13/worn.dmi'
 	onflooricon = 'code/modules/wod13/onfloor.dmi'
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR
 	heat_protection = HEAD	
