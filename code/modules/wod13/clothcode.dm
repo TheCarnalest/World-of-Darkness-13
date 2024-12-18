@@ -461,7 +461,7 @@
 	flags_inv = HIDEJUMPSUIT
 	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
-	equip_delay_self = 10
+	equip_delay_self = 60
 	resistance_flags = FIRE_PROOF
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 100, ACID = 50, WOUND = 10)
 
@@ -479,6 +479,7 @@
 	dynamic_fhair_suffix = ""
 	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
 	visor_flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
+	equip_delay_self = 60
 	resistance_flags = FIRE_PROOF
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 100, ACID = 50, WOUND = 10)
     
