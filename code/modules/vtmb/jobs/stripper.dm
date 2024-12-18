@@ -5,7 +5,7 @@
 	total_positions = 4
 	spawn_positions = 4
 	supervisors = "the Camarilla or the Anarchs"
-	selection_color = "#df7058"
+	selection_color = "#e3e3e3"
 	access = list()
 	minimal_access = list()
 	outfit = /datum/outfit/job/strip
