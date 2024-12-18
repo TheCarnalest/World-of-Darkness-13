@@ -275,7 +275,7 @@
 /obj/item/gun/ballistic/automatic/vampire/glock21
 	name = "\improper Glock 21"
 	desc = "Very fast 45 ACP handgun."
-	icon_state = "glock19"
+	icon_state = "glockblack"
 	inhand_icon_state = "glock19"
 	worn_icon_state = "glock19"
 	w_class = WEIGHT_CLASS_SMALL
