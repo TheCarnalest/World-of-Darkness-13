@@ -13,8 +13,8 @@
 //	var/move_delay_add = -1.5 // movement delay to add    also didn't work
 	melee_damage_lower = 15
 	melee_damage_upper = 35
-	health = 140
-	maxHealth = 140
+	health = 150
+	maxHealth = 150
 	werewolf_armor = 10
 //	bodyparts = list(
 //		/obj/item/bodypart/chest,
