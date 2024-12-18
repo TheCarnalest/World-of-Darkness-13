@@ -6,7 +6,8 @@
 	total_positions = 4
 	spawn_positions = 4
 	supervisors = "the Dealer"
-	selection_color = "#434343"
+	selection_color = "#edc009"
+	exp_type_department = EXP_TYPE_WAREHOUSE
 
 	outfit = /datum/outfit/job/supply
 
