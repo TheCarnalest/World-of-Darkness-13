@@ -332,6 +332,7 @@
 				adjust_gnosis(-1, M)
 		else
 			M.Stun(1 SECONDS)
+			M.Immobilize(1 SECONDS)
 			M.adjustBruteLoss(50, TRUE)
 			M.adjustCloneLoss(20, TRUE)
 		if(!M.has_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown))
@@ -394,6 +395,7 @@
 				adjust_gnosis(-1, M)
 		else
 			M.Stun(2 SECONDS)
+			M.Immobilize(1 SECONDS)
 			M.adjustBruteLoss(40, TRUE)
 			M.adjustCloneLoss(25, TRUE)
 		if(!M.has_movespeed_modifier(/datum/movespeed_modifier/silver_slowdown))
