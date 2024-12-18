@@ -15,7 +15,7 @@
 	paycheck = PAYCHECK_MEDIUM
 	paycheck_department = ACCOUNT_SRV
 	display_order = JOB_DISPLAY_ORDER_FBI
-	exp_type_department = EXP_TYPE_INDEPENDENT
+	exp_type_department = EXP_TYPE_NATIONAL_SECURITY
 
 	allowed_species = list("Human")
 	minimal_generation = 13
