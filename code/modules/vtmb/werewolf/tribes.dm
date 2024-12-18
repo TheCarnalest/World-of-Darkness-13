@@ -99,17 +99,21 @@
 		if(ishuman(owner))
 			playsound(get_turf(owner), 'code/modules/wod13/sounds/venom_claws.ogg', 75, FALSE)
 			var/mob/living/carbon/human/H = owner
-			H.tox_damage_plus = 25
+			H.melee_damage_lower = initial(H.melee_damage_lower)+15
+			H.melee_damage_upper = initial(H.melee_damage_upper)+15
+			H.tox_damage_plus = 15
 			to_chat(owner, "<span class='notice'>You feel your claws filling with pure venom...</span>")
 			spawn(12 SECONDS)
 				H.tox_damage_plus = 0
+				H.melee_damage_lower = initial(H.melee_damage_lower)
+				H.melee_damage_upper = initial(H.melee_damage_upper)
 				to_chat(owner, "<span class='warning'>Your claws are not poison anymore...</span>")
 		else
 			playsound(get_turf(owner), 'code/modules/wod13/sounds/venom_claws.ogg', 75, FALSE)
 			var/mob/living/carbon/H = owner
-			H.melee_damage_lower = initial(H.melee_damage_lower)+20
-			H.melee_damage_upper = initial(H.melee_damage_upper)+20
-			H.tox_damage_plus = 25
+			H.melee_damage_lower = initial(H.melee_damage_lower)+10
+			H.melee_damage_upper = initial(H.melee_damage_upper)+10
+			H.tox_damage_plus = 10
 			to_chat(owner, "<span class='notice'>You feel your claws filling with pure venom...</span>")
 			spawn(12 SECONDS)
 				H.tox_damage_plus = 0

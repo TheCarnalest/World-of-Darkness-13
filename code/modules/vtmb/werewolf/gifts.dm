@@ -107,8 +107,9 @@
 			H.dna.species.attack_verb = "slash"
 			H.dna.species.attack_sound = 'sound/weapons/slash.ogg'
 			H.dna.species.miss_sound = 'sound/weapons/slashmiss.ogg'
-			H.dna.species.punchdamagelow = 25
-			H.dna.species.punchdamagehigh = 25
+			H.dna.species.punchdamagelow = 20
+			H.dna.species.punchdamagehigh = 20
+			H.agg_damage_plus = 5
 			to_chat(owner, "<span class='notice'>You feel your claws sharpening...</span>")
 			spawn(150)
 				H.dna.species.attack_verb = initial(H.dna.species.attack_verb)
@@ -116,16 +117,19 @@
 				H.dna.species.miss_sound = initial(H.dna.species.miss_sound)
 				H.dna.species.punchdamagelow = initial(H.dna.species.punchdamagelow)
 				H.dna.species.punchdamagehigh = initial(H.dna.species.punchdamagehigh)
+				H.agg_damage_plus = 0
 				to_chat(owner, "<span class='warning'>Your claws are not sharp anymore...</span>")
 		else
 			playsound(get_turf(owner), 'code/modules/wod13/sounds/razor_claws.ogg', 75, FALSE)
 			var/mob/living/carbon/H = owner
-			H.melee_damage_lower = H.melee_damage_lower+20
-			H.melee_damage_upper = H.melee_damage_upper+20
+			H.melee_damage_lower = H.melee_damage_lower+15
+			H.melee_damage_upper = H.melee_damage_upper+15
+			H.agg_damage_plus = 3
 			to_chat(owner, "<span class='notice'>You feel your claws sharpening...</span>")
 			spawn(150)
 				H.melee_damage_lower = initial(H.melee_damage_lower)
 				H.melee_damage_upper = initial(H.melee_damage_upper)
+				H.tox_damage_plus = 0
 				to_chat(owner, "<span class='warning'>Your claws are not sharp anymore...</span>")
 
 /datum/action/gift/beast_speech
@@ -360,6 +364,7 @@
 			C.adjustBruteLoss(-40*C.auspice.level, TRUE)
 			C.adjustFireLoss(-30*C.auspice.level, TRUE)
 			C.adjustCloneLoss(-10*C.auspice.level, TRUE)
+			C.adjustToxLoss(-10*C.auspice.level, TRUE)
 			C.adjustOxyLoss(-20*C.auspice.level, TRUE)
 			C.bloodpool = min(C.bloodpool + C.auspice.level, C.maxbloodpool)
 			C.blood_volume = min(C.blood_volume + 56 * C.auspice.level, BLOOD_VOLUME_NORMAL)

@@ -20,8 +20,6 @@
 			grabbedby(M)
 		if ("harm")
 			M.do_attack_animation(src, ATTACK_EFFECT_PUNCH)
-			if(M.tox_damage_plus)
-				adjustToxLoss(M.tox_damage_plus)
 			return TRUE
 		if("disarm")
 			M.do_attack_animation(src, ATTACK_EFFECT_DISARM)
