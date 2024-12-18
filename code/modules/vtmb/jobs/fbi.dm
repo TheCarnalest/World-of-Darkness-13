@@ -6,7 +6,7 @@
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = " the FBI"
-	selection_color = "#7e7e7e"
+	selection_color = "#1a1d8a"
 
 	outfit = /datum/outfit/job/fbi
 
