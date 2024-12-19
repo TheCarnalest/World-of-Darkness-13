@@ -344,7 +344,7 @@
 	name = "Rage Heal"
 	desc = "This Gift allows the Garou to heal severe injuries with rage."
 	button_icon_state = "rage_heal"
-	rage_req = 1
+	rage_req = 3
 	check_flags = null
 
 /datum/action/gift/rage_heal/Trigger()
@@ -353,10 +353,10 @@
 		var/mob/living/carbon/C = owner
 		if(C.stat != DEAD)
 			SEND_SOUND(owner, sound('code/modules/wod13/sounds/rage_heal.ogg', 0, 0, 75))
-			C.adjustBruteLoss(-50*C.auspice.level, TRUE)
-			C.adjustFireLoss(-35*C.auspice.level, TRUE)
-			C.adjustCloneLoss(-25*C.auspice.level, TRUE)
-			C.adjustOxyLoss(-25*C.auspice.level, TRUE)
+			C.adjustBruteLoss(-50*C.auspice.level, TRUE) // you heal a LOT of wounds, you will be warn down eventually though
+			C.adjustFireLoss(-50*C.auspice.level, TRUE)
+			C.adjustCloneLoss(-5*C.auspice.level, TRUE) // silver moment, equal to vamps
+			C.adjustOxyLoss(-50*C.auspice.level, TRUE)
 			C.bloodpool = min(C.bloodpool + C.auspice.level, C.maxbloodpool)
 			C.blood_volume = min(C.blood_volume + 56 * C.auspice.level, BLOOD_VOLUME_NORMAL)
 			if(ishuman(owner))
