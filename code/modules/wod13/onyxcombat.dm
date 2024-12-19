@@ -717,6 +717,9 @@
 		else
 			hud_used.blood_icon.icon_state = "blood[emm]"
 
+	//Updates action buttons according to the new bloodpool
+	update_action_buttons_icon()
+
 /mob/living/proc/update_zone_hud()
 	if(!client || !hud_used)
 		return

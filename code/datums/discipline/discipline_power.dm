@@ -7,7 +7,7 @@
 	///What rank of the Discipline this Discipline power belongs to.
 	var/level = 1
 	///Bitflags determining the requirements to cast this power
-	var/check_flags = DISC_CHECK_CONSCIOUS|DISC_CHECK_CAPABLE
+	var/check_flags = DISC_CHECK_CONSCIOUS | DISC_CHECK_CAPABLE
 	///How many blood points this power costs to activate
 	var/vitae_cost = 1
 	///Bitflags determining what types of entities this power is allowed to target. NONE if self-targeting.
@@ -66,49 +66,6 @@
 /datum/discipline_power/proc/can_afford()
 	return owner.can_adjust_blood_points(-vitae_cost)
 
-/datum/discipline_power/proc/can_activate(atom/target, alert = FALSE)
-	SHOULD_CALL_PARENT(TRUE)
-
-	//can't activate if the owner isn't capable of it
-	if (!can_activate_untargeted(alert))
-		return FALSE
-
-	//self activated so target doesn't matter
-	if (target_type == NONE)
-		return TRUE
-
-	//check if distance is in range
-	if (get_dist(owner, target) > range)
-		return FALSE
-
-	//check target type
-	if ((target_type & TARGET_MOB) && istype(target, /mob/living))
-		//make sure our LIVING target isn't DEAD
-		var/mob/living/living = target
-		if ((target_type & TARGET_LIVING) && living.stat == DEAD)
-			return FALSE
-
-		//make sure they can be targeted by Disciplines
-		if (ishuman(target))
-			var/mob/living/carbon/human/human = living
-			if (human.resistant_to_disciplines || HAS_TRAIT(human, TRAIT_ANTIMAGIC))
-				return FALSE
-		return TRUE
-
-	if ((target_type & TARGET_OBJ) && istype(target, /obj))
-		return TRUE
-
-	if ((target_type & TARGET_DEAD) && istype(target, /mob/dead))
-		return TRUE
-
-	if ((target_type & TARGET_TURF) && istype(target, /turf))
-		return TRUE
-
-	//target doesn't match any targeted types, so can't activate on them
-	if (alert)
-		to_chat(owner, "<span class='warning'>You cannot cast [name] on [target]!</span>")
-	return FALSE
-
 /datum/discipline_power/proc/can_activate_untargeted(alert = FALSE)
 	SHOULD_CALL_PARENT(TRUE)
 
@@ -125,6 +82,14 @@
 		if (alert)
 			to_chat(owner, "<span class='warning'>[name] is already active!</span>")
 		return FALSE
+
+	//a mutually exclusive power is already active
+	for (var/exclude_power in mutually_exclusive)
+		var/datum/discipline_power/found_power = discipline.get_power(exclude_power)
+		if (found_power?.active)
+			if (alert)
+				to_chat(owner, "<span class='warning'>You cannot have [name] and [found_power] active at the same time!")
+			return FALSE
 
 	//the user cannot afford the power's vitae expenditure
 	if (!can_afford())
@@ -195,21 +160,65 @@
 	//nothing found, it can be casted
 	return TRUE
 
+/datum/discipline_power/proc/can_activate(atom/target, alert = FALSE)
+	SHOULD_CALL_PARENT(TRUE)
+
+	//can't activate if the owner isn't capable of it
+	if (!can_activate_untargeted(alert))
+		return FALSE
+
+	//self activated so target doesn't matter
+	if (target_type == NONE)
+		return TRUE
+
+	//check if distance is in range
+	if (get_dist(owner, target) > range)
+		return FALSE
+
+	//check target type
+	if (((target_type & TARGET_MOB) || (target_type & TARGET_LIVING)) && istype(target, /mob/living))
+		//make sure our LIVING target isn't DEAD
+		var/mob/living/living = target
+		if ((target_type & TARGET_LIVING) && (living.stat == DEAD))
+			if (alert)
+				to_chat(owner, "<span class='warning'>You cannot cast [name] on dead things!</span>")
+			return FALSE
+
+		//make sure they can be targeted by Disciplines
+		if (ishuman(target))
+			var/mob/living/carbon/human/human = living
+			if (human.resistant_to_disciplines || HAS_TRAIT(human, TRAIT_ANTIMAGIC))
+				if (alert)
+					to_chat(owner, "<span class='warning'>[target] resists your Disciplines!</span>")
+				return FALSE
+		return TRUE
+
+	if ((target_type & TARGET_OBJ) && istype(target, /obj))
+		return TRUE
+
+	if ((target_type & TARGET_DEAD) && istype(target, /mob/dead))
+		return TRUE
+
+	if ((target_type & TARGET_TURF) && istype(target, /turf))
+		return TRUE
+
+	//target doesn't match any targeted types, so can't activate on them
+	if (alert)
+		to_chat(owner, "<span class='warning'>You cannot cast [name] on [target]!</span>")
+	return FALSE
+
 /datum/discipline_power/proc/activate(atom/target)
 	SHOULD_CALL_PARENT(TRUE)
 
 	//ensure everything is in place for activation to be possible
-	if(!target && !(target_type == NONE))
-		return
+	if(!target && (target_type != NONE))
+		return FALSE
 	if(!discipline?.owner)
-		return
+		return FALSE
 
-	//toggle the Discipline power off
-	if(active && (cancelable || toggled))
-		deactivate(target)
-		return
-
-	active = TRUE
+	//make it active if it can only have one active instance at a time
+	if (!multi_activation)
+		active = TRUE
 
 	//start the cooldown if there is one, instead triggers on deactivate() if toggled
 	if (cooldown_length && !cancelable)
@@ -255,8 +264,11 @@
 	else
 		owner.adjust_blood_points(-vitae_cost)
 
+	to_chat(owner, "<span class='warning'>You activate [name][target ? "on [target]!" : "."]")
 	//TODO: rewrite this to be sane
 	log_attack("[key_name(owner)] casted [name], level [discipline.level_casting] of the Discipline [discipline.name][!target_type ? "." : " on [key_name(discipline.owner)]"]")
+
+	return TRUE
 
 /datum/discipline_power/proc/try_activate(atom/target)
 	if (can_activate(target, TRUE))
@@ -265,21 +277,40 @@
 
 	return FALSE
 
+/datum/discipline_power/proc/can_deactivate_untargeted()
+	if (target_type == NONE)
+		if (!owner)
+			return FALSE
+
+	return TRUE
+
+/datum/discipline_power/proc/can_deactivate(atom/target)
+	if (!can_deactivate_untargeted())
+		return FALSE
+
+	if (target_type != NONE)
+		if (!target)
+			return FALSE
+
+	return TRUE
+
 /datum/discipline_power/proc/deactivate(atom/target)
 	SHOULD_CALL_PARENT(TRUE)
 
-	if (!owner)
-		return FALSE
-
-	active = FALSE
+	if (!multi_activation)
+		active = FALSE
 
 	if (duration_length)
+		to_chat(owner, "<span class='warning'>[name] deactivates!</span>")
 		COOLDOWN_RESET(src, duration)
 	if (cancelable)
 		COOLDOWN_START(src, cooldown, cooldown_length)
 	if (deactivate_sound)
 		owner.playsound_local(owner, deactivate_sound, 50, FALSE)
-	return TRUE
+
+/datum/discipline_power/proc/try_deactivate(atom/target)
+	if (can_deactivate(target))
+		deactivate(target)
 
 /datum/discipline_power/proc/post_gain()
 	return
@@ -292,14 +323,19 @@
 			var/datum/species/kindred/species = human.dna.species
 			if (species.try_spend_blood(human, vitae_cost))
 				repeat = TRUE
+			else
+				to_chat(owner, "<span class='warning'>You can't spend enough blood to keep [name] active!")
 		else
 			if (owner.try_adjust_blood_points(-vitae_cost))
 				repeat = TRUE
+			else
+				to_chat(owner, "<span class='warning'>You can't spend enough blood to keep [name] active!")
 
 		if (repeat)
 			if (!multi_activation)
 				COOLDOWN_START(src, duration, duration_length)
 			addtimer(CALLBACK(src, PROC_REF(refresh), target), duration_length)
+			to_chat(owner, "<span class='warning'>[name] consumes your blood to stay active.</span>")
 			return
 
-		deactivate(target)
+		try_deactivate(target)

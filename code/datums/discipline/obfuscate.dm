@@ -38,8 +38,6 @@
 
 /datum/discipline_power/obfuscate/cloak_of_shadows/deactivate()
 	. = ..()
-	if (!.)
-		return
 	owner.alpha = 255
 
 //UNSEEN PRESENCE
@@ -62,8 +60,6 @@
 
 /datum/discipline_power/obfuscate/unseen_presence/deactivate()
 	. = ..()
-	if (!.)
-		return
 	owner.alpha = 255
 
 //MASK OF A THOUSAND FACES
@@ -86,8 +82,6 @@
 
 /datum/discipline_power/obfuscate/mask_of_a_thousand_faces/deactivate()
 	. = ..()
-	if (!.)
-		return
 	owner.alpha = 255
 
 //VANISH FROM THE MIND'S EYE
@@ -110,8 +104,6 @@
 
 /datum/discipline_power/obfuscate/mask_of_a_thousand_faces/deactivate()
 	. = ..()
-	if (!.)
-		return
 	owner.alpha = 255
 
 //CLOAK THE GATHERING
@@ -134,7 +126,5 @@
 
 /datum/discipline_power/obfuscate/cloak_the_gathering/deactivate()
 	. = ..()
-	if (!.)
-		return
 	owner.alpha = 255
 

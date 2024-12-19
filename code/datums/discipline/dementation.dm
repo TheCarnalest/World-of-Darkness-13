@@ -24,8 +24,6 @@
 
 /datum/discipline_power/dementation/activate(mob/living/carbon/human/target)
 	. = ..()
-	if (!.)
-		return .
 	var/mob/living/carbon/human/H = target
 	H.remove_overlay(MUTATIONS_LAYER)
 	var/mutable_appearance/dementation_overlay = mutable_appearance('code/modules/wod13/icons.dmi', "dementation", -MUTATIONS_LAYER)
@@ -35,8 +33,6 @@
 
 /datum/discipline_power/dementation/deactivate(mob/living/carbon/human/target)
 	. = ..()
-	if (!.)
-		return .
 	target.remove_overlay(MUTATIONS_LAYER)
 
 /datum/discipline_power/dementation/can_activate(mob/living/target, alert = FALSE)
@@ -66,8 +62,6 @@
 
 /datum/discipline_power/dementation/passion/activate(mob/living/carbon/human/target)
 	. = ..()
-	if (!.)
-		return .
 	target.Stun(0.5 SECONDS)
 	target.emote("laugh")
 	to_chat(target, "<span class='userdanger'><b>HAHAHAHAHAHAHAHAHAHAHAHA!!</b></span>")
@@ -84,8 +78,6 @@
 
 /datum/discipline_power/dementation/the_haunting/activate(mob/living/carbon/human/target)
 	. = ..()
-	if (!.)
-		return .
 	target.hallucination += 50
 	new /datum/hallucination/oh_yeah(target, TRUE)
 
@@ -98,8 +90,6 @@
 
 /datum/discipline_power/dementation/eyes_of_chaos/activate(mob/living/carbon/human/target)
 	. = ..()
-	if (!.)
-		return .
 	target.Immobilize(2 SECONDS)
 	if(!HAS_TRAIT(target, TRAIT_KNOCKEDOUT) && !HAS_TRAIT(target, TRAIT_IMMOBILIZED) && !HAS_TRAIT(target, TRAIT_RESTRAINED))
 		if(prob(50))
@@ -116,8 +106,6 @@
 
 /datum/discipline_power/dementation/voice_of_madness/activate(mob/living/carbon/human/target)
 	. = ..()
-	if (!.)
-		return
 	new /datum/hallucination/death(target, TRUE)
 
 //TOTAL INSANITY
@@ -129,8 +117,6 @@
 
 /datum/discipline_power/dementation/total_insanity/activate(mob/living/carbon/human/target)
 	. = ..()
-	if (!.)
-		return
 	var/datum/cb = CALLBACK(target, /mob/living/carbon/human/proc/attack_myself_command)
 	for(var/i in 1 to 20)
 		addtimer(cb, (i - 1) * 1.5 SECONDS)

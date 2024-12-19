@@ -60,11 +60,17 @@
 /datum/discipline/proc/activate(atom/target)
 	current_power.activate(target)
 
-/datum/discipline/proc/deactivate(atom/target)
-	current_power.deactivate(target)
-
 /datum/discipline/proc/try_activate(atom/target)
 	return current_power.try_activate(target)
+
+/datum/discipline/proc/can_deactivate(atom/target)
+	return current_power.can_deactivate(target)
+
+/datum/discipline/proc/can_deactivate_untargeted()
+	return current_power.can_deactivate_untargeted()
+
+/datum/discipline/proc/deactivate(atom/target)
+	current_power.deactivate(target)
 
 /datum/discipline/proc/post_gain()
 	for (var/datum/discipline_power/power in known_powers)

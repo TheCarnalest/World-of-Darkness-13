@@ -20,7 +20,7 @@
 
 	multi_activation = TRUE
 	cooldown_length = 15 SECONDS
-	duration_length = 3 SECONDS
+	duration_length = 5 SECONDS
 
 /datum/discipline_power/presence/activate(mob/living/carbon/human/target)
 	. = ..()
@@ -32,8 +32,6 @@
 
 /datum/discipline_power/presence/deactivate(mob/living/carbon/human/target)
 	. = ..()
-	if (!.)
-		return
 	target.remove_overlay(MUTATIONS_LAYER)
 
 /datum/discipline_power/presence/can_activate(mob/living/target, alert = FALSE)
@@ -41,14 +39,17 @@
 	if (!.)
 		return .
 	if (!ishuman(target))
-		return FALSE
+		. = FALSE
+		if (alert)
+			to_chat(owner, "<span class='warning'>[name] can only be used on humans!</span>")
+		return .
 	var/mypower = owner.social + owner.additional_social
 	var/theirpower = target.mentality + target.additional_mentality
 	if((theirpower >= mypower) || ((owner.generation - 3) >= target.generation))
 		if (alert)
 			to_chat(owner, "<span class='warning'>[target]'s mind is too powerful to sway!</span>")
-		return FALSE
-	return TRUE
+		. = FALSE
+	return .
 
 //AWE
 /datum/discipline_power/presence/awe

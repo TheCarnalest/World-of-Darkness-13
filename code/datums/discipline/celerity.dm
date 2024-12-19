@@ -11,7 +11,7 @@
 	name = "Celerity power name"
 	desc = "Celerity power description"
 
-	check_flags = DISC_CHECK_LYING|DISC_CHECK_IMMOBILE
+	check_flags = DISC_CHECK_LYING | DISC_CHECK_IMMOBILE
 
 	activate_sound = 'code/modules/wod13/sounds/celerity_activate.ogg'
 	deactivate_sound = 'code/modules/wod13/sounds/celerity_deactivate.ogg'
@@ -20,7 +20,9 @@
 	duration_length = DURATION_TURN_PLUS
 
 /datum/discipline_power/celerity/proc/celerity_visual(datum/discipline_power/celerity/source, atom/newloc, dir)
-	if(owner.celerity_visual) //this check and variable should be removed, but some stuff depends on it, so rework that some time
+	SIGNAL_HANDLER
+
+	spawn()
 		var/obj/effect/celerity/C = new(owner.loc)
 		C.name = owner.name
 		C.appearance = owner.appearance
@@ -34,9 +36,9 @@
 	if (owner.temporis_visual || owner.temporis_blur) //sorry guys, no using two time powers at once
 		to_chat(owner, "<span class='userdanger'>Your active Temporis causes Celerity to wrench your body's temporal field apart!</span>")
 		owner.emote("scream")
-		spawn(DURATION_TURN)
+		spawn(3 SECONDS)
 			owner.gib()
-		return
+		return FALSE
 
 	owner.celerity_visual = TRUE
 	RegisterSignal(owner, COMSIG_MOVABLE_MOVED, PROC_REF(celerity_visual))
@@ -45,7 +47,6 @@
 	. = ..()
 	owner.celerity_visual = FALSE
 	UnregisterSignal(owner, COMSIG_MOVABLE_MOVED)
-	return .
 
 /obj/effect/celerity
 	name = "Damn"
@@ -77,8 +78,8 @@
 	owner.add_movespeed_modifier(/datum/movespeed_modifier/celerity)
 
 /datum/discipline_power/celerity/one/deactivate()
-	 . = ..()
-	 owner.remove_movespeed_modifier(/datum/movespeed_modifier/celerity)
+	. = ..()
+	owner.remove_movespeed_modifier(/datum/movespeed_modifier/celerity)
 
 //CELERITY 2
 /datum/movespeed_modifier/celerity2
@@ -100,8 +101,8 @@
 	owner.add_movespeed_modifier(/datum/movespeed_modifier/celerity2)
 
 /datum/discipline_power/celerity/two/deactivate()
-	 . = ..()
-	 owner.remove_movespeed_modifier(/datum/movespeed_modifier/celerity2)
+	. = ..()
+	owner.remove_movespeed_modifier(/datum/movespeed_modifier/celerity2)
 
 //CELERITY 3
 /datum/movespeed_modifier/celerity3
@@ -123,8 +124,8 @@
 	owner.add_movespeed_modifier(/datum/movespeed_modifier/celerity3)
 
 /datum/discipline_power/celerity/three/deactivate()
-	 . = ..()
-	 owner.remove_movespeed_modifier(/datum/movespeed_modifier/celerity3)
+	. = ..()
+	owner.remove_movespeed_modifier(/datum/movespeed_modifier/celerity3)
 
 //CELERITY 4
 /datum/movespeed_modifier/celerity4
@@ -146,8 +147,8 @@
 	owner.add_movespeed_modifier(/datum/movespeed_modifier/celerity4)
 
 /datum/discipline_power/celerity/four/deactivate()
-	 . = ..()
-	 owner.remove_movespeed_modifier(/datum/movespeed_modifier/celerity4)
+	. = ..()
+	owner.remove_movespeed_modifier(/datum/movespeed_modifier/celerity4)
 
 //CELERITY 5
 /datum/movespeed_modifier/celerity5
@@ -169,5 +170,5 @@
 	owner.add_movespeed_modifier(/datum/movespeed_modifier/celerity5)
 
 /datum/discipline_power/celerity/five/deactivate()
-	 . = ..()
-	 owner.remove_movespeed_modifier(/datum/movespeed_modifier/celerity5)
+	. = ..()
+	owner.remove_movespeed_modifier(/datum/movespeed_modifier/celerity5)

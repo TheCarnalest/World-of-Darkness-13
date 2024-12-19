@@ -40,8 +40,6 @@
 
 /datum/discipline_power/fortitude/one/deactivate()
 	. = ..()
-	if (!.)
-		return
 	owner.physiology.armor.melee -= 15
 	owner.physiology.armor.bullet -= 15
 
@@ -66,8 +64,6 @@
 
 /datum/discipline_power/fortitude/two/deactivate()
 	. = ..()
-	if (!.)
-		return
 	owner.physiology.armor.melee -= 30
 	owner.physiology.armor.bullet -= 30
 
@@ -92,8 +88,6 @@
 
 /datum/discipline_power/fortitude/three/deactivate()
 	. = ..()
-	if (!.)
-		return
 	owner.physiology.armor.melee -= 45
 	owner.physiology.armor.bullet -= 45
 
@@ -118,8 +112,6 @@
 
 /datum/discipline_power/fortitude/four/deactivate()
 	. = ..()
-	if (!.)
-		return
 	owner.physiology.armor.melee -= 60
 	owner.physiology.armor.bullet -= 60
 
@@ -144,7 +136,5 @@
 
 /datum/discipline_power/fortitude/five/deactivate()
 	. = ..()
-	if (!.)
-		return
 	owner.physiology.armor.melee -= 75
 	owner.physiology.armor.bullet -= 75

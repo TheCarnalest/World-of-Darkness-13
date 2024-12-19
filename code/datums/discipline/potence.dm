@@ -46,8 +46,6 @@
 
 /datum/discipline_power/potence/one/deactivate()
 	. = ..()
-	if (!.)
-		return
 	owner.dna.species.punchdamagelow -= 8
 	owner.dna.species.punchdamagehigh -= 8
 	owner.dna.species.meleemod -= 0.4
@@ -81,8 +79,6 @@
 
 /datum/discipline_power/potence/two/deactivate()
 	. = ..()
-	if (!.)
-		return
 	owner.dna.species.punchdamagelow -= 16
 	owner.dna.species.punchdamagehigh -= 16
 	owner.dna.species.meleemod -= 0.8
@@ -116,8 +112,6 @@
 
 /datum/discipline_power/potence/three/deactivate()
 	. = ..()
-	if (!.)
-		return
 	owner.dna.species.punchdamagelow -= 24
 	owner.dna.species.punchdamagehigh -= 24
 	owner.dna.species.meleemod -= 1.2
@@ -151,8 +145,6 @@
 
 /datum/discipline_power/potence/four/deactivate()
 	. = ..()
-	if (!.)
-		return
 	owner.dna.species.punchdamagelow -= 32
 	owner.dna.species.punchdamagehigh -= 32
 	owner.dna.species.meleemod -= 1.6
@@ -186,8 +178,6 @@
 
 /datum/discipline_power/potence/five/deactivate()
 	. = ..()
-	if (!.)
-		return
 	owner.dna.species.punchdamagelow -= 40
 	owner.dna.species.punchdamagehigh -= 40
 	owner.dna.species.meleemod -= 2

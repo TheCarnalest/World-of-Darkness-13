@@ -38,8 +38,6 @@
 
 /datum/discipline_power/auspex/heightened_senses/deactivate()
 	. = ..()
-	if (!.)
-		return .
 	REMOVE_TRAIT(owner, TRAIT_THERMAL_VISION, TRAIT_GENERIC)
 	REMOVE_TRAIT(owner, TRAIT_NIGHT_VISION, TRAIT_GENERIC)
 
@@ -57,8 +55,6 @@
 
 /datum/discipline_power/auspex/aura_perception/deactivate()
 	. = ..()
-	if (!.)
-		return .
 	var/datum/atom_hud/abductor_hud = GLOB.huds[DATA_HUD_ABDUCTOR]
 	abductor_hud.remove_hud_from(owner)
 
@@ -76,8 +72,6 @@
 
 /datum/discipline_power/auspex/the_spirits_touch/deactivate()
 	. = ..()
-	if (!.)
-		return .
 	var/datum/atom_hud/health_hud = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
 	health_hud.add_hud_to(owner)
 
@@ -94,8 +88,6 @@
 
 /datum/discipline_power/auspex/telepathy/deactivate()
 	. = ..()
-	if (!.)
-		return .
 	owner.auspex_examine = FALSE
 
 //PSYCHIC PROJECTION

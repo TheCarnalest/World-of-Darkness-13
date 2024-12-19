@@ -49,8 +49,8 @@
 	if(((theirpower >= mypower) || (owner.generation > target.generation)) && !dominate_me)
 		if (alert)
 			to_chat(owner, "<span class='warning'>[target]'s mind is too powerful to dominate!</span>")
-		return FALSE
-	return TRUE
+		. = FALSE
+	return .
 
 /datum/movespeed_modifier/dominate
 	multiplicative_slowdown = 5
@@ -64,16 +64,12 @@
 
 /datum/discipline_power/dominate/command/activate(mob/living/target)
 	. = ..()
-	if (!.)
-		return .
 	to_chat(target, "<span class='userdanger'><b>FORGET ABOUT IT</b></span>")
 	owner.say("FORGET ABOUT IT!!")
 	ADD_TRAIT(target, TRAIT_BLIND, "dominate")
 
 /datum/discipline_power/dominate/command/deactivate(mob/living/target)
 	. = ..()
-	if (!.)
-		return .
 	REMOVE_TRAIT(target, TRAIT_BLIND, "dominate")
 
 //MESMERIZE
@@ -87,8 +83,6 @@
 
 /datum/discipline_power/dominate/mesmerize/activate(mob/living/target)
 	. = ..()
-	if (!.)
-		return .
 	target.Immobilize(0.5 SECONDS)
 	if(target.body_position == STANDING_UP)
 		to_chat(target, "<span class='userdanger'><b>GET DOWN</b></span>")
@@ -107,16 +101,12 @@
 
 /datum/discipline_power/dominate/the_forgetful_mind/activate(mob/living/target)
 	. = ..()
-	if (!.)
-		return .
 	to_chat(target, "<span class='userdanger'><b>THINK TWICE</b></span>")
 	owner.say("THINK TWICE!!")
 	target.add_movespeed_modifier(/datum/movespeed_modifier/dominate)
 
 /datum/discipline_power/dominate/the_forgetful_mind/deactivate(mob/living/target)
 	. = ..()
-	if (!.)
-		return .
 	target.remove_movespeed_modifier(/datum/movespeed_modifier/dominate)
 
 //CONDITIONING
@@ -130,16 +120,12 @@
 
 /datum/discipline_power/dominate/conditioning/activate(mob/living/target)
 	. = ..()
-	if (!.)
-		return .
 	to_chat(target, "<span class='userdanger'><b>THINK TWICE</b></span>")
 	owner.say("THINK TWICE!!")
 	target.add_movespeed_modifier(/datum/movespeed_modifier/dominate)
 
 /datum/discipline_power/dominate/conditioning/deactivate(mob/living/target)
 	. = ..()
-	if (!.)
-		return
 	target.remove_movespeed_modifier(/datum/movespeed_modifier/dominate)
 
 //POSSESSION
@@ -153,19 +139,17 @@
 
 /datum/discipline_power/dominate/possession/activate(mob/living/carbon/human/target)
 	. = ..()
-	if (!.)
-		return .
 	to_chat(target, "<span class='userdanger'><b>YOU SHOULD HARM YOURSELF NOW</b></span>")
 	owner.say("YOU SHOULD HARM YOURSELF NOW!!")
 	var/datum/cb = CALLBACK(target, /mob/living/carbon/human/proc/attack_myself_command)
 	for(var/i in 1 to 20)
 		addtimer(cb, (i - 1) * 1.5 SECONDS)
 
-/datum/discipline_power/dominate/possession/can_activate(mob/living/target)
+/datum/discipline_power/dominate/possession/can_activate(mob/living/target, alert)
 	. = ..()
-	if (!.)
-		return .
 	if (!ishuman(target))
-		return FALSE
+		. = FALSE
+		if (alert)
+			to_chat(owner, "<span class='warning'>[name] can only be used on humans!</span>")
 	return .
 

@@ -127,8 +127,6 @@
 
 /datum/discipline_power/animalism/rat_shapeshift/deactivate()
 	. = ..()
-	if (!.)
-		return .
 	if(owner.stat != DEAD)
 		AN.Restore(AN.myshape)
 		owner.Stun(1.5 SECONDS)
