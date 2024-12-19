@@ -214,96 +214,12 @@
 		else
 			ClickOn(src)
 
-/datum/discipline/protean
-	name = "Protean"
-	desc = "Lets your beast out, making you stronger and faster. Violates Masquerade."
-	icon_state = "protean"
-	/*
-	cost = 1
-	ranged = FALSE
-	delay = 20 SECONDS
-	violates_masquerade = TRUE
-	activate_sound = 'code/modules/wod13/sounds/protean_activate.ogg'
-	clan_restricted = TRUE
-	*/
-	var/obj/effect/proc_holder/spell/targeted/shapeshift/gangrel/GA
-
-/datum/movespeed_modifier/protean2
-	multiplicative_slowdown = -0.15
-
-/obj/effect/proc_holder/spell/targeted/shapeshift/gangrel
-	name = "Gangrel Form"
-	desc = "Take on the shape a wolf."
-	charge_max = 50
-	cooldown_min = 50
-	revert_on_death = TRUE
-	die_with_shapeshifted_form = FALSE
-	shapeshift_type = /mob/living/simple_animal/hostile/gangrel
-
-/datum/discipline/protean/activate(mob/living/target, mob/living/carbon/human/owner)
-	. = ..()
-	/*
-	var/mod = min(4, level_casting)
-//	var/mutable_appearance/protean_overlay = mutable_appearance('code/modules/wod13/icons.dmi', "protean[mod]", -PROTEAN_LAYER)
-	if(!GA)
-		GA = new(owner)
-	switch(mod)
-		if(1)
-			owner.drop_all_held_items()
-			owner.put_in_r_hand(new /obj/item/melee/vampirearms/knife/gangrel(owner))
-			owner.put_in_l_hand(new /obj/item/melee/vampirearms/knife/gangrel(owner))
-			owner.add_client_colour(/datum/client_colour/glass_colour/red)
-			spawn(delay+owner.discipline_time_plus)
-				if(owner)
-					for(var/obj/item/melee/vampirearms/knife/gangrel/G in owner.contents)
-						if(G)
-							qdel(G)
-					owner.remove_client_colour(/datum/client_colour/glass_colour/red)
-					owner.playsound_local(owner.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
-		if(2)
-			owner.drop_all_held_items()
-			owner.put_in_r_hand(new /obj/item/melee/vampirearms/knife/gangrel(owner))
-			owner.put_in_l_hand(new /obj/item/melee/vampirearms/knife/gangrel(owner))
-			owner.add_client_colour(/datum/client_colour/glass_colour/red)
-			owner.add_movespeed_modifier(/datum/movespeed_modifier/protean2)
-			spawn(delay+owner.discipline_time_plus)
-				if(owner)
-					for(var/obj/item/melee/vampirearms/knife/gangrel/G in owner.contents)
-						if(G)
-							qdel(G)
-					owner.remove_client_colour(/datum/client_colour/glass_colour/red)
-					owner.playsound_local(owner.loc, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
-					owner.remove_movespeed_modifier(/datum/movespeed_modifier/protean2)
-		if(3)
-			owner.drop_all_held_items()
-			GA.Shapeshift(owner)
-			spawn(delay+owner.discipline_time_plus)
-				if(owner && owner.stat != DEAD)
-					GA.Restore(GA.myshape)
-					owner.Stun(15)
-					owner.do_jitter_animation(30)
-					owner.playsound_local(owner, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
-		if(4 to 5)
-			owner.drop_all_held_items()
-			if(level_casting == 4)
-				GA.shapeshift_type = /mob/living/simple_animal/hostile/gangrel/better
-			if(level_casting == 5)
-				GA.shapeshift_type = /mob/living/simple_animal/hostile/gangrel/best
-			GA.Shapeshift(owner)
-			spawn(delay+owner.discipline_time_plus)
-				if(owner && owner.stat != DEAD)
-					GA.Restore(GA.myshape)
-					owner.Stun(10)
-					owner.do_jitter_animation(15)
-					owner.playsound_local(owner, 'code/modules/wod13/sounds/protean_deactivate.ogg', 50, FALSE)
-	*/
-
 /mob/living/proc/tremere_gib()
-	Stun(50)
+	Stun(5 SECONDS)
 	new /obj/effect/temp_visual/tremere(loc, "gib")
-	animate(src, pixel_y = 16, color = "#ff0000", time = 50, loop = 1)
+	animate(src, pixel_y = 16, color = "#ff0000", time = 5 SECONDS, loop = 1)
 
-	spawn(50)
+	spawn(5 SECONDS)
 		if(stat != DEAD)
 			death()
 		var/list/items = list()
@@ -405,7 +321,7 @@
 			var/turf/start = get_turf(owner)
 			var/obj/projectile/thaumaturgy/H = new(start)
 			H.firer = owner
-			H.damage = 10+owner.thaum_damage_plus
+			H.damage = 10 + owner.thaum_damage_plus
 			H.preparePixelProjectile(target, start)
 			H.level = 2
 			H.fire(direct_target = target)
@@ -483,7 +399,7 @@
 			if(EAST)
 				antidir = WEST
 		if(target.dir == antidir)
-			target.Immobilize(10)
+			target.Immobilize(1 SECONDS)
 			target.visible_message("<span class='warning'><b>[owner] hypnotizes [target] with his eyes!</b></span>", "<span class='warning'><b>[owner] hypnotizes you like a cobra!</b></span>")
 			owner.playsound_local(target.loc, 'code/modules/wod13/sounds/serpentis.ogg', 50, TRUE)
 			if(ishuman(target))
@@ -492,7 +408,7 @@
 				var/mutable_appearance/serpentis_overlay = mutable_appearance('code/modules/wod13/icons.dmi', "serpentis", -MUTATIONS_LAYER)
 				H.overlays_standing[MUTATIONS_LAYER] = serpentis_overlay
 				H.apply_overlay(MUTATIONS_LAYER)
-				spawn(5)
+				spawn(0.5 SECONDS)
 					H.remove_overlay(MUTATIONS_LAYER)
 	if(level_casting >= 2)
 //		var/turf/start = get_turf(owner)

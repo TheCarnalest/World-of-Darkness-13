@@ -83,12 +83,19 @@
 			to_chat(owner, "<span class='warning'>[name] is already active!</span>")
 		return FALSE
 
-	//a mutually exclusive power is already active
+	//a mutually exclusive power is already active or on cooldown
 	for (var/exclude_power in mutually_exclusive)
 		var/datum/discipline_power/found_power = discipline.get_power(exclude_power)
-		if (found_power?.active)
+		if (!found_power)
+			continue
+
+		if (found_power.active)
 			if (alert)
 				to_chat(owner, "<span class='warning'>You cannot have [name] and [found_power] active at the same time!")
+			return FALSE
+		if (!COOLDOWN_FINISHED(found_power, cooldown))
+			if (alert)
+				to_chat(owner, "<span class='warning'>You cannot activate [name] before [found_power]'s cooldown expires.")
 			return FALSE
 
 	//the user cannot afford the power's vitae expenditure
@@ -98,7 +105,7 @@
 		return FALSE
 
 	//the power's cooldown has not elapsed
-	if (get_cooldown())
+	if (!COOLDOWN_FINISHED(src, cooldown))
 		if (alert)
 			to_chat(owner, "<span class='warning'>[name] is on cooldown!</span>")
 		return FALSE

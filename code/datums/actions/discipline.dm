@@ -24,6 +24,8 @@
 /datum/action/discipline/Trigger()
 	. = ..()
 
+	UpdateButtonIcon()
+
 	//easy de-targeting
 	if (targeting)
 		end_targeting()
@@ -52,6 +54,8 @@
 			power.try_activate()
 		else if (power.range > 0) //ranged targeted activation
 			begin_targeting()
+
+	UpdateButtonIcon()
 
 	return .
 
@@ -87,6 +91,8 @@
 	discipline.current_power = discipline.equipped_powers[discipline.level_casting]
 	if (button)
 		ApplyIcon(button, TRUE)
+
+	UpdateButtonIcon()
 
 /datum/action/discipline/proc/end_targeting()
 	if (!owner?.client)
