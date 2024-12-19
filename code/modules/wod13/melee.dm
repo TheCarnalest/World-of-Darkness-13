@@ -17,7 +17,7 @@
 	force = 10
 	throwforce = 50
 	w_class = WEIGHT_CLASS_BULKY
-	slot_flags = ITEM_SLOT_BACK
+	slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT
 	attack_verb_continuous = list("attacks", "chops", "cleaves", "tears", "lacerates", "cuts")
 	attack_verb_simple = list("attack", "chop", "cleave", "tear", "lacerate", "cut")
 	hitsound = 'sound/weapons/bladeslice.ogg'
@@ -312,7 +312,7 @@
 	attack_verb_continuous = list("slashes", "cuts")
 	attack_verb_simple = list("slash", "cut")
 	hitsound = 'sound/weapons/slash.ogg'
-	armour_penetration = 20
+	armour_penetration = 35
 	block_chance = 5
 	sharpness = SHARP_EDGED
 	w_class = WEIGHT_CLASS_NORMAL
@@ -387,9 +387,9 @@
 		return
 	if(isliving(target))
 		var/mob/living/L = target
-		L.AdjustKnockdown(2 SECONDS)
+		L.AdjustKnockdown(4 SECONDS)
 		L.adjustStaminaLoss(50)
-		L.Immobilize(20)
+		L.Immobilize(3 SECONDS)
 		if(L.body_position != LYING_DOWN)
 			L.toggle_resting()
 	return ..()
@@ -644,7 +644,8 @@
 	w_class = WEIGHT_CLASS_NORMAL
 	attack_verb_continuous = list("bludgeons", "bashes", "beats")
 	attack_verb_simple = list("bludgeon", "bash", "beat")
-	force = 25
+	force = 30
+	wound_bonus = 15
 	block_chance = 10
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_SUITSTORE
 	w_class = WEIGHT_CLASS_NORMAL
@@ -671,11 +672,12 @@
 	extended = !extended
 	playsound(src.loc, 'sound/weapons/batonextend.ogg', 50, TRUE)
 	if(extended)
-		force = 27
+		force = 25
 		w_class = WEIGHT_CLASS_NORMAL
 		throwforce = 15
-		armour_penetration = 25
-		bare_wound_bonus = 0
+		armour_penetration = 55
+		wound_bonus = 5
+		bare_wound_bonus = 5
 		icon_state = "switchblade1"
 		attack_verb_continuous = list("slashes", "stabs", "slices", "tears", "lacerates", "rips", "dices", "cuts")
 		attack_verb_simple = list("slash", "stab", "slice", "tear", "lacerate", "rip", "dice", "cut")
