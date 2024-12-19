@@ -44,7 +44,8 @@ GLOBAL_LIST_INIT(neutral_positions, list(
 	"Graveyard Keeper",
 	"Stripper",
 	"Street Janitor",
-	"Doctor"))
+	"Doctor",
+	"Millenium Tower Security"))
 
 GLOBAL_LIST_INIT(independent_positions, list(
 	"Capo",
