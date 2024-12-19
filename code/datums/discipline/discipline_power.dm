@@ -224,7 +224,7 @@
 		return FALSE
 
 	//make it active if it can only have one active instance at a time
-	if (!multi_activation)
+	if (!multi_activation && (duration_length != 0))
 		active = TRUE
 
 	//start the cooldown if there is one, instead triggers on deactivate() if toggled
@@ -304,7 +304,7 @@
 /datum/discipline_power/proc/deactivate(atom/target)
 	SHOULD_CALL_PARENT(TRUE)
 
-	if (!multi_activation)
+	if (!multi_activation && (duration_length != 0))
 		active = FALSE
 
 	if (duration_length)
