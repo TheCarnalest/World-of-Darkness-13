@@ -203,7 +203,7 @@
 	if ((target_type & TARGET_OBJ) && istype(target, /obj))
 		return TRUE
 
-	if ((target_type & TARGET_DEAD) && istype(target, /mob/dead))
+	if ((target_type & TARGET_GHOST) && istype(target, /mob/dead))
 		return TRUE
 
 	if ((target_type & TARGET_TURF) && istype(target, /turf))

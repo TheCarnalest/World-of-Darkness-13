@@ -14,7 +14,7 @@
 ///Targets anything of type /mob/living and its children if it is not dead
 #define TARGET_LIVING (1<<2)
 ///Targets anything of type /mob/dead and its children, ie targets ghosts
-#define TARGET_DEAD (1<<3)
+#define TARGET_GHOST (1<<3)
 ///Targets anything of type /mob/living and its children, dead or not
 #define TARGET_MOB (1<<4)
 
