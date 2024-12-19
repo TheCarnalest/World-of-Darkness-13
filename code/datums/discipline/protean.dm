@@ -29,7 +29,7 @@
 
 	level = 1
 
-	mutually_exclusive = list(
+	grouped_powers = list(
 		/datum/discipline_power/protean/feral_claws,
 		/datum/discipline_power/protean/earth_meld,
 		/datum/discipline_power/protean/shape_of_the_beast,
@@ -59,7 +59,7 @@
 
 	level = 2
 
-	mutually_exclusive = list(
+	grouped_powers = list(
 		/datum/discipline_power/protean/eyes_of_the_beast,
 		/datum/discipline_power/protean/earth_meld,
 		/datum/discipline_power/protean/shape_of_the_beast,
@@ -98,7 +98,7 @@
 
 	level = 3
 
-	mutually_exclusive = list(
+	grouped_powers = list(
 		/datum/discipline_power/protean/eyes_of_the_beast,
 		/datum/discipline_power/protean/feral_claws,
 		/datum/discipline_power/protean/shape_of_the_beast,
@@ -130,7 +130,7 @@
 
 	level = 4
 
-	mutually_exclusive = list(
+	grouped_powers = list(
 		/datum/discipline_power/protean/eyes_of_the_beast,
 		/datum/discipline_power/protean/feral_claws,
 		/datum/discipline_power/protean/earth_meld,
@@ -162,7 +162,7 @@
 
 	level = 5
 
-	mutually_exclusive = list(
+	grouped_powers = list(
 		/datum/discipline_power/protean/eyes_of_the_beast,
 		/datum/discipline_power/protean/feral_claws,
 		/datum/discipline_power/protean/earth_meld,

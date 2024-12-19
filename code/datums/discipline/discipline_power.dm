@@ -42,8 +42,8 @@
 	var/cooldown_length = 0
 	///Timer tracking the cooldown of the power.
 	COOLDOWN_DECLARE(cooldown)
-	///List of Discipline power types that cannot be activated alongside this power.
-	var/list/mutually_exclusive = list()
+	///List of Discipline power types that cannot be activated alongside this power and share a cooldown with it.
+	var/list/grouped_powers = list()
 
 	///If this Discipline is currently in use.
 	var/active = FALSE
@@ -84,7 +84,7 @@
 		return FALSE
 
 	//a mutually exclusive power is already active or on cooldown
-	for (var/exclude_power in mutually_exclusive)
+	for (var/exclude_power in grouped_powers)
 		var/datum/discipline_power/found_power = discipline.get_power(exclude_power)
 		if (!found_power)
 			continue

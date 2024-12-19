@@ -28,7 +28,7 @@
 
 	level = 1
 
-	mutually_exclusive = list(
+	grouped_powers = list(
 		/datum/discipline_power/potence/two,
 		/datum/discipline_power/potence/three,
 		/datum/discipline_power/potence/four,
@@ -61,7 +61,7 @@
 
 	level = 2
 
-	mutually_exclusive = list(
+	grouped_powers = list(
 		/datum/discipline_power/potence/one,
 		/datum/discipline_power/potence/three,
 		/datum/discipline_power/potence/four,
@@ -94,7 +94,7 @@
 
 	level = 3
 
-	mutually_exclusive = list(
+	grouped_powers = list(
 		/datum/discipline_power/potence/one,
 		/datum/discipline_power/potence/two,
 		/datum/discipline_power/potence/four,
@@ -127,7 +127,7 @@
 
 	level = 4
 
-	mutually_exclusive = list(
+	grouped_powers = list(
 		/datum/discipline_power/potence/one,
 		/datum/discipline_power/potence/two,
 		/datum/discipline_power/potence/three,
@@ -160,7 +160,7 @@
 
 	level = 5
 
-	mutually_exclusive = list(
+	grouped_powers = list(
 		/datum/discipline_power/potence/one,
 		/datum/discipline_power/potence/two,
 		/datum/discipline_power/potence/three,
