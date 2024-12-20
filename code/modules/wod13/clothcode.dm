@@ -374,6 +374,17 @@
 	desc = "Robust-looking boots."
 	icon_state = "jackboots"
 
+/obj/item/clothing/shoes/vampire/fireshoes
+	name = "fire resistant boots"
+	desc = "A pair of heavy duty shoes, specially made to be all but impervious to fire."
+	icon_state = "jackboots"
+	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
+	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
+	equip_delay_self = 60
+	resistance_flags = FIRE_PROOF
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 100, ACID = 50, WOUND = 10)
+
+
 /obj/item/clothing/shoes/vampire/jackboots/high
 	name = "high boots"
 	desc = "High boots. What else did you expect?"
