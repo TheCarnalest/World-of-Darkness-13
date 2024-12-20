@@ -6,7 +6,7 @@
 	total_positions = 2
 	spawn_positions = 2
 	supervisors = " the FBI"
-	selection_color = "#7e7e7e"
+	selection_color = "#1a1d8a"
 
 	outfit = /datum/outfit/job/fbi
 
@@ -15,7 +15,7 @@
 	paycheck = PAYCHECK_MEDIUM
 	paycheck_department = ACCOUNT_SRV
 	display_order = JOB_DISPLAY_ORDER_FBI
-	exp_type_department = EXP_TYPE_INDEPENDENT
+	exp_type_department = EXP_TYPE_NATIONAL_SECURITY
 
 	allowed_species = list("Human")
 	minimal_generation = 13
