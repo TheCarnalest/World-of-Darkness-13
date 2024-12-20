@@ -250,8 +250,8 @@
 	name = "Mother's Touch"
 	desc = "The Garou is able to heal the wounds of any living creature, aggravated or otherwise, simply by laying hands over the afflicted area."
 	button_icon_state = "mothers_touch"
-	rage_req = 1
-	gnosis_req = 1
+	rage_req = 2
+	//gnosis_req = 1
 
 /datum/action/gift/mothers_touch/Trigger()
 	. = ..()
