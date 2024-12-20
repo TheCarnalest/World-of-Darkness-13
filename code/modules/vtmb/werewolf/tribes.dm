@@ -2,7 +2,8 @@
 	name = "Stoic Pose"
 	desc = "With this gift garou sends theirself into cryo-state, ignoring all incoming damage but also covering themself in a block of ice."
 	button_icon_state = "stoic_pose"
-//	rage_req = 1
+	rage_req = 5 // you get one free use of it as a get out of jail free card
+	gnosis_req = 2
 
 /datum/action/gift/stoic_pose/Trigger()
 	. = ..()
@@ -11,23 +12,23 @@
 		var/mob/living/carbon/C = owner
 		if(isgarou(C))
 			var/obj/were_ice/W = new (get_turf(owner))
-			C.Stun(200)
+			C.Stun(400)
 			C.forceMove(W)
-			spawn(200)
+			spawn(400)
 				C.forceMove(get_turf(W))
 				qdel(W)
 		if(iscrinos(C))
 			var/obj/were_ice/crinos/W = new (get_turf(owner))
-			C.Stun(200)
+			C.Stun(400)
 			C.forceMove(W)
-			spawn(200)
+			spawn(400)
 				C.forceMove(get_turf(W))
 				qdel(W)
 		if(islupus(C))
 			var/obj/were_ice/lupus/W = new (get_turf(owner))
-			C.Stun(200)
+			C.Stun(400)
 			C.forceMove(W)
-			spawn(200)
+			spawn(400)
 				C.forceMove(get_turf(W))
 				qdel(W)
 
@@ -35,7 +36,7 @@
 	name = "Freezing Wind"
 	desc = "Garou of Wendigo Tribe can create a stream of cold, freezing wind, and strike her foes with it."
 	button_icon_state = "freezing_wind"
-	gnosis_req = 1
+	gnosis_req = 2
 
 /datum/action/gift/freezing_wind/Trigger()
 	. = ..()
@@ -54,7 +55,8 @@
 	name = "Bloody Feast"
 	desc = "By eating a grabbed corpse, garou can redeem their lost health and heal the injuries."
 	button_icon_state = "bloody_feast"
-	rage_req = 1
+	rage_req = 3
+	gnosis_req = 1
 
 /datum/action/gift/bloody_feast/Trigger()
 	. = ..()
@@ -95,7 +97,7 @@
 		if(ishuman(owner))
 			playsound(get_turf(owner), 'code/modules/wod13/sounds/venom_claws.ogg', 75, FALSE)
 			var/mob/living/carbon/human/H = owner
-			H.tox_damage_plus = 25
+			H.tox_damage_plus = 50
 			to_chat(owner, "<span class='notice'>You feel your claws filling with pure venom...</span>")
 			spawn(150)
 				H.tox_damage_plus = 0
@@ -103,8 +105,8 @@
 		else
 			playsound(get_turf(owner), 'code/modules/wod13/sounds/venom_claws.ogg', 75, FALSE)
 			var/mob/living/carbon/H = owner
-			H.melee_damage_lower = initial(H.melee_damage_lower)+20
-			H.melee_damage_upper = initial(H.melee_damage_upper)+20
+			H.melee_damage_lower = initial(H.melee_damage_lower)+50
+			H.melee_damage_upper = initial(H.melee_damage_upper)+50
 			H.tox_damage_plus = 25
 			to_chat(owner, "<span class='notice'>You feel your claws filling with pure venom...</span>")
 			spawn(150)
@@ -122,7 +124,7 @@
 	. = ..()
 	if(allowed_to_proceed)
 		owner.visible_message("<span class='danger'>[owner.name] crackles with heat!</span>", "<span class='danger'>You crackle with heat, charging up your Gift!</span>")
-		if(do_after(owner, 3 SECONDS))
+		if(do_after(owner, 5 SECONDS))
 			for(var/mob/living/L in orange(5, owner))
 				if(L)
 					L.adjustFireLoss(40)
@@ -158,8 +160,8 @@
 	. = ..()
 	if(allowed_to_proceed)
 		owner.visible_message("<span class='danger'>[owner.name] crackles with static electricity!</span>", "<span class='danger'>You crackle with static electricity, charging up your Gift!</span>")
-		if(do_after(owner, 3 SECONDS))
-			playsound(src, 'sound/magic/lightningshock.ogg', 100, TRUE, extrarange = 5)
+		if(do_after(owner, 5 SECONDS))
+			playsound(src, 'sound/magic/lightningshock.ogg', 100, TRUE, extrarange = 3)
 			tesla_zap(owner, 3, 30, ZAP_MOB_DAMAGE | ZAP_OBJ_DAMAGE | ZAP_MOB_STUN | ZAP_ALLOW_DUPLICATES)
 			for(var/mob/living/L in orange(6, owner))
 				if(L)
