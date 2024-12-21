@@ -494,9 +494,9 @@
 	resistance_flags = FIRE_PROOF
 	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 100, ACID = 50, WOUND = 10)
     
-/obj/item/clothing/suit/vampire/firesuit/proc/ensure_if_fire_immune(mob/living/carbon/human/user)
+	/obj/item/clothing/suit/vampire/firesuit/proc/ensure_if_fire_immune(mob/living/carbon/human/user)
     while(user.get_item_by_slot(ITEM_SLOT_HEAD) == /obj/item/clothing/head/vampire/firesuithood && user.get_item_by_slot(ITEM_SLOT_OCLOTHING) == /obj/item/clothing/suit/vampire/firesuit)
-    user.physiology.burn_mod *= 100
+        user.physiology.burn_mod *= 100
 	
 /obj/item/clothing/suit/vampire/coat
 	name = "coat"
