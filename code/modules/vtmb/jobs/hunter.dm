@@ -61,9 +61,10 @@
 	spawn()
 		var/loadout_type = input(H, "Choose the Lord's gift for you:", "Loadout") as anything in loadouts
 		switch(loadout_type)
-			if("Fire Master")
-				H.equip_to_slot_or_del(new /obj/item/clothing/head/vampire/helmet(H), ITEM_SLOT_HEAD)
-				H.equip_to_slot_or_del(new /obj/item/clothing/suit/vampire/vest(H), ITEM_SLOT_OCLOTHING)
+			if("Pyromaniac")
+				H.equip_to_slot_or_del(new /obj/item/clothing/head/vampire/firesuithood(H), ITEM_SLOT_HEAD)
+				H.equip_to_slot_or_del(new /obj/item/clothing/suit/vampire/firesuit(H), ITEM_SLOT_OCLOTHING)
+				H.equip_to_slot_or_del(new /obj/item/clothing/shoes/vampire/fireshoes(H), ITEM_SLOT_FEET)
 				H.put_in_r_hand(new /obj/item/vampire_flamethrower(H))
 				H.put_in_l_hand(new /obj/item/melee/vampirearms/fireaxe(H))
 			if("EOD Suit")

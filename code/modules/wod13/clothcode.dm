@@ -374,6 +374,17 @@
 	desc = "Robust-looking boots."
 	icon_state = "jackboots"
 
+/obj/item/clothing/shoes/vampire/fireshoes
+	name = "fire resistant boots"
+	desc = "A pair of heavy duty shoes, specially made to be all but impervious to fire."
+	icon_state = "jackboots"
+	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
+	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
+	equip_delay_self = 60
+	resistance_flags = FIRE_PROOF
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 100, ACID = 50, WOUND = 10)
+
+
 /obj/item/clothing/shoes/vampire/jackboots/high
 	name = "high boots"
 	desc = "High boots. What else did you expect?"
@@ -449,6 +460,42 @@
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
 	flags_inv = HIDEHAIR|HIDEEARS
 	armor = list(MELEE = 0, BULLET = 0, LASER = 10, ENERGY = 10, BOMB = 50, BIO = 0, RAD = 0, FIRE = 50, ACID = 100, WOUND = 10)
+
+/obj/item/clothing/suit/vampire/firesuit
+	name = "aluminized firesuit"
+	desc = "An advanced aluminum suit for protection against radiant heat, molten metal, and high temperatures."
+	icon_state = "firesuit"
+	icon = 'code/modules/wod13/clothing.dmi'
+	worn_icon = 'code/modules/wod13/worn.dmi'
+	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS|FEET|HANDS
+	flags_inv = HIDEJUMPSUIT
+	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
+	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
+	equip_delay_self = 60
+	resistance_flags = FIRE_PROOF
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 100, ACID = 50, WOUND = 10)
+
+/obj/item/clothing/head/vampire/firesuithood
+	name = "aluminized firesuit hood"
+	desc = "An aluminized hood for protection against radiant heat, molten metal, and high temperatures."
+	icon_state = "firesuithood"
+	icon = 'code/modules/wod13/clothing.dmi'
+	worn_icon = 'code/modules/wod13/worn.dmi'
+	onflooricon = 'code/modules/wod13/onfloor.dmi'
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR
+	heat_protection = HEAD
+	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
+	dynamic_hair_suffix = ""
+	dynamic_fhair_suffix = ""
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
+	visor_flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
+	equip_delay_self = 60
+	resistance_flags = FIRE_PROOF
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 100, ACID = 50, WOUND = 10)
+    
+	
+
 
 /obj/item/clothing/suit/vampire/coat
 	name = "coat"
