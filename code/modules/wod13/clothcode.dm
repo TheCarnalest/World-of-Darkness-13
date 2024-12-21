@@ -382,7 +382,7 @@
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
 	equip_delay_self = 60
 	resistance_flags = FIRE_PROOF
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 100, ACID = 50, WOUND = 10)
+	armor = list(MELEE = 0, BULLET = 0, LASER = 95, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 100, ACID = 50, WOUND = 10)
 
 
 /obj/item/clothing/shoes/vampire/jackboots/high
@@ -474,7 +474,7 @@
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
 	equip_delay_self = 60
 	resistance_flags = FIRE_PROOF
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 100, ACID = 50, WOUND = 10)
+	armor = list(MELEE = 0, BULLET = 0, LASER = 95, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 100, ACID = 50, WOUND = 10)
 
 /obj/item/clothing/head/vampire/firesuithood
 	name = "aluminized firesuit hood"
@@ -492,7 +492,7 @@
 	visor_flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
 	equip_delay_self = 60
 	resistance_flags = FIRE_PROOF
-	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 100, ACID = 50, WOUND = 10)
+	armor = list(MELEE = 0, BULLET = 0, LASER = 95, ENERGY = 0, BOMB = 0, BIO = 0, RAD = 0, FIRE = 100, ACID = 50, WOUND = 10)
     
 	
 
