@@ -448,6 +448,7 @@
 			H.remove_overlay(PROTEAN_LAYER)
 			G.punchdamagelow -= 15
 			G.punchdamagehigh -= 15
+			H.physique = initial(H.physique)
 			H.physiology.armor.melee -= 15
 			H.physiology.armor.bullet -= 15
 			var/matrix/M = matrix()
@@ -462,10 +463,11 @@
 			H.apply_overlay(PROTEAN_LAYER)
 			G.punchdamagelow += 15
 			G.punchdamagehigh += 15
+			H.physique = H.physique+2
 			H.physiology.armor.melee += 15
 			H.physiology.armor.bullet += 15
 			var/matrix/M = matrix()
-			M.Scale(1.3)
+			M.Scale(1.23)
 			animate(H, transform = M, time = 1 SECONDS)
 			G.glabro = TRUE
 			H.update_icons()
