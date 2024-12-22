@@ -68,6 +68,13 @@
 	contains = list(/obj/item/melee/vampirearms/katana)
 	crate_name = "weapon crate"
 
+/datum/supply_pack/vampire/weaponmachete
+	name = "Weapon (machete)"
+	desc = "Contains machete."
+	cost = 500
+	contains = list(/obj/item/melee/vampirearms/machete)
+	crate_name = "weapon crate"
+
 /datum/supply_pack/vampire/weaponchainsaw
 	name = "Weapon (chainsaw)"
 	desc = "Contains chainsaw."
