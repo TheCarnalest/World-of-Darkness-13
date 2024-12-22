@@ -1217,7 +1217,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	popup.open(FALSE)
 	onclose(user, "capturekeypress", src)
 
-/datum/preferences/proc/SetChoices(mob/user, limit = 17, list/splitJobs = list("Chief Engineer"), widthPerColumn = 295, height = 620)
+/datum/preferences/proc/SetChoices(mob/user, limit = 17, list/splitJobs = list("Chief Engineer"), widthPerColumn = 400, height = 700)
 	if(!SSjob)
 		return
 
@@ -1270,19 +1270,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				continue
 			var/required_playtime_remaining = job.required_playtime_remaining(user.client)
 			//<font color=red>text</font> (Zamenil potomu chto slishkom rezhet glaza
-			if(required_playtime_remaining && !bypass)
-				HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[ [get_exp_format(required_playtime_remaining)] as [job.get_exp_req_type()] \]</font></td></tr>"
-				continue
-			if(!job.player_old_enough(user.client) && !bypass)
-				var/available_in_days = job.available_in_days(user.client)
-				HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[IN [(available_in_days)] DAYS\]</font></td></tr>"
-				continue
-			if((generation > job.minimal_generation) && !bypass)
-				HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[FROM [job.minimal_generation] GENERATION AND OLDER\]</font></td></tr>"
-				continue
-			if((masquerade < job.minimal_masquerade) && !bypass)
-				HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[[job.minimal_masquerade] MASQUERADE POINTS REQUIRED\]</font></td></tr>"
-				continue
 			if(!job.allowed_species.Find(pref_species.name) && !bypass)
 				HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[[pref_species.name] RESTRICTED\]</font></td></tr>"
 				continue
@@ -1295,6 +1282,28 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(!alloww && !bypass)
 						HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[[clane.name] RESTRICTED\]</font></td></tr>"
 						continue
+			if(!job.player_old_enough(user.client) && !bypass)
+				var/available_in_days = job.available_in_days(user.client)
+				HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[IN [(available_in_days)] DAYS\]</font></td></tr>"
+				continue
+			if((generation > job.minimal_generation) && !bypass)
+				HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[FROM [job.minimal_generation] GENERATION AND OLDER\]</font></td></tr>"
+				continue
+			if((masquerade < job.minimal_masquerade) && !bypass)
+				HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[[job.minimal_masquerade] MASQUERADE POINTS REQUIRED\]</font></td></tr>"
+				continue
+			if(!job.can_play_role(user.client) && !bypass)
+				var/list/missing_requirements = job.get_role_requirements(user.client)
+				HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[TIMELOCKED\]</font></td></tr>"
+
+				HTML += "<tr><td colspan='2'><table width='100%' style='border: 1px solid #ccc; margin-bottom: 3px; margin-top: 3px;'>"
+				for(var/r in missing_requirements)
+					var/datum/timelock/T = r
+					var/requirement_message = "Lacking : [duration2text_custom(missing_requirements[r])]"  // Detalhes do requerimento
+					HTML += "<tr><td style='padding: 5px;'><b>[T.name]</b></td><td align='right' style='color: gray; '>[requirement_message]</td></tr>"
+
+				HTML += "</table></td></tr>"
+				continue
 			if((job_preferences[SSjob.overflow_role] == JP_LOW) && (rank != SSjob.overflow_role) && !is_banned_from(user.ckey, SSjob.overflow_role))
 				HTML += "<font color=orange>[rank]</font></td><td></td></tr>"
 				continue
@@ -1303,7 +1312,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			else
 				HTML += "<span class='dark'>[rank]</span>"
 
-			HTML += "</td><td width='40%'>"
+			HTML += "</td><td width='50%'>"
 
 			var/prefLevelLabel = "ERROR"
 			var/prefLevelColor = "pink"
