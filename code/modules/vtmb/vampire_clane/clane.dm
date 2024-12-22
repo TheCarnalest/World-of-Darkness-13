@@ -14,7 +14,10 @@ And it also helps for the character set panel
 	var/list/allowed_jobs = list()
 	var/list/denied_jobs = list()
 	var/clane_curse //There should be a reference here.
+	///The Clan's unique body sprite
 	var/alt_sprite
+	///If the Clan's unique body sprites need to account for skintone
+	var/alt_sprite_greyscale = FALSE
 	var/no_hair
 	var/no_facial
 	var/humanitymod = 1
@@ -39,7 +42,8 @@ And it also helps for the character set panel
 			H.overlays_standing[accessories_layers[current_accessory]] = acc_overlay
 			H.apply_overlay(accessories_layers[current_accessory])
 	if(alt_sprite)
-		H.skin_tone = "albino"
+		if (!alt_sprite_greyscale)
+			H.skin_tone = "albino"
 		H.dna.species.limbs_id = alt_sprite
 		H.update_body_parts()
 		H.update_body()

@@ -2877,6 +2877,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	character.flavor_text = sanitize_text(flavor_text)
 	character.gender = gender
 	character.age = age
+	character.chronological_age = total_age
 	if(gender == MALE || gender == FEMALE)
 		character.body_type = gender
 	else
@@ -2906,6 +2907,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			character.skin_tone = get_vamp_skin_color(skin_tone)
 	else
 		character.skin_tone = skin_tone
+
 	character.hairstyle = hairstyle
 	if(character.age < 16)
 		facial_hairstyle = "Shaved"
