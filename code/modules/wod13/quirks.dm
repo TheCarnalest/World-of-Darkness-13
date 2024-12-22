@@ -210,7 +210,7 @@ Dancer
 		return
 	last_acrobate = world.time
 
-	if(H.stat >= 1 || H.IsSleeping() || H.IsUnconscious() || H.IsParalyzed() || H.IsKnockdown() || H.IsStun() || HAS_TRAIT(H, TRAIT_RESTRAINED) || !isturf(H.loc))
+	if(H.stat >= SOFT_CRIT || H.IsSleeping() || H.IsUnconscious() || H.IsParalyzed() || H.IsKnockdown() || H.IsStun() || HAS_TRAIT(H, TRAIT_RESTRAINED) || !isturf(H.loc))
 		return
 
 	if(!isturf(owner.loc))
@@ -625,7 +625,7 @@ Dancer
 	if(iswerewolf(quirk_holder) || isgarou(quirk_holder))
 		return
 	if(isturf(quirk_holder.loc))
-		SSbloodhunt.announce_hunted(quirk_holder)
+		SSbloodhunt.announce_hunted(quirk_holder, "Camarilla Wanted List")
 /*
 /datum/quirk/diablerist
 	name = "Black Secret"

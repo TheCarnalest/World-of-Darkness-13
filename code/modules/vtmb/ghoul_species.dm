@@ -16,6 +16,7 @@
 	var/mob/living/carbon/human/master
 	var/changed_master = FALSE
 	var/last_vitae = 0
+	var/list/datum/discipline/disciplines = list()
 	selectable = TRUE
 
 /datum/action/ghoulinfo
@@ -221,6 +222,8 @@
 
 /datum/action/blood_heal/Trigger()
 	if(istype(owner, /mob/living/carbon/human))
+		if (HAS_TRAIT(owner, TRAIT_TORPOR))
+			return
 		var/mob/living/carbon/human/H = owner
 		level = max(1, 13-H.generation)
 		if(HAS_TRAIT(H, TRAIT_COFFIN_THERAPY))
@@ -287,7 +290,7 @@
 			if(H.pulling)
 				if(ishuman(H.pulling))
 					var/mob/living/carbon/human/pull = H.pulling
-					if(pull.stat == 4)
+					if(pull.stat == DEAD)
 						var/obj/item/card/id/id_card = H.get_idcard(FALSE)
 						if(!istype(id_card, /obj/item/card/id/clinic) && !istype(id_card, /obj/item/card/id/police) && !istype(id_card, /obj/item/card/id/sheriff) && !istype(id_card, /obj/item/card/id/prince) && !istype(id_card, /obj/item/card/id/camarilla))
 							if(H.CheckEyewitness(H, H, 7, FALSE))
@@ -295,7 +298,7 @@
 									H.last_loot_check = world.time
 									H.last_nonraid = world.time
 									H.killed_count = H.killed_count+1
-									if(!H.warrant)
+									if(!H.warrant && !H.ignores_warrant)
 										if(H.killed_count >= 5)
 											H.warrant = TRUE
 											SEND_SOUND(H, sound('code/modules/wod13/sounds/suspect.ogg', 0, 0, 75))
@@ -314,7 +317,7 @@
 										H.last_loot_check = world.time
 										H.last_nonraid = world.time
 										H.killed_count = H.killed_count+1
-										if(!H.warrant)
+										if(!H.warrant && !H.ignores_warrant)
 											if(H.killed_count >= 5)
 												H.warrant = TRUE
 												SEND_SOUND(H, sound('code/modules/wod13/sounds/suspect.ogg', 0, 0, 75))
@@ -360,7 +363,7 @@
 									H.last_loot_check = world.time
 									H.last_nonraid = world.time
 									H.killed_count = H.killed_count+1
-									if(!H.warrant)
+									if(!H.warrant && !H.ignores_warrant)
 										if(H.killed_count >= 5)
 											H.warrant = TRUE
 											SEND_SOUND(H, sound('code/modules/wod13/sounds/suspect.ogg', 0, 0, 75))
@@ -379,7 +382,7 @@
 										H.last_loot_check = world.time
 										H.last_nonraid = world.time
 										H.killed_count = H.killed_count+1
-										if(!H.warrant)
+										if(!H.warrant && !H.ignores_warrant)
 											if(H.killed_count >= 5)
 												H.warrant = TRUE
 												SEND_SOUND(H, sound('code/modules/wod13/sounds/suspect.ogg', 0, 0, 75))
@@ -402,7 +405,7 @@
 			if(H.pulling)
 				if(ishuman(H.pulling))
 					var/mob/living/carbon/human/pull = H.pulling
-					if(pull.stat == 4)
+					if(pull.stat == DEAD)
 						var/obj/item/card/id/id_card = H.get_idcard(FALSE)
 						if(!istype(id_card, /obj/item/card/id/clinic) && !istype(id_card, /obj/item/card/id/police) && !istype(id_card, /obj/item/card/id/sheriff) && !istype(id_card, /obj/item/card/id/prince) && !istype(id_card, /obj/item/card/id/camarilla))
 							if(H.CheckEyewitness(H, H, 7, FALSE))
@@ -410,7 +413,7 @@
 									H.last_loot_check = world.time
 									H.last_nonraid = world.time
 									H.killed_count = H.killed_count+1
-									if(!H.warrant)
+									if(!H.warrant && !H.ignores_warrant)
 										if(H.killed_count >= 5)
 											H.warrant = TRUE
 											SEND_SOUND(H, sound('code/modules/wod13/sounds/suspect.ogg', 0, 0, 75))
@@ -429,7 +432,7 @@
 										H.last_loot_check = world.time
 										H.last_nonraid = world.time
 										H.killed_count = H.killed_count+1
-										if(!H.warrant)
+										if(!H.warrant && !H.ignores_warrant)
 											if(H.killed_count >= 5)
 												H.warrant = TRUE
 												SEND_SOUND(H, sound('code/modules/wod13/sounds/suspect.ogg', 0, 0, 75))
@@ -440,3 +443,23 @@
 	if((H.last_bloodpool_restore + 60 SECONDS) <= world.time)
 		H.last_bloodpool_restore = world.time
 		H.bloodpool = min(H.maxbloodpool, H.bloodpool+1)
+	if(glabro)
+		if(H.CheckEyewitness(H, H, 7, FALSE))
+			H.adjust_veil(-1)
+
+/**
+ * Accesses a certain Discipline that a Ghoul has. Returns false if they don't.
+ *
+ * Arguments:
+ * * searched_discipline - Name or typepath of the Discipline being searched for.
+ */
+/datum/species/ghoul/proc/get_discipline(searched_discipline)
+	for(var/datum/discipline/discipline in disciplines)
+		if (ispath(searched_discipline, /datum/discipline))
+			if (istype(discipline, searched_discipline))
+				return discipline
+		else if (istext(searched_discipline))
+			if (discipline.name == searched_discipline)
+				return discipline
+
+	return FALSE

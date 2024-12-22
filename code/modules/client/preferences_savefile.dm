@@ -641,6 +641,13 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 			discipline4type = null
 			discipline4level = null
 
+	//repair some damage done by an exploit by resetting
+	if ((true_experience > 1000) && !check_rights_for(parent, R_ADMIN))
+		message_admins("[ADMIN_LOOKUPFLW(parent)] loaded a character slot with [true_experience] experience. The slot has been reset.")
+		log_game("[key_name(parent)] loaded a character slot with [true_experience] experience. The slot has been reset.")
+		to_chat(parent, "<span class='userdanger'>You tried to load a character slot with [true_experience] experience. It has been reset.</span>")
+		reset_character()
+
 	return TRUE
 
 /datum/preferences/proc/save_character()

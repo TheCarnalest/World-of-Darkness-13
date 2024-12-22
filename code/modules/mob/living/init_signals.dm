@@ -44,6 +44,11 @@
 	RegisterSignal(src, SIGNAL_ADDTRAIT(TRAIT_SKITTISH), PROC_REF(on_skittish_trait_gain))
 	RegisterSignal(src, SIGNAL_REMOVETRAIT(TRAIT_SKITTISH), PROC_REF(on_skittish_trait_loss))
 
+	RegisterSignal(src, list(
+		SIGNAL_ADDTRAIT(TRAIT_TORPOR),
+		SIGNAL_REMOVETRAIT(TRAIT_TORPOR),
+	), PROC_REF(update_torpor_action))
+
 /// Called when [TRAIT_KNOCKEDOUT] is added to the mob.
 /mob/living/proc/on_knockedout_trait_gain(datum/source)
 	SIGNAL_HANDLER
@@ -173,7 +178,6 @@
 	SIGNAL_HANDLER
 	REMOVE_TRAIT(src, TRAIT_HANDS_BLOCKED, TRAIT_RESTRAINED)
 
-
 /**
  * Called when traits that alter succumbing are added/removed.
  *
@@ -185,6 +189,13 @@
 		throw_alert("succumb", /atom/movable/screen/alert/succumb)
 	else
 		clear_alert("succumb")
+
+/mob/living/proc/update_torpor_action()
+	SIGNAL_HANDLER
+	if (HAS_TRAIT(src, TRAIT_TORPOR))
+		throw_alert("untorpor", /atom/movable/screen/alert/untorpor)
+	else
+		clear_alert("untorpor")
 
 ///From [element/movetype_handler/on_movement_type_trait_gain()]
 /mob/living/proc/on_movement_type_flag_enabled(datum/source, trait)

@@ -29,6 +29,7 @@ And it also helps for the character set panel
 	var/accessories = list()
 	var/accessories_layers = list()
 	var/current_accessory
+	var/clan_keys //Keys to your hideout
 
 /datum/vampireclane/proc/on_gain(var/mob/living/carbon/human/H)
 	if(length(accessories))
@@ -115,3 +116,5 @@ And it also helps for the character set panel
 			var/obj/effect/landmark/latejoin_masquerade/LM = pick(GLOB.masquerade_latejoin)
 			if(LM)
 				H.forceMove(LM.loc)
+	if(clan_keys)
+		H.put_in_r_hand(new clan_keys(H))

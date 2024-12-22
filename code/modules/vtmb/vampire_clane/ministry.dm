@@ -7,8 +7,8 @@
 		/datum/discipline/presence = 2,
 		/datum/discipline/serpentis = 3
 	)
-	male_clothes = "/obj/item/clothing/under/vampire/pimp"
-	female_clothes = "/obj/item/clothing/under/vampire/whore"
+	male_clothes = "/obj/item/clothing/under/vampire/slickback"
+	female_clothes = "/obj/item/clothing/under/vampire/burlesque"
 
 /datum/vampireclane/ministry/on_gain(mob/living/carbon/human/H)
 	..()
@@ -35,6 +35,7 @@
 	desc = "Stores some precious organs..."
 	icon = 'code/modules/wod13/icons.dmi'
 	icon_state = "urn"
+	is_magic = TRUE
 	var/mob/living/own
 
 /obj/item/urn/attackby(obj/item/I, mob/living/user, params)
@@ -96,6 +97,7 @@
 						heart.Insert(H)
 			urn.own = null
 			qdel(urn)
+			urn = null
 
 /datum/action/mummyfy
 	name = "Mummyfy"

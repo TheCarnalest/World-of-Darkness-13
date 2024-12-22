@@ -377,13 +377,14 @@
 		new /datum/data/mining_equipment("white buisness suit",	/obj/item/clothing/under/vampire/office,	50),
 		new /datum/data/mining_equipment("punk outfit",	/obj/item/clothing/under/vampire/emo,	20),
 		new /datum/data/mining_equipment("black grunge outfit",	/obj/item/clothing/under/vampire/black,	20),
-		new /datum/data/mining_equipment("whore outfit", /obj/item/clothing/under/vampire/whore,	15),
-		new /datum/data/mining_equipment("daisy dukes", /obj/item/clothing/under/vampire/whore/daisyd,	10),
+		new /datum/data/mining_equipment("burlesque outfit", /obj/item/clothing/under/vampire/burlesque,	15),
+		new /datum/data/mining_equipment("daisy dukes", /obj/item/clothing/under/vampire/burlesque/daisyd,	10),
 		new /datum/data/mining_equipment("red hipster outfit",	/obj/item/clothing/under/vampire/red,	20),
 		new /datum/data/mining_equipment("crimson red dress",	/obj/item/clothing/under/vampire/primogen_toreador/female	,	350),
+		new /datum/data/mining_equipment("purple fur coat",		/obj/item/clothing/suit/vampire/slickbackcoat,	500),
 		new /datum/data/mining_equipment("gothic clothes",	/obj/item/clothing/under/vampire/gothic,	20),
 		new /datum/data/mining_equipment("purple and black outfit",	/obj/item/clothing/under/vampire/sexy,	25),
-		new /datum/data/mining_equipment("cargo jacket",	/obj/item/clothing/under/vampire/pimp,	25),
+		new /datum/data/mining_equipment("slick jacket",	/obj/item/clothing/under/vampire/slickback,		25),
 		new /datum/data/mining_equipment("black overcoat",	/obj/item/clothing/under/vampire/rich,	45),
 		new /datum/data/mining_equipment("black dress",	/obj/item/clothing/under/vampire/business,	250),
 		new /datum/data/mining_equipment("black shoes",	/obj/item/clothing/shoes/vampire,	10),
@@ -412,6 +413,8 @@
 		new /datum/data/mining_equipment("bandana",	/obj/item/clothing/head/vampire/bandana,	10),
 		new /datum/data/mining_equipment("red bandana",	/obj/item/clothing/head/vampire/bandana/red,	10),
 		new /datum/data/mining_equipment("black bandana",	/obj/item/clothing/head/vampire/bandana/black,	10),
+		new /datum/data/mining_equipment("baseball cap", /obj/item/clothing/head/vampire/baseballcap, 10),
+		new /datum/data/mining_equipment("ushanka",	/obj/item/clothing/head/vampire/ushanka, 20),
 		new /datum/data/mining_equipment("beanie",	/obj/item/clothing/head/vampire/beanie,	10),
 		new /datum/data/mining_equipment("black beanie",	/obj/item/clothing/head/vampire/beanie/black,	10),
 		new /datum/data/mining_equipment("rough beanie",	/obj/item/clothing/head/vampire/beanie/homeless,	10),
@@ -489,7 +492,8 @@
 	)
 
 /obj/machinery/mineral/equipment_vendor/fastfood/illegal
-	prize_list = list(new /datum/data/mining_equipment("morphine syringe",	/obj/item/reagent_containers/syringe/contraband/morphine,	100),
+	prize_list = list(
+		new /datum/data/mining_equipment("morphine syringe",	/obj/item/reagent_containers/syringe/contraband/morphine,	100),
 		new	/datum/data/mining_equipment("meth package",	/obj/item/reagent_containers/food/drinks/meth,	300),
 		new	/datum/data/mining_equipment("cocaine package",	/obj/item/reagent_containers/food/drinks/meth/cocaine,	700),
 		new /datum/data/mining_equipment("LSD pill bottle",		/obj/item/storage/pill_bottle/lsd,	50),
@@ -512,8 +516,9 @@
 		new /datum/data/mining_equipment("zippo lighter",	/obj/item/lighter,	20),
 		new /datum/data/mining_equipment("Surgery dufflebag", /obj/item/storage/backpack/duffelbag/med/surgery, 100),
 		new /datum/data/mining_equipment("lighter",		/obj/item/lighter/greyscale,	10),
-		new /datum/data/mining_equipment("knife",	/obj/item/melee/vampirearms/knife,	85)
-		)
+		new /datum/data/mining_equipment("knife",	/obj/item/melee/vampirearms/knife,	85),
+		new /datum/data/mining_equipment("switchblade",	/obj/item/melee/vampirearms/knife/switchblade, 85)
+	)
 
 /obj/machinery/mineral/equipment_vendor/fastfood/pharmacy
 	prize_list = list(
@@ -523,7 +528,7 @@
 		new /datum/data/mining_equipment("bruise pack", /obj/item/stack/medical/bruise_pack, 100),
 		new /datum/data/mining_equipment("burn ointment", /obj/item/stack/medical/ointment, 100),
 		new /datum/data/mining_equipment("latex gloves", /obj/item/clothing/gloves/vampire/latex, 150)
-		)
+	)
 
 /obj/machinery/mineral/equipment_vendor/fastfood/hospital // we should probably swap from a vendor system and work on a sort of gameplay loop - tzula
 	prize_list = list(
@@ -540,7 +545,7 @@
 		new /datum/data/mining_equipment("surgical apron", /obj/item/clothing/suit/apron/surgical, 100),
 		new /datum/data/mining_equipment("latex gloves", /obj/item/clothing/gloves/vampire/latex, 100),
 		new /datum/data/mining_equipment("burn ointment", /obj/item/stack/medical/ointment, 100)
-		)
+	)
 
 /obj/machinery/mineral/equipment_vendor/fastfood/smoking
 	prize_list = list(new /datum/data/mining_equipment("malboro",	/obj/item/storage/fancy/cigarettes/cigpack_robust,	50),
@@ -548,9 +553,9 @@
 		new /datum/data/mining_equipment("camel",	/obj/item/storage/fancy/cigarettes/dromedaryco,	30),
 		new /datum/data/mining_equipment("zippo lighter",	/obj/item/lighter,	20),
 		new /datum/data/mining_equipment("lighter",		/obj/item/lighter/greyscale,	10)
-		)
+	)
 
 /obj/machinery/mineral/equipment_vendor/fastfood/gas
 	prize_list = list(new /datum/data/mining_equipment("full gas can",	/obj/item/gas_can/full,	250),
 		new /datum/data/mining_equipment("tire iron",		/obj/item/melee/vampirearms/tire,	50)
-		)
+	)

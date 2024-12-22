@@ -220,47 +220,50 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	var/clane_accessory
 
-/datum/preferences/proc/add_experience(var/amount)
-	if(amount)
-		true_experience = true_experience+amount
+/datum/preferences/proc/add_experience(amount)
+	true_experience = clamp(true_experience + amount, 0, 1000)
+
+/datum/preferences/proc/reset_character()
+	slotlocked = 0
+	diablerist = 0
+	torpor_count = 0
+	generation_bonus = 0
+	physique = 1
+	dexterity = 1
+	mentality = 1
+	social = 1
+	lockpicking = 0
+	athletics = 0
+	blood = 1
+	masquerade = initial(masquerade)
+	generation = initial(generation)
+	archetype = pick(subtypesof(/datum/archetype))
+	var/datum/archetype/A = new archetype()
+	physique = A.start_physique
+	mentality = A.start_mentality
+	social = A.start_social
+	blood = A.start_blood
+	qdel(clane)
+	clane = new /datum/vampireclane/brujah()
+	discipline_types = list()
+	discipline_levels = list()
+	for (var/i in 1 to clane.clane_disciplines.len)
+		discipline_types += clane.clane_disciplines[i]
+		discipline_levels += 1
+	humanity = clane.start_humanity
+	enlightenment = clane.enlightenment
+	random_species()
+	random_character()
+	body_model = rand(1, 3)
+	true_experience = 50
+	real_name = random_unique_name(gender)
+	save_character()
 
 /proc/reset_shit(var/mob/M)
 	if(M.key)
 		var/datum/preferences/P = GLOB.preferences_datums[ckey(M.key)]
 		if(P)
-			P.slotlocked = 0
-			P.torpor_count = 0
-			P.generation_bonus = 0
-			P.physique = 1
-			P.dexterity = 1
-			P.social = 1
-			P.mentality = 1
-			P.blood = 1
-			P.lockpicking = 0
-			P.athletics = 0
-			P.archetype = pick(subtypesof(/datum/archetype))
-			var/datum/archetype/A = new P.archetype()
-			P.physique = A.start_physique
-//			P.dexterity = A.start_dexterity
-			P.social = A.start_social
-			P.mentality = A.start_mentality
-			P.blood = A.start_blood
-			P.diablerist = 0
-			P.masquerade = initial(P.masquerade)
-			P.generation = initial(P.generation)
-			qdel(P.clane)
-			P.clane = new /datum/vampireclane/brujah()
-			P.discipline_types = list()
-			P.discipline_levels = list()
-			for (var/i in 1 to P.clane.clane_disciplines.len)
-				P.discipline_types += P.clane.clane_disciplines[i]
-				P.discipline_levels += 1
-			P.enlightenment = P.clane.enlightenment
-			P.humanity = P.clane.start_humanity
-			P.real_name = random_unique_name(P.gender)
-			P.true_experience = 50
-			P.save_character()
-			P.save_preferences()
+			P.reset_character()
 
 /datum/preferences/New(client/C)
 	parent = C
@@ -282,34 +285,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	//we couldn't load character data so just randomize the character appearance + name
 	random_species()
 	random_character()		//let's create a random character then - rather than a fat, bald and naked man.
-	slotlocked = 0
-	torpor_count = 0
-	generation_bonus = 0
-	physique = 1
-	dexterity = 1
-	social = 1
-	mentality = 1
-	lockpicking = 0
-	athletics = 0
-	blood = 1
-	archetype = pick(subtypesof(/datum/archetype))
-	var/datum/archetype/A = new archetype()
-	physique = A.start_physique
-//	dexterity = A.start_dexterity
-	social = A.start_social
-	mentality = A.start_mentality
-	blood = A.start_blood
-	diablerist = 0
-	masquerade = initial(masquerade)
-	generation = initial(generation)
-	qdel(clane)
-	clane = new /datum/vampireclane/brujah()
-	for (var/i in 1 to clane.clane_disciplines.len)
-		discipline_types += clane.clane_disciplines[i]
-		discipline_levels += 1
-	enlightenment = clane.enlightenment
-	humanity = clane.start_humanity
-	true_experience = 50
+	reset_shit()
 	key_bindings = deepCopyList(GLOB.hotkey_keybinding_list_by_key) // give them default keybinds and update their movement keys
 	C?.set_macros()
 //	pref_species = new /datum/species/kindred()
@@ -608,7 +584,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					if(clane_accessory in clane.accessories)
 						dat += "<b>Marks:</b> <a href='?_src_=prefs;preference=clane_acc;task=input'>[clane_accessory]</a><BR>"
 					else
-						clane_accessory = pick(clane.accessories)
+						if("none" in clane_accessory)
+							clane_accessory = "none"
+						else
+							clane_accessory = pick(clane.accessories)
 						dat += "<b>Marks:</b> <a href='?_src_=prefs;preference=clane_acc;task=input'>[clane_accessory]</a><BR>"
 				else
 					clane_accessory = null
@@ -1266,6 +1245,10 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		//The job before the current job. I only use this to get the previous jobs color when I'm filling in blank rows.
 		var/datum/job/lastJob
 
+		var/bypass = FALSE
+		if (check_rights_for(user.client, R_ADMIN))
+			bypass = TRUE
+
 		for(var/datum/job/job in sortList(SSjob.occupations, GLOBAL_PROC_REF(cmp_job_display_asc)))
 
 			index += 1
@@ -1287,20 +1270,20 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				continue
 			var/required_playtime_remaining = job.required_playtime_remaining(user.client)
 			//<font color=red>text</font> (Zamenil potomu chto slishkom rezhet glaza
-			if(required_playtime_remaining)
+			if(required_playtime_remaining && !bypass)
 				HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[ [get_exp_format(required_playtime_remaining)] as [job.get_exp_req_type()] \]</font></td></tr>"
 				continue
-			if(!job.player_old_enough(user.client))
+			if(!job.player_old_enough(user.client) && !bypass)
 				var/available_in_days = job.available_in_days(user.client)
 				HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[IN [(available_in_days)] DAYS\]</font></td></tr>"
 				continue
-			if(generation > job.minimal_generation)
+			if((generation > job.minimal_generation) && !bypass)
 				HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[FROM [job.minimal_generation] GENERATION AND OLDER\]</font></td></tr>"
 				continue
-			if(masquerade < job.minimal_masquerade)
+			if((masquerade < job.minimal_masquerade) && !bypass)
 				HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[[job.minimal_masquerade] MASQUERADE POINTS REQUIRED\]</font></td></tr>"
 				continue
-			if(!job.allowed_species.Find(pref_species.name))
+			if(!job.allowed_species.Find(pref_species.name) && !bypass)
 				HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[[pref_species.name] RESTRICTED\]</font></td></tr>"
 				continue
 			if(pref_species.name == "Vampire")
@@ -1309,7 +1292,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					for(var/i in job.allowed_bloodlines)
 						if(i == clane.name)
 							alloww = TRUE
-					if(!alloww)
+					if(!alloww && !bypass)
 						HTML += "<font color=#290204>[rank]</font></td><td><font color=#290204> \[[clane.name] RESTRICTED\]</font></td></tr>"
 						continue
 			if((job_preferences[SSjob.overflow_role] == JP_LOW) && (rank != SSjob.overflow_role) && !is_banned_from(user.ckey, SSjob.overflow_role))
@@ -1536,12 +1519,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		if(C)
 			C.clear_character_previews()
 
-/datum/preferences
-	var/link_bug_fix = FALSE
-
 /datum/preferences/proc/process_link(mob/user, list/href_list)
-//	if(link_bug_fix)
-//		return
 	if(href_list["bancheck"])
 		var/list/ban_details = is_banned_from_with_details(user.ckey, user.client.address, user.client.computer_id, href_list["bancheck"])
 		var/admin = FALSE
@@ -1681,7 +1659,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					random_character(gender)
 
 		if("input")
-			link_bug_fix = TRUE
 			if(href_list["preference"] in GLOB.preferences_custom_names)
 				ask_for_custom_name(user,href_list["preference"])
 
@@ -1719,9 +1696,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							ghost_others = GHOST_OTHERS_SIMPLE
 
 				if("werewolf_name")
-					if(slotlocked)
-						link_bug_fix = FALSE
+					if(slotlocked || (!pref_species.id == "garou"))
 						return
+
 					var/new_name = input(user, "Choose your character's werewolf name:", "Character Preference")  as text|null
 					if(new_name)
 						new_name = reject_bad_name(new_name)
@@ -1731,8 +1708,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							to_chat(user, "<font color='red'>Invalid name. Your name should be at least 2 and at most [MAX_NAME_LEN] characters long. It may only contain the characters A-Z, a-z, -, ' and . It must not contain any words restricted by IC chat and name filters.</font>")
 				if("name")
 					if(slotlocked)
-						link_bug_fix = FALSE
 						return
+
 					var/new_name = input(user, "Choose your character's name:", "Character Preference")  as text|null
 					if(new_name)
 						new_name = reject_bad_name(new_name)
@@ -1743,32 +1720,32 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("age")
 					if(slotlocked)
-						link_bug_fix = FALSE
 						return
+
 					var/new_age = input(user, "Choose your character's biological age:\n([AGE_MIN]-[AGE_MAX])", "Character Preference") as num|null
 					if(new_age)
 						age = max(min( round(text2num(new_age)), AGE_MAX),AGE_MIN)
 
 				if("total_age")
 					if(slotlocked)
-						link_bug_fix = FALSE
 						return
+
 					var/new_age = input(user, "Choose your character's actual age:\n([age]-[age+1000])", "Character Preference") as num|null
 					if(new_age)
 						total_age = max(min(round(text2num(new_age)), age+1000), age)
 
 				if("hair")
 					if(slotlocked)
-						link_bug_fix = FALSE
 						return
+
 					var/new_hair = input(user, "Choose your character's hair colour:", "Character Preference","#"+hair_color) as color|null
 					if(new_hair)
 						hair_color = sanitize_hexcolor(new_hair)
 
 				if("hairstyle")
 					if(slotlocked)
-						link_bug_fix = FALSE
 						return
+
 					if(clane.no_hair)
 						hairstyle = "Bald"
 					else
@@ -1787,8 +1764,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("next_hairstyle")
 					if(slotlocked)
-						link_bug_fix = FALSE
 						return
+
 					if(clane.no_hair)
 						hairstyle = "Bald"
 					else if(clane.haircuts)
@@ -1803,8 +1780,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("previous_hairstyle")
 					if(slotlocked)
-						link_bug_fix = FALSE
 						return
+
 					if(clane.no_hair)
 						hairstyle = "Bald"
 					else if(clane.haircuts)
@@ -1819,16 +1796,16 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("facial")
 					if(slotlocked)
-						link_bug_fix = FALSE
 						return
+
 					var/new_facial = input(user, "Choose your character's facial-hair colour:", "Character Preference","#"+facial_hair_color) as color|null
 					if(new_facial)
 						facial_hair_color = sanitize_hexcolor(new_facial)
 
 				if("facial_hairstyle")
 					if(slotlocked)
-						link_bug_fix = FALSE
 						return
+
 					if(clane.no_facial)
 						facial_hairstyle = "Shaved"
 					else
@@ -1844,8 +1821,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("next_facehairstyle")
 					if(slotlocked)
-						link_bug_fix = FALSE
 						return
+
 					if(clane.no_facial)
 						facial_hairstyle = "Shaved"
 					else
@@ -1858,8 +1835,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("previous_facehairstyle")
 					if(slotlocked)
-						link_bug_fix = FALSE
 						return
+
 					if(clane.no_facial)
 						facial_hairstyle = "Shaved"
 					else
@@ -1905,16 +1882,16 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("eyes")
 					if(slotlocked)
-						link_bug_fix = FALSE
 						return
+
 					var/new_eyes = input(user, "Choose your character's eye colour:", "Character Preference","#"+eye_color) as color|null
 					if(new_eyes)
 						eye_color = sanitize_hexcolor(new_eyes)
 
 				if("newdiscipline")
-					if(true_experience < 10)
-						link_bug_fix = FALSE
+					if((true_experience < 10) || !(pref_species.id == "kindred") || !(clane.name == "Caitiff"))
 						return
+
 					var/list/possible_new_disciplines = subtypesof(/datum/discipline) - discipline_types
 					for (var/discipline_type in possible_new_disciplines)
 						var/datum/discipline/discipline = new discipline_type
@@ -1928,9 +1905,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						true_experience -= 10
 
 				if("newghouldiscipline")
-					if(true_experience < 10)
-						link_bug_fix = FALSE
+					if((true_experience < 10) || !(pref_species.id == "ghoul"))
 						return
+
 					var/list/possible_new_disciplines = subtypesof(/datum/discipline) - discipline_types
 					var/new_discipline = input(user, "Select your new Discipline", "Discipline Selection") as null|anything in possible_new_disciplines
 					if(new_discipline)
@@ -1939,18 +1916,18 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						true_experience -= 10
 
 				if("werewolf_color")
-					if(slotlocked)
-						link_bug_fix = FALSE
+					if(slotlocked || !(pref_species.id == "garou"))
 						return
+
 					var/list/colors = list("black", "gray", "red", "white", "ginger", "brown")
 					var/result = input(user, "Select fur color:", "Appearance Selection") as null|anything in colors
 					if(result)
 						werewolf_color = result
 
 				if("werewolf_scar")
-					if(slotlocked)
-						link_bug_fix = FALSE
+					if(slotlocked || !(pref_species.id == "garou"))
 						return
+
 					if(tribe == "Glasswalkers")
 						if(werewolf_scar == 9)
 							werewolf_scar = 0
@@ -1963,34 +1940,34 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 							werewolf_scar = min(7, werewolf_scar+1)
 
 				if("werewolf_hair")
-					if(slotlocked)
-						link_bug_fix = FALSE
+					if(slotlocked || !(pref_species.id == "garou"))
 						return
+
 					if(werewolf_hair == 4)
 						werewolf_hair = 0
 					else
 						werewolf_hair = min(4, werewolf_hair+1)
 
 				if("werewolf_hair_color")
-					if(slotlocked)
-						link_bug_fix = FALSE
+					if(slotlocked || !(pref_species.id == "garou"))
 						return
+
 					var/new_hair = input(user, "Select hair color:", "Appearance Selection",werewolf_hair_color) as color|null
 					if(new_hair)
 						werewolf_hair_color = sanitize_ooccolor(new_hair)
 
 				if("werewolf_eye_color")
-					if(slotlocked)
-						link_bug_fix = FALSE
+					if(slotlocked || !(pref_species.id == "garou"))
 						return
+
 					var/new_eye = input(user, "Select eye color:", "Appearance Selection",werewolf_eye_color) as color|null
 					if(new_eye)
 						werewolf_eye_color = sanitize_ooccolor(new_eye)
 
 				if("auspice")
-					if(slotlocked)
-						link_bug_fix = FALSE
+					if(slotlocked || !(pref_species.id == "garou"))
 						return
+
 					var/list/auspice_choices = list()
 					for(var/i in GLOB.auspices_list)
 						var/a = GLOB.auspices_list[i]
@@ -2004,9 +1981,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						auspice = Auspic
 
 				if("clane_acc")
-					if(slotlocked)
-						link_bug_fix = FALSE
+					if(slotlocked || !(pref_species.id == "kindred"))
 						return
+
 					if(!length(clane.accessories))
 						clane_accessory = null
 						return
@@ -2015,8 +1992,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						clane_accessory = result
 
 				if("clane")
-					if(slotlocked)
-						link_bug_fix = FALSE
+					if(slotlocked || !(pref_species.id == "kindred"))
 						return
 
 					if (alert("Are you sure you want to change your Clan? This will reset your Disciplines.", "Confirmation", "Yes", "No") != "Yes")
@@ -2060,81 +2036,101 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						if(clane.no_facial)
 							facial_hairstyle = "Shaved"
 						if(length(clane.accessories))
-							clane_accessory = pick(clane.accessories)
+							if("none" in clane.accessories)
+								clane_accessory = "none"
+							else
+								clane_accessory = pick(clane.accessories)
 				if("auspice_level")
-					if(true_experience >= auspice_level*10 && auspice_level < 3)
-						true_experience = true_experience-auspice_level*10
-						auspice_level = min(3, auspice_level+1)
+					var/cost = max(10, auspice_level * 10)
+					if ((true_experience < cost) || (auspice_level >= 3))
+						return
+
+					true_experience -= cost
+					auspice_level = max(1, auspice_level + 1)
 
 				if("physique")
-					if(true_experience >= physique*4 && physique < 6)
-						true_experience = true_experience-physique*4
-						physique = min(5, physique+1)
+					var/cost = max(4, physique * 4)
+					if ((true_experience < cost) || (physique >= 5))
+						return
+
+					true_experience -= cost
+					physique = max(1, physique + 1)
 
 				if("dexterity")
-					if(true_experience >= dexterity*4 && dexterity < 6)
-						true_experience = true_experience-dexterity*4
-						dexterity = min(5, dexterity+1)
+					var/cost = max(4, dexterity * 4)
+					if ((true_experience < cost) || (dexterity >= 5))
+						return
+
+					true_experience -= cost
+					dexterity = max(1, dexterity + 1)
 
 				if("social")
-					if(true_experience >= social*4 && social < 6)
-						true_experience = true_experience-social*4
-						social = min(5, social+1)
+					var/cost = max(4, social * 4)
+					if ((true_experience < cost) || (social >= 5))
+						return
+
+					true_experience -= cost
+					social = max(1, social + 1)
 
 				if("mentality")
-					if(true_experience >= mentality*4 && mentality < 6)
-						true_experience = true_experience-mentality*4
-						mentality = min(5, mentality+1)
+					var/cost = max(4, mentality * 4)
+					if ((true_experience < cost) || (mentality >= 5))
+						return
 
-				if("lockpicking")
-					if ((true_experience >= ((lockpicking > 0) ? (2 * lockpicking) : 3)) && (lockpicking < 5))
-						true_experience -= (lockpicking > 0) ? (2 * lockpicking) : 3
-						lockpicking++
-
-				if("athletics")
-					if ((true_experience >= ((athletics > 0) ? (2 * athletics) : 3)) && (athletics < 5))
-						true_experience -= (athletics > 0) ? (2 * athletics) : 3
-						athletics++
+					true_experience -= cost
+					mentality = max(1, mentality + 1)
 
 				if("blood")
-					if(true_experience >= blood*6 && blood < 6)
-						true_experience = true_experience-blood*6
-						blood = min(5, blood+1)
+					var/cost = max(6, blood * 6)
+					if ((true_experience < cost) || (blood >= 5))
+						return
+
+					true_experience -= cost
+					blood = max(1, blood + 1)
+
+				if("lockpicking")
+					var/cost = (lockpicking > 0) ? max(2, lockpicking * 2) : 3
+					if ((true_experience < cost) || (lockpicking >= 5))
+						return
+
+					true_experience -= cost
+					lockpicking = max(1, lockpicking + 1)
+
+				if("athletics")
+					var/cost = (athletics > 0) ? max(2, athletics * 2) : 3
+					if ((true_experience < cost) || (athletics >= 5))
+						return
+
+					true_experience -= cost
+					athletics = max(1, athletics + 1)
 
 				if("tribe")
-					if(slotlocked)
-						link_bug_fix = FALSE
+					if(slotlocked || !(pref_species.id == "garou"))
 						return
-					if(tribe == "Wendigo")
-						tribe = "Glasswalkers"
-					else if(tribe == "Glasswalkers")
-						tribe = "Black Spiral Dancers"
-					else if(tribe == "Black Spiral Dancers")
-						tribe = "Wendigo"
+
+					var/new_tribe = input("Choose your Tribe.", "Tribe") as null|anything in list("Wendigo", "Glasswalkers", "Black Spiral Dancers")
+					if (new_tribe)
+						tribe = new_tribe
 
 				if("breed")
-					if(slotlocked)
-						link_bug_fix = FALSE
+					if(slotlocked || !(pref_species.id == "garou"))
 						return
-					if(breed == "Homid")
-						breed = "Lupus"
-					else if(breed == "Lupus")
-						breed = "Metis"
-					else if(breed == "Metis")
-						breed = "Homid"
+
+					var/new_breed = input("Choose your Breed.", "Breed") as null|anything in list("Homid", "Metis", "Lupus")
+					if (new_breed)
+						breed = new_breed
 
 				if("archetype")
 					if(slotlocked)
-						link_bug_fix = FALSE
 						return
 
 					if (alert("Are you sure you want to change Archetype? This will reset your attributes.", "Confirmation", "Yes", "No") != "Yes")
 						return
 
-					var/list/shitlist = list()
+					var/list/archetypes = list()
 					for(var/i in subtypesof(/datum/archetype))
-						shitlist += i
-					var/result = input(user, "Select an archetype", "Attributes Selection") as null|anything in shitlist
+						archetypes += i
+					var/result = input(user, "Select an archetype", "Attributes Selection") as null|anything in archetypes
 					if(result)
 						archetype = result
 						var/datum/archetype/archetip = new archetype()
@@ -2145,28 +2141,35 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("discipline")
 					var/i = text2num(href_list["upgradediscipline"])
+
 					var/discipline_level = discipline_levels[i]
-					var/cost
+					var/cost = discipline_level * 7
 					if (discipline_level <= 0)
 						cost = 10
 					else if (clane.name == "Caitiff")
 						cost = discipline_level * 6
 					else if (clane.clane_disciplines.Find(discipline_types[i]))
 						cost = discipline_level * 5
-					else
-						cost = discipline_level * 7
-					if ((true_experience >= cost) && (discipline_level != 5))
-						true_experience = true_experience - cost
-						discipline_levels[i] = min(5, discipline_levels[i] + 1)
+
+					if ((true_experience < cost) || (discipline_level >= 5) || !(pref_species.id == "kindred"))
+						return
+
+					true_experience -= cost
+					discipline_levels[i] = min(5, max(1, discipline_levels[i] + 1))
 
 				if("path")
-					if((true_experience >= (humanity * 2)) && (humanity < 10))
-						humanity++
-						true_experience -= humanity * 2
+					var/cost = max(2, humanity * 2)
+					if ((true_experience < cost) || (humanity >= 10) || !(pref_species.id == "kindred"))
+						return
+
+					true_experience -= cost
+					humanity = max(1, humanity + 1)
 
 				if("pathof")
-					if(!slotlocked)
-						enlightenment = !enlightenment
+					if (slotlocked || !(pref_species.id == "kindred"))
+						return
+
+					enlightenment = !enlightenment
 
 				/*
 				if("torpor_restore")
@@ -2176,83 +2179,51 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				*/
 
 				if("generation")
-					if(clane)
-						if(clane.name == "Caitiff")
-							link_bug_fix = FALSE
-							return
-					if(true_experience >= 20)
-						true_experience = true_experience-20
-						generation_bonus = min(generation_bonus+1, max(0, generation-7))
+					if((clane?.name == "Caitiff") || (true_experience < 20))
+						return
+
+					true_experience -= 20
+					generation_bonus = min(generation_bonus + 1, max(0, generation-7))
 
 				if("friend_text")
 					var/new_text = input(user, "What a Friend knows about me:", "Character Preference") as text|null
 					if(new_text)
-						friend_text = sanitize_text(new_text)
+						friend_text = trim(copytext_char(sanitize(new_text), 1, 512))
 				if("enemy_text")
 					var/new_text = input(user, "What an Enemy knows about me:", "Character Preference") as text|null
 					if(new_text)
-						enemy_text = sanitize_text(new_text)
+						enemy_text = trim(copytext_char(sanitize(new_text), 1, 512))
 				if("lover_text")
 					var/new_text = input(user, "What a Lover knows about me:", "Character Preference") as text|null
 					if(new_text)
-						lover_text = sanitize_text(new_text)
+						lover_text = trim(copytext_char(sanitize(new_text), 1, 512))
 
 				if("flavor_text")
 					var/new_flavor = input(user, "Choose your character's flavor text:", "Character Preference")  as text|null
 					if(new_flavor)
-						//[Lucia] TODO: fix jank made in haste
-						var/pattern = "<img"
-						var/pos = findtext(new_flavor, pattern)
-						if(pos)
-							to_chat(src, "Embedding images is not allowed.")
-							return
-						pattern = "<picture"
-						pos = findtext(new_flavor, pattern)
-						if(pos)
-							to_chat(src, "Embedding images is not allowed.")
-							return
-						if(length(new_flavor) > 3 * 512)
-							to_chat(user, "Too long...")
-						else
-							flavor_text = sanitize_text(new_flavor)
+						flavor_text = trim(copytext_char(sanitize(new_flavor), 1, 512))
 
 				if("change_appearance")
-//					torpor_count = max(0, torpor_count-1)
-					if(slotlocked)
-						slotlocked = 0
-						true_experience = true_experience-3
+					if((true_experience < 3) || !slotlocked)
+						return
+
+					slotlocked = FALSE
+					true_experience -= 3
 
 				if("reset_with_bonus")
-					if(clane)
-						if(clane.name == "Caitiff")
-							link_bug_fix = FALSE
-							return
+					if((clane?.name == "Caitiff") || !generation_bonus)
+						return
+
 					var/bonus = generation-generation_bonus
 					slotlocked = 0
 					torpor_count = 0
 					masquerade = initial(masquerade)
 					generation = bonus
 					generation_bonus = 0
-//					generation = initial(generation)
-//					qdel(clane)
-//					clane = new /datum/vampireclane/brujah()
-//					if(length(clane.clane_disciplines) >= 1)
-//						discipline1type = clane.clane_disciplines[1]
-//					if(length(clane.clane_disciplines) >= 2)
-//						discipline2type = clane.clane_disciplines[2]
-//					if(length(clane.clane_disciplines) >= 3)
-//						discipline3type = clane.clane_disciplines[3]
-//					discipline4type = null
-//					humanity = clane.start_humanity
-//					enlightenment = clane.enlightenment
-//					random_species()
-//					random_character()
-//					real_name = random_unique_name(gender)
 					save_character()
 
 				if("species")
 					if(slotlocked)
-						link_bug_fix = FALSE
 						return
 
 					if (alert("Are you sure you want to change species? This will reset species-specific stats.", "Confirmation", "Yes", "No") != "Yes")
@@ -2268,7 +2239,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						qdel(new_species)
 
 					var/result = input(user, "Select a species", "Species Selection") as null|anything in selectable_species
-
 					if(result)
 						all_quirks = list()
 						SetQuirks(user)
@@ -2294,8 +2264,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("mutant_color")
 					if(slotlocked)
-						link_bug_fix = FALSE
 						return
+
 					var/new_mutantcolor = input(user, "Choose your character's alien/mutant color:", "Character Preference","#"+features["mcolor"]) as color|null
 					if(new_mutantcolor)
 						var/temp_hsv = RGBtoHSV(new_mutantcolor)
@@ -2392,8 +2362,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("s_tone")
 					if(slotlocked)
-						link_bug_fix = FALSE
 						return
+
 					var/new_s_tone = input(user, "Choose your character's skin-tone:", "Character Preference")  as null|anything in GLOB.skin_tones
 					if(new_s_tone)
 						skin_tone = new_s_tone
@@ -2493,8 +2463,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 						toggles ^= MEMBER_PUBLIC
 				if("gender")
 					if(slotlocked)
-						link_bug_fix = FALSE
 						return
+
 					var/list/friendlyGenders = list("Male" = "male", "Female" = "female")
 					var/pickedGender = input(user, "Choose your gender.", "Character Preference", gender) as null|anything in friendlyGenders
 					if(pickedGender && friendlyGenders[pickedGender] != gender)
@@ -2507,14 +2477,15 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("body_type")
 					if(slotlocked)
 						return
+
 					if(body_type == MALE)
 						body_type = FEMALE
 					else
 						body_type = MALE
 				if("body_model")
 					if(slotlocked)
-						link_bug_fix = FALSE
 						return
+
 					if(body_model == 1)
 						body_model = 2
 					else if(body_model == 2)
@@ -2592,7 +2563,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					var/choice = tgui_alert(user, "Would you prefer 'hotkey' or 'classic' defaults?", "Setup keybindings", list("Hotkey", "Classic", "Cancel"))
 					if(choice == "Cancel")
 						ShowChoices(user)
-						link_bug_fix = FALSE
 						return
 					hotkeys = (choice == "Hotkey")
 					key_bindings = (hotkeys) ? deepCopyList(GLOB.hotkey_keybinding_list_by_key) : deepCopyList(GLOB.classic_keybinding_list_by_key)
@@ -2652,7 +2622,6 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 				if("toggle_random")
 					if(slotlocked)
-						link_bug_fix = FALSE
 						return
 					var/random_type = href_list["random_type"]
 					if(randomise[random_type])
@@ -2707,9 +2676,17 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 					chat_toggles ^= CHAT_GHOSTSIGHT
 
 				if("ghost_whispers")
-					chat_toggles ^= CHAT_GHOSTWHISPER
+					if(istype(user.client.mob, /mob/dead/observer))
+						var/mob/dead/observer/obs = user.client.mob
+						if(obs.auspex_ghosted)
+							return
+						else
+							chat_toggles ^= CHAT_GHOSTWHISPER
+					else
+						chat_toggles ^= CHAT_GHOSTWHISPER
 
 				if("ghost_radio")
+
 					chat_toggles ^= CHAT_GHOSTRADIO
 
 				if("ghost_pda")
@@ -2798,78 +2775,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				if("reset_all")
 					if (alert("Are you sure you want to reset your character?", "Confirmation", "Yes", "No") != "Yes")
 						return
-					slotlocked = 0
-					diablerist = 0
-					torpor_count = 0
-					generation_bonus = 0
-					physique = 1
-					dexterity = 1
-					mentality = 1
-					social = 1
-					lockpicking = 0
-					athletics = 0
-					blood = 1
-					masquerade = initial(masquerade)
-					generation = initial(generation)
-					archetype = pick(subtypesof(/datum/archetype))
-					var/datum/archetype/A = new archetype()
-					physique = A.start_physique
-					mentality = A.start_mentality
-					social = A.start_social
-					blood = A.start_blood
-					qdel(clane)
-					clane = new /datum/vampireclane/brujah()
-					discipline_types = list()
-					discipline_levels = list()
-					for (var/i in 1 to clane.clane_disciplines.len)
-						discipline_types += clane.clane_disciplines[i]
-						discipline_levels += 1
-					humanity = clane.start_humanity
-					enlightenment = clane.enlightenment
-					random_species()
-					random_character()
-					body_model = rand(1, 3)
-					true_experience = 50
-					real_name = random_unique_name(gender)
-					save_character()
+					reset_character()
 
 				if("changeslot")
 					if(!load_character(text2num(href_list["num"])))
-						//"Reset all" code is copied here to ensure new characters do not copy stats from slot 1
-						slotlocked = 0
-						diablerist = 0
-						torpor_count = 0
-						generation_bonus = 0
-						physique = 1
-						dexterity = 1
-						mentality = 1
-						social = 1
-						lockpicking = 0
-						athletics = 0
-						blood = 1
-						masquerade = initial(masquerade)
-						generation = initial(generation)
-						archetype = pick(subtypesof(/datum/archetype))
-						var/datum/archetype/A = new archetype()
-						physique = A.start_physique
-						mentality = A.start_mentality
-						social = A.start_social
-						blood = A.start_blood
-						qdel(clane)
-						clane = new /datum/vampireclane/brujah()
-						discipline_types = list()
-						discipline_levels = list()
-						for (var/i in 1 to clane.clane_disciplines.len)
-							discipline_types += clane.clane_disciplines[i]
-							discipline_levels += 1
-						humanity = clane.start_humanity
-						enlightenment = clane.enlightenment
-						random_species()
-						random_character()
-						body_model = rand(1, 3)
-						true_experience = 50
-						real_name = random_unique_name(gender)
-						save_character()
+						reset_character()
 
 				if("tab")
 					if (href_list["tab"])
@@ -2884,7 +2794,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	save_preferences()
 	save_character()
 	ShowChoices(user)
-	return 1
+	return TRUE
 
 /datum/preferences/proc/copy_to(mob/living/carbon/human/character, icon_updates = 1, roundstart_checks = TRUE, character_setup = FALSE, antagonist = FALSE, is_latejoiner = TRUE)
 
@@ -2949,11 +2859,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		character.bloodpool = character.maxbloodpool
 
 	if(pref_species.name == "Werewolf")
-		character.maxHealth = round((initial(character.maxHealth)+(initial(character.maxHealth)/4)*character.physique))
-		character.health = round((initial(character.maxHealth)+(initial(character.maxHealth)/4)*character.physique))
+		character.maxHealth = round((initial(character.maxHealth)+(initial(character.maxHealth)/4)*(character.physique + character.additional_physique)))
+		character.health = round((initial(character.maxHealth)+(initial(character.maxHealth)/4)*(character.physique + character.additional_physique )))
 	else
-		character.maxHealth = round((initial(character.maxHealth)-initial(character.maxHealth)/4)+(initial(character.maxHealth)/4)*(character.physique+13-generation))
-		character.health = round((initial(character.health)-initial(character.health)/4)+(initial(character.health)/4)*(character.physique+13-generation))
+		character.maxHealth = round((initial(character.maxHealth)-initial(character.maxHealth)/4)+(initial(character.maxHealth)/4)*((character.physique+character.additional_physique )+13-generation))
+		character.health = round((initial(character.health)-initial(character.health)/4)+(initial(character.health)/4)*((character.physique+character.additional_physique )+13-generation))
 	if(pref_species.name == "Vampire")
 		character.humanity = humanity
 	character.masquerade = masquerade
@@ -3068,9 +2978,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 				character.transformator.lupus_form.social = social
 				character.transformator.lupus_form.blood = blood
 
-				character.transformator.lupus_form.maxHealth = round((initial(character.transformator.lupus_form.maxHealth)+(initial(character.maxHealth)/4)*character.physique))+(character.auspice.level-1)*50
+				character.transformator.lupus_form.maxHealth = round((initial(character.transformator.lupus_form.maxHealth)+(initial(character.maxHealth)/4)*(character.physique + character.additional_physique )))+(character.auspice.level-1)*50
 				character.transformator.lupus_form.health = character.transformator.lupus_form.maxHealth
-				character.transformator.crinos_form.maxHealth = round((initial(character.transformator.crinos_form.maxHealth)+(initial(character.maxHealth)/4)*character.physique))+(character.auspice.level-1)*50
+				character.transformator.crinos_form.maxHealth = round((initial(character.transformator.crinos_form.maxHealth)+(initial(character.maxHealth)/4)*(character.physique + character.additional_physique )))+(character.auspice.level-1)*50
 				character.transformator.crinos_form.health = character.transformator.crinos_form.maxHealth
 //		character.transformator.crinos_form.update_icons()
 //		character.transformator.lupus_form.update_icons()

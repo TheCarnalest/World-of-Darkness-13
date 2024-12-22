@@ -20,7 +20,7 @@
 
 /atom/movable/screen/transform_homid/Click()
 	var/mob/living/carbon/C = usr
-	if(C.stat >= 1 || C.IsSleeping() || C.IsUnconscious() || C.IsParalyzed() || C.IsKnockdown() || C.IsStun())
+	if(C.stat >= SOFT_CRIT || C.IsSleeping() || C.IsUnconscious() || C.IsParalyzed() || C.IsKnockdown() || C.IsStun())
 		return
 	if(C.transformator)
 		C.transformator.trans_gender(C, "Homid")
@@ -34,7 +34,7 @@
 
 /atom/movable/screen/transform_crinos/Click()
 	var/mob/living/carbon/C = usr
-	if(C.stat >= 1 || C.IsSleeping() || C.IsUnconscious() || C.IsParalyzed() || C.IsKnockdown() || C.IsStun())
+	if(C.stat >= SOFT_CRIT || C.IsSleeping() || C.IsUnconscious() || C.IsParalyzed() || C.IsKnockdown() || C.IsStun())
 		return
 	if(C.transformator)
 		C.transformator.trans_gender(C, "Crinos")
@@ -48,7 +48,7 @@
 
 /atom/movable/screen/transform_lupus/Click()
 	var/mob/living/carbon/C = usr
-	if(C.stat >= 1 || C.IsSleeping() || C.IsUnconscious() || C.IsParalyzed() || C.IsKnockdown() || C.IsStun())
+	if(C.stat >= SOFT_CRIT || C.IsSleeping() || C.IsUnconscious() || C.IsParalyzed() || C.IsKnockdown() || C.IsStun())
 		return
 	if(C.transformator)
 		C.transformator.trans_gender(C, "Lupus")
@@ -64,7 +64,7 @@
 	if(!GLOB.moon_state)
 		GLOB.moon_state = pick("Full", "Gibbous", "Half", "Crescent", "New")
 	var/mob/living/carbon/C = usr
-	if(C.stat >= 1 || C.IsSleeping() || C.IsUnconscious() || C.IsParalyzed() || C.IsKnockdown() || C.IsStun())
+	if(C.stat >= SOFT_CRIT || C.IsSleeping() || C.IsUnconscious() || C.IsParalyzed() || C.IsKnockdown() || C.IsStun())
 		return
 	var/area/vtm/V = get_area(C)
 	if(!V.upper)

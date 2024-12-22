@@ -261,7 +261,7 @@
 					SEND_SOUND(BD, sound('code/modules/wod13/sounds/need_blood.ogg', 0, 0, 75))
 					to_chat(BD, "<span class='warning'>Eww, that is <b>GROSS</b>.</span>")
 					return
-				if(PB.stat == 4 && !HAS_TRAIT(BD, TRAIT_GULLET))
+				if(PB.stat == DEAD && !HAS_TRAIT(BD, TRAIT_GULLET))
 					SEND_SOUND(BD, sound('code/modules/wod13/sounds/need_blood.ogg', 0, 0, 75))
 					to_chat(BD, "<span class='warning'>This creature is <b>DEAD</b>.</span>")
 					return
@@ -298,7 +298,7 @@
 					SEND_SOUND(BD, sound('code/modules/wod13/sounds/need_blood.ogg', 0, 0, 75))
 					to_chat(BD, "<span class='warning'>There is no <b>BLOOD</b> in this creature.</span>")
 					return
-				if(LV.stat == 4 && !HAS_TRAIT(BD, TRAIT_GULLET))
+				if(LV.stat == DEAD && !HAS_TRAIT(BD, TRAIT_GULLET))
 					SEND_SOUND(BD, sound('code/modules/wod13/sounds/need_blood.ogg', 0, 0, 75))
 					to_chat(BD, "<span class='warning'>This creature is <b>DEAD</b>.</span>")
 					return
@@ -331,9 +331,9 @@
 	SEND_SOUND(usr, sound('code/modules/wod13/sounds/highlight.ogg', 0, 0, 50))
 	if(ishuman(usr))
 		var/mob/living/carbon/human/BD = usr
-		if(world.time < BD.last_bloodheal_use+30)
+		if(world.time < (BD.last_bloodheal_use + 3 SECONDS))
 			return
-		if(world.time < BD.last_bloodheal_click+10)
+		if(world.time < (BD.last_bloodheal_click + 1 SECONDS))
 			return
 		BD.last_bloodheal_click = world.time
 		var/plus = 0

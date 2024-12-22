@@ -65,6 +65,14 @@
 	)
 	color = "#bd3327"
 
+/obj/item/vamp/keys/camarilla
+	name = "Millenium Tower keys"
+	accesslocks = list(
+		"milleniumCommon",
+		"clerk",
+		"camarilla"
+	)
+
 /obj/item/vamp/keys/graveyard
 	name = "Graveyard keys"
 	accesslocks = list(
@@ -137,6 +145,22 @@
 	accesslocks = list(
 		"police"
 	)
+
+/obj/item/vamp/keys/police/secure
+	name = "Sergeant Police keys"
+	accesslocks = list(
+		"police",
+		"police_secure"
+	)
+
+/obj/item/vamp/keys/police/secure/chief
+	name = "Chief of Police keys"
+	accesslocks = list(
+		"police",
+		"police_secure",
+		"police_chief"
+	)
+
 
 /obj/item/vamp/keys/strip
 	name = "Strip keys"
@@ -593,6 +617,22 @@
 	locked = TRUE
 	lock_id = "police"
 	lockpick_difficulty = 6
+
+/obj/structure/vampdoor/police/secure
+	icon_state = "cam-1"
+	baseicon = "cam"
+	locked = TRUE
+	lock_id = "police_secure"
+	lockpick_difficulty = 21
+
+/obj/structure/vampdoor/police/chief
+	icon_state = "shop-1"
+	opacity = FALSE
+	locked = TRUE
+	baseicon = "shop"
+	glass = TRUE
+	lock_id = "police_chief"
+	lockpick_difficulty = 21
 
 /obj/structure/vampdoor/prison
 	icon_state = "prison-1"

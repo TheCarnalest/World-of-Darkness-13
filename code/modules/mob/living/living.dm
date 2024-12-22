@@ -386,19 +386,32 @@
 	visible_message("<span class='name'>[src]</span> points at [A].", "<span class='notice'>You point at [A].</span>")
 	return TRUE
 
-
 /mob/living/verb/succumb(whispered as null)
 	set hidden = TRUE
 	if (!CAN_SUCCUMB(src))
 		to_chat(src, text="You are unable to succumb to death! This life continues.", type=MESSAGE_TYPE_INFO)
 		return
 	log_message("Has [whispered ? "whispered his final words" : "succumbed to death"] with [round(health, 0.1)] points of health!", LOG_ATTACK)
+	if(iskindred(src) && !HAS_TRAIT(src, TRAIT_TORPOR))
+		adjustOxyLoss(health - HEALTH_THRESHOLD_VAMPIRE_TORPOR)
+		updatehealth()
+	if(iskindred(src) && HAS_TRAIT(src, TRAIT_TORPOR))
+		adjustOxyLoss(health - HEALTH_THRESHOLD_VAMPIRE_DEAD)
 	if(!iskindred(src))
 		adjustOxyLoss(health - HEALTH_THRESHOLD_DEAD)
 		updatehealth()
 	if(!whispered)
 		to_chat(src, "<span class='notice'>You have given up life and succumbed to death.</span>")
-//	death()
+
+/mob/living/verb/untorpor()
+	set hidden = TRUE
+	if(HAS_TRAIT(src, TRAIT_TORPOR))
+		if (bloodpool > 0)
+			bloodpool -= 1
+			cure_torpor()
+			to_chat(src, "<span class='notice'>You have awoken from your Torpor.</span>")
+		else
+			to_chat(src, "<span class='warning'>You have no blood to re-awaken with...</span>")
 
 /mob/living/incapacitated(ignore_restraints = FALSE, ignore_grab = FALSE, ignore_stasis = FALSE)
 	if(HAS_TRAIT(src, TRAIT_INCAPACITATED) || (!ignore_restraints && (HAS_TRAIT(src, TRAIT_RESTRAINED) || (!ignore_grab && pulledby && pulledby.grab_state >= GRAB_AGGRESSIVE))) || (!ignore_stasis && IS_IN_STASIS(src)))
@@ -925,7 +938,10 @@
 		if((resting || HAS_TRAIT(src, TRAIT_GRABWEAKNESS)) && pulledby.grab_state < GRAB_KILL) //If resting, resisting out of a grab is equivalent to 1 grab state higher. won't make the grab state exceed the normal max, however
 			altered_grab_state++
 		var/resist_chance = BASE_GRAB_RESIST_CHANCE /// see defines/combat.dm, this should be baseline 60%
-		resist_chance = (resist_chance/altered_grab_state) ///Resist chance divided by the value imparted by your grab state. It isn't until you reach neckgrab that you gain a penalty to escaping a grab.
+		var/mob/living/G = pulledby
+		var/grabber_physique = (G.physique + G.additional_physique) * 10 // The one who is grabbing physique
+		var/resist_physique = (physique + additional_physique) * 10 // The one who is  resisting physique
+		resist_chance = ((resist_chance + (resist_physique - grabber_physique))/altered_grab_state)
 		if(prob(resist_chance))
 			visible_message("<span class='danger'>[src] breaks free of [pulledby]'s grip!</span>", \
 							"<span class='danger'>You break free of [pulledby]'s grip!</span>", null, null, pulledby)
@@ -982,18 +998,23 @@
 	if(!what.canStrip(who))
 		to_chat(src, "<span class='warning'>You can't remove \the [what.name], it appears to be stuck!</span>")
 		return
-	who.visible_message("<span class='warning'>[src] tries to remove [who]'s [what.name].</span>", \
-					"<span class='userdanger'>[src] tries to remove your [what.name].</span>", null, null, src)
+	if(!enhanced_strip)
+		who.visible_message("<span class='warning'>[src] tries to remove [who]'s [what.name].</span>", \
+			"<span class='userdanger'>[src] tries to remove your [what.name].</span>", null, null, src)
 	to_chat(src, "<span class='danger'>You try to remove [who]'s [what.name]...</span>")
 	who.log_message("[key_name(who)] is being stripped of [what] by [key_name(src)]", LOG_ATTACK, color="red")
 	log_message("[key_name(who)] is being stripped of [what] by [key_name(src)]", LOG_ATTACK, color="red", log_globally=FALSE)
 	what.add_fingerprint(src)
-	if(do_mob(src, who, what.strip_delay, interaction_key = what))
-		if(what && Adjacent(who))
+	var/strip_delayed = what.strip_delay
+	if(enhanced_strip)
+		strip_delayed = 0.1 SECONDS
+	if(do_mob(src, who, min(strip_delayed, what.strip_delay), interaction_key = what))
+		if(what && (Adjacent(who) || (enhanced_strip && (get_dist(src, who) <= 3))))
+			enhanced_strip = FALSE
 			if(ishuman(src) && isnpc(who))
 				var/mob/living/carbon/human/H = src
 				var/mob/living/carbon/human/NPC = who
-				if(NPC.stat < 1)
+				if(NPC.stat < SOFT_CRIT)
 					if(istype(what, /obj/item/clothing) || istype(what, /obj/item/vamp/keys) || istype(what, /obj/item/stack/dollar))
 						H.AdjustHumanity(-1, 6)
 			if(islist(where))
@@ -1127,7 +1148,7 @@
 	if(!(mobility_flags & MOBILITY_UI) && !floor_okay)
 		to_chat(src, "<span class='warning'>You can't do that right now!</span>")
 		return FALSE
-	if(be_close && !Adjacent(M) && (M.loc != src))
+	if(be_close && !Adjacent(M) && (M.loc != src) && !enhanced_strip)
 		if(no_tk)
 			to_chat(src, "<span class='warning'>You are too far away!</span>")
 			return FALSE

@@ -523,6 +523,7 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 	set category = "Admin"
 	if (!check_rights(R_ADMIN))
 		return
+
 	var/list/explist = list()
 	for(var/client/C in GLOB.clients)
 		explist |= "[C.ckey]"
@@ -535,8 +536,11 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 				for(var/client/C in GLOB.clients)
 					if("[C.ckey]" == "[exper]")
 						to_chat(C, "<b>You've been rewarded with [amount] experience points. Reason: \"[reason]\"</b>")
-						C.prefs.true_experience = max(0, C.prefs.true_experience+amount)
-						message_admins("[key_name_admin(usr)] rewarded [key_name_admin(exper)] with [amount] experience points. Reason: [reason]")
+
+						C.prefs.add_experience(amount)
+						C.prefs.save_character()
+
+						message_admins("[ADMIN_LOOKUPFLW(usr)] rewarded [ADMIN_LOOKUPFLW(exper)] with [amount] experience points. Reason: [reason]")
 						log_admin("[key_name(usr)] rewarded [key_name(exper)] with [amount] experience points. Reason: [reason]")
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Reward Experience") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -586,8 +590,8 @@ GLOBAL_PROTECT(admin_verbs_hideable)
 		var/giving_discipline = input("What Discipline do you want to give [player]?") as null|anything in (subtypesof(/datum/discipline) - preferences.discipline_types)
 		if (giving_discipline)
 			var/giving_discipline_level = input("What rank of this Discipline do you want to give [player]?") as null|anything in list(0, 1, 2, 3, 4, 5)
-			if (giving_discipline_level)
-				if ((giving_discipline_level > 0) && (preferences.pref_species.id == "ghoul"))
+			if (!isnull(giving_discipline_level))
+				if ((giving_discipline_level > 1) && (preferences.pref_species.id == "ghoul"))
 					to_chat(usr, "<span class='warning'>Giving Discipline at level 1 because ghouls cannot have Disciplines higher.</span>")
 					giving_discipline_level = 1
 				var/reason = input("Why are you giving [player] this Discipline?") as null|text
