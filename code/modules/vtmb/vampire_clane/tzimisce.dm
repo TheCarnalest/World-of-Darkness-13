@@ -24,8 +24,8 @@
 /obj/effect/proc_holder/spell/targeted/shapeshift/tzimisce
 	name = "Tzimisce Form"
 	desc = "Take on the shape a beast."
-	charge_max = 100
-	cooldown_min = 100
+	charge_max = 10 SECONDS
+	cooldown_min = 10 SECONDS
 	revert_on_death = TRUE
 	die_with_shapeshifted_form = FALSE
 	shapeshift_type = /mob/living/simple_animal/hostile/tzimisce_beast
@@ -33,8 +33,8 @@
 /obj/effect/proc_holder/spell/targeted/shapeshift/bloodcrawler
 	name = "Blood Crawler"
 	desc = "Take on the shape a beast."
-	charge_max = 50
-	cooldown_min = 50
+	charge_max = 5 SECONDS
+	cooldown_min = 5 SECONDS
 	revert_on_death = TRUE
 	die_with_shapeshifted_form = FALSE
 	shapeshift_type = /mob/living/simple_animal/hostile/bloodcrawler
@@ -575,7 +575,7 @@
 /datum/crafting_recipe/tzi_fister
 	name = "Punching Abomination"
 	time = 100
-	reqs = list(/obj/item/stack/human_flesh = 4, /obj/item/bodypart/r_arm = 1, /obj/item/bodypart/l_arm = 1, /obj/item/spine = 1, /obj/item/guts = 1)
+	reqs = list(/obj/item/stack/human_flesh = 5, /obj/item/bodypart/r_arm = 1, /obj/item/bodypart/l_arm = 1, /obj/item/spine = 1, /obj/item/guts = 1)
 	result = /mob/living/simple_animal/hostile/fister
 	always_available = FALSE
 	category = CAT_TZIMISCE
@@ -583,7 +583,7 @@
 /datum/crafting_recipe/tzi_tanker
 	name = "Fat Abomination"
 	time = 100
-	reqs = list(/obj/item/stack/human_flesh = 8, /obj/item/bodypart/r_arm = 1, /obj/item/bodypart/l_arm = 1, /obj/item/bodypart/r_leg = 1, /obj/item/bodypart/l_leg = 1, /obj/item/spine = 1, /obj/item/guts = 2)
+	reqs = list(/obj/item/stack/human_flesh = 10, /obj/item/bodypart/r_arm = 1, /obj/item/bodypart/l_arm = 1, /obj/item/bodypart/r_leg = 1, /obj/item/bodypart/l_leg = 1, /obj/item/spine = 1, /obj/item/guts = 2)
 	result = /mob/living/simple_animal/hostile/tanker
 	always_available = FALSE
 	category = CAT_TZIMISCE
@@ -598,7 +598,7 @@
 	mob_biotypes = MOB_ORGANIC|MOB_BEAST
 	speak_chance = 0
 	turns_per_move = 5
-	butcher_results = list(/obj/item/stack/human_flesh = 5)
+	butcher_results = list(/obj/item/stack/human_flesh = 1)
 	response_help_continuous = "pets"
 	response_help_simple = "pet"
 	response_disarm_continuous = "gently pushes aside"
@@ -655,12 +655,12 @@
 	icon_dead = "fister_dead"
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	speak_chance = 0
-	maxHealth = 100
-	health = 100
-	butcher_results = list(/obj/item/stack/human_flesh = 10)
+	maxHealth = 125
+	health = 125
+	butcher_results = list(/obj/item/stack/human_flesh = 2)
 	harm_intent_damage = 5
-	melee_damage_lower = 25
-	melee_damage_upper = 25
+	melee_damage_lower = 30
+	melee_damage_upper = 30
 	attack_verb_continuous = "punches"
 	attack_verb_simple = "punch"
 	attack_sound = 'sound/weapons/punch1.ogg'
@@ -682,12 +682,12 @@
 	icon_dead = "tanker_dead"
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	speak_chance = 0
-	maxHealth = 300
-	health = 300
-	butcher_results = list(/obj/item/stack/human_flesh = 20)
+	maxHealth = 350
+	health = 350
+	butcher_results = list(/obj/item/stack/human_flesh = 4)
 	harm_intent_damage = 5
-	melee_damage_lower = 30
-	melee_damage_upper = 30
+	melee_damage_lower = 25
+	melee_damage_upper = 25
 	attack_verb_continuous = "slashes"
 	attack_verb_simple = "slash"
 	attack_sound = 'sound/weapons/slash.ogg'
@@ -710,7 +710,7 @@
 	speed = -0.4
 	maxHealth = 400
 	health = 400
-	butcher_results = list(/obj/item/stack/human_flesh = 20)
+	butcher_results = list(/obj/item/stack/human_flesh = 10)
 	harm_intent_damage = 5
 	melee_damage_lower = 40
 	melee_damage_upper = 40
@@ -753,7 +753,7 @@
 	speed = -1
 	maxHealth = 400
 	health = 400
-	butcher_results = list(/obj/item/stack/human_flesh = 20)
+	butcher_results = list(/obj/item/stack/human_flesh = 10)
 	harm_intent_damage = 5
 	melee_damage_lower = 25
 	melee_damage_upper = 45
@@ -816,7 +816,7 @@
 	speed = -0.55
 	maxHealth = 575
 	health = 575
-	butcher_results = list(/obj/item/stack/human_flesh = 20)
+	butcher_results = list(/obj/item/stack/human_flesh = 10)
 	harm_intent_damage = 5
 	melee_damage_lower = 35
 	melee_damage_upper = 70
@@ -841,7 +841,7 @@
 	speed = 3
 	maxHealth = 100
 	health = 100
-	butcher_results = list(/obj/item/stack/human_flesh = 20)
+	butcher_results = list(/obj/item/stack/human_flesh = 1)
 	harm_intent_damage = 5
 	melee_damage_lower = 10
 	melee_damage_upper = 10
