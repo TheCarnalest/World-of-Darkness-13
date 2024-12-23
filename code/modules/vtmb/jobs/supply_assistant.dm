@@ -33,7 +33,7 @@
 	id = /obj/item/card/id/supplytech
 	uniform = /obj/item/clothing/under/vampire/supply
 	gloves = /obj/item/clothing/gloves/vampire/work
-	l_pocket = /obj/item/vamp/phone/anarch
+	l_pocket = /obj/item/vamp/phone/supply_tech
 	r_pocket = /obj/item/vamp/keys/supply
 	shoes = /obj/item/clothing/shoes/vampire/jackboots
 	backpack_contents = list(/obj/item/passport=1, /obj/item/phone_book=1, /obj/item/cockclock=1, /obj/item/flashlight=1, /obj/item/vamp/creditcard=1)
