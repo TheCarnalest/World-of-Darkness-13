@@ -15,7 +15,7 @@
 	paycheck = PAYCHECK_EASY
 	paycheck_department = ACCOUNT_SRV
 	display_order = JOB_DISPLAY_ORDER_POLICE
-	exp_type_department = EXP_TYPE_INDEPENDENT
+	exp_type_department = EXP_TYPE_POLICE
 
 	allowed_species = list("Ghoul", "Human")
 	species_slots = list("Ghoul" = 1)
@@ -57,7 +57,7 @@
 	paycheck = PAYCHECK_HARD
 	paycheck_department = ACCOUNT_SRV
 	display_order = JOB_DISPLAY_ORDER_POLICE_SERGEANT
-	exp_type_department = EXP_TYPE_INDEPENDENT
+	exp_type_department = EXP_TYPE_POLICE
 
 	allowed_species = list("Human")
 
@@ -98,7 +98,7 @@
 	paycheck = PAYCHECK_COMMAND
 	paycheck_department = ACCOUNT_SRV
 	display_order = JOB_DISPLAY_ORDER_POLICE_CHIEF
-	exp_type_department = EXP_TYPE_INDEPENDENT
+	exp_type_department = EXP_TYPE_POLICE
 
 	allowed_species = list("Human")
 

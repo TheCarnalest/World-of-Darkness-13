@@ -5,7 +5,7 @@
 	total_positions = 3
 	spawn_positions = 3
 	supervisors = " the Traditions"
-	selection_color = "#cb4aad"
+	selection_color = "#e3e3e3"
 
 	outfit = /datum/outfit/job/taxi
 
@@ -14,7 +14,7 @@
 	paycheck = PAYCHECK_EASY
 	paycheck_department = ACCOUNT_SRV
 	display_order = JOB_DISPLAY_ORDER_TAXI
-	exp_type_department = EXP_TYPE_INDEPENDENT
+	exp_type_department = EXP_TYPE_SERVICES
 
 	allowed_species = list("Vampire", "Ghoul", "Human", "Werewolf")
 
