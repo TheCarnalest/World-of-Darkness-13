@@ -1,5 +1,5 @@
 /datum/job/vamp/camarilla/primogen_malkavian
-	title = "Primogen Malkavian"
+	title = JOB_MALKAVIAN 
 	department_head = list("Justicar")
 	faction = "Vampire"
 	total_positions = 1
@@ -32,7 +32,7 @@ AddTimelock(/datum/job/vamp/camarilla/primogen_malkavian, list(
 ))
 
 /datum/outfit/job/malkav
-	name = "Primogen Malkavian"
+	name = JOB_MALKAVIAN
 	jobtype = /datum/job/vamp/camarilla/primogen_malkavian
 
 	id = /obj/item/card/id/primogen
@@ -54,7 +54,7 @@ AddTimelock(/datum/job/vamp/camarilla/primogen_malkavian, list(
 		shoes = /obj/item/clothing/shoes/vampire/heels
 
 /datum/job/vamp/camarilla/primogen_nosferatu
-	title = "Primogen Nosferatu"
+	title = JOB_NOSFERATU 
 	department_head = list("Justicar")
 	faction = "Vampire"
 	total_positions = 1
@@ -87,7 +87,7 @@ AddTimelock(/datum/job/vamp/camarilla/primogen_nosferatu, list(
 ))
 
 /datum/outfit/job/nosferatu
-	name = "Primogen Nosferatu"
+	name = JOB_NOSFERATU 
 	jobtype = /datum/job/vamp/camarilla/primogen_nosferatu
 
 	id = /obj/item/card/id/primogen
@@ -106,7 +106,7 @@ AddTimelock(/datum/job/vamp/camarilla/primogen_nosferatu, list(
 		shoes = /obj/item/clothing/shoes/vampire/heels
 
 /datum/job/vamp/camarilla/primogen_ventrue
-	title = "Primogen Ventrue"
+	title = JOB_VENTRUE
 	department_head = list("Justicar")
 	faction = "Vampire"
 	total_positions = 1
@@ -133,8 +133,8 @@ AddTimelock(/datum/job/vamp/camarilla/primogen_nosferatu, list(
 	my_contact_is_important = TRUE
 	known_contacts = list("Prince")
 
-/datum/outfit/job/camarilla/ventrue
-	name = "Primogen Ventrue"
+/datum/outfit/job/ventrue
+	name = JOB_VENTRUE
 	jobtype = /datum/job/vamp/camarilla/primogen_ventrue
 
 	id = /obj/item/card/id/primogen
@@ -157,7 +157,7 @@ AddTimelock(/datum/job/vamp/camarilla/primogen_ventrue, list(
 		shoes = /obj/item/clothing/shoes/vampire/heels
 
 /datum/job/vamp/camarilla/primogen_toreador
-	title = "Primogen Toreador"
+	title = JOB_TOREADOR 
 	department_head = list("Justicar")
 	faction = "Vampire"
 	total_positions = 1
@@ -190,7 +190,7 @@ AddTimelock(/datum/job/vamp/camarilla/primogen_toreador, list(
 ))
 
 /datum/outfit/job/toreador
-	name = "Primogen Toreador"
+	name = JOB_TOREADOR 
 	jobtype = /datum/job/vamp/camarilla/primogen_toreador
 
 	id = /obj/item/card/id/primogen
@@ -210,7 +210,7 @@ AddTimelock(/datum/job/vamp/camarilla/primogen_toreador, list(
 
 
 /datum/job/vamp/camarilla/primogen_brujah
-	title = "Primogen Brujah"
+	title = JOB_BRUJAH 
 	department_head = list("Justicar")
 	faction = "Vampire"
 	total_positions = 1
@@ -244,7 +244,7 @@ AddTimelock(/datum/job/vamp/camarilla/primogen_brujah, list(
 
 
 /datum/outfit/job/brujah
-	name = "Primogen Brujah"
+	name = JOB_BRUJAH 
 	jobtype = /datum/job/vamp/camarilla/primogen_brujah
 
 	id = /obj/item/card/id/primogen
