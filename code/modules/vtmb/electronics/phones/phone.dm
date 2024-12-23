@@ -899,6 +899,11 @@
 	var/datum/phonecontact/barkeeper/BARKEEPER = new()
 	contacts += BARKEEPER
 
+/obj/item/vamp/phone/supply_tech/Initialize()
+	..()
+	var/datum/phonecontact/dealer/DEALER = new()
+	contacts += DEALER
+
 /obj/item/vamp/phone/camarilla
 	exchange_num = 267
 
@@ -1020,5 +1025,10 @@
 	contacts += V
 	var/datum/phonecontact/brujah/B = new()
 	contacts += B
+
+/obj/item/vamp/phone/archivist/Initialize()
+	..()
+	var/datum/phonecontact/tremere/REGENT = new()
+	contacts += REGENT
 
 
