@@ -20,18 +20,26 @@
 			alt_sprite = "rotten_1"
 			alt_sprite_greyscale = TRUE
 			violating_appearance = FALSE
+			no_hair = FALSE
+			no_facial = FALSE
 		if (100 to 300)
 			alt_sprite = "rotten_2"
 			alt_sprite_greyscale = TRUE
 			violating_appearance = FALSE
+			no_hair = FALSE
+			no_facial = FALSE
 		if (300 to 500)
 			alt_sprite = "rotten_3"
 			alt_sprite_greyscale = FALSE
 			violating_appearance = TRUE
+			no_hair = FALSE
+			no_facial = TRUE
 		if (500 to INFINITY)
 			alt_sprite = "rotten_4"
 			alt_sprite_greyscale = FALSE
 			violating_appearance = TRUE
+			no_hair = TRUE
+			no_facial = TRUE
 
 	..()
 
