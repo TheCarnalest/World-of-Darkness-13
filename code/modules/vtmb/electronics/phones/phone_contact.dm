@@ -10,7 +10,8 @@
 
 /datum/phonecontact/proc/check_global_contacts()
 	return FALSE
-// If the phone is opened, this will go through and return true with the Name of the important contact and their number will also exist.
+//Normal phones won't use check_global_contacts, they can't add any of GLOB contacts.
+//Remember to set the job of the phone with "my_contact_is_important = TRUE", or the check_global_contacts proc won't get activate automatically
 
 
 /datum/phonecontact/brujah
