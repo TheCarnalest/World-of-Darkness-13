@@ -53,9 +53,13 @@
 			activator_bonus = L.thaum_damage_plus
 			if(sacrifice)
 				for(var/obj/item/I in get_turf(src))
-					if(I)
-						if(istype(I, sacrifice))
-							qdel(I)
+					if(istype(I, sacrifice))
+						if(istype(I, /obj/item/drinkable_bloodpack))
+							var/obj/item/drinkable_bloodpack/bloodpack = I
+							if(!bloodpack.empty)
+								qdel(I)
+								complete()
+						else
 							complete()
 			else
 				complete()
@@ -256,6 +260,9 @@
 	var/x_dir = 1
 	var/y_dir = 1
 	if(activated)
+		if(last_activator != user) 
+			to_chat(user, "<span class='warning'>You are not the one who activated this rune!</span>")
+			return
 		var/x = input(user, "Choose x direction:\n(1-255)", "Teleportation Rune") as num|null
 		if(x)
 			x_dir = max(min(round(text2num(x)), 255),1)
