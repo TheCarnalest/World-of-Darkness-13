@@ -22,6 +22,7 @@
 	minimal_masquerade = 3
 	allowed_species = list("Vampire")
 	allowed_bloodlines = list("Tremere", "Gargoyle")
+	known_contacts = list("Tremere Regent")
 	experience_addition = 15
 
 /datum/outfit/job/archivist
