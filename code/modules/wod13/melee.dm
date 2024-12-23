@@ -122,7 +122,7 @@
     w_class = WEIGHT_CLASS_BULKY
     slot_flags = ITEM_SLOT_BACK | ITEM_SLOT_BELT
     block_chance = 40
-    armour_penetration = 35
+    armour_penetration = 25
     sharpness = SHARP_EDGED
     attack_verb_continuous = list("slashes", "cuts")
     attack_verb_simple = list("slash", "cut")
