@@ -458,6 +458,11 @@
 /obj/item/clothing/suit/vampire/coat/alt
 	icon_state = "coat2"
 
+obj/item/clothing/suit/vampire/coat3
+	name = "white coat"
+	desc = "A warm & light coat made from white cloth with a blue trim. Stylish."
+	icon_state = "coat3"
+
 /obj/item/clothing/suit/vampire/coat/winter
 	name = "coat"
 	desc = "Warm and heavy clothing."
