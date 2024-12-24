@@ -440,7 +440,7 @@
 		new /datum/data/mining_equipment("respirator",	/obj/item/clothing/mask/vampire,	35),
 		new /datum/data/mining_equipment("black and gold luchador mask",	/obj/item/clothing/mask/luchador,	10),
 		new /datum/data/mining_equipment("green luchador mask",	/obj/item/clothing/mask/luchador/tecnicos,	10),
-		new /datum/data/mining_equipment("clown mask", /obj/item/clothing/mask/)
+		new /datum/data/mining_equipment("clown mask", /obj/item/clothing/mask/vampire/clownmask,	10),
 		new /datum/data/mining_equipment("red and blue luchador mask",	/obj/item/clothing/mask/luchador/rudos,	10)
 	)
 

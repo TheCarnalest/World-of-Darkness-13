@@ -1010,11 +1010,20 @@
 
 /obj/item/clothing/mask/vampire/balaclava
 	name = "balaclava"
-	desc = "LOADSAMONEY"
+	desc = "A black mask that covers your entire face."
 	icon_state = "balaclava"
 	inhand_icon_state = "balaclava"
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	visor_flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
+	w_class = WEIGHT_CLASS_SMALL
+
+	/obj/item/clothing/mask/vampire/clownmask
+	name = "clown mask"
+	desc = "A creepy mask in the shape of a clown."
+	icon_state = "clownmask"
+	inhand_icon_state = "clownmask
+	flags_inv = HIDEFACE|HIDESNOUT
+	flags_cover = MASKCOVERSMOUTH
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/mask/vampire/shemagh
