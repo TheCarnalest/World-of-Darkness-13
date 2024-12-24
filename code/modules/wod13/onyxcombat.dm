@@ -28,8 +28,8 @@
 		SEND_SOUND(src, sound('code/modules/wod13/sounds/final_death.ogg', 0, 0, 50))
 		lying_fix()
 		dir = SOUTH
-		spawn(10)
-			dust(1, 1)
+		spawn(1 SECONDS)
+			dust(TRUE, TRUE)
 
 /mob/living/carbon/human/toggle_move_intent(mob/living/user)
 	if(blocking && m_intent == MOVE_INTENT_WALK)
