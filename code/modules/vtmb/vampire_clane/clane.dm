@@ -131,12 +131,18 @@ And it also helps for the character set panel
  * be according to their chronological age. Stage 1 is
  * fairly normal looking with discoloured skin, stage 2 is
  * somewhat decayed-looking, stage 3 is very decayed, and stage
- * 4 is a long-dead completely decayed corpse.
+ * 4 is a long-dead completely decayed corpse. This has no effect
+ * on Clans that already have alt_sprites unless they're being
+ * rotted to stage 3 and above.
  *
  * Arguments
  * * rot_stage - how much to rot the vampire, on a scale from 1 to 4.
  */
 /datum/vampireclane/proc/rot_body(rot_stage)
+	if (alt_sprite)
+		if (!findtext(alt_sprite, "rotten") && (rot_stage <= 2))
+			return
+
 	switch (rot_stage)
 		if (1)
 			alt_sprite = "rotten1"
