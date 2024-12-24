@@ -440,6 +440,7 @@
 		new /datum/data/mining_equipment("respirator",	/obj/item/clothing/mask/vampire,	35),
 		new /datum/data/mining_equipment("black and gold luchador mask",	/obj/item/clothing/mask/luchador,	10),
 		new /datum/data/mining_equipment("green luchador mask",	/obj/item/clothing/mask/luchador/tecnicos,	10),
+		new /datum/data/mining_equipment("clown mask", /obj/item/clothing/mask/)
 		new /datum/data/mining_equipment("red and blue luchador mask",	/obj/item/clothing/mask/luchador/rudos,	10)
 	)
 
@@ -487,8 +488,8 @@
 		new /datum/data/mining_equipment("Colt M1911 magazine",		/obj/item/ammo_box/magazine/vamp45acp,	50),
 		new /datum/data/mining_equipment("knife",	/obj/item/melee/vampirearms/knife,	100),
 		new /datum/data/mining_equipment("baseball bat",	/obj/item/melee/vampirearms/baseball,	200),
-		new /datum/data/mining_equipment("real katana",	/obj/item/melee/vampirearms/katana,	1500),
-		new /datum/data/mining_equipment("donut",	/obj/item/food/vampire/donut,	10)
+		new /datum/data/mining_equipment("katana",	/obj/item/melee/vampirearms/katana,	1500),
+		new /datum/data/mining_equipment("machete", /obj/item/melee/vampirearms/machete, 750)
 	)
 
 /obj/machinery/mineral/equipment_vendor/fastfood/illegal
