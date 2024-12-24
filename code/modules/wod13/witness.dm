@@ -62,15 +62,22 @@
 		var/ghoul = FALSE
 		if(isghoul(src))
 			//Pale spots in the aura, had to be done manually since holder.color will show only a type of color
+			holder.overlays = null 
+			holder.color = null
 			holder.icon_state = "aura_ghoul"
 			ghoul = TRUE
 
 		if(isnpc(src))
 			var/mob/living/carbon/human/npc/N = src
-			if(N.danger_source)
+			if(N.danger_source && !isghoul(N))
 				holder.color = "#ff0000"
-			else
+			else if(!isghoul(N))
 				holder.color = "#0000ff"
+			else if (isghoul(N))
+				holder.overlays = null 
+				holder.color = null
+				holder.icon_state = "aura_ghoul"
+				
 		else if(!ghoul)
 		//Ghoul got a mix of two different colors on the dmi, so it can't recieve any holder.color 
 			if(a_intent == INTENT_HARM)
