@@ -134,6 +134,28 @@
 					humanity = "I'm losing control over my beast!"
 
 		dat += "[humanity]<BR>"
+
+		if(host.clane.name == "Brujah")
+			if(GLOB.brujahname != "")
+				if(host.real_name != GLOB.brujahname)
+					dat += " My primogen is:  [GLOB.brujahname].<BR>"
+		if(host.clane.name == "Malkavian")
+			if(GLOB.malkavianname != "")
+				if(host.real_name != GLOB.malkavianname)
+					dat += " My primogen is:  [GLOB.malkavianname].<BR>"
+		if(host.clane.name == "Nosferatu")
+			if(GLOB.nosferatuname != "")
+				if(host.real_name != GLOB.nosferatuname)
+					dat += " My primogen is:  [GLOB.nosferatuname].<BR>"
+		if(host.clane.name == "Toreador")
+			if(GLOB.toreadorname != "")
+				if(host.real_name != GLOB.toreadorname)
+					dat += " My primogen is:  [GLOB.toreadorname].<BR>"
+		if(host.clane.name == "Ventrue")
+			if(GLOB.ventruename != "")
+				if(host.real_name != GLOB.ventruename)
+					dat += " My primogen is:  [GLOB.ventruename].<BR>"
+
 		dat += "<b>Physique</b>: [host.physique]<BR>"
 		dat += "<b>Dexterity</b>: [host.dexterity]<BR>"
 		dat += "<b>Social</b>: [host.social]<BR>"

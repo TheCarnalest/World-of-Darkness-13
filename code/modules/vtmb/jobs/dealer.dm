@@ -6,8 +6,8 @@
 	total_positions = 1
 	spawn_positions = 1
 	supervisors = "None. You are beholden only to yourself."
-	selection_color = "#434343"
-	exp_type_department = EXP_TYPE_SUPPLY // This is so the jobs menu can work properly
+	selection_color = "#edc009"
+	exp_type_department = EXP_TYPE_WAREHOUSE // This is so the jobs menu can work properly
 
 	outfit = /datum/outfit/job/dealer
 
@@ -24,7 +24,7 @@
 //	minimal_generation = 12	//Uncomment when players get exp enough
 
 	my_contact_is_important = TRUE
-	known_contacts = list("Baron", "Prince", "Sheriff")
+	known_contacts = list("Prince","Seneschal", "Sheriff", "Baron")
 	allowed_bloodlines = list("True Brujah", "Brujah", "Nosferatu", "Gangrel", "Toreador", "Malkavian", "Banu Haqim", "Tzimisce", "Caitiff", "Ventrue", "Ministry", "Kiasyd")
 
 	v_duty = "You provide supplies to other kindred. The warehouse is yours, and it's your business who you'll deal with."
