@@ -1026,7 +1026,7 @@ obj/item/clothing/suit/vampire/coat3
 	name = "clown mask"
 	desc = "A creepy mask in the shape of a clown."
 	icon_state = "clownmask"
-	inhand_icon_state = "clownmask
+	inhand_icon_state = "clownmask"
 	flags_inv = HIDEFACE|HIDESNOUT
 	flags_cover = MASKCOVERSMOUTH
 	w_class = WEIGHT_CLASS_SMALL
