@@ -458,6 +458,11 @@
 /obj/item/clothing/suit/vampire/coat/alt
 	icon_state = "coat2"
 
+obj/item/clothing/suit/vampire/coat3
+	name = "white coat"
+	desc = "A warm & light coat made from white cloth with a blue trim. Stylish."
+	icon_state = "coat3"
+
 /obj/item/clothing/suit/vampire/coat/winter
 	name = "coat"
 	desc = "Warm and heavy clothing."
@@ -1010,11 +1015,20 @@
 
 /obj/item/clothing/mask/vampire/balaclava
 	name = "balaclava"
-	desc = "LOADSAMONEY"
+	desc = "A black mask that covers your entire face."
 	icon_state = "balaclava"
 	inhand_icon_state = "balaclava"
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	visor_flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDESNOUT
+	w_class = WEIGHT_CLASS_SMALL
+
+	/obj/item/clothing/mask/vampire/clownmask
+	name = "clown mask"
+	desc = "A creepy mask in the shape of a clown."
+	icon_state = "clownmask"
+	inhand_icon_state = "clownmask"
+	flags_inv = HIDEFACE|HIDESNOUT
+	flags_cover = MASKCOVERSMOUTH
 	w_class = WEIGHT_CLASS_SMALL
 
 /obj/item/clothing/mask/vampire/shemagh

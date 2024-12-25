@@ -398,6 +398,7 @@
 		new /datum/data/mining_equipment("red high heels",	/obj/item/clothing/shoes/vampire/heels/red,	35),
 		new /datum/data/mining_equipment("brown coat",	/obj/item/clothing/suit/vampire/coat,	15),
 		new /datum/data/mining_equipment("green coat",	/obj/item/clothing/suit/vampire/coat/alt,	15),
+		new /datum/data/mining_equipment("white coat",	/obj/item/clothing/suit/vampire/coat3,	30),
 		new /datum/data/mining_equipment("jacket",	/obj/item/clothing/suit/vampire/jacket,	15),
 		new /datum/data/mining_equipment("black trenchcoat",	/obj/item/clothing/suit/vampire/trench,	45),
 		new /datum/data/mining_equipment("brown trenchcoat",	/obj/item/clothing/suit/vampire/trench/alt,	35),
@@ -440,6 +441,7 @@
 		new /datum/data/mining_equipment("respirator",	/obj/item/clothing/mask/vampire,	35),
 		new /datum/data/mining_equipment("black and gold luchador mask",	/obj/item/clothing/mask/luchador,	10),
 		new /datum/data/mining_equipment("green luchador mask",	/obj/item/clothing/mask/luchador/tecnicos,	10),
+		new /datum/data/mining_equipment("clown mask", /obj/item/clothing/mask/vampire/clownmask,	10),
 		new /datum/data/mining_equipment("red and blue luchador mask",	/obj/item/clothing/mask/luchador/rudos,	10)
 	)
 
@@ -487,8 +489,8 @@
 		new /datum/data/mining_equipment("Colt M1911 magazine",		/obj/item/ammo_box/magazine/vamp45acp,	50),
 		new /datum/data/mining_equipment("knife",	/obj/item/melee/vampirearms/knife,	100),
 		new /datum/data/mining_equipment("baseball bat",	/obj/item/melee/vampirearms/baseball,	200),
-		new /datum/data/mining_equipment("real katana",	/obj/item/melee/vampirearms/katana,	1500),
-		new /datum/data/mining_equipment("donut",	/obj/item/food/vampire/donut,	10)
+		new /datum/data/mining_equipment("katana",	/obj/item/melee/vampirearms/katana,	1500),
+		new /datum/data/mining_equipment("machete", /obj/item/melee/vampirearms/machete, 750)
 	)
 
 /obj/machinery/mineral/equipment_vendor/fastfood/illegal
